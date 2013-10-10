@@ -1,0 +1,125 @@
+@import "../vendor/bootstrap/lib/_mixins";
+
+
+.tc_user{
+    background: #f6f6f6;
+    height: 100%;
+    width: 100%;
+    font-family:Arial;
+    
+    form{
+        margin-bottom: 0;
+    }
+    
+    .errors{
+        position: relative;
+        padding: 12px;
+        margin: 0px auto;
+        width: 300px;
+        background: #fcfbe4;
+        border:1px solid #dededf;
+        margin-bottom:24px;
+        margin-top: -12px;
+        text-align: center;
+        
+        .error_line,
+        p {
+            color: #a72323;
+            font-style: italic;
+            font-size: 13px;
+            line-height:18px;
+        }
+        
+        .opps{
+            font-size:12px;
+            font-weight: bold;
+            margin-bottom:5px;
+        }
+        .message{
+        }
+    }
+    
+    .form_row{
+                .errors{
+                    margin:0;
+                    margin-top:-10px;
+                    text-align:left;
+                    border:0;
+                    background:none;
+                    width:auto;
+                    padding:0px;
+                            }
+            }
+    
+    .logo{
+        background: url(/img/logo_login.png) no-repeat;
+        position: relative;
+        width: 226px;
+        height: 31px;
+        margin: 0px auto;
+        margin-bottom: 32px;
+        padding-right: 8px;
+    }
+    .wrapper{
+        position: absolute;
+        left: 50%;
+        top: 50px;
+        width:320px;
+        margin-left:-160px;
+    }
+    
+    .gradient{
+        background: url(/img/gradientLogin.gif) no-repeat;
+        width: 725px;
+        height: 725px;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        margin-top: -362px;
+        margin-left: -362px;
+    }
+    
+    .well{
+        background:#ffffff;
+    }
+    
+    .submit_row{
+        text-align:right;
+    }
+    
+    .more_links{        
+        padding: 0 20px;
+        height:40px;
+        
+        a{
+            font-size: 13px;
+            color: #777;
+            margin-right: 12px;
+        }
+        a:hover{
+            color: #990000;
+        }        
+    }
+}
+
+.tc_user_confirmed,
+.tc_user_check{
+    .wrapper{
+        width:400px;
+        margin-left:-200px;
+    }
+    .message{
+        padding-bottom:10px;
+    }
+    .fos_user_success{
+        font-weight:bold;
+        color: #990000;
+    }
+}
+
+.tc_user_register{
+    .wrapper{
+        width:350px;
+        margin-right:-175px;
+    }
+}

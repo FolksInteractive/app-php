@@ -1,0 +1,95 @@
+.tc-toolbar{
+    .tc-edit-btn{
+        
+        // Hack for caret height alignment the default bootstrap wasn't working...
+        .dropdown-toggle{
+            padding:6px 8px 10px 8px;        
+        }
+    }
+}
+
+.tc-outcome-section{
+}
+
+.tc-deliverables-section{
+    .no, 
+    .cost,        
+    .quantity,
+    .subtotal,
+    .actions{
+        width:80px;        
+        text-align:center;             
+        vertical-align: middle;
+    }
+    
+    .no,
+    .actions{
+        width:40px;   
+    }
+    
+    input{
+        margin-bottom:0;
+    }
+}
+
+.tc-agreement-section{
+    text-align: center;
+    border-right: 1px solid #dededf;
+    
+    .agree-check{
+        font-size: 13px;
+        padding-bottom: 20px;
+    }
+}
+
+.tc-total-section{
+    text-align:right;
+    margin-bottom:80px;
+    
+    .total-label{
+        display:inline-block;
+        vertical-align:middle;
+        text-align:right;
+        font-style: italic;
+        color: #999;
+        font-size: 12px;
+    }
+    
+    .total-value{
+        display:inline-block;
+        vertical-align:middle;
+        padding-left:80px;
+        font-size: 60px;
+        line-height:60px;
+        text-align: right;
+        color: #0060b2;
+    }
+}
+
+
+.order-not-ready{
+    .tc-sheet{
+        position: relative;
+    }
+    .tc-over-section{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width: 600px;
+        margin-left:-300px;
+        margin-top:-200px;
+        background:none;
+        text-align:center;
+        z-index:1000;
+    }
+}
+
+/*************************************************/
+/*****    Section Order:discuss.html.twig    *****/
+/*************************************************/
+.order-discuss{
+    .tc-comment .media-object{
+        width:60px;
+        height:60px;
+    }
+}

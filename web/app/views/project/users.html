@@ -1,0 +1,59 @@
+<div class="tc-menu-section">
+    <ul>
+        <li class="nav-header">PEOPLE IN THIS PROJECT</li>
+    </ul>
+</div>
+
+<div class='tc-project-users-section' ng-controller='workspace.project.ProjectUserController'>
+
+    <div class='tc-project-vendor'>
+        <div class="thumb"><img src="/images/user.png" width="30" height="30" /></div>
+        <div class="infos">
+            <!-- If vendor is registered -->
+            <div class="name" ng-show="project.vendor.id">{{project.vendor.firstName}} {{project.vendor.lastName}}</div>
+            <!-- If vendor is enroll but not registered -->
+            <span class="name" ng-show="project.vendor && !project.vendor.id">{{project.vendor}}</span>
+            
+            <div class="role" ng-show="project.vendor">Vendor</div>
+            
+            <!-- If no vendor is enroll yet, it can be done by the creator only -->
+            <span class="enroll" ng-show="!project.vendor && isClientInProject()">
+                <a ng-click="openProjectInviteModal('vendor')">Invite</a>
+            </span>
+        </div>
+    </div>        
+
+    <div class='tc-project-client'>
+
+        <div class="thumb"><img src="/images/user.png" width="30" height="30" /></div>
+        <div class="infos">
+            <!-- If client is registered -->
+            <div class="name" ng-show="project.client.id">{{project.client.firstName}} {{project.client.lastName}}</div>
+            <!-- If client is enroll but not registered -->
+            <span class="name" ng-show="project.client && !project.client.id">{{project.client}}</span>
+            
+            <div class="role" ng-show="project.client">Client</div>
+            
+            <!-- If no client is enroll yet, it can be done by the creator only -->
+            <span class="enroll" ng-show="!project.client && isVendorInProject()">
+                <a ng-click="openProjectInviteModal('client')">Invite</a>
+            </span>
+            
+        </div>
+    </div>
+
+    <div class="tc-project-collaborators">
+        Invite someone to collaborate:
+        <ul>
+            <li ng-repeat="collaborator in project.collaborators">
+                <img src="/images/user.png" width="19" height="19" tooltip="getCollaboratorLabel(collaborator)" />
+            </li>
+            
+            <li ng-repeat="square in getNbFreeSpaces() track by $index">
+                <a ng-click="openProjectInviteModal('collaborators')"><img src="/images/invite-someone-square.png" width="19" height="19" /></a>
+            </li>
+        </ul>
+    </div>
+        
+    <tc-project-invite-modal></tc-project-invite-modal>
+</div>

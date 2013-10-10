@@ -1,0 +1,45 @@
+<div ng-switch="isContactLoading" 
+     ng-animate="{enter:'fade-enter'}">
+    <!-- Loading Contact -->
+    <div ng-switch-when="true" class="tc-detail-loading">   
+
+        <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+        </div>            
+
+    </div>   
+
+    <!-- Contact Details -->
+    <div ng-switch-when="false" class="tc-contact-details"> 
+
+        <form name="tcContactEditForm" ng-submit="updateContact(tcContactEditForm)" novalidate="">
+            
+            <div class="tc-contacts-toolbar tc-toolbar">
+                <button class="btn" type="button" ng-click="enterEditMode()"
+                        ng-hide="editMode">
+                    <i class="icon-plus-sign"></i> 
+                    Edit Contact
+                </button>
+                
+                <button class="btn" type="submit"
+                        ng-show="editMode">
+                    <i class="icon-plus-sign"></i> 
+                    Save Contact
+                </button>
+            </div>
+
+            <div ng-switch="editMode">
+
+                <!--  READ View -->
+                <ng-include ng-switch-when="false"
+                            src="'/app/views/contacts/contact-read.html'"></ng-include>
+
+                <!--  EDIT View -->
+                <ng-include ng-switch-when="true"
+                            src="'/app/views/contacts/contact-edit.html'"></ng-include>
+
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div id="tcOrderCreatorModal" class="modal hide fade" 
+     tabindex="-1" role="dialog" 
+     aria-labelledby="tcCreateOrderModalLabel" aria-hidden="true">
+    
+    <form name="tcOrderCreatorForm" ng-submit="createOrder()" novalidate="">
+        
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="tcCreateOrderModal">Creating Order</h3>
+        </div>
+        
+        <div class="modal-body">
+            <div class="tc-new-droject-section tc-section">
+                <input type="text"  ng-required="true"  ng-model="newOrder.request" placeholder="Enter your request"/>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <input type="submit" value="Create Order"
+                   ng-disabled="tcOrderCreatorForm.$invalid || creatingOrder" 
+                   ng-show="!creatingOrder" 
+                   class="btn btn-primary" />
+            <span ng-show="creatingOrder" class="well-small">Saving ...</span>
+        </div>
+        
+    </form>
+    
+</div>

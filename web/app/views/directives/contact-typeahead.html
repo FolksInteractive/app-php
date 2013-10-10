@@ -1,0 +1,12 @@
+<div class="dropdown clearfix" ng-class="{open: open}">
+
+    <input type="text" class="dropdown-toggle" ng-model="query" ng-change="checkahead()" on-keyup-fn="handleKeypress">
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+        <li class="nav-header">Your contact list</li>
+        <li ng-repeat="contact in contacts" ng-class="{active: active==$index }">
+            <a tabindex="-1" ng-click="setahead(contact)">{{contact.firstName}} {{contact.lastName}} &lt;{{contact.email}}&gt;  </a>
+        </li>
+    </ul>
+
+</div>

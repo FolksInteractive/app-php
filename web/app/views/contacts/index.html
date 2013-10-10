@@ -1,0 +1,48 @@
+<!-- MIDDLE PANEL -->
+<div class="tc-list-panel tc-panel tc-panel-with-toolbar" 
+     ng-controller="workspace.contacts.ContactsController">
+    
+<div class="tc-list-contacts-section tc-section">
+    
+    <div class="tc-contacts-toolbar tc-toolbar">
+        <button class="btn" type="button" ng-click="openContactCreatorModal()">
+            <i class="icon-plus-sign"></i> 
+            Create New Contact
+        </button>
+    </div>
+    
+    <tc-contact-creator-modal></tc-contact-creator-modal>
+    
+    <div class="tc-list tc-list-contacts">
+        <div class="tc-item tc-item-contact" 
+             ng-repeat="c in contactList.contacts" 
+             ng-class="(contact.id == c.id) && 'active' || ''" 
+             ng-class-odd="'odd'" 
+             ng-class-even="'even'"
+             ng-click='selectContact(c)' 
+             ng-animate="{enter:'view-enter'}" >
+
+            <div class="top-shadow"></div>
+
+            <div class="name">
+                {{c.firstName}} {{c.lastName}}
+            </div>
+
+            <div class="bottom-shadow"></div>
+
+        </div>
+    </div>
+</div>  
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+<div class="tc-detail-panel tc-panel tc-panel-with-toolbar">
+    <div ng-switch="subview">
+
+        <div ng-switch-when="contact" 
+             ng-controller="workspace.contacts.ContactController"
+             ng-include=" '/app/views/contacts/contact.html' "></div>
+    </div>
+</div>

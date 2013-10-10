@@ -1,0 +1,49 @@
+<div class="tc-contact-edit tc-contact-sheet tc-sheet">
+    
+    <div class="tc-contact-section">
+        <div class="tc-contact-name">
+            {{contact.firstName}} {{contact.lastName}}
+        </div>
+        <div class="tc-contact-company">
+            {{contact.companyName}}
+        </div>
+    </div>
+    
+    <div class="tc-contact-infos-section">
+        <legend>Contact Informations</legend>
+        
+        <div class="tc-contact-email tc-contact-info"
+             ng-show="contact.email">
+            <strong>Email : </strong>{{contact.email}}
+        </div>
+        <div class="tc-contact-phone tc-contact-info"
+             ng-show="contact.phone">
+            <strong>Phone : </strong>{{contact.phone}}
+        </div>
+        <div class="tc-contact-street tc-contact-info"
+             ng-show="contact.street">
+            <strong>Street : </strong>{{contact.street}}
+        </div>
+        <div class="tc-contact-city tc-contact-info"
+             ng-show="contact.city">
+            <strong>City : </strong>{{contact.city}}
+        </div>
+        <div class="tc-contact-state tc-contact-info"
+             ng-show="contact.state">
+            <strong>State : </strong>{{contact.state}}
+        </div>
+        <div class="tc-contact-zipcode tc-contact-info"
+             ng-show="contact.zip_code">
+            <strong>Zip Code : </strong>{{contact.zip_code}}
+        </div>
+        <div class="tc-contact-country tc-contact-info"
+             ng-show="contact.country">
+            <strong>Country : </strong>{{contact.country}}
+        </div>
+        <div class="tc-contact-website tc-contact-info"
+             ng-show="contact.website">
+            <strong>Website : </strong>{{contact.website}}
+        </div>
+    </div>
+    
+</div>

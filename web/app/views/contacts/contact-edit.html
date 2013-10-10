@@ -1,0 +1,27 @@
+<div class="tc-contact-edit tc-contact-sheet tc-sheet">
+
+    <div class="row-fluid">
+        <input type="text"  ng-required="true" placeholder="John"
+               class="tc-input-contact-firstname span6"
+               ng-model="contact.firstName"
+               ng-contact="contactChanged()"/>
+
+        <input type="text"  ng-required="true" placeholder="Doe"
+               class="tc-input-contact-lastname span6"
+               ng-model="contact.lastName"/>
+    </div>
+    <label>Email *</label>
+    <input type="email"  ng-required="true" placeholder="john.doe@website.com"
+           class="input-block-level"
+           ng-model="contact.email"/>
+
+    <label>Company</label>
+    <input type="text"  placeholder="Company Inc."
+           class="input-block-level"
+           ng-model="contact.companyName"/>
+
+    <label>Website</label>
+    <input type="text"  placeholder="www.website.com"
+           class="input-block-level"
+           ng-model="contact.website"/>
+</div>

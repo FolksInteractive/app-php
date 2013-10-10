@@ -1,0 +1,473 @@
+body {
+  background: url("/img/bg-texture.gif");
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+a {
+  color: #1b85b2;
+  cursor: pointer; }
+
+a:hover {
+  text-decoration: none; }
+
+p {
+  padding: 5px 0; }
+
+form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+legend .badge {
+  vertical-align: middle; }
+
+.table th {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 13px;
+  padding-top: 0;
+  padding-bottom: 0; }
+
+.tc-panel {
+  overflow-y: auto; }
+
+.tc-topbar {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  z-index: 100; }
+  .tc-topbar .tc-topbar-logo {
+    margin: 15px 0 0 30px; }
+  .tc-topbar .tc-topbar-profile {
+    position: absolute;
+    top: 16px;
+    right: 40px;
+    font-size: 12px; }
+    .tc-topbar .tc-topbar-profile .name {
+      color: #FFF; }
+    .tc-topbar .tc-topbar-profile img {
+      margin: -4px 12px 0 0; }
+    .tc-topbar .tc-topbar-profile .caret {
+      border-top-color: #CCC;
+      border-bottom-color: #CCC;
+      margin: 8px 0 0 4px; }
+    .tc-topbar .tc-topbar-profile .btn-group {
+      font-size: 12px; }
+
+.tc-topbar-logo {
+  margin: 25px 0 0 60px; }
+
+.tc-topbar-profile .dropdown-menu {
+  left: inherit;
+  right: 0; }
+
+.tc-menu-panel {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  vertical-align: top;
+  color: #fff;
+  background: rgba(11, 21, 28, 0.75);
+  box-shadow: -5px 0px 5px -5px #222222 inset;
+  overflow-y: hidden;
+  text-shadow: 1px 1px 2px #232729; }
+  .tc-menu-panel .tc-menu {
+    text-shadow: 1px 1px 2px #232729; }
+    .tc-menu-panel .tc-menu i {
+      width: 20px;
+      margin-top: -2px; }
+    .tc-menu-panel .tc-menu li a {
+      font-size: 13px;
+      color: #FFF;
+      text-shadow: none;
+      display: block;
+      padding: 8px 0 8px 24px;
+      text-shadow: 1px 1px 2px #232729; }
+    .tc-menu-panel .tc-menu li a:hover {
+      text-decoration: none;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset; }
+    .tc-menu-panel .tc-menu .active a,
+    .tc-menu-panel .tc-menu .active a:hover {
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
+      color: #FFF;
+      text-shadow: 1px 1px 3px #444444; }
+  .tc-menu-panel .tc-return-section ul {
+    margin: 5px 0; }
+  .tc-menu-panel .tc-return-section span {
+    margin-left: 15px; }
+  .tc-menu-panel .tc-return-section i {
+    margin-top: 1px; }
+  .tc-menu-panel .nav-header {
+    font-size: 12px;
+    text-shadow: none;
+    color: #b1b4b7;
+    text-shadow: 1px 1px 2px #232729;
+    margin-top: 10px;
+    font-weight: normal; }
+
+.tc-main-panel {
+  position: absolute;
+  top: 50px;
+  left: 220px;
+  bottom: 0;
+  right: 0; }
+  .tc-main-panel .tc-toolbar {
+    height: 62px;
+    position: fixed;
+    right: 0;
+    left: 220px;
+    top: 50px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 5px 5px -5px #cccccc; }
+    .tc-main-panel .tc-toolbar .tc-breadcrumb {
+      color: #333;
+      font-weight: 200;
+      font-size: 24px; }
+      .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
+        margin: 18px 0 0 20px;
+        padding: 0;
+        background: none; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
+          padding-right: 10px;
+          margin-top: -3px; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
+          display: none; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
+          color: #333; }
+      .tc-main-panel .tc-toolbar .tc-breadcrumb a {
+        color: #999; }
+      .tc-main-panel .tc-toolbar .tc-breadcrumb a:hover {
+        text-decoration: underline; }
+    .tc-main-panel .tc-toolbar .tc-controls {
+      margin: 15px; }
+
+.tc-full-panel {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0px;
+  right: 0;
+  display: inline-block;
+  vertical-align: top; }
+
+.tc-sheet {
+  padding: 5px;
+  background-color: #fff;
+  margin: 82px 20px 20px 20px;
+  box-shadow: 1px 1px 5px #999999; }
+  .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
+    padding: 0 50px; }
+  .tc-sheet .tc-full-section {
+    padding: 0; }
+  .tc-sheet .tc-title-section {
+    text-align: center;
+    margin: 20px 0; }
+    .tc-sheet .tc-title-section p {
+      font-style: italic;
+      color: #ccc;
+      margin-top: -10px;
+      font-size: 12px; }
+
+.tc-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #fff;
+  opacity: 0.7;
+  filter: alpha(opacity=70); }
+
+.icon-dashboard {
+  width: 13px;
+  height: 18px;
+  background: url("/img/icons/icon-dashboard.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-projects {
+  width: 17px;
+  height: 18px;
+  background: url("/img/icons/icon-projects.png");
+  background-repeat: no-repeat;
+  margin: 0px 3px 0 0; }
+
+.icon-discussion.icon-white {
+  background: url("/img/icons/icon-projects-white.png"); }
+
+.icon-relations {
+  width: 1px;
+  height: 18px;
+  background: url("/img/icons/icon-relations.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-relations.icon-white {
+  background: url("/img/icons/icon-relations-white.png"); }
+
+.icon-agreement {
+  width: 13px;
+  height: 18px;
+  background: url("/img/icons/icon-agreement.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-orders {
+  width: 17px;
+  height: 18px;
+  background: url("/img/icons/icon-orders.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-orders-dark {
+  width: 17px;
+  height: 18px;
+  background: url("/img/icons/icon-orders-dark.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-work-progress {
+  width: 16px;
+  height: 18px;
+  background: url("/img/icons/icon-progress.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-bill {
+  width: 16px;
+  height: 18px;
+  background: url("/img/icons/icon-bill.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-invoice {
+  width: 18px;
+  height: 18px;
+  background: url("/img/icons/icon-invoice.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-settings {
+  width: 20px;
+  height: 18px;
+  background: url("/img/icons/icon-settings.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-discussion {
+  width: 13px;
+  height: 10px;
+  background: url("/img/icons/icon-discussion.png");
+  background-repeat: no-repeat;
+  margin: 3px 3px 0 0; }
+
+.icon-discussion.icon-white {
+  background: url("/img/icons/icon-discussion-white.png"); }
+
+.badge-talk-bubble {
+  width: 34px;
+  height: 28px;
+  background: url("/img/icons/icon-talk-bubble.jpg") no-repeat scroll 50% 10% transparent;
+  padding-top: 4px;
+  margin: 3px 3px 0 0; }
+
+.tc-contact-section .contact {
+  text-align: center;
+  padding: 20px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 5px -5px #222222 inset, 0px -5px 5px -5px #222222 inset; }
+  .tc-contact-section .contact .avatar {
+    padding: 5px 0 15px 0; }
+    .tc-contact-section .contact .avatar img {
+      width: 120px;
+      height: 120px; }
+  .tc-contact-section .contact .name {
+    font-weight: bold;
+    font-size: 13px;
+    padding-bottom: 1px; }
+  .tc-contact-section .contact .role {
+    font-style: italic;
+    font-size: 0.8em; }
+
+/*************************************************/
+/*****   Section Relation:index.html.twig   *****/
+/*************************************************/
+.client-relations .user,
+.vendor-relations .user {
+  width: 30px; }
+  .client-relations .user img,
+  .vendor-relations .user img {
+    width: 30px;
+    height: 30px; }
+
+/*************************************************/
+/*****   Section Relation:orders.html.twig   *****/
+/*************************************************/
+.relation-orders .user {
+  width: 30px; }
+.relation-orders .discussion,
+.relation-orders .cost {
+  width: 80px;
+  text-align: center; }
+.relation-orders .tc-requests-section th,
+.relation-orders .tc-suggestions-section th,
+.relation-orders .tc-orders-section th {
+  padding: 5px 0; }
+.relation-orders td.user img {
+  width: 30px; }
+.relation-orders td.request {
+  font-weight: bold; }
+
+/***************************************************/
+/*****   Section Relation:progress.html.twig   *****/
+/***************************************************/
+.relation-progress .tc-progress-section .work-completed .description {
+  color: #777;
+  font-style: italic;
+  text-decoration: line-through; }
+.relation-progress .tc-progress-section table .cost,
+.relation-progress .tc-progress-section table .quantity,
+.relation-progress .tc-progress-section table .subtotal,
+.relation-progress .tc-progress-section table .actions {
+  width: 80px;
+  text-align: center;
+  vertical-align: middle; }
+.relation-progress .tc-progress-section table .check {
+  width: 30px;
+  text-align: center; }
+
+/***************************************************/
+/*******   Section Relation:bill.html.twig   *******/
+/***************************************************/
+.relation-bill .tc-bill-section table .cost,
+.relation-bill .tc-bill-section table .quantity,
+.relation-bill .tc-bill-section table .subtotal {
+  width: 80px;
+  text-align: center;
+  vertical-align: middle; }
+.relation-bill .tc-bill-section table .actions {
+  width: 30px;
+  text-align: center; }
+  .relation-bill .tc-bill-section table .actions .btn.dropdown-toggle {
+    line-height: 20px; }
+  .relation-bill .tc-bill-section table .actions .dropdown-menu {
+    text-align: left; }
+
+/***************************************************/
+/*****   Section Relation:invoices.html.twig   *****/
+/***************************************************/
+.relation-invoices .tc-invoices-section table .closed-at,
+.relation-invoices .tc-invoices-section table .total {
+  width: 80px;
+  text-align: center;
+  vertical-align: middle; }
+
+.tc-toolbar .tc-edit-btn .dropdown-toggle {
+  padding: 6px 8px 10px 8px; }
+
+.tc-deliverables-section .no,
+.tc-deliverables-section .cost,
+.tc-deliverables-section .quantity,
+.tc-deliverables-section .subtotal,
+.tc-deliverables-section .actions {
+  width: 80px;
+  text-align: center;
+  vertical-align: middle; }
+.tc-deliverables-section .no,
+.tc-deliverables-section .actions {
+  width: 40px; }
+.tc-deliverables-section input {
+  margin-bottom: 0; }
+
+.tc-agreement-section {
+  text-align: center;
+  border-right: 1px solid #dededf; }
+  .tc-agreement-section .agree-check {
+    font-size: 13px;
+    padding-bottom: 20px; }
+
+.tc-total-section {
+  text-align: right;
+  margin-bottom: 80px; }
+  .tc-total-section .total-label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    font-style: italic;
+    color: #999;
+    font-size: 12px; }
+  .tc-total-section .total-value {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 80px;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: right;
+    color: #0060b2; }
+
+.order-not-ready .tc-sheet {
+  position: relative; }
+.order-not-ready .tc-over-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  margin-left: -300px;
+  margin-top: -200px;
+  background: none;
+  text-align: center;
+  z-index: 1000; }
+
+/*************************************************/
+/*****    Section Order:discuss.html.twig    *****/
+/*************************************************/
+.order-discuss .tc-comment .media-object {
+  width: 60px;
+  height: 60px; }
+
+.invoice-show .tc-total-section {
+  text-align: right;
+  margin-bottom: 80px; }
+  .invoice-show .tc-total-section .total-label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    font-style: italic;
+    color: #999;
+    font-size: 12px; }
+  .invoice-show .tc-total-section .total-value {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 80px;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: right;
+    color: #0060b2; }
+
+.blurry {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px); }
+
+.line-seperator {
+  border-top: 1px solid #dededf;
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+  margin-bottom: 4px;
+  display: block; }

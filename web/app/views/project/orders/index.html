@@ -1,0 +1,46 @@
+<!-- MIDDLE PANEL -->
+<div class="tc-list-panel tc-panel tc-panel-with-toolbar">
+
+    <div class="tc-orders-toolbar tc-toolbar">
+        <button class="btn" type="button" ng-click="openOrderCreatorModal()">
+            <i class="icon-plus-sign"></i> 
+            Pass a request
+        </button>
+    </div>
+
+    <tc-order-creator-modal></tc-order-creator-modal>
+
+    <div class="tc-list-orders-section tc-section">
+        <div class="tc-list-orders tc-list">
+            <div class="tc-item-order tc-item"
+                 ng-repeat="o in project.orders" 
+                 ng-class="(order.id == o.id) && 'active' || ''" 
+                 ng-class-odd="'odd'" 
+                 ng-class-even="'even'"
+                 ng-click='selectOrder(o)' 
+                 ng-animate="{enter:'view-enter'}" >
+
+                <div class="top-shadow"></div>
+
+                <div class="request">
+                    {{o.request}}
+                </div>
+
+                <div class="date">
+                    Request created by {{o.author.firstName}} {{o.author.lastName}} on {{o.created_at | date:'longDate'}}
+                </div>
+
+                <div class="bottom-shadow"></div>
+
+            </div>
+        </div>
+    </div>  
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+<div class="tc-order-panel tc-detail-panel tc-panel tc-panel-with-toolbar">
+    <div ng-controller="workspace.project.orders.OrderController"
+         ng-include=" '/app/views/project/orders/order.html' "></div>
+</div>

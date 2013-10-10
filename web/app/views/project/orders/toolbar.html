@@ -1,0 +1,41 @@
+<!-- Vendor Toolbar -- Active order -->    
+<div class="tc-order-toolbar tc-toolbar" ng-show="userIs == 'vendor' && !order.approved">
+    
+    <!-- Activate edit mode => Appears only if order is not approved -->
+    <div class="tc-toolbar-bar btn-group switch-btn" data-toggle="buttons-radio"
+          ng-show='!editMode'>
+        <button class="btn" type="button" 
+                ng-click="openDiscussion()"
+                ng-class="subview=='discussion' && 'active' || ''">
+            <i class="icon-discussion"></i> Discuss
+        </button>
+        
+        <button class="btn" type="button"
+                ng-click="openOrder()"
+                ng-class="subview=='view' && 'active' || ''">
+            <i class="icon-list-alt"></i> Order
+        </button>
+        
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="enterEditMode()"><i class="icon-edit"></i> Edit Order</li>
+            <li><a href="#"><i class="icon-remove"></i> Cancel Order</a></li>
+        </ul>
+
+    </div>
+    
+    <!-- Save button appear when edit mode is on.
+    It submits the form defined in project.order.details.html
+    -->
+    <button ng-click="exitEditMode('cancel')" class='btn' ng-show='editMode'> 
+        Cancel
+    </button>
+    
+    <button ng-click="exitEditMode('save')" class='btn' ng-show='editMode'> 
+        Save
+    </button>
+    
+</div>
+

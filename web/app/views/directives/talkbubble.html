@@ -1,0 +1,19 @@
+<div class="tc-talkbubble media">
+
+   <div class="arrow"></div>
+   
+   <img class="pull-left media-object img-rounded" 
+        ng-src="{{tcTalkbubbleAvatar || '/images/user.png'}}" 
+        width="64" height="64" />
+
+   <div class="media-body">
+       <div class="thumbnail">
+           {{tcTalkbubble}}
+           
+            <div class="date">
+                {{tcTalkbubbleDate | date:'longDate'}}
+            </div>
+       </div>
+   </div>
+   
+</div>

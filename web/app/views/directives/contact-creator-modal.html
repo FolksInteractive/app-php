@@ -1,0 +1,51 @@
+<!-- Create Project Modal -->
+<div id="tcContactCreatorModal" class="modal hide fade" 
+     tabindex="-1" role="dialog" 
+     aria-labelledby="tcContactCreatorModalLabel" aria-hidden="true">
+    <form name="tcCreateContactForm" ng-submit="createContact()" novalidate="">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="tcCreateContactModal">Creating Contact</h3>
+        </div>
+        <div class="modal-body">
+            <div class="tc-create-contact-section tc-section">
+                <div class="text-center">
+                    <img class="img-circle" src="/images/user.png" width="128" height="128" >
+                </div>    
+                <label>Firstname *</label>
+                <input type="text"  ng-required="true" placeholder="John"
+                       class="input-block-level"
+                       ng-model="newContact.firstName"/>
+                
+                <label>Lastname *</label>
+                <input type="text"  ng-required="true" placeholder="Doe"
+                       class="input-block-level"
+                       ng-model="newContact.lastName"/>
+                
+                <label>Email *</label>
+                <input type="email"  ng-required="true" placeholder="john.doe@website.com"
+                       class="input-block-level"
+                       ng-model="newContact.email"/>
+                
+                <label>Company</label>
+                <input type="text"  placeholder="Company Inc."
+                       class="input-block-level"
+                       ng-model="newContact.company"/>
+                
+                <label>Website</label>
+                <input type="text"  placeholder="www.website.com"
+                       class="input-block-level"
+                       ng-model="newContact.website"/>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <input type="submit" value="Create Contact"
+                   ng-disabled="tcCreateContactForm.$invalid || creatingContact" 
+                   ng-hide="isSavingNewContact" 
+                   class="btn btn-primary" />
+            <span ng-show="isSavingNewContact" class="well-small">Saving Contact ...</span>
+        </div>
+    </form>
+</div>
