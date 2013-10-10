@@ -1,0 +1,31 @@
+{% extends "TCUserBundle::skeleton.html.twig" %}
+
+{% block head_js %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset('/js/user/reset.js')}}"></script>
+{% endblock %}
+
+{% block body_class %}
+    {{parent()}} tc_user_reset
+{% endblock %}
+
+{% block body %}
+
+<div class="gradient"></div>
+
+<div class="wrapper">
+    <a href="/"><div class="logo"></div></a>
+    {% if form.vars.errors|length > 0 %}
+    <div class="errors"><p>{{ form_errors(form) }}</p></div>
+    {% endif %}    
+    
+    <div class="well">
+        {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+    </div>
+    <div class="more_links">
+        <div class="pull-left">
+            <a href="{{path('fos_user_security_login')}}" class="back">← Back to login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

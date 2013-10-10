@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Workspace" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="user, workspace, relation, order" read-only="true"></property>
+        <property name="firstName" serialized-name="firstName" type="string" access-type="public_method" expose="true" groups="user, workspace, relation, order" read-only="true"></property>
+        <property name="lastName" serialized-name="lastName" type="string" access-type="public_method" expose="true" groups="user, workspace, relation, order" read-only="true"></property>
+        <property name="email" type="string" access-type="public_method" expose="true" groups="user, workspace, relation, order" read-only="true"></property>
+        <property name="contactList" type="TC\ApiBundle\Entity\ContactList" groups="workspace" expose="true" read-only="false"></property>
+        <property name="pricebook" type="TC\ApiBundle\Entity\Pricebook" groups="workspace" expose="true" read-only="false"></property>        
+        <property name="vendorRelations" access-type="public_method" groups="workspace" expose="true" read-only="true"></property>
+        <property name="clientRelations" access-type="public_method" groups="workspace" expose="true" read-only="true"></property> 
+        <property name="collaboratorRelations" access-type="public_method" groups="workspace" expose="true" read-only="true"></property> 
+        
+    </class>
+</serializer>  

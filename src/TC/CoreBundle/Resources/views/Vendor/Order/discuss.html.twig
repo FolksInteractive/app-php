@@ -1,0 +1,28 @@
+{% extends 'TCCoreBundle:Client:Relation/index.html.twig' %}
+
+{% use "TCCoreBundle:Order:discuss.html.twig" with body_class as base_body_class %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+
+{% block head_css %}
+{{parent()}}
+{% endblock %}
+
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+    <div class="tc-controls pull-right">
+        <div class="btn-group">
+            <a class="btn" 
+               href="{{path('vendor_order_show' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                Order
+            </a>
+        </div>
+    </div>
+{% endblock %}

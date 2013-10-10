@@ -1,0 +1,3 @@
+[submodule "web/vendor/angular-ui"]
+	path = web/vendor/angular-ui
+	url = https://github.com/angular-ui/ui-utils.git

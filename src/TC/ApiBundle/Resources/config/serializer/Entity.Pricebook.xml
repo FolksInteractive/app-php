@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Pricebook" exclusion-policy="all">  
+        <property name="items" type="TC\ApiBundle\Entity\PricebookItem" expose="true" groups="workspace, pricebook" read-only="true"></property>   
+    </class>
+</serializer>  

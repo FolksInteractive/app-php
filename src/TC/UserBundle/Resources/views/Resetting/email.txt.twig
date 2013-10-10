@@ -1,0 +1,15 @@
+{% extends "TCUserBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+{{ 'resetting.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endblock %}
+
+{% block view_button %}
+<a href="{{confirmationUrl}}"><img src="{{ app.request.uriForPath('/../images/email/btn_viewRequest.png')}}" width="186" height="54" border="0" /></a>
+{% endblock %}

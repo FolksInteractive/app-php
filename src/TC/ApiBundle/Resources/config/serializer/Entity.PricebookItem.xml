@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\PricebookItem" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="workspace, pricebook, pricebookitem" read-only="true"></property>
+        <property name="name" expose="true" type="string" groups="workspace, pricebook, pricebookitem" read-only="false"></property>   
+        <property name="price" expose="true" groups="workspace, pricebook, pricebookitem" read-only="false"></property>   
+        <property name="description" expose="true" type="string" groups="pricebookitem" read-only="false"></property>
+        <property name="createdAt" expose="true" groups="pricebookitem" read-only="false"></property>   
+    </class>
+</serializer>  

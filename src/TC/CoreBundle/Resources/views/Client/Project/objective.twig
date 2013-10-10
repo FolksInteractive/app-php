@@ -1,0 +1,35 @@
+<div class="tc-objective-section">
+    <legend>{{objective.name}}</legend>
+    
+    <table class="tc-orders table table-hover">
+        <thead>
+            <tr>
+                <th class="user">Talent</th>
+                <th class="request">Request</th>
+                <th class="discussion">Discussion</th>
+                <th class="cost">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in objective.orders() %}            
+            <tr>
+                <td class="user"><img class="img-circle" src="/img/thumbnails/user.png" /></td>
+                <td class="request">
+                    <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                        {{order.request}}
+                    </a>
+                </td>
+                <td class="discussion">
+                    <a href="{{path("client_order_discuss",{'idOrder':order.id,'idRelation':relation.id})}}}}" 
+                       class="badge badge-talk-bubble">
+                        {{order.thread.getNumComments()}}
+                    </a>
+                </td>
+                <td class="cost">
+                    {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
+                </td>
+            </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

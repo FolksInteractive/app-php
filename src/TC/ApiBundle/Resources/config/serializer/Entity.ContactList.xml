@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\ContactList" exclusion-policy="all">  
+        <property name="contacts" type="TC\ApiBundle\Entity\Contact" expose="true" groups="workspace, contacts" read-only="true"></property>   
+    </class>
+</serializer>  

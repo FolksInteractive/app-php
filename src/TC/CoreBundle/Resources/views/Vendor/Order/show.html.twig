@@ -1,0 +1,36 @@
+{% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
+
+{% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+    <div class="tc-controls pull-right">
+        <a class="btn-primary btn" 
+               href="{{path('vendor_order_discuss' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+            <i class="icon-discussion icon-white"></i>
+            Discuss
+        </a>
+
+        <div class="tc-edit-btn btn-group">
+            <a class="btn" 
+               href="{{path('vendor_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                Edit order
+            </a>
+                
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="#">Cancel order</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

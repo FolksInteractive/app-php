@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Thread" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="order, thread" read-only="true"></property>
+        <property name="lastComment_at" expose="true" groups="order, thread" read-only="true"></property>   
+        <property name="isCommentable" type="boolean" expose="true" groups="order, thread" read-only="true"></property>   
+        <property name="comments" type="TC\ApiBundle\Entity\Comment" expose="true" groups="thread, order" read-only="true"></property>   
+    </class>
+</serializer>  

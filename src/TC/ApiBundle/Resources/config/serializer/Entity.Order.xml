@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Order" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="relation, order" read-only="true"></property>
+        <property name="request" type="string" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="offer" type="string" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="createdAt" type="DateTime" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="total" expose="true" accessor-getter="getTotal" groups="relation, order" read-only="true"></property>
+        <property name="active" type="boolean" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="approved" type="boolean" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="approved_at" type="DateTime" expose="true" groups="order" read-only="false"></property>   
+        <property name="completed" type="boolean" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="completed_at" type="DateTime" expose="true" groups="order" read-only="false"></property>   
+        <property name="billed" type="boolean" expose="true" groups="order" read-only="false"></property>   
+        <property name="billedAt" type="string" expose="true" groups="order" read-only="false"></property>   
+        <property name="relation" type="TC\ApiBundle\Entity\Relation" expose="true" groups="order" read-only="false"></property>   
+        <property name="creator" type="TC\ApiBundle\Entity\Workspace" expose="true" groups="relation, order" read-only="false"></property>   
+        <property name="thread" type="TC\ApiBundle\Entity\Thread" expose="true" groups="order" read-only="false"></property>   
+        <property name="deliverables" type="TC\ApiBundle\Entity\Deliverable" expose="true" groups="order" read-only="true"></property>   
+    </class>
+</serializer>  

@@ -1,0 +1,58 @@
+
+{% block body_class %} relation-bill  {% endblock %}
+
+
+{% block sheet %}
+<div class="tc-title-section">    
+    <h2>Open bill</h2>
+    {# <p>This bill will close on July 31st 2013</p> #}
+</div>
+<div class="tc-bill-section">  
+    <legend>
+        Deliverables completed
+        <span class="badge">{{ relation.openBill.deliverables|length }}</span>
+    </legend>
+        
+    <table  class="tc-bill table table-hover">
+        <thead>
+            <tr>
+                <th class="actions"></th>
+                <th class="description">Description</th>
+                <th class="cost">Unit price</th>
+                <th class="quantity">Qty</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deliverable in relation.openBill.deliverables() %}
+            <tr class="work" >
+                <td class="actions">
+                    <div class="btn-group">
+                        <button class="btn-small btn dropdown-toggle" data-toggle="dropdown">                            
+                          <span class="icon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action 1</a></li>
+                            <li><a href="#">Action 2</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="description">
+                    {{deliverable.name}}
+                </td>
+                <td class="cost">
+                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                </td>
+                <td class="quantity">
+                    {{deliverable.quantity}}
+                </td>
+                <td class="subtotal">
+                    $ {{(deliverable.quantity*deliverable.cost)|number_format(2, '.', ',')}}
+                </td>
+                
+            </tr>     
+        {% endfor %}
+        </tbody>
+    </table>
+</div> 
+{% endblock %}

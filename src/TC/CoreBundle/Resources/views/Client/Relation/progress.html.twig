@@ -1,0 +1,54 @@
+{% extends 'TCCoreBundle:Client:skeleton.html.twig' %}
+
+{% use "TCCoreBundle:Relation:progress.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:progressMenu',[],{"relation": relation}) %}           
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-progress-section">  
+    <legend>
+        Deliverables to be done
+        <span class="badge">{{ relation.getOrdersTodo()|length }}</span>
+    </legend>
+        
+    <table  class="tc-progress table table-hover">
+        <thead>
+            <tr>
+                <th class="description">Description</th>
+                <th class="cost">Unit price</th>
+                <th class="quantity">Qty</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in relation.getOrdersTodo() %}
+        {% for deliverable in order.getDeliverablesTodo() %}
+            <tr class="work">
+                <td class="description">
+                    {{deliverable.name}}
+                </td>
+                <td class="cost">
+                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                </td>
+                <td class="quantity">
+                    {{deliverable.quantity}}
+                </td>
+                <td class="subtotal">
+                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                </td>
+            </tr>     
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div> 
+{% endblock %}

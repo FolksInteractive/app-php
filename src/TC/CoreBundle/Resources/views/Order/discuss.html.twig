@@ -1,0 +1,89 @@
+{% block body_class %} order-discuss  {% endblock %}
+
+{% block main_attrs %} 
+ng-app="OrderDiscuss" 
+ng-controller="OrderDiscussController" 
+{% endblock %}
+
+
+{% block sheet %}
+<div class="tc-title-section">
+    <h2>Work Order discussion</h2>
+</div>
+
+<div class="tc-thread-section">
+    <ul class="tc-thread media-list">
+        
+        <li class="tc-request tc-comment media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="/img/thumbnails/user.png" />
+            </a>
+            <div class="media-body">
+                <div class="media" ng-bind="order.request"></div>
+            </div>
+        </li>
+        
+        
+        <li class="tc-comment media" 
+            ng-show="comment" style="display:none"
+            ng-repeat="comment in order.thread.comments">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="/img/thumbnails/user.png" />
+            </a>
+            <div class="media-body">
+                <div class="media" ng-bind="comment.body"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="tc-full-section"> 
+    <div class="modal-footer">
+    <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
+        <textarea class="input-block-level"
+            ng-required="true"
+            ng-model="newComment.body"></textarea>
+
+        <button type="submit" class="btn"
+            ng-disabled="newCommentForm.$invalid">Say it</button>
+
+        {{form_widget(form._token)}}
+    
+    </form>   
+    </div>
+</div>
+{% endblock %} 
+
+
+{% block bottom_js %}
+<script type="text/javascript" src="{{asset("/js/ng_order_discuss.js")}}"></script>
+<script type="text/javascript">
+(function(ng, module){
+
+    module.value("order", {
+        request :"{{order.request}}",
+        thread : {{order.thread|json_encode()|raw}}
+    });
+
+    module.value("user_role", {
+        is_client : {{is_client(relation) ? 'true' : 'false'}},
+        is_vendor : {{is_vendor(relation) ? 'true' : 'false'}},
+        is_creator :{{is_creator(relation) ? 'true' : 'false'}}
+    });
+    
+    module.value("sf_form_config", {
+        "form_action" : "{{path('vendor_order_comment', {"idOrder":order.id, "idRelation":relation.id})}}",
+        "form_name" : "{{form.vars.full_name}}",
+        "body_name" : "{{form.body.vars.full_name}}",
+        "token_name" : "{{form._token.vars.full_name}}",
+        "token_value" : "{{form._token.vars.value}}",
+        "submit_name" : "{{form.submit.vars.full_name}}"
+    });
+    
+    module.value("thread_sync_path",
+        "{{path('vendor_order_discuss_sync', {"idOrder":order.id, "idRelation":relation.id})}}"
+    );
+
+})(angular, module);
+</script>
+{% endblock %}

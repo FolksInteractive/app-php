@@ -1,0 +1,75 @@
+{% extends 'TCCoreBundle:Relation:index.html.twig' %}
+
+{% block main%}
+<div class="tc-toolbar">
+    <div class="bg-color"></div>
+    <div class="tc-breadcrumb pull-left">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{{path('relation_orders', {'id':relation.id})}}">
+                    <img src="/img/icons/icon-orders-dark.png" />Work Orders
+                </a>
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <a href="{{path('relation_orders', {'id':relation.id})}}">Order #123</a>
+                <span class="divider">/</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tc-controls pull-right">
+        <button class="btn-primary btn">
+            <i class="icon-discussion icon-white"></i>
+            Discuss
+        </button>
+    </div>
+</div>
+<div class="tc-sheet">
+    <h1>Order</h1>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ relation.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ relation.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ relation.description }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ relation.active }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ relation.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('relation') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('relation_edit', { 'id': relation.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('relation_delete', { 'id': relation.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+</div>
+{% endblock %}

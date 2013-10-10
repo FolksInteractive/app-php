@@ -1,0 +1,161 @@
+{% extends "TCCoreBundle:Vendor:Relation/index.html.twig" %}
+
+{% block body_class %} {{parent()}} order-edit  {% endblock %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+
+{% block main_attrs %} 
+ng-app="OrderEdit" 
+ng-controller="OrderEditController"
+{% endblock %}
+
+{% block main_before %} 
+{% set attr = {'name':form.vars.name} %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right">
+        {% set attr = {'class':''} %}
+        {% set attr = attr|merge({'ng-disabled':"!offerForm.$dirty && !deliverablesForm.$dirty"}) %}   
+        {% set attr = attr|merge({'disabled':""}) %}   
+        {{form_widget(form.submit, {'attr':attr})}}
+            
+        {% set attr = {'class':'btn-primary'} %}
+        {% set attr = attr|merge({'ng-disabled':"offerForm.$invalid || deliverablesForm.$invalid"}) %}   
+        {% set attr = attr|merge({'disabled':""}) %}   
+        {{form_widget(form.save_as_ready, {'attr':attr})}}
+    </div>
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-outcome-section" ng-form name="offerForm">
+    <legend>Job outcome</legend>
+    <p>
+        <textarea class="input-block-level"
+            name="{{form.offer.vars.full_name}}"
+            ng-model="order.offer"></textarea>
+    </p>
+</div>
+
+<div class="tc-deliverables-section">
+    <legend>Deliverables</legend>
+    
+    <table class="tc-deliverables table table-hover">
+        <thead>
+            <tr>
+                <th class="description">Description</th>
+                <th class="cost">Unit price</th>
+                <th class="quantity">Qty</th>
+                <th class="subtotal">Subtotal</th>
+                <th class="actions"></th>
+            </tr>
+        </thead>
+        
+        
+        <tbody ng-form name="deliverablesForm">
+            {% raw %}
+            <tr ng-repeat="deliverable in order.deliverables">
+                <td class="description">
+                    <input type="text" class="input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'name')}}"
+                           ng-model="deliverable.name" />
+                </td>
+                <td class="cost">
+                    <input type="text" class="input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'cost')}}"
+                           ng-model="deliverable.cost"/>
+                </td>
+                <td class="quantity">
+                    <input type="text" class="input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'quantity')}}"
+                           ng-model="deliverable.quantity" />
+                </td>
+                <td class="subtotal" 
+                    ng-bind="deliverable.quantity * deliverable.cost"></td>
+                <td class="actions">
+                    <button class="btn-danger btn"
+                        ng-click="removeDeliverable(deliverable)">
+                        <i class="icon-trash icon-white"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endraw %}
+        </tbody>
+        
+        
+        <tfoot ng-form name="newDeliverablesForm">
+            <td class="description">
+                <input type="text"class="input-block-level"
+                        ng-model="newDeliverable.name" 
+                        ng-required="true" />
+            </td>
+            <td class="cost">
+                <input type="text" class="input-block-level"
+                        ng-model="newDeliverable.cost"
+                        ng-required="true"/>
+            </td>
+            <td class="quantity">
+                <input type="text" class="input-block-level disabled" 
+                        ng-model="newDeliverable.quantity"
+                       ng-disabled="true" />
+            </td>
+            <td class="subtotal">
+                <button type="button" class="btn-primary btn"
+                        disabled=""
+                        ng-disabled="newDeliverablesForm.$invalid"
+                        ng-click="addDeliverable()">Add</button>
+            </td>
+            <td class="actions"></td>
+        </tfoot>
+    </table>
+</div>
+<div class="tc-section">
+    <div class="row-fluid">
+    {% set columnsLeft = 12 %}
+    {% set totalColumns = 5 %}
+            
+    {% set columnsLeft = columnsLeft - totalColumns %}
+        <div class="tc-total-section span{{totalColumns}} offset{{columnsLeft}}">
+            <div class="total-label">Total</div>
+            <div class="total-value">100</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block bottom_js %}
+<script type="text/javascript" src="{{asset("/js/ng_order_edit.js")}}"></script>
+<script type="text/javascript">
+(function(ng, module){
+
+    module.value("order", {
+        offer :" {{form.offer.vars.value}}",
+        deliverables : [
+        {% for deliverable in form.deliverables %}
+        {% set data = deliverable.vars.value %}
+                {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}  
+            {% if not loop.last %} 
+            {{","}}
+            {% endif %}     
+        {% endfor %}
+        ]
+    });
+    
+    module.value("form_name", "{{form.vars.name}}");
+
+})(angular, module);
+</script>
+{% endblock %}
+    

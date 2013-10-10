@@ -1,0 +1,32 @@
+{% extends "TCUserBundle::skeleton.html.twig" %}
+
+{% block head_css %}
+    {{parent()}}
+<link href="{{asset('/css/user.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block head_js %}
+    {{parent()}}
+<script type="text/javascript" src="{{asset('/js/user/request.js')}}"></script>
+{% endblock %}
+
+{% block body_class %}
+    {{parent()}} tc_user_request
+{% endblock %}
+
+{% block body %}
+
+<div class="gradient"></div>
+
+<div class="wrapper">
+    <a href="/"><div class="logo"></div></a>
+    <div class="well">
+{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+        </div>
+        <div class="more_links">
+            <div class="pull-left">
+                <a href="{{path('fos_user_security_login')}}" class="back">← Back to login</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

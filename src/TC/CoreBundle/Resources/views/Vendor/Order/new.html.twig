@@ -1,0 +1,17 @@
+{% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
+
+{% render 'TCCoreBundle:Order:new.html.twig' %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">        
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right">
+        <button class="btn-primary btn">
+            <i class="icon-discussion icon-white"></i>
+            Save
+        </button>
+    </div>
+{% endblock %}

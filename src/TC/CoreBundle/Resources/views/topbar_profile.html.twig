@@ -1,0 +1,23 @@
+<div class="tc-topbar-profile">
+    <div class="btn-group">
+
+        <a data-toggle="dropdown" class="profile-links client" href="#">
+            <div class="profile">
+               {# Activate this when avatar will be available
+                <img src="/img/thumbnails/alex-small.png">
+               #} 
+                    
+                <span class="name">{{app.user.fullName}}</span>
+                <span class="caret"></span>
+            </div>
+        </a>
+
+        <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+            <li><a data-toggle="modal" role="button" href="#profile">Edit profile</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign out</a></li>
+        </ul>
+    </div>
+</div>

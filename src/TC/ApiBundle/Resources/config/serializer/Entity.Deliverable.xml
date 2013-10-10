@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Deliverable" exclusion-policy="none">  
+        <property name="id" type="integer" expose="true" groups="order, deliverable" read-only="true"></property>
+        <property name="name" type="string" expose="true" groups="order, deliverable" read-only="true"></property>   
+        <property name="description" type="string" expose="true" groups="order, deliverable" read-only="true"></property>   
+        <property name="quantity" type="integer" expose="true" groups="order, deliverable" read-only="true"></property>   
+        <property name="cost" type="double" expose="true" groups="order, deliverable" read-only="true"></property>   
+    </class>
+</serializer>  

@@ -1,0 +1,83 @@
+{% extends 'TCCoreBundle:Vendor:skeleton.html.twig' %}
+
+{% use "TCCoreBundle:Relation:progress.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block main_before %} 
+{% set attr = {'name':form.vars.name} %}
+{% set attr = attr|merge({'ng-app':''}) %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:progressMenu',[],{"relation": relation}) %}
+           
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right">
+        {% set attr = {'class':''} %}
+        {% set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
+        {% set attr = attr|merge({'disabled':""}) %}   
+        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
+        {{form_widget(form.submit, {'attr':attr})}}
+    </div>
+{% endblock %}
+
+{% block sheet %}
+
+<div class="tc-progress-section">  
+    <legend>
+        Deliverables to be done
+        <span class="badge">{{ relation.getOrdersTodo()|length }}</span>
+    </legend>
+        
+    <table  class="tc-progress table table-hover">
+        <thead>
+            <tr>
+                <th class="check"></th>
+                <th class="description">Description</th>
+                <th class="cost">Unit price</th>
+                <th class="quantity">Qty</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in relation.getOrdersTodo() %}
+        {% for deliverable in order.getDeliverablesTodo() %}
+            {% set ngModel = 'deliverable_'~ deliverable.id %}
+            <tr class="work" 
+                ng-init="{{ngModel}}.completed=false"
+                ng-class="{{ngModel}}.completed && 'work-completed' || 'work-in-progress'">
+                <td class="check">
+                    {{form_widget(form.deliverables[deliverable.id], {'attr':{'ng-model':ngModel~'.completed'}})}}
+                </td>
+                <td class="description">
+                    {{deliverable.name}}
+                </td>
+                <td class="cost">
+                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                </td>
+                <td class="quantity">
+                    {{deliverable.quantity}}
+                </td>
+                <td class="subtotal">
+                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                </td>
+            </tr>     
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div> 
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block head_css %}
+
+<link rel="stylesheet" href="{{asset('css/app.css')}}" />
+
+{% endblock %}
+
+{% block body %}
+<div class="tc-topbar">
+    <div class="tc-topbar-logo">
+        <img src="/img/logo-timecrumbs.png" />
+    </div>
+    
+    <!-- tc-topbar-profile -->
+    {{ include('TCCoreBundle::topbar_profile.html.twig') }}
+</div>
+
+<div class="tc-menu-panel">
+    {% block menu %}
+    {% endblock %}
+</div>
+
+<div class="tc-main-panel" {% block main_attrs %}{% endblock %}>
+    {% block main_before %}{% endblock %}
+        
+    {% block main %}
+    <div class="tc-toolbar">
+        <div class="bg-color"></div>
+        {% block toolbar %}{% endblock %}        
+    </div>
+        
+    <div class="tc-sheet">
+        {% block sheet %}{% endblock %}
+    </div>
+    {% endblock %}
+        
+    {% block main_after %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block bottom_js %}
+    <script src="{{asset('vendor/bootstrap/js/bootstrap-dropdown.js')}}" type="text/javascript"></script>
+{% endblock %}    

@@ -1,0 +1,33 @@
+{% extends "TCUserBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+{{ 'registration.email.subject'|trans({'%username%': user.shortName, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endautoescape %}
+{% endblock %}
+
+{% block title %}
+{% autoescape false %}
+Welcome to TimeCrumbs!
+{% endautoescape %}
+{% endblock %}
+
+{% block sub_title %}
+{% autoescape false %}
+&nbsp;
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{% autoescape false %}
+Hello {{user.shortName}}!<br />
+            <br />
+To finish activating your account - please visit <a href="{{(confirmationUrl)}}">{{(confirmationUrl)}}</a><br />
+<br />
+Regards,
+the Team.
+{% endautoescape %}
+{% endblock %}
+
+{% block view_button %}
+{% endblock %}

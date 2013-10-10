@@ -1,0 +1,34 @@
+{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+TimeCrumbs - You've been invited to join a new relation with {{enrollment.sender.getFullName()}}
+{% endautoescape %}
+{% endblock %}
+
+{% block title %}
+{% autoescape false %}
+Invitation to join a new relation in Timecrumbs
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{% autoescape false %}
+
+<span style="font-weight:bold">{{enrollment.sender.getFullName()}} has invited you to join a Relation.</span>
+
+<h3 style="font-size:18px; color: #112834; font-weight:bold">What's a Relation?</h3>
+
+<p>In TimeCrumbs, a relation represents a virtual space where you can create tasks requests for your vendor. When created, discussions is possible between you and your vendor to clarify exactly what needs to be done. As soon as the workload is crystal clear, your vendor can then estimate the amount of time it will take him/her to complete task. You can then approve any tasks that were estimated by your vendor so he can start the work. Everytime an approval is created, the amount of hours required by the work will be deducted from your time relation.
+
+<a href="http://www.timecrumbs.com/support">For more infos, please visit the support section.</a>
+
+{% endautoescape %}
+{% endblock %}
+
+{% block view_button %}
+<a href="{{url('vendor_relation_orders', {'idRelation':relation.id})}}" 
+   style="color: #097acb; text-decoration: none; font-size: 24px;">
+    Get Started Now &rarr;
+</a>
+{% endblock %}

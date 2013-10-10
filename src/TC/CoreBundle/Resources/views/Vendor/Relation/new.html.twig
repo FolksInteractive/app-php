@@ -1,0 +1,5 @@
+{% extends 'TCCoreBundle:Vendor:skeleton.html.twig' %}
+
+{% use "TCCoreBundle:Relation:new.html.twig" with body_class as base_body_class %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}

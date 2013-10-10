@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="tc.admin.email">info@timecrumbs.com</parameter>
+    </parameters>
+    
+    <services>
+        
+        <!-- MENU -->        
+        <service id="tc.menu.route_voter" class="TC\CoreBundle\Menu\RouteVoter">
+            <argument type="service" id="service_container" />
+            <tag name="knp_menu.voter" />
+        </service>
+        
+        <!-- Extensions -->        
+        <service id="tc.extensions.breadcrumbs" class="TC\CoreBundle\Twig\BreadcrumbsExtension">
+            <argument type="service" id="knp_menu.voter.router" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="tc.extensions.relation_helper" class="TC\CoreBundle\Twig\RelationHelperExtension">
+            <argument type="service" id="security.context" />
+            <tag name="twig.extension" />
+        </service>
+
+        <!-- MANAGERS -->
+        <service id="tc.manager.workspace" class="TC\CoreBundle\Model\WorkspaceManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc_user.manager.user" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="validator" />
+        </service>
+        
+        <service id="tc.manager.project" class="TC\CoreBundle\Model\ProjectManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.workspace" />
+            <argument type="service" id="tc.manager.order" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="tc.mailer" />
+            <argument type="service" id="validator" />
+        </service>
+        
+        <service id="tc.manager.relation" class="TC\CoreBundle\Model\RelationManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.workspace" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="tc.mailer" />
+            <argument type="service" id="validator" />
+        </service>
+        
+        <service id="tc.manager.bill" class="TC\CoreBundle\Model\BillManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.relation" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="tc.mailer" />
+            <argument type="service" id="validator" />
+        </service>
+        
+        <service id="tc.manager.order" class="TC\CoreBundle\Model\OrderManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.relation" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="tc.mailer" />
+            <argument type="service" id="validator" />
+        </service>
+        
+        <service id="tc.manager.contact" class="TC\CoreBundle\Model\ContactManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="security.context" />
+        </service>
+        
+        <service id="tc.manager.pricebook" class="TC\CoreBundle\Model\PricebookManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="security.context" />
+        </service>
+                
+        <!-- EventListener -->
+        <service id="tc.listener.registration" class="TC\CoreBundle\EventListener\RegistrationListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.workspace" /> 
+        </service>
+        
+        
+        <!-- Validators -->
+        <service id="tc.validator.relation" class="TC\CoreBundle\Validator\Constraints\RelationValidator">
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+            <tag name="validator.constraint_validator" alias="tc_validator_relation" />
+        </service>
+        
+        <service id="tc.validator.email_collection" class="TC\CoreBundle\Validator\Constraints\EmailCollectionValidator">
+            <argument type="service" id="validator" />
+            <tag name="validator.constraint_validator" alias="tc_validator_email_collection" />
+        </service>
+        
+        <!-- MAILER -->
+        <service id="tc.mailer" class="TC\CoreBundle\Mailer\Mailer" public="true">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="templating" />
+            <argument>%tc.admin.email%</argument>
+        </service>
+                
+    </services>
+    
+</container>

@@ -1,0 +1,33 @@
+tc_api_users:
+  resource: TC\ApiBundle\Controller\UsersController
+  type: rest
+  
+tc_api_worskpaces:
+  resource: TC\ApiBundle\Controller\WorkspacesController
+  type: rest
+  
+tc_api_relations:
+  resource: TC\ApiBundle\Controller\RelationsController
+  type: rest
+    
+tc_api_orders:
+  resource: TC\ApiBundle\Controller\OrdersController
+  type: rest
+  parent: tc_api_relations
+  
+tc_api_deliverables:
+  resource: TC\ApiBundle\Controller\DeliverablesController
+  type: rest
+  parent: tc_api_orders
+    
+tc_api_contacts:
+  resource: TC\ApiBundle\Controller\ContactsController
+  type: rest
+    
+tc_api_pricebook:
+  resource: TC\ApiBundle\Controller\PricebookController
+  type: rest
+  
+tc_api_pricebook_items:
+  resource: TC\ApiBundle\Controller\PricebookItemsController
+  type: rest

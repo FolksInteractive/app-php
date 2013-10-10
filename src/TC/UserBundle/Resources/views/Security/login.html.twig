@@ -1,0 +1,55 @@
+{% extends "TCUserBundle::skeleton.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body_class %}
+    {{parent()}} tc_user_login
+{% endblock %}
+
+{% block body %}
+
+<div class="gradient"></div>
+
+<div class="wrapper">
+    <a href="/"><div class="logo"></div></a>
+
+    {% if error %}
+    <div class="errors"><p>{{ error|trans({}, 'FOSUserBundle') }}</p></div>
+    {% endif %}
+
+    <div class="well">
+        <form id="user_login_form" action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            
+            <div class="username_row control-group">
+                <label for="username">{{ 'security.login.username'|trans }}</label>
+                <input type="text" id="username" name="_username" class="input-block-level" value="{{ last_username }}" />
+            </div>
+
+            <div class="password_row control-group">
+                <label for="password">{{ 'security.login.password'|trans }}</label>
+                <input type="password" id="password" name="_password" class="input-block-level" />
+            </div>
+
+            <div class="remember_row control-group">
+                <label for="remember_me" class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    {{ 'security.login.remember_me'|trans }}
+                </label>
+            </div>
+
+            <div class="submit_row control-group">
+                <input type="submit" id="_submit" name="_submit" class="btn btn-primary" value="{{ 'security.login.submit'|trans }}" />
+            </div>
+        </form>
+    </div>
+    <div class="more_links">
+        <div class="pull-left">
+            <a href="{{path('fos_user_registration_register')}}" class="signUp">Register now!</a>
+        </div>
+        <div class="pull-right">
+            <a href="{{path('fos_user_resetting_request')}}" class="resetPassword">Lost password?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tcApp" ng-controller="AppController" >
+    <head>
+        <meta charset="utf-8" />
+        <title>TimeCrumbs -  {%raw%}{{subview}}{%endraw%}</title>
+
+        <link rel="stylesheet" href="{{asset('vendor/bootstrap/bootstrap-2.3.2.min.css')}}"/>
+        <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
+    </head>
+    <body action-class ng-class="action">
+        <div class="tc-topbar">
+
+            <div class="tc-topbar-bg"></div>
+
+            <div class="tc-topbar-logo">
+                <img src="/images/logo-timecrumbs.png" />
+            </div>
+        </div>
+
+        <div ng-switch="subview">
+            <!--
+                This subview will show while the AngularJS app is loading since it's visible right in 
+                the page. Once the app kicks in, however, the calculated subview will determine the
+                appropriate layout to render.
+            -->
+            <div ng-switch-when="loading" class="l-loading">
+
+                <p>
+                    Loading Application
+                </p>	
+
+            </div>
+
+            <div ng-switch-when="workspace" 
+                 ng-controller="workspace.WorkspaceController"
+                 ng-include=" '/app/views/workspace/index.html' "></div>
+
+        </div>
+
+
+        <!-- Load vendor scripts. -->
+        <script src="{{asset('/vendor/jquery/jquery-1.8.2.min.js')}}" type="text/javascript"></script>   
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-tooltip.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-tab.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-dropdown.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-button.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/bootstrap/js/bootstrap-transition.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/angular/angular.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/vendor/angular-ui/modules/validate/validate.js')}}" type="text/javascript"></script>
+
+        <!-- Load Application module. -->
+        <script src="{{asset('/app/app.js')}}" type="text/javascript"></script>
+
+        <!-- Load Controllers. -->
+        <script src="{{asset('/app/controllers/app-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/workspace/workspace-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/workspace/relation-wizard-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/workspace/management-menu-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/workspace/shortcut-menu-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/workspace/dashboard-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/contacts/contacts-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/contacts/contact-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/pricebook/pricebook-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/pricebook/pricebookitem-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/relation-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/relation-settings-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/relation-menu-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/relation-user-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/orders/orders-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/orders/order-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/orders/order-edit-controller.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/controllers/relation/orders/thread-controller.js')}}" type="text/javascript"></script>
+
+        <!-- Load Model. -->
+        <script src="{{asset('/app/model/WorkspaceManager.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/WorkspaceDAO.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/ContactManager.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/ContactDAO.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/PricebookManager.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/PricebookDAO.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/RelationManager.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/RelationDAO.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/OrderDAO.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/model/ThreadManager.js')}}" type="text/javascript"></script>
+
+        <!-- Load Services. -->
+        <script src="{{asset('/app/services/request-context.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/services/render-context.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/services/contact-context.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/services/pricebook-context.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/services/relation-context.js')}}" type="text/javascript"></script>
+
+        <!-- Load Directives. -->
+        <script src="{{asset('/app/directives/order-creator-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/order-thread.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/relation-wizard-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/relation-invite-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/contact-creator-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/pricebookitem-creator-modal.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/talkbubble.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/tooltip.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/contact-typeahead.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/action-class.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/on-blur.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/directives/form/numbers-doubles-only.js')}}" type="text/javascript"></script>
+
+        <!-- Load Filters. -->
+        <script src="{{asset('/app/filters/order-list-filter.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/filters/comment-list-filter.js')}}" type="text/javascript"></script>
+        <script src="{{asset('/app/filters/currency-filter.js')}}" type="text/javascript"></script>
+
+        <!-- Load Application configs. -->
+        <script src="{{asset('/app/app.config.js')}}" type="text/javascript"></script>      
+        <script src="{{asset('/app/app.router.js')}}" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            (function(ng, tcApp){
+
+                // Bootstrap workspace data
+                tcApp.run(function($rootScope){
+                    $rootScope.workspace = {% render ( controller("TCApiBundle:Workspaces:get" , {"_format":"json"})) %}
+                })
+
+            })(angular, tcApp);
+            </script>
+        </body>
+    </html>

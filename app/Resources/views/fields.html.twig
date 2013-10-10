@@ -1,0 +1,27 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="form_row {{name}}_row control-group {% if form_errors(form)|length >0 %}invalid_row{% endif %}">
+        {{ form_label(form, label|default(null)) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        <div class="errors">
+        {% for error in errors %}
+            <div class="error_line">{{
+                error.messagePluralization is null
+                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+            }}</div>
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\UserBundle\Entity\User" exclusion-policy="all">  
+        <property name="id" expose="true" type="string" groups="user, relation, order" read-only="true"></property>
+        <property name="firstName" serialized-name="firstName" expose="true" type="string" groups="user, relation, order" read-only="false"></property>   
+        <property name="lastName" serialized-name="lastName" expose="true" type="string" groups="user, relation, order" read-only="false"></property>
+        <property name="createdAt" expose="true" type="datetime" groups="user" read-only="false"></property>   
+        <property name="workspace" expose="true" type="string" groups="user" read-only="false"></property>
+    </class>
+</serializer>  

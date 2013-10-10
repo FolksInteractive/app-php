@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Contact" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="workspace, contacts, contact" read-only="true"></property>
+        <property name="firstName" serialized-name="firstName" expose="true" type="string" groups="workspace, contacts, contact" read-only="false"></property>   
+        <property name="lastName" serialized-name="lastName" expose="true" type="string" groups="workspace, contacts, contact" read-only="false"></property>
+        <property name="email" expose="true" groups="workspace, contacts, contact" read-only="false"></property>   
+        <property name="createdAt" expose="true" groups="contact" read-only="false"></property>   
+        <property name="phone" expose="true" groups="contact" read-only="false"></property>   
+        <property name="companyName" serialized-name="companyName" type="string" expose="true" groups="workspace, contacts, contact" read-only="true"></property>   
+        <property name="address" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="city" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="zipCode" serialized-name="zipCode" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="state" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="country" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="website" type="string" expose="true" groups="contact" read-only="true"></property>   
+        <property name="tags" type="TC\ApiBundle\Entity\ContactTag" expose="false" groups="contact" read-only="true"></property>   
+    </class>
+</serializer>  

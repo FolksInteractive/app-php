@@ -1,0 +1,30 @@
+{% extends "TCUserBundle::skeleton.html.twig" %}
+
+{% block head_js %}
+    {{parent()}}
+{% endblock %}
+
+{% block body_class %}
+    {{parent()}} tc_user_check
+{% endblock %}
+
+{% block body %}
+<div class="gradient"></div>
+
+<div class="wrapper">
+    <a href="/"><div class="logo"></div></a>
+    <div class="well">
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <p class="message flash-{{ type }}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endfor %}
+
+        <p>
+        {{ 'registration.check_email'|trans({'%name%': user.email}, 'FOSUserBundle') }}
+        </p>
+    </div>
+</div>
+{% endblock %}

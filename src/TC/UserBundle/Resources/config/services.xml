@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+   
+   <services>
+        <!-- PROFILE -->
+        <service id="tc_user.profile.form.type" class="TC\UserBundle\Form\Type\ProfileFormType">
+            <argument>%fos_user.model.user.class%</argument>
+            <tag name="form.type" alias="tc_user_profile" />
+        </service>
+
+        <service id="tc_user.form.handler.profile" class="TC\UserBundle\Form\Handler\ProfileFormHandler" scope="request" public="false">
+            <argument type="service" id="fos_user.profile.form" />
+            <argument type="service" id="request" />
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        
+        <!-- REGISTRATION -->
+        <service id="tc_user.registration.form.type" class="TC\UserBundle\Form\Type\RegistrationFormType">
+            <tag name="form.type" alias="tc_user_registration" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+
+        <!--<service id="tc_user.registration.form.handler" class="TC\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="true">
+            <argument type="service" id="fos_user.registration.form" />
+            <argument type="service" id="request" />
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.mailer" />
+            <argument type="service" id="fos_user.util.token_generator" />
+        </service>-->
+        
+        <service id="tc_user.manager.user" class="TC\UserBundle\Model\UserManager" public="true" parent="fos_user.user_manager.default"></service>
+
+        
+        <service id="tc_user.mailer.default" class="TC\UserBundle\Mailer\Mailer" public="false">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="templating" />
+            <argument type="collection">
+                <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
+                <argument key="resetting.template">%fos_user.resetting.email.template%</argument>
+                <argument key="from_email" type="collection">
+                    <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
+                    <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
+                </argument>
+            </argument>
+        </service>
+    </services>
+    <!--
+    <parameters>
+        <parameter key="tc_user.example.class">TC\UserBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="tc_user.example" class="%tc_user.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+</container>

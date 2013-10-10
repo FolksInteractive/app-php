@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Enrollment" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="relation" read-only="true"></property>
+        <property name="email" type="string" expose="true" groups="relation" read-only="true"></property>   
+        <property name="sender" type="TC\ApiBundle\Entity\Workspace" expose="true" groups="relation" read-only="true"></property>
+        <property name="createdAt" expose="true" groups="relation" read-only="true"></property> 
+    </class>
+</serializer>  

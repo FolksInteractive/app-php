@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\Relation" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="order, relation, workspace" read-only="true"></property>
+        <property name="name" type="string" expose="true" groups="order, relation, workspace" read-only="false"></property>   
+        <property name="description" type="string" expose="true" groups="relation" read-only="false"></property>
+        <property name="vendor" access-type="public_method" accessor-getter="getVendor" expose="true" groups="relation" read-only="true"></property>
+        <property name="client" access-type="public_method" accessor-getter="getClient" expose="true" groups="relation" read-only="true"></property>
+        <property name="collaborators" type="array" access-type="public_method" accessor-getter="getCollaborators" expose="true" groups="relation" read-only="true"></property>
+        <property name="orders" type="array" access-type="public_method" accessor-getter="getOrders" expose="true" groups="relation" read-only="true"></property>
+          
+    </class>
+</serializer>  

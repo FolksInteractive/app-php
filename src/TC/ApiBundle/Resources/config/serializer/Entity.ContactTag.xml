@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\ApiBundle\Entity\ContactTag" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="contact" read-only="true"></property>
+        <property name="name" type="string" expose="true" groups="contact" read-only="true"></property>   
+    </class>
+</serializer>  
