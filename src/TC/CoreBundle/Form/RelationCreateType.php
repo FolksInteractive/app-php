@@ -33,6 +33,8 @@ class RelationCreateType extends AbstractType {
                 ) )
         ;
 
+        // This is EventListener is for trying to find an 
+        // existing Workspace for the submitted email
         $builder->addEventListener(
                 FormEvents::SUBMIT, function(FormEvent $event) {
                     /** @var Form $form */
@@ -46,12 +48,16 @@ class RelationCreateType extends AbstractType {
                     // by searching with the email address.
                     if( !$relation->getVendorEnrollment()->getWorkspace() ){
                         $workspace = $this->wm->find( $relation->getVendorEnrollment()->getEmail() );
-                        $relation->getVendorEnrollment()->setWorkspace($workspace);
+                        
+                        if( $workspace )
+                            $relation->getVendorEnrollment()->setWorkspace($workspace);
                     }
                     
                     if( !$relation->getClientEnrollment()->getWorkspace() ){
                         $workspace = $this->wm->find( $relation->getClientEnrollment()->getEmail() );
-                        $relation->getClientEnrollment()->setWorkspace($workspace);
+                        
+                        if( $workspace )
+                            $relation->getClientEnrollment()->setWorkspace($workspace);
                     }
                 }
         );
