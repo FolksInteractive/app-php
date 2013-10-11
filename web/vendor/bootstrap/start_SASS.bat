@@ -1,0 +1,1 @@
+sass --watch lib/bootstrap.scss:bootstrap-2.3.2.min.css --style compressed
