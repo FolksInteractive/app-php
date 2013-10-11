@@ -12,7 +12,6 @@ use TC\UserBundle\Entity\User;
  *
  * @ORM\Table(name="tc_workspace")
  * @ORM\Entity
- * @ORM\HasLifeCycleCallbacks
  */
 class Workspace {
 
