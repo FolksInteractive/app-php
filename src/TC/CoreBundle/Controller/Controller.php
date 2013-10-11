@@ -40,6 +40,14 @@ class Controller extends SymfonyController {
     }
     
     /**
+     * 
+     * @return WorkspaceManager
+     */
+    protected function getWorkspaceManager(){
+        return $this->container->get("tc.manager.workspace");
+    }
+    
+    /**
      * @return Validator
      */
     protected function getValidator() {

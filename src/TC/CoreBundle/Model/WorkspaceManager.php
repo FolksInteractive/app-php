@@ -57,7 +57,7 @@ class WorkspaceManager {
         return $workspace;
     }
 
-    public function find( Workspace $workspace, $slug ) {
+    public function find( $slug ) {
         $workspace = null;
 
         if ( $slug instanceof Workspace ) {

@@ -219,6 +219,7 @@ class RelationManager {
      * @param Relation $relation
      */
     public function saveRelation( Relation $relation ) {
+        $isNew = ($relation->getId());
         // Make sure Relation is valid before saving
         $errors = $this->validator->validate( $relation );
         if ( $errors->count() > 0 )
@@ -228,7 +229,7 @@ class RelationManager {
         $this->em->flush();
         
         // If Relation is new send a invitation email to the other partie
-        if ( !$relation->getId() )
+        if ( !$isNew )
             $this->sendInvitation( $relation );
     }
 
