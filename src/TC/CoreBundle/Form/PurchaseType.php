@@ -14,7 +14,9 @@ class PurchaseType extends AbstractType {
      */
     public function buildForm( FormBuilderInterface $builder, array $options ) {
         $builder
-            ->add( 'approved', 'checkbox' )
+            ->add( 'confirmation', 'checkbox', array(
+                "mapped" => false
+            ) )
         ;
     }
 

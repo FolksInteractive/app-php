@@ -131,7 +131,6 @@ class OrderManager {
      */
     public function completeOrder( Order $order ) {
 
-        // If User is the client and the order has an offer and a value
         if ( $order->getRelation()->getVendor() == $this->workspace ) {
 
             $order->setCompleted( true );
@@ -141,13 +140,22 @@ class OrderManager {
         }
     }
 
+    public function readyOrder( Order $order ) {
+        
+        if ( $order->getRelation()->getVendor() == $this->workspace ) {
+            $order->setReady(true);
+            $this->mailer->sendOrderReadyNotification( $order );
+        }
+    }
     /**
      * 
      * @param Order $order
      * @throws AccessDeniedHttpException
      */
     public function purchaseOrder( Order $order ) {
-
+        if( $order->isApproved() )
+            return;
+        
         // If User is the client and the order has an offer and a value
         if ( $order->getRelation()->getClient() == $this->workspace &&
                 $order->getOffer() != null &&
@@ -155,6 +163,9 @@ class OrderManager {
 
             $order->setApproved( true );
             $this->saveOrder( $order );
+            
+            $this->mailer->sendOrderPurchaseNotification( $order );
+            
         } else {
             throw new AccessDeniedHttpException();
         }

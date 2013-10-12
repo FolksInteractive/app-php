@@ -144,23 +144,27 @@ class OrderController extends BaseController {
             );
         }
                 
-        // Create order purchase form
-        $purchaseForm = $this->createPurchaseForm( $order );
+        $purchaseForm = null;
+        if( !$order->isApproved() ) {
+            // Create order purchase form
+            $purchaseForm = $this->createPurchaseForm( $order );
 
-        // Handle purchase form
-        if ( $request->getMethod() === "POST" ) {
-            $purchaseForm->handleRequest( $request );
+            // Handle purchase form
+            if ( $request->getMethod() === "POST" ) {
+                $purchaseForm->handleRequest( $request );
 
-            if ( $purchaseForm->isValid() ) {
-                $this->getOrderManager()->purchaseOrder( $order );
-                $this->getOrderManager()->saveOrder( $order );
+                if ( $purchaseForm->isValid() ) {
+                    $this->getOrderManager()->purchaseOrder( $order );
+                    $this->getOrderManager()->saveOrder( $order );
+                    $purchaseForm = null;
+                }
             }
         }
         
         return array(
             'order' => $order,
             'relation' => $relation,
-            'purchaseForm' => $purchaseForm->createView()
+            'purchaseForm' => ($purchaseForm) ? $purchaseForm->createView(): null
         );
     }   
 
@@ -213,7 +217,7 @@ class OrderController extends BaseController {
      */
     private function createPurchaseForm( Order $order ) {
         $form = $this->createForm( new PurchaseType(), $order, array(
-            'action' => $this->generateUrl( 'vendor_order_show', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) ),
+            'action' => $this->generateUrl( 'client_order_show', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) ),
             'method' => 'POST',
                 ) );
 

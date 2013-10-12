@@ -31,11 +31,11 @@
 {% endblock %}
 
 {% block purchase_section %}
-{% if not order.approved %}
+{% if purchaseForm is defined and purchaseForm is not null %}
     <div class="tc-agreement-section span5">
     {{form_start(purchaseForm)}}
         <div class="agree-check">
-            {{form_widget(purchaseForm.approved)}}
+            {{form_widget(purchaseForm.confirmation)}}
             I accept the terms and conditions of the <a href="#">service agreement</a>.
         </div>
         <div class="agree-btn">

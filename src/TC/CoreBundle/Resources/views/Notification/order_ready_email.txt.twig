@@ -1,0 +1,27 @@
+{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+TimeCrumbs - Order is ready for purchasing
+{% endautoescape %}
+{% endblock %}
+
+{% block title %}
+{% autoescape false %}
+Order is ready for purchasing
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{% autoescape false %}
+
+
+{% endautoescape %}
+{% endblock %}
+
+{% block view_button %}
+<a href="{{url('client_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}" 
+   style="color: #097acb; text-decoration: none; font-size: 24px;">
+    View Order
+</a>
+{% endblock %}

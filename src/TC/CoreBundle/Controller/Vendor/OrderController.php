@@ -210,7 +210,7 @@ class OrderController extends BaseController {
 
         if ( $form->isValid() ) {
             if( $form->get('save_as_ready')->isClicked())
-                $order->setReady ( true );
+                $this->getOrderManager()->readyOrder( $order );
             
             // filter $originalDeliverables to contain deliverables no longer present
             foreach ( $order->getDeliverables() as $deliverable ) {

@@ -34,7 +34,9 @@
                     <img class="img-circle" src="{{asset("img/thumbnails/user.png")}}" />
                 </td>
                 <td class="name">
-                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">{{relation.vendor.getFullName()}}</a>
+                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
+                        {{relation.vendor.getFullName() | default(relation.vendor)}}    
+                    </a>
                 </td>
             </tr>    
             {% endfor %}
