@@ -2,6 +2,17 @@
 
 {% block body_class -%}{{ parent() }} vendor {% endblock %}
 
+{% block topbar %}
+    
+    {% embed 'TCCoreBundle::topbar_profile.html.twig' %}
+        {% block topbar_profile_dropdown %}
+            {{parent()}}
+            <li><a href="{{path("client_dashboard")}}">Client mode</a></li>
+        {% endblock %}
+    {% endembed %}
+                
+{% endblock %}
+
 {% block menu %}
 {% set mainMenu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:mainMenu',[],{'user':app.user}) %}
 <div class="tc-menu-section">

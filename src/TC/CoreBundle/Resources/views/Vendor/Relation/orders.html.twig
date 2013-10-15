@@ -49,7 +49,7 @@
         <tbody>
             {% for order in relation.getRequests() %}            
             <tr>
-                <td class="user"><img class="img-circle" src="/img/thumbnails/user.png" /></td>
+                <td class="user"></td>
                 <td class="request">
                     <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                         {{order.request}}

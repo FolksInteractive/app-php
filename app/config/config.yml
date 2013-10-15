@@ -88,3 +88,35 @@ fos_user:
     service:
         user_manager: tc_user.manager.user
         mailer: tc_user.mailer.default
+
+knp_gaufrette:
+    adapters:
+        user_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/img/users
+
+    filesystems:
+        user_avatar_fs:
+            adapter:    user_adapter
+            
+vich_uploader:
+    db_driver: orm
+    gaufrette: true
+    storage: vich_uploader.storage.gaufrette
+    mappings:
+        user_avatar:
+            uri_prefix: /img/users
+            upload_destination: user_avatar_fs
+            namer: vich_uploader.namer_uniqid
+
+liip_imagine:
+    cache_prefix: /cache
+    filter_sets:
+        120_thumb:
+          quality: 100
+          filters:
+            thumbnail: {size: [120, 120], mode: outbound}
+        30_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [30, 30], mode: outbound }

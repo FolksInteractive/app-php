@@ -2,14 +2,19 @@
 
 namespace TC\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BasedUser;
-use Doctrine\Common\Collections\ArrayCollection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BasedUser;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use TC\CoreBundle\Entity\Workspace;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="tc_user")
+ * @Vich\Uploadable
  * 
  */
 class User extends BasedUser {
@@ -70,12 +75,30 @@ class User extends BasedUser {
     protected $workspace;
     
     /**
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="avatarName")
+     *
+     * @var File $avatar
+     */
+    protected $avatar;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="avatar_name")
+     *
+     * @var string $avatarName
+     */
+    protected $avatarName = "user.png";
+    
+    /**
      * Constructor
      */
     public function __construct() {
         parent::__construct();
         $this->active = true;
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
     }
     
 
@@ -183,9 +206,9 @@ class User extends BasedUser {
     /**
      * Set workspace
      *
-     * @param TC\CoreBundle\Entity\Workspace $workspace
+     * @param Workspace $workspace
      */
-    public function setWorkspace(\TC\CoreBundle\Entity\Workspace $workspace)
+    public function setWorkspace(Workspace $workspace)
     {
         $this->workspace = $workspace;
     }
@@ -193,10 +216,56 @@ class User extends BasedUser {
     /**
      * Get workspace
      *
-     * @return TC\CoreBundle\Entity\Workspace 
+     * @return Workspace 
      */
     public function getWorkspace()
     {
         return $this->workspace;
+    }
+
+    /**
+     * Set avatarName
+     *
+     * @param string $avatarName
+     * @return User
+     */
+    public function setAvatarName($avatarName)
+    {
+        $this->avatarName = $avatarName;
+    
+        return $this;
+    }
+
+    /**
+     * Get avatarName
+     *
+     * @return string 
+     */
+    public function getAvatarName()
+    {
+        return $this->avatarName;
+    }
+    
+    /**
+     * Set avatarName
+     *
+     * @param UploadedFile $avatar
+     * @return User
+     */
+    public function setAvatar(  UploadedFile $avatar)
+    {
+        $this->avatar = $avatar;
+    
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return UploadedFile 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }

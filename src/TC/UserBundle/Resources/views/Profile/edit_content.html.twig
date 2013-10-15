@@ -1,4 +1,5 @@
-<form class="tc_user_profile" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+<form class="tc_user_profile" {{ form_enctype(form) }} method="POST"
+      action="{{ path('fos_user_profile_edit') }}">
     
     {{ form_errors(form) }}
     
@@ -7,6 +8,8 @@
     {{ form_row(form.firstName, {'label': 'First name'}) }}
   
     {{ form_row(form.lastName, {'label': 'Last name'}) }}
+    
+    {{ form_row(form.avatar, {'label': 'Avatar'}) }}
     
     {{ form_widget(form._token) }}
     <div class="submit_container">

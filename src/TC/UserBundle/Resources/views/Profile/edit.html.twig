@@ -1,33 +1,12 @@
 {% extends "TCUserBundle::skeleton.html.twig" %}
 
-{% block head_css %}
-{{ parent() }}
-<link rel="stylesheet" href="{{asset('css/user.css')}}" />
-{% endblock %}
-
-{% block head_js %}
-    {{parent()}}
-<script type="text/javascript" src="{{asset('js/user/user.js')}}"></script>
-{% endblock %}
-
 {% block body_class %} {{parent()}} profile_edit {% endblock %}
 
-{% block pageTitle %}
-    {{parent()}}
-    <h1>Account Details</h1>
-    <p>Just for the record, you signed up on {{app.user.getCreatedAt()|date('F jS, Y')}}. Please notice your <span style='font-family: "Courier New" "Courier"; text-transform: uppercase'>{{app.user.username}}</span>  can't be changed.</p>
-{% endblock %}
-
-
-{% block box %}
+{% block sheet %}
     <div class="profile">
         <h3>My Informations</h3>
         {% include "TCUserBundle:Profile:edit_content.html.twig" %}
     </div>
-    <div class="credits">
-        <h3>My Time Credits <span>(1 credit = 1h in a relation)</span></h3>
-        {% include "TCUserBundle:Profile:credits.html.twig" %}
-    </div>
-{% endblock box %}
+{% endblock %}
     
     

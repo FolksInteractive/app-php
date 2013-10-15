@@ -1,0 +1,16 @@
+{% extends '::skeleton.html.twig' %}
+
+{% block body_class %} {{parent()}} root {% endblock %}
+
+{% block sheet %}
+<div class="tc-over-section">
+    <div class="row-fluid">
+        <div class="center">
+            <h2>Use TimeCrumbs as : </h2>
+            <a href="{{path('client_dashboard')}}" class="btn btn-large">Client</a>
+            <a href="{{path('vendor_dashboard')}}" class="btn btn-large">Vendor</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

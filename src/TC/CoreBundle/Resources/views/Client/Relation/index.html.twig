@@ -31,7 +31,7 @@
             {% for relation in relations %}            
             <tr>
                 <td class="user">
-                    <img class="img-circle" src="{{asset("img/thumbnails/user.png")}}" />
+                    <img class="img-circle" src="{{avatar(relation.vendorEnrollment) | imagine_filter('30_thumb')}}" />
                 </td>
                 <td class="name">
                     <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">

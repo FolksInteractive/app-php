@@ -1,3 +1,8 @@
+tc_root:
+    resource: "@TCCoreBundle/Controller"
+    type:     annotation
+    prefix: /
+    
 tc_client:
     resource: "@TCCoreBundle/Controller/Client"
     type:     annotation
@@ -21,6 +26,11 @@ tc_user:
 #    resource: "@TCApiBundle/Resources/config/routing.yml"
 #    type: rest
 #    prefix: /api
+
+  
+_imagine:
+    resource: .
+    type:     imagine
     
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

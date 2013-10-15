@@ -13,10 +13,10 @@
 <div class="tc-contact-section">
     <div class="nav-header">You're doing business with:</div>
     <div class="contact">
-        <div class="avatar"><img src="/img/thumbnails/user.png" class="img-circle"></div>
+        <div class="avatar"><img src="{{avatar(relation.clientEnrollment) | imagine_filter('120_thumb')}}" class="img-circle"></div>
         <div class="infos">
-            <div class="name">Alex Le Moeligou</div>
-            <div class="role">Project Manager</div>
+            <div class="name">{{relation.client.getFullName() | default(relation.client)}}</div>
+            <div class="role">Client</div>
         </div>
     </div>
 </div>

@@ -24,6 +24,7 @@
 
         <service id="tc.extensions.relation_helper" class="TC\CoreBundle\Twig\RelationHelperExtension">
             <argument type="service" id="security.context" />
+            <argument type="service" id="vich_uploader.templating.helper.uploader_helper" />
             <tag name="twig.extension" />
         </service>
 
