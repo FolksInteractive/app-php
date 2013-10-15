@@ -3,7 +3,6 @@
 namespace TC\CoreBundle\Twig;
 
 use Symfony\Component\Security\Core\SecurityContext;
-use TC\CoreBundle\Entity\Enrollment;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Entity\Workspace;
 use TC\UserBundle\Entity\User;
@@ -33,17 +32,9 @@ class RelationHelperExtension extends Twig_Extension {
             new Twig_SimpleFunction( 'is_vendor', array($this, 'isVendor') ),
             new Twig_SimpleFunction( 'is_client', array($this, 'isClient') ),
             new Twig_SimpleFunction( 'is_creator', array($this, 'isCreator') ),
-            new Twig_SimpleFunction( 'avatar', array($this, 'getAvatar') ),
         );
     }
 
-    public function getAvatar( Enrollment $enrollment = null ) {
-        if ( $enrollment && $enrollment->getWorkspace() ) {
-            return $this->vichHelper->asset( $enrollment->getWorkspace()->getUser(), 'avatar' );
-        }
-
-        return "/img/users/user.png";
-    }
 
     /**
      * 

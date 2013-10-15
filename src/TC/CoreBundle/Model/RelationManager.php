@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Validator;
 use TC\CoreBundle\Entity\Bill;
-use TC\CoreBundle\Entity\Enrollment;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Mailer\Mailer;
@@ -98,9 +97,8 @@ class RelationManager {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
-                    ->innerJoin( "TCCoreBundle:Enrollment", "e" )
-                    ->where( "e MEMBER OF r.enrollments" )
-                    ->andWhere( "e.workspace = :workspace" )
+                    ->where( "r.vendor = :workspace" )
+                    ->orWhere( "r.client = :workspace" )
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
@@ -123,15 +121,11 @@ class RelationManager {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
-                    ->innerJoin( "TCCoreBundle:Enrollment", "e" )
-                    ->where( "e = r.clientEnrollment" )
-                    ->andWhere( "e.enrollAs = :enrollAs" )
-                    ->andWhere( "e.workspace = :workspace" )
+                    ->where( "r.client = :workspace" )
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
                     ->setParameter( "workspace", $this->workspace )
-                    ->setParameter( "enrollAs", Enrollment::ENROLLMENT_TYPE_CLIENT )
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
@@ -150,15 +144,11 @@ class RelationManager {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
-                    ->innerJoin( "TCCoreBundle:Enrollment", "e" )
-                    ->where( "e = r.vendorEnrollment" )
-                    ->andWhere( "e.enrollAs = :enrollAs" )
-                    ->andWhere( "e.workspace = :workspace" )
+                    ->where( "r.vendor = :workspace" )
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
                     ->setParameter( "workspace", $this->workspace )
-                    ->setParameter( "enrollAs", Enrollment::ENROLLMENT_TYPE_VENDOR )
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
@@ -172,16 +162,7 @@ class RelationManager {
      */
     public function createClientRelation() {
         $relation = $this->createRelation();
-        
-        $enrollment = new Enrollment();
-        $enrollment->setWorkspace($this->workspace);
-        $enrollment->setEnrollAs(Enrollment::ENROLLMENT_TYPE_CLIENT);
-        $relation->setClientEnrollment($enrollment);
-        
-        $enrollment = new Enrollment();
-        $enrollment->setSender($this->workspace);
-        $enrollment->setEnrollAs(Enrollment::ENROLLMENT_TYPE_VENDOR);
-        $relation->setVendorEnrollment($enrollment);
+        $relation->setClient( $this->workspace );
         
         return $relation;
     }
@@ -191,16 +172,7 @@ class RelationManager {
      */
     public function createVendorRelation() {
         $relation = $this->createRelation();
-        
-        $enrollment = new Enrollment();
-        $enrollment->setSender($this->workspace);
-        $enrollment->setEnrollAs(Enrollment::ENROLLMENT_TYPE_CLIENT);
-        $relation->setClientEnrollment($enrollment);
-        
-        $enrollment = new Enrollment();
-        $enrollment->setWorkspace($this->workspace);
-        $enrollment->setEnrollAs(Enrollment::ENROLLMENT_TYPE_VENDOR);
-        $relation->setVendorEnrollment($enrollment);
+        $relation->setVendor( $this->workspace );
         
         return $relation;
     }

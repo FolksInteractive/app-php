@@ -9,9 +9,7 @@ use TC\CoreBundle\Entity\Workspace;
 class RegistrationFormHandler extends BaseHandler
 {
     protected function onSuccess(UserInterface $user, $confirmation)
-    {
-        $user->setWorkspace(new Workspace());
-        
+    {        
         // Note: if you plan on modifying the user then do it before calling the
         // parent method as the parent method will flush the changes
 

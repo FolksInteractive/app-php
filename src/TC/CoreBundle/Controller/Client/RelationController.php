@@ -27,6 +27,7 @@ class RelationController extends BaseController {
      */
     public function indexAction(Request $request)
     {
+        $workspace = $this->getWorkspace();
         $relations  = $this->getRelationManager()->getClientRelations();        
 
         return array(
@@ -113,7 +114,7 @@ class RelationController extends BaseController {
             'method' => 'POST',
                 ) );
         
-        $form->remove('clientEnrollment');
+        $form->remove('client');
         
         $form->add( 'submit', 'submit', array('label' => 'Create') );
 

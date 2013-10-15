@@ -3,7 +3,6 @@
 namespace TC\CoreBundle\Validator\Constraints;
 
 use Doctrine\ORM\EntityManager;
-use TC\CoreBundle\Entity\Enrollment as EnrollmentEntity;
 use TC\CoreBundle\Entity\Relation as RelationEntity;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -28,7 +27,7 @@ class RelationValidator extends ConstraintValidator {
             $this->context->addViolation( "The creator of the new relation must be part of it." );
                 
         // The vendor and the client cannot be the same person
-        if ( $relation->getVendorEnrollment() && $relation->getClientEnrollment() && $relation->getVendorEnrollment()->getEmail() ==  $relation->getClientEnrollment()->getEmail() )
+        if ( $relation->getVendor()->getUser() == $relation->getClient()->getUser() )
             $this->context->addViolation( "The vendor and the client cannot be the same person." );
 
   }

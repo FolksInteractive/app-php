@@ -29,7 +29,7 @@ class User extends BasedUser {
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255, name="first_name")
+     * @ORM\Column(type="string", length=255, nullable=true, name="first_name")
      * @Assert\NotBlank(message="Please enter your first name.")
      * @Assert\Length(
      *      min = "2",
@@ -44,7 +44,7 @@ class User extends BasedUser {
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255, name="last_name")
+     * @ORM\Column(type="string", length=255, nullable=true, name="last_name")
      * @Assert\NotBlank(message="Please enter your last name.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *      min = "2",
@@ -67,8 +67,7 @@ class User extends BasedUser {
     
     /**
      * @Assert\Type(type="TC\CoreBundle\Entity\Workspace")
-     * @ORM\OneToOne(targetEntity="TC\CoreBundle\Entity\Workspace",  inversedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="workspace_id", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="TC\CoreBundle\Entity\Workspace",  mappedBy="user", cascade={"persist", "remove"})
      *
      * @var Workspace $workspace
      */

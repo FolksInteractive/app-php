@@ -2,20 +2,20 @@
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - You've been invited to join a new relation with {{enrollment.sender.getFullName()}}
+TimeCrumbs - You've been invited to join a new relation with {{relation.vendor.getFullName()}}
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-Invitation to join a new relation in Timecrumbs
+Invitation to join a new relation in TimeCrumbs
 {% endautoescape %}
 {% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
 
-<span style="font-weight:bold">{{enrollment.sender.getFullName()}} has invited you to join a Relation.</span>
+<span style="font-weight:bold">{{relation.vendor.getFullName()}} has invited you to join a Relation.</span>
 
 <h3 style="font-size:18px; color: #112834; font-weight:bold">What's a Relation?</h3>
 

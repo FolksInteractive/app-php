@@ -11,8 +11,8 @@
 
 namespace TC\UserBundle\Form\Type;
 
-use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationFormType extends BaseType {
 
@@ -29,6 +29,7 @@ class RegistrationFormType extends BaseType {
                 ->add('firstname', 'text', array("label"=>"Firstname:"))
                 ->add('lastname', 'text', array("label"=>"Lastname:"));
         ;
+        
     }
 
     public function getName() {

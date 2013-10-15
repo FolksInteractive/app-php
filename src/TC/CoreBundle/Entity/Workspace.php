@@ -27,7 +27,7 @@ class Workspace {
     /**
      * @var User $user
      * 
-     * @ORM\OneToOne(targetEntity="\TC\UserBundle\Entity\User", mappedBy="workspace", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="\TC\UserBundle\Entity\User", inversedBy="workspace", cascade={"persist", "remove"})
      */
     private $user;
 
@@ -46,13 +46,6 @@ class Workspace {
     private $pricebook;
 
     /**
-     * @var ArrayCollection $enrollments
-     * 
-     * @ORM\OneToMany(targetEntity="Enrollment", mappedBy="workspace")
-     */
-    private $enrollments;
-
-    /**
      * @var ArrayCollection $projects
      * 
      * @ORM\OneToMany(targetEntity="Project", mappedBy="workspace")
@@ -60,39 +53,21 @@ class Workspace {
     private $projects;
 
     /**
-     *
-     * @var ArrayCollection $vendorEnrollments
-     */
-    private $vendorEnrollments;
-
-    /**
-     *
-     * @var ArrayCollection $clientEnrollments
-     */
-    private $clientEnrollments;
-
-    /**
      * @var ArrayCollection $vendorRelations
+     * @ORM\OneToMany(targetEntity="Relation", mappedBy="vendor", cascade={"persist", "remove"})
      */
     private $vendorRelations;
 
     /**
      * @var ArrayCollection $clientRelations
+     * @ORM\OneToMany(targetEntity="Relation", mappedBy="client", cascade={"persist", "remove"})
      */
     private $clientRelations;
-
-    /**
-     * @var ArrayCollection $collaboratorRelations
-     */
-    private $collaboratorRelations;
 
     public function __construct() {
         $this->contactList = new ContactList();
         $this->pricebook = new Pricebook();
-        $this->enrollments = new ArrayCollection();
         $this->projects = new ArrayCollection();
-        $this->vendorEnrollments = new ArrayCollection();
-        $this->clientEnrollments = new ArrayCollection();
         $this->vendorRelations = new ArrayCollection();
         $this->clientRelations = new ArrayCollection();
     }
@@ -113,59 +88,6 @@ class Workspace {
      */
     public function getUser() {
         return $this->user;
-    }
-
-    /**
-     * Get relations
-     *
-     * @return Collection 
-     */
-    public function getRelations() {
-        $relations = array();
-
-        foreach ( $this->enrollments->toArray() as $key => $enrollment ) {
-            if( $enrollment->getVendorRelation() ){
-                $relations[] = $enrollment->getVendorRelation();
-            }else{
-                $relations[] = $enrollment->getClientRelation();
-            }
-        }
-
-        return $relations;
-    }
-
-    /**
-     * Get vendorRelations
-     *
-     * @return Collection 
-     */
-    public function getVendorRelations() {
-        $relations = array();
-
-        foreach ( $this->enrollments->toArray() as $key => $enrollment ) {
-            if ( $enrollment->getEnrollAs() == Enrollment::ENROLLMENT_TYPE_VENDOR ) {
-                $relations[] = $enrollment->getVendorRelation();
-            }
-        }
-
-        return $relations;
-    }
-
-    /**
-     * Get clientRelations
-     *
-     * @return Collection 
-     */
-    public function getClientRelations() {
-        $relations = array();
-
-        foreach ( $this->enrollments->toArray() as $key => $enrollment ) {
-            if ( $enrollment->getEnrollAs() == Enrollment::ENROLLMENT_TYPE_CLIENT ) {
-                $relations[] = $enrollment->getClientRelation();
-            }
-        }
-
-        return $relations;
     }
 
     /**
@@ -197,7 +119,7 @@ class Workspace {
      */
     public function setUser( User $user = null ) {
         $this->user = $user;
-
+        $user->setWorkspace($this);
         return $this;
     }
 
@@ -259,36 +181,6 @@ class Workspace {
     }
 
     /**
-     * Add enrollments
-     *
-     * @param Enrollment $enrollments
-     * @return Workspace
-     */
-    public function addEnrollment( Enrollment $enrollment ) {
-        $this->enrollments[] = $enrollment;
-
-        return $this;
-    }
-
-    /**
-     * Remove enrollments
-     *
-     * @param Enrollment $enrollments
-     */
-    public function removeEnrollment( Enrollment $enrollments ) {
-        $this->enrollments->removeElement( $enrollments );
-    }
-
-    /**
-     * Get enrollments
-     *
-     * @return Collection
-     */
-    public function getEnrollments() {
-        return $this->enrollments;
-    }
-
-    /**
      * Add projects
      *
      * @param Project $projects
@@ -318,4 +210,70 @@ class Workspace {
         return $this->projects;
     }
 
+
+    /**
+     * Add vendorRelations
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $vendorRelations
+     * @return Workspace
+     */
+    public function addVendorRelation(\TC\CoreBundle\Entity\Workspace $vendorRelations)
+    {
+        $this->vendorRelations[] = $vendorRelations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove vendorRelations
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $vendorRelations
+     */
+    public function removeVendorRelation(\TC\CoreBundle\Entity\Workspace $vendorRelations)
+    {
+        $this->vendorRelations->removeElement($vendorRelations);
+    }
+
+    /**
+     * Get vendorRelations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVendorRelations()
+    {
+        return $this->vendorRelations;
+    }
+
+    /**
+     * Add clientRelations
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $clientRelations
+     * @return Workspace
+     */
+    public function addClientRelation(\TC\CoreBundle\Entity\Workspace $clientRelations)
+    {
+        $this->clientRelations[] = $clientRelations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove clientRelations
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $clientRelations
+     */
+    public function removeClientRelation(\TC\CoreBundle\Entity\Workspace $clientRelations)
+    {
+        $this->clientRelations->removeElement($clientRelations);
+    }
+
+    /**
+     * Get clientRelations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClientRelations()
+    {
+        return $this->clientRelations;
+    }
 }

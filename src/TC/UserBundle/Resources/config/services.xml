@@ -11,11 +11,11 @@
             <tag name="form.type" alias="tc_user_profile" />
         </service>
 
-        <service id="tc_user.form.handler.profile" class="TC\UserBundle\Form\Handler\ProfileFormHandler" scope="request" public="false">
+        <!--<service id="tc_user.form.handler.profile" class="TC\UserBundle\Form\Handler\ProfileFormHandler" scope="request" public="false">
             <argument type="service" id="fos_user.profile.form" />
             <argument type="service" id="request" />
             <argument type="service" id="fos_user.user_manager" />
-        </service>
+        </service>-->
         
         <!-- REGISTRATION -->
         <service id="tc_user.registration.form.type" class="TC\UserBundle\Form\Type\RegistrationFormType">
@@ -33,6 +33,11 @@
         
         <service id="tc_user.manager.user" class="TC\UserBundle\Model\UserManager" public="true" parent="fos_user.user_manager.default"></service>
 
+        <!-- EventListener -->
+        <service id="tc_user.listener.profile_edit" class="TC\UserBundle\EventListener\ProfileEditListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="router" />
+        </service>
         
         <service id="tc_user.mailer.default" class="TC\UserBundle\Mailer\Mailer" public="false">
             <argument type="service" id="mailer" />

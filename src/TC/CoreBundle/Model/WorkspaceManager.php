@@ -45,18 +45,6 @@ class WorkspaceManager {
         $this->validator = $validator;
     }
 
-    /**
-     * 
-     * @param User $user
-     * @return Workspace
-     */
-    public function createWorkspace( User $user ) {
-        $workspace = new Workspace();
-        $workspace->setUser( $user );
-        $user->setWorkspace($workspace);
-        return $workspace;
-    }
-
     public function find( $slug ) {
         $workspace = null;
 
@@ -86,6 +74,18 @@ class WorkspaceManager {
                 $workspace = $this->um->findUserByEmail( $slug )->getWorkspace();
         }
 
+        return $workspace;
+    }
+    
+    public function createTemporaryWorkspace( $email ){
+        $user  = $this->um->createUser();
+        $user->setEnabled(false);
+        $user->setEmail($email);
+        $user->setPlainPassword("123");
+        
+        $workspace = new Workspace();
+        $workspace->setUser($user);
+        
         return $workspace;
     }
     

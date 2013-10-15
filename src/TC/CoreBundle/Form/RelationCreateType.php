@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use TC\CoreBundle\Entity\Relation;
+use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Model\WorkspaceManager;
 
 class RelationCreateType extends AbstractType {
@@ -23,14 +24,8 @@ class RelationCreateType extends AbstractType {
         $this->wm = $options["wm"];
         
         $builder
-                ->add( 'vendorEnrollment', new EnrollmentType(), array(
-                    'required' => true,
-                    'by_reference' => true
-                ) )
-                ->add( 'clientEnrollment', new EnrollmentType(), array(
-                    'required' => true,
-                    'by_reference' => true
-                ) )
+                ->add( 'vendor', 'email', array("mapped" => false))
+                ->add( 'client', 'email', array("mapped" => false))
         ;
 
         // This is EventListener is for trying to find an 
@@ -43,22 +38,34 @@ class RelationCreateType extends AbstractType {
                     /** @var Relation $relation */
                     $relation = $event->getData();
                     
-                    // Check if the vendor enrollment or the client enrollment 
-                    // has a workspace assigned to it. If not, tries to find it 
-                    // by searching with the email address.
-                    if( !$relation->getVendorEnrollment()->getWorkspace() ){
-                        $workspace = $this->wm->find( $relation->getVendorEnrollment()->getEmail() );
+                    //$workspace = $this->wm->find( $relation->getVendor()->getEmail() );
+                    
+                    if( $form->has("vendor") ){
+                        $vendorType = $form->get("vendor");
+                        $vendorEmail = $vendorType->getData();
                         
-                        if( $workspace )
-                            $relation->getVendorEnrollment()->setWorkspace($workspace);
+                        $workspace = $this->wm->find( $vendorEmail );
+                        
+                        if( $workspace == null ){
+                            $workspace = $this->wm->createTemporaryWorkspace( $vendorEmail );
+                        }
+                        
+                        $relation->setVendor($workspace);
                     }
                     
-                    if( !$relation->getClientEnrollment()->getWorkspace() ){
-                        $workspace = $this->wm->find( $relation->getClientEnrollment()->getEmail() );
+                    if( $form->has("client") ){
+                        $clientType = $form->get("client");
+                        $clientEmail = $clientType->getData();
                         
-                        if( $workspace )
-                            $relation->getClientEnrollment()->setWorkspace($workspace);
+                        $workspace = $this->wm->find( $clientEmail );
+                                
+                        if( $workspace == null ){
+                            $workspace = $this->wm->createTemporaryWorkspace( $clientEmail );
+                        }
+                        
+                        $relation->setClient($workspace);
                     }
+                    
                 }
         );
     }

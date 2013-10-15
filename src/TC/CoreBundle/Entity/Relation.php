@@ -33,25 +33,24 @@ class Relation {
      * @Assert\Type(type="TC\CoreBundle\Entity\Workspace")
      * @Assert\NotNull(message="The creator of the new relation must be specified.")
      * @ORM\ManyToOne(targetEntity="Workspace", cascade={"persist"})
-     * @ORM\JoinColumn(name="creatorWorkspace_id", referencedColumnName="id")
      */
     private $creator;
     
     /**
      *
-     * @var Enrollment $clientEnrollment
+     * @var Workspace $client
      * 
-     * @ORM\OneToOne(targetEntity="Enrollment", inversedBy="clientRelation", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Workspace", inversedBy="clientRelations", cascade={"persist", "remove"})
      */
-    private $clientEnrollment;
+    private $client;
     
     /**
      *
-     * @var Enrollment $vendorEnrollment
+     * @var Workspace $vendor
      * 
-     * @ORM\OneToOne(targetEntity="Enrollment", inversedBy="vendorRelation", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Workspace", inversedBy="vendorRelations", cascade={"persist", "remove"})
      */
-    private $vendorEnrollment;
+    private $vendor;
     
     /**
      * @var ArrayCollection $orders
@@ -92,7 +91,6 @@ class Relation {
     private $createdAt;
 
     public function __construct() {
-        $this->enrollments = new ArrayCollection();
         $this->closedBills = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->createdAt = new DateTime();
@@ -275,33 +273,6 @@ class Relation {
     }
 
     /**
-     * 
-     * return Workspace
-     */
-    public function getClient() {
-        $enrollment = $this->getClientEnrollment();
-        
-        if ( !$enrollment )
-            return null;
-
-        return ( $enrollment->getWorkspace()) ? $enrollment->getWorkspace() : $enrollment->getEmail();
-    }
-
-    /**
-     *
-     * @return string
-     * @return Workspace
-     */
-    public function getVendor() {
-        $enrollment = $this->getVendorEnrollment();
-        
-        if ( !$enrollment )
-            return null;
-
-        return ( $enrollment->getWorkspace()) ? $enrollment->getWorkspace() : $enrollment->getEmail();
-    }
-
-    /**
      * Add closedBills
      *
      * @param Bill $closedBills
@@ -357,49 +328,50 @@ class Relation {
         return $this->openBill;
     }
 
+
     /**
-     * Set clientEnrollment
+     * Set client
      *
-     * @param \TC\CoreBundle\Entity\Enrollment $clientEnrollment
+     * @param Workspace $client
      * @return Relation
      */
-    public function setClientEnrollment(\TC\CoreBundle\Entity\Enrollment $clientEnrollment = null)
+    public function setClient(Workspace $client = null)
     {
-        $this->clientEnrollment = $clientEnrollment;
+        $this->client = $client;
     
         return $this;
     }
 
     /**
-     * Get clientEnrollment
+     * Get client
      *
-     * @return \TC\CoreBundle\Entity\Enrollment 
+     * @return Workspace 
      */
-    public function getClientEnrollment()
+    public function getClient()
     {
-        return $this->clientEnrollment;
+        return $this->client;
     }
 
     /**
-     * Set vendorEnrollment
+     * Set vendor
      *
-     * @param \TC\CoreBundle\Entity\Enrollment $vendorEnrollment
+     * @param Workspace $vendor
      * @return Relation
      */
-    public function setVendorEnrollment(\TC\CoreBundle\Entity\Enrollment $vendorEnrollment = null)
+    public function setVendor(Workspace $vendor = null)
     {
-        $this->vendorEnrollment = $vendorEnrollment;
+        $this->vendor = $vendor;
     
         return $this;
     }
 
     /**
-     * Get vendorEnrollment
+     * Get vendor
      *
-     * @return \TC\CoreBundle\Entity\Enrollment 
+     * @return Workspace 
      */
-    public function getVendorEnrollment()
+    public function getVendor()
     {
-        return $this->vendorEnrollment;
+        return $this->vendor;
     }
 }

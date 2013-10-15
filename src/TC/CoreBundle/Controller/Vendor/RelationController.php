@@ -112,7 +112,7 @@ class RelationController extends BaseController {
             'method' => 'POST',
                 ) );
         
-        $form->remove('vendorEnrollment');
+        $form->remove('vendor');
 
         $form->add( 'submit', 'submit', array('label' => 'Create') );
 
