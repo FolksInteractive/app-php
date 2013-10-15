@@ -5,3 +5,6 @@
 *.scssc
 *.php~
 /vendor
+/web/cache
+/web/img/users/*
+!/web/img/users/unser.png
