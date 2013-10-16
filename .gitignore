@@ -8,3 +8,4 @@
 /web/cache
 /web/img/users/*
 !/web/img/users/user.png
+/app/config/parameters.yml
