@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="tc_user")
  * @Vich\Uploadable
  * 
@@ -66,6 +67,13 @@ class User extends BasedUser {
     protected $createdAt;
     
     /**
+     * @ORM\Column(type="datetime", name="last_update_at")
+     * 
+     * @var DateTime $lastUpdateAt
+     */
+    protected $lastUpdateAt;
+    
+    /**
      * @Assert\Type(type="TC\CoreBundle\Entity\Workspace")
      * @ORM\OneToOne(targetEntity="TC\CoreBundle\Entity\Workspace",  mappedBy="user", cascade={"persist", "remove"})
      *
@@ -101,6 +109,14 @@ class User extends BasedUser {
     }
     
 
+    /**
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+     public function preUpdate(){
+        $this->lastUpdateAt = new Datetime();
+    }
+    
     /**
      * Gets the full name of the user.
      * 
@@ -189,6 +205,26 @@ class User extends BasedUser {
     {
         return $this->createdAt;
     }
+
+    /**
+     * Set lastUpdateAt
+     *
+     * @param datetime $lastUpdateAt
+     */
+    public function setLastUpdateAt($lastUpdateAt)
+    {
+        $this->lastUpdateAt = $lastUpdateAt;
+    }
+    
+    /**
+     * Get lastUpdateAt
+     *
+     * @return datetime 
+     */
+    public function getLastUpdateAt()
+    {
+        return $this->lastUpdateAt;
+    }
     
     /**
      * Sets the email and the username.
@@ -231,7 +267,7 @@ class User extends BasedUser {
     public function setAvatarName($avatarName)
     {
         $this->avatarName = $avatarName;
-    
+        
         return $this;
     }
 
@@ -254,7 +290,10 @@ class User extends BasedUser {
     public function setAvatar(  UploadedFile $avatar)
     {
         $this->avatar = $avatar;
-    
+        // This make the entity dirty to Doctrine
+        // View this issue https://github.com/dustin10/VichUploaderBundle/issues/123
+        $this->lastUpdateAt = new \DateTime(); 
+        
         return $this;
     }
 

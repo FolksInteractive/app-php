@@ -32,6 +32,7 @@ class ProfileFormType extends BasedType
         $this->buildUserForm($builder, $options);
 
         $builder->add('plainPassword', 'repeated', array(
+            'required'=> false,
             'type' => 'password',
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => 'form.new_password'),
