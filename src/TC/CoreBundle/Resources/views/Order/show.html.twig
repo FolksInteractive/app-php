@@ -1,16 +1,16 @@
 {% block body_class %} order-show {% endblock %}
 
 {% block sheet %}
-<div class="tc-title-section">
-    <h2>Work Order</h2>
-    <p>This project order was created on {{order.createdAt|date('d M ')}} by {{order.creator.user.fullName}}.</p>
-</div>
+    <div class="tc-title-section">
+        <h2>Work Order</h2>
+        <p>This project order was created on {{order.createdAt|date('d M ')}} by {{order.creator.user.fullName}}.</p>
+    </div>
 
-<div class="tc-outcome-section">
-    <legend>Job outcome</legend>
-    <p>
-    {{order.offer}}
-    </p>
+    <div class="tc-outcome-section">
+        <legend>Job outcome</legend>
+        <p>
+        {{order.offer}}
+        </p>
     </div>
 
     <div class="tc-deliverables-section">    
@@ -43,17 +43,13 @@
         </table>
     </div>
 
-    <div class="tc-section">
-        <div class="row-fluid">
-        {% block purchase_section %} {% endblock %}
-        
-                
-        {% block total_section %} 
-            <div class="tc-total-section span5 pull-right">
-                <div class="total-label">Total</div>
-                <div class="total-value">$ {{total|number_format(2, '.', ',')}}</div>
-            </div>
-        {% endblock %}
-        </div>
+    <div class="tc-total-section">
+    {% block total_section %} 
+        <div class="total-label">Total</div>
+        <div class="total-value">$ {{total|number_format(2, '.', ',')}}</div>
+    {% endblock %}
     </div>
+
+    {% block purchase_section %} {% endblock %}        
+               
 {% endblock %}

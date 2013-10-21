@@ -6,7 +6,7 @@
 
 {% block main_attrs %} 
 ng-app="OrderEdit" 
-ng-controller="OrderEditController"
+ng-controller="order.EditController"
 {% endblock %}
 
 {% block main_before %} 
@@ -83,7 +83,7 @@ ng-controller="OrderEditController"
                            ng-model="deliverable.quantity" />
                 </td>
                 <td class="subtotal" 
-                    ng-bind="deliverable.quantity * deliverable.cost"></td>
+                    ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
                 <td class="actions">
                     <button class="btn-danger btn"
                         ng-click="removeDeliverable(deliverable)">
@@ -121,22 +121,16 @@ ng-controller="OrderEditController"
         </tfoot>
     </table>
 </div>
-<div class="tc-section">
-    <div class="row-fluid">
-    {% set columnsLeft = 12 %}
-    {% set totalColumns = 5 %}
-            
-    {% set columnsLeft = columnsLeft - totalColumns %}
-        <div class="tc-total-section span{{totalColumns}} offset{{columnsLeft}}">
-            <div class="total-label">Total</div>
-            <div class="total-value">100</div>
-        </div>
-    </div>
+
+<div class="tc-total-section">
+    <div class="total-label">Total</div>
+    <div class="total-value" ng-bind="getTotal() | currency"></div>
 </div>
 {% endblock %}
 
 {% block bottom_js %}
-<script type="text/javascript" src="{{asset("/js/ng_order_edit.js")}}"></script>
+{{parent()}}
+<script type="text/javascript" src="{{asset("/js/order/edit_controller.js")}}"></script>
 <script type="text/javascript">
 (function(ng, module){
 

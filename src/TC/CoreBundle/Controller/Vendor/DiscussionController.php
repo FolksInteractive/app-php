@@ -20,7 +20,7 @@ class DiscussionController extends BaseController {
      *
      * @Route("/discuss", name="vendor_order_discuss")
      * @Method("GET")
-     * @Template("TCCoreBundle:Order/discuss.html.twig")
+     * @Template("TCCoreBundle:Vendor:Order/discuss.html.twig")
      */
     public function discussAction( $idRelation, $idOrder ) {
         

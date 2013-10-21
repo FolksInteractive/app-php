@@ -1,10 +1,11 @@
 {% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
 
-{% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
-
-{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
 {% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+{% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
+{% use 'TCCoreBundle:Order:recent_comments.html.twig' %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
@@ -33,4 +34,8 @@
             </ul>
         </div>
     </div>
+{% endblock %}
+
+{% block more_section_href %}
+ {{path('vendor_order_discuss', {'idOrder':order.id, 'idRelation':relation.id})}}
 {% endblock %}

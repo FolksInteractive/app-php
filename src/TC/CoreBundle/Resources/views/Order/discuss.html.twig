@@ -2,7 +2,7 @@
 
 {% block main_attrs %} 
 ng-app="OrderDiscuss" 
-ng-controller="OrderDiscussController" 
+ng-controller="order.discuss.Controller" 
 {% endblock %}
 
 
@@ -12,23 +12,13 @@ ng-controller="OrderDiscussController"
 </div>
 
 <div class="tc-thread-section">
-    <ul class="tc-thread media-list">
-        
-        <li class="tc-request tc-comment media">
-            <a class="pull-left" href="#">
-              <img class="img-circle media-object" src="/img/thumbnails/user.png" />
-            </a>
-            <div class="media-body">
-                <div class="media" ng-bind="order.request"></div>
-            </div>
-        </li>
-        
-        
+    <ul class="tc-thread media-list">        
         <li class="tc-comment media" 
             ng-show="comment" style="display:none"
             ng-repeat="comment in order.thread.comments">
             <a class="pull-left" href="#">
-              <img class="img-circle media-object" src="/img/thumbnails/user.png" />
+                <img class="img-circle media-object" 
+                     ng-src="{%raw%}{{getAvatar(comment)}}{%endraw%}"/>
             </a>
             <div class="media-body">
                 <div class="media" ng-bind="comment.body"></div>
@@ -56,7 +46,10 @@ ng-controller="OrderDiscussController"
 
 
 {% block bottom_js %}
-<script type="text/javascript" src="{{asset("/js/ng_order_discuss.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/order/discuss/discuss_controller.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/order/discuss/socket_service.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/order/discuss/thread_directive.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/utils/date_service.js")}}"></script>
 <script type="text/javascript">
 (function(ng, module){
 
@@ -64,7 +57,12 @@ ng-controller="OrderDiscussController"
         request :"{{order.request}}",
         thread : {{order.thread|json_encode()|raw}}
     });
-
+    
+    module.value("avatars", {
+        workspace_{{relation.client.id}} : '{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('60_thumb')}}',
+        workspace_{{relation.vendor.id}} : '{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('60_thumb')}}'
+    });
+    
     module.value("user_role", {
         is_client : {{is_client(relation) ? 'true' : 'false'}},
         is_vendor : {{is_vendor(relation) ? 'true' : 'false'}},

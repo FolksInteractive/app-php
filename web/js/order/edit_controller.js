@@ -1,6 +1,6 @@
 var module = angular.module("OrderEdit", []);
 
-module.controller("OrderEditController", function($scope, form_name, order){
+module.controller("order.EditController", function($scope, form_name, order){
     
     function getIndex( deliverable ){
         return order.deliverables.indexOf(deliverable);
@@ -35,6 +35,16 @@ module.controller("OrderEditController", function($scope, form_name, order){
         $scope.deliverablesForm.$setDirty();
     }
     
+    $scope.getTotal = function(){
+        var deliverable;
+        var total = 0;
+        for( var i in $scope.order.deliverables ){
+            deliverable = $scope.order.deliverables[i];
+            total = deliverable.quantity * deliverable.cost;
+        }
+        return total;
+    }
+    
     $scope.form_name = form_name;
     
     $scope.order = order;
@@ -42,5 +52,4 @@ module.controller("OrderEditController", function($scope, form_name, order){
     // Store new deliverables 
     $scope.newDeliverable = {name:'', 'cost':null, 'quantity':1};
     
-    console.log($scope);
 });

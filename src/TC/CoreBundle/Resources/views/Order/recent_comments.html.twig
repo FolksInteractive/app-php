@@ -1,0 +1,52 @@
+
+{% block main_attrs %} 
+ng-app="RecentComments" 
+{% endblock %}
+
+{% block main_after %}
+<div class="tc-recent-panel">
+    <div class="tc-thread-section">
+        <ul class="tc-thread media-list">
+            <li class="tc-comment media" 
+                ng-show="comment" style="display:none"
+                ng-repeat="comment in order.thread.comments|limitTo:10">
+                <a class="pull-left" href="#">
+                  <img class="img-circle media-object" ng-src="{%raw%}{{getAvatar(comment)}}{%endraw%}"/>
+                </a>
+                <div class="media-body">
+                    <div class="media" ng-bind="comment.body"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="tc-more-section">
+        {% block more_section %}
+        <a 
+            href="{% block more_section_href %}#{% endblock %}">
+            View full discussion
+        </a>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+{% block bottom_js %}
+<script type="text/javascript">
+RecentComments = angular.module("RecentComments", []);
+RecentComments.run(function($rootScope){
+    $rootScope.order =  {
+        request :"{{order.request}}",
+        thread : {{order.thread|json_encode()|raw}}
+    }
+    $rootScope.avatars = {
+        workspace_{{relation.client.id}} : '{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('30_thumb')}}',
+        workspace_{{relation.vendor.id}} : '{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}'
+    }
+    
+    $rootScope.getAvatar = function( comment ){                
+        return $rootScope.avatars['workspace_'+comment.author.id];
+    }
+});
+
+</script>
+{% endblock %}

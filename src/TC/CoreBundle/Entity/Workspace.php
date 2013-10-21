@@ -276,4 +276,15 @@ class Workspace {
     {
         return $this->clientRelations;
     }
+    
+    
+    public function jsonSerialize() {
+        $data = array(
+            "id" => $this->getId(),
+            "fullname" =>$this->getFullName(),
+            "avatar" =>$this->getUser()->getAvatarName()
+        );
+        
+        return $data;
+    }
 }

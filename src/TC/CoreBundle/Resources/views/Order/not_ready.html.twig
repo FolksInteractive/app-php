@@ -24,20 +24,19 @@
             </tr>
         </thead>
         <tbody>
-        {% set total = 65 %}
             <tr>
                 <td class="no">1</td>
                 <td class="description">Deliverable #1</td>
-                <td class="cost">10</td>
+                <td class="cost">$ 10.00</td>
                 <td class="quantity">1</td>
-                <td class="subtotal">10</td>
+                <td class="subtotal">$ 10.00</td>
             </tr>    
             <tr>
                 <td class="no">2</td>
                 <td class="description">Deliverable #2</td>
-                <td class="cost">55</td>
+                <td class="cost">$ 55.00</td>
                 <td class="quantity">1</td>
-                <td class="subtotal">55</td>
+                <td class="subtotal">$ 55.00</td>
             </tr>   
         </tbody>
     </table>
@@ -47,7 +46,7 @@
     <div class="row-fluid">
     {% set columnsLeft = 12 %}
     {% set agreementColumns = 5 %}
-    {% set totalColumns = 2 %}
+    {% set totalColumns = 6 %}
         
     {% if is_client(relation) %}
         {% set columnsLeft = columnsLeft - agreementColumns %}
@@ -61,7 +60,7 @@
     {% set columnsLeft = columnsLeft - totalColumns %}
         <div class="tc-total-section span{{totalColumns}} offset{{columnsLeft}}">
             <div class="total-label">Total</div>
-            <div class="total-value">{{total}}</div>
+            <div class="total-value">$ 1.00</div>
         </div>
     </div>
 </div>

@@ -1,72 +1,118 @@
-.tc-toolbar{
-    .tc-edit-btn{
+
+/******************************************************************/
+/*****    Section Order:show.html.twig & edit.html.twig    ********/
+/******************************************************************/
+.order-not-ready,
+.order-edit,
+.order-show{
+    .tc-toolbar{
+        .tc-edit-btn{            
+            // Hack for caret height alignment the default bootstrap wasn't working...
+            .dropdown-toggle{
+                padding:6px 8px 10px 8px;        
+            }
+        }
+    }    
+    .tc-deliverables-section{
+        .no, 
+        .cost,        
+        .quantity,
+        .subtotal,
+        .actions{
+            width:80px;        
+            text-align:center;             
+            vertical-align: middle;
+        }
         
-        // Hack for caret height alignment the default bootstrap wasn't working...
-        .dropdown-toggle{
-            padding:6px 8px 10px 8px;        
+        .no,
+        .actions{
+            width:40px;   
+        }
+        
+        input{
+            margin-bottom:0;
+        }
+    }
+    
+    .tc-total-section{
+        text-align:right;
+        margin-bottom:20px;
+        
+        .total-label{
+            display:inline-block;
+            vertical-align:middle;
+            text-align:right;
+            font-style: italic;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .total-value{
+            display:inline-block;
+            vertical-align:middle;
+            padding-left:80px;
+            font-size: 60px;
+            line-height:60px;
+            text-align: right;
+            color: #0060b2;
+        }
+    }
+}
+.order-show{
+    
+    .tc-agreement-section{
+        text-align: center;
+        margin-bottom:20px;
+        
+        .agree-check{
+            font-size: 13px;
+            padding-bottom: 20px;
+        }
+    }
+    
+    .tc-sheet{
+        margin-right: 370px;
+    }
+    
+    .tc-recent-panel{
+        position:fixed;
+        top:112px;
+        right:0;
+        bottom:0;
+        width:350px;
+        background:white;
+        border-top:1px solid #ddd;
+        
+        .tc-thread-section{
+            padding:10px;
+            
+            .tc-comment .media-object{
+                width:30px;
+                height:30px;
+            }
+        }
+        
+        .tc-more-section{
+            position:absolute;
+            bottom:0;
+            right:0;
+            width:100%;
+            background: rgba(255,255,255,.5);
+            color: #333;
+            text-shadow: 0 1px 0 #fff;
+            box-shadow: 8px 5px 14px 1px #333;
+            a{
+                display: block;
+                padding: 20px 0;
+                text-align: center;
+            }
         }
     }
 }
 
-.tc-outcome-section{
-}
-
-.tc-deliverables-section{
-    .no, 
-    .cost,        
-    .quantity,
-    .subtotal,
-    .actions{
-        width:80px;        
-        text-align:center;             
-        vertical-align: middle;
-    }
-    
-    .no,
-    .actions{
-        width:40px;   
-    }
-    
-    input{
-        margin-bottom:0;
-    }
-}
-
-.tc-agreement-section{
-    text-align: center;
-    border-right: 1px solid #dededf;
-    
-    .agree-check{
-        font-size: 13px;
-        padding-bottom: 20px;
-    }
-}
-
-.tc-total-section{
-    text-align:right;
-    margin-bottom:80px;
-    
-    .total-label{
-        display:inline-block;
-        vertical-align:middle;
-        text-align:right;
-        font-style: italic;
-        color: #999;
-        font-size: 12px;
-    }
-    
-    .total-value{
-        display:inline-block;
-        vertical-align:middle;
-        padding-left:80px;
-        font-size: 60px;
-        line-height:60px;
-        text-align: right;
-        color: #0060b2;
-    }
-}
-
-
+/****************************************************/
+/*****    Section Order:not_ready.html.twig    ******/
+/****************************************************/
 .order-not-ready{
     .tc-sheet{
         position: relative;
@@ -83,7 +129,6 @@
         z-index:1000;
     }
 }
-
 /*************************************************/
 /*****    Section Order:discuss.html.twig    *****/
 /*************************************************/

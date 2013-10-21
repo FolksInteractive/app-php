@@ -148,7 +148,7 @@ class Comment implements JsonSerializable
             "id" => $this->getId(),
             "body" =>$this->getBody(),
             "createdAt" =>$this->getCreatedAt()->format( "Y-m-d H:i:s" ),
-            //"author" =>$this->getAuthor(),
+            "author" =>$this->getAuthor()->jsonSerialize(),
         );
         
         return $data;

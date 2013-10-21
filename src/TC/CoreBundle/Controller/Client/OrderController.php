@@ -143,7 +143,7 @@ class OrderController extends BaseController {
                         'relation' => $relation)
             );
         }
-                
+                        
         $purchaseForm = null;
         if( !$order->isApproved() ) {
             // Create order purchase form

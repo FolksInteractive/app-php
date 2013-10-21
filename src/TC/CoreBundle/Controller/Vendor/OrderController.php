@@ -41,7 +41,7 @@ class OrderController extends BaseController {
 
                 return $this->redirect( $this->generateUrl(
                                         'vendor_order_discuss', array(
-                                    'id' => $order->getId(),
+                                    'idOrder' => $order->getId(),
                                     'idRelation' => $idRelation)
                                 )
                 );

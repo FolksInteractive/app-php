@@ -1,10 +1,10 @@
 {% extends 'TCCoreBundle:Client:Relation/index.html.twig' %}
 
+{% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
 {% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
+{% use 'TCCoreBundle:Order:recent_comments.html.twig' %}
 
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
-
-{% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
@@ -32,7 +32,7 @@
 
 {% block purchase_section %}
 {% if purchaseForm is defined and purchaseForm is not null %}
-    <div class="tc-agreement-section span5">
+<div class="tc-agreement-section">
     {{form_start(purchaseForm)}}
         <div class="agree-check">
             {{form_widget(purchaseForm.confirmation)}}
@@ -48,6 +48,10 @@
         </div>
     {{form_widget(purchaseForm._token)}}
     {{form_end(purchaseForm, {'render_rest':false})}}
-    </div>
+</div>
 {% endif %}
+{% endblock %}
+
+{% block more_section_href %}
+ {{path('client_order_discuss', {'idOrder':order.id, 'idRelation':relation.id})}}
 {% endblock %}

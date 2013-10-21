@@ -109,6 +109,7 @@ class Thread implements JsonSerializable
      */
     public function addComment(Comment $comment)
     {
+        $comment->setThread($this);
         $this->lastComment_at = new DateTime();
         $this->comments[] = $comment;
     }

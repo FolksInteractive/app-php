@@ -11,6 +11,7 @@ use TC\CoreBundle\Validator\Constraints as TCAssert;
  * @TCAssert\Order()
  * @ORM\Table(name="tc_order")
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Order
 {
@@ -147,6 +148,17 @@ class Order
     {
         $this->deliverables = new ArrayCollection();
         $this->createdAt = new \DateTime();
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function addRequestToComments(){ 
+        // Add the request to the thread
+        $comment = new Comment();
+        $comment->setBody($this->request);
+        $comment->setAuthor($this->creator);
+        $this->thread->addComment($comment);
     }
     
     /**

@@ -118,7 +118,6 @@ legend .badge {
   position: absolute;
   top: 50px;
   left: 220px;
-  bottom: 0;
   right: 0; }
   .tc-main-panel .tc-toolbar {
     height: 62px;
@@ -284,15 +283,14 @@ legend .badge {
 
 .tc-contact-section .contact {
   text-align: center;
-  padding: 20px;
-  height: 180px;
+  padding: 10px;
   background: rgba(0, 0, 0, 0.3);
   box-shadow: 0px 5px 5px -5px #222222 inset, 0px -5px 5px -5px #222222 inset; }
   .tc-contact-section .contact .avatar {
     padding: 5px 0 15px 0; }
     .tc-contact-section .contact .avatar img {
-      width: 120px;
-      height: 120px; }
+      width: 80px;
+      height: 80px; }
   .tc-contact-section .contact .name {
     font-weight: bold;
     font-size: 13px;
@@ -374,41 +372,59 @@ legend .badge {
   text-align: center;
   vertical-align: middle; }
 
-.tc-toolbar .tc-edit-btn .dropdown-toggle {
+/******************************************************************/
+/*****    Section Order:show.html.twig & edit.html.twig    ********/
+/******************************************************************/
+.order-not-ready .tc-toolbar .tc-edit-btn .dropdown-toggle,
+.order-edit .tc-toolbar .tc-edit-btn .dropdown-toggle,
+.order-show .tc-toolbar .tc-edit-btn .dropdown-toggle {
   padding: 6px 8px 10px 8px; }
-
-.tc-deliverables-section .no,
-.tc-deliverables-section .cost,
-.tc-deliverables-section .quantity,
-.tc-deliverables-section .subtotal,
-.tc-deliverables-section .actions {
+.order-not-ready .tc-deliverables-section .no,
+.order-not-ready .tc-deliverables-section .cost,
+.order-not-ready .tc-deliverables-section .quantity,
+.order-not-ready .tc-deliverables-section .subtotal,
+.order-not-ready .tc-deliverables-section .actions,
+.order-edit .tc-deliverables-section .no,
+.order-edit .tc-deliverables-section .cost,
+.order-edit .tc-deliverables-section .quantity,
+.order-edit .tc-deliverables-section .subtotal,
+.order-edit .tc-deliverables-section .actions,
+.order-show .tc-deliverables-section .no,
+.order-show .tc-deliverables-section .cost,
+.order-show .tc-deliverables-section .quantity,
+.order-show .tc-deliverables-section .subtotal,
+.order-show .tc-deliverables-section .actions {
   width: 80px;
   text-align: center;
   vertical-align: middle; }
-.tc-deliverables-section .no,
-.tc-deliverables-section .actions {
+.order-not-ready .tc-deliverables-section .no,
+.order-not-ready .tc-deliverables-section .actions,
+.order-edit .tc-deliverables-section .no,
+.order-edit .tc-deliverables-section .actions,
+.order-show .tc-deliverables-section .no,
+.order-show .tc-deliverables-section .actions {
   width: 40px; }
-.tc-deliverables-section input {
+.order-not-ready .tc-deliverables-section input,
+.order-edit .tc-deliverables-section input,
+.order-show .tc-deliverables-section input {
   margin-bottom: 0; }
-
-.tc-agreement-section {
-  text-align: center;
-  border-right: 1px solid #dededf; }
-  .tc-agreement-section .agree-check {
-    font-size: 13px;
-    padding-bottom: 20px; }
-
-.tc-total-section {
+.order-not-ready .tc-total-section,
+.order-edit .tc-total-section,
+.order-show .tc-total-section {
   text-align: right;
-  margin-bottom: 80px; }
-  .tc-total-section .total-label {
+  margin-bottom: 20px; }
+  .order-not-ready .tc-total-section .total-label,
+  .order-edit .tc-total-section .total-label,
+  .order-show .tc-total-section .total-label {
     display: inline-block;
     vertical-align: middle;
     text-align: right;
     font-style: italic;
     color: #999;
     font-size: 12px; }
-  .tc-total-section .total-value {
+  .order-not-ready .tc-total-section .total-value,
+  .order-edit .tc-total-section .total-value,
+  .order-show .tc-total-section .total-value {
     display: inline-block;
     vertical-align: middle;
     padding-left: 80px;
@@ -417,6 +433,44 @@ legend .badge {
     text-align: right;
     color: #0060b2; }
 
+.order-show .tc-agreement-section {
+  text-align: center;
+  margin-bottom: 20px; }
+  .order-show .tc-agreement-section .agree-check {
+    font-size: 13px;
+    padding-bottom: 20px; }
+.order-show .tc-sheet {
+  margin-right: 370px; }
+.order-show .tc-recent-panel {
+  position: fixed;
+  top: 112px;
+  right: 0;
+  bottom: 0;
+  width: 350px;
+  background: white;
+  border-top: 1px solid #dddddd; }
+  .order-show .tc-recent-panel .tc-thread-section {
+    padding: 10px; }
+    .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
+      width: 30px;
+      height: 30px; }
+  .order-show .tc-recent-panel .tc-more-section {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    color: #333;
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
+    .order-show .tc-recent-panel .tc-more-section a {
+      display: block;
+      padding: 20px 0;
+      text-align: center; }
+
+/****************************************************/
+/*****    Section Order:not_ready.html.twig    ******/
+/****************************************************/
 .order-not-ready .tc-sheet {
   position: relative; }
 .order-not-ready .tc-over-section {
