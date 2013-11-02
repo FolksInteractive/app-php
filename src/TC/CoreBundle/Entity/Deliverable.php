@@ -208,6 +208,16 @@ class Deliverable
     
         return $this;
     }
+    
+    /**
+     * @return float
+     */
+    public function getTotal(){
+        if( !$this->getCost() )
+            return 0;
+        
+        return $this->cost * $this->quantity;
+    }
 
     /**
      * Get quantity

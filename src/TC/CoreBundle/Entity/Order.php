@@ -202,13 +202,12 @@ class Order
         if( $this->deliverables->count() <= 0 )
             return null;
         
-        $list = $this->deliverables->toArray();
+        
         $total = 0;
-        for($i = 0; $i < count($list); ++$i) {
-            /* @var $deliverable Deliverable */
-            $deliverable = $list[$i];
-            $total += ($deliverable->getCost()) ? $deliverable->getCost() : 0 ;
+        foreach( $this->deliverables as $key=>$deliverable ){
+            $total += $deliverable->getTotal() ;
         }
+        
         return $total;
     }
     
@@ -443,6 +442,18 @@ class Order
     {
         return $this->deliverables->filter( function($deliverable){
             return !$deliverable->isCompleted();
+        });
+    }
+
+    /**
+     * Get list of deliverables
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getDeliverablesCompleted()
+    {
+        return $this->deliverables->filter( function($deliverable){
+            return $deliverable->isCompleted();
         });
     }
 
