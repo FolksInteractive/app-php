@@ -41,6 +41,13 @@ class EmailController extends Controller
                 $view = "TCCoreBundle:Vendor:Notification/relation_invitation_email.txt.twig";
                 $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
                 break;
+            
+            case 5 :
+            case "activation" :
+                $view = "TCUserBundle:Activation:email.txt.twig";
+                $params["user"] = $this->getUser();
+                $params["confirmationUrl"] = "{{(confirmationUrl)}}";
+                break;
         }
         
         return $this->render($view, $params);

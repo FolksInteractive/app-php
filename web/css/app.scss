@@ -2,7 +2,7 @@
 @import "../vendor/bootstrap/lib/_mixins";
 
 body {
-    background: url("/img/bg-texture.gif");
+    background-color: #FFF;
     overflow-y : scroll;
     overflow-x : hidden;
 }
@@ -39,8 +39,8 @@ legend{
 }
 
 .table th{
-    font-weight:normal;
-    font-style:italic;
+    font-weight: normal;
+    font-style: italic;
     font-size:13px;
     padding-top:0;
     padding-bottom:0;
@@ -50,63 +50,21 @@ legend{
     overflow-y : auto;
 }
 
-.tc-topbar {
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    z-index:100;
-    
-    .tc-topbar-logo {
-        margin:15px 0 0 30px;
-    }
-    
-    .tc-topbar-profile{
-        position: absolute;
-        top: 16px;
-        right: 40px;
-        font-size: 12px;
-        
-        .name{
-            color:#FFF;
-        }
-        img{
-            margin: -4px 12px 0 0;
-        }
-        .caret{
-            border-top-color: #fff;
-            border-bottom-color: #fff;
-            margin: 0 0 0 4px;
-        } 
-        
-        .btn-group{            
-            font-size:12px;
-        }
-    }
-}
-
-.tc-topbar-logo {
-    margin:25px 0 0 60px;
-}
-
-.tc-topbar-profile{
-    .dropdown-menu{
-        left:inherit;
-        right:0;
-    }
+.tc-logo {
+    margin: 30px 0 30px 40px;
 }
 
 
 // 1st Column
 .tc-menu-panel{
     position: fixed;
-    top: 50px;
+    top: 0px;
     left:0;
     bottom:0;
     width: 220px;
     vertical-align: top;
     color: #fff;
-    background: rgba(11,21,28,.75);
+    background: #0B1E2C;
     box-shadow: -5px 0px 5px -5px #222 inset;
     overflow-y:hidden;
     text-shadow: 1px 1px 2px #232729;
@@ -116,16 +74,16 @@ legend{
         
         i {
             width:20px;
-            margin-top:-2px;
+            margin: -2px 10px 0 0;
         }
         
         li {    
             a {
-                font-size: 13px;
+                font-size: 14px;
                 color: #FFF;
                 text-shadow: none;
                 display: block;
-                padding: 8px 0 8px 24px;
+                padding: 15px 0 15px 25px;
                 text-shadow: 1px 1px 2px #232729;
             }
             a:hover{
@@ -148,6 +106,18 @@ legend{
         }
     }
     
+    .dropup {
+        position: absolute;
+        bottom: 0px;
+        padding: 20px;
+        text-align: center;
+        
+        .dropdown-menu{
+            left:inherit;
+            right:0;
+        }
+    }
+    
     .tc-return-section{
         ul{
             margin: 5px 0;
@@ -161,14 +131,14 @@ legend{
     
     .nav-header {
         display: block;
-        line-height: 20px;
+        line-height: 30px;
         font-size: 12px;
-        font-weight:normal;
+        font-weight: normal;
         text-shadow: none;
         text-transform: uppercase;
         color: #b1b4b7;
         text-shadow: 1px 1px 2px #232729;
-        margin-top:10px;
+        margin: 10px 0 5px 0;
         padding: 3px 15px;
     }
     
@@ -176,7 +146,7 @@ legend{
 
 .tc-main-panel{
     position: absolute;
-    top: 50px;
+    top: 0px;
     left: 220px;
     right:0;
     
@@ -187,7 +157,6 @@ legend{
         left: 220px;
         top: 50px;
         background: rgba(255,255,255,.85);
-        box-shadow: 0 5px 5px -5px #ccc;
         
         
         .tc-breadcrumb{
@@ -198,7 +167,7 @@ legend{
             .breadcrumb{
                 margin:18px 0 0 20px;
                 padding:0;
-                background:none; 
+                background: none; 
                 
                 img{
                     padding-right: 10px;
@@ -243,7 +212,6 @@ legend{
     padding: 5px;
     background-color: #fff;
     margin:82px 20px 20px 20px;
-    box-shadow: 1px 1px 5px #999;
     
     & > [class*="-section"],
     & > [class$="-section"]{

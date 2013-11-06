@@ -7,17 +7,36 @@
 {% endblock %}
 
 {% block body %}
-<div class="tc-topbar">
-    <div class="tc-topbar-logo">
+
+<div class="tc-menu-panel">
+    
+    <div class="tc-logo">
         <img src="/img/logo-timecrumbs.png" />
     </div>
     
-    {% block topbar %}{% endblock %}
-</div>
+    {% block menu %}{% endblock %}
+    
+    <div class="dropup">
 
-<div class="tc-menu-panel">
-    {% block menu %}
-    {% endblock %}
+        <a data-toggle="dropdown" class="profile-links client" href="#">
+            <div class="profile">
+               {# Activate this when avatar will be available
+                <img src="/img/thumbnails/alex-small.png">
+               #} 
+                    
+                <span class="name">{{app.user.fullName}}</span>
+                <span class="caret"></span>
+            </div>
+        </a>
+
+        <ul class="dropdown-menu">
+            <!-- dropdown menu links -->
+            {% block topbar_profile_dropdown %}{% endblock %}
+            <li><a href="{{path('fos_user_profile_edit')}}">Edit profile</a></li>
+            <li><a href="{{path('fos_user_security_logout')}}">Sign out</a></li>
+        </ul>
+    </div>
+    
 </div>
 
 <div class="tc-main-panel" {% block main_attrs %}{% endblock %}>

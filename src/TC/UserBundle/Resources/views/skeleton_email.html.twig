@@ -24,29 +24,49 @@
                                     {%block buttons %} 
                                         <table>
                                             <tr>
-                                                <td><a href="#" style="background-color: #097acb; padding: 20px; font-family: Helvetica, Arial; color: #FFF;font-weight: bold; text-decoration: none; font-size: 26px;">{%block button1 %} {%endblock%}</a></td>
+                                                <td>
+                                                    <a href="#">
+                                                        <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
+                                                                <td></td>
+                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td style="padding: 15px 25px;font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">{% block button1 %}{% endblock %}</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
+                                                                <td></td>
+                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </table>
                                     {%endblock%}
-                                </td>
-                            </tr>            
-                        </table></td>
-                </tr>
-                <tr>
-                <tr>
-                    <td height="50"></td>
-                </tr>
-                <tr>
-                    <td align="center" style="font-size: 13px; color: #999; margin-top: 20px; font-family: Helvetica, Arial;">
-                        If you wish to stop receiving notification emails, please visit <a href="#" style="color: #097acb; text-decoration: none;">notification</a> settings page.
-                    </td>
-                </tr>
-                <tr>
-                    <td height="50"></td>
-                </tr>
-            </table></td>
-        <td width="30">&nbsp;</td>
-    </tr>
+                        </td>
+                    </tr>            
+                </table></td>
+        </tr>
+        <tr>
+        <tr>
+            <td height="50"></td>
+        </tr>
+        <tr>
+            <td align="center" style="font-size: 13px; color: #999; margin-top: 20px; font-family: Helvetica, Arial;">
+                If you wish to stop receiving notification emails, please visit <a href="#" style="color: #097acb; text-decoration: none;">notification</a> settings page.
+            </td>
+        </tr>
+        <tr>
+            <td height="50"></td>
+        </tr>
+    </table></td>
+<td width="30">&nbsp;</td>
+</tr>
 </table>
 <table width="620" border="0" cellspacing="0" cellpadding="0">
     <tr>

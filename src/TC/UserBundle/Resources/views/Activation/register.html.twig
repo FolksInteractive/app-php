@@ -1,0 +1,35 @@
+{% extends "TCUserBundle::skeleton.html.twig" %}
+
+{% block body_class %}
+    {{parent()}} tc_user_register
+{% endblock %}
+
+{% block body %}
+
+<div class="gradient"></div>
+
+<div class="wrapper">
+    <a href="/"><div class="logo"></div></a>
+    
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for key, message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    {% if form.vars.errors|length > 0 %}
+    {{ form_errors(form) }}
+    {% endif %}
+    
+    <div class="well">
+        {% include "TCUserBundle:Registration:register_content.html.twig" %}
+    </div>
+    <div class="more_links">
+        <div class="pull-left">
+            <a href="{{path('fos_user_security_login')}}" class="back">← Back to login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
