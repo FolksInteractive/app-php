@@ -13,3 +13,7 @@ services:
         class: TC\BootstrapBundle\Twig\BootstrapBadgeExtension
         tags:
             - { name: twig.extension }
+    tc_bootstrap.twig.form_extension:
+        class: TC\BootstrapBundle\Twig\BootstrapFormExtension
+        tags:
+            - { name: twig.extension }

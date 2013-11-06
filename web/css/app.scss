@@ -19,6 +19,10 @@ p {
     padding: 5px 0;
 }
 
+ul{
+    margin:0;
+}
+
 form{
     margin: 0;
     padding: 0;
@@ -70,9 +74,9 @@ legend{
             margin: -4px 12px 0 0;
         }
         .caret{
-            border-top-color: #CCC;
-            border-bottom-color: #CCC;
-            margin: 8px 0 0 4px;
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+            margin: 0 0 0 4px;
         } 
         
         .btn-group{            
@@ -149,7 +153,6 @@ legend{
             margin: 5px 0;
         }
         span{
-            margin-left: 15px;
         }
         i{
             margin-top:1px;
@@ -157,12 +160,16 @@ legend{
     }
     
     .nav-header {
+        display: block;
+        line-height: 20px;
         font-size: 12px;
+        font-weight:normal;
         text-shadow: none;
+        text-transform: uppercase;
         color: #b1b4b7;
         text-shadow: 1px 1px 2px #232729;
         margin-top:10px;
-        font-weight:normal;
+        padding: 3px 15px;
     }
     
 }

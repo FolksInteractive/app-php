@@ -3,7 +3,7 @@
         {%- for  child in item|breadcrumbs %}
         <li class="{{loop.last	?'active': '' }}">
             <a href="{{child.uri}}">{{child.label|parse_icons}}</a>
-            <span class="divider">/</span>
+            
         </li>
         {%- endfor %}
     </ul>

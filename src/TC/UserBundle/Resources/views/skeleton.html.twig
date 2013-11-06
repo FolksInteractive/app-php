@@ -5,20 +5,6 @@
     <link href="{{asset('/css/user.css')}}" type="text/css" rel="stylesheet" />
 {% endblock %}
     
-{% if form is defined %}
-    {% form_theme form _self %}
-
-    {% block form_row %}
-    {% spaceless %}
-        <div class="form_row {{name}}_row control-group {% if form_errors(form)|length >0 %}invalid_row{% endif %}">
-            {{ form_label(form, label|default(null)) }}
-            {{ form_widget(form, { 'attr': {'class': 'input-block-level'}}) }}
-            {{ form_errors(form) }}
-        </div>
-    {% endspaceless %}
-    {% endblock form_row %}
-{% endif %}
-
 {% block body_class %}
     {{parent()}} tc_user
 {% endblock %}

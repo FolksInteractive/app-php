@@ -9,7 +9,7 @@
             <meta http-equiv="refresh" content="0;url=no-js.html" />
         </noscript>
         -->
-        <link rel="stylesheet" href="{{asset('vendor/bootstrap/bootstrap-2.3.2.min.css')}}" />
+        <link rel="stylesheet" href="{{asset('/vendor/bootstrap/dist/css/bootstrap.min.css')}}" />
         {% block head_css %}{% endblock %}        
         {% block head_js %}{% endblock %}
     </head>
@@ -18,7 +18,7 @@
         {% block body %}{% endblock %}
         
         <script src="{{asset('/vendor/jquery/jquery-1.10.2.js')}}" type="text/javascript"></script>  
-        <script src="{{asset('vendor/bootstrap/js/bootstrap-dropdown.js')}}" type="text/javascript"></script> 
+        <script src="{{asset('/vendor/bootstrap/js/dropdown.js')}}" type="text/javascript"></script> 
         <script src="{{asset('/vendor/angular/angular.js')}}" type="text/javascript"></script>
         
         {% block bottom_js %}{% endblock %}

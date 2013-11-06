@@ -15,7 +15,6 @@ class RootController extends Controller {
      * @Template("TCCoreBundle::root.html.twig")
      */
     public function rootAction(  ) {
-
         return array(
         );
     }

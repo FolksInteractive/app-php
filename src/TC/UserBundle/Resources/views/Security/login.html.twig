@@ -21,24 +21,24 @@
         <form id="user_login_form" action="{{ path("fos_user_security_check") }}" method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
             
-            <div class="username_row control-group">
+            <div class="username_row form-group">
                 <label for="username">{{ 'security.login.username'|trans }}</label>
-                <input type="text" id="username" name="_username" class="input-block-level" value="{{ last_username }}" />
+                <input type="text" id="username" name="_username" class="form-control input-block-level" value="{{ last_username }}" />
             </div>
 
-            <div class="password_row control-group">
+            <div class="password_row form-group">
                 <label for="password">{{ 'security.login.password'|trans }}</label>
-                <input type="password" id="password" name="_password" class="input-block-level" />
+                <input type="password" id="password" name="_password" class="form-control input-block-level" />
             </div>
 
-            <div class="remember_row control-group">
+            <div class="remember_row form-group">
                 <label for="remember_me" class="checkbox">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
                     {{ 'security.login.remember_me'|trans }}
                 </label>
             </div>
 
-            <div class="submit_row control-group">
+            <div class="submit_row form-group">
                 <input type="submit" id="_submit" name="_submit" class="btn btn-primary" value="{{ 'security.login.submit'|trans }}" />
             </div>
         </form>

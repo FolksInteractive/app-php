@@ -83,7 +83,7 @@ class TCBootstrapExtension extends Extension implements PrependExtensionInterfac
      *
      * @return void
      */
-    private function configureTwigBundle(ContainerBuilder $container)
+    protected function configureTwigBundle(ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $name => $extension) {
             switch ($name) {
@@ -104,7 +104,7 @@ class TCBootstrapExtension extends Extension implements PrependExtensionInterfac
      *
      * @return void
      */
-    private function configureKnpMenuBundle(ContainerBuilder $container)
+    protected function configureKnpMenuBundle(ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $name => $extension) {
             switch ($name) {
@@ -125,7 +125,7 @@ class TCBootstrapExtension extends Extension implements PrependExtensionInterfac
      *
      * @return void
      */
-    private function configureKnpPaginatorBundle(ContainerBuilder $container)
+    protected function configureKnpPaginatorBundle(ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $name => $extension) {
             switch ($name) {
