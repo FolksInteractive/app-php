@@ -28,6 +28,10 @@
         .actions{
             width:40px;   
         }
+        .remove-action{
+            top:0; // Overwrite top:1px of .glyphicon
+            color: $brand-danger;
+        }
         
         input{
             margin-bottom:0;

@@ -43,10 +43,11 @@ ng-controller="order.EditController"
 <div class="tc-outcome-section" ng-form name="offerForm">
     <legend>Job outcome</legend>
     <p>
-        <textarea class="input-block-level"
+        <textarea class="form-control input-block-level"
             name="{{form.offer.vars.full_name}}"
             ng-model="order.offer"></textarea>
     </p>
+    {{form_widget(form.offer)}}
 </div>
 
 <div class="tc-deliverables-section">
@@ -68,27 +69,26 @@ ng-controller="order.EditController"
             {% raw %}
             <tr ng-repeat="deliverable in order.deliverables">
                 <td class="description">
-                    <input type="text" class="input-block-level"
+                    <input type="text" class="form-control input-block-level"
                            name="{{getDeliverableFormName(deliverable, 'name')}}"
                            ng-model="deliverable.name" />
                 </td>
                 <td class="cost">
-                    <input type="text" class="input-block-level"
+                    <input type="text" class="form-control input-block-level"
                            name="{{getDeliverableFormName(deliverable, 'cost')}}"
                            ng-model="deliverable.cost"/>
                 </td>
                 <td class="quantity">
-                    <input type="text" class="input-block-level"
+                    <input type="text" class="form-control input-block-level"
                            name="{{getDeliverableFormName(deliverable, 'quantity')}}"
                            ng-model="deliverable.quantity" />
                 </td>
                 <td class="subtotal" 
                     ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
                 <td class="actions">
-                    <button class="btn-danger btn"
+                    <a class="remove-action glyphicon glyphicon-remove"
                         ng-click="removeDeliverable(deliverable)">
-                        <i class="icon-trash icon-white"></i>
-                    </button>
+                    </a>
                 </td>
             </tr>
             {% endraw %}
@@ -97,17 +97,17 @@ ng-controller="order.EditController"
         
         <tfoot ng-form name="newDeliverablesForm">
             <td class="description">
-                <input type="text"class="input-block-level"
+                <input type="text"class="form-control input-block-level"
                         ng-model="newDeliverable.name" 
                         ng-required="true" />
             </td>
             <td class="cost">
-                <input type="text" class="input-block-level"
+                <input type="text" class="form-control input-block-level"
                         ng-model="newDeliverable.cost"
                         ng-required="true"/>
             </td>
             <td class="quantity">
-                <input type="text" class="input-block-level disabled" 
+                <input type="text" class="form-control input-block-level disabled" 
                         ng-model="newDeliverable.quantity"
                        ng-disabled="true" />
             </td>

@@ -419,6 +419,11 @@ legend .badge {
 .order-show .tc-deliverables-section .no,
 .order-show .tc-deliverables-section .actions {
   width: 40px; }
+.order-not-ready .tc-deliverables-section .remove-action,
+.order-edit .tc-deliverables-section .remove-action,
+.order-show .tc-deliverables-section .remove-action {
+  top: 0;
+  color: #d9534f; }
 .order-not-ready .tc-deliverables-section input,
 .order-edit .tc-deliverables-section input,
 .order-show .tc-deliverables-section input {
