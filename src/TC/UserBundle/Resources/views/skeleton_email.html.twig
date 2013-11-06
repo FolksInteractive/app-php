@@ -1,30 +1,11 @@
-{%block subject%}{%endblock%}
-<table bgcolor="#fafafa" width="620" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #dededf;">
+<table bgcolor="#f4f4f4" width="700" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td width="30">&nbsp;</td>
-        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="75" height="75" align="center" valign="middle" bgcolor="#fff" style="border: 1px solid #dededf; border-top: none;"><img src="{{ app.request.uriForPath('/../images/email/clock.png')}}" border="0" /></td>
-                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td width="20">&nbsp;</td>
-                                <td><span style="font-family:Arial;font-weight:bold;font-size: 24px;">{%block title%}{%endblock%}</span><br />
-                                    <span style="font-family:Arial;font-weight:bold;color: #5c7c93; font-size: 14px;">
-                                    {% block sub_title %}
-                                            by {{(app.user) ? app.user.fullName : "someone"}} on {{"now"|date('M jS')}}
-                                     {% endblock %}       
-                                    </span></td>
-                            </tr>
-                        </table></td>
-                </tr>
-                <tr>
-                    <td height="25"></td>
-                    <td></td>
-                </tr>
-            </table>
+        <td><div style="width: 75px; height: 75px; background-color: #FFF;"><img style="padding: 22px 0 0 21px;" src="{{ app.request.uriForPath('/../img/email/clock.png')}}" border="0" /></div>
+            <div style="text-align: center; margin-bottom: 70px;">{%block title%}{%endblock%}</div>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #dededf; ">
+                    <td><table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="20" height="20"></td>
                                 <td></td>
@@ -32,44 +13,52 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td style="font-family:Arial;font-size: 14px;">
-                                        {% block body_html %}{% endblock %}
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td height="20"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>            
-                            </table></td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td height="25"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            {%block view_button %} {%endblock%}
-                            <!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="20" >&nbsp;</td>
-                                    <td width="280"><span style="font-family:Arial;color: #5c7c93;font-size:12px"><!--If you want to stop receiving notification emails, please visit <a href="#" style="color: #097acb; font-weight: bold; text-decoration: none;">notification settings page</a>.</span></td>
-                                    <td align="right"></td>
-                                </tr>
-                            </table>-->
+                                <td align="center" style="font-family: Helvetica, Arial;">
+                                    <div style="font-size: 42px; font-weight: bold; color: #333; margin-top: 30px;">{% block sub_title %}{% endblock %}</div><br />
+                                    <div style="font-size: 14px; color: #999; margin-top: 20px;">{% block body_html %}{% endblock %}</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td height="180" colspan="3" align="center">
+                                    {%block buttons %} 
+                                        <table>
+                                            <tr>
+                                                <td><a href="#" style="background-color: #097acb; padding: 20px; font-family: Helvetica, Arial; color: #FFF;font-weight: bold; text-decoration: none; font-size: 26px;">{%block button1 %} {%endblock%}</a></td>
+                                            </tr>
+                                        </table>
+                                    {%endblock%}
+                                </td>
+                            </tr>            
+                        </table></td>
+                </tr>
+                <tr>
+                <tr>
+                    <td height="50"></td>
+                </tr>
+                <tr>
+                    <td align="center" style="font-size: 13px; color: #999; margin-top: 20px; font-family: Helvetica, Arial;">
+                        If you wish to stop receiving notification emails, please visit <a href="#" style="color: #097acb; text-decoration: none;">notification</a> settings page.
+                    </td>
+                </tr>
+                <tr>
+                    <td height="50"></td>
+                </tr>
+            </table></td>
+        <td width="30">&nbsp;</td>
+    </tr>
+</table>
+<table width="620" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="left" height="100" valign="bottom">
+            <div style="float: left; padding: 30px;">
+                <span style="color: #aaaaaa; font-size: 11px; font-family: Arial;">&copy; 2013 <a href="http://www.timecrumbs.com/" target="_blank" style="color: #097acb; text-decoration: none;">TimeCrumbs.com</a> – Every Bit of Time Matters.</span><br />
+                <span style="color: #aaaaaa; font-size: 11px; font-family: Arial; line-height: 16px;">400, rue Montfort C.P.1, Montreal (QC) Canada, H3C 4J9</span>
+            </div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="25"></td>
-                    </tr>
-                </table></td>
-            <td width="30">&nbsp;</td>
-        </tr>
-    </table>
-    <table width="620" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td align="center" height="30" valign="bottom"><span style="color: #aaaaaa; font-size: 12px; font-family: Arial;">This message was send via <a href="http://www.timecrumbs.com/" target="_blank" style="color: #097acb; text-decoration: none;">TimeCrumbs.com</a> – A simple time relation management tool.</span></td>
-        </tr>
-    </table>
+            <div style="float: right; padding-top: 32px; margin-right: -45px;">
+                <img src="{{ app.request.uriForPath('/../img/email/logo-timecrumbs.gif')}}" border="0" />
+            </div>
+        </td>
+    </tr>
+</table>

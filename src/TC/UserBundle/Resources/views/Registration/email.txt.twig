@@ -1,33 +1,79 @@
 {% extends "TCUserBundle::skeleton_email.html.twig" %}
 
-{% block subject %}
-{% autoescape false %}
+{% block subject %}{% autoescape false %}
 {{ 'registration.email.subject'|trans({'%username%': user.shortName, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
-{% endautoescape %}
-{% endblock %}
+{% endautoescape %}{% endblock %}
 
-{% block title %}
-{% autoescape false %}
-Welcome to TimeCrumbs!
-{% endautoescape %}
-{% endblock %}
+{% block title %}{% autoescape false %}
+<img src="{{ app.request.uriForPath('/../img/email/title-registration.gif')}}" border="0" />
+{% endautoescape %}{% endblock %}
 
-{% block sub_title %}
-{% autoescape false %}
-&nbsp;
-{% endautoescape %}
-{% endblock %}
+{% block sub_title %}{% autoescape false %}
+Start Using TimeCrumbs!
+{% endautoescape %}{% endblock %}
 
-{% block body_html %}
-{% autoescape false %}
-Hello {{user.shortName}}!<br />
-            <br />
-To finish activating your account - please visit <a href="{{(confirmationUrl)}}">{{(confirmationUrl)}}</a><br />
-<br />
-Regards,
-the Team.
-{% endautoescape %}
-{% endblock %}
 
-{% block view_button %}
-{% endblock %}
+{% block body_html %}{% autoescape false %}
+Click the following buttons to access your TimeCrumbs’ <br />account or learn how to use TimeCrumbs.
+{% endautoescape %}{% endblock %}
+
+{% block buttons %}{% autoescape false %}
+<table><tr>
+        <td>
+        <table>
+            <tr>
+                <td>
+                    <a href="#">
+                    <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
+                            <td></td>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="padding: 15px 25px; font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 26px;">Start Using It</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
+                            <td></td>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
+                        </tr>
+                    </a>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </td>
+    <td>
+        <table>
+            <tr>
+                <td>
+                    <a href="#">
+                    <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
+                            <td></td>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="padding: 15px 25px; font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 26px;">View Tutorials</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
+                            <td></td>
+                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
+                        </tr>
+                    </a>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </td>
+    </tr>
+</table>
+{% endautoescape %}{% endblock %}
+
