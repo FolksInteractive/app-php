@@ -9,52 +9,62 @@
 {% block body %}
 
 <div class="tc-menu-panel">
-    
-    <div class="tc-logo">
-        <img src="/img/logo-timecrumbs.png" />
-    </div>
-    
-    {% block menu %}{% endblock %}
-    
-    <div class="dropup">
 
-        <a data-toggle="dropdown" class="profile-links client" href="#">
-            <div class="profile">
-               {# Activate this when avatar will be available
-                <img src="/img/thumbnails/alex-small.png">
-               #} 
-                    
-                <span class="name">{{app.user.fullName}}</span>
-                <span class="caret"></span>
-            </div>
-        </a>
 
-        <ul class="dropdown-menu">
-            <!-- dropdown menu links -->
+    <div class="tc-menu-heading">
+
+        <div class="tc-logo">
+            <img src="/img/logo-timecrumbs.png" />
+        </div>
+
+        <div class="account">
+            
+            <div class="alerts"><a href="#"><img src="/img/icons/alerts.png" /><span class="badge label-success">2</span></a></div>
+
+            <div class="dropdown">
+
+                <a data-toggle="dropdown" class="profile-links client" href="#">
+                    <div class="profile">
+                        <!--<img src="/img/users/user.png" width="30" height="30">-->
+                        <div class="name">Hi, {{app.user.firstName}}!</div>
+                        <div class="caret glyphicon-white"></div>
+                    </div>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
             {% block topbar_profile_dropdown %}{% endblock %}
-            <li><a href="{{path('fos_user_profile_edit')}}">Edit profile</a></li>
-            <li><a href="{{path('fos_user_security_logout')}}">Sign out</a></li>
-        </ul>
+                    <li><a href="{{path('fos_user_profile_edit')}}">Edit profile</a></li>
+                    <li><a href="{{path('fos_user_security_logout')}}">Sign out</a></li>
+                </ul>
+            </div>
+
+        </div>
+
     </div>
-    
+
+    {% block menu %}{% endblock %}
+
+
+
 </div>
 
 <div class="tc-main-panel" {% block main_attrs %}{% endblock %}>
     {% block main_before %}{% endblock %}
-        
+
     {% block main %}
-    <div class="tc-toolbar">
-        <div class="bg-color"></div>
+        <div class="tc-toolbar">
+            <div class="bg-color"></div>
         {% block toolbar %}{% endblock %}        
-    </div>
-        
-    <div class="tc-sheet">
+        </div>
+
+        <div class="tc-sheet">
         {% block sheet %}{% endblock %}
-    </div>
+            </div>
     {% endblock %}
-        
+
     {% block main_after %}{% endblock %}
-</div>
+        </div>
 {% endblock %}
 
 {% block bottom_js %}
