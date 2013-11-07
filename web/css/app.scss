@@ -75,6 +75,7 @@ legend{
         i {
             width:20px;
             margin: -2px 10px 0 0;
+            color: #C1C5C8;
         }
         
         li {    
@@ -250,6 +251,7 @@ legend{
 @import "relation";
 @import "order";
 @import "invoice";
+@import "user";
 
 .blurry{
     opacity: 0.3;

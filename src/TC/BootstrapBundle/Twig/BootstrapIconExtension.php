@@ -105,7 +105,7 @@ class BootstrapIconExtension extends Twig_Extension
      */
     public function glyphiconFunction($icon)
     {        
-        return sprintf('<span class="glyphicon glyphicon-%s"></span>', $icon);
+        return sprintf('<i class="glyphicon glyphicon-%s"></i>', $icon);
     }
 
     /**
