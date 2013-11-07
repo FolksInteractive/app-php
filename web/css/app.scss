@@ -5,6 +5,7 @@ body {
     background-color: #FFF;
     overflow-y : scroll;
     overflow-x : hidden;
+    font: 100%/1.4 Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -48,10 +49,6 @@ legend{
 
 .tc-panel{
     overflow-y : auto;
-}
-
-.tc-logo {
-    margin: 30px 0 30px 40px;
 }
 
 
@@ -107,16 +104,63 @@ legend{
         }
     }
     
-    .dropup {
-        position: absolute;
-        bottom: 0px;
-        padding: 20px;
-        text-align: center;
+    .tc-menu-heading {
+        top: 0;
+        background: rgba(0,0,0,0.5);
         
-        .dropdown-menu{
-            left:inherit;
-            right:0;
+        .tc-logo {
+           padding: 25px 0 0 30px;
         }
+        
+        .account {
+            text-align: center;
+            padding-bottom: 10px;
+            margin-left: -10px;
+            
+            .alerts {
+                display: inline-block;
+                padding-right: 20px;
+                
+                .badge {
+                    background-color: #74d600;
+                    margin-left: 5px;
+                }
+            }
+            
+            .dropdown {
+                text-align: center;
+                padding: 20px 0;
+                display: inline-block;
+                
+                .caret {
+                    border-top-color: #FFF;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 7px 0 0 5px;
+                }
+                
+                .name {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 90px;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+                
+                a {
+                    color: #FFF;
+                    font-size: 14px;
+                }
+                
+                .dropdown-menu{
+                    left: inherit;
+                    right:0;
+                }
+            }
+            
+        }
+        
     }
     
     .tc-return-section{
