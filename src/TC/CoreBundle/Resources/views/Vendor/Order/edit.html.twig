@@ -40,14 +40,43 @@ ng-controller="order.EditController"
 {% endblock %}
 
 {% block sheet %}
-<div class="tc-outcome-section" ng-form name="offerForm">
-    <legend>Job outcome</legend>
-    <p>
-        <textarea class="form-control input-block-level"
-            name="{{form.offer.vars.full_name}}"
-            ng-model="order.offer"></textarea>
-    </p>
-    {{form_widget(form.offer)}}
+<div class="tc-offer-section">
+    
+    <div class="tc-offer" ng-form name="offerForm">
+    {% raw %}
+        <div class="tc-block" ng-repeat="block in order.offer">
+            <div class="form-group">        
+                <input type="text" class="form-control input-block-level"
+                       name="{{getOfferFormName(block, 'title')}}"
+                       ng-model="block.title" />
+            </div>
+            <div class="form-group">        
+                <textarea class="form-control input-block-level"
+                       name="{{getOfferFormName(block, 'body')}}"
+                       ng-model="block.body"></textarea>
+            </div>
+        </div>
+    {% endraw %}
+    </div>
+        
+    <div ng-form name="newBlockForm">  
+        <div class="form-group">        
+            <input type="text" class="form-control input-block-level"
+                ng-model="newBlock.title" 
+                ng-required="true" />
+        </div>
+        <div class="form-group">        
+            <textarea class="form-control input-block-level"
+                ng-model="newBlock.body" 
+                ng-required="true" /></textarea>
+        </div>
+        <div class="form-group">        
+            <button type="button" class="btn-primary btn"
+                disabled=""
+                ng-disabled="newBlockForm.$invalid"
+                ng-click="addBlock()">Add</button>
+        </div>    
+    </div>
 </div>
 
 <div class="tc-deliverables-section">
@@ -135,7 +164,7 @@ ng-controller="order.EditController"
 (function(ng, module){
 
     module.value("order", {
-        offer :" {{form.offer.vars.value}}",
+        offer : {{form.offer.vars.value|json_encode()|raw}},
         deliverables : [
         {% for deliverable in form.deliverables %}
         {% set data = deliverable.vars.value %}

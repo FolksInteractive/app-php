@@ -35,8 +35,7 @@ class Order
     /**
      * @var integer $offer
      *
-     * @TCAssert\NotBlankButNullable()
-     * @ORM\Column(name="offer", type="text", nullable=true)
+     * @ORM\Column(name="offer", type="array", nullable=true)
      */
     private $offer;
     
@@ -323,25 +322,6 @@ class Order
         return $this->request;
     }
 
-    /**
-     * Set offer
-     *
-     * @param string $offer
-     */
-    public function setOffer($offer)
-    {
-        $this->offer = $offer;
-    }
-
-    /**
-     * Get offer
-     *
-     * @return string 
-     */
-    public function getOffer()
-    {
-        return $this->offer;
-    }
 
     /**
      * Set relation
@@ -597,5 +577,28 @@ class Order
     public function isOpen()
     {
         return ($this->offer || $this->deliverables->count()>0);
+    }
+
+    /**
+     * Set offer
+     *
+     * @param array $offer
+     * @return Order
+     */
+    public function setOffer($offer)
+    {
+        $this->offer = $offer;
+    
+        return $this;
+    }
+
+    /**
+     * Get offer
+     *
+     * @return array 
+     */
+    public function getOffer()
+    {
+        return $this->offer;
     }
 }

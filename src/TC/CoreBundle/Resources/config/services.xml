@@ -106,7 +106,11 @@
             <argument type="service" id="templating" />
             <argument>%tc.admin.email%</argument>
         </service>
-                
+        
+        <!-- FORM -->
+        <service id="tc.form.text_block_type" class="TC\CoreBundle\Form\TextBlockType">
+            <tag name="form.type" alias="text_block" />
+        </service>    
     </services>
     
 </container>

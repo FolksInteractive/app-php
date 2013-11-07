@@ -6,11 +6,17 @@
         <p>This project order was created on {{order.createdAt|date('d M ')}} by {{order.creator.user.fullName}}.</p>
     </div>
 
-    <div class="tc-outcome-section">
-        <legend>Job outcome</legend>
-        <p>
-        {{order.offer}}
-        </p>
+    <div class="tc-offer-section">
+        <h1>Proposal</h1>
+        
+        <div class="tc-offer">
+            {% for block in order.offer %} 
+            <div class="tc-offer-block">
+                <h3>{{block.title}}</h3>
+                <p>{{block.body}}</p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
     <div class="tc-deliverables-section">    

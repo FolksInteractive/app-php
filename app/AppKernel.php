@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new TC\UserBundle\TCUserBundle(),
             new TC\CoreBundle\TCCoreBundle(),
             new TC\BootstrapBundle\TCBootstrapBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

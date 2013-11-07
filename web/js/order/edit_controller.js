@@ -2,9 +2,6 @@ var module = angular.module("OrderEdit", []);
 
 module.controller("order.EditController", function($scope, form_name, order){
     
-    function getIndex( deliverable ){
-        return order.deliverables.indexOf(deliverable);
-    };
     
     function getFormName(prop){
         return form_name+"["+prop+"]";
@@ -14,8 +11,48 @@ module.controller("order.EditController", function($scope, form_name, order){
         return getFormName(prop);
     };
     
+    /* **************************************** */    
+    /* ******        OFFER BLOCKS        ****** */
+    /* **************************************** */
+    
+    function getBlockIndex( block ){
+        return order.offer.indexOf(block);
+    };
+    
+    $scope.getOfferFormName = function(block, prop){
+        var i = getBlockIndex(block);
+        return getFormName('offer')+"["+i+"]["+prop+"]";
+    };
+    
+    $scope.addBlock = function(){
+        //Add the new one to the list
+        $scope.order.offer.push($scope.newBlock);
+        
+        //Resets newOffer
+        $scope.newBlock = {'title':'', 'body':''};
+    
+        $scope.offerForm.$setDirty();
+    };
+    
+    $scope.removeBlock = function(block){
+        var i = getBlockIndex(block);
+        $scope.order.offer.splice(i,1);
+        $scope.offerForm.$setDirty();
+    }
+    
+    // Store new deliverables 
+    $scope.newBlock = {'title':'', 'body':''};
+    
+    /* **************************************** */    
+    /* ******        DELIVERABLES        ****** */
+    /* **************************************** */
+    
+    function getDeliverableIndex( deliverable ){
+        return order.deliverables.indexOf(deliverable);
+    };
+    
     $scope.getDeliverableFormName = function(deliverable, prop){
-        var i = getIndex(deliverable);
+        var i = getDeliverableIndex(deliverable);
         return getFormName('deliverables')+"["+i+"]["+prop+"]";
     };
     
@@ -30,10 +67,14 @@ module.controller("order.EditController", function($scope, form_name, order){
     };
     
     $scope.removeDeliverable = function(deliverable){
-        var i = getIndex(deliverable);
+        var i = getDeliverableIndex(deliverable);
         $scope.order.deliverables.splice(i,1);
         $scope.deliverablesForm.$setDirty();
     }
+    
+    // Store new deliverables 
+    $scope.newDeliverable = {name:'', 'cost':null, 'quantity':1};
+    /* *************************************** */
     
     $scope.getTotal = function(){
         var deliverable;
@@ -49,7 +90,5 @@ module.controller("order.EditController", function($scope, form_name, order){
     
     $scope.order = order;
     
-    // Store new deliverables 
-    $scope.newDeliverable = {name:'', 'cost':null, 'quantity':1};
     
 });
