@@ -1,5 +1,6 @@
 @import "../vendor/bootstrap/lib/_variables";
 @import "../vendor/bootstrap/lib/_mixins";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 body {
     background-color: #FFF;
@@ -39,12 +40,16 @@ legend{
     }
 }
 
-.table th{
-    font-weight: normal;
-    font-style: italic;
-    font-size:13px;
-    padding-top:0;
-    padding-bottom:0;
+.tc-relations{
+    border: none;
+    
+    th{
+        font-weight: normal;
+        font-style: italic;
+        font-size:13px;
+        padding-top:0;
+        padding-bottom:0;
+    }
 }
 
 .tc-panel{
@@ -53,7 +58,7 @@ legend{
 
 
 // 1st Column
-.tc-menu-panel{
+.tc-menu-panel {
     position: fixed;
     top: 0px;
     left:0;
@@ -61,9 +66,9 @@ legend{
     width: 220px;
     vertical-align: top;
     color: #fff;
-    background: #0B1E2C;
+    background: #202022;
     box-shadow: -5px 0px 5px -5px #222 inset;
-    overflow-y:hidden;
+    overflow-y: hidden;
     text-shadow: 1px 1px 2px #232729;
     
     .tc-menu {
@@ -105,20 +110,15 @@ legend{
     
     .tc-menu-heading {
         top: 0;
-        background: rgba(0,0,0,0.5);
-        
-        .tc-logo {
-           padding: 25px 0 0 30px;
-        }
+        background: rgba(0,0,0,0.2);
         
         .account {
-            text-align: center;
-            padding-bottom: 10px;
-            margin-left: -10px;
+            margin-left: 20px;
             
             .alerts {
                 display: inline-block;
                 padding-right: 20px;
+                display: none;
                 
                 .badge {
                     background-color: #74d600;
@@ -127,7 +127,7 @@ legend{
             }
             
             .dropdown {
-                text-align: center;
+                text-align: left;
                 padding: 20px 0;
                 display: inline-block;
                 
@@ -135,16 +135,18 @@ legend{
                     border-top-color: #FFF;
                     display: inline-block;
                     vertical-align: top;
-                    margin: 7px 0 0 5px;
+                    margin: 2px 0 0 10px;
+                    vertical-align: middle;
                 }
                 
                 .name {
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
-                    width: 90px;
+                    width: 120px;
                     display: inline-block;
-                    vertical-align: top;
+                    vertical-align: middle;
+                    padding-left: 15px;
                 }
                 
                 a {
@@ -158,6 +160,12 @@ legend{
                 }
             }
             
+        }
+        
+        .tc-logo {
+            padding: 25px 0 0 44px;
+            position: absolute;
+            bottom: 40px;
         }
         
     }
@@ -183,7 +191,7 @@ legend{
         color: #b1b4b7;
         text-shadow: 1px 1px 2px #232729;
         margin: 10px 0 5px 0;
-        padding: 3px 15px;
+        padding: 3px 20px;
     }
     
 }
@@ -195,12 +203,12 @@ legend{
     right:0;
     
     .tc-toolbar{
-        height: 62px;
+        height: 150px;
         position: fixed;
         right: 0;
         left: 220px;
         top: 0;
-        background: rgba(255,255,255,.85);
+        background: rgba(255,255,255,0.5);
         
         
         .tc-breadcrumb{
@@ -209,7 +217,7 @@ legend{
             font-size: 24px;
             
             .breadcrumb{
-                margin:18px 0 0 20px;
+                margin: 34px 0 0 20px;
                 padding:0;
                 background: none; 
                 
@@ -217,15 +225,25 @@ legend{
                     padding-right: 10px;
                     margin-top: -3px;
                 }
+                
                 .active{
                     .divider{
-                        display:none;
+                        display: none;
                     }
                     
                     a{
-                        color: #333;         
+                        color: #999;
+                        font-size: 24px;
                     }
                 }
+            }
+            
+            .title {
+                font-weight: 300;
+                font-size: 50px;
+                font-family: 'Open Sans', sans-serif;
+                padding: 35px 50px;
+                color: #0a6895;
             }
             
             a{
@@ -237,7 +255,7 @@ legend{
         }
         
         .tc-controls{
-            margin:15px; 
+            margin: 57px 50px;
         }
     }
 }
@@ -253,9 +271,8 @@ legend{
     vertical-align: top;   
 }
 .tc-sheet {
-    padding: 5px;
     background-color: #fff;
-    margin:82px 20px 20px 20px;
+    margin-top: 170px;
     
     & > [class*="-section"],
     & > [class$="-section"]{
@@ -306,7 +323,6 @@ legend{
 }
 
 .line-seperator{
-    border-top: 1px solid #dededf;
     border-bottom: 1px solid white;
     margin-top: 5px;
     margin-bottom: 4px;

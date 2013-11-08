@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 body {
   background-color: #FFF;
   overflow-y: scroll;
@@ -28,12 +29,14 @@ form {
 legend .badge {
   vertical-align: middle; }
 
-.table th {
-  font-weight: normal;
-  font-style: italic;
-  font-size: 13px;
-  padding-top: 0;
-  padding-bottom: 0; }
+.tc-relations {
+  border: none; }
+  .tc-relations th {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13px;
+    padding-top: 0;
+    padding-bottom: 0; }
 
 .tc-panel {
   overflow-y: auto; }
@@ -46,7 +49,7 @@ legend .badge {
   width: 220px;
   vertical-align: top;
   color: #fff;
-  background: #0B1E2C;
+  background: #202022;
   box-shadow: -5px 0px 5px -5px #222222 inset;
   overflow-y: hidden;
   text-shadow: 1px 1px 2px #232729; }
@@ -75,41 +78,44 @@ legend .badge {
       text-shadow: 1px 1px 3px #444; }
   .tc-menu-panel .tc-menu-heading {
     top: 0;
-    background: rgba(0, 0, 0, 0.5); }
-    .tc-menu-panel .tc-menu-heading .tc-logo {
-      padding: 25px 0 0 30px; }
+    background: rgba(0, 0, 0, 0.2); }
     .tc-menu-panel .tc-menu-heading .account {
-      text-align: center;
-      padding-bottom: 10px;
-      margin-left: -10px; }
+      margin-left: 20px; }
       .tc-menu-panel .tc-menu-heading .account .alerts {
         display: inline-block;
-        padding-right: 20px; }
+        padding-right: 20px;
+        display: none; }
         .tc-menu-panel .tc-menu-heading .account .alerts .badge {
           background-color: #74d600;
           margin-left: 5px; }
       .tc-menu-panel .tc-menu-heading .account .dropdown {
-        text-align: center;
+        text-align: left;
         padding: 20px 0;
         display: inline-block; }
         .tc-menu-panel .tc-menu-heading .account .dropdown .caret {
           border-top-color: #FFF;
           display: inline-block;
           vertical-align: top;
-          margin: 7px 0 0 5px; }
+          margin: 2px 0 0 10px;
+          vertical-align: middle; }
         .tc-menu-panel .tc-menu-heading .account .dropdown .name {
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
-          width: 90px;
+          width: 120px;
           display: inline-block;
-          vertical-align: top; }
+          vertical-align: middle;
+          padding-left: 15px; }
         .tc-menu-panel .tc-menu-heading .account .dropdown a {
           color: #FFF;
           font-size: 14px; }
         .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu {
           left: inherit;
           right: 0; }
+    .tc-menu-panel .tc-menu-heading .tc-logo {
+      padding: 25px 0 0 44px;
+      position: absolute;
+      bottom: 40px; }
   .tc-menu-panel .tc-return-section ul {
     margin: 5px 0; }
   .tc-menu-panel .tc-return-section i {
@@ -124,7 +130,7 @@ legend .badge {
     color: #b1b4b7;
     text-shadow: 1px 1px 2px #232729;
     margin: 10px 0 5px 0;
-    padding: 3px 15px; }
+    padding: 3px 20px; }
 
 .tc-main-panel {
   position: absolute;
@@ -132,18 +138,18 @@ legend .badge {
   left: 220px;
   right: 0; }
   .tc-main-panel .tc-toolbar {
-    height: 62px;
+    height: 150px;
     position: fixed;
     right: 0;
     left: 220px;
     top: 0;
-    background: rgba(255, 255, 255, 0.85); }
+    background: rgba(255, 255, 255, 0.5); }
     .tc-main-panel .tc-toolbar .tc-breadcrumb {
       color: #333;
       font-weight: 200;
       font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
-        margin: 18px 0 0 20px;
+        margin: 34px 0 0 20px;
         padding: 0;
         background: none; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
@@ -152,13 +158,20 @@ legend .badge {
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
           display: none; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
-          color: #333; }
+          color: #999;
+          font-size: 24px; }
+      .tc-main-panel .tc-toolbar .tc-breadcrumb .title {
+        font-weight: 300;
+        font-size: 50px;
+        font-family: 'Open Sans', sans-serif;
+        padding: 35px 50px;
+        color: #0a6895; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb a {
         color: #999; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb a:hover {
         text-decoration: underline; }
     .tc-main-panel .tc-toolbar .tc-controls {
-      margin: 15px; }
+      margin: 57px 50px; }
 
 .tc-full-panel {
   position: absolute;
@@ -171,9 +184,8 @@ legend .badge {
   vertical-align: top; }
 
 .tc-sheet {
-  padding: 5px;
   background-color: #fff;
-  margin: 82px 20px 20px 20px; }
+  margin-top: 170px; }
   .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
     padding: 0 50px; }
   .tc-sheet .tc-full-section {
@@ -545,7 +557,6 @@ legend .badge {
   -ms-filter: blur(5px); }
 
 .line-seperator {
-  border-top: 1px solid #dededf;
   border-bottom: 1px solid white;
   margin-top: 5px;
   margin-bottom: 4px;

@@ -13,10 +13,6 @@
 
     <div class="tc-menu-heading">
 
-        <div class="tc-logo">
-            <img src="/img/logo-timecrumbs.png" />
-        </div>
-
         <div class="account">
             
             <div class="alerts"><a href="#"><img src="/img/icons/alerts.png" /><span class="badge label-success">2</span></a></div>
@@ -25,8 +21,8 @@
 
                 <a data-toggle="dropdown" class="profile-links client" href="#">
                     <div class="profile">
-                        <!--<img src="/img/users/user.png" width="30" height="30">-->
-                        <div class="name">Hi, {{app.user.firstName}}!</div>
+                        <img src="/img/users/user.png" width="25" height="25">
+                        <div class="name">{{app.user.fullName}}!</div>
                         <div class="caret glyphicon-white"></div>
                     </div>
                 </a>
@@ -39,6 +35,10 @@
                 </ul>
             </div>
 
+        </div>
+        
+        <div class="tc-logo">
+            <img src="/img/logo-timecrumbs-small.png" />
         </div>
 
     </div>

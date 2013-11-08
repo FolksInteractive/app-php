@@ -4,43 +4,42 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
+    <div class="title">SERVICES VENDORS</div>
 </div>
 
 <div class="tc-controls pull-right">
-    <a href="{{path('client_relation_new')}}" class="btn-primary btn">
+    <a href="{{path('client_relation_new')}}" class="btn-primary btn-lg">
         <i class="icon-discussion icon-white"></i>
-        Open a new relationship
+        Add New Vendor
     </a>
 </div>
 {% endblock %}
 
 {% block sheet %}
 <div class="tc-relations-section">
-    <legend>
-        Relationships
-        <span class="badge">{{ relations|length }}</span>
-    </legend>
-    <table class="tc-relations table table-hover">
+
+    <table class="tc-relations">
         <thead>
             <tr>
-                <th class="user"></th>
-                <th class="name"></th>
+                <th class="thumb"></th>
+                <th class="user">Name</th>
+                <th class="name">Title</th>
             </tr>
         </thead>
         <tbody>
             {% for relation in relations %}            
-            <tr>
-                <td class="user">
-                    <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
-                </td>
-                <td class="name">
-                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
+                <tr>
+                    <td class="user">
+                        <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
+                    </td>
+                    <td class="name">
+                        <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
                         {{relation.vendor.getFullName() | default(relation.vendor)}}    
-                    </a>
-                </td>
-            </tr>    
+                            </a>
+                    </td>
+                </tr>    
             {% endfor %}
-        </tbody>
-    </table>
-</div>
+                </tbody>
+            </table>
+        </div>
 {% endblock %}
