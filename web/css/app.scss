@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 body {
-    background-color: #FFF;
+    background-color: #fff;
     overflow-y : scroll;
     overflow-x : hidden;
     font: 100%/1.4 Helvetica, Arial, sans-serif;
@@ -35,13 +35,25 @@ form{
 }
 
 legend{
+    padding-bottom: 10px;
+    font-weight: bold;
+    margin-top: 60px;
+    
     .badge{
         vertical-align: middle;
     }
+    
+    span {
+        vertical-align: middle;
+        font-size: 14px;
+        color: #999;
+        padding-left: 5px;
+    }
 }
 
-.tc-relations{
+.tc-relations-rows{
     border: none;
+    margin-top: -20px;
     
     th{
         font-weight: normal;
@@ -49,6 +61,33 @@ legend{
         font-size:13px;
         padding-top:0;
         padding-bottom:0;
+    }
+    
+    tbody {
+        tr td {
+            padding: 10px 0;
+            border-bottom: 1px solid #dededf;
+        }
+    }
+}
+
+.tc-relations-boxes{
+    text-align: center;
+    
+    .thumbnail {
+        img {
+            padding: 30px;
+        }
+        
+        .caption {
+            margin-top: -30px;
+        }
+        
+        .pro-title {
+            font-size: 14px;
+            color: #777;
+        }
+        
     }
 }
 
@@ -69,14 +108,12 @@ legend{
     background: #202022;
     box-shadow: -5px 0px 5px -5px #222 inset;
     overflow-y: hidden;
-    text-shadow: 1px 1px 2px #232729;
     
     .tc-menu {
-        text-shadow: 1px 1px 2px #232729;
         
         i {
             width:20px;
-            margin: -2px 10px 0 0;
+            margin: -2px 3px 0 0;
             color: #C1C5C8;
         }
         
@@ -87,7 +124,6 @@ legend{
                 text-shadow: none;
                 display: block;
                 padding: 15px 0 15px 25px;
-                text-shadow: 1px 1px 2px #232729;
             }
             a:hover{
                 text-decoration: none;
@@ -95,16 +131,22 @@ legend{
                 background: rgba(0,0,0,.1);
                 box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
             }
+            .sub_label{
+                display: block;
+                font-size: 11px;
+                color: #666;
+                padding: 5px 30px 0 0;
+            }
         }
         
         .active {
+            border-left: 4px solid #75d600;
             
-            a,
-            a:hover{
+            a, a:hover{
+                margin-left: -4px;
                 background: rgba(0,0,0,.1);
                 box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
                 color: #FFF;
-                text-shadow: 1px 1px 3px #444;
             }
         }
     }
@@ -204,13 +246,14 @@ legend{
     right:0;
     
     .tc-toolbar{
-        height: 150px;
+        height: 90px;
         position: fixed;
         right: 0;
         left: 220px;
         top: 0;
-        background: rgba(255,255,255,0.5);
-        
+        background: rgba(255,255,255,0.9);
+        z-index: 100;
+        //border-bottom: 1px dashed #dededf;
         
         .tc-breadcrumb{
             color: #333;
@@ -241,10 +284,9 @@ legend{
             
             .title {
                 font-weight: 300;
-                font-size: 50px;
+                font-size: 40px;
                 font-family: 'Open Sans', sans-serif;
-                padding: 35px 50px;
-                color: #0a6895;
+                padding: 20px 50px;
             }
             
             a{
@@ -256,7 +298,11 @@ legend{
         }
         
         .tc-controls{
-            margin: 57px 50px;
+            margin: 37px 50px;
+            
+            span {
+                font-size: 16px;
+            }
         }
     }
 }
@@ -272,8 +318,7 @@ legend{
     vertical-align: top;   
 }
 .tc-sheet {
-    background-color: #fff;
-    margin-top: 170px;
+    margin-top: 110px;
     
     & > [class*="-section"],
     & > [class$="-section"]{

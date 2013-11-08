@@ -4,13 +4,13 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    <div class="title">SERVICES VENDORS</div>
+    <div class="title">Service Providers</div>
 </div>
 
 <div class="tc-controls pull-right">
     <a href="{{path('client_relation_new')}}" class="btn-primary btn-lg">
-        <i class="icon-discussion icon-white"></i>
-        Add New Vendor
+        <span class="glyphicon glyphicon-plus"></span>
+        Add Someone
     </a>
 </div>
 {% endblock %}
@@ -18,28 +18,78 @@
 {% block sheet %}
 <div class="tc-relations-section">
 
-    <table class="tc-relations">
-        <thead>
-            <tr>
-                <th class="thumb"></th>
-                <th class="user">Name</th>
-                <th class="name">Title</th>
-            </tr>
-        </thead>
+    <legend>Active Business Relationships <span>(4)</span></legend>
+
+    <!--<table class="tc-relations-rows">
         <tbody>
-            {% for relation in relations %}            
+            {% for relation in relations %}
                 <tr>
-                    <td class="user">
+                    <td class="thumb">
                         <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
+                        <img class="img-circle" src="/img/users/user.png" />
                     </td>
                     <td class="name">
                         <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
-                        {{relation.vendor.getFullName() | default(relation.vendor)}}    
+                            {{relation.vendor.getFullName() | default(relation.vendor)}}    
                             </a>
-                    </td>
-                </tr>    
+                        </td>
+                        <td class="pro-title">Web Designer</td>
+                        <td class="status">
+                            <div class="progress progress-striped">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <span class="sr-only">20% Complete</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>    
             {% endfor %}
-                </tbody>
-            </table>
+        </tbody>
+    </table>-->
+
+    <div class="tc-relations-boxes row">
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img class="img-circle" src="/img/users/francis.png" />
+                <div class="caption">
+                    <h3>Francis Poirier</h3>
+                    <p class="pro-title">Développeur Web</p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Activities</a></p>
+                </div>
+            </div>
         </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img class="img-circle" src="/img/users/kristian.png" />
+                <div class="caption">
+                    <h3>Kristian Rafaelsen</h3>
+                    <p class="pro-title">Instructional Designer</p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Activities</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img class="img-circle" src="/img/users/user.png" />
+                <div class="caption">
+                    <h3>Pat Fry</h3>
+                    <p class="pro-title">Narrateur</p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Activities</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img class="img-circle" src="/img/users/user.png" />
+                <div class="caption">
+                    <h3>Philippe Huot</h3>
+                    <p class="pro-title">Intégrateur Web</p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Activities</a></p>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    
+    <legend>Inactive Business Relationships <span>(0)</span></legend>
+</div>
 {% endblock %}

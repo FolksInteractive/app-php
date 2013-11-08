@@ -32,12 +32,41 @@
 
 .client-relations,
 .vendor-relations{
-    .user{
-        width:30px;
+    
+    table {
+        width: 100%;
         
-        img{
-            width:30px;
-            height:30px;
+        .thumb{
+            width: 100px;
+            padding: 20px; 
+            
+            img{
+                width:60px;
+                height:60px;
+            }
+        }
+        
+        .name {
+            width: 200px;
+            a {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+        
+        .pro-title {
+            width: 150px;
+            font-size: 13px;
+            font-style: italic;
+            color: #999;
+        }
+        
+        .status {
+            padding-right: 20px;
+            
+            .progress {
+                margin: 0;
+            }
         }
     }
 }

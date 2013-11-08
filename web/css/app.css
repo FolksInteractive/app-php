@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 body {
-  background-color: #FFF;
+  background-color: #fff;
   overflow-y: scroll;
   overflow-x: hidden;
   font: 100%/1.4 Helvetica, Arial, sans-serif; }
@@ -26,17 +26,40 @@ form {
   font: inherit;
   vertical-align: baseline; }
 
-legend .badge {
-  vertical-align: middle; }
+legend {
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-top: 60px; }
+  legend .badge {
+    vertical-align: middle; }
+  legend span {
+    vertical-align: middle;
+    font-size: 14px;
+    color: #999;
+    padding-left: 5px; }
 
-.tc-relations {
-  border: none; }
-  .tc-relations th {
+.tc-relations-rows {
+  border: none;
+  margin-top: -20px; }
+  .tc-relations-rows th {
     font-weight: normal;
     font-style: italic;
     font-size: 13px;
     padding-top: 0;
     padding-bottom: 0; }
+  .tc-relations-rows tbody tr td {
+    padding: 10px 0;
+    border-bottom: 1px solid #dededf; }
+
+.tc-relations-boxes {
+  text-align: center; }
+  .tc-relations-boxes .thumbnail img {
+    padding: 30px; }
+  .tc-relations-boxes .thumbnail .caption {
+    margin-top: -30px; }
+  .tc-relations-boxes .thumbnail .pro-title {
+    font-size: 14px;
+    color: #777; }
 
 .tc-panel {
   overflow-y: auto; }
@@ -51,32 +74,34 @@ legend .badge {
   color: #fff;
   background: #202022;
   box-shadow: -5px 0px 5px -5px #222222 inset;
-  overflow-y: hidden;
-  text-shadow: 1px 1px 2px #232729; }
-  .tc-menu-panel .tc-menu {
-    text-shadow: 1px 1px 2px #232729; }
-    .tc-menu-panel .tc-menu i {
-      width: 20px;
-      margin: -2px 10px 0 0;
-      color: #C1C5C8; }
-    .tc-menu-panel .tc-menu li a {
-      font-size: 14px;
-      color: #FFF;
-      text-shadow: none;
-      display: block;
-      padding: 15px 0 15px 25px;
-      text-shadow: 1px 1px 2px #232729; }
-    .tc-menu-panel .tc-menu li a:hover {
-      text-decoration: none;
-      cursor: pointer;
-      background: rgba(0, 0, 0, 0.1);
-      box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset; }
-    .tc-menu-panel .tc-menu .active a,
-    .tc-menu-panel .tc-menu .active a:hover {
+  overflow-y: hidden; }
+  .tc-menu-panel .tc-menu i {
+    width: 20px;
+    margin: -2px 3px 0 0;
+    color: #C1C5C8; }
+  .tc-menu-panel .tc-menu li a {
+    font-size: 14px;
+    color: #FFF;
+    text-shadow: none;
+    display: block;
+    padding: 15px 0 15px 25px; }
+  .tc-menu-panel .tc-menu li a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset; }
+  .tc-menu-panel .tc-menu li .sub_label {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    padding: 5px 30px 0 0; }
+  .tc-menu-panel .tc-menu .active {
+    border-left: 4px solid #75d600; }
+    .tc-menu-panel .tc-menu .active a, .tc-menu-panel .tc-menu .active a:hover {
+      margin-left: -4px;
       background: rgba(0, 0, 0, 0.1);
       box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
-      color: #FFF;
-      text-shadow: 1px 1px 3px #444; }
+      color: #FFF; }
   .tc-menu-panel .tc-menu-heading {
     top: 0;
     background: rgba(0, 0, 0, 0.2); }
@@ -139,12 +164,13 @@ legend .badge {
   left: 220px;
   right: 0; }
   .tc-main-panel .tc-toolbar {
-    height: 150px;
+    height: 90px;
     position: fixed;
     right: 0;
     left: 220px;
     top: 0;
-    background: rgba(255, 255, 255, 0.5); }
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 100; }
     .tc-main-panel .tc-toolbar .tc-breadcrumb {
       color: #333;
       font-weight: 200;
@@ -163,16 +189,17 @@ legend .badge {
           font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .title {
         font-weight: 300;
-        font-size: 50px;
+        font-size: 40px;
         font-family: 'Open Sans', sans-serif;
-        padding: 35px 50px;
-        color: #0a6895; }
+        padding: 20px 50px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb a {
         color: #999; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb a:hover {
         text-decoration: underline; }
     .tc-main-panel .tc-toolbar .tc-controls {
-      margin: 57px 50px; }
+      margin: 37px 50px; }
+      .tc-main-panel .tc-toolbar .tc-controls span {
+        font-size: 16px; }
 
 .tc-full-panel {
   position: absolute;
@@ -185,8 +212,7 @@ legend .badge {
   vertical-align: top; }
 
 .tc-sheet {
-  background-color: #fff;
-  margin-top: 170px; }
+  margin-top: 110px; }
   .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
     padding: 0 50px; }
   .tc-sheet .tc-full-section {
@@ -335,13 +361,36 @@ legend .badge {
 /*************************************************/
 /*****   Section Relation:index.html.twig   *****/
 /*************************************************/
-.client-relations .user,
-.vendor-relations .user {
-  width: 30px; }
-  .client-relations .user img,
-  .vendor-relations .user img {
-    width: 30px;
-    height: 30px; }
+.client-relations table,
+.vendor-relations table {
+  width: 100%; }
+  .client-relations table .thumb,
+  .vendor-relations table .thumb {
+    width: 100px;
+    padding: 20px; }
+    .client-relations table .thumb img,
+    .vendor-relations table .thumb img {
+      width: 60px;
+      height: 60px; }
+  .client-relations table .name,
+  .vendor-relations table .name {
+    width: 200px; }
+    .client-relations table .name a,
+    .vendor-relations table .name a {
+      font-size: 16px;
+      font-weight: bold; }
+  .client-relations table .pro-title,
+  .vendor-relations table .pro-title {
+    width: 150px;
+    font-size: 13px;
+    font-style: italic;
+    color: #999; }
+  .client-relations table .status,
+  .vendor-relations table .status {
+    padding-right: 20px; }
+    .client-relations table .status .progress,
+    .vendor-relations table .status .progress {
+      margin: 0; }
 
 /*************************************************/
 /*****   Section Relation:orders.html.twig   *****/
