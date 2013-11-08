@@ -1,0 +1,35 @@
+{% set feedback_form_config =  {
+    "form_action" : form.vars.action,
+    "form_name" : form.vars.full_name,
+    "body_name" : form.body.vars.full_name,
+    "uri_name" : form.uri.vars.full_name,
+    "uri_value" : form.uri.vars.value,
+    "token_name" : form._token.vars.full_name,
+    "token_value" : form._token.vars.value,
+    "submit_name" : form.submit.vars.full_name
+}
+%}
+
+<div ng-app="Feedback" ng-controller="feedback.Controller" tc-feedback-modal
+     ng-init='form_config = {{feedback_form_config|json_encode|raw}}'
+     class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="feedbackForm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="feedbackModalLabel">How do feel about Timecrumbs ?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Don't hesitate to leave your feedbacks, report bugs or share your ideas. It will help us to make build offer you a better service!</p>
+                    <textarea ng-required="true" ng-model="feedback.body"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="sendFeedback()">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>        
+</div>

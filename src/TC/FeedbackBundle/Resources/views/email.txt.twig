@@ -1,0 +1,21 @@
+{% extends "::skeleton_email.html.twig" %}
+
+{% block subject %}{% autoescape false %}
+New Feedback from {{app.user.getFullName()}}!
+{% endautoescape %}{% endblock %}
+
+{% block title %}{% autoescape false %}
+{#<img src="{{ app.request.uriForPath('/../img/email/title-registration.gif')}}" border="0" /> #}
+{% endautoescape %}{% endblock %}
+
+{% block sub_title %}{% autoescape false %}
+New Feedback !
+{% endautoescape %}{% endblock %}
+
+{% block body_html %}{% autoescape false %}
+<div>For page : {{data["uri"]}}<div>
+{{data["body"]}}
+{% endautoescape %}{% endblock %}
+
+{% block buttons %}{% endblock %}
+

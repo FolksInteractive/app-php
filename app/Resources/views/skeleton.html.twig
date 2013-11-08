@@ -8,11 +8,16 @@
 
 {% block body %}
 
+{# Feedback include. It is in fact a bootstrap modal mappedBy #feedbackModal button #}
+{{ render(controller('TCFeedbackBundle:Feedback:new', { 'uri': app.request.uri })) }}
+
 <div class="tc-menu-panel">
 
-
     <div class="tc-menu-heading">
-
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#feedbackModal">
+          Feedback
+        </button>
+            
         <div class="tc-logo">
             <img src="/img/logo-timecrumbs.png" />
         </div>
@@ -65,7 +70,11 @@
 
     {% block main_after %}{% endblock %}
         </div>
+
 {% endblock %}
 
 {% block bottom_js %}
+<script src="{{asset("js/feedback/feedback-module.js")}}" type="text/javascript"></script>
+
+
 {% endblock %}    

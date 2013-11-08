@@ -33,14 +33,14 @@ class ClientMenuBuilder extends ContainerAware {
             ->addChild( '.icon-projects Projects', array(
                 'route' => 'client_project'
             ) )
-            ->setExtra( "sub_label", "Manage multiple service provider for a same project" )
+            ->setExtra( "sub_label", "Project management with multiple service providers" )
         ;
 
         $menu
-            ->addChild( '.icon-relations Service providers', array(
+            ->addChild( '.icon-relations Service Providers', array(
             'route' => 'client_relation'
             ) )
-            ->setExtra( "sub_label", "Manage your relationships" )
+            ->setExtra( "sub_label", "Your business relationships" )
         ;
 
         return $menu;
