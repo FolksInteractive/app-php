@@ -19,9 +19,24 @@ use TC\CoreBundle\Form\ProjectType;
 class ProjectController extends Controller
 {
     /**
-     * Listing of Project.
+     * Coming soon page for project section.
      *
      * @Route("/", name="client_project")
+     * @Method("GET")
+     * @Template("TCCoreBundle:Client:Project/soon.html.twig")
+     */
+    public function soonAction(Request $request)
+    {
+        $projects  = $this->getProjectManager()->getProjects();        
+
+        return array(
+        );
+    }
+    
+    /**
+     * Listing of Project.
+     *
+     * Route("/", name="client_project")
      * @Method("GET")
      * @Template("TCCoreBundle:Client:Project/index.html.twig")
      */
@@ -37,7 +52,7 @@ class ProjectController extends Controller
     /**
      * Creates a new Project.
      *
-     * @Route("/", name="client_project_create")
+     * Route("/", name="client_project_create")
      * @Method("POST")
      * @Template("TCCoreBundle:Client:Project/new.html.twig")
      */
@@ -63,7 +78,7 @@ class ProjectController extends Controller
     /**
      * Displays a form to create a new Project.
      *
-     * @Route("/new", name="client_project_new")
+     * Route("/new", name="client_project_new")
      * @Method("GET")
      * @Template("TCCoreBundle:Client:Project/new.html.twig")
      */
@@ -81,7 +96,7 @@ class ProjectController extends Controller
     /**
      * Displays a form to edit an existing Project.
      *
-     * @Route("/{id}/edit", name="client_project_edit")
+     * Route("/{id}/edit", name="client_project_edit")
      * @Method("GET")
      * @Template("TCCoreBundle:Client:Project/edit.html.twig")
      */
@@ -100,7 +115,7 @@ class ProjectController extends Controller
     /**
      * Edits an existing Project.
      *
-     * @Route("/{id}", name="client_project_update")
+     * Route("/{id}", name="client_project_update")
      * @Method("PUT")
      * @Template("TCCoreBundle:Client:Project/edit.html.twig")
      */

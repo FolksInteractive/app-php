@@ -12,18 +12,19 @@
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
-    <div class="tc-controls pull-right">
+    <div class="tc-controls toolbar pull-right">
         <a class="btn-primary btn" 
                href="{{path('client_order_discuss' , {'idOrder':order.id, 'idRelation': relation.id})}}">
             <i class="icon-discussion icon-white"></i>
             Discuss
         </a>
 
-        <div class="tc-edit-btn btn-group">                
-            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                 <span class="icon-arrow-down"></span>
-            </button>
-            <ul class="dropdown-menu pull-right">
+        <div class="btn-group">      
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>            
+            <ul class="dropdown-menu pull-right" role="menu">
                 <li><a href="#">Cancel order</a></li>
             </ul>
         </div>

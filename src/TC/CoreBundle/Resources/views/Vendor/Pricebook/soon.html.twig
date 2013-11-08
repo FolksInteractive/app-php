@@ -1,0 +1,21 @@
+{% extends 'TCCoreBundle:Vendor:skeleton.html.twig' %}
+
+{% block body_class -%}{{ parent() }} vendor-pricebook-soon {% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+</div>
+
+<div class="tc-controls pull-right">
+    <button class="disabled btn-primary btn">
+        <span class=".glyphicon .glyphicon-plus"></span>
+        Create a new item
+    </button>
+</div>
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-temporary-section">
+    <h1 class="center-block text-center">Coming Soon ...</h1>
+</div>
+{% endblock %}

@@ -19,17 +19,19 @@
             <i class="icon-discussion icon-white"></i>
             Discuss
         </a>
-
-        <div class="tc-edit-btn btn-group">
-            <a class="btn" 
+            
+        <div class="btn-group">
+            <a class="btn btn-default" 
                href="{{path('vendor_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">
                 Edit order
             </a>
-                
-            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                 <span class="caret"></span>
+            
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu pull-right">
+            
+            <ul class="dropdown-menu pull-right" role="menu">
                 <li><a href="#">Cancel order</a></li>
             </ul>
         </div>

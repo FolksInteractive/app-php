@@ -57,7 +57,8 @@ legend .badge {
     text-shadow: 1px 1px 2px #232729; }
     .tc-menu-panel .tc-menu i {
       width: 20px;
-      margin: -2px 10px 0 0; }
+      margin: -2px 10px 0 0;
+      color: #C1C5C8; }
     .tc-menu-panel .tc-menu li a {
       font-size: 14px;
       color: #FFF;
@@ -546,6 +547,94 @@ legend .badge {
     line-height: 60px;
     text-align: right;
     color: #0060b2; }
+
+.tc_user {
+  background: #f6f6f6;
+  height: 100%;
+  width: 100%;
+  font-family: Arial; }
+  .tc_user form {
+    margin-bottom: 0; }
+  .tc_user .errors {
+    position: relative;
+    padding: 12px;
+    margin: 0px auto;
+    width: 300px;
+    background: #fcfbe4;
+    border: 1px solid #dededf;
+    margin-bottom: 24px;
+    margin-top: -12px;
+    text-align: center; }
+    .tc_user .errors .error_line,
+    .tc_user .errors p {
+      color: #a72323;
+      font-style: italic;
+      font-size: 13px;
+      line-height: 18px; }
+    .tc_user .errors .opps {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 5px; }
+  .tc_user .form_row .errors {
+    margin: 0;
+    margin-top: -10px;
+    text-align: left;
+    border: 0;
+    background: none;
+    width: auto;
+    padding: 0px; }
+  .tc_user .logo {
+    background: url(/img/logo_login.png) no-repeat;
+    position: relative;
+    width: 226px;
+    height: 31px;
+    margin: 0px auto;
+    margin-bottom: 32px;
+    padding-right: 8px; }
+  .tc_user .wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    width: 320px;
+    margin-left: -160px; }
+  .tc_user .gradient {
+    background: url(/img/gradientLogin.gif) no-repeat;
+    width: 725px;
+    height: 725px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-top: -362px;
+    margin-left: -362px; }
+  .tc_user .well {
+    background: #ffffff; }
+  .tc_user .submit_row {
+    text-align: right; }
+  .tc_user .more_links {
+    padding: 0 20px;
+    height: 40px; }
+    .tc_user .more_links a {
+      font-size: 13px;
+      color: #777;
+      margin-right: 12px; }
+    .tc_user .more_links a:hover {
+      color: #990000; }
+
+.tc_user_confirmed .wrapper,
+.tc_user_check .wrapper {
+  width: 400px;
+  margin-left: -200px; }
+.tc_user_confirmed .message,
+.tc_user_check .message {
+  padding-bottom: 10px; }
+.tc_user_confirmed .fos_user_success,
+.tc_user_check .fos_user_success {
+  font-weight: bold;
+  color: #990000; }
+
+.tc_user_register .wrapper {
+  width: 350px;
+  margin-right: -175px; }
 
 .blurry {
   opacity: 0.3;

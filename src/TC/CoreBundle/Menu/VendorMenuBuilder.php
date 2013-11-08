@@ -30,7 +30,7 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'vendor_relation'
         ) );
 
-        $menu->addChild( '.icon-pricebook Pricebook', array(
+        $menu->addChild( '.glyphicon-book Pricebook', array(
             'uri' => '#'
         ) );
         
