@@ -22,17 +22,26 @@ class ClientMenuBuilder extends ContainerAware {
         $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild( '.icon-dashboard Dashboard', array(
-            'route' => 'client_dashboard'
-        ) );
-        
-        $menu->addChild( '.icon-projects Projects', array(
-            'route' => 'client_project'
-        ) );
+        $menu
+            ->addChild( '.icon-dashboard Dashboard', array(
+                'route' => 'client_dashboard'
+            ) )
+            ->setExtra( "sub_label", "Bird eye view on what's going on" )
+        ;
 
-        $menu->addChild( '.icon-relations Relationships', array(
+        $menu
+            ->addChild( '.icon-projects Projects', array(
+                'route' => 'client_project'
+            ) )
+            ->setExtra( "sub_label", "Manage multiple service provider for a same project" )
+        ;
+
+        $menu
+            ->addChild( '.icon-relations Service providers', array(
             'route' => 'client_relation'
-        ) );
+            ) )
+            ->setExtra( "sub_label", "Manage your relationships" )
+        ;
 
         return $menu;
     }
@@ -50,24 +59,24 @@ class ClientMenuBuilder extends ContainerAware {
 
         $menu = $factory->createItem( 'root'/* , array('childrenAttributes' => array('id' => 'menu_id')) */ );
         $menu->setChildrenAttribute( "class", "tc-project-menu tc-menu" );
-        $menu->setLabel(".icon-projects-dark Projects");
+        $menu->setLabel( ".icon-projects-dark Projects" );
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
-        /*$menu->addChild( '.icon-settings Settings', array(
-            'route' => 'client_relation_new',
-            'routeParameters' => $routeParameters
-        ) );
-        */
-        
-        /*foreach ($menu as $key => $item) {
-            $item->setExtra('routes', array(
-                'routes' => $key
-            ));
-        }*/
-        
+        /* $menu->addChild( '.icon-settings Settings', array(
+          'route' => 'client_relation_new',
+          'routeParameters' => $routeParameters
+          ) );
+         */
+
+        /* foreach ($menu as $key => $item) {
+          $item->setExtra('routes', array(
+          'routes' => $key
+          ));
+          } */
+
         return $menu;
     }
-    
+
     /**
      * 
      * @param FactoryInterface $factory
@@ -113,13 +122,13 @@ class ClientMenuBuilder extends ContainerAware {
             'route' => 'client_relation_new',
             'routeParameters' => $routeParameters
         ) );
-        
-        /*foreach ($menu as $key => $item) {
-            $item->setExtra('routes', array(
-                'routes' => $key
-            ));
-        }*/
-        
+
+        /* foreach ($menu as $key => $item) {
+          $item->setExtra('routes', array(
+          'routes' => $key
+          ));
+          } */
+
         return $menu;
     }
 
@@ -137,25 +146,24 @@ class ClientMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'client_relation_orders',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Work Orders");
-        
+                ) );
+        $menu->setLabel( ".icon-orders-dark Work Orders" );
+
         $menu->addChild( 'Work Order', array(
             'route' => 'client_order_show',
             'routeParameters' => $routeParameters
-        ));
+        ) );
 
         $menu->addChild( 'Discussion', array(
             'route' => 'client_order_discuss',
             'routeParameters' => $routeParameters
-        ));
-        
-        
+        ) );
+
+
 
         return $menu;
     }
 
-    
     /**
      * 
      * @param FactoryInterface $factory
@@ -170,12 +178,12 @@ class ClientMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'client_relation_progress',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Work in progress");
-              
+                ) );
+        $menu->setLabel( ".icon-orders-dark Work in progress" );
+
         return $menu;
     }
-    
+
     /**
      * 
      * @param FactoryInterface $factory
@@ -190,12 +198,12 @@ class ClientMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'client_relation_bill',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Open Bill");
-              
+                ) );
+        $menu->setLabel( ".icon-orders-dark Open Bill" );
+
         return $menu;
     }
-    
+
     /**
      * 
      * @param FactoryInterface $factory
@@ -210,16 +218,17 @@ class ClientMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'client_relation_invoices',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Invoices");
-              
+                ) );
+        $menu->setLabel( ".icon-orders-dark Invoices" );
+
         $menu->addChild( 'Invoice', array(
             'route' => 'client_invoice_show',
             'routeParameters' => $routeParameters
-        ));
-        
+        ) );
+
         return $menu;
     }
+
 }
 
 ?>
