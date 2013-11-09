@@ -15,29 +15,34 @@
     height: 18px;
     background: url("/img/icons/icon-dashboard.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: -2px 3px 0 0;
 }
 
 .icon-projects{
     width: 17px;
     height: 18px;
     background: url("/img/icons/icon-projects.png");
-    background-repeat:no-repeat;
-    margin: 0px 3px 0 0;
+    background-repeat: no-repeat;
+    margin: -2px 3px 0 0;
 }
 .icon-discussion.icon-white{
     background: url("/img/icons/icon-projects-white.png");
 }
 
 .icon-relations{
-    width: 1px;
-    height: 18px;
-    background: url("/img/icons/icon-relations.png");
-    background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    width: 19px;
+    height: 14px;
+    background: url("/img/icons/icon-relations-light-small.png");
+    background-repeat: no-repeat;
+    margin: 0px 3px 0 0;
 }
-.icon-relations.icon-white{
-    background: url("/img/icons/icon-relations-white.png");
+
+.icon-relations-dark-large{
+    width: 29px;
+    height: 22px;
+    background: url("/img/icons/icon-relations-dark-large.png");
+    background-repeat: no-repeat;
+    margin: 18px 14px 0 0;
 }
 
 .icon-agreement{
@@ -48,12 +53,20 @@
     margin: 3px 3px 0 0;
 }
 
+.icon-rfp-light{
+    width: 19px;
+    height: 17px;
+    background: url("/img/icons/icon-rfp-light-small.png");
+    background-repeat:no-repeat;
+    margin: -2px 3px 0 0;
+}
+
 .icon-orders{
     width: 17px;
     height: 18px;
     background: url("/img/icons/icon-orders.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: -1px 3px 0 0;
 }
 
 .icon-orders-dark{
@@ -64,26 +77,26 @@
     margin: 3px 3px 0 0;
 }
 
-.icon-work-progress{
-    width: 16px;
-    height: 18px;
-    background: url("/img/icons/icon-progress.png");
+.icon-monitoring{
+    width: 19px;
+    height: 16px;
+    background: url("/img/icons/icon-monitoring-light-small.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: 0 3px 0 0;
 }
 .icon-bill{
     width: 16px;
     height: 18px;
     background: url("/img/icons/icon-bill.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: -3px 3px 0 0;
 }
 .icon-invoice{
     width: 18px;
     height: 18px;
     background: url("/img/icons/icon-invoice.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: -3px 3px 0 0;
 }
 .icon-settings{
     width: 20px;
@@ -109,4 +122,20 @@
     background: url("/img/icons/icon-talk-bubble.jpg") no-repeat scroll 50% 10% transparent;
     padding-top: 4px;
     margin: 3px 3px 0 0;
+}
+
+.icon-add-user{
+    width: 24px;
+    height: 17px;
+    background: url("/img/icons/icon-add-user.png");
+    background-repeat: no-repeat;
+    margin: 2px 5px 0 0;
+}
+
+.icon-check-small{
+    width: 13px;
+    height: 11px;
+    background: url("/img/icons/icon-check-small.png");
+    background-repeat: no-repeat;
+    margin: 2px 5px 0 0;
 }

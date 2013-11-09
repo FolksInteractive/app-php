@@ -13,7 +13,8 @@ a:hover {
   text-decoration: none; }
 
 p {
-  padding: 5px 0; }
+  font-size: 14px;
+  padding-bottom: 20px; }
 
 ul {
   margin: 0; }
@@ -29,7 +30,8 @@ form {
 legend {
   padding-bottom: 10px;
   font-weight: bold;
-  margin-top: 60px; }
+  font-size: 24px;
+  margin: 60px 0 10px 0; }
   legend .badge {
     vertical-align: middle; }
   legend span {
@@ -52,7 +54,8 @@ legend {
     border-bottom: 1px solid #dededf; }
 
 .tc-relations-boxes {
-  text-align: center; }
+  text-align: center;
+  margin-top: 30px; }
   .tc-relations-boxes .thumbnail img {
     padding: 30px; }
   .tc-relations-boxes .thumbnail .caption {
@@ -77,7 +80,6 @@ legend {
   overflow-y: hidden; }
   .tc-menu-panel .tc-menu i {
     width: 20px;
-    margin: -2px 3px 0 0;
     color: #C1C5C8; }
   .tc-menu-panel .tc-menu li a {
     font-size: 14px;
@@ -93,7 +95,7 @@ legend {
   .tc-menu-panel .tc-menu li .sub_label {
     display: block;
     font-size: 11px;
-    color: #666;
+    color: #777;
     padding: 5px 30px 0 0; }
   .tc-menu-panel .tc-menu .active {
     border-left: 4px solid #75d600; }
@@ -131,10 +133,11 @@ legend {
           width: 120px;
           display: inline-block;
           vertical-align: middle;
-          padding-left: 15px; }
+          padding-left: 10px; }
         .tc-menu-panel .tc-menu-heading .account .dropdown a {
           color: #FFF;
-          font-size: 14px; }
+          font-size: 14px;
+          font-weight: bold; }
         .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu {
           left: inherit;
           right: 0; }
@@ -157,6 +160,10 @@ legend {
     text-shadow: 1px 1px 2px #232729;
     margin: 10px 0 5px 0;
     padding: 3px 20px; }
+    .tc-menu-panel .nav-header a, .tc-menu-panel .nav-header a:hover {
+      color: #b1b4b7; }
+      .tc-menu-panel .nav-header a i, .tc-menu-panel .nav-header a:hover i {
+        margin-right: 5px; }
 
 .tc-main-panel {
   position: absolute;
@@ -252,27 +259,31 @@ legend {
   height: 18px;
   background: url("/img/icons/icon-dashboard.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: -2px 3px 0 0; }
 
 .icon-projects {
   width: 17px;
   height: 18px;
   background: url("/img/icons/icon-projects.png");
   background-repeat: no-repeat;
-  margin: 0px 3px 0 0; }
+  margin: -2px 3px 0 0; }
 
 .icon-discussion.icon-white {
   background: url("/img/icons/icon-projects-white.png"); }
 
 .icon-relations {
-  width: 1px;
-  height: 18px;
-  background: url("/img/icons/icon-relations.png");
+  width: 19px;
+  height: 14px;
+  background: url("/img/icons/icon-relations-light-small.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: 0px 3px 0 0; }
 
-.icon-relations.icon-white {
-  background: url("/img/icons/icon-relations-white.png"); }
+.icon-relations-dark-large {
+  width: 29px;
+  height: 22px;
+  background: url("/img/icons/icon-relations-dark-large.png");
+  background-repeat: no-repeat;
+  margin: 18px 14px 0 0; }
 
 .icon-agreement {
   width: 13px;
@@ -281,12 +292,19 @@ legend {
   background-repeat: no-repeat;
   margin: 3px 3px 0 0; }
 
+.icon-rfp-light {
+  width: 19px;
+  height: 17px;
+  background: url("/img/icons/icon-rfp-light-small.png");
+  background-repeat: no-repeat;
+  margin: -2px 3px 0 0; }
+
 .icon-orders {
   width: 17px;
   height: 18px;
   background: url("/img/icons/icon-orders.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: -1px 3px 0 0; }
 
 .icon-orders-dark {
   width: 17px;
@@ -295,26 +313,26 @@ legend {
   background-repeat: no-repeat;
   margin: 3px 3px 0 0; }
 
-.icon-work-progress {
-  width: 16px;
-  height: 18px;
-  background: url("/img/icons/icon-progress.png");
+.icon-monitoring {
+  width: 19px;
+  height: 16px;
+  background: url("/img/icons/icon-monitoring-light-small.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: 0 3px 0 0; }
 
 .icon-bill {
   width: 16px;
   height: 18px;
   background: url("/img/icons/icon-bill.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: -3px 3px 0 0; }
 
 .icon-invoice {
   width: 18px;
   height: 18px;
   background: url("/img/icons/icon-invoice.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: -3px 3px 0 0; }
 
 .icon-settings {
   width: 20px;
@@ -340,23 +358,61 @@ legend {
   padding-top: 4px;
   margin: 3px 3px 0 0; }
 
-.tc-contact-section .contact {
-  text-align: center;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 5px 5px -5px #222222 inset, 0px -5px 5px -5px #222222 inset; }
-  .tc-contact-section .contact .avatar {
-    padding: 5px 0 15px 0; }
-    .tc-contact-section .contact .avatar img {
-      width: 80px;
-      height: 80px; }
-  .tc-contact-section .contact .name {
-    font-weight: bold;
-    font-size: 13px;
-    padding-bottom: 1px; }
-  .tc-contact-section .contact .role {
-    font-style: italic;
-    font-size: 0.8em; }
+.icon-add-user {
+  width: 24px;
+  height: 17px;
+  background: url("/img/icons/icon-add-user.png");
+  background-repeat: no-repeat;
+  margin: 2px 5px 0 0; }
+
+.icon-check-small {
+  width: 13px;
+  height: 11px;
+  background: url("/img/icons/icon-check-small.png");
+  background-repeat: no-repeat;
+  margin: 2px 5px 0 0; }
+
+/*************************************************/
+/*****   Section Relation:menu.html.twig   *****/
+/*************************************************/
+.tc-return-section {
+  margin-top: 10px; }
+
+.tc-contact-section {
+  text-align: left;
+  margin: -5px 0 10px 0; }
+  .tc-contact-section .contact {
+    padding-top: 10px; }
+    .tc-contact-section .contact .avatar {
+      margin: 0 0 10px 20px;
+      display: inline-block;
+      vertical-align: top;
+      border-bottom: 5px solid #75d600;
+      height: 39px; }
+      .tc-contact-section .contact .avatar img {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 10px; }
+    .tc-contact-section .contact .infos {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 15px; }
+      .tc-contact-section .contact .infos .name {
+        font-weight: bold;
+        font-size: 14px;
+        padding: 2px 0 5px 0; }
+      .tc-contact-section .contact .infos .role {
+        font-style: italic;
+        font-size: 11px;
+        color: #777; }
+
+.tc-menu-section .nav-header {
+  display: inline-block; }
+.tc-menu-section .settings {
+  display: inline-block;
+  margin-top: -5px;
+  vertical-align: middle;
+  margin-top: -10px; }
 
 /*************************************************/
 /*****   Section Relation:index.html.twig   *****/
