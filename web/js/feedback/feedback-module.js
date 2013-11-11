@@ -10,8 +10,6 @@ feedbackModule.controller("feedback.Controller", function($scope, $http){
     }
 
     $scope.sendFeedback = function(){
-        // Reset newFeedback instance
-        $scope.newFeedback = { };
 
         // Prepare data objet to send to server
         var data = { };
@@ -30,6 +28,8 @@ feedbackModule.controller("feedback.Controller", function($scope, $http){
             }
 
         }).success(function(c){
+            // Reset newFeedback instance
+            $scope.newFeedback = { };
             $scope.closeFeedbackModal();
         }).error(function(error){
         });

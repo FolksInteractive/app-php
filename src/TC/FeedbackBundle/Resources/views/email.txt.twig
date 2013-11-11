@@ -9,12 +9,13 @@ New Feedback from {{app.user.getFullName()}}!
 {% endautoescape %}{% endblock %}
 
 {% block sub_title %}{% autoescape false %}
-New Feedback !
+New Feedback from {{app.user.getFullName()}} [ {{app.user.email}} ]!
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}{% autoescape false %}
-<div>For page : {{data["uri"]}}<div>
-{{data["body"]}}
+<p>{{data["body"]}}</p>
+<br />
+<p style="text-align:center">For page : {{data["uri"]}}<p>
 {% endautoescape %}{% endblock %}
 
 {% block buttons %}{% endblock %}
