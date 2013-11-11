@@ -9,10 +9,11 @@ New Feedback from {{app.user.getFullName()}}!
 {% endautoescape %}{% endblock %}
 
 {% block sub_title %}{% autoescape false %}
-New Feedback from {{app.user.getFullName()}} [ {{app.user.email}} ]!
+New Feedback !
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}{% autoescape false %}
+<p style="text-align:center; font-size:18px;">from  {{app.user.getFullName()}} [ {{app.user.email}} ] <p>
 <p>{{data["body"]}}</p>
 <br />
 <p style="text-align:center">For page : {{data["uri"]}}<p>

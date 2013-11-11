@@ -5,74 +5,20 @@
 {% endautoescape %}{% endblock %}
 
 {% block title %}{% autoescape false %}
-<img src="{{ app.request.uriForPath('/../img/email/title-registration.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/../img/email/title-activation.gif')}}" border="0" />
 {% endautoescape %}{% endblock %}
 
 {% block sub_title %}{% autoescape false %}
-Start Using TimeCrumbs!
+Ready to Get Started?
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}{% autoescape false %}
-Click the following buttons to access your TimeCrumbs’ <br />account or learn how to use TimeCrumbs.
+Please click the following button to activate your new TimeCrumbs' account.
 {% endautoescape %}{% endblock %}
 
-{% block buttons %}{% autoescape false %}
-<table><tr>
-        <td style="padding-right: 10px;">
-        <table>
-            <tr>
-                <td>
-                    <a href="#">
-                    <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
-                            <td></td>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 15px 25px;font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">Start Using It</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
-                            <td></td>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
-                        </tr>
-                    </a>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        </td>
-    <td style="padding-left: 10px;">
-        <table>
-            <tr>
-                <td>
-                    <a href="#">
-                    <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
-                            <td></td>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="padding: 15px 25px; font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">View Tutorials</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
-                            <td></td>
-                            <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
-                        </tr>
-                    </a>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        </td>
-    </tr>
-</table>
+{% block button1 %}{% autoescape false %}
+Activate Account
 {% endautoescape %}{% endblock %}
-
+{% block button1_url %}{% autoescape false %}
+{{confirmationUrl}}
+{% endautoescape %}{% endblock %}

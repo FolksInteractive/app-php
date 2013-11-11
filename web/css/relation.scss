@@ -65,42 +65,26 @@
 /*************************************************/
 
 .client-relations,
-.vendor-relations{
-    
-    table {
-        width: 100%;
+.vendor-relations{    
+    .tc-relations-boxes{
+        text-align: center;
+        margin-top: 30px;
         
-        .thumb{
-            width: 100px;
-            padding: 20px; 
+        .thumbnail {
+            img {
+                margin: 30px auto;
+                max-width: 140px;
+            }
             
-            img{
-                width:60px;
-                height:60px;
+            .caption {
+                margin-top: -30px;
             }
-        }
-        
-        .name {
-            width: 200px;
-            a {
-                font-size: 16px;
-                font-weight: bold;
-            }
-        }
-        
-        .pro-title {
-            width: 150px;
-            font-size: 13px;
-            font-style: italic;
-            color: #999;
-        }
-        
-        .status {
-            padding-right: 20px;
             
-            .progress {
-                margin: 0;
+            .pro-title {
+                font-size: 14px;
+                color: #777;
             }
+            
         }
     }
 }

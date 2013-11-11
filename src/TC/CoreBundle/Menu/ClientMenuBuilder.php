@@ -30,17 +30,17 @@ class ClientMenuBuilder extends ContainerAware {
         ;
 
         $menu
-            ->addChild( '.icon-projects Projects', array(
-                'route' => 'client_project'
-            ) )
-            ->setExtra( "sub_label", "Project management with multiple service providers" )
-        ;
-
-        $menu
             ->addChild( '.icon-relations Service Providers', array(
             'route' => 'client_relation'
             ) )
-            ->setExtra( "sub_label", "Your business relationships" )
+            ->setExtra( "sub_label", "Build & manage relationships" )
+        ;
+
+        $menu
+            ->addChild( '.icon-projects Projects', array(
+                'route' => 'client_project'
+            ) )
+            ->setExtra( "sub_label", "Manage multiple service providers in the same project" )
         ;
 
         return $menu;
@@ -93,35 +93,40 @@ class ClientMenuBuilder extends ContainerAware {
         $menu->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild( '.icon-agreement Master Agreement', array(
+        $menu->addChild( '.icon-rfp-light Request For Proposal', array(
             'route' => 'client_relation_new',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Describe & discuss your needs" )
+        ;
 
-        $ordersItem = $menu->addChild( '.icon-orders Work orders', array(
+        $menu->addChild( '.icon-orders Proposals', array(
             'route' => 'client_relation_orders',
             'routeParameters' => $routeParameters
-                ) );
-
-        $menu->addChild( '.icon-work-progress Work in progress', array(
+        ) )
+            ->setExtra( "sub_label", "View, discuss & accept proposals" )
+        ;
+        
+        $menu->addChild( '.icon-monitoring Work Monitoring', array(
             'route' => 'client_relation_progress',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "All the work in progress" )
+        ;
 
         $menu->addChild( '.icon-bill Open Bill', array(
             'route' => 'client_relation_bill',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Work completed, but not yet billed" )
+        ;
 
         $menu->addChild( '.icon-invoice Invoices', array(
             'route' => 'client_relation_invoices',
             'routeParameters' => $routeParameters
-        ) );
-
-        $menu->addChild( '.icon-settings Settings', array(
-            'route' => 'client_relation_new',
-            'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Work completed and invoiced" )
+        ;
 
         /* foreach ($menu as $key => $item) {
           $item->setExtra('routes', array(

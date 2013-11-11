@@ -6,7 +6,7 @@ body {
     background-color: #fff;
     overflow-y : scroll;
     overflow-x : hidden;
-    font: 100%/1.4 Helvetica, Arial, sans-serif;
+    font: 14px Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -50,47 +50,6 @@ legend{
         font-size: 14px;
         color: #999;
         padding-left: 5px;
-    }
-}
-
-.tc-relations-rows{
-    border: none;
-    margin-top: -20px;
-    
-    th{
-        font-weight: normal;
-        font-style: italic;
-        font-size:13px;
-        padding-top:0;
-        padding-bottom:0;
-    }
-    
-    tbody {
-        tr td {
-            padding: 10px 0;
-            border-bottom: 1px solid #dededf;
-        }
-    }
-}
-
-.tc-relations-boxes{
-    text-align: center;
-    margin-top: 30px;
-    
-    .thumbnail {
-        img {
-            padding: 30px;
-        }
-        
-        .caption {
-            margin-top: -30px;
-        }
-        
-        .pro-title {
-            font-size: 14px;
-            color: #777;
-        }
-        
     }
 }
 
@@ -195,14 +154,16 @@ legend{
                 }
                 
                 a {
-                    color: #FFF;
+                    color: #fff;
                     font-size: 14px;
                     font-weight: bold;
                 }
                 
                 .dropdown-menu{
-                    left: inherit;
-                    right:0;
+                    a{
+                        color: #000;
+                        font-weight: normal;
+                    }
                 }
             }
             

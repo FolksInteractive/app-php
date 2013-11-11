@@ -22,17 +22,26 @@ class VendorMenuBuilder extends ContainerAware {
         $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild( '.icon-dashboard Dashboard', array(
-            'route' => 'vendor_dashboard'
-        ) );
-        
-        $menu->addChild( '.icon-relations Relationships', array(
-            'route' => 'vendor_relation'
-        ) );
+        $menu
+            ->addChild( '.icon-dashboard Dashboard', array(
+                'route' => 'vendor_dashboard'
+            ) )
+            ->setExtra( "sub_label", "Bird eye view on what's going on" )
+        ;
 
-        $menu->addChild( '.glyphicon-book Pricebook', array(
-            'uri' => '#'
-        ) );
+        $menu
+            ->addChild( '.icon-relations Service Providers', array(
+            'route' => 'vendor_relation'
+            ) )
+            ->setExtra( "sub_label", "Build & manage relationships" )
+        ;
+        
+        $menu
+            ->addChild( '.glyphicon-book Pricebook', array(
+                'uri' => '#'
+            ) )
+            ->setExtra( "sub_label", "Your pricing catalog" )
+        ;
         
         return $menu;
     }
@@ -53,35 +62,40 @@ class VendorMenuBuilder extends ContainerAware {
         $menu->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild( '.icon-agreement Master Agreement', array(
+         $menu->addChild( '.icon-rfp-light Request For Proposal', array(
             'route' => 'vendor_relation_new',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Describe & discuss your needs" )
+        ;
 
-        $ordersItem = $menu->addChild( '.icon-orders Work orders', array(
+        $menu->addChild( '.icon-orders Proposals', array(
             'route' => 'vendor_relation_orders',
             'routeParameters' => $routeParameters
-                ) );
-
-        $menu->addChild( '.icon-work-progress Work in progress', array(
+        ) )
+            ->setExtra( "sub_label", "View, discuss & accept proposals" )
+        ;
+        
+        $menu->addChild( '.icon-monitoring Work Monitoring', array(
             'route' => 'vendor_relation_progress',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "All the work in progress" )
+        ;
 
         $menu->addChild( '.icon-bill Open Bill', array(
             'route' => 'vendor_relation_bill',
             'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Work completed, but not yet billed" )
+        ;
 
         $menu->addChild( '.icon-invoice Invoices', array(
             'route' => 'vendor_relation_invoices',
             'routeParameters' => $routeParameters
-        ) );
-
-        $menu->addChild( '.icon-settings Settings', array(
-            'route' => 'vendor_relation_new',
-            'routeParameters' => $routeParameters
-        ) );
+        ) )
+            ->setExtra( "sub_label", "Work completed and invoiced" )
+        ;
         
         /*foreach ($menu as $key => $item) {
             $item->setExtra('routes', array(

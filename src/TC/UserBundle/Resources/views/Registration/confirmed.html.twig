@@ -21,8 +21,9 @@
             </p>
         {% endfor %}
     {% endfor %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.shortName}, 'FOSUserBundle') }}</p>
-    <a href="{{path('client_dashboard')}}">Get started &rarr;</a>
-                </div>
-            </div>
+
+        <p>{{ 'registration.confirmed'|trans({'%username%': user.shortName}, 'FOSUserBundle') }}</p>
+        <a href="{{path('root')}}">Get started &rarr;</a>
+    </div>
+</div>
 {% endblock %}

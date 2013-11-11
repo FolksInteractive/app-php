@@ -111,11 +111,15 @@ vich_uploader:
 
 liip_imagine:
     cache_prefix: /cache
-    filter_sets:
+    filter_sets:      
+        140_thumb:
+          quality: 100
+          filters:
+            thumbnail: {size: [140, 140], mode: outbound}
         80_thumb:
           quality: 100
           filters:
-            thumbnail: {size: [80, 80], mode: outbound}
+            thumbnail: {size: [80, 80], mode: outbound}      
         60_thumb:
             quality: 75
             filters:

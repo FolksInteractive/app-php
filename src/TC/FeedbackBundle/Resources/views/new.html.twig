@@ -22,12 +22,33 @@
                     <h4 class="modal-title" id="feedbackModalLabel">How do feel about Timecrumbs ?</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-warning" style="display:none"
+                         ng-show="request.status=='sent' && request.success">
+                        Thank you for contibuting to TimeCrumbs!
+                    </div>
+                        
+                    <div class="alert alert-warning" style="display:none"
+                         ng-show="request.status=='sent' && !request.success">
+                        Opps somehting went wrong. Please contact us directly at info@flsolutions.ca
+                    </div>  
+                        
                     <p>Don't hesitate to leave your feedbacks, report bugs or share your ideas. It will help us to make build offer you a better service!</p>
-                    <textarea ng-required="true" ng-model="newFeedback.body"></textarea>
+                    <textarea class="form-control" rows="4"
+                              ng-required="true" 
+                              ng-model="newFeedback.body"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" ng-click="sendFeedback()">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            ng-hide="request.sending">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="sendFeedback()"
+                            ng-disabled="!feedbackForm.$dirty || feedbackForm.$invalid || request.status=='sending' ">
+                        <span ng-show="request.status=='sending'">Sending ...</span>
+                        <span ng-show="request.status!='sending'">Send</span>
+                    </button>
+                        <div bg-bind="request.status"></div>
                 </div>
             </form>
         </div>

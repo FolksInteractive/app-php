@@ -18,9 +18,12 @@
     the current item, so lets change that.
 #}
 {% set options = options|merge({'currentDepth': 0}) %}
-{% if options.nav_type is defined and options.currentClass is defined and options.currentClass == 'current' %}
+
+
+{# if options.nav_type is defined and options.currentClass is defined and options.currentClass == 'current' %}
     {% set options = options|merge({'currentClass': 'active'}) %}
-{% endif %}
+{% endif #}
+{% set options = options|merge({'currentClass': 'active'}) %}
 
 {% set listAttributes = item.childrenAttributes %}
 {{ block('list') -}}

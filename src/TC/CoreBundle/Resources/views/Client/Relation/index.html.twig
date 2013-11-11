@@ -18,46 +18,16 @@
 {% block sheet %}
 <div class="tc-relations-section">
 
-    <legend>Active Business Relationships <span>(5)</span></legend>
+    <legend>Active Business Relationships <span>({{relations|length}})</span></legend>
     
-    <!-- Table Layout -->
-
-    <!--<table class="tc-relations-rows">
-        <tbody>
-            {% for relation in relations %}
-                <tr>
-                    <td class="thumb">
-                        <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
-                        <img class="img-circle" src="/img/users/user.png" />
-                    </td>
-                    <td class="name">
-                        <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
-                            {{relation.vendor.getFullName() | default(relation.vendor)}}    
-                            </a>
-                        </td>
-                        <td class="pro-title">Web Designer</td>
-                        <td class="status">
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                    <span class="sr-only">20% Complete</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>    
-            {% endfor %}
-        </tbody>
-    </table>-->
-    
-    <!-- Boxes Layout -->
-
     <div class="tc-relations-boxes row">
     {% for relation in relations %}
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4  col-lg-3">
             <div class="thumbnail">
-                <img class="img-circle" src="/img/users/user.png" />
+                <img class="img-rounded" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb')}}" />
                 <div class="caption">
                     <h3>{{relation.vendor.getFullName() | default(relation.vendor)}} </h3>
-                    <p class="pro-title">Développeur Web</p>
+                    <p class="pro-title"></p>
                     <p><a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="btn btn-primary" role="button"><span class="icon-check-small"></span>View Activities</a></p>
                 </div>
             </div>
@@ -66,5 +36,5 @@
     </div>
 
     <legend>Inactive Business Relationships <span>(0)</span></legend>
-    </div>
+</div>
 {% endblock %}

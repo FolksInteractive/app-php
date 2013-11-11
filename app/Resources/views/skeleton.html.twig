@@ -23,7 +23,7 @@
 
                 <a data-toggle="dropdown" class="profile-links client" href="#">
                     <div class="profile">
-                        <img src="/img/users/user.png" width="25" height="25">
+                        <img src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('30_thumb')}}">
                         <div class="name">{{app.user.fullName}}!</div>
                         <div class="caret glyphicon-white"></div>
                     </div>
@@ -33,6 +33,7 @@
                     <!-- dropdown menu links -->
             {% block topbar_profile_dropdown %}{% endblock %}
                     <li><a href="{{path('fos_user_profile_edit')}}">Edit profile</a></li>
+                    <li><a class="btn btn-link" data-toggle="modal" data-target="#feedbackModal">Leave your impressions</a></li>
                     <li><a href="{{path('fos_user_security_logout')}}">Sign out</a></li>
                 </ul>
             </div>
@@ -40,7 +41,7 @@
         </div>
         
         <div class="tc-logo">
-            <img src="/img/logo-timecrumbs-small.png" />
+            <a href="{{path("root")}}"><img src="/img/logo-timecrumbs-small.png" /></a>
         </div>
 
     </div>

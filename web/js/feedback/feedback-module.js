@@ -30,13 +30,22 @@ feedbackModule.controller("feedback.Controller", function($scope, $http){
         }).success(function(c){
             // Reset newFeedback instance
             $scope.newFeedback = { };
-            $scope.closeFeedbackModal();
+            $scope.request.success = true;
+            $scope.request.status = "sent";
         }).error(function(error){
+            $scope.request.success = false;
+            $scope.request.status = "sent";
         });
+        
+        $scope.request.status = "sending";
     }
     
     $scope.showFeedbackModal = false;
     $scope.newFeedback = {};
+    $scope.request = {
+        success: false,
+        status : ""
+    };
 });
 
 feedbackModule.directive("tcFeedbackModal",

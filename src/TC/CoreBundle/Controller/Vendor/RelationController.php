@@ -108,6 +108,7 @@ class RelationController extends BaseController {
      */
     protected function createCreateForm( Relation $relation ){
         $form = $this->createForm( new RelationCreateType(), $relation, array(
+            'wm' => $this->getWorkspaceManager(),
             'action' => $this->generateUrl( 'vendor_relation_create', array('idRelation' => $relation->getId()) ),
             'method' => 'POST',
                 ) );

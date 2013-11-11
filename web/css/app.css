@@ -3,7 +3,7 @@ body {
   background-color: #fff;
   overflow-y: scroll;
   overflow-x: hidden;
-  font: 100%/1.4 Helvetica, Arial, sans-serif; }
+  font: 14px Helvetica, Arial, sans-serif; }
 
 a {
   color: #1b85b2;
@@ -39,30 +39,6 @@ legend {
     font-size: 14px;
     color: #999;
     padding-left: 5px; }
-
-.tc-relations-rows {
-  border: none;
-  margin-top: -20px; }
-  .tc-relations-rows th {
-    font-weight: normal;
-    font-style: italic;
-    font-size: 13px;
-    padding-top: 0;
-    padding-bottom: 0; }
-  .tc-relations-rows tbody tr td {
-    padding: 10px 0;
-    border-bottom: 1px solid #dededf; }
-
-.tc-relations-boxes {
-  text-align: center;
-  margin-top: 30px; }
-  .tc-relations-boxes .thumbnail img {
-    padding: 30px; }
-  .tc-relations-boxes .thumbnail .caption {
-    margin-top: -30px; }
-  .tc-relations-boxes .thumbnail .pro-title {
-    font-size: 14px;
-    color: #777; }
 
 .tc-panel {
   overflow-y: auto; }
@@ -135,12 +111,12 @@ legend {
           vertical-align: middle;
           padding-left: 10px; }
         .tc-menu-panel .tc-menu-heading .account .dropdown a {
-          color: #FFF;
+          color: #fff;
           font-size: 14px;
           font-weight: bold; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu {
-          left: inherit;
-          right: 0; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu a {
+          color: #000;
+          font-weight: normal; }
     .tc-menu-panel .tc-menu-heading .tc-logo {
       padding: 25px 0 0 44px;
       position: absolute;
@@ -197,7 +173,7 @@ legend {
       .tc-main-panel .tc-toolbar .tc-breadcrumb .title {
         font-weight: 300;
         font-size: 40px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         padding: 20px 50px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb a {
         color: #999; }
@@ -417,36 +393,21 @@ legend {
 /*************************************************/
 /*****   Section Relation:index.html.twig   *****/
 /*************************************************/
-.client-relations table,
-.vendor-relations table {
-  width: 100%; }
-  .client-relations table .thumb,
-  .vendor-relations table .thumb {
-    width: 100px;
-    padding: 20px; }
-    .client-relations table .thumb img,
-    .vendor-relations table .thumb img {
-      width: 60px;
-      height: 60px; }
-  .client-relations table .name,
-  .vendor-relations table .name {
-    width: 200px; }
-    .client-relations table .name a,
-    .vendor-relations table .name a {
-      font-size: 16px;
-      font-weight: bold; }
-  .client-relations table .pro-title,
-  .vendor-relations table .pro-title {
-    width: 150px;
-    font-size: 13px;
-    font-style: italic;
-    color: #999; }
-  .client-relations table .status,
-  .vendor-relations table .status {
-    padding-right: 20px; }
-    .client-relations table .status .progress,
-    .vendor-relations table .status .progress {
-      margin: 0; }
+.client-relations .tc-relations-boxes,
+.vendor-relations .tc-relations-boxes {
+  text-align: center;
+  margin-top: 30px; }
+  .client-relations .tc-relations-boxes .thumbnail img,
+  .vendor-relations .tc-relations-boxes .thumbnail img {
+    margin: 30px auto;
+    max-width: 140px; }
+  .client-relations .tc-relations-boxes .thumbnail .caption,
+  .vendor-relations .tc-relations-boxes .thumbnail .caption {
+    margin-top: -30px; }
+  .client-relations .tc-relations-boxes .thumbnail .pro-title,
+  .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
+    font-size: 14px;
+    color: #777; }
 
 /*************************************************/
 /*****   Section Relation:orders.html.twig   *****/
@@ -591,7 +552,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -604,8 +565,8 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;

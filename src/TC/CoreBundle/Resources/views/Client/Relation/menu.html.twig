@@ -11,15 +11,14 @@
 </div>
 
 <div class="tc-contact-section">
-    <div class="nav-header">Your Service Provider</div>
+    {# <div class="nav-header">Your Client</div> #}
     <div class="contact">
         <div class="avatar">
-            <!--<img src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('80_thumb')}}">-->
-            <img src="/img/users/user.png" />
+            <img src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('80_thumb')}}">
         </div>
         <div class="infos">
             <div class="name">{{relation.vendor.getFullName() | default(relation.vendor)}}</div>
-            <div class="role">Développeur Web</div>
+            <div class="role">Service provider</div>
         </div>
     </div>
 </div>
@@ -28,34 +27,8 @@
 <div class="tc-menu-section">
     <div class="nav-header">Work Activities</div>
     <div class="settings"><i class="icon-settings"></i></div>
-    <!--{{ knp_menu_render(relationMenu, {'currentClass':'active'}) }}-->
-
-    <ul class="tc-relation-menu tc-menu nav">
-        
-        <li class="first">
-            <a href="/app_dev.php/0/r/3/orders/"><i class="icon-rfp-light"></i> Request For Proposal
-            <span class="sub_label">Describe & discuss your needs</span></a>
-        </li>
-
-        <li class="active">
-            <a href="/app_dev.php/0/r/3/orders/"><i class="icon-orders"></i> Proposals
-            <span class="sub_label">View, discuss & accept proposals</span></a>
-        </li>
-
-        <li>
-            <a href="/app_dev.php/0/r/3/progress/"><i class="icon-monitoring"></i> Work Monitoring
-            <span class="sub_label">All the work in progress</span></a>
-        </li>
-
-        <li><a href="/app_dev.php/0/r/3/bill"><i class="icon-bill"></i> Open Bill
-            <span class="sub_label">Work completed, but not yet billed</span></a>
-        </li>
-
-        <li class="last"><a href="/app_dev.php/0/r/3/invoices"><i class="icon-invoice"></i> Invoices
-            <span class="sub_label">Work completed and invoiced</span></a>
-        </li>
-
-    </ul>
+    
+    {{ knp_menu_render(relationMenu) }}
 
 </div>
 {% endblock%}
