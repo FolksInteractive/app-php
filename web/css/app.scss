@@ -11,7 +11,7 @@ body {
 
 a {
     color: #1b85b2;
-    cursor:pointer;
+    cursor: pointer;
 }
 a:hover {
     text-decoration: none;
@@ -272,39 +272,31 @@ legend{
             font-size: 24px;
             
             .breadcrumb{
-                margin: 34px 0 0 20px;
                 padding:0;
                 background: none; 
                 
                 img{
-                    padding-right: 10px;
                     margin-top: -3px;
                 }
                 
                 .active{
+                    padding: 20px 50px;
+                    
                     .divider{
                         display: none;
                     }
                     
-                    a{
+                    a {
+                        font-weight: 300;
+                        font-size: 40px;
+                        font-family: 'Open Sans', sans-serif;
+                        color: #333;
+                    }
+                    
+                    a:hover {
                         color: #999;
-                        font-size: 24px;
                     }
                 }
-            }
-            
-            .title {
-                font-weight: 300;
-                font-size: 40px;
-                font-family: 'Open Sans', sans-serif;
-                padding: 20px 50px;
-            }
-            
-            a{
-                color: #999;         
-            }
-            a:hover{
-                text-decoration:underline;
             }
         }
         

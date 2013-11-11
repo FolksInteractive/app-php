@@ -54,27 +54,35 @@
 }
 
 .icon-rfp-light{
-    width: 19px;
+    width: 16px;
     height: 17px;
     background: url("/img/icons/icon-rfp-light-small.png");
     background-repeat:no-repeat;
     margin: -2px 3px 0 0;
 }
 
-.icon-orders{
-    width: 17px;
-    height: 18px;
-    background: url("/img/icons/icon-orders.png");
+.icon-proposals{
+    width: 20px;
+    height: 17px;
+    background: url("/img/icons/icon-proposals-light-small.png");
     background-repeat:no-repeat;
-    margin: -1px 3px 0 0;
+    margin: -2px 3px 0 0;
+}
+
+.icon-new-proposals-light-small{
+    width: 23px;
+    height: 17px;
+    background: url("/img/icons/icon-new-proposals-light-small.png");
+    background-repeat: no-repeat;
+    margin: 2px 5px 0 0;
 }
 
 .icon-orders-dark{
-    width: 17px;
-    height: 18px;
-    background: url("/img/icons/icon-orders-dark.png");
+    width: 29px;
+    height: 25px;
+    background: url("/img/icons/icon-proposals-dark-large.png");
     background-repeat:no-repeat;
-    margin: 3px 3px 0 0;
+    margin: 18px 5px 0 0;
 }
 
 .icon-monitoring{
@@ -119,9 +127,9 @@
 .badge-talk-bubble{
     width: 34px;
     height: 28px;
-    background: url("/img/icons/icon-talk-bubble.jpg") no-repeat scroll 50% 10% transparent;
-    padding-top: 4px;
+    background: url("/img/icons/icon-talk-bubble.jpg");
     margin: 3px 3px 0 0;
+    color: #fff;
 }
 
 .icon-add-user{

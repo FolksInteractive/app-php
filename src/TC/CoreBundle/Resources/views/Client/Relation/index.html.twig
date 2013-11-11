@@ -3,8 +3,12 @@
 {% block body_class -%}{{ parent() }} client-relations {% endblock %}
 
 {% block toolbar %}
+
 <div class="tc-breadcrumb pull-left">
-    <div class="title"><span class="icon-relations-dark-large"></span>Service Providers</div>
+    <ul class="breadcrumb"><li class="active">
+            <a href="#"><i class="icon-relations-dark-large"></i>Service Providers</a>
+        </li></ul>
+
 </div>
 
 <div class="tc-controls pull-right">
@@ -19,10 +23,10 @@
 <div class="tc-relations-section">
 
     <legend>Active Business Relationships <span>(5)</span></legend>
-    
+
     <!-- Table Layout -->
 
-    <!--<table class="tc-relations-rows">
+    <table class="tc-relations-rows">
         <tbody>
             {% for relation in relations %}
                 <tr>
@@ -46,25 +50,25 @@
                     </tr>    
             {% endfor %}
         </tbody>
-    </table>-->
-    
+    </table>
+
     <!-- Boxes Layout -->
 
     <div class="tc-relations-boxes row">
     {% for relation in relations %}
-        <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <img class="img-circle" src="/img/users/user.png" />
-                <div class="caption">
-                    <h3>{{relation.vendor.getFullName() | default(relation.vendor)}} </h3>
-                    <p class="pro-title">Développeur Web</p>
-                    <p><a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="btn btn-primary" role="button"><span class="icon-check-small"></span>View Activities</a></p>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img class="img-circle" src="/img/users/user.png" />
+                    <div class="caption">
+                        <h3>{{relation.vendor.getFullName() | default(relation.vendor)}} </h3>
+                        <p class="pro-title">Développeur Web</p>
+                        <p><a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="btn btn-primary" role="button"><span class="icon-check-small"></span>View Activities</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
     {% endfor %}
-    </div>
+        </div>
 
-    <legend>Inactive Business Relationships <span>(0)</span></legend>
+        <legend>Inactive Business Relationships <span>(0)</span></legend>
     </div>
 {% endblock %}
