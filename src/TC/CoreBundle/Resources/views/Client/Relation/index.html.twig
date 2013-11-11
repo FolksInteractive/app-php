@@ -4,43 +4,67 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
+    <div class="title"><span class="icon-relations-dark-large"></span>Service Providers</div>
 </div>
 
 <div class="tc-controls pull-right">
-    <a href="{{path('client_relation_new')}}" class="btn-primary btn">
-        <i class="icon-discussion icon-white"></i>
-        Open a new relationship
+    <a href="{{path('client_relation_new')}}" class="btn-primary btn-lg">
+        <span class="icon-add-user"></span>
+        Add a Person
     </a>
 </div>
 {% endblock %}
 
 {% block sheet %}
 <div class="tc-relations-section">
-    <legend>
-        Relationships
-        <span class="badge">{{ relations|length }}</span>
-    </legend>
-    <table class="tc-relations table table-hover">
-        <thead>
-            <tr>
-                <th class="user"></th>
-                <th class="name"></th>
-            </tr>
-        </thead>
+
+    <legend>Active Business Relationships <span>(5)</span></legend>
+    
+    <!-- Table Layout -->
+
+    <!--<table class="tc-relations-rows">
         <tbody>
-            {% for relation in relations %}            
-            <tr>
-                <td class="user">
-                    <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
-                </td>
-                <td class="name">
-                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
-                        {{relation.vendor.getFullName() | default(relation.vendor)}}    
-                    </a>
-                </td>
-            </tr>    
+            {% for relation in relations %}
+                <tr>
+                    <td class="thumb">
+                        <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('30_thumb')}}" />
+                        <img class="img-circle" src="/img/users/user.png" />
+                    </td>
+                    <td class="name">
+                        <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
+                            {{relation.vendor.getFullName() | default(relation.vendor)}}    
+                            </a>
+                        </td>
+                        <td class="pro-title">Web Designer</td>
+                        <td class="status">
+                            <div class="progress progress-striped">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <span class="sr-only">20% Complete</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>    
             {% endfor %}
         </tbody>
-    </table>
-</div>
+    </table>-->
+    
+    <!-- Boxes Layout -->
+
+    <div class="tc-relations-boxes row">
+    {% for relation in relations %}
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img class="img-circle" src="/img/users/user.png" />
+                <div class="caption">
+                    <h3>{{relation.vendor.getFullName() | default(relation.vendor)}} </h3>
+                    <p class="pro-title">Développeur Web</p>
+                    <p><a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="btn btn-primary" role="button"><span class="icon-check-small"></span>View Activities</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <legend>Inactive Business Relationships <span>(0)</span></legend>
+    </div>
 {% endblock %}

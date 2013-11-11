@@ -1,28 +1,62 @@
+/*************************************************/
+/*****   Section Relation:menu.html.twig   *****/
+/*************************************************/
+
+.tc-return-section{
+    margin-top: 10px;
+}
 
 .tc-contact-section{
+    text-align: left;
+    margin: -5px 0 10px 0;
+    
     .contact{
-        text-align: center;
-        padding:10px;
-        background: rgba(0,0,0,.3);
-        box-shadow: 0px 5px 5px -5px #222 inset, 0px -5px 5px -5px #222 inset;
+        padding-top: 10px;
         
         .avatar {
-            padding: 5px 0 15px 0;
+            margin: 0 0 10px 20px;
+            display: inline-block;
+            vertical-align: top;
+            border-bottom: 5px solid #75d600;
+            height: 39px;
             
             img{
-                width:80px;
-                height:80px;
+                width:25px;
+                height:25px;
+                margin-bottom: 10px;
             }
         }
-        .name{
-            font-weight: bold;
-            font-size: 13px;
-            padding-bottom: 1px;
+        
+        .infos {
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 15px;
+            
+            .name{
+                font-weight: bold;
+                font-size: 14px;
+                padding: 2px 0 5px 0;
+            }
+            .role{
+                font-style: italic;
+                font-size: 11px;
+                color: #777;
+            }  
         }
-        .role{
-            font-style: italic;
-            font-size: 0.8em;
-        }          
+    }
+}
+
+.tc-menu-section {
+    
+    .nav-header {
+        display: inline-block;
+    }
+    
+    .settings {
+        display: inline-block;
+        margin-top: -5px;
+        vertical-align: middle;
+        margin-top: -10px;
     }
 }
 
@@ -32,12 +66,41 @@
 
 .client-relations,
 .vendor-relations{
-    .user{
-        width:30px;
+    
+    table {
+        width: 100%;
         
-        img{
-            width:30px;
-            height:30px;
+        .thumb{
+            width: 100px;
+            padding: 20px; 
+            
+            img{
+                width:60px;
+                height:60px;
+            }
+        }
+        
+        .name {
+            width: 200px;
+            a {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+        
+        .pro-title {
+            width: 150px;
+            font-size: 13px;
+            font-style: italic;
+            color: #999;
+        }
+        
+        .status {
+            padding-right: 20px;
+            
+            .progress {
+                margin: 0;
+            }
         }
     }
 }
