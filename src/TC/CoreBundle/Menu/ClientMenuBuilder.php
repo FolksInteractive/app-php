@@ -152,9 +152,9 @@ class ClientMenuBuilder extends ContainerAware {
             'route' => 'client_relation_orders',
             'routeParameters' => array('idRelation' => $idRelation)
                 ) );
-        $menu->setLabel( ".icon-orders-dark Work Orders" );
+        $menu->setLabel( ".icon-orders-dark Proposals" );
 
-        $menu->addChild( 'Work Order', array(
+        $menu->addChild( 'Proposal', array(
             'route' => 'client_order_show',
             'routeParameters' => $routeParameters
         ) );

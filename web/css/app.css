@@ -159,26 +159,21 @@ legend {
       font-weight: 200;
       font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
-        margin: 34px 0 0 20px;
         padding: 0;
         background: none; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
-          padding-right: 10px;
           margin-top: -3px; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
-          display: none; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
-          color: #999;
-          font-size: 24px; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb .title {
-        font-weight: 300;
-        font-size: 40px;
-        font-family: "Open Sans", sans-serif;
-        padding: 20px 50px; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb a {
-        color: #999; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb a:hover {
-        text-decoration: underline; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active {
+          padding: 20px 50px; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
+            display: none; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
+            font-weight: 300;
+            font-size: 40px;
+            font-family: "Open Sans", sans-serif;
+            color: #333; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a:hover {
+            color: #999; }
     .tc-main-panel .tc-toolbar .tc-controls {
       margin: 37px 50px; }
       .tc-main-panel .tc-toolbar .tc-controls span {
@@ -269,25 +264,32 @@ legend {
   margin: 3px 3px 0 0; }
 
 .icon-rfp-light {
-  width: 19px;
+  width: 16px;
   height: 17px;
   background: url("/img/icons/icon-rfp-light-small.png");
   background-repeat: no-repeat;
   margin: -2px 3px 0 0; }
 
-.icon-orders {
-  width: 17px;
-  height: 18px;
-  background: url("/img/icons/icon-orders.png");
+.icon-proposals {
+  width: 20px;
+  height: 17px;
+  background: url("/img/icons/icon-proposals-light-small.png");
   background-repeat: no-repeat;
-  margin: -1px 3px 0 0; }
+  margin: -2px 3px 0 0; }
+
+.icon-new-proposals-light-small {
+  width: 23px;
+  height: 17px;
+  background: url("/img/icons/icon-new-proposals-light-small.png");
+  background-repeat: no-repeat;
+  margin: 2px 5px 0 0; }
 
 .icon-orders-dark {
-  width: 17px;
-  height: 18px;
-  background: url("/img/icons/icon-orders-dark.png");
+  width: 29px;
+  height: 25px;
+  background: url("/img/icons/icon-proposals-dark-large.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: 18px 5px 0 0; }
 
 .icon-monitoring {
   width: 19px;
@@ -330,9 +332,9 @@ legend {
 .badge-talk-bubble {
   width: 34px;
   height: 28px;
-  background: url("/img/icons/icon-talk-bubble.jpg") no-repeat scroll 50% 10% transparent;
-  padding-top: 4px;
-  margin: 3px 3px 0 0; }
+  background: url("/img/icons/icon-talk-bubble.jpg");
+  margin: 3px 3px 0 0;
+  color: #fff; }
 
 .icon-add-user {
   width: 24px;
@@ -399,15 +401,19 @@ legend {
   margin-top: 30px; }
   .client-relations .tc-relations-boxes .thumbnail img,
   .vendor-relations .tc-relations-boxes .thumbnail img {
-    margin: 30px auto;
+    margin: 0px auto;
     max-width: 140px; }
-  .client-relations .tc-relations-boxes .thumbnail .caption,
-  .vendor-relations .tc-relations-boxes .thumbnail .caption {
-    margin-top: -30px; }
+  .client-relations .tc-relations-boxes .thumbnail .caption h3,
+  .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
+    height: 52px;
+    overflow: hidden; }
   .client-relations .tc-relations-boxes .thumbnail .pro-title,
   .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
     font-size: 14px;
     color: #777; }
+  .client-relations .tc-relations-boxes .thumbnail .toolbar,
+  .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
+    margin-top: 20px; }
 
 /*************************************************/
 /*****   Section Relation:orders.html.twig   *****/
@@ -470,6 +476,35 @@ legend {
   width: 80px;
   text-align: center;
   vertical-align: middle; }
+
+/******************************************************************/
+/*****    Section Relation:orders.html.twig    ********/
+/******************************************************************/
+.tc-orders {
+  border: none;
+  margin-top: -10px; }
+  .tc-orders th {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13px;
+    padding-top: 0;
+    padding-bottom: 0; }
+  .tc-orders tbody tr td {
+    padding: 30px 0;
+    border-bottom: 1px solid #dededf;
+    border-top: none;
+    vertical-align: middle; }
+    .tc-orders tbody tr td a {
+      font-size: 16px; }
+  .tc-orders tbody .discussion {
+    text-align: center;
+    width: 50px; }
+  .tc-orders tbody .cost {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    width: 180px;
+    padding-right: 30px; }
 
 /******************************************************************/
 /*****    Section Order:show.html.twig & edit.html.twig    ********/

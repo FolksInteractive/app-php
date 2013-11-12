@@ -4,7 +4,13 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    <div class="title"><span class="icon-relations-dark-large"></span>Service Providers</div>
+    <ul class="breadcrumb">        
+        <li class="active">    
+            <a href="{{path('client_relation')}}">
+                <i class="icon-relations-dark-large"></i> Service Providers
+            </a>
+        </li>    
+    </ul>
 </div>
 
 <div class="tc-controls pull-right">
@@ -20,21 +26,46 @@
 
     <legend>Active Business Relationships <span>({{relations|length}})</span></legend>
     
-    <div class="tc-relations-boxes row">
+    <div class="tc-relations-boxes">
     {% for relation in relations %}
+            
+        {% if loop.first or (loop.index-1) is divisibleby(4) %}
+            <div class="row">
+        {% endif %}
+                    
         <div class="col-sm-6 col-md-4  col-lg-3">
             <div class="thumbnail">
                 <img class="img-rounded" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb')}}" />
                 <div class="caption">
-                    <h3>{{relation.vendor.getFullName() | default(relation.vendor)}} </h3>
-                    <p class="pro-title"></p>
-                    <p><a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="btn btn-primary" role="button"><span class="icon-check-small"></span>View Activities</a></p>
+                    
+                    {% if relation.vendor.getFirstName() and relation.vendor.getLastName() %}
+                        <h3>{{relation.vendor.getFirstName()}} <br /> 
+                            <small>{{relation.vendor.getLastName()}}</small>
+                        </h3>
+                    {% else %}
+                        </h4>{{relation.vendor.getEmail()}}</h4>
+                    {% endif %}
+                    
+                    <div class="toolbar">
+                        <a class="btn btn-primary" role="button"
+                           href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
+                            <span class="icon-check-small"></span>
+                            View Activities
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+                    
+        {% if (loop.index) is divisibleby(4) %}
+            </div>
+        {% endif %}
+            
     {% endfor %}
     </div>
 
+    {# Not for BETA
     <legend>Inactive Business Relationships <span>(0)</span></legend>
+    #}
 </div>
 {% endblock %}
