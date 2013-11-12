@@ -53,6 +53,17 @@ legend{
     }
 }
 
+.table>thead>tr>th {
+    border-bottom: 1px solid #dededf;
+}
+
+.spacer {
+    width: 100%;
+    height: 1px;
+    background: #dededf;
+    margin: 30px 0;
+}
+
 .tc-panel{
     overflow-y : auto;
 }
@@ -89,8 +100,10 @@ legend{
             a:hover{
                 text-decoration: none;
                 cursor: pointer;
-                background: rgba(0,0,0,.1);
+                background: rgba(0,0,0,.75);
+                border-left: 4px solid #777;
                 box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
+                padding-left: 21px;
             }
             .sub_label{
                 display: block;
@@ -102,11 +115,10 @@ legend{
         
         .active {
             border-left: 4px solid #75d600;
+            background: rgba(0,0,0,.75);
             
             a, a:hover{
                 margin-left: -4px;
-                background: rgba(0,0,0,.1);
-                box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
                 color: #FFF;
             }
         }
@@ -322,6 +334,7 @@ legend{
 @import "order";
 @import "invoice";
 @import "user";
+@import "root";
 
 .blurry{
     opacity: 0.3;
