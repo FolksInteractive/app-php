@@ -36,11 +36,19 @@
                 font-weight: bold;
                 font-size: 14px;
                 padding: 2px 0 5px 0;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 135px;
             }
             .role{
                 font-style: italic;
                 font-size: 11px;
                 color: #777;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 135px;
             }  
         }
     }

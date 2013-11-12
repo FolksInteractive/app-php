@@ -40,6 +40,15 @@ legend {
     color: #999;
     padding-left: 5px; }
 
+.table > thead > tr > th {
+  border-bottom: 1px solid #dededf; }
+
+.spacer {
+  width: 100%;
+  height: 1px;
+  background: #dededf;
+  margin: 30px 0; }
+
 .tc-panel {
   overflow-y: auto; }
 
@@ -66,19 +75,20 @@ legend {
   .tc-menu-panel .tc-menu li a:hover {
     text-decoration: none;
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset; }
+    background: rgba(0, 0, 0, 0.75);
+    border-left: 4px solid #777;
+    box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
+    padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
     display: block;
     font-size: 11px;
     color: #777;
     padding: 5px 30px 0 0; }
   .tc-menu-panel .tc-menu .active {
-    border-left: 4px solid #75d600; }
+    border-left: 4px solid #75d600;
+    background: rgba(0, 0, 0, 0.75); }
     .tc-menu-panel .tc-menu .active a, .tc-menu-panel .tc-menu .active a:hover {
       margin-left: -4px;
-      background: rgba(0, 0, 0, 0.1);
-      box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
       color: #FFF; }
   .tc-menu-panel .tc-menu-heading {
     top: 0;
@@ -159,26 +169,21 @@ legend {
       font-weight: 200;
       font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
-        margin: 34px 0 0 20px;
         padding: 0;
         background: none; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
-          padding-right: 10px;
           margin-top: -3px; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
-          display: none; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
-          color: #999;
-          font-size: 24px; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb .title {
-        font-weight: 300;
-        font-size: 40px;
-        font-family: "Open Sans", sans-serif;
-        padding: 20px 50px; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb a {
-        color: #999; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb a:hover {
-        text-decoration: underline; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active {
+          padding: 20px 50px; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
+            display: none; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
+            font-weight: 300;
+            font-size: 40px;
+            font-family: 'Open Sans', sans-serif;
+            color: #333; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a:hover {
+            color: #999; }
     .tc-main-panel .tc-toolbar .tc-controls {
       margin: 37px 50px; }
       .tc-main-panel .tc-toolbar .tc-controls span {
@@ -269,25 +274,32 @@ legend {
   margin: 3px 3px 0 0; }
 
 .icon-rfp-light {
-  width: 19px;
+  width: 16px;
   height: 17px;
   background: url("/img/icons/icon-rfp-light-small.png");
   background-repeat: no-repeat;
   margin: -2px 3px 0 0; }
 
 .icon-orders {
-  width: 17px;
-  height: 18px;
-  background: url("/img/icons/icon-orders.png");
+  width: 20px;
+  height: 17px;
+  background: url("/img/icons/icon-proposals-light-small.png");
   background-repeat: no-repeat;
-  margin: -1px 3px 0 0; }
+  margin: -2px 3px 0 0; }
+
+.icon-new-proposals-light-small {
+  width: 23px;
+  height: 17px;
+  background: url("/img/icons/icon-new-proposals-light-small.png");
+  background-repeat: no-repeat;
+  margin: 2px 5px 0 0; }
 
 .icon-orders-dark {
-  width: 17px;
-  height: 18px;
-  background: url("/img/icons/icon-orders-dark.png");
+  width: 29px;
+  height: 25px;
+  background: url("/img/icons/icon-proposals-dark-large.png");
   background-repeat: no-repeat;
-  margin: 3px 3px 0 0; }
+  margin: 18px 5px 0 0; }
 
 .icon-monitoring {
   width: 19px;
@@ -330,9 +342,9 @@ legend {
 .badge-talk-bubble {
   width: 34px;
   height: 28px;
-  background: url("/img/icons/icon-talk-bubble.jpg") no-repeat scroll 50% 10% transparent;
-  padding-top: 4px;
-  margin: 3px 3px 0 0; }
+  background: url("/img/icons/icon-talk-bubble.jpg");
+  margin: 3px 3px 0 0;
+  color: #fff; }
 
 .icon-add-user {
   width: 24px;
@@ -376,11 +388,19 @@ legend {
       .tc-contact-section .contact .infos .name {
         font-weight: bold;
         font-size: 14px;
-        padding: 2px 0 5px 0; }
+        padding: 2px 0 5px 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 135px; }
       .tc-contact-section .contact .infos .role {
         font-style: italic;
         font-size: 11px;
-        color: #777; }
+        color: #777;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 135px; }
 
 .tc-menu-section .nav-header {
   display: inline-block; }
@@ -472,6 +492,35 @@ legend {
   vertical-align: middle; }
 
 /******************************************************************/
+/*****    Section Relation:orders.html.twig    ********/
+/******************************************************************/
+.tc-orders {
+  border: none;
+  margin-top: -10px; }
+  .tc-orders th {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13px;
+    padding-top: 0;
+    padding-bottom: 0; }
+  .tc-orders tbody tr td {
+    padding: 30px 0;
+    border-bottom: 1px solid #dededf;
+    border-top: none;
+    vertical-align: middle; }
+    .tc-orders tbody tr td a {
+      font-size: 16px; }
+  .tc-orders tbody .discussion {
+    text-align: center;
+    width: 50px; }
+  .tc-orders tbody .cost {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    width: 180px;
+    padding-right: 30px; }
+
+/******************************************************************/
 /*****    Section Order:show.html.twig & edit.html.twig    ********/
 /******************************************************************/
 .order-not-ready .tc-toolbar .tc-edit-btn .dropdown-toggle,
@@ -511,7 +560,14 @@ legend {
 .order-not-ready .tc-deliverables-section input,
 .order-edit .tc-deliverables-section input,
 .order-show .tc-deliverables-section input {
-  margin-bottom: 0; }
+  margin: 10px 0; }
+.order-not-ready .tc-deliverables-section .number,
+.order-edit .tc-deliverables-section .number,
+.order-show .tc-deliverables-section .number {
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: #999; }
 .order-not-ready .tc-total-section,
 .order-edit .tc-total-section,
 .order-show .tc-total-section {
@@ -552,7 +608,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #dddddd; }
+  border-top: 1px solid #ddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -565,12 +621,50 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 white;
-    box-shadow: 8px 5px 14px 1px #333333; }
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 8px 5px 14px 1px #333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
       text-align: center; }
+
+.tc-offer-section .offer h1 {
+  font-weight: 300;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px 0 10px 0;
+  color: #0a6895; }
+.tc-offer-section .offer-subtitle {
+  color: #777;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 40px; }
+.tc-offer-section .block-title {
+  margin-top: 30px; }
+  .tc-offer-section .block-title input[type=text] {
+    font-size: 14px; }
+  .tc-offer-section .block-title .maintitle {
+    max-width: 400px;
+    width: 50%; }
+  .tc-offer-section .block-title .subtitle {
+    max-width: 700px;
+    font-size: 14px;
+    margin-top: 20px; }
+.tc-offer-section .new-block {
+  border: 1px dashed #dededf;
+  border-left: 3px solid #dededf;
+  padding: 20px;
+  margin: 20px 0; }
+  .tc-offer-section .new-block input[type=text] {
+    font-size: 14px;
+    max-width: 500px; }
+  .tc-offer-section .new-block textarea {
+    font-size: 14px;
+    margin-top: 20px; }
+.tc-offer-section .add-new {
+  margin-top: 10px; }
+  .tc-offer-section .add-new span {
+    margin-right: 3px; }
 
 /****************************************************/
 /*****    Section Order:not_ready.html.twig    ******/
@@ -701,6 +795,14 @@ legend {
 .tc_user_register .wrapper {
   width: 350px;
   margin-right: -175px; }
+
+/*************************************************/
+/*****   Section root.html.twig   *****/
+/*************************************************/
+.root .tc-menu-panel {
+  display: none; }
+.root .tc-main-panel {
+  left: 0; }
 
 .blurry {
   opacity: 0.3;
