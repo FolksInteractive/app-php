@@ -805,8 +805,55 @@ legend {
 /*************************************************/
 .root .tc-menu-panel {
   display: none; }
+.root .tc-toolbar {
+  display: none; }
 .root .tc-main-panel {
   left: 0; }
+.root .tc-sheet {
+  margin-top: 50px; }
+.root .tc-over-section {
+  text-align: center; }
+  .root .tc-over-section .description {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #aaa;
+    font-style: italic; }
+    .root .tc-over-section .description p {
+      font-size: 13px; }
+  .root .tc-over-section .client {
+    display: inline-block;
+    padding: 10px 40px 30px 40px;
+    margin-right: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .client .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .client .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .client p {
+      padding-top: 10px; }
+  .root .tc-over-section .vendor {
+    display: inline-block;
+    padding: 10px 40px 30px 40px;
+    margin-left: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .vendor .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .vendor .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .vendor p {
+      padding-top: 10px; }
+  .root .tc-over-section .logo {
+    margin-top: 40px; }
 
 .blurry {
   opacity: 0.3;

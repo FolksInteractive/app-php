@@ -4,12 +4,28 @@
 
 {% block sheet %}
 <div class="tc-over-section">
-    <div class="row-fluid">
-        <div class="center">
-            <h2>Use TimeCrumbs as : </h2>
-            <a href="{{path('client_dashboard')}}" class="btn btn-lg btn-default">Client</a>
-            <a href="{{path('vendor_dashboard')}}" class="btn btn-lg btn-default">Vendor</a>
+    <div class="center">
+        <div class="welcome">
+            <img src="/img/welcome.gif" />
         </div>
+        <div class="row">
+        <div class="description col-md-6 col-md-offset-3"><p>In TimeCrumbs, with a single account, you can benefits from both sides of the app. You can hire people AND/OR offer your services to your customers. Please choose the side you'd like to begin with.</p></div>
+        </div>
+        <div class="client">
+            <div class="provide"><img src="/img/provide-work.gif" /></div>
+            <p>I would like to create a request for proposal and would like to invite multiple services providers to work on my projects.</p>
+            <a href="{{path('client_dashboard')}}" class="btn btn-lg btn-primary">Create a RFP</a>
+            <div class="or">or</div>
+            <a href="{{path('client_dashboard')}}" class="btn btn-lg btn-primary">Invite a Service Provider</a>
+        </div>
+        <div class="vendor">
+            <div class="provide"><img src="/img/provide-services.gif" /></div>
+            <p>Using would like to create proposals, detailed report about my work and beautiful invoices for my customers</p>
+            <a href="{{path('vendor_dashboard')}}" class="btn btn-lg btn-primary">Create a Proposal</a>
+            <div class="or">or</div>
+            <a href="{{path('vendor_dashboard')}}" class="btn btn-lg btn-primary">Invite a Client</a>
+        </div> 
+        <div class="logo"><img src="/img/logo-timecrumbs-small-grey.gif" /></div>
     </div>
 </div>
 
