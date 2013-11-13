@@ -1,9 +1,17 @@
 {{form_start(form)}}
 
-{{form_widget(form)}}
+{{form_row(form.email, {'attr':{'placeholder':'Email Address', 'class':'input-lg emailfield' }})}}
+
+{{form_row(form.firstname, {'attr':{'placeholder':'First Name', 'class':'input-lg' }})}}
+
+{{form_row(form.lastname, {'attr':{'placeholder':'Last Name', 'class':'input-lg' }})}}
+
+{{form_row(form.plainPassword.first, {'attr':{'placeholder':'Password', 'class':'input-lg' }})}}
+
+{{form_row(form.plainPassword.second, {'attr':{'placeholder':'Confirm Password', 'class':'input-lg' }})}}
 
 <div class="form-group submit_row">
-    <input type="submit" class="btn btn-primary" value="Register"/>
+    <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"></span> Register</button>
 </div>
 
-{{form_end(form)}}
+{{form_end(form,{render_rest:false})}}

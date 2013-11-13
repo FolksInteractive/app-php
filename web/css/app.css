@@ -625,6 +625,20 @@ legend {
     text-align: right;
     color: #0060b2; }
 
+/*************************************************/
+/*****     Section Order:show.html.twig      *****/
+/*************************************************/
+.order-show .tc-offer-section .offer h1 {
+  font-weight: 300;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px 0 10px 0;
+  color: #0a6895; }
+.order-show .tc-offer-section .offer-subtitle {
+  color: #777;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 40px; }
 .order-show .tc-agreement-section {
   text-align: center;
   margin-bottom: 20px; }
@@ -660,42 +674,29 @@ legend {
       padding: 20px 0;
       text-align: center; }
 
-.tc-offer-section .offer h1 {
-  font-weight: 300;
-  font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
-  padding: 20px 0 10px 0;
-  color: #0a6895; }
-.tc-offer-section .offer-subtitle {
-  color: #777;
-  font-style: italic;
-  margin-top: -5px;
-  margin-bottom: 40px; }
-.tc-offer-section .block-title {
+/*************************************************/
+/*****     Section Order:edit.html.twig      *****/
+/*************************************************/
+.order-edit .tc-heading-section .heading-input {
+  font-size: 36px;
+  height: 56px; }
+.order-edit .tc-heading-section .subheading-input {
+  max-width: 700px;
+  font-size: 20px; }
+.order-edit .tc-offer-section .tc-block {
   margin-top: 30px; }
-  .tc-offer-section .block-title input[type=text] {
-    font-size: 14px; }
-  .tc-offer-section .block-title .maintitle {
-    max-width: 400px;
-    width: 50%; }
-  .tc-offer-section .block-title .subtitle {
-    max-width: 700px;
-    font-size: 14px;
-    margin-top: 20px; }
-.tc-offer-section .new-block {
+.order-edit .tc-offer-section .tc-block-title {
+  max-width: 700px;
+  font-size: 20px;
+  height: 40px; }
+.order-edit .new-block-section {
   border: 1px dashed #dededf;
   border-left: 3px solid #dededf;
   padding: 20px;
   margin: 20px 0; }
-  .tc-offer-section .new-block input[type=text] {
-    font-size: 14px;
-    max-width: 500px; }
-  .tc-offer-section .new-block textarea {
-    font-size: 14px;
-    margin-top: 20px; }
-.tc-offer-section .add-new {
+.order-edit .add-new {
   margin-top: 10px; }
-  .tc-offer-section .add-new span {
+  .order-edit .add-new span {
     margin-right: 3px; }
 
 /****************************************************/
@@ -747,6 +748,9 @@ legend {
   font-family: Arial; }
   .tc_user form {
     margin-bottom: 0; }
+  .tc_user input[type='text'], .tc_user input[type='password'] {
+    font-size: 14px;
+    margin-bottom: 25px; }
   .tc_user .errors {
     position: relative;
     padding: 12px;
@@ -780,8 +784,9 @@ legend {
     position: relative;
     width: 226px;
     height: 31px;
-    margin: 0px auto;
-    margin-bottom: 32px;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 50px;
     padding-right: 8px; }
   .tc_user .wrapper {
     position: absolute;
@@ -789,6 +794,10 @@ legend {
     top: 50px;
     width: 320px;
     margin-left: -160px; }
+    .tc_user .wrapper label {
+      display: none; }
+    .tc_user .wrapper .emailfield {
+      margin-bottom: 25px; }
   .tc_user .gradient {
     background: url(/img/gradientLogin.gif) no-repeat;
     width: 725px;
@@ -800,17 +809,31 @@ legend {
     margin-left: -362px; }
   .tc_user .well {
     background: #ffffff; }
+  .tc_user .remember_row {
+    padding-top: 10px;
+    margin-bottom: 30px; }
+    .tc_user .remember_row label {
+      font-weight: normal;
+      display: block; }
+    .tc_user .remember_row input {
+      margin-top: 2px; }
   .tc_user .submit_row {
     text-align: right; }
+    .tc_user .submit_row span {
+      margin-right: 5px;
+      font-size: 16px; }
+  .tc_user .submit_login {
+    position: absolute;
+    right: 0;
+    margin-top: -65px; }
   .tc_user .more_links {
-    padding: 0 20px;
-    height: 40px; }
+    margin-top: 25px;
+    padding: 30px 20px;
+    height: 40px;
+    border-top: 1px dashed #dededf; }
     .tc_user .more_links a {
       font-size: 13px;
-      color: #777;
       margin-right: 12px; }
-    .tc_user .more_links a:hover {
-      color: #990000; }
 
 .tc_user_confirmed .wrapper,
 .tc_user_check .wrapper {

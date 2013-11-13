@@ -5,10 +5,15 @@
     background: #f6f6f6;
     height: 100%;
     width: 100%;
-    font-family:Arial;
+    font-family: Arial;
     
     form{
         margin-bottom: 0;
+    }
+    
+    input[type='text'], input[type='password'] {
+        font-size: 14px;
+        margin-bottom: 25px;
     }
     
     .errors{
@@ -40,32 +45,42 @@
     }
     
     .form_row{
-                .errors{
-                    margin:0;
-                    margin-top:-10px;
-                    text-align:left;
-                    border:0;
-                    background:none;
-                    width:auto;
-                    padding:0px;
-                            }
-            }
+        .errors{
+            margin:0;
+            margin-top:-10px;
+            text-align:left;
+            border:0;
+            background:none;
+            width:auto;
+            padding:0px;
+        }
+    }
     
     .logo{
         background: url(/img/logo_login.png) no-repeat;
         position: relative;
         width: 226px;
         height: 31px;
-        margin: 0px auto;
-        margin-bottom: 32px;
+        margin: 0 auto;
+        margin-top: 70px;
+        margin-bottom: 50px;
         padding-right: 8px;
     }
+    
     .wrapper{
         position: absolute;
         left: 50%;
         top: 50px;
         width:320px;
-        margin-left:-160px;
+        margin-left: -160px;
+        
+        label {
+            display: none;
+        }
+        
+        .emailfield {
+            margin-bottom: 25px;
+        }
     }
     
     .gradient{
@@ -81,23 +96,50 @@
     
     .well{
         background:#ffffff;
+        
+    }
+    
+    .remember_row {
+        padding-top: 10px;
+        margin-bottom: 30px;
+        
+        label {
+            font-weight: normal;
+            display: block;
+        }
+        
+        input {
+            margin-top: 2px;
+        }
     }
     
     .submit_row{
-        text-align:right;
+        text-align: right;
+        
+        span {
+            margin-right: 5px;
+            font-size: 16px;
+        }
     }
     
-    .more_links{        
-        padding: 0 20px;
+    .submit_login {
+        position: absolute;
+        right: 0;
+        margin-top: -65px;
+    }
+    
+    .more_links{    
+        margin-top: 25px;
+        padding: 30px 20px;
         height:40px;
+        border-top: 1px dashed #dededf;
         
         a{
             font-size: 13px;
-            color: #777;
             margin-right: 12px;
         }
         a:hover{
-            color: #990000;
+            //color: #990000;
         }        
     }
 }
@@ -118,8 +160,9 @@
 }
 
 .tc_user_register{
+    
     .wrapper{
         width:350px;
-        margin-right:-175px;
+        margin-right: -175px;
     }
 }

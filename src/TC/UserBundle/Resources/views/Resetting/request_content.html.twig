@@ -3,10 +3,12 @@
         {% if invalid_username is defined %}
             <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
         {% endif %}
-        <label for="username">Enter your email adress:</label>
-        <input type="text" id="username" name="username" class="input-block-level" />
-    </div>
-    <div class="submit_row">
-        <input type="submit" class="btn btn-primary" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
-</form>
+            <!--<label for="username">Enter your email adress:</label>-->
+            <div class="username_row form-group">
+                <input type="text" id="username" name="username" class="form-control input-block-level input-lg" placeholder="Enter your email adress" />
+            </div>
+        </div>
+        <div class="submit_row">
+            <input type="submit" class="btn btn-primary btn-lg" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+    </form>

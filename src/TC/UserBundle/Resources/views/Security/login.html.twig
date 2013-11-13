@@ -17,29 +17,28 @@
     <div class="errors"><p>{{ error|trans({}, 'FOSUserBundle') }}</p></div>
     {% endif %}
 
-    <div class="well">
+    <div class="box">
         <form id="user_login_form" action="{{ path("fos_user_security_check") }}" method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-            
+
             <div class="username_row form-group">
-                <label for="username">{{ 'security.login.username'|trans }}</label>
-                <input type="text" id="username" name="_username" class="form-control input-block-level" value="{{ last_username }}" />
+                <!--<label for="username">{{ 'security.login.username'|trans }}</label>-->
+                <input type="text" id="username" placeholder="Email Address" name="_username" class="form-control input-block-level input-lg" value="{{ last_username }}" />
             </div>
 
             <div class="password_row form-group">
-                <label for="password">{{ 'security.login.password'|trans }}</label>
-                <input type="password" id="password" name="_password" class="form-control input-block-level" />
+                <!--<label for="password">{{ 'security.login.password'|trans }}</label>-->
+                <input type="password" id="password" placeholder="Password" name="_password" class="form-control input-block-level input-lg" />
             </div>
-
             <div class="remember_row form-group">
                 <label for="remember_me" class="checkbox">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                    {{ 'security.login.remember_me'|trans }}
+            {{ 'security.login.remember_me'|trans }}
                 </label>
             </div>
 
-            <div class="submit_row form-group">
-                <input type="submit" id="_submit" name="_submit" class="btn btn-primary" value="{{ 'security.login.submit'|trans }}" />
+            <div class="submit_row submit_login form-group">
+                <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-log-in'></span> {{ 'security.login.submit'|trans }}</button>
             </div>
         </form>
     </div>
