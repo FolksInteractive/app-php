@@ -1,4 +1,28 @@
 /*************************************************/
+/*****   Section Relation:new.html.twig   *****/
+/*************************************************/
+
+.tc-relations-section {
+    
+    h4 {
+        margin: 30px 0 20px 0;
+    }
+    
+    input[type='email'] {
+        max-width: 350px;
+        font-size: 14px;
+    }
+    
+    .checkbox {
+        margin: 20px 0 20px 21px;
+        
+        input {
+            margin-top: 3px;
+        }
+    }
+}
+
+/*************************************************/
 /*****   Section Relation:menu.html.twig   *****/
 /*************************************************/
 
@@ -79,6 +103,8 @@
         margin-top: 30px;
         
         .thumbnail {
+            padding: 20px 0;            
+            
             img {
                 margin: 0px auto;
                 max-width: 140px;

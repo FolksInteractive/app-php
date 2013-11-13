@@ -1,8 +1,41 @@
 {% block body_class %} relation-new  {% endblock %}
 
-{% block sheet %}
-    <h1>Relation creation</h1>
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    <ul class="breadcrumb">
 
-    {{ form(form) }}
-    
+        <li class="previous">    
+            <a href="/app_dev.php/0/r/">
+                <i class="icon-relations-dark-large"></i>Service Providers
+            </a>
+        </li>
+        <li class="active"><a href="#">Add a Person</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block sheet %}
+
+<div class="tc-relations-section">
+    <legend>Invite a New Customer by Email</legend>
+    <!--{{ form(form) }}-->
+    <h4>Grow your business by adding new services providers to TimeCrumbs.</h4>
+    <form method="post" action="/app_dev.php/0/r/" role="form">
+        <div id="tc_relation_create_form">
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">@</span>
+                    <input type="email" id="tc_relation_create_form_vendor" name="tc_relation_create_form[vendor]" required="required" class="form-control input-lg" placeholder="Enter your service provider's email adress"></div>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" checked> I would like to notify him/her by email.
+                </label>
+            </div>
+            <button type="submit" id="tc_relation_create_form_submit" name="tc_relation_create_form[submit]" class="btn btn-primary btn-lg"><span class="icon-add-user"></span> Add Relationship</button>
+            <input type="hidden" id="tc_relation_create_form__token" name="tc_relation_create_form[_token]" class="form-control" value="1c28f86d6e6774a5ff3ef0ebba983b477c999698">
+        </div>
+    </form>
+</div>
+
 {% endblock %}
