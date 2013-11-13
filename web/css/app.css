@@ -27,6 +27,9 @@ form {
   font: inherit;
   vertical-align: baseline; }
 
+input[type='email'] {
+  font-size: 14px; }
+
 legend {
   padding-bottom: 10px;
   font-weight: bold;
@@ -76,7 +79,7 @@ legend {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777777;
+    border-left: 4px solid #777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -169,21 +172,31 @@ legend {
       font-weight: 200;
       font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
-        padding: 0;
-        background: none; }
+        background: none;
+        padding: 20px 50px;
+        font-weight: 300;
+        font-family: 'Open Sans', sans-serif;
+        color: #333; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
           margin-top: -3px; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous .icon-relations-dark-large {
+          margin: 10px 20px 0 0; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous a {
+          font-size: 30px;
+          color: #999; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous a:hover {
+          color: #333; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active {
-          padding: 20px 50px; }
-          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .divider {
-            display: none; }
+          font-size: 40px;
+          color: #333; }
           .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
-            font-weight: 300;
-            font-size: 40px;
-            font-family: "Open Sans", sans-serif;
+            cursor: default;
             color: #333; }
-          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a:hover {
-            color: #999; }
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .icon-relations-dark-large {
+            margin: 18px 14px 0 0; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active:before {
+          font-size: 30px;
+          padding: 0 10px; }
     .tc-main-panel .tc-toolbar .tc-controls {
       margin: 37px 50px; }
       .tc-main-panel .tc-toolbar .tc-controls span {
@@ -263,8 +276,7 @@ legend {
   width: 29px;
   height: 22px;
   background: url("/img/icons/icon-relations-dark-large.png");
-  background-repeat: no-repeat;
-  margin: 18px 14px 0 0; }
+  background-repeat: no-repeat; }
 
 .icon-agreement {
   width: 13px;
@@ -361,6 +373,19 @@ legend {
   margin: 2px 5px 0 0; }
 
 /*************************************************/
+/*****   Section Relation:new.html.twig   *****/
+/*************************************************/
+.tc-relations-section h4 {
+  margin: 30px 0 20px 0; }
+.tc-relations-section input[type='email'] {
+  max-width: 350px;
+  font-size: 14px; }
+.tc-relations-section .checkbox {
+  margin: 20px 0 20px 21px; }
+  .tc-relations-section .checkbox input {
+    margin-top: 3px; }
+
+/*************************************************/
 /*****   Section Relation:menu.html.twig   *****/
 /*************************************************/
 .tc-return-section {
@@ -417,21 +442,24 @@ legend {
 .vendor-relations .tc-relations-boxes {
   text-align: center;
   margin-top: 30px; }
-  .client-relations .tc-relations-boxes .thumbnail img,
-  .vendor-relations .tc-relations-boxes .thumbnail img {
-    margin: 0px auto;
-    max-width: 140px; }
-  .client-relations .tc-relations-boxes .thumbnail .caption h3,
-  .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
-    height: 52px;
-    overflow: hidden; }
-  .client-relations .tc-relations-boxes .thumbnail .pro-title,
-  .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
-    font-size: 14px;
-    color: #777; }
-  .client-relations .tc-relations-boxes .thumbnail .toolbar,
-  .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
-    margin-top: 20px; }
+  .client-relations .tc-relations-boxes .thumbnail,
+  .vendor-relations .tc-relations-boxes .thumbnail {
+    padding: 20px 0; }
+    .client-relations .tc-relations-boxes .thumbnail img,
+    .vendor-relations .tc-relations-boxes .thumbnail img {
+      margin: 0px auto;
+      max-width: 140px; }
+    .client-relations .tc-relations-boxes .thumbnail .caption h3,
+    .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
+      height: 52px;
+      overflow: hidden; }
+    .client-relations .tc-relations-boxes .thumbnail .pro-title,
+    .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
+      font-size: 14px;
+      color: #777; }
+    .client-relations .tc-relations-boxes .thumbnail .toolbar,
+    .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
+      margin-top: 20px; }
 
 /*************************************************/
 /*****   Section Relation:orders.html.twig   *****/
@@ -597,20 +625,6 @@ legend {
     text-align: right;
     color: #0060b2; }
 
-/*************************************************/
-/*****     Section Order:show.html.twig      *****/
-/*************************************************/
-.order-show .tc-offer-section .offer h1 {
-  font-weight: 300;
-  font-size: 60px;
-  font-family: "Open Sans", sans-serif;
-  padding: 20px 0 10px 0;
-  color: #0a6895; }
-.order-show .tc-offer-section .offer-subtitle {
-  color: #777;
-  font-style: italic;
-  margin-top: -5px;
-  margin-bottom: 40px; }
 .order-show .tc-agreement-section {
   text-align: center;
   margin-bottom: 20px; }
@@ -626,7 +640,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #dddddd; }
+  border-top: 1px solid #ddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -639,36 +653,49 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 white;
-    box-shadow: 8px 5px 14px 1px #333333; }
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 8px 5px 14px 1px #333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
       text-align: center; }
 
-/*************************************************/
-/*****     Section Order:edit.html.twig      *****/
-/*************************************************/
-.order-edit .tc-heading-section .heading-input {
-  font-size: 36px;
-  height: 56px; }
-.order-edit .tc-heading-section .subheading-input {
-  max-width: 700px;
-  font-size: 20px; }
-.order-edit .tc-offer-section .tc-block {
+.tc-offer-section .offer h1 {
+  font-weight: 300;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px 0 10px 0;
+  color: #0a6895; }
+.tc-offer-section .offer-subtitle {
+  color: #777;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 40px; }
+.tc-offer-section .block-title {
   margin-top: 30px; }
-.order-edit .tc-offer-section .tc-block-title {
-  max-width: 700px;
-  font-size: 20px;
-  height: 40px; }
-.order-edit .new-block-section {
+  .tc-offer-section .block-title input[type=text] {
+    font-size: 14px; }
+  .tc-offer-section .block-title .maintitle {
+    max-width: 400px;
+    width: 50%; }
+  .tc-offer-section .block-title .subtitle {
+    max-width: 700px;
+    font-size: 14px;
+    margin-top: 20px; }
+.tc-offer-section .new-block {
   border: 1px dashed #dededf;
   border-left: 3px solid #dededf;
   padding: 20px;
   margin: 20px 0; }
-.order-edit .add-new {
+  .tc-offer-section .new-block input[type=text] {
+    font-size: 14px;
+    max-width: 500px; }
+  .tc-offer-section .new-block textarea {
+    font-size: 14px;
+    margin-top: 20px; }
+.tc-offer-section .add-new {
   margin-top: 10px; }
-  .order-edit .add-new span {
+  .tc-offer-section .add-new span {
     margin-right: 3px; }
 
 /****************************************************/
@@ -806,8 +833,55 @@ legend {
 /*************************************************/
 .root .tc-menu-panel {
   display: none; }
+.root .tc-toolbar {
+  display: none; }
 .root .tc-main-panel {
   left: 0; }
+.root .tc-sheet {
+  margin-top: 50px; }
+.root .tc-over-section {
+  text-align: center; }
+  .root .tc-over-section .description {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #aaa;
+    font-style: italic; }
+    .root .tc-over-section .description p {
+      font-size: 13px; }
+  .root .tc-over-section .client {
+    display: inline-block;
+    padding: 10px 40px 30px 40px;
+    margin-right: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .client .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .client .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .client p {
+      padding-top: 10px; }
+  .root .tc-over-section .vendor {
+    display: inline-block;
+    padding: 10px 40px 30px 40px;
+    margin-left: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .vendor .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .vendor .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .vendor p {
+      padding-top: 10px; }
+  .root .tc-over-section .logo {
+    margin-top: 40px; }
 
 .blurry {
   opacity: 0.3;

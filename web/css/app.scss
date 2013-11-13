@@ -35,6 +35,10 @@ form{
     vertical-align: baseline;
 }
 
+input[type='email'] {
+    font-size: 14px;
+}
+
 legend{
     padding-bottom: 10px;
     font-weight: bold;
@@ -245,30 +249,50 @@ legend{
             font-size: 24px;
             
             .breadcrumb{
-                padding:0;
                 background: none; 
+                padding: 20px 50px;
+                font-weight: 300;
+                font-family: 'Open Sans', sans-serif;
+                color: #333;
                 
                 img{
                     margin-top: -3px;
                 }
                 
-                .active{
-                    padding: 20px 50px;
+                .previous {
                     
-                    .divider{
-                        display: none;
+                    .icon-relations-dark-large {
+                        margin: 10px 20px 0 0;
                     }
                     
                     a {
-                        font-weight: 300;
-                        font-size: 40px;
-                        font-family: 'Open Sans', sans-serif;
-                        color: #333;
+                        font-size: 30px;
+                        color: #999;
                     }
                     
                     a:hover {
-                        color: #999;
+                        color: #333;
                     }
+                    
+                }
+                
+                .active{
+                    font-size: 40px;
+                    color: #333;
+                    
+                    a {
+                        cursor: default;
+                        color: #333;
+                    }
+                    
+                    .icon-relations-dark-large {
+                        margin: 18px 14px 0 0;
+                    }
+                }
+                
+                .active:before {
+                    font-size: 30px;
+                    padding: 0 10px;
                 }
             }
         }
