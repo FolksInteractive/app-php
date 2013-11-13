@@ -31,28 +31,8 @@ class OrderController extends BaseController {
         $order = $this->getOrderManager()->createOrder();
         $order->setRelation( $relation );
 
-        $createForm = $this->createOrderForm( $order, $idRelation );
-        
-            
-        if ( $this->getRequest()->getMethod() === "POST" ) {
-            $createForm->handleRequest( $this->getRequest() );
-
-            if ( $createForm->isValid() ) {
-                $this->getOrderManager()->saveOrder($order);
-                
-               return $this->redirect( $this->generateUrl( 
-                        'client_order_discuss', 
-                        array(
-                            'idOrder' => $order->getId(),
-                            'idRelation' => $idRelation)
-                        )
-                );
-            }
-        }
-
         return array(
-            'relation' => $relation,
-            'create_form' => $createForm->createView(),
+            'relation' => $relation
         );
     }
         
@@ -67,60 +47,6 @@ class OrderController extends BaseController {
         $relation = $this->getRelationManager()->findClientRelation( $idRelation );
 
         return array(
-            'relation' => $relation
-        );
-    }
-    
-    /**
-     * Creates a new Order.
-     *
-     * @Route("/", name="client_order_create")
-     * @Method("POST")
-     * @Template("TCCoreBundle:Client:Order/new.html.twig")
-     */
-    public function createAction( Request $request, $idRelation ) {
-        $em = $this->getDoctrine()->getManager();
-
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
-
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-        $form = $this->createOrderForm( $order, $idRelation );
-        $form->handleRequest( $request );
-
-        if ( $form->isValid() ) {
-            $this->getOrderManager()->saveOrder($order);
-
-            return $this->redirect( $this->generateUrl( 'client_order_show', array(
-                                'idOrder' => $order->getId(),
-                                'idRelation' => $idRelation) )
-            );
-        }
-
-        return array(
-            'order' => $order,
-            'form' => $form->createView(),
-            'relation' => $relation,
-        );
-    }
-    
-    /**
-     * Displays a form to create a new Order.
-     *
-     * @Route("/new", name="client_order_new")
-     * @Method("GET")
-     * @Template("TCCoreBundle:Client:Order/new.html.twig")
-     */
-    public function newAction( $idRelation ) {
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-
-        $form = $this->createOrderForm( $order, $idRelation );
-
-        return array(
-            'order' => $order,
-            'form' => $form->createView(),
             'relation' => $relation
         );
     }
@@ -193,20 +119,7 @@ class OrderController extends BaseController {
     
     /* ******************************** */
     /*              FORMS               */
-    /* ******************************** */
-    
-    /**
-     * Creates a form to create a Order.
-     *
-     * @param Order $order The order
-     *
-     * @return Form The form
-     */
-    protected function createOrderForm( $order, $idRelation ){
-        $form = parent::createOrderForm($order, $idRelation);
-        
-        return $form;
-    }
+    /* ******************************** */    
 
     /**
      * Creates a form to purchase a Order.

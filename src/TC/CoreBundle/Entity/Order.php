@@ -24,20 +24,27 @@ class Order
      */
     private $id;
     
+          
     /**
-     * @var integer $request
+     * @var boolean $approved
      *
-     * @Assert\NotNull()
-     * @ORM\Column(name="request", type="text")
+     * @ORM\Column(name="heading", type="string")
      */
-    private $request;
+    private $heading;
+          
+    /**
+     * @var boolean $approved
+     *
+     * @ORM\Column(name="subheading", type="string")
+     */
+    private $subheading;
     
     /**
      * @var integer $offer
      *
      * @ORM\Column(name="offer", type="array", nullable=true)
      */
-    private $offer;
+    private $offer = array();
     
     /**
      * @var datetime $createdAt
@@ -301,27 +308,6 @@ class Order
     {
         return $this->creator;
     }
-
-    /**
-     * Set request
-     *
-     * @param string $request
-     */
-    public function setRequest($request)
-    {
-        $this->request = $request;
-    }
-
-    /**
-     * Get request
-     *
-     * @return string 
-     */
-    public function getRequest()
-    {
-        return $this->request;
-    }
-
 
     /**
      * Set relation
@@ -600,5 +586,51 @@ class Order
     public function getOffer()
     {
         return $this->offer;
+    }
+
+    /**
+     * Set heading
+     *
+     * @param string $heading
+     * @return Order
+     */
+    public function setHeading($heading)
+    {
+        $this->heading = $heading;
+    
+        return $this;
+    }
+
+    /**
+     * Get heading
+     *
+     * @return string 
+     */
+    public function getHeading()
+    {
+        return $this->heading;
+    }
+
+    /**
+     * Set subheading
+     *
+     * @param string $subheading
+     * @return Order
+     */
+    public function setSubheading($subheading)
+    {
+        $this->subheading = $subheading;
+    
+        return $this;
+    }
+
+    /**
+     * Get subheading
+     *
+     * @return string 
+     */
+    public function getSubheading()
+    {
+        return $this->subheading;
     }
 }

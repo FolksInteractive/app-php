@@ -76,7 +76,7 @@ legend {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
+    border-left: 4px solid #777777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -180,7 +180,7 @@ legend {
           .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
             font-weight: 300;
             font-size: 40px;
-            font-family: 'Open Sans', sans-serif;
+            font-family: "Open Sans", sans-serif;
             color: #333; }
           .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a:hover {
             color: #999; }
@@ -597,6 +597,20 @@ legend {
     text-align: right;
     color: #0060b2; }
 
+/*************************************************/
+/*****     Section Order:show.html.twig      *****/
+/*************************************************/
+.order-show .tc-offer-section .offer h1 {
+  font-weight: 300;
+  font-size: 60px;
+  font-family: "Open Sans", sans-serif;
+  padding: 20px 0 10px 0;
+  color: #0a6895; }
+.order-show .tc-offer-section .offer-subtitle {
+  color: #777;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 40px; }
 .order-show .tc-agreement-section {
   text-align: center;
   margin-bottom: 20px; }
@@ -612,7 +626,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -625,49 +639,36 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
       text-align: center; }
 
-.tc-offer-section .offer h1 {
-  font-weight: 300;
-  font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
-  padding: 20px 0 10px 0;
-  color: #0a6895; }
-.tc-offer-section .offer-subtitle {
-  color: #777;
-  font-style: italic;
-  margin-top: -5px;
-  margin-bottom: 40px; }
-.tc-offer-section .block-title {
+/*************************************************/
+/*****     Section Order:edit.html.twig      *****/
+/*************************************************/
+.order-edit .tc-heading-section .heading-input {
+  font-size: 36px;
+  height: 56px; }
+.order-edit .tc-heading-section .subheading-input {
+  max-width: 700px;
+  font-size: 20px; }
+.order-edit .tc-offer-section .tc-block {
   margin-top: 30px; }
-  .tc-offer-section .block-title input[type=text] {
-    font-size: 14px; }
-  .tc-offer-section .block-title .maintitle {
-    max-width: 400px;
-    width: 50%; }
-  .tc-offer-section .block-title .subtitle {
-    max-width: 700px;
-    font-size: 14px;
-    margin-top: 20px; }
-.tc-offer-section .new-block {
+.order-edit .tc-offer-section .tc-block-title {
+  max-width: 700px;
+  font-size: 20px;
+  height: 40px; }
+.order-edit .new-block-section {
   border: 1px dashed #dededf;
   border-left: 3px solid #dededf;
   padding: 20px;
   margin: 20px 0; }
-  .tc-offer-section .new-block input[type=text] {
-    font-size: 14px;
-    max-width: 500px; }
-  .tc-offer-section .new-block textarea {
-    font-size: 14px;
-    margin-top: 20px; }
-.tc-offer-section .add-new {
+.order-edit .add-new {
   margin-top: 10px; }
-  .tc-offer-section .add-new span {
+  .order-edit .add-new span {
     margin-right: 3px; }
 
 /****************************************************/

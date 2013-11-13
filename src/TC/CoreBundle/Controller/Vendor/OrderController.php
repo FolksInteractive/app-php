@@ -9,7 +9,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use TC\CoreBundle\Controller\OrderController as BaseController;
 use TC\CoreBundle\Entity\Order;
-use TC\CoreBundle\Form\OrderEditType;
+use TC\CoreBundle\Form\OrderType;
 
 /**
  * Order controller.
@@ -31,26 +31,8 @@ class OrderController extends BaseController {
         $order = $this->getOrderManager()->createOrder();
         $order->setRelation( $relation );
 
-        $createForm = $this->createOrderForm( $order, $idRelation );
-
-        if ( $this->getRequest()->getMethod() === "POST" ) {
-            $createForm->handleRequest( $this->getRequest() );
-
-            if ( $createForm->isValid() ) {
-                $this->getOrderManager()->saveOrder( $order );
-
-                return $this->redirect( $this->generateUrl(
-                                        'vendor_order_discuss', array(
-                                    'idOrder' => $order->getId(),
-                                    'idRelation' => $idRelation)
-                                )
-                );
-            }
-        }
-
         return array(
             'relation' => $relation,
-            'create_form' => $createForm->createView(),
         );
     }
             
@@ -81,99 +63,26 @@ class OrderController extends BaseController {
             'form' => $form->createView()
         );
     }
-
-    /**
-     * Creates a new Order.
-     *
-     * @Route("/", name="vendor_order_create")
-     * @Method("POST")
-     * @Template("TCCoreBundle:Vendor:Order/new.html.twig")
-     */
-    public function createAction( Request $request, $idRelation ) {
-        $em = $this->getDoctrine()->getManager();
-
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-        $form = $this->createOrderForm( $order, $idRelation );
-        $form->handleRequest( $request );
-
-        if ( $form->isValid() ) {
-            $this->getOrderManager()->saveOrder( $order );
-
-            return $this->redirect( $this->generateUrl( 'vendor_order_show', array(
-                                'idOrder' => $order->getId(),
-                                'idRelation' => $idRelation) )
-            );
-        }
-
-        return array(
-            'order' => $order,
-            'form' => $form->createView(),
-            'relation' => $relation,
-        );
-    }
-
-    /**
-     * Displays a form to create a new Order.
-     *
-     * @Route("/new", name="vendor_order_new")
-     * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Order/new.html.twig")
-     */
-    public function newAction( $idRelation ) {
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-
-        $form = $this->createOrderForm( $order, $idRelation );
-
-        return array(
-            'order' => $order,
-            'form' => $form->createView(),
-            'relation' => $relation
-        );
-    }
-
-    /**
-     * Finds and displays a Order.
-     *
-     * @Route("/{idOrder}", name="vendor_order_show")
-     * @Template("TCCoreBundle:Vendor:Order/show.html.twig")
-     */
-    public function showAction( Request $request, $idRelation, $idOrder ) {
-
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-
-        // For Vendor, if order is not open we redirect to a dumb relation page
-        if ( !$order->isOpen() ) {
-            return $this->render( "TCCoreBundle:Vendor:Order/not_ready.html.twig", array(
-                        'order' => $order,
-                        'relation' => $relation)
-            );
-        }
-
-        return array(
-            'order' => $order,
-            'relation' => $relation
-        );
-    }
     
     /**
      * Displays a form to edit an existing Order.
      *
+     * @Route("/new", name="vendor_order_new")
      * @Route("/{idOrder}/edit", name="vendor_order_edit")
      * @Method("GET")
      * @Template("TCCoreBundle:Vendor:Order/edit.html.twig")
      */
-    public function editAction( $idRelation, $idOrder ) {
+    public function editAction( $idRelation, $idOrder = null ) {
 
         $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-
-        $form = $this->createEditForm( $order );
+        
+        if( $idOrder != null){
+            $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        }else{            
+            $order = $this->getOrderManager()->createOrder();
+            $order->setRelation( $relation );
+        }
+        $form = $this->createOrderForm( $order );
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
 
         return array(
@@ -186,16 +95,22 @@ class OrderController extends BaseController {
     /**
      * Edits an existing Order.
      *
-     * @Route("/{idOrder}/edit", name="vendor_order_update")
-     * @Method("PUT")
+     * @Route("/", name="vendor_order_create")
+     * @Route("/{idOrder}/edit", name="vendor_order_update", defaults={"idOrder"=null})
+     * @Method({"POST", "PUT"})
      * @Template("TCCoreBundle:Vendor:Order/edit.html.twig")
      */
-    public function updateAction( Request $request, $idRelation, $idOrder ) {
+    public function updateAction( Request $request, $idRelation, $idOrder = null ) {
         $em = $this->getDoctrine()->getManager();
 
         $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-
+        
+        if( $idOrder != null){
+            $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        }else{            
+            $order = $this->getOrderManager()->createOrder();
+            $order->setRelation( $relation );
+        }
         /*
          * http://symfony.com/doc/current/cookbook/form/form_collections.html#allowing-tags-to-be-removed
          */
@@ -205,7 +120,7 @@ class OrderController extends BaseController {
             $originalDeliverables[] = $deliverable;
         }
 
-        $form = $this->createEditForm( $order );
+        $form = $this->createOrderForm( $order );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
@@ -248,24 +163,36 @@ class OrderController extends BaseController {
             'relation' => $relation,
         );
     }
+
+    /**
+     * Finds and displays a Order.
+     *
+     * @Route("/{idOrder}", name="vendor_order_show")
+     * @Template("TCCoreBundle:Vendor:Order/show.html.twig")
+     */
+    public function showAction( Request $request, $idRelation, $idOrder ) {
+
+        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+
+        // For Vendor, if order is not open we redirect to a dumb relation page
+        if ( !$order->isOpen() ) {
+            return $this->render( "TCCoreBundle:Vendor:Order/not_ready.html.twig", array(
+                        'order' => $order,
+                        'relation' => $relation)
+            );
+        }
+
+        return array(
+            'order' => $order,
+            'relation' => $relation
+        );
+    }
     
     /* ******************************** */
     /*              FORMS               */
     /* ******************************** */
-    
-    /**
-     * Creates a form to create a Order.
-     *
-     * @param Order $order The order
-     *
-     * @return Form The form
-     */
-    protected function createOrderForm( $order, $idRelation ){
-        $form = parent::createOrderForm($order, $idRelation);
         
-        return $form;
-    }
-    
     /**
      * Creates a form to edit a Order.
      *
@@ -273,9 +200,16 @@ class OrderController extends BaseController {
      *
      * @return Form The form
      */
-    private function createEditForm( Order $order ) {
-        $form = $this->createForm( new OrderEditType(), $order, array(
-            'action' => $this->generateUrl( 'vendor_order_update', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) ),
+    private function createOrderForm( Order $order ) {
+        
+        if( !$order->getId() ){
+            $action = $this->generateUrl( 'vendor_order_new', array('idRelation' => $order->getRelation()->getId()) );
+        }else{
+            $action = $this->generateUrl( 'vendor_order_update', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
+        }
+        
+        $form = $this->createForm( new OrderType(), $order, array(
+            'action' => $action,
             'method' => 'PUT',
                 ) );
 

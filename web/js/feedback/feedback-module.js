@@ -78,3 +78,5 @@ feedbackModule.directive("tcFeedbackModal",
         }
     }
 );
+
+angular.bootstrap($('#feedbackModal'), ["Feedback"]);

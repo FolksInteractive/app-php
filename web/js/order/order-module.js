@@ -1,7 +1,8 @@
-var module = angular.module("OrderEdit", []);
+var module = angular.module("Order", []);
 
-module.controller("order.EditController", function($scope, form_name, order){
+module.controller("order.Controller", function($scope, form_name, order){
     
+    console.log(order.deliverables);
     
     function getFormName(prop){
         return form_name+"["+prop+"]";

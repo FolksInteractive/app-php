@@ -1,6 +1,6 @@
 {% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
 
-{% render 'TCCoreBundle:Order:new.html.twig' %}
+{% use 'TCCoreBundle:Vendor:Order/form.html.twig' with bottom_js as form_bottom_js %}
 
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">        
@@ -9,9 +9,11 @@
     </div>
 
     <div class="tc-controls pull-right">
-        <button class="btn-primary btn">
-            <i class="icon-discussion icon-white"></i>
-            Save
-        </button>
+        {{ block('controls') }}
     </div>
+{% endblock %}
+
+{% block bottom_js %}
+{{ parent() }}
+{{ block('form_bottom_js') }}
 {% endblock %}

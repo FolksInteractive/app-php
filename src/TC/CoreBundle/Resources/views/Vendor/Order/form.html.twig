@@ -1,0 +1,209 @@
+{# This template is made to be included with the "use" tag in the corresponding templates #}
+
+{% block main_attrs %} 
+ng-app="Order" 
+ng-controller="order.Controller"
+{% endblock %}
+
+{% block main_before %} 
+{% set attr = {'id': 'orderForm'} %}
+{% set attr = attr|merge({'name':form.vars.name}) %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{# there is no block controls in the skeleton this block should be called in the parent template #}
+{% block controls %}
+    <button name="{{form.submit.vars.full_name}}" 
+            class="btn btn-primary" 
+            ng-disabled="
+            headingForm.$invalid ||  
+            offerForm.$invalid ||  
+            deliverablesForm.$invalid || 
+            (!headingForm.$dirty && !offerForm.$dirty && !deliverablesForm.$dirty)
+            || order.deliverables.length < 1
+            || order.offer.length < 1 ">
+        Update
+    </button>
+
+    {% set attr = {'class':'btn-primary'} %}
+    {% set attr = attr|merge({'ng-disabled':"offerForm.$invalid || deliverablesForm.$invalid"}) %}   
+    {% set attr = attr|merge({'disabled':""}) %}   
+    {#form_widget(form.save_as_ready, {'attr':attr})#}
+{% endblock %}
+
+{% block sheet %}
+
+<div class="tc-heading-section" ng-form name="headingForm">   
+    <div class="form-group">
+        <input type="text" class="heading-input form-control input-lg" 
+               placeholder="Insert a title for your proposal"
+               name="{{form.heading.vars.full_name}}"
+               ng-model="order.heading"
+               ng-required="true">
+    </div>
+    <div class="form-group">
+        <input  type="text" class="subheading-input form-control input-lg"
+               placeholder="Insert a sub-title for your proposal"
+               name="{{form.subheading.vars.full_name}}"
+               ng-model="order.subheading">            
+    </div>  
+</div>
+<div class="tc-offer-section">
+    <div class="tc-offer-blocks"  ng-form name="offerForm">
+    {% raw %}
+        <div class="tc-block" ng-repeat="block in order.offer">
+            <div class="form-group">        
+                <input type="text" class="tc-block-title form-control"
+                       name="{{getOfferFormName(block, 'title')}}"
+                       ng-model="block.title"
+                       ng-required="true" />
+            </div>
+            <div class="form-group">        
+                <textarea class="tc-block-body form-control" row="5"
+                       name="{{getOfferFormName(block, 'body')}}"
+                       ng-model="block.body"
+                       ng-required="true"></textarea>
+            </div>
+        </div>
+    {% endraw %}
+    </div>
+        
+    <div class="spacer"></div>
+
+    <div class="new-block-section" ng-form name="newBlockForm"> 
+        <div class="tc-block-new">
+            <div class="form-group">        
+                <input type="text" class="tc-block-title form-control input-lg"
+                    placeholcer="Insert new title here" 
+                    ng-model="newBlock.title" 
+                    ng-required="true" />
+            </div>
+            <div class="form-group">        
+                <textarea class="tc-block-body form-control input-lg" row="4"
+                    placeholcer="Insert content here" 
+                    ng-model="newBlock.body" 
+                    ng-required="true" /></textarea>
+            </div>
+            <div class="form-group">        
+                <button type="button" class="btn btn-default btn-lg add-new"
+                    disabled=""
+                    ng-disabled="newBlockForm.$invalid"
+                    ng-click="addBlock()"><span class="glyphicon glyphicon-plus-sign"></span> Add a New Block</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tc-deliverables-section">
+    <legend>Deliverables</legend>
+
+    <table class="tc-deliverables table">
+        <thead>
+            <tr>
+                <th class="number"></th>
+                <th class="description">Description</th>
+                <th class="cost">$ / Unit</th>
+                <th class="quantity">Qty</th>
+                <th class="subtotal">Subtotal</th>
+                <th class="actions"></th>
+            </tr>
+        </thead>
+        <tbody ng-form name="deliverablesForm">
+        {% raw %}
+            <tr ng-repeat="deliverable in order.deliverables">
+                <td class="number">1</td>
+                <td class="description">
+                    <input type="text" class="form-control input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'name')}}"
+                           ng-model="deliverable.name" placeholder="Insert deliverable item here" />
+                </td>
+                <td class="cost">
+                    <input type="text" class="form-control input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'cost')}}"
+                           ng-model="deliverable.cost"/>
+                </td>
+                <td class="quantity">
+                    <input type="text" class="form-control input-block-level"
+                           name="{{getDeliverableFormName(deliverable, 'quantity')}}"
+                           ng-model="deliverable.quantity" />
+                </td>
+                <td class="subtotal" 
+                    ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
+                <td class="actions">
+                    <a class="remove-action glyphicon glyphicon-remove"
+                       ng-click="removeDeliverable(deliverable)">
+                    </a>
+                </td>
+            </tr>
+        {% endraw %}
+        </tbody>
+
+
+        <tfoot ng-form name="newDeliverablesForm">
+            <tr>
+                <td class="number">2</td>
+                <td class="description">
+                    <input type="text"class="form-control input-block-level"
+                           ng-model="newDeliverable.name" 
+                           ng-required="true" placeholder="Insert deliverable item here" />
+                </td>
+                <td class="cost">
+                    <input type="text" class="form-control input-block-level"
+                           ng-model="newDeliverable.cost"
+                           ng-required="true"/>
+                </td>
+                <td class="quantity">
+                    <input type="text" class="form-control input-block-level disabled" 
+                           ng-model="newDeliverable.quantity"
+                           ng-disabled="true" />
+                </td>
+                <td class="subtotal">
+                    <button type="button" class="btn-primary btn"
+                            disabled=""
+                            ng-disabled="newDeliverablesForm.$invalid"
+                            ng-click="addDeliverable()">Add</button>
+                </td>
+                <td class="actions"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="tc-total-section">
+    <div class="total-label">Total</div>
+    <div class="total-value" ng-bind="getTotal() | currency"></div>
+</div>
+{% endblock %}
+
+{# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
+{% block bottom_js %}
+<script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
+<script type="text/javascript">
+(function(ng, module){
+
+    module.value("order", {
+        heading: "{{form.heading.vars.value|default('')}}",
+        subheading: "{{form.subheading.vars.value|default('')}}",
+        offer : {{form.offer.vars.value|json_encode()|raw}},
+        deliverables : [
+        {% for deliverable in form.deliverables %}
+        {% set data = deliverable.vars.value %}
+                {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}  
+            {% if not loop.last %} 
+            {{","}}
+            {% endif %}     
+        {% endfor %}
+        ]
+    });
+
+    module.value("form_name", "{{form.vars.name}}");
+
+})(angular, module);
+</script>
+{% endblock %}

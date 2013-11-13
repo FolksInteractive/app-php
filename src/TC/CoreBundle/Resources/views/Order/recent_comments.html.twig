@@ -35,7 +35,6 @@ ng-app="RecentComments"
 RecentComments = angular.module("RecentComments", []);
 RecentComments.run(function($rootScope){
     $rootScope.order =  {
-        request :"{{order.request}}",
         thread : {{order.thread|json_encode()|raw}}
     }
     $rootScope.avatars = {

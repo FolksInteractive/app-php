@@ -30,7 +30,7 @@ class VendorMenuBuilder extends ContainerAware {
         ;
 
         $menu
-            ->addChild( '.icon-relations Service Providers', array(
+            ->addChild( '.icon-relations Clients', array(
             'route' => 'vendor_relation'
             ) )
             ->setExtra( "sub_label", "Build & manage relationships" )

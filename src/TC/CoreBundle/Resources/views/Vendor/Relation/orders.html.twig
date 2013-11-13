@@ -7,134 +7,35 @@
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
-           
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
     <div class="tc-controls pull-right">
-        <a href="{{path('vendor_order_new', {'idRelation':relation.id})}}" class="btn-primary btn">
-            <i class="icon-discussion icon-white"></i>
-            Create order
+        <a href="{{path('vendor_order_new', {'idRelation':relation.id})}}" 
+           class="btn-primary btn-lg">
+            <i class="icon-new-proposals-light-small"></i>
+            New Proposal
         </a>
     </div>
 {% endblock %}
 
 {% block sheet %}
-<div class="title-section">
-    <h2>Work Orders</h2>
-    <p>Requests, suggestion and work orders of this relationship.</p>
-</div>
-
-<div class="tc-section">
-    {{form_start(create_form)}}
-    {{ form_widget(create_form.request, {'attr':{'class':'input-block-level'}}) }}
-    {{ form_widget(create_form.submit, {'attr':{'class':''}}) }}
-    {{form_end(create_form)}}
-</div>
-
-<div class="tc-requests-section">
-    <legend>
-        Client Requests 
-        <span class="badge">{{ relation.getRequests()|length }}</span>
-    </legend>
-    <table class="tc-requests table table-hover">
-        <thead>
-            <tr>
-                <th class="user"></th>
-                <th class="request"></th>
-                <th class="discussion">Discussion</th>
-                <th class="cost">Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in relation.getRequests() %}            
-            <tr>
-                <td class="user"></td>
-                <td class="request">
-                    <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                        {{order.request}}
-                    </a>
-                </td>
-                <td class="discussion">
-                    <a href="{{path("vendor_order_discuss",{'idOrder':order.id,'idRelation':relation.id})}}}}" 
-                       class="badge badge-talk-bubble">
-                        {{order.thread.getNumComments()}}
-                    </a>
-                </td>
-                <td class="cost">
-                    {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
-                </td>
-            </tr>    
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
-
-<div class="tc-suggestions-section">
-    <legend>
-        Vendor Suggestions
-        <span class="badge">{{ relation.getSuggestions()|length }}</span>
-    </legend>
-        
-    <table  class="tc-suggestions table table-hover">
-        <thead>
-            <tr>
-                <th class="user"></th>
-                <th class="request"></th>
-                <th class="discussion">Discussion</th>
-                <th class="cost">Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in relation.getSuggestions() %}            
-            <tr>
-                <td class="user"></td>
-                <td class="request">
-                    <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                        {{order.request}}
-                    </a>
-                </td>
-                <td class="discussion">
-                    <a href="{{path("vendor_order_discuss",{'idOrder':order.id,'idRelation':relation.id})}}}}" 
-                       class="badge badge-talk-bubble">
-                        {{order.thread.getNumComments()}}
-                    </a>
-                </td>
-                <td class="cost">
-                    {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
-                </td>
-            </tr>     
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
-
 
 <div class="tc-orders-section">  
-    <legend>
-        Orders
-        <span class="badge">{{ relation.getOrdersOpen()|length }}</span>
-    </legend>
-    <table  class="tc-orders table table-hover">
+    <table  class="tc-orders table">
         <thead>
             <tr>
-                <th class="user"></th>
                 <th class="request"></th>
-                <th class="discussion">Discussion</th>
-                <th class="cost">Cost</th>
+                <th class="discussion"></th>
+                <th class="cost"></th>
             </tr>
         </thead>
         <tbody>
             {% for order in relation.getOrdersOpen() %}            
             <tr>
-                <td class="user"></td>
                 <td class="request">
                     <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                        {{order.request}}
+                        {{order.heading|default('proposal')}}
                     </a>
                 </td>
                 <td class="discussion">

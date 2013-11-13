@@ -10,48 +10,25 @@
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
-    <div class="tc-controls pull-right">
-        <a href="{{path('client_order_new', {'idRelation':relation.id})}}" class="btn-primary btn-lg">
-            <i class="icon-new-proposals-light-small"></i>
-            New Proposal
-        </a>
-    </div>
 {% endblock %}
 
 {% block sheet %}
-<!--<div class="title-section">
-    <h2>Work Orders</h2>
-    <p>Requests, suggestion and work orders of this relationship.</p>
-</div>
 
-<div class="tc-section">
-    {{form_start(create_form)}}
-    {{ form_widget(create_form.request, {'attr':{'class':'input-block-level'}}) }}
-    {{ form_widget(create_form.submit, {'attr':{'class':''}}) }}
-    {{form_end(create_form)}}
-</div>-->
-
-<div class="tc-orders-section">  
-    <legend>
-        Proposals <span>({{ relation.getOrdersOpen()|length }})</span>
-    </legend>
-        
-    <!--<table class="tc-orders table table-hover">
+<div class="tc-orders-section">      
+    <table class="tc-orders table">
         <thead>
             <tr>
-                <th class="user"></th>
                 <th class="request"></th>
-                <th class="discussion">Discussion</th>
-                <th class="cost">Cost</th>
+                <th class="discussion"></th>
+                <th class="cost"></th>
             </tr>
         </thead>
         <tbody>
             {% for order in relation.getOrdersOpen() %}
                 <tr>
-                    <td class="user"></td>
                 <td class="request">
                     <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                        {{order.request}}
+                        {{order.heading|default('proposal')}}
                     </a>
                 </td>
                 <td class="discussion">
@@ -66,27 +43,6 @@
                 </tr>    
             {% endfor %}
         </tbody>
-    </table>-->
-                    
-    <table class="tc-orders table">
-        <tbody>
-                <tr>
-                <td class="request">
-                    <a href="#">
-                        EarthChoice University Course #9
-                    </a>
-                </td>
-                <td class="discussion">
-                    <a href="#">
-                        <div class="badge-talk-bubble">1</div>
-                    </a>
-                </td>
-                <td class="cost">
-                    $ 150
-                </td>
-                </tr>    
-        </tbody>
-    </table>           
-        
+    </table>
 </div> 
 {% endblock %}

@@ -14,10 +14,20 @@ class OrderType extends AbstractType {
      */
     public function buildForm( FormBuilderInterface $builder, array $options ) {
         $builder
-            ->add( 'request' )
-            ->add( 'relation', 'entity', array(
-                'class' => 'TCCoreBundle:Relation',
-                'property' => 'id'))
+            ->add( 'heading' )
+            ->add( 'subheading' )
+            ->add( 'offer', 'collection', array(
+                'type' => 'text_block',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false)
+            )
+            ->add( 'deliverables', 'collection', array(
+                'type' => new DeliverableType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false)
+            )
         ;
     }
 
