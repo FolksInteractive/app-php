@@ -79,7 +79,7 @@ legend {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
+    border-left: 4px solid #777777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -175,12 +175,12 @@ legend {
         background: none;
         padding: 20px 50px;
         font-weight: 300;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         color: #333; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
           margin-top: -3px; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous .icon-relations-dark-large {
-          margin: 10px 20px 0 0; }
+        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous [class^="icon-"], .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous [class*=" icon-"] {
+          margin: 10px 10px 0 0; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous a {
           font-size: 30px;
           color: #999; }
@@ -192,7 +192,7 @@ legend {
           .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
             cursor: default;
             color: #333; }
-          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active .icon-relations-dark-large {
+          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active [class^="icon-"], .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active [class*=" icon-"] {
             margin: 18px 14px 0 0; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active:before {
           font-size: 30px;
@@ -631,7 +631,7 @@ legend {
 .order-show .tc-offer-section .offer h1 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 20px 0 10px 0;
   color: #0a6895; }
 .order-show .tc-offer-section .offer-subtitle {
@@ -654,7 +654,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -667,8 +667,8 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;

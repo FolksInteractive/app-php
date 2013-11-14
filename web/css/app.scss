@@ -261,8 +261,8 @@ legend{
                 
                 .previous {
                     
-                    .icon-relations-dark-large {
-                        margin: 10px 20px 0 0;
+                    [class^="icon-"], [class*=" icon-"] {
+                        margin: 10px 10px 0 0;
                     }
                     
                     a {
@@ -285,7 +285,7 @@ legend{
                         color: #333;
                     }
                     
-                    .icon-relations-dark-large {
+                    [class^="icon-"], [class*=" icon-"] {
                         margin: 18px 14px 0 0;
                     }
                 }
