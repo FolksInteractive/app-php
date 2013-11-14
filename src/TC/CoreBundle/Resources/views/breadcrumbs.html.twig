@@ -1,7 +1,7 @@
 {% block root %}
     <ul class="breadcrumb">        
         {%- for  child in item|breadcrumbs %}
-        <li class="{{loop.last	?'active': '' }}">
+        <li class="{{loop.last	?'active': 'previous' }}">
             <a href="{{child.uri}}">{{child.label|parse_icons}}</a>
             
         </li>
