@@ -906,6 +906,12 @@ legend {
   .root .tc-over-section .logo {
     margin-top: 40px; }
 
+/*************************************************/
+/*****   Section Client:dashboard.html.twig   *****/
+/*************************************************/
+.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
+  font-size: 30px; }
+
 .blurry {
   opacity: 0.3;
   filter: alpha(opacity=30);

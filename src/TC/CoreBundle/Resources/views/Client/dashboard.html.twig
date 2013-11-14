@@ -2,6 +2,20 @@
 
 {% block body_class -%}{{ parent() }} client-dashboard{% endblock %}
 
+{% block toolbar %}
+
+<div class="tc-breadcrumb pull-left">
+    <ul class="breadcrumb">
+        <li class="active">    
+            <a href="/app_dev.php/0/r/">
+                <i class="glyphicon glyphicon-dashboard"></i> Dashboard
+            </a>
+        </li>    
+    </ul>
+</div>
+
+{% endblock %}
+
 {% block sheet%}
 
 {% endblock %}
