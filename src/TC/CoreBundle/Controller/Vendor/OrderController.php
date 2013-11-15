@@ -203,7 +203,7 @@ class OrderController extends BaseController {
     private function createOrderForm( Order $order ) {
         
         if( !$order->getId() ){
-            $action = $this->generateUrl( 'vendor_order_new', array('idRelation' => $order->getRelation()->getId()) );
+            $action = $this->generateUrl( 'vendor_order_create', array('idRelation' => $order->getRelation()->getId()) );
         }else{
             $action = $this->generateUrl( 'vendor_order_update', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
         }
