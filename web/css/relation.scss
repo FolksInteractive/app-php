@@ -170,6 +170,17 @@
 .relation-progress{
     
     .tc-progress-section{
+        
+        legend{
+            margin-bottom: 0;
+            
+            span {
+                font-weight: normal;
+                font-style: italic;
+                font-size: 12px;
+            }
+        }
+        
         .work-completed{
             .description{
                 color: #777;
@@ -178,18 +189,126 @@
             }
         }
         
-        table{
-            .cost,        
-            .quantity,
-            .subtotal,
-            .actions{
-                width:80px;        
-                text-align:center;             
+        .tc-deliverable{
+            td {
                 vertical-align: middle;
             }
-            .check{
-                width:30px; 
-                text-align:center;     
+            
+            .tc-progress-object {
+                position: relative;
+                padding: 20px 0;
+                border-top: 1px solid #dededf;;
+                
+                .border {
+                    position: absolute;
+                    top: 48px;
+                    bottom: 40px;
+                    left: 25px;
+                    width: 1px;
+                    background: #dededf;
+                    content: '';
+                    z-index: 0;
+                }
+                
+                input[type='checkbox']{
+                    z-index: 100;
+                    position: absolute;
+                    margin: -6px;
+                }
+                
+                .table {
+                    margin-bottom: 0;
+                    
+                    td {
+                        border-top: none;
+                    }
+                }
+            }
+            
+            .main-row {
+                
+                .check-col {
+                    width: 50px;
+                    text-align: center;
+                    vertical-align: top;
+                    padding-top: 22px;
+                    
+                    .more {
+                        margin: 18px 0 0 11px;
+                        position: absolute;
+                        
+                        a {
+                            color: #777;
+                        }
+                    }
+                }
+                
+                .title-col {
+                    width: 300px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    padding-right: 20px;
+                    padding-left: 0;
+                }
+                
+                .completed {
+                    text-decoration: line-through;
+                    color: #777;
+                }
+                
+                .progress-col {
+                    
+                    .progress {
+                        margin-bottom: 0;
+                    }
+                    
+                    .progress-label {
+                        text-align: right;
+                        font-weight: bold;
+                        padding-right: 10px;
+                    }
+                }
+                
+                .price-col {
+                    width: 120px;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 18px;
+                    
+                    span {
+                        font-weight: normal;
+                        color: #777;
+                        padding-right: 10px;
+                        font-size: 13px;
+                    }
+                }
+            }
+            
+            .object-row {
+                
+                td {
+                    border-top: none;
+                    vertical-align: middle;
+                    padding: 10px 0;
+                }
+                
+                .check-col {
+                    width: 50px;
+                    text-align: center;
+                }
+                
+                .title-col {
+                    font-size: 14px;
+                    
+                    span {
+                        font-weight: bold;
+                        padding-right: 10px;
+                    }
+                }
+            }
+            
+            .first-row {
+                border-top: none;
             }
         }
     }

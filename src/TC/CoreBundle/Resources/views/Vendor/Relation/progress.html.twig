@@ -19,9 +19,9 @@
 {% endblock %}
 
 {% block toolbar %}
-    <div class="tc-breadcrumb pull-left">
+<div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:progressMenu',[],{"relation": relation}) %}
-           
+
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
@@ -31,53 +31,115 @@
         {% set attr = attr|merge({'disabled':""}) %}   
         {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
         {{form_widget(form.submit, {'attr':attr})}}
-    </div>
+        </div>
 {% endblock %}
 
 {% block sheet %}
 
-<div class="tc-progress-section">  
-    <legend>
-        Deliverables to be done
-        <span class="badge">{{ relation.getOrdersTodo()|length }}</span>
-    </legend>
-        
-    <table  class="tc-progress table table-hover">
-        <thead>
-            <tr>
-                <th class="check"></th>
-                <th class="description">Description</th>
-                <th class="cost">Unit price</th>
-                <th class="quantity">Qty</th>
-                <th class="subtotal">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for order in relation.getOrdersTodo() %}
+        <div class="tc-progress-section">  
+            <legend>
+                LMS Courses Transfert
+                <span class="approved">Approved on November 15th 2013 by Sarah Waltman</span>
+            </legend>
+
+
+
+            <table  class="tc-progress table">
+                <tbody>
+                    <!--{% for order in relation.getOrdersTodo() %}
         {% for deliverable in order.getDeliverablesTodo() %}
             {% set ngModel = 'deliverable_'~ deliverable.id %}
-            <tr class="work" 
-                ng-init="{{ngModel}}.completed=false"
-                ng-class="{{ngModel}}.completed && 'work-completed' || 'work-in-progress'">
-                <td class="check">
+                        <tr class="work" 
+                            ng-init="{{ngModel}}.completed=false"
+                            ng-class="{{ngModel}}.completed && 'work-completed' || 'work-in-progress'">
+                            <td class="check">
                     {{form_widget(form.deliverables[deliverable.id], {'attr':{'ng-model':ngModel~'.completed'}})}}
-                </td>
-                <td class="description">
+                            </td>
+                            <td class="description">
                     {{deliverable.name}}
-                </td>
-                <td class="cost">
-                    $ {{deliverable.cost|number_format(2, '.', ',')}}
-                </td>
-                <td class="quantity">
+                            </td>
+                            <td class="cost">
+                                $ {{deliverable.cost|number_format(2, '.', ',')}}
+                            </td>
+                            <td class="quantity">
                     {{deliverable.quantity}}
-                </td>
-                <td class="subtotal">
-                    $ {{deliverable.cost|number_format(2, '.', ',')}}
-                </td>
-            </tr>     
+                            </td>
+                            <td class="subtotal">
+                                $ {{deliverable.cost|number_format(2, '.', ',')}}
+                            </td>
+                        </tr>     
         {% endfor %}
-        {% endfor %}
-        </tbody>
-    </table>
-</div> 
+        {% endfor %}-->
+                    <tr class="tc-deliverable"><td class="tc-progress-object first-row"><div class="border"></div>
+                            <table class="table">
+                                <tr class="main-row">
+                                    <td class="check-col"><input type="checkbox" disabled></input></td>
+                                    <td class="title-col">Anti-Corruption's course</td>
+                                    <td class="progress-col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                                <div class="progress-label">$ 12.75</div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td class="price-col"><span>of</span> $ 42.50</td>
+                                </tr>
+                                <tr class="object-row">
+                                    <td class="check-col"><div class="border"></div><input type="checkbox" checked></input></td>
+                                    <td class="title-col" colspan="3"><span>(10%)</span> Creating a custom table of content. Typing manually the title of each page.</td>
+                                </tr>
+                                <tr class="object-row">
+                                    <td class="check-col"><input type="checkbox" checked></input></td>
+                                    <td class="title-col" colspan="3"><span>(20%)</span> Creating a SCORM 2004 manifest to track the course content. Adding the basic informations about the course.</td>
+                                </tr>
+                                <tr class="object-row">
+                                    <td class="check-col"><input type="checkbox"></input></td>
+                                    <td class="title-col" colspan="3"><span>(15%)</span> Packaging the course.</td>
+                                </tr>
+                                <tr class="object-row">
+                                    <td class="check-col"><input type="checkbox"></input></td>
+                                    <td class="title-col" colspan="3"><span>(30%)</span> Deploying it on the LMS.</td>
+                                </tr>
+                                <tr class="object-row last-object">
+                                    <td class="check-col"><input type="checkbox"></input></td>
+                                    <td class="title-col" colspan="3"><span>(25%)</span> Ensuring that the course is working properly by performing a series of basic tests (navigation, completion, progress, table of content).</td>
+                                </tr>
+                            </table>
+                        </td></tr>
+                    <tr class="tc-deliverable"><td class="tc-progress-object">
+                            <table class="table">
+                                <tr class="main-row">
+                                    <td class="check-col"><input type="checkbox" checked></input></td>
+                                    <td class="title-col completed">Code d’éthique et de conduite en affaires 2013</td>
+                                    <td class="progress-col">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                                <div class="progress-label">$ 42.50</div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td class="price-col"><span>of</span> $ 42.50</td>
+                                </tr>
+                            </table>
+                        </td></tr>
+                    <tr class="tc-deliverable"><td class="tc-progress-object"><div class="border"></div>
+                            <table class="table">
+                                <tr class="main-row">
+                                    <td class="check-col"><input type="checkbox"></input><div class="more"><a href="#"><span class="glyphicon glyphicon-plus"></span></a></div></td>
+                                    <td class="title-col">Code of Business Conduct & Ethics 2013</td>
+                                    <td class="progress-col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                        </div>
+
+                                    </td>
+                                    <td class="price-col"><span>of</span> $ 42.50</td>
+                                </tr>
+                            </table>
+                        </td></tr>
+                </tbody>
+            </table>
+        </div> 
 {% endblock %}
