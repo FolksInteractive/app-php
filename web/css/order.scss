@@ -88,7 +88,7 @@
     
     .tc-total-section{
         text-align:right;
-        margin-bottom:20px;
+        margin-bottom: 50px;
         
         .total-label{
             display:inline-block;
@@ -191,35 +191,109 @@
 .order-edit{
     .tc-heading-section {
         .heading-input{
-            font-size:36px;
-            height: 56px;
+            font-weight: 300;
+            font-size: 60px;
+            font-family: 'Open Sans', sans-serif;
+            color: #0a6895;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: none;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px dashed #dededf;
+            padding: 0 0 5px 5px;
+            height: auto;
         }
         
         .subheading-input {
             max-width: 700px;
             font-size: 20px;
+            font-style: italic;
+            color: #777;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: none;
+            border: none;
+            border-bottom: 1px dashed #dededf;
+            padding: 0 0 10px 5px;
+            height: auto;
+            font-size: 14px;
+            margin-top: -6px;
         }
     }       
     
-   .tc-offer-section{
-       .tc-block{
-            margin-top:30px;
+    .tc-offer-section{
+        .tc-block{
+            
         }
         .tc-block-title{
-            max-width: 700px;
             font-size:20px;
             height:40px;
+            color: #0a6895;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: none;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid #dededf;
+            padding: 0 0 8px 0;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
         }
-        .tc-block-body{
-            //max-width: 700px;
+        
+        .tc-body-group {
+            margin-bottom: 0;
+            
+            .tc-block-body{
+                font-size: 16px; 
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: none;
+                border: none;
+                padding: 0;
+                height: auto;
+            }
         }
+    }
+    
+    .tc-offer-blocks {
+        border: 1px dashed #dededf;
+        padding: 20px 20px 20px 16px;
+        margin: 20px 0;
+        position: relative;
+    }
+    
+    .tc-offer-blocks:before {
+        display: block;
+        content: ".";
+        color: transparent;
+        font-size: 0;
+        border-left: 4px solid #0a6895;
+        position: absolute;
+        left: -1px;
+        padding: 1px 0;
+        top: -1px;
+        bottom: -1px;
     }
     
     .new-block-section {
         border: 1px dashed #dededf;
-        border-left: 3px solid #dededf;
-        padding: 20px;
+        padding: 20px 20px 20px 16px;
         margin: 20px 0;
+        position: relative;
+    }
+    
+    .new-block-section:before {
+        display: block;
+        content: ".";
+        color: transparent;
+        font-size: 0;
+        border-left: 4px solid #0a6895;
+        position: absolute;
+        left: -1px;
+        padding: 1px 0;
+        top: -1px;
+        bottom: -1px;
     }
     
     .add-new {

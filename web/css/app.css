@@ -523,9 +523,16 @@ legend {
     position: absolute;
     margin: -6px; }
   .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    border-left: 4px solid #dededf; }
     .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table td {
       border-top: none; }
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .in-progress {
+    border-left: 4px solid #428bca; }
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .all-completed {
+    border-left: 4px solid #5cb85c; }
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .not-started {
+    border-left: 4px solid #dededf; }
 .relation-progress .tc-progress-section .tc-deliverable .main-row .check-col {
   width: 50px;
   text-align: center;
@@ -683,7 +690,7 @@ legend {
 .order-edit .tc-total-section,
 .order-show .tc-total-section {
   text-align: right;
-  margin-bottom: 20px; }
+  margin-bottom: 50px; }
   .order-not-ready .tc-total-section .total-label,
   .order-edit .tc-total-section .total-label,
   .order-show .tc-total-section .total-label {
@@ -757,22 +764,87 @@ legend {
 /*****     Section Order:edit.html.twig      *****/
 /*************************************************/
 .order-edit .tc-heading-section .heading-input {
-  font-size: 36px;
-  height: 56px; }
+  font-weight: 300;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  color: #0a6895;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px dashed #dededf;
+  padding: 0 0 5px 5px;
+  height: auto; }
 .order-edit .tc-heading-section .subheading-input {
   max-width: 700px;
-  font-size: 20px; }
-.order-edit .tc-offer-section .tc-block {
-  margin-top: 30px; }
-.order-edit .tc-offer-section .tc-block-title {
-  max-width: 700px;
   font-size: 20px;
-  height: 40px; }
+  font-style: italic;
+  color: #777;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  border: none;
+  border-bottom: 1px dashed #dededf;
+  padding: 0 0 10px 5px;
+  height: auto;
+  font-size: 14px;
+  margin-top: -6px; }
+.order-edit .tc-offer-section .tc-block-title {
+  font-size: 20px;
+  height: 40px;
+  color: #0a6895;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #dededf;
+  padding: 0 0 8px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700; }
+.order-edit .tc-offer-section .tc-body-group {
+  margin-bottom: 0; }
+  .order-edit .tc-offer-section .tc-body-group .tc-block-body {
+    font-size: 16px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    border: none;
+    padding: 0;
+    height: auto; }
+.order-edit .tc-offer-blocks {
+  border: 1px dashed #dededf;
+  padding: 20px 20px 20px 16px;
+  margin: 20px 0;
+  position: relative; }
+.order-edit .tc-offer-blocks:before {
+  display: block;
+  content: ".";
+  color: transparent;
+  font-size: 0;
+  border-left: 4px solid #0a6895;
+  position: absolute;
+  left: -1px;
+  padding: 1px 0;
+  top: -1px;
+  bottom: -1px; }
 .order-edit .new-block-section {
   border: 1px dashed #dededf;
-  border-left: 3px solid #dededf;
-  padding: 20px;
-  margin: 20px 0; }
+  padding: 20px 20px 20px 16px;
+  margin: 20px 0;
+  position: relative; }
+.order-edit .new-block-section:before {
+  display: block;
+  content: ".";
+  color: transparent;
+  font-size: 0;
+  border-left: 4px solid #0a6895;
+  position: absolute;
+  left: -1px;
+  padding: 1px 0;
+  top: -1px;
+  bottom: -1px; }
 .order-edit .add-new {
   margin-top: 10px; }
   .order-edit .add-new span {
