@@ -31,10 +31,13 @@ input[type='email'] {
   font-size: 14px; }
 
 legend {
-  padding-bottom: 10px;
+  padding: 12px 16px;
   font-weight: bold;
   font-size: 24px;
-  margin: 60px 0 10px 0; }
+  margin: 60px 0 10px 0;
+  background: #f4f4f4;
+  border: 1px dotted #dededf;
+  border-radius: 4px; }
   legend .badge {
     vertical-align: middle; }
   legend span {
@@ -165,15 +168,16 @@ legend {
     right: 0;
     left: 220px;
     top: 0;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 100; }
+    background: rgba(244, 244, 244, 0.9);
+    z-index: 100;
+    border-bottom: 1px dotted #dededf; }
     .tc-main-panel .tc-toolbar .tc-breadcrumb {
       color: #333;
       font-weight: 200;
       font-size: 24px; }
       .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
         background: none;
-        padding: 20px 50px;
+        padding: 15px 50px;
         font-weight: 300;
         font-family: 'Open Sans', sans-serif;
         color: #333; }
@@ -213,7 +217,7 @@ legend {
   vertical-align: top; }
 
 .tc-sheet {
-  margin-top: 110px; }
+  margin-top: 130px; }
   .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
     padding: 0 50px; }
   .tc-sheet .tc-full-section {
@@ -1027,7 +1031,7 @@ legend {
     text-align: center;
     margin-top: 48px; }
   .client-dashboard .wrapper .tc-money legend {
-    padding-top: 40px; }
+    margin-top: 40px; }
   .client-dashboard .wrapper .tc-money .chart-legend {
     padding: 65px 0 0 40px;
     vertical-align: middle; }

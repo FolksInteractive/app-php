@@ -26,12 +26,12 @@
     </div>
 
     <div class="tc-controls pull-right">
-        {% set attr = {'class':''} %}
+        {% set attr = {'class':'btn-lg'} %}
         {% set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
         {% set attr = attr|merge({'disabled':""}) %}   
         {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
         {{form_widget(form.submit, {'attr':attr})}}
-        </div>
+    </div>
 {% endblock %}
 
 {% block sheet %}
