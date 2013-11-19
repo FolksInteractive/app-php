@@ -282,6 +282,12 @@ legend {
   background: url("/img/icons/icon-relations-dark-large.png");
   background-repeat: no-repeat; }
 
+.icon-edit-profile-dark-large {
+  width: 23px;
+  height: 22px;
+  background: url("/img/icons/icon-edit-profile-dark-large.png");
+  background-repeat: no-repeat; }
+
 .icon-agreement {
   width: 13px;
   height: 18px;
@@ -514,30 +520,32 @@ legend {
     top: 48px;
     bottom: 40px;
     left: 25px;
-    width: 1px;
+    width: 3px;
     background: #dededf;
     content: '';
     z-index: 0; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object input[type='checkbox'] {
-    z-index: 100;
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .pourc-completed {
     position: absolute;
-    margin: -6px; }
+    width: 12px;
+    height: 12px;
+    z-index: 100;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 4px; }
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .deliverable-inprogress {
+    background-color: #428bca; }
+  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .deliverable-success {
+    background-color: #5cb85c; }
   .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table {
-    margin-bottom: 0;
-    border-left: 4px solid #dededf; }
+    margin-bottom: 0; }
     .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table td {
       border-top: none; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .in-progress {
-    border-left: 4px solid #428bca; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .all-completed {
-    border-left: 4px solid #5cb85c; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .not-started {
-    border-left: 4px solid #dededf; }
 .relation-progress .tc-progress-section .tc-deliverable .main-row .check-col {
   width: 50px;
   text-align: center;
   vertical-align: top;
-  padding-top: 22px; }
+  padding: 14px 0 0 19px; }
   .relation-progress .tc-progress-section .tc-deliverable .main-row .check-col .more {
     margin: 18px 0 0 11px;
     position: absolute; }
@@ -893,7 +901,6 @@ legend {
     color: #0060b2; }
 
 .tc_user {
-  background: #f6f6f6;
   height: 100%;
   width: 100%;
   font-family: Arial; }
@@ -902,6 +909,8 @@ legend {
   .tc_user input[type='text'], .tc_user input[type='password'] {
     font-size: 14px;
     margin-bottom: 25px; }
+  .tc_user .tc-sheet {
+    padding: 0 50px; }
   .tc_user .errors {
     position: relative;
     padding: 12px;
@@ -1001,6 +1010,17 @@ legend {
 .tc_user_register .wrapper {
   width: 350px;
   margin-right: -175px; }
+
+/*******************************************************************/
+/* Section Profile:edit.html.twig & Profile:edit_content.html.twig */
+/*******************************************************************/
+.profile_edit .tc-sheet legend {
+  margin-bottom: 30px; }
+.profile_edit .tc-sheet label {
+  padding-bottom: 5px;
+  color: #333; }
+.profile_edit .tc-sheet .col2 {
+  padding: 0 50px; }
 
 /*************************************************/
 /*****   Section root.html.twig   *****/

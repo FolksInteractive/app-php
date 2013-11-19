@@ -204,37 +204,37 @@
                     top: 48px;
                     bottom: 40px;
                     left: 25px;
-                    width: 1px;
+                    width: 3px;
                     background: #dededf;
                     content: '';
                     z-index: 0;
                 }
                 
-                input[type='checkbox']{
-                    z-index: 100;
+                .pourc-completed {
                     position: absolute;
-                    margin: -6px;
+                    width: 12px;
+                    height: 12px;
+                    z-index: 100;
+                    font-size: 11px;
+                    font-weight: bold;
+                    color: #fff;
+                    padding-top: 4px;
+                }
+                
+                .deliverable-inprogress {
+                    background-color: #428bca;
+                }
+                
+                .deliverable-success {
+                    background-color: #5cb85c;
                 }
                 
                 .table {
                     margin-bottom: 0;
-                    border-left: 4px solid #dededf;
                     
                     td {
                         border-top: none;
                     }
-                }
-                
-                .in-progress {
-                    border-left: 4px solid #428bca;
-                }
-                
-                .all-completed {
-                    border-left: 4px solid #5cb85c;
-                }
-                
-                .not-started {
-                    border-left: 4px solid #dededf;
                 }
                 
             }
@@ -245,7 +245,7 @@
                     width: 50px;
                     text-align: center;
                     vertical-align: top;
-                    padding-top: 22px;
+                    padding: 14px 0 0 19px;
                     
                     .more {
                         margin: 18px 0 0 11px;

@@ -2,7 +2,6 @@
 
 
 .tc_user{
-    background: #f6f6f6;
     height: 100%;
     width: 100%;
     font-family: Arial;
@@ -14,6 +13,10 @@
     input[type='text'], input[type='password'] {
         font-size: 14px;
         margin-bottom: 25px;
+    }
+    
+    .tc-sheet {
+        padding: 0 50px;
     }
     
     .errors{
@@ -166,3 +169,29 @@
         margin-right: -175px;
     }
 }
+
+/*******************************************************************/
+/* Section Profile:edit.html.twig & Profile:edit_content.html.twig */
+/*******************************************************************/
+
+.profile_edit {
+    
+    .tc-sheet {
+        
+        legend {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            padding-bottom: 5px;
+            color: #333;
+        }
+        
+        .col2 {
+            padding: 0 50px;
+        }
+
+    }
+    
+}
+
