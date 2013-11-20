@@ -28,9 +28,6 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
 
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-
         return array(
             'relation' => $relation,
         );
@@ -65,6 +62,25 @@ class OrderController extends BaseController {
     }
     
     /**
+     * Finds and displays a Order discussion.
+     *
+     * @Route("/{idOrder}/discuss", name="vendor_order_discuss")
+     * @Method("GET")
+     * @Template("TCCoreBundle:Vendor:Order/discuss.html.twig")
+     */
+    public function discussAction( $idRelation, $idOrder ) {
+              
+        $relation = $this->getRelationManager()->findRelation( $idRelation );
+        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        
+        return array(
+            'thread' => $order->getThread(),
+            'order' => $order,
+            "relation" => $relation
+        );
+    }
+    
+    /**
      * Displays a form to edit an existing Order.
      *
      * @Route("/new", name="vendor_order_new")
@@ -79,8 +95,7 @@ class OrderController extends BaseController {
         if( $idOrder != null){
             $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
         }else{            
-            $order = $this->getOrderManager()->createOrder();
-            $order->setRelation( $relation );
+            $order = $this->getOrderManager()->createOrder( $relation );
         }
         $form = $this->createOrderForm( $order );
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
@@ -108,8 +123,7 @@ class OrderController extends BaseController {
         if( $idOrder != null){
             $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
         }else{            
-            $order = $this->getOrderManager()->createOrder();
-            $order->setRelation( $relation );
+            $order = $this->getOrderManager()->createOrder( $relation );
         }
         /*
          * http://symfony.com/doc/current/cookbook/form/form_collections.html#allowing-tags-to-be-removed

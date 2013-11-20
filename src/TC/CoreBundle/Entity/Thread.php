@@ -45,9 +45,18 @@ class Thread implements JsonSerializable
      */
     protected $comments;
     
+    /**
+     * @var ArrayCollection $tasks
+     * 
+     * @ORM\ManyToMany(targetEntity="Workspace", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="tc_thread_followers")
+     */
+    protected $followers;
+    
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->followers = new ArrayCollection();
     }
     
     /**
@@ -169,5 +178,38 @@ class Thread implements JsonSerializable
             "comments" => $this->getComments()->toArray()
         );
         return $data;
+    }
+
+    /**
+     * Add followers
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $followers
+     * @return Thread
+     */
+    public function addFollower(\TC\CoreBundle\Entity\Workspace $followers)
+    {
+        $this->followers[] = $followers;
+    
+        return $this;
+    }
+
+    /**
+     * Remove followers
+     *
+     * @param \TC\CoreBundle\Entity\Workspace $followers
+     */
+    public function removeFollower(\TC\CoreBundle\Entity\Workspace $followers)
+    {
+        $this->followers->removeElement($followers);
+    }
+
+    /**
+     * Get followers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFollowers()
+    {
+        return $this->followers;
     }
 }

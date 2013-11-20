@@ -1,0 +1,20 @@
+.tc-side-thread-section{
+    position:fixed;
+    top:90px;
+    right:0;
+    bottom:0;
+    width:370px;
+    padding: 0 0 15px 15px;  
+    
+    .enscroll-track{
+        margin-top:2px;
+    }
+}
+
+#thread_scrollable_section{
+    height:100%;
+    overflow:auto;
+    padding-right: 10px;
+    padding-top:15px;
+    width:370px;
+}
