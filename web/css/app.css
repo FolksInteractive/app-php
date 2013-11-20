@@ -30,6 +30,53 @@ form {
 input[type='email'] {
   font-size: 14px; }
 
+.checkbox-item {
+  position: relative; }
+
+.checkbox-item label {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  background: #fff;
+  border: 3px solid #dededf; }
+
+.checkbox-item label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  background: transparent;
+  top: 2px;
+  left: 2px;
+  border: 3px solid #777;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
+.checkbox-item label:hover::after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: alpha(opacity=30);
+  opacity: 0.3; }
+
+.checkbox-item input[type=checkbox]:checked + label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1; }
+
+.checkbox-item input[type=checkbox] {
+  margin-left: -12px; }
+
 legend {
   padding: 12px 16px;
   font-weight: bold;
@@ -509,87 +556,86 @@ legend {
   color: #777;
   font-style: italic;
   text-decoration: line-through; }
-.relation-progress .tc-progress-section .tc-deliverable td {
-  vertical-align: middle; }
-.relation-progress .tc-progress-section .tc-deliverable .tc-progress-object {
-  position: relative;
-  padding: 20px 0;
-  border-top: 1px solid #dededf; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .border {
-    position: absolute;
-    top: 48px;
-    bottom: 40px;
-    left: 25px;
-    width: 3px;
-    background: #dededf;
-    content: '';
-    z-index: 0; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .pourc-completed {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    z-index: 100;
-    font-size: 11px;
-    font-weight: bold;
-    color: #fff;
-    padding-top: 4px; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .deliverable-inprogress {
-    background-color: #428bca; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .deliverable-success {
-    background-color: #5cb85c; }
-  .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table {
-    margin-bottom: 0; }
-    .relation-progress .tc-progress-section .tc-deliverable .tc-progress-object .table td {
-      border-top: none; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .check-col {
-  width: 50px;
+.relation-progress .tc-progress-section thead .progress-col {
+  font-size: 12px;
   text-align: center;
-  vertical-align: top;
-  padding: 14px 0 0 19px; }
-  .relation-progress .tc-progress-section .tc-deliverable .main-row .check-col .more {
-    margin: 18px 0 0 11px;
-    position: absolute; }
-    .relation-progress .tc-progress-section .tc-deliverable .main-row .check-col .more a {
-      color: #777; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .title-col {
-  width: 300px;
-  font-weight: bold;
-  font-size: 18px;
-  padding-right: 20px;
-  padding-left: 0; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .completed {
-  text-decoration: line-through;
-  color: #777; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .progress-col .progress {
-  margin-bottom: 0; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .progress-col .progress-label {
-  text-align: right;
-  font-weight: bold;
-  padding-right: 10px; }
-.relation-progress .tc-progress-section .tc-deliverable .main-row .price-col {
-  width: 120px;
-  font-weight: bold;
+  color: #999;
+  font-weight: bold; }
+.relation-progress .tc-progress-section thead .date-col {
+  font-size: 12px;
   text-align: center;
-  font-size: 18px; }
-  .relation-progress .tc-progress-section .tc-deliverable .main-row .price-col span {
-    font-weight: normal;
-    color: #777;
-    padding-right: 10px;
-    font-size: 13px; }
-.relation-progress .tc-progress-section .tc-deliverable .object-row td {
-  border-top: none;
-  vertical-align: middle;
-  padding: 10px 0; }
-.relation-progress .tc-progress-section .tc-deliverable .object-row .check-col {
-  width: 50px;
-  text-align: center; }
-.relation-progress .tc-progress-section .tc-deliverable .object-row .title-col {
-  font-size: 14px; }
-  .relation-progress .tc-progress-section .tc-deliverable .object-row .title-col span {
+  color: #999;
+  font-weight: bold; }
+.relation-progress .tc-progress-section tbody {
+  border-bottom: 1px solid #dededf; }
+  .relation-progress .tc-progress-section tbody td {
+    vertical-align: middle;
+    padding: 20px 0; }
+  .relation-progress .tc-progress-section tbody .check-col {
+    width: 50px;
+    text-align: center;
+    vertical-align: top;
+    padding: 23px 0 0 12px; }
+    .relation-progress .tc-progress-section tbody .check-col .more {
+      margin: 18px 0 0 11px;
+      position: absolute; }
+      .relation-progress .tc-progress-section tbody .check-col .more a {
+        color: #777; }
+  .relation-progress .tc-progress-section tbody .title-col {
+    width: 450px;
     font-weight: bold;
-    padding-right: 10px; }
-.relation-progress .tc-progress-section .tc-deliverable .first-row {
-  border-top: none; }
+    font-size: 18px;
+    padding-left: 0;
+    text-align: left; }
+    .relation-progress .tc-progress-section tbody .title-col a {
+      font-weight: bold; }
+    .relation-progress .tc-progress-section tbody .title-col .title {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 420px;
+      color: #777;
+      font-weight: normal; }
+    .relation-progress .tc-progress-section tbody .title-col .proposal {
+      font-size: 14px;
+      color: #777;
+      font-weight: normal;
+      padding-top: 5px; }
+    .relation-progress .tc-progress-section tbody .title-col .purchased {
+      font-size: 14px;
+      color: #333;
+      font-weight: normal;
+      padding-top: 5px; }
+  .relation-progress .tc-progress-section tbody .progress-col {
+    padding: 0 20px; }
+    .relation-progress .tc-progress-section tbody .progress-col .progress {
+      margin-bottom: 0; }
+    .relation-progress .tc-progress-section tbody .progress-col .progress-label {
+      text-align: right;
+      font-weight: bold;
+      padding-right: 10px; }
+    .relation-progress .tc-progress-section tbody .progress-col .total-value {
+      text-align: right;
+      font-weight: bold;
+      padding-right: 9px;
+      color: #999;
+      font-size: 12px;
+      padding-top: 2px; }
+  .relation-progress .tc-progress-section tbody .price-col {
+    width: 120px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px; }
+    .relation-progress .tc-progress-section tbody .price-col span {
+      font-weight: normal;
+      color: #777;
+      padding-right: 10px; }
+  .relation-progress .tc-progress-section tbody .date-col {
+    width: 130px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; }
 
 /***************************************************/
 /*******   Section Relation:bill.html.twig   *******/

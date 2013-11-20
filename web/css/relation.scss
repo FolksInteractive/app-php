@@ -189,141 +189,127 @@
             }
         }
         
-        .tc-deliverable{
+        thead {
+            
+            .progress-col {
+                font-size: 12px;
+                text-align: center;
+                color: #999;
+                font-weight: bold;
+            }
+            
+            .date-col {
+                font-size: 12px;
+                text-align: center;
+                color: #999;
+                font-weight: bold;
+            }
+            
+            
+        }
+        
+        tbody{
+            border-bottom: 1px solid #dededf;
+            
             td {
                 vertical-align: middle;
-            }
-            
-            .tc-progress-object {
-                position: relative;
                 padding: 20px 0;
-                border-top: 1px solid #dededf;;
-                
-                .border {
-                    position: absolute;
-                    top: 48px;
-                    bottom: 40px;
-                    left: 25px;
-                    width: 3px;
-                    background: #dededf;
-                    content: '';
-                    z-index: 0;
-                }
-                
-                .pourc-completed {
-                    position: absolute;
-                    width: 12px;
-                    height: 12px;
-                    z-index: 100;
-                    font-size: 11px;
-                    font-weight: bold;
-                    color: #fff;
-                    padding-top: 4px;
-                }
-                
-                .deliverable-inprogress {
-                    background-color: #428bca;
-                }
-                
-                .deliverable-success {
-                    background-color: #5cb85c;
-                }
-                
-                .table {
-                    margin-bottom: 0;
-                    
-                    td {
-                        border-top: none;
-                    }
-                }
-                
             }
             
-            .main-row {
+            .check-col {
+                width: 50px;
+                text-align: center;
+                vertical-align: top;
+                padding: 23px 0 0 12px;
                 
-                .check-col {
-                    width: 50px;
-                    text-align: center;
-                    vertical-align: top;
-                    padding: 14px 0 0 19px;
+                .more {
+                    margin: 18px 0 0 11px;
+                    position: absolute;
                     
-                    .more {
-                        margin: 18px 0 0 11px;
-                        position: absolute;
-                        
-                        a {
-                            color: #777;
-                        }
-                    }
-                }
-                
-                .title-col {
-                    width: 300px;
-                    font-weight: bold;
-                    font-size: 18px;
-                    padding-right: 20px;
-                    padding-left: 0;
-                }
-                
-                .completed {
-                    text-decoration: line-through;
-                    color: #777;
-                }
-                
-                .progress-col {
-                    
-                    .progress {
-                        margin-bottom: 0;
-                    }
-                    
-                    .progress-label {
-                        text-align: right;
-                        font-weight: bold;
-                        padding-right: 10px;
-                    }
-                }
-                
-                .price-col {
-                    width: 120px;
-                    font-weight: bold;
-                    text-align: center;
-                    font-size: 18px;
-                    
-                    span {
-                        font-weight: normal;
+                    a {
                         color: #777;
-                        padding-right: 10px;
-                        font-size: 13px;
                     }
                 }
             }
             
-            .object-row {
+            .title-col {
+                width: 450px;
+                font-weight: bold;
+                font-size: 18px;
+                padding-left: 0;
+                text-align: left;
                 
-                td {
-                    border-top: none;
-                    vertical-align: middle;
-                    padding: 10px 0;
+                a {
+                    font-weight: bold;
                 }
                 
-                .check-col {
-                    width: 50px;
-                    text-align: center;
+                .title {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 420px;
+                    color: #777;
+                    font-weight: normal;
                 }
                 
-                .title-col {
+                .proposal {
                     font-size: 14px;
-                    
-                    span {
-                        font-weight: bold;
-                        padding-right: 10px;
-                    }
+                    color: #777;
+                    font-weight: normal;
+                    padding-top: 5px;
+                }
+                .purchased {
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: normal;
+                    padding-top: 5px;
                 }
             }
             
-            .first-row {
-                border-top: none;
+            .progress-col {
+                padding: 0 20px;
+                
+                .progress {
+                    margin-bottom: 0;
+                }
+                
+                .progress-label {
+                    text-align: right;
+                    font-weight: bold;
+                    padding-right: 10px;
+                }
+                
+                .total-value {
+                    text-align: right;
+                    font-weight: bold;
+                    padding-right: 9px;
+                    color: #999;
+                    font-size: 12px;
+                    padding-top: 2px;
+                }
             }
+            
+            .price-col {
+                width: 120px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 16px;
+                
+                span {
+                    font-weight: normal;
+                    color: #777;
+                    padding-right: 10px;
+                }
+            }
+            
+            .date-col {
+                width: 130px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: bold;
+                color: #333;
+            }
+            
         }
     }
 }
