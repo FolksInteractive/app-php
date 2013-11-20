@@ -3,16 +3,26 @@
     
     {{ form_errors(form) }}
     
-    {{ form_row(form.plainPassword, {'label': 'New Password'}) }}
+    <div class="col1 col-md-6 col-lg-6">
     
-    {{ form_row(form.firstName, {'label': 'First name'}) }}
-  
-    {{ form_row(form.lastName, {'label': 'Last name'}) }}
+    {{ form_row(form.firstName, {'attr':{'placeholder':'First Name', 'class':'input-lg' }})}}
+
+    {{ form_row(form.lastName, {'attr':{'placeholder':'Last Name', 'class':'input-lg' }})}}
     
-    {{ form_row(form.avatar, {'label': 'Avatar'}) }}
+    {{ form_row(form.plainPassword.first, {'attr':{'placeholder':'Enter a New Password', 'class':'input-lg' }})}}
+
+    {{ form_row(form.plainPassword.second, {'attr':{'placeholder':'Confirm Your New Password', 'class':'input-lg' }})}}
+    
+    </div>
+    
+    <div class="col2 col-md-6 col-lg-6">
+    
+    {{ form_row(form.avatar, {'label': 'Modify Your Avatar'}) }}
+        
+    <img src="/img/users/user.png" class="img-rounded" width="150" height="150">
+        
+    </div>
     
     {{ form_widget(form._token) }}
-    <div class="submit_container">
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
+
 </form>
