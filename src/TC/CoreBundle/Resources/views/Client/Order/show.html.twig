@@ -1,8 +1,10 @@
 {% extends 'TCCoreBundle:Client:Relation/index.html.twig' %}
 
+{% set thread = order.thread %}
+
 {% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
 {% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
-{% use 'TCCoreBundle:Order:recent_comments.html.twig' %}
+{% use "TCCoreBundle:Thread:quick.html.twig" %}
 
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
@@ -13,14 +15,14 @@
 </div>
 
     <div class="tc-controls toolbar pull-right">
-        <a class="btn-primary btn" 
+        <a class="btn-primary btn-lg btn" 
                href="{{path('client_order_discuss' , {'idOrder':order.id, 'idRelation': relation.id})}}">
             <i class="icon-discussion icon-white"></i>
             Discuss
         </a>
 
         <div class="btn-group">      
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class=" btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>            
@@ -31,7 +33,11 @@
     </div>
 {% endblock %}
 
-{% block purchase_section %}
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
+{% endblock %}
+
+{%block purchase_section %}
 {% if purchaseForm is defined and purchaseForm is not null %}
 <div class="tc-agreement-section">
     {{form_start(purchaseForm)}}
@@ -51,8 +57,17 @@
     {{form_end(purchaseForm, {'render_rest':false})}}
 </div>
 {% endif %}
-{% endblock %}
+{% endblock %} 
 
 {% block more_section_href %}
  {{path('client_order_discuss', {'idOrder':order.id, 'idRelation':relation.id})}}
+{% endblock %}
+
+
+{% block main_after %}
+{{ block('thread_section') }}
+{% endblock %}
+
+{% block bottom_js %}
+{{ block('thread_bottom_js') }}
 {% endblock %}

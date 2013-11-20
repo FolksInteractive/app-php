@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as SymfonyController;
 use Symfony\Component\Validator\Validator;
 use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Model\OrderManager;
+use TC\CoreBundle\Model\RFPManager;
+use TC\CoreBundle\Model\ThreadManager;
 use TC\CoreBundle\Model\ProjectManager;
 use TC\CoreBundle\Model\RelationManager;
 
@@ -22,6 +24,20 @@ class Controller extends SymfonyController {
      */
     protected function getOrderManager(){
         return $this->container->get('tc.manager.order');
+    }
+    
+    /**
+     * @return RFPManager
+     */
+    protected function getRFPManager(){
+        return $this->container->get('tc.manager.rfp');
+    }
+    
+    /**
+     * @return ThreadManager
+     */
+    protected function getThreadManager(){
+        return $this->container->get('tc.manager.thread');
     }
     
     /**

@@ -129,7 +129,7 @@ legend {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
+    border-left: 4px solid #777777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -226,7 +226,7 @@ legend {
         background: none;
         padding: 15px 50px;
         font-weight: 300;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         color: #333; }
         .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
           margin-top: -3px; }
@@ -435,6 +435,31 @@ legend {
   background: url("/img/icons/icon-check-small.png");
   background-repeat: no-repeat;
   margin: 2px 5px 0 0; }
+
+.enscroll-track {
+  width: 10px;
+  background: rgba(0, 0, 0, 0);
+  margin-right: 2px;
+  border-radius: 10px;
+  -webkit-transition: background 250ms linear;
+  transition: background 250ms linear; }
+  .enscroll-track .vertical-handle {
+    width: 7px;
+    right: 0;
+    background: #999;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms; }
+
+.enscroll-track:hover,
+.enscroll-track.dragging {
+  background: #d9d9d9;
+  /* Browsers without rgba support */
+  background: rgba(0, 0, 0, 0.15); }
+  .enscroll-track:hover .vertical-handle,
+  .enscroll-track.dragging .vertical-handle {
+    width: 10px; }
 
 /*************************************************/
 /*****   Section Relation:new.html.twig   *****/
@@ -771,7 +796,7 @@ legend {
 .order-show .tc-offer-section .offer h1 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 20px 0 10px 0;
   color: #0a6895; }
 .order-show .tc-offer-section .offer-subtitle {
@@ -794,7 +819,7 @@ legend {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -807,8 +832,8 @@ legend {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
@@ -820,7 +845,7 @@ legend {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -855,7 +880,7 @@ legend {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700; }
 .order-edit .tc-offer-section .tc-body-group {
   margin-bottom: 0; }
@@ -1189,6 +1214,23 @@ legend {
     padding-top: 20px; }
     .client-dashboard .wrapper .tc-money .chart #money-spent {
       text-align: center; }
+
+.tc-side-thread-section {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  bottom: 0;
+  width: 370px;
+  padding: 0 0 15px 15px; }
+  .tc-side-thread-section .enscroll-track {
+    margin-top: 2px; }
+
+#thread_scrollable_section {
+  height: 100%;
+  overflow: auto;
+  padding-right: 10px;
+  padding-top: 15px;
+  width: 370px; }
 
 .blurry {
   opacity: 0.3;

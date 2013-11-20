@@ -314,7 +314,7 @@ class Order
      *
      * @param Relation $relation
      */
-    public function setRelation(\TC\CoreBundle\Entity\Relation $relation)
+    public function setRelation(Relation $relation)
     {
         $this->relation = $relation;
     }

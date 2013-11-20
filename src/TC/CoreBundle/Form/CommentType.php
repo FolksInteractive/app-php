@@ -15,7 +15,14 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('body')
+            ->add('body', 'text', array(
+                "required" => true
+            ))
+            ->add('createdAt', 'datetime', array(
+                "required" => false,
+                "widget" => 'single_text',
+                "date_format" => "Y-m-d H:i:s",
+            ))
         ;
     }
     
@@ -25,7 +32,8 @@ class CommentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TC\CoreBundle\Entity\Comment'
+            'data_class' => 'TC\CoreBundle\Entity\Comment',
+            'csrf_protection' => false
         ));
     }
 
@@ -34,6 +42,6 @@ class CommentType extends AbstractType
      */
     public function getName()
     {
-        return 'tc_order_comment';
+        return 'tc_comment';
     }
 }

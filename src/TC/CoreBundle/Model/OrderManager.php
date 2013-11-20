@@ -113,10 +113,16 @@ class OrderManager {
      * @param Relation $relation
      * @return Order
      */
-    public function createOrder( ) {
+    public function createOrder( Relation $relation ) {
         $order = new Order();
         $order->setCreator( $this->workspace );
-        $order->setThread( new Thread() );
+        $order->setRelation($relation);
+        
+        $thread = new Thread();
+        $thread->addFollower( $order->getRelation()->getVendor());
+        $thread->addFollower( $order->getRelation()->getClient());
+        $order->setThread( $thread );
+        
 
         /**
          * @todo Send notification
@@ -269,32 +275,6 @@ class OrderManager {
         $this->em->remove( $deliverable );
         $this->em->flush();
     }
-
-    /**
-     * 
-     * @param Order $order
-     * @return \TC\CoreBundle\Model\Comment
-     */
-    public function createComment( Order $order ) {
-        $comment = new Comment();
-        $comment->setAuthor( $this->workspace );
-        $comment->setThread( $order->getThread() );
-
-        return $comment;
-    }
-
-    /**
-     * 
-     * @param Order $order
-     */
-    public function saveComment( Comment $comment ) {
-        /**
-         * @todo Send notification
-         */
-        $this->em->persist( $comment );
-        $this->em->flush();
-    }
-
 }
 
 ?>

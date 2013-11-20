@@ -1,9 +1,10 @@
 {% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
 
+{% set thread = order.thread %}
 
 {% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
 {% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
-{% use 'TCCoreBundle:Order:recent_comments.html.twig' %}
+{% use "TCCoreBundle:Thread:quick.html.twig" %}
 
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
@@ -13,20 +14,20 @@
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
-    <div class="tc-controls pull-right">
-        <a class="btn-primary btn" 
+    <div class="tc-controls toolbar pull-right">
+        <a class="btn-primary btn-lg btn" 
                href="{{path('vendor_order_discuss' , {'idOrder':order.id, 'idRelation': relation.id})}}">
             <i class="icon-discussion icon-white"></i>
             Discuss
         </a>
             
         <div class="btn-group">
-            <a class="btn btn-default" 
+            <a class="btn-default btn-lg btn" 
                href="{{path('vendor_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">
                 Edit order
             </a>
             
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class="btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -38,6 +39,19 @@
     </div>
 {% endblock %}
 
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
+{% endblock %}
+
 {% block more_section_href %}
  {{path('vendor_order_discuss', {'idOrder':order.id, 'idRelation':relation.id})}}
+{% endblock %}
+
+
+{% block main_after %}
+{{ block('thread_section') }}
+{% endblock %}
+
+{% block bottom_js %}
+{{ block('thread_bottom_js') }}
 {% endblock %}

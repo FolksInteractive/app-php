@@ -61,6 +61,14 @@ class Relation {
     private $orders;
     
     /**
+     * @var ArrayCollection $rfps
+     * 
+     * @ORM\OneToMany(targetEntity="RFP", mappedBy="relation", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $rfps;
+    
+    /**
      * @var ArrayCollection $bills
      * 
      * @ORM\OneToMany(targetEntity="Bill", mappedBy="relation", cascade={"persist", "remove"})
@@ -93,6 +101,7 @@ class Relation {
     public function __construct() {
         $this->closedBills = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->rfps = new ArrayCollection();
         $this->createdAt = new DateTime();
         $this->openBill = new Bill( );
     }
@@ -244,23 +253,6 @@ class Relation {
 
         return $orders;
     }
-    
-    /**
-     * Get suggestions
-     *
-     * @return Collection 
-     */
-    public function getSuggestions() {
-        $orders = array();
-
-        foreach ( $this->orders->toArray() as $key => $order ) {
-            if ( !$order->isOpen() && $this->getVendor()  == $order->getCreator() ) {
-                $orders[] = $order;
-            }
-        }
-
-        return $orders;
-    }
 
     /**
      * Get active
@@ -373,5 +365,38 @@ class Relation {
     public function getVendor()
     {
         return $this->vendor;
+    }
+
+    /**
+     * Add RFP
+     *
+     * @param RFP $rfp
+     * @return Relation
+     */
+    public function addRFP(RFP $rfp)
+    {
+        $this->rfps[] = $rfp;
+    
+        return $this;
+    }
+
+    /**
+     * Remove RFP
+     *
+     * @param RFP $rfp
+     */
+    public function removeRFP(RFP $rfp)
+    {
+        $this->rfps->removeElement($rfp);
+    }
+
+    /**
+     * Get RFPs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRFPs()
+    {
+        return $this->rfps;
     }
 }

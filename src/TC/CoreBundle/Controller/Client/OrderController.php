@@ -28,9 +28,6 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findClientRelation($idRelation);
 
-        $order = $this->getOrderManager()->createOrder();
-        $order->setRelation( $relation );
-
         return array(
             'relation' => $relation
         );
@@ -48,6 +45,25 @@ class OrderController extends BaseController {
 
         return array(
             'relation' => $relation
+        );
+    }
+    
+    /**
+     * Finds and displays a Order discussion.
+     *
+     * @Route("/{idOrder}/discuss", name="client_order_discuss")
+     * @Method("GET")
+     * @Template("TCCoreBundle:Client:Order/discuss.html.twig")
+     */
+    public function discussAction( $idRelation, $idOrder ) {
+              
+        $relation = $this->getRelationManager()->findRelation( $idRelation );
+        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        
+        return array(
+            'thread' => $order->getThread(),
+            'order' => $order,
+            "relation" => $relation
         );
     }
 
@@ -132,9 +148,10 @@ class OrderController extends BaseController {
         $form = $this->createForm( new PurchaseType(), $order, array(
             'action' => $this->generateUrl( 'client_order_show', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) ),
             'method' => 'POST',
-                ) );
-
+            ) );
+        
         $form->add( 'submit', 'submit', array('label' => 'Purchase') );
+        
         return $form;
     }
 
