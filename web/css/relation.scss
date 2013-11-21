@@ -322,24 +322,107 @@
     
     .tc-bill-section{
         table{
-            .cost,        
-            .quantity,
-            .subtotal{
-                width:80px;        
-                text-align:center;             
-                vertical-align: middle;
+            
+            thead {
+                
+                th {
+                    padding-left: 0;
+                    padding-right: 0;
+                    font-size: 12px;
+                    text-align: left;
+                    color: #999;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                
+                .description {
+                    text-align: left;
+                }
             }
-            .actions{
-                width:30px; 
-                text-align:center;     
+            
+            tbody{
+                border-bottom: 1px solid #dededf;
                 
-                .btn.dropdown-toggle{
-                    line-height:20px;
+                td {
+                    vertical-align: middle;
+                    padding: 20px 0;
                 }
                 
-                .dropdown-menu{
-                    text-align:left;
+                .actions-col {
+                    width: 39px;
+                    text-align: center;
+                    vertical-align: top;
+                    padding: 23px 0 0 12px;
+                    
+                    .more {
+                        margin: 18px 0 0 11px;
+                        position: absolute;
+                        
+                        a {
+                            color: #777;
+                        }
+                    }
+                    
                 }
+                
+                .description {
+                    width: 450px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    padding-left: 0;
+                    text-align: left;
+                    
+                    a {
+                        font-weight: bold;
+                    }
+                    
+                    .title {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        color: #777;
+                        font-weight: normal;
+                    }
+                    
+                    .proposal {
+                        font-size: 14px;
+                        color: #777;
+                        font-weight: normal;
+                        padding-top: 5px;
+                    }
+                    .purchased {
+                        font-size: 14px;
+                        color: #333;
+                        font-weight: normal;
+                        padding-top: 5px;
+                    }
+                }
+                
+                .cost {
+                    text-align: center;
+                    width: 120px;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #333;
+                }
+                
+                .quantity {
+                    width: 120px;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #333;
+                }
+                
+                .subtotal {
+                    width: 130px;
+                    text-align: center;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #333;
+                }
+                
             }
         }
     }

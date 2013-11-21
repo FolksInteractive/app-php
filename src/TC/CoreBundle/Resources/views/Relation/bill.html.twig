@@ -3,17 +3,9 @@
 
 
 {% block sheet %}
-<div class="tc-title-section">    
-    <h2>Open bill</h2>
-    {# <p>This bill will close on July 31st 2013</p> #}
-</div>
 <div class="tc-bill-section">  
-    <legend>
-        Deliverables completed
-        <span class="badge">{{ relation.openBill.deliverables|length }}</span>
-    </legend>
-        
-    <table  class="tc-bill table table-hover">
+
+    <table  class="tc-bill table">
         <thead>
             <tr>
                 <th class="actions"></th>
@@ -24,34 +16,57 @@
             </tr>
         </thead>
         <tbody>
-        {% for deliverable in relation.openBill.deliverables() %}
-            <tr class="work" >
-                <td class="actions">
-                    <div class="btn-group">
-                        <button class="btn-small btn dropdown-toggle" data-toggle="dropdown">                            
-                          <span class="icon-chevron-down"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action 1</a></li>
-                            <li><a href="#">Action 2</a></li>
-                        </ul>
+            <!--{% for deliverable in relation.openBill.deliverables() %}
+                <tr class="work" >
+                    <td class="actions">
+                        <div class="btn-group">
+                            <button class="btn-small btn dropdown-toggle" data-toggle="dropdown">                            
+                              <span class="icon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action 1</a></li>
+                                <li><a href="#">Action 2</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="description">
+                    {{deliverable.name}}
+                    </td>
+                    <td class="cost">
+                        $ {{deliverable.cost|number_format(2, '.', ',')}}
+                    </td>
+                    <td class="quantity">
+                    {{deliverable.quantity}}
+                    </td>
+                    <td class="subtotal">
+                        $ {{(deliverable.quantity*deliverable.cost)|number_format(2, '.', ',')}}
+                    </td>
+                    
+                </tr>
+            {% endfor %}-->
+            <tr>
+                <td class="actions-col">
+                    <div class="checkbox-item">
+                        <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
+                        <label for="checkbox-item1"></label>
                     </div>
                 </td>
                 <td class="description">
-                    {{deliverable.name}}
+                    <div class="title"><a href="#">Anti-Corruption's course</a></div>
+                    <div class="proposal">Export of 16 e-Learning Courses</div>
+                    <div class="purchased"><b>Completed</b> on September 15th 2013</div>
                 </td>
                 <td class="cost">
-                    $ {{deliverable.cost|number_format(2, '.', ',')}}
+                    $ 42.50
                 </td>
                 <td class="quantity">
-                    {{deliverable.quantity}}
+                    1
                 </td>
                 <td class="subtotal">
-                    $ {{(deliverable.quantity*deliverable.cost)|number_format(2, '.', ',')}}
+                    $ 42.50
                 </td>
-                
-            </tr>     
-        {% endfor %}
+            </tr>
+        
         </tbody>
     </table>
 </div> 
