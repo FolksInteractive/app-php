@@ -1,11 +1,39 @@
-// Importing all the layouts
+//
+// Layouts
+// --------------------------------------------------
 
-@import "main";
+// Variables 
+// -------------------------
+
+$menubar-normal-width: 220px;
+
+// Imports 
+// -------------------------
+
 @import "menubar";
+@import "main";
 @import "sidebar";
-@import "skeleton";
-@import "toolbar";
 
-.tc-panel{
-    overflow-y : auto;
+// Basic Elements 
+// -------------------------
+
+.tc-menu-panel {
+    position: fixed;
+    top: 0px;
+    bottom:0;
+    left:0;
+    width: $menubar-normal-width;
+    overflow-y: hidden;
+    vertical-align: top;   
+}
+
+.tc-main-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: $menubar-normal-width;
+}
+
+.tc-sidebar {
+    
 }

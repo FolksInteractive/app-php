@@ -1,15 +1,19 @@
-// 1st Column
+//
+// Layouts/Menubar
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+// Left Menu
 .tc-menu-panel {
-    position: fixed;
-    top: 0px;
-    left:0;
-    bottom:0;
-    width: 220px;
-    vertical-align: top;
+    
     color: #fff;
-    background: #202022;
-    box-shadow: -5px 0px 5px -5px #222 inset;
-    overflow-y: hidden;
+    background: $gray-darker;
+    box-shadow: -5px 0px 5px -5px $gray-darker inset;
     
     .tc-menu {
         

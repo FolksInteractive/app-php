@@ -1,0 +1,26 @@
+//
+// Layouts/Toolbar
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Imports 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+.tc-main-panel .tc-toolbar{
+    
+    background: rgba(244,244,244,0.9);
+    border-bottom: 1px dotted #dededf;
+    
+    .tc-controls{
+        margin: 37px 50px;
+        
+        span {
+            font-size: 16px;
+        }
+    }
+}

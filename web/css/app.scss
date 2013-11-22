@@ -1,25 +1,25 @@
-// Importing Bootstrap Variables & Mixins. A front-end framework 
-// for faster and easier web development.
+//
+// TimeCrumbs' Cascading Style Sheets
+// --------------------------------------------------
 
+// Imports 
+// -------------------------
+
+// BOOTSTRAP Variables & Mixins
 @import "../vendor/bootstrap/lib/_variables";
 @import "../vendor/bootstrap/lib/_mixins";
 
-// Compass is an open-source CSS Authoring Framework.
-
+// COMPASS is an open-source CSS Authoring Framework.
 @import "compass/compass";
 
-// Styling of all the basic graphical elements
-
+// Styling the BASIC graphical elements
 @import "base/base";
 
 // the COMPONENTS are each individuals pieces of the app
-
 @import "components/components";
 
 // The LAYOUTS builds the structure
-
 @import "layouts/layouts";
 
 // The MODULES defines each sections or pages
-
 @import "modules/modules";

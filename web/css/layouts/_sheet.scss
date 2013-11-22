@@ -1,0 +1,35 @@
+//
+// Layouts/Toolbar
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Imports 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+.tc-main-panel .tc-sheet{
+    
+    & > [class*="-section"],
+    & > [class$="-section"]{
+        padding: 0 50px;
+    }
+    
+    .tc-full-section{
+        padding:0;
+    }
+    
+    .tc-title-section {
+        text-align: center;
+        margin: 20px 0;
+        p {
+            font-style: italic;
+            color: #ccc;
+            margin-top: -10px;
+            font-size: 12px;
+        }
+    }
+}

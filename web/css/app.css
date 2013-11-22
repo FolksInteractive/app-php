@@ -249,7 +249,6 @@ input[type='email'] {
 .table > thead > tr > th {
   border-bottom: 1px solid #dededf; }
 
-/**** Tables ****/
 .tc-table {
   /**** Columns Width Size ****/
   /**** Alignments & Adjustments ****/
@@ -359,47 +358,6 @@ p {
   font-size: 14px;
   padding-bottom: 20px; }
 
-.txt-sm {
-  font-size: 12px; }
-
-.txt-sm-b {
-  font-size: 12px;
-  font-weight: bold; }
-
-.txt-md {
-  font-size: 14px; }
-
-.txt-md-b {
-  font-size: 14px;
-  font-weight: bold; }
-
-.txt-lg {
-  font-size: 18px; }
-
-.txt-lg-b {
-  font-size: 18px;
-  font-weight: bold; }
-
-.txt-xlg {
-  font-size: 24px; }
-
-.txt-xlg-b {
-  font-size: 24px;
-  font-weight: bold; }
-
-.txt-total {
-  font-size: 60px; }
-
-/**** Colors ****/
-.lt-grey {
-  color: #777; }
-
-.md-grey {
-  color: #555; }
-
-.dk-grey {
-  color: #333; }
-
 body {
   background-color: #fff;
   overflow-y: scroll;
@@ -449,51 +407,10 @@ body {
   margin-bottom: 4px;
   display: block; }
 
-.tc-main-panel {
-  position: absolute;
-  top: 0px;
-  left: 220px;
-  right: 0; }
-  .tc-main-panel .tc-toolbar {
-    height: 90px;
-    position: fixed;
-    right: 0;
-    left: 220px;
-    top: 0;
-    background: rgba(244, 244, 244, 0.9);
-    z-index: 100;
-    border-bottom: 1px dotted #dededf; }
-    .tc-main-panel .tc-toolbar .tc-controls {
-      margin: 37px 50px; }
-      .tc-main-panel .tc-toolbar .tc-controls span {
-        font-size: 16px; }
-
-.tc-sheet {
-  margin-top: 130px; }
-  .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
-    padding: 0 50px; }
-  .tc-sheet .tc-full-section {
-    padding: 0; }
-  .tc-sheet .tc-title-section {
-    text-align: center;
-    margin: 20px 0; }
-    .tc-sheet .tc-title-section p {
-      font-style: italic;
-      color: #ccc;
-      margin-top: -10px;
-      font-size: 12px; }
-
 .tc-menu-panel {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  bottom: 0;
-  width: 220px;
-  vertical-align: top;
   color: #fff;
-  background: #202022;
-  box-shadow: -5px 0px 5px -5px #222222 inset;
-  overflow-y: hidden; }
+  background: #222222;
+  box-shadow: -5px 0px 5px -5px #222222 inset; }
   .tc-menu-panel .tc-menu i {
     width: 20px;
     color: #C1C5C8; }
@@ -582,8 +499,51 @@ body {
       .tc-menu-panel .nav-header a i, .tc-menu-panel .nav-header a:hover i {
         margin-right: 5px; }
 
-.tc-panel {
-  overflow-y: auto; }
+.tc-main-panel .tc-toolbar {
+  background: rgba(244, 244, 244, 0.9);
+  border-bottom: 1px dotted #dededf; }
+  .tc-main-panel .tc-toolbar .tc-controls {
+    margin: 37px 50px; }
+    .tc-main-panel .tc-toolbar .tc-controls span {
+      font-size: 16px; }
+
+.tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
+  padding: 0 50px; }
+.tc-main-panel .tc-sheet .tc-full-section {
+  padding: 0; }
+.tc-main-panel .tc-sheet .tc-title-section {
+  text-align: center;
+  margin: 20px 0; }
+  .tc-main-panel .tc-sheet .tc-title-section p {
+    font-style: italic;
+    color: #ccc;
+    margin-top: -10px;
+    font-size: 12px; }
+
+.tc-main-panel .tc-toolbar {
+  height: 90px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 220px;
+  z-index: 100; }
+.tc-main-panel .tc-sheet {
+  margin-top: 130px; }
+
+.tc-menu-panel {
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  overflow-y: hidden;
+  vertical-align: top; }
+
+.tc-main-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 220px; }
 
 /*************************************************/
 /*****   Section Client:dashboard.html.twig   *****/

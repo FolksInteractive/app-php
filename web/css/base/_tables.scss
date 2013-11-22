@@ -1,12 +1,21 @@
+//
+// Base/Tables
+// --------------------------------------------------
+
+// Imports
+// -------------------------
+
 @import "../vendor/bootstrap/lib/_mixins";
 
-// Resetting Bootstrap Elements
+// Overwriting Bootstrap
+// -------------------------
 
 .table>thead>tr>th {
     border-bottom: 1px solid #dededf;
 }
 
-/**** Tables ****/
+// Table Elements
+// -------------------------
 
 .tc-table {
     
