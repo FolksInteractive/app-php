@@ -1,0 +1,87 @@
+legend {
+    padding: 12px 16px;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 60px 0 10px 0;
+    background: #f4f4f4;
+    border: 1px dotted #dededf;
+    border-radius: 4px;
+    
+    .badge{
+        vertical-align: middle;
+    }
+    
+    span {
+        vertical-align: middle;
+        font-size: 14px;
+        color: #999;
+        padding-left: 5px;
+    }
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline; 
+}
+
+input[type='email'] {
+    font-size: 14px; 
+}
+
+.checkbox-item {
+    position: relative; 
+}
+
+.checkbox-item label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    background: #fff;
+    border: 3px solid #dededf; 
+}
+
+.checkbox-item label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 7px;
+    background: transparent;
+    top: 2px;
+    left: 2px;
+    border: 3px solid #777;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); 
+}
+
+.checkbox-item label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3; 
+}
+
+.checkbox-item input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1; 
+}
+
+.checkbox-item input[type=checkbox] {
+    margin-left: -12px; 
+    display: none;
+}

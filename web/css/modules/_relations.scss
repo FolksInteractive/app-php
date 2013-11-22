@@ -321,6 +321,16 @@
 .relation-bill{
     
     .tc-bill-section{
+        
+    }
+}
+
+/***************************************************/
+/*****   Section Relation:invoices.html.twig   *****/
+/***************************************************/
+.relation-invoices{
+    
+    .tc-invoices-section{
         table{
             
             thead {
@@ -335,9 +345,18 @@
                     text-align: center;
                 }
                 
+                .number {
+                    padding-right: 20px;
+                }
+                
                 .description {
                     text-align: left;
                 }
+                
+                .subtotal {
+                    padding-right: 20px;
+                }
+                
             }
             
             tbody{
@@ -348,21 +367,12 @@
                     padding: 20px 0;
                 }
                 
-                .actions-col {
-                    width: 39px;
+                .number {
+                    width: 80px;
                     text-align: center;
-                    vertical-align: top;
-                    padding: 23px 0 0 12px;
-                    
-                    .more {
-                        margin: 18px 0 0 11px;
-                        position: absolute;
-                        
-                        a {
-                            color: #777;
-                        }
-                    }
-                    
+                    font-size: 14px;
+                    font-weight: bold;
+                    padding-right: 20px;
                 }
                 
                 .description {
@@ -398,48 +408,88 @@
                     }
                 }
                 
-                .cost {
-                    text-align: center;
-                    width: 120px;
-                    text-align: center;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: #333;
-                }
-                
-                .quantity {
-                    width: 120px;
-                    text-align: center;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: #333;
-                }
-                
                 .subtotal {
                     width: 130px;
                     text-align: center;
                     font-size: 24px;
                     font-weight: bold;
-                    color: #333;
+                    color: #555;
+                    padding-right: 20px;
                 }
                 
-            }
-        }
-    }
-}
-
-/***************************************************/
-/*****   Section Relation:invoices.html.twig   *****/
-/***************************************************/
-.relation-invoices{
-    
-    .tc-invoices-section{
-        table{
-            .closed-at,        
-            .total{
-                width:80px;        
-                text-align:center;             
-                vertical-align: middle;
+                .status {
+                    width: 400px;
+                    text-align: right;
+                    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+                    
+                    ul li {
+                        display: inline;
+                        
+                        :first-child a {
+                            border-top-left-radius: 10px;
+                            border-bottom-left-radius: 10px;
+                        }
+                        
+                        a:before {
+                            content: "";
+                            border-top: 15px solid transparent;
+                            border-bottom: 15px solid transparent;
+                            border-left: 15px solid #fff;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                        }
+                        
+                        a {
+                            display: block;
+                            float: left;
+                            height: 30px;
+                            background: #ddd;
+                            text-align: center;
+                            padding: 5px 25px 0 40px;
+                            position: relative;
+                            margin: 0 10px 0 0;
+                            font-size: 14px;
+                            text-decoration: none;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+                        
+                        a:after {
+                            content: "";
+                            border-top: 15px solid transparent;
+                            border-bottom: 15px solid transparent;
+                            border-left: 15px solid #ddd;
+                            position: absolute;
+                            right: -15px;
+                            top: 0;
+                            z-index: 1;
+                        }
+                        
+                        :last-child a {
+                            padding-right: 80px;
+                            border-top-right-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        }
+                    }
+                    
+                    .inprocess {
+                        background: #3498db;
+                    }
+                    
+                    .inprocess:after {
+                        border-left-color: #3498db;
+                    }
+                    
+                    .paid {
+                        background: #5cb85c;
+                    }
+                    
+                    .paid:after {
+                        border-left-color: #5cb85c;
+                    }
+                }
+                
             }
         }
     }

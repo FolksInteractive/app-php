@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+// Overwriting Bootstrap Variables
+
+$font-size-base: 14px;
+
+// TimeCrumbs Variables
+
+
+// Typography Elements
+
+a {
+    color: $primary-links;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    font-size: $font-size-base;
+    padding-bottom: 20px;
+}
+
+.txt-sm { font-size: 12px; }
+
+.txt-sm-b { font-size: 12px; font-weight: bold; }
+
+.txt-md { font-size: 14px; }
+
+.txt-md-b { font-size: 14px; font-weight: bold; }
+
+.txt-lg { font-size: 18px; }
+
+.txt-lg-b { font-size: 18px; font-weight: bold; }
+
+.txt-xlg { font-size: 24px; }
+
+.txt-xlg-b { font-size: 24px; font-weight: bold }
+
+.txt-total { font-size: 60px; }
+
+/**** Colors ****/
+
+.lt-grey { color: #777; }
+
+.md-grey { color: #555; }
+
+.dk-grey { color: #333; }
+

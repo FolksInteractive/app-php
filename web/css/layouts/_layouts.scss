@@ -1,0 +1,11 @@
+// Importing all the layouts
+
+@import "main";
+@import "menubar";
+@import "sidebar";
+@import "skeleton";
+@import "toolbar";
+
+.tc-panel{
+    overflow-y : auto;
+}

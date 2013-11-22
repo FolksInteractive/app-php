@@ -19,9 +19,9 @@
 {% endblock #}
 
 {% block toolbar %}
-    <div class="tc-breadcrumb pull-left">
+<div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:invoicesMenu',[],{"relation": relation}) %}
-           
+
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
@@ -33,31 +33,23 @@
         {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
         {{form_widget(form.submit, {'attr':attr})}}
     #}
-    </div>
+        </div>
 {% endblock %}
 
 {% block sheet %}
-<div class="tc-title-section">    
-    <h2>Invoices</h2>
-    <p>List of all the closed bills.</p>
-</div>
+        <div class="tc-invoices-section">  
 
-<div class="tc-invoices-section">  
-    <legend>
-        Bill invoiced
-        <span class="badge">{{ relation.getClosedBills()|length }}</span>
-    </legend>
-        
-    <table  class="tc-invoices table table-hover">
-        <thead>
-            <tr>
-                <th class="description">Description</th>
-                <th class="closed-at">Date closed</th>
-                <th class="total">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for bill in relation.getClosedBills() %}
+            <table  class="tc-table tc-invoices table">
+                <thead>
+                    <tr>
+                        <th class="number">Invoice</th>
+                        <th class="description">Description</th>
+                        <th class="status">Status</th>
+                        <th class="subtotal">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {# for bill in relation.getClosedBills() %}
             <tr class="invoice">
                 <td class="description">
                     <a href="{{path('vendor_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}">
@@ -71,10 +63,69 @@
                     $ {{bill.total|number_format(2, '.', ',')}}
                 </td>
             </tr>     
-        {% endfor %}
-        </tbody>
-    </table>
-</div> 
+        {% endfor #}
+
+                        <tr>
+                            <td class="number">00001</td>
+                            <td class="description">
+                                <div class="title"><a href="#">Courses Upload + Small modifications</a></div>
+                                <div class="proposal">Including <b>16</b> deliverables</div>
+                                <div class="purchased"><b>Closed</b> on September 30th 2013</div>
+                            </td>
+                            
+                            <td class="status">
+                                <ul>
+                                    <li><a href="#1">Pending</a></li>
+                                    <li><a href="#2">Sent</a></li>
+                                    <li><a href="#3" class="paid">Paid</a></li>
+                                </ul>
+                            </td>
+                            <td class="subtotal">
+                                $ 800
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="number">00002</td>
+                            <td class="description">
+                                <div class="title"><a href="#">Invoice #00002</a></div>
+                                <div class="proposal">Including <b>16</b> deliverables</div>
+                                <div class="purchased"><b>Closed</b> on September 30th 2013</div>
+                            </td>
+                            
+                            <td class="status">
+                                <ul>
+                                    <li><a href="#1">Pending</a></li>
+                                    <li><a href="#2" class="inprocess">Sent</a></li>
+                                    <li><a href="#3">Paid</a></li>
+                                </ul>
+                            </td>
+                            <td class="subtotal">
+                                $ 175
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="number">00003</td>
+                            <td class="description">
+                                <div class="title"><a href="#">One last small modification</a></div>
+                                <div class="proposal">Including <b>16</b> deliverables</div>
+                                <div class="purchased"><b>Closed</b> on September 30th 2013</div>
+                            </td>
+                            
+                            <td class="status">
+                                <ul>
+                                    <li><a href="#1" class="inprocess">Pending</a></li>
+                                    <li><a href="#2">Sent</a></li>
+                                    <li><a href="#3">Paid</a></li>
+                                </ul>
+                            </td>
+                            <td class="subtotal">
+                                $ 42.50
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div> 
 {% endblock %}
 {#block bottom_js %}
 <script type="text/javascript" src="{{asset("/js/ng_order_edit.js")}}"></script>

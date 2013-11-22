@@ -1,0 +1,51 @@
+.tc-main-panel{
+    position: absolute;
+    top: 0px;
+    left: 220px;
+    right:0;
+    
+    .tc-toolbar{
+        height: 90px;
+        position: fixed;
+        right: 0;
+        left: 220px;
+        top: 0;
+        background: rgba(244,244,244,0.9);
+        z-index: 100;
+        border-bottom: 1px dotted #dededf;
+        
+        .tc-controls{
+            margin: 37px 50px;
+            
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+
+.tc-sheet {
+    margin-top: 130px;
+    
+    & > [class*="-section"],
+    & > [class$="-section"]{
+        padding: 0 50px;
+    }
+    
+    .tc-full-section{
+        padding:0;
+    }
+    
+    .tc-title-section {
+        text-align: center;
+        margin: 20px 0;
+        p {
+            font-style: italic;
+            color: #ccc;
+            margin-top: -10px;
+            font-size: 12px;
+        }
+    }
+    
+}

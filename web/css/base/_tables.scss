@@ -1,0 +1,152 @@
+@import "../vendor/bootstrap/lib/_mixins";
+
+// Resetting Bootstrap Elements
+
+.table>thead>tr>th {
+    border-bottom: 1px solid #dededf;
+}
+
+/**** Tables ****/
+
+.tc-table {
+    
+    /**** Columns Width Size ****/
+    
+    .col-flex { width: auto; }
+    
+    .col-xsm { width: 40px; }
+    
+    .col-sm { width: 80px; }
+    
+    .col-md { width: 100px; }
+    
+    .col-lg { width: 120px; }
+    
+    .col-xlg { width: 140px; }
+    
+    /**** Alignments & Adjustments ****/
+    
+    .center { text-align: center; }
+    
+    .left { text-align: left; }
+    
+    .right { text-align: right; }
+    
+    .left-gap { padding-left: 20px; }
+    
+    .right-gap { padding-right: 20px; }
+    
+    /**** Table Specifications ****/
+    
+    thead {
+        
+        th {
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 12px;
+            text-align: left;
+            color: #999;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+    }
+    
+    tbody {
+        
+        td {
+            padding: 20px 0;
+            border-bottom: 1px solid #dededf;
+        }
+        
+        .actions-checkbox {
+            width: 39px;
+            vertical-align: top;
+            padding: 23px 0 0 12px;
+        }
+        
+        .desc-3-elems {
+            font-weight: bold;
+            font-size: 18px;
+            padding-left: 0;
+            text-align: left;
+            
+            .title {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                color: #777;
+                font-weight: normal;
+                font-weight: bold;
+            }
+            
+            .main-description {
+                font-size: 14px;
+                color: #777;
+                font-weight: normal;
+                padding-top: 5px;
+            }
+            .sub-description {
+                font-size: 14px;
+                color: #333;
+                font-weight: normal;
+                padding-top: 5px;
+            }
+        }
+        
+        
+        .cost {
+            text-align: center;
+            width: 120px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .quantity {
+            width: 40px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .subtotal {
+            width: 130px;
+            text-align: center;
+            
+        }
+    }
+    
+    tfoot {
+        
+        .total-split1 {
+            height: 40px;
+        }
+        .total-split2 {
+            height: 5px;
+        }
+        
+        .total-price {
+            text-align: right;
+            
+            .label {
+                font-size: 13px;
+                color: #999;
+                display: inline-block;
+                vertical-align: top;
+                padding: 40px 40px 0 0;
+            }
+            
+            .price {
+                font-size: 60px;
+                color: #0060b2;
+                font-weight: 300;
+                font-family: 'Open Sans', sans-serif;
+                display: inline-block;
+            }
+        }
+    }
+    
+}

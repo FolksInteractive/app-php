@@ -3,7 +3,7 @@
 
 
 {% block sheet %}
-<div class="tc-bill-section">  
+<div class="tc-bill-section">
 
     <table  class="tc-bill table">
         <thead>
@@ -45,29 +45,38 @@
                 </tr>
             {% endfor %}-->
             <tr>
-                <td class="actions-col">
+                <td class="actions-col center">
                     <div class="checkbox-item">
                         <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
                         <label for="checkbox-item1"></label>
                     </div>
                 </td>
-                <td class="description">
+                <td class="description left">
                     <div class="title"><a href="#">Anti-Corruption's course</a></div>
                     <div class="proposal">Export of 16 e-Learning Courses</div>
                     <div class="purchased"><b>Completed</b> on September 15th 2013</div>
                 </td>
-                <td class="cost">
+                <td class="cost center">
                     $ 42.50
                 </td>
-                <td class="quantity">
+                <td class="quantity center">
                     1
                 </td>
-                <td class="subtotal">
+                <td class="subtotal center">
                     $ 42.50
                 </td>
             </tr>
         
         </tbody>
+        
+        <tfoot>
+            <tr><td colspan="2" class="no-border"></td><td colspan="3" class="border-bottom line1"></td></tr>
+            <tr><td colspan="2" class="no-border"></td><td colspan="3" class="border-bottom line2"></td></tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="3" class="total-price"><div class="label">Total : </div><div class="price">$ 42.50</div></td>
+            </tr>
+        </tfoot>
     </table>
 </div> 
 {% endblock %}

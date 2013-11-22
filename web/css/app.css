@@ -1,23 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
-body {
-  background-color: #fff;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  font: 14px Helvetica, Arial, sans-serif; }
-
-a {
-  color: #1b85b2;
-  cursor: pointer; }
-
-a:hover {
-  text-decoration: none; }
-
-p {
-  font-size: 14px;
-  padding-bottom: 20px; }
-
-ul {
-  margin: 0; }
+legend {
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 60px 0 10px 0;
+  background: #f4f4f4;
+  border: 1px dotted #dededf;
+  border-radius: 4px; }
+  legend .badge {
+    vertical-align: middle; }
+  legend span {
+    vertical-align: middle;
+    font-size: 14px;
+    color: #999;
+    padding-left: 5px; }
 
 form {
   margin: 0;
@@ -75,219 +71,8 @@ input[type='email'] {
   opacity: 1; }
 
 .checkbox-item input[type=checkbox] {
+  margin-left: -12px;
   display: none; }
-
-legend {
-  padding: 12px 16px;
-  font-weight: bold;
-  font-size: 24px;
-  margin: 60px 0 10px 0;
-  background: #f4f4f4;
-  border: 1px dotted #dededf;
-  border-radius: 4px; }
-  legend .badge {
-    vertical-align: middle; }
-  legend span {
-    vertical-align: middle;
-    font-size: 14px;
-    color: #999;
-    padding-left: 5px; }
-
-.table > thead > tr > th {
-  border-bottom: 1px solid #dededf; }
-
-.spacer {
-  width: 100%;
-  height: 1px;
-  background: #dededf;
-  margin: 30px 0; }
-
-.tc-panel {
-  overflow-y: auto; }
-
-.tc-menu-panel {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  bottom: 0;
-  width: 220px;
-  vertical-align: top;
-  color: #fff;
-  background: #202022;
-  box-shadow: -5px 0px 5px -5px #222222 inset;
-  overflow-y: hidden; }
-  .tc-menu-panel .tc-menu i {
-    width: 20px;
-    color: #C1C5C8; }
-  .tc-menu-panel .tc-menu li a {
-    font-size: 14px;
-    color: #FFF;
-    text-shadow: none;
-    display: block;
-    padding: 15px 0 15px 25px; }
-  .tc-menu-panel .tc-menu li a:hover {
-    text-decoration: none;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
-    box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
-    padding-left: 21px; }
-  .tc-menu-panel .tc-menu li .sub_label {
-    display: block;
-    font-size: 11px;
-    color: #777;
-    padding: 5px 30px 0 0; }
-  .tc-menu-panel .tc-menu .active {
-    border-left: 4px solid #75d600;
-    background: rgba(0, 0, 0, 0.75); }
-    .tc-menu-panel .tc-menu .active a, .tc-menu-panel .tc-menu .active a:hover {
-      margin-left: -4px;
-      color: #FFF; }
-  .tc-menu-panel .tc-menu-heading {
-    top: 0;
-    background: rgba(0, 0, 0, 0.2); }
-    .tc-menu-panel .tc-menu-heading .account {
-      margin-left: 20px; }
-      .tc-menu-panel .tc-menu-heading .account .alerts {
-        display: inline-block;
-        padding-right: 20px;
-        display: none; }
-        .tc-menu-panel .tc-menu-heading .account .alerts .badge {
-          background-color: #74d600;
-          margin-left: 5px; }
-      .tc-menu-panel .tc-menu-heading .account .dropdown {
-        text-align: left;
-        padding: 20px 0;
-        display: inline-block; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown .caret {
-          border-top-color: #FFF;
-          display: inline-block;
-          vertical-align: top;
-          margin: 2px 0 0 10px;
-          vertical-align: middle; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown .name {
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-          width: 120px;
-          display: inline-block;
-          vertical-align: middle;
-          padding-left: 10px; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown a {
-          color: #fff;
-          font-size: 14px;
-          font-weight: bold; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu a {
-          color: #000;
-          font-weight: normal; }
-    .tc-menu-panel .tc-menu-heading .tc-logo {
-      padding: 25px 0 0 44px;
-      position: absolute;
-      bottom: 40px; }
-  .tc-menu-panel .tc-return-section ul {
-    margin: 5px 0; }
-  .tc-menu-panel .tc-return-section i {
-    margin-top: 1px; }
-  .tc-menu-panel .nav-header {
-    display: block;
-    line-height: 30px;
-    font-size: 12px;
-    font-weight: normal;
-    text-shadow: none;
-    text-transform: uppercase;
-    color: #b1b4b7;
-    text-shadow: 1px 1px 2px #232729;
-    margin: 10px 0 5px 0;
-    padding: 3px 20px; }
-    .tc-menu-panel .nav-header a, .tc-menu-panel .nav-header a:hover {
-      color: #b1b4b7; }
-      .tc-menu-panel .nav-header a i, .tc-menu-panel .nav-header a:hover i {
-        margin-right: 5px; }
-
-.tc-main-panel {
-  position: absolute;
-  top: 0px;
-  left: 220px;
-  right: 0; }
-  .tc-main-panel .tc-toolbar {
-    height: 90px;
-    position: fixed;
-    right: 0;
-    left: 220px;
-    top: 0;
-    background: rgba(244, 244, 244, 0.9);
-    z-index: 100;
-    border-bottom: 1px dotted #dededf; }
-    .tc-main-panel .tc-toolbar .tc-breadcrumb {
-      color: #333;
-      font-weight: 200;
-      font-size: 24px; }
-      .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb {
-        background: none;
-        padding: 15px 50px;
-        font-weight: 300;
-        font-family: 'Open Sans', sans-serif;
-        color: #333; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb img {
-          margin-top: -3px; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous [class^="icon-"], .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous [class*=" icon-"] {
-          margin: 10px 10px 0 0; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous a {
-          font-size: 30px;
-          color: #999; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .previous a:hover {
-          color: #333; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active {
-          font-size: 40px;
-          color: #333; }
-          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active a {
-            cursor: default;
-            color: #333; }
-          .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active [class^="icon-"], .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active [class*=" icon-"] {
-            margin: 18px 14px 0 0; }
-        .tc-main-panel .tc-toolbar .tc-breadcrumb .breadcrumb .active:before {
-          font-size: 30px;
-          padding: 0 10px; }
-    .tc-main-panel .tc-toolbar .tc-controls {
-      margin: 37px 50px; }
-      .tc-main-panel .tc-toolbar .tc-controls span {
-        font-size: 16px; }
-
-.tc-full-panel {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  bottom: 0;
-  left: 0px;
-  right: 0;
-  display: inline-block;
-  vertical-align: top; }
-
-.tc-sheet {
-  margin-top: 130px; }
-  .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
-    padding: 0 50px; }
-  .tc-sheet .tc-full-section {
-    padding: 0; }
-  .tc-sheet .tc-title-section {
-    text-align: center;
-    margin: 20px 0; }
-    .tc-sheet .tc-title-section p {
-      font-style: italic;
-      color: #ccc;
-      margin-top: -10px;
-      font-size: 12px; }
-
-.tc-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  background-color: #fff;
-  opacity: 0.7;
-  filter: alpha(opacity=70); }
 
 [class^="icon-"], [class*=" icon-"] {
   display: inline-block;
@@ -460,6 +245,412 @@ legend {
   .enscroll-track:hover .vertical-handle,
   .enscroll-track.dragging .vertical-handle {
     width: 10px; }
+
+.table > thead > tr > th {
+  border-bottom: 1px solid #dededf; }
+
+/**** Tables ****/
+.tc-table {
+  /**** Columns Width Size ****/
+  /**** Alignments & Adjustments ****/
+  /**** Table Specifications ****/ }
+  .tc-table .col-flex {
+    width: auto; }
+  .tc-table .col-xsm {
+    width: 40px; }
+  .tc-table .col-sm {
+    width: 80px; }
+  .tc-table .col-md {
+    width: 100px; }
+  .tc-table .col-lg {
+    width: 120px; }
+  .tc-table .col-xlg {
+    width: 140px; }
+  .tc-table .center {
+    text-align: center; }
+  .tc-table .left {
+    text-align: left; }
+  .tc-table .right {
+    text-align: right; }
+  .tc-table .left-gap {
+    padding-left: 20px; }
+  .tc-table .right-gap {
+    padding-right: 20px; }
+  .tc-table thead th {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 12px;
+    text-align: left;
+    color: #999;
+    font-weight: bold;
+    text-align: center; }
+  .tc-table tbody td {
+    padding: 20px 0;
+    border-bottom: 1px solid #dededf; }
+  .tc-table tbody .actions-checkbox {
+    width: 39px;
+    vertical-align: top;
+    padding: 23px 0 0 12px; }
+  .tc-table tbody .desc-3-elems {
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 0;
+    text-align: left; }
+    .tc-table tbody .desc-3-elems .title {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: #777;
+      font-weight: normal;
+      font-weight: bold; }
+    .tc-table tbody .desc-3-elems .main-description {
+      font-size: 14px;
+      color: #777;
+      font-weight: normal;
+      padding-top: 5px; }
+    .tc-table tbody .desc-3-elems .sub-description {
+      font-size: 14px;
+      color: #333;
+      font-weight: normal;
+      padding-top: 5px; }
+  .tc-table tbody .cost {
+    text-align: center;
+    width: 120px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555; }
+  .tc-table tbody .quantity {
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555; }
+  .tc-table tbody .subtotal {
+    width: 130px;
+    text-align: center; }
+  .tc-table tfoot .total-split1 {
+    height: 40px; }
+  .tc-table tfoot .total-split2 {
+    height: 5px; }
+  .tc-table tfoot .total-price {
+    text-align: right; }
+    .tc-table tfoot .total-price .label {
+      font-size: 13px;
+      color: #999;
+      display: inline-block;
+      vertical-align: top;
+      padding: 40px 40px 0 0; }
+    .tc-table tfoot .total-price .price {
+      font-size: 60px;
+      color: #0060b2;
+      font-weight: 300;
+      font-family: 'Open Sans', sans-serif;
+      display: inline-block; }
+
+a {
+  color: #1b85b2;
+  cursor: pointer; }
+
+a:hover {
+  text-decoration: none; }
+
+p {
+  font-size: 14px;
+  padding-bottom: 20px; }
+
+.txt-sm {
+  font-size: 12px; }
+
+.txt-sm-b {
+  font-size: 12px;
+  font-weight: bold; }
+
+.txt-md {
+  font-size: 14px; }
+
+.txt-md-b {
+  font-size: 14px;
+  font-weight: bold; }
+
+.txt-lg {
+  font-size: 18px; }
+
+.txt-lg-b {
+  font-size: 18px;
+  font-weight: bold; }
+
+.txt-xlg {
+  font-size: 24px; }
+
+.txt-xlg-b {
+  font-size: 24px;
+  font-weight: bold; }
+
+.txt-total {
+  font-size: 60px; }
+
+/**** Colors ****/
+.lt-grey {
+  color: #777; }
+
+.md-grey {
+  color: #555; }
+
+.dk-grey {
+  color: #333; }
+
+body {
+  background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.tc-breadcrumb {
+  color: #333;
+  font-weight: 200;
+  font-size: 24px; }
+  .tc-breadcrumb .breadcrumb {
+    background: none;
+    padding: 15px 50px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #333; }
+    .tc-breadcrumb .breadcrumb img {
+      margin-top: -3px; }
+    .tc-breadcrumb .breadcrumb .previous [class^="icon-"], .tc-breadcrumb .breadcrumb .previous [class*=" icon-"] {
+      margin: 10px 10px 0 0; }
+    .tc-breadcrumb .breadcrumb .previous a {
+      font-size: 30px;
+      color: #999; }
+    .tc-breadcrumb .breadcrumb .previous a:hover {
+      color: #333; }
+    .tc-breadcrumb .breadcrumb .active {
+      font-size: 40px;
+      color: #333; }
+      .tc-breadcrumb .breadcrumb .active a {
+        cursor: default;
+        color: #333; }
+      .tc-breadcrumb .breadcrumb .active [class^="icon-"], .tc-breadcrumb .breadcrumb .active [class*=" icon-"] {
+        margin: 18px 14px 0 0; }
+    .tc-breadcrumb .breadcrumb .active:before {
+      font-size: 30px;
+      padding: 0 10px; }
+
+.spacer {
+  width: 100%;
+  height: 1px;
+  background: #dededf;
+  margin: 30px 0; }
+
+.line-seperator {
+  border-bottom: 1px solid white;
+  margin-top: 5px;
+  margin-bottom: 4px;
+  display: block; }
+
+.tc-main-panel {
+  position: absolute;
+  top: 0px;
+  left: 220px;
+  right: 0; }
+  .tc-main-panel .tc-toolbar {
+    height: 90px;
+    position: fixed;
+    right: 0;
+    left: 220px;
+    top: 0;
+    background: rgba(244, 244, 244, 0.9);
+    z-index: 100;
+    border-bottom: 1px dotted #dededf; }
+    .tc-main-panel .tc-toolbar .tc-controls {
+      margin: 37px 50px; }
+      .tc-main-panel .tc-toolbar .tc-controls span {
+        font-size: 16px; }
+
+.tc-sheet {
+  margin-top: 130px; }
+  .tc-sheet > [class*="-section"], .tc-sheet > [class$="-section"] {
+    padding: 0 50px; }
+  .tc-sheet .tc-full-section {
+    padding: 0; }
+  .tc-sheet .tc-title-section {
+    text-align: center;
+    margin: 20px 0; }
+    .tc-sheet .tc-title-section p {
+      font-style: italic;
+      color: #ccc;
+      margin-top: -10px;
+      font-size: 12px; }
+
+.tc-menu-panel {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  vertical-align: top;
+  color: #fff;
+  background: #202022;
+  box-shadow: -5px 0px 5px -5px #222222 inset;
+  overflow-y: hidden; }
+  .tc-menu-panel .tc-menu i {
+    width: 20px;
+    color: #C1C5C8; }
+  .tc-menu-panel .tc-menu li a {
+    font-size: 14px;
+    color: #FFF;
+    text-shadow: none;
+    display: block;
+    padding: 15px 0 15px 25px; }
+  .tc-menu-panel .tc-menu li a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.75);
+    border-left: 4px solid #777;
+    box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
+    padding-left: 21px; }
+  .tc-menu-panel .tc-menu li .sub_label {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    padding: 5px 30px 0 0; }
+  .tc-menu-panel .tc-menu .active {
+    border-left: 4px solid #75d600;
+    background: rgba(0, 0, 0, 0.75); }
+    .tc-menu-panel .tc-menu .active a, .tc-menu-panel .tc-menu .active a:hover {
+      margin-left: -4px;
+      color: #FFF; }
+  .tc-menu-panel .tc-menu-heading {
+    top: 0;
+    background: rgba(0, 0, 0, 0.2); }
+    .tc-menu-panel .tc-menu-heading .account {
+      margin-left: 20px; }
+      .tc-menu-panel .tc-menu-heading .account .alerts {
+        display: inline-block;
+        padding-right: 20px;
+        display: none; }
+        .tc-menu-panel .tc-menu-heading .account .alerts .badge {
+          background-color: #74d600;
+          margin-left: 5px; }
+      .tc-menu-panel .tc-menu-heading .account .dropdown {
+        text-align: left;
+        padding: 20px 0;
+        display: inline-block; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown .caret {
+          border-top-color: #FFF;
+          display: inline-block;
+          vertical-align: top;
+          margin: 2px 0 0 10px;
+          vertical-align: middle; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown .name {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          width: 120px;
+          display: inline-block;
+          vertical-align: middle;
+          padding-left: 10px; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown a {
+          color: #fff;
+          font-size: 14px;
+          font-weight: bold; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu a {
+          color: #000;
+          font-weight: normal; }
+    .tc-menu-panel .tc-menu-heading .tc-logo {
+      padding: 25px 0 0 44px;
+      position: absolute;
+      bottom: 40px; }
+  .tc-menu-panel .tc-return-section ul {
+    margin: 5px 0; }
+  .tc-menu-panel .tc-return-section i {
+    margin-top: 1px; }
+  .tc-menu-panel .nav-header {
+    display: block;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: none;
+    text-transform: uppercase;
+    color: #b1b4b7;
+    text-shadow: 1px 1px 2px #232729;
+    margin: 10px 0 5px 0;
+    padding: 3px 20px; }
+    .tc-menu-panel .nav-header a, .tc-menu-panel .nav-header a:hover {
+      color: #b1b4b7; }
+      .tc-menu-panel .nav-header a i, .tc-menu-panel .nav-header a:hover i {
+        margin-right: 5px; }
+
+.tc-panel {
+  overflow-y: auto; }
+
+/*************************************************/
+/*****   Section Client:dashboard.html.twig   *****/
+/*************************************************/
+.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
+  font-size: 30px;
+  margin-right: 14px;
+  color: #666; }
+.client-dashboard .wrapper {
+  margin: 0 35px; }
+  .client-dashboard .wrapper .tc-activities .media-list {
+    padding: 20px; }
+    .client-dashboard .wrapper .tc-activities .media-list :before {
+      position: absolute;
+      top: 70px;
+      bottom: 70px;
+      left: 60px;
+      width: 1px;
+      background: #dededf;
+      content: '';
+      z-index: -1; }
+    .client-dashboard .wrapper .tc-activities .media-list .media-object {
+      width: 50px;
+      height: 50px; }
+    .client-dashboard .wrapper .tc-activities .media-list .media-body {
+      padding: 5px 0 0 25px; }
+      .client-dashboard .wrapper .tc-activities .media-list .media-body h4 span {
+        font-size: 12px; }
+      .client-dashboard .wrapper .tc-activities .media-list .media-body .date {
+        color: #777;
+        font-size: 12px; }
+  .client-dashboard .wrapper .tc-activities legend {
+    margin-top: 0; }
+  .client-dashboard .wrapper .tc-relationships legend {
+    margin-top: 0; }
+  .client-dashboard .wrapper .tc-relationships .block {
+    text-align: center;
+    margin-left: -5px; }
+    .client-dashboard .wrapper .tc-relationships .block h1 {
+      font-size: 48px;
+      font-weight: bold; }
+    .client-dashboard .wrapper .tc-relationships .block p {
+      color: #999; }
+  .client-dashboard .wrapper .tc-relationships .button-add {
+    text-align: center;
+    margin-top: 48px; }
+  .client-dashboard .wrapper .tc-money legend {
+    margin-top: 40px; }
+  .client-dashboard .wrapper .tc-money .chart-legend {
+    padding: 65px 0 0 40px;
+    vertical-align: middle; }
+    .client-dashboard .wrapper .tc-money .chart-legend .item {
+      padding-bottom: 30px; }
+      .client-dashboard .wrapper .tc-money .chart-legend .item .spent {
+        background: #5cb85c; }
+      .client-dashboard .wrapper .tc-money .chart-legend .item .wip {
+        background: #428bca; }
+      .client-dashboard .wrapper .tc-money .chart-legend .item .ob {
+        background: #0C04E8; }
+      .client-dashboard .wrapper .tc-money .chart-legend .item .grey {
+        color: #777;
+        padding-left: 10px; }
+  .client-dashboard .wrapper .tc-money .chart {
+    text-align: center;
+    padding-top: 20px; }
+    .client-dashboard .wrapper .tc-money .chart #money-spent {
+      text-align: center; }
 
 /*************************************************/
 /*****   Section Relation:new.html.twig   *****/
@@ -665,7 +856,10 @@ legend {
 /***************************************************/
 /*******   Section Relation:bill.html.twig   *******/
 /***************************************************/
-.relation-bill .tc-bill-section table thead th {
+/***************************************************/
+/*****   Section Relation:invoices.html.twig   *****/
+/***************************************************/
+.relation-invoices .tc-invoices-section table thead th {
   padding-left: 0;
   padding-right: 0;
   font-size: 12px;
@@ -673,75 +867,143 @@ legend {
   color: #999;
   font-weight: bold;
   text-align: center; }
-.relation-bill .tc-bill-section table thead .description {
+.relation-invoices .tc-invoices-section table thead .number {
+  padding-right: 20px; }
+.relation-invoices .tc-invoices-section table thead .description {
   text-align: left; }
-.relation-bill .tc-bill-section table tbody {
+.relation-invoices .tc-invoices-section table thead .subtotal {
+  padding-right: 20px; }
+.relation-invoices .tc-invoices-section table tbody {
   border-bottom: 1px solid #dededf; }
-  .relation-bill .tc-bill-section table tbody td {
+  .relation-invoices .tc-invoices-section table tbody td {
     vertical-align: middle;
     padding: 20px 0; }
-  .relation-bill .tc-bill-section table tbody .actions-col {
-    width: 39px;
+  .relation-invoices .tc-invoices-section table tbody .number {
+    width: 80px;
     text-align: center;
-    vertical-align: top;
-    padding: 23px 0 0 12px; }
-    .relation-bill .tc-bill-section table tbody .actions-col .more {
-      margin: 18px 0 0 11px;
-      position: absolute; }
-      .relation-bill .tc-bill-section table tbody .actions-col .more a {
-        color: #777; }
-  .relation-bill .tc-bill-section table tbody .description {
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 20px; }
+  .relation-invoices .tc-invoices-section table tbody .description {
     width: 450px;
     font-weight: bold;
     font-size: 18px;
     padding-left: 0;
     text-align: left; }
-    .relation-bill .tc-bill-section table tbody .description a {
+    .relation-invoices .tc-invoices-section table tbody .description a {
       font-weight: bold; }
-    .relation-bill .tc-bill-section table tbody .description .title {
+    .relation-invoices .tc-invoices-section table tbody .description .title {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       color: #777;
       font-weight: normal; }
-    .relation-bill .tc-bill-section table tbody .description .proposal {
+    .relation-invoices .tc-invoices-section table tbody .description .proposal {
       font-size: 14px;
       color: #777;
       font-weight: normal;
       padding-top: 5px; }
-    .relation-bill .tc-bill-section table tbody .description .purchased {
+    .relation-invoices .tc-invoices-section table tbody .description .purchased {
       font-size: 14px;
       color: #333;
       font-weight: normal;
       padding-top: 5px; }
-  .relation-bill .tc-bill-section table tbody .cost {
-    text-align: center;
-    width: 120px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333; }
-  .relation-bill .tc-bill-section table tbody .quantity {
-    width: 120px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333; }
-  .relation-bill .tc-bill-section table tbody .subtotal {
+  .relation-invoices .tc-invoices-section table tbody .subtotal {
     width: 130px;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    color: #333; }
+    color: #555;
+    padding-right: 20px; }
+  .relation-invoices .tc-invoices-section table tbody .status {
+    width: 400px;
+    text-align: right;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15); }
+    .relation-invoices .tc-invoices-section table tbody .status ul li {
+      display: inline; }
+      .relation-invoices .tc-invoices-section table tbody .status ul li :first-child a {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px; }
+      .relation-invoices .tc-invoices-section table tbody .status ul li a:before {
+        content: "";
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #fff;
+        position: absolute;
+        left: 0;
+        top: 0; }
+      .relation-invoices .tc-invoices-section table tbody .status ul li a {
+        display: block;
+        float: left;
+        height: 30px;
+        background: #ddd;
+        text-align: center;
+        padding: 5px 25px 0 40px;
+        position: relative;
+        margin: 0 10px 0 0;
+        font-size: 14px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold; }
+      .relation-invoices .tc-invoices-section table tbody .status ul li a:after {
+        content: "";
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #ddd;
+        position: absolute;
+        right: -15px;
+        top: 0;
+        z-index: 1; }
+      .relation-invoices .tc-invoices-section table tbody .status ul li :last-child a {
+        padding-right: 80px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px; }
+    .relation-invoices .tc-invoices-section table tbody .status .inprocess {
+      background: #3498db; }
+    .relation-invoices .tc-invoices-section table tbody .status .inprocess:after {
+      border-left-color: #3498db; }
+    .relation-invoices .tc-invoices-section table tbody .status .paid {
+      background: #5cb85c; }
+    .relation-invoices .tc-invoices-section table tbody .status .paid:after {
+      border-left-color: #5cb85c; }
 
-/***************************************************/
-/*****   Section Relation:invoices.html.twig   *****/
-/***************************************************/
-.relation-invoices .tc-invoices-section table .closed-at,
-.relation-invoices .tc-invoices-section table .total {
-  width: 80px;
-  text-align: center;
-  vertical-align: middle; }
+.invoice-show .tc-total-section {
+  text-align: right;
+  margin-bottom: 80px; }
+  .invoice-show .tc-total-section .total-label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    font-style: italic;
+    color: #999;
+    font-size: 12px; }
+  .invoice-show .tc-total-section .total-value {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 80px;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: right;
+    color: #0060b2; }
+
+.invoice-show .tc-total-section {
+  text-align: right;
+  margin-bottom: 80px; }
+  .invoice-show .tc-total-section .total-label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    font-style: italic;
+    color: #999;
+    font-size: 12px; }
+  .invoice-show .tc-total-section .total-value {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 80px;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: right;
+    color: #0060b2; }
 
 /******************************************************************/
 /*****    Section Relation:orders.html.twig    ********/
@@ -1007,24 +1269,77 @@ legend {
   width: 60px;
   height: 60px; }
 
-.invoice-show .tc-total-section {
-  text-align: right;
-  margin-bottom: 80px; }
-  .invoice-show .tc-total-section .total-label {
+/*************************************************/
+/*****   Section root.html.twig   *****/
+/*************************************************/
+.root .tc-menu-panel {
+  display: none; }
+.root .tc-toolbar {
+  display: none; }
+.root .tc-main-panel {
+  left: 0; }
+.root .tc-sheet {
+  margin-top: 50px; }
+.root .tc-over-section {
+  text-align: center; }
+  .root .tc-over-section .description {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #aaa;
+    font-style: italic; }
+    .root .tc-over-section .description p {
+      font-size: 13px; }
+  .root .tc-over-section .client {
     display: inline-block;
-    vertical-align: middle;
-    text-align: right;
-    font-style: italic;
-    color: #999;
-    font-size: 12px; }
-  .invoice-show .tc-total-section .total-value {
+    padding: 10px 40px 30px 40px;
+    margin-right: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .client .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .client .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .client p {
+      padding-top: 10px; }
+  .root .tc-over-section .vendor {
     display: inline-block;
-    vertical-align: middle;
-    padding-left: 80px;
-    font-size: 60px;
-    line-height: 60px;
-    text-align: right;
-    color: #0060b2; }
+    padding: 10px 40px 30px 40px;
+    margin-left: 5px;
+    vertical-align: top;
+    max-width: 400px;
+    border: 1px dashed #dededf; }
+    .root .tc-over-section .vendor .provide {
+      height: 50px;
+      margin-top: 20px; }
+    .root .tc-over-section .vendor .or {
+      padding: 10px 0;
+      color: #999;
+      font-size: 11px; }
+    .root .tc-over-section .vendor p {
+      padding-top: 10px; }
+  .root .tc-over-section .logo {
+    margin-top: 40px; }
+
+.tc-side-thread-section {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  bottom: 0;
+  width: 370px;
+  padding: 0 0 15px 15px; }
+  .tc-side-thread-section .enscroll-track {
+    margin-top: 2px; }
+
+#thread_scrollable_section {
+  height: 100%;
+  overflow: auto;
+  padding-right: 10px;
+  padding-top: 15px;
+  width: 370px; }
 
 .tc_user {
   height: 100%;
@@ -1155,157 +1470,3 @@ legend {
   color: #333; }
 .profile_edit .tc-sheet .col2 {
   padding: 0 50px; }
-
-/*************************************************/
-/*****   Section root.html.twig   *****/
-/*************************************************/
-.root .tc-menu-panel {
-  display: none; }
-.root .tc-toolbar {
-  display: none; }
-.root .tc-main-panel {
-  left: 0; }
-.root .tc-sheet {
-  margin-top: 50px; }
-.root .tc-over-section {
-  text-align: center; }
-  .root .tc-over-section .description {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: #aaa;
-    font-style: italic; }
-    .root .tc-over-section .description p {
-      font-size: 13px; }
-  .root .tc-over-section .client {
-    display: inline-block;
-    padding: 10px 40px 30px 40px;
-    margin-right: 5px;
-    vertical-align: top;
-    max-width: 400px;
-    border: 1px dashed #dededf; }
-    .root .tc-over-section .client .provide {
-      height: 50px;
-      margin-top: 20px; }
-    .root .tc-over-section .client .or {
-      padding: 10px 0;
-      color: #999;
-      font-size: 11px; }
-    .root .tc-over-section .client p {
-      padding-top: 10px; }
-  .root .tc-over-section .vendor {
-    display: inline-block;
-    padding: 10px 40px 30px 40px;
-    margin-left: 5px;
-    vertical-align: top;
-    max-width: 400px;
-    border: 1px dashed #dededf; }
-    .root .tc-over-section .vendor .provide {
-      height: 50px;
-      margin-top: 20px; }
-    .root .tc-over-section .vendor .or {
-      padding: 10px 0;
-      color: #999;
-      font-size: 11px; }
-    .root .tc-over-section .vendor p {
-      padding-top: 10px; }
-  .root .tc-over-section .logo {
-    margin-top: 40px; }
-
-/*************************************************/
-/*****   Section Client:dashboard.html.twig   *****/
-/*************************************************/
-.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
-  font-size: 30px;
-  margin-right: 14px;
-  color: #666; }
-.client-dashboard .wrapper {
-  margin: 0 35px; }
-  .client-dashboard .wrapper .tc-activities .media-list {
-    padding: 20px; }
-    .client-dashboard .wrapper .tc-activities .media-list :before {
-      position: absolute;
-      top: 70px;
-      bottom: 70px;
-      left: 60px;
-      width: 1px;
-      background: #dededf;
-      content: '';
-      z-index: -1; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-object {
-      width: 50px;
-      height: 50px; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-body {
-      padding: 5px 0 0 25px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body h4 span {
-        font-size: 12px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body .date {
-        color: #777;
-        font-size: 12px; }
-  .client-dashboard .wrapper .tc-activities legend {
-    margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships legend {
-    margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships .block {
-    text-align: center;
-    margin-left: -5px; }
-    .client-dashboard .wrapper .tc-relationships .block h1 {
-      font-size: 48px;
-      font-weight: bold; }
-    .client-dashboard .wrapper .tc-relationships .block p {
-      color: #999; }
-  .client-dashboard .wrapper .tc-relationships .button-add {
-    text-align: center;
-    margin-top: 48px; }
-  .client-dashboard .wrapper .tc-money legend {
-    margin-top: 40px; }
-  .client-dashboard .wrapper .tc-money .chart-legend {
-    padding: 65px 0 0 40px;
-    vertical-align: middle; }
-    .client-dashboard .wrapper .tc-money .chart-legend .item {
-      padding-bottom: 30px; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .spent {
-        background: #5cb85c; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .wip {
-        background: #428bca; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .ob {
-        background: #0C04E8; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .grey {
-        color: #777;
-        padding-left: 10px; }
-  .client-dashboard .wrapper .tc-money .chart {
-    text-align: center;
-    padding-top: 20px; }
-    .client-dashboard .wrapper .tc-money .chart #money-spent {
-      text-align: center; }
-
-.tc-side-thread-section {
-  position: fixed;
-  top: 90px;
-  right: 0;
-  bottom: 0;
-  width: 370px;
-  padding: 0 0 15px 15px; }
-  .tc-side-thread-section .enscroll-track {
-    margin-top: 2px; }
-
-#thread_scrollable_section {
-  height: 100%;
-  overflow: auto;
-  padding-right: 10px;
-  padding-top: 15px;
-  width: 370px; }
-
-.blurry {
-  opacity: 0.3;
-  filter: alpha(opacity=30);
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px); }
-
-.line-seperator {
-  border-bottom: 1px solid white;
-  margin-top: 5px;
-  margin-bottom: 4px;
-  display: block; }

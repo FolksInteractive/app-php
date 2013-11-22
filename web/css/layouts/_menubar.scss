@@ -1,0 +1,153 @@
+// 1st Column
+.tc-menu-panel {
+    position: fixed;
+    top: 0px;
+    left:0;
+    bottom:0;
+    width: 220px;
+    vertical-align: top;
+    color: #fff;
+    background: #202022;
+    box-shadow: -5px 0px 5px -5px #222 inset;
+    overflow-y: hidden;
+    
+    .tc-menu {
+        
+        i {
+            width:20px;
+            color: #C1C5C8;
+        }
+        
+        li {    
+            a {
+                font-size: 14px;
+                color: #FFF;
+                text-shadow: none;
+                display: block;
+                padding: 15px 0 15px 25px;
+            }
+            a:hover{
+                text-decoration: none;
+                cursor: pointer;
+                background: rgba(0,0,0,.75);
+                border-left: 4px solid #777;
+                box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
+                padding-left: 21px;
+            }
+            .sub_label{
+                display: block;
+                font-size: 11px;
+                color: #777;
+                padding: 5px 30px 0 0;
+            }
+        }
+        
+        .active {
+            border-left: 4px solid #75d600;
+            background: rgba(0,0,0,.75);
+            
+            a, a:hover{
+                margin-left: -4px;
+                color: #FFF;
+            }
+        }
+    }
+    
+    .tc-menu-heading {
+        top: 0;
+        background: rgba(0,0,0,0.2);
+        
+        .account {
+            margin-left: 20px;
+            
+            .alerts {
+                display: inline-block;
+                padding-right: 20px;
+                display: none;
+                
+                .badge {
+                    background-color: #74d600;
+                    margin-left: 5px;
+                }
+            }
+            
+            .dropdown {
+                text-align: left;
+                padding: 20px 0;
+                display: inline-block;
+                
+                .caret {
+                    border-top-color: #FFF;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 2px 0 0 10px;
+                    vertical-align: middle;
+                }
+                
+                .name {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 120px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding-left: 10px;
+                }
+                
+                a {
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                
+                .dropdown-menu{
+                    a{
+                        color: #000;
+                        font-weight: normal;
+                    }
+                }
+            }
+            
+        }
+        
+        .tc-logo {
+            padding: 25px 0 0 44px;
+            position: absolute;
+            bottom: 40px;
+        }
+        
+    }
+    
+    .tc-return-section{
+        ul{
+            margin: 5px 0;
+        }
+        span{
+        }
+        i{
+            margin-top:1px;
+        }
+    }
+    
+    .nav-header {
+        display: block;
+        line-height: 30px;
+        font-size: 12px;
+        font-weight: normal;
+        text-shadow: none;
+        text-transform: uppercase;
+        color: #b1b4b7;
+        text-shadow: 1px 1px 2px #232729;
+        margin: 10px 0 5px 0;
+        padding: 3px 20px;
+        
+        a, a:hover {
+            color: #b1b4b7;
+            
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    
+}
