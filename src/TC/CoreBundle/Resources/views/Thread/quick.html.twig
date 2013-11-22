@@ -55,13 +55,12 @@ ng-controller="thread.Controller"
 
     module.value("thread", {{thread|json_encode()|raw}});
 
-    module.value("avatars", {
-
-    {% for workspace in thread.followers %}
-        'wp_{{workspace.id}}' : '{{vich_uploader_asset(workspace.user, 'avatar') | imagine_filter('60_thumb')}}' {{ loop.last ? '' : ','}}
+    {% set avatars = {} %}
+    {% for workspace in thread.followers %}    
+        {% set img = vich_uploader_asset(workspace.user, 'avatar') | imagine_filter('60_thumb') %}
+        {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}        
     {% endfor %}
-
-    });
+    module.value("avatars", {{avatars|json_encode()|raw}});
 
     module.value("workspace", {
     'id' : {{app.user.workspace.id}}
