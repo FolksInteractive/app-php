@@ -10,13 +10,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\Thread;
 
-class PopulateThreadCommand extends ContainerAwareCommand {
+class PopulateThreadFollowersCommand extends ContainerAwareCommand {
 
     protected function configure() {
         parent::configure();
         $this
-                ->setName( 'populate:thread' )
-                ->setDescription( 'Setting a thread to orders without one' )
+                ->setName( 'populate:thread:followers' )
+                ->setDescription( 'Setting followers to existing threads' )
         ;
     }
 
@@ -34,8 +34,12 @@ class PopulateThreadCommand extends ContainerAwareCommand {
 
         $orders = $doctrine->getRepository( 'TCCoreBundle:Order' )->findAll();
         foreach ( $orders as $order ) {
-            $order->setThread( new Thread() );
-            $em->persist( $order );
+            $thread = $order->getThread();
+            if ( $thread->getFollowers()->count() === 0 ) {
+                $thread->addFollower( $order->getRelation()->getClient() );
+                $thread->addFollower( $order->getRelation()->getVendor() );
+                $em->persist( $thread );
+            }
         }
         $em->flush();
 
