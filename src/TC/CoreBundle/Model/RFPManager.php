@@ -91,7 +91,9 @@ class RFPManager {
      */
     public function findRFP( $relation, $id ) {
         try {
-            /* @var $rfp RFP */
+            /**
+             *  @var RFP $rfp 
+             */
             $rfp = $this->em->getRepository( "TCCoreBundle:RFP" )
                     ->createQueryBuilder( "r" )
                     ->where( "r.relation = :relation" )
@@ -103,6 +105,11 @@ class RFPManager {
         } catch ( NoResultException $e ) {
             throw new NotFoundHttpException( 'RFP not found' );
         }
+        
+        // If the rfp is not ready the vendor can't read it
+        if( $this->workspace == $rfp->getRelation()->getVendor() && !$rfp->isReady())
+            throw new NotFoundHttpException( 'RFP not found' );
+        
         return $rfp;
     }
     

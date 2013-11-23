@@ -40,7 +40,7 @@ class RFP
     /**
      * @var boolean $approved
      *
-     * @ORM\Column(name="subheading", type="string")
+     * @ORM\Column(name="subheading", type="string", nullable=true)
      */
     private $subheading;
     
@@ -71,13 +71,18 @@ class RFP
      * @ORM\ManyToOne(targetEntity="Workspace")
      */
     private $creator;
-            
+    
     /**
      * @var Relation $relation
      * 
      * @ORM\ManyToOne(targetEntity="Relation", inversedBy="orders", cascade={"persist"})
      */
     private $relation;
+    
+    public function __construct()
+    {;
+        $this->createdAt = new \DateTime();
+    }
     
     /**
      * Get id
@@ -153,7 +158,7 @@ class RFP
      *
      * @return boolean 
      */
-    public function getReady()
+    public function isReady()
     {
         return $this->ready;
     }

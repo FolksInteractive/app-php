@@ -159,13 +159,6 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => $routeParameters
         ) );
 
-        $menu->addChild( 'Discussion', array(
-            'route' => 'client_rfp_discuss',
-            'routeParameters' => $routeParameters
-        ) );
-
-
-
         return $menu;
     }
 
@@ -191,13 +184,6 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => $routeParameters
         ) );
 
-        $menu->addChild( 'Discussion', array(
-            'route' => 'client_order_discuss',
-            'routeParameters' => $routeParameters
-        ) );
-
-
-
         return $menu;
     }
 
@@ -216,7 +202,7 @@ class ClientMenuBuilder extends ContainerAware {
             'route' => 'client_relation_progress',
             'routeParameters' => array('idRelation' => $idRelation)
                 ) );
-        $menu->setLabel( ".icon-orders-dark Work in progress" );
+        $menu->setLabel( ".icon-orders-dark Work Monitoring" );
 
         return $menu;
     }

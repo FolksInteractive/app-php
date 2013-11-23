@@ -1,0 +1,30 @@
+{% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
+
+{% set thread = rfp.thread %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+{% use "TCCoreBundle:RFP:show.html.twig" with body_class as base_body_class %}
+{% use "TCCoreBundle:Thread:quick.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:rfpsMenu',[],{"relation": relation, "rfp":rfp}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+    <div class="tc-controls toolbar pull-right"></div>
+{% endblock %}
+
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
+{% endblock %}
+
+{% block main_after %}
+{{ block('thread_section') }}
+{% endblock %}
+
+{% block bottom_js %}
+{{ block('thread_bottom_js') }}
+{% endblock %}

@@ -63,7 +63,7 @@ class VendorMenuBuilder extends ContainerAware {
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
          $menu->addChild( '.icon-rfp-light Request For Proposal', array(
-            'route' => 'vendor_relation_new',
+            'route' => 'vendor_relation_rfps',
             'routeParameters' => $routeParameters
         ) )
             ->setExtra( "sub_label", "Describe & discuss your needs" )
@@ -112,6 +112,31 @@ class VendorMenuBuilder extends ContainerAware {
      * @param array $options
      * @return MenuItem
      */
+    public function rfpsMenu( FactoryInterface $factory, array $options ) {
+        $idRelation = $options['relation']->getId();
+        $idRFP = isset( $options['rfp'] ) ? $options['rfp']->getId() : -1;
+        $routeParameters = array('idRFP' => $idRFP, 'idRelation' => $idRelation);
+
+        $menu = $factory->createItem( 'root', array(
+            'route' => 'client_relation_rfps',
+            'routeParameters' => array('idRelation' => $idRelation)
+                ) );
+        $menu->setLabel( ".icon-rfps-dark RFP's" );
+
+        $menu->addChild( 'RFP', array(
+            'route' => 'client_rfp_show',
+            'routeParameters' => $routeParameters
+        ) );
+
+        return $menu;
+    }
+
+    /**
+     * 
+     * @param FactoryInterface $factory
+     * @param array $options
+     * @return MenuItem
+     */
     public function ordersMenu( FactoryInterface $factory, array $options ) {
         $idRelation = $options['relation']->getId();
         $idOrder = isset( $options['order'] ) ? $options['order']->getId() : -1;
@@ -127,14 +152,7 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'vendor_order_show',
             'routeParameters' => $routeParameters
         ));
-
-        $menu->addChild( 'Discussion', array(
-            'route' => 'vendor_order_discuss',
-            'routeParameters' => $routeParameters
-        ));
         
-        
-
         return $menu;
     }
 
@@ -154,7 +172,7 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'vendor_relation_progress',
             'routeParameters' => array('idRelation' => $idRelation)
         ));
-        $menu->setLabel(".icon-orders-dark Work in progress");
+        $menu->setLabel(".icon-orders-dark Work Monitoring");
               
         return $menu;
     }

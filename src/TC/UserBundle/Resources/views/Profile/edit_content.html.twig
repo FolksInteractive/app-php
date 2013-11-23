@@ -17,9 +17,9 @@
     
     <div class="col2 col-md-6 col-lg-6">
     
-    {{ form_row(form.avatar, {'label': 'Modify Your Avatar'}) }}
-        
-    <img src="/img/users/user.png" class="img-rounded" width="150" height="150">
+        {{ form_row(form.avatar, {'label': 'Modify Your Avatar'}) }}
+
+        <img class="img-rounded" src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('140_thumb')}}">
         
     </div>
     

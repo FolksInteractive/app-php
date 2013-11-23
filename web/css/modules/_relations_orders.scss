@@ -43,7 +43,6 @@
 /******************************************************************/
 /*****    Section Order:show.html.twig & edit.html.twig    ********/
 /******************************************************************/
-.order-not-ready,
 .order-edit,
 .order-show{
     .tc-toolbar{
@@ -224,8 +223,25 @@
     
     .tc-offer-section{
         .tc-block{
+            border: 1px dashed #dededf;
+            padding: 20px 20px 20px 16px;
+            margin: 20px 0;
+            position: relative;
             
+            &:before {
+                display: block;
+                content: ".";
+                color: transparent;
+                font-size: 0;
+                border-left: 4px solid #0a6895;
+                position: absolute;
+                left: -1px;
+                padding: 1px 0;
+                top: -1px;
+                bottom: -1px;
+            }
         }
+        
         .tc-block-title{
             font-size:20px;
             height:40px;
@@ -256,25 +272,7 @@
         }
     }
     
-    .tc-offer-blocks {
-        border: 1px dashed #dededf;
-        padding: 20px 20px 20px 16px;
-        margin: 20px 0;
-        position: relative;
-    }
     
-    .tc-offer-blocks:before {
-        display: block;
-        content: ".";
-        color: transparent;
-        font-size: 0;
-        border-left: 4px solid #0a6895;
-        position: absolute;
-        left: -1px;
-        padding: 1px 0;
-        top: -1px;
-        bottom: -1px;
-    }
     
     .new-block-section {
         border: 1px dashed #dededf;
@@ -302,25 +300,6 @@
         span {
             margin-right: 3px;
         }
-    }
-}
-/****************************************************/
-/*****    Section Order:not_ready.html.twig    ******/
-/****************************************************/
-.order-not-ready{
-    .tc-sheet{
-        position: relative;
-    }
-    .tc-over-section{
-        position:absolute;
-        top:50%;
-        left:50%;
-        width: 600px;
-        margin-left:-300px;
-        margin-top:-200px;
-        background:none;
-        text-align:center;
-        z-index:1000;
     }
 }
 /*************************************************/

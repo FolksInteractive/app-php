@@ -1,0 +1,20 @@
+{% block body_class %} rfp-show {% endblock %}
+
+{% block sheet %}
+    <div class="tc-heading-section">
+        <h2>{{rfp.heading}}</h2>
+        <p>{{rfp.subheading}}</p>
+    </div>
+
+    <div class="tc-body-section">        
+        <div class="tc-rfp-body">
+            {% for block in rfp.body %} 
+            <div class="tc-offer-block">
+                <h3>{{block.title}}</h3>
+                <p>{{block.body}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+               
+{% endblock %}

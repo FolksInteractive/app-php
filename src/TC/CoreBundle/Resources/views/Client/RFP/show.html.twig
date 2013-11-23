@@ -1,33 +1,31 @@
-{% extends 'TCCoreBundle:Vendor:Relation/index.html.twig' %}
+{% extends 'TCCoreBundle:Client:Relation/index.html.twig' %}
 
-{% set thread = order.thread %}
+{% set thread = rfp.thread %}
 
-{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
-{% use "TCCoreBundle:Order:show.html.twig" with body_class as base_body_class %}
+{% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
+{% use "TCCoreBundle:RFP:show.html.twig" with body_class as base_body_class %}
 {% use "TCCoreBundle:Thread:quick.html.twig" %}
 
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation, "rfp":rfp}) %}
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
-    <div class="tc-controls toolbar pull-right">            
-        <div class="btn-group">
+    <div class="tc-controls toolbar pull-right">
+        <div class="btn-group">  
             <a class="btn-default btn-lg btn" 
-               href="{{path('vendor_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">
-                Edit order
+               href="{{path('client_rfp_edit' , {'idRFP':rfp.id, 'idRelation': relation.id})}}">
+                Edit RFP
             </a>
-            
-            <button type="button" class="btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class=" btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            
+            </button>            
             <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="#">Cancel order</a></li>
+                <li><a href="#">Cancel rfp</a></li>
             </ul>
         </div>
     </div>

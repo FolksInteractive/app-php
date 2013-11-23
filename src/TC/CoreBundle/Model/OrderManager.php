@@ -93,7 +93,9 @@ class OrderManager {
      */
     public function findOrder( $relation, $id ) {
         try {
-            /* @var $relation Order */
+            /**
+             *  @var Order $order 
+             */
             $order = $this->em->getRepository( "TCCoreBundle:Order" )
                     ->createQueryBuilder( "o" )
                     ->where( "o.relation = :relation" )
@@ -103,8 +105,13 @@ class OrderManager {
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
-            throw new NotFoundHttpException( 'Order not found' );
+            throw new NotFoundHttpException( 'Proposal not found' );
         }
+        
+        // If the order is not ready the client can't read the order
+        if( $this->workspace == $order->getRelation()->getClient() && !$order->isReady())
+            throw new NotFoundHttpException( 'Proposal not found' );
+            
         return $order;
     }
     

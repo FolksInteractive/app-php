@@ -35,7 +35,7 @@ class Order
     /**
      * @var boolean $approved
      *
-     * @ORM\Column(name="subheading", type="string")
+     * @ORM\Column(name="subheading", type="string", nullable=true)
      */
     private $subheading;
     
@@ -585,6 +585,9 @@ class Order
      */
     public function getOffer()
     {
+        if( $this->offer == null )
+            return array();
+        
         return $this->offer;
     }
 

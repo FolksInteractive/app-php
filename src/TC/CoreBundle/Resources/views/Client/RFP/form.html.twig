@@ -21,8 +21,7 @@ ng-controller="rfp.Controller"
 {% block controls %}
     <button name="{{form.submit.vars.full_name}}" 
             class="btn btn-primary" 
-            ng-disabled="
-            rfpForm.$invalid">
+            ng-disabled="headingForm.$invalid || isRFPEmpty()">
         Update
     </button>
 
@@ -50,18 +49,18 @@ ng-controller="rfp.Controller"
     </div>  
 </div>
 <div class="tc-body-section">
-    <div class="tc-body-blocks"  ng-form name="rfpForm">
+    <div class="tc-body-blocks"  ng-form name="bodyForm">
     {% raw %}
         <div class="tc-block" ng-repeat="block in rfp.body">
             <div class="form-group">        
                 <input type="text" class="tc-block-title form-control"
-                       name="{{getRFPFormName(block, 'title')}}"
+                       name="{{getBodyFormName(block, 'title')}}"
                        ng-model="block.title"
                        ng-required="true" />
             </div>
             <div class="form-group">        
                 <textarea class="tc-block-body form-control" row="5"
-                       name="{{getRFPFormName(block, 'body')}}"
+                       name="{{getBodyFormName(block, 'body')}}"
                        ng-model="block.body"
                        ng-required="true"></textarea>
             </div>

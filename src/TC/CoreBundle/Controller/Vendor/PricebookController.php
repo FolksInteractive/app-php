@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class PricebookController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="vendor_pricebook")
      * @Template("TCCoreBundle:Vendor:Pricebook/soon.html.twig")
      */
     public function soonAction()

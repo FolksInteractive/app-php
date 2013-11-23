@@ -62,25 +62,6 @@ class OrderController extends BaseController {
     }
     
     /**
-     * Finds and displays a Order discussion.
-     *
-     * @Route("/{idOrder}/discuss", name="vendor_order_discuss")
-     * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Order/discuss.html.twig")
-     */
-    public function discussAction( $idRelation, $idOrder ) {
-              
-        $relation = $this->getRelationManager()->findRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-        
-        return array(
-            'thread' => $order->getThread(),
-            'order' => $order,
-            "relation" => $relation
-        );
-    }
-    
-    /**
      * Displays a form to edit an existing Order.
      *
      * @Route("/new", name="vendor_order_new")
@@ -116,7 +97,6 @@ class OrderController extends BaseController {
      * @Template("TCCoreBundle:Vendor:Order/edit.html.twig")
      */
     public function updateAction( Request $request, $idRelation, $idOrder = null ) {
-        $em = $this->getDoctrine()->getManager();
 
         $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
         
@@ -138,8 +118,6 @@ class OrderController extends BaseController {
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            if( $form->get('save_as_ready')->isClicked())
-                $this->getOrderManager()->readyOrder( $order );
             
             // filter $originalDeliverables to contain deliverables no longer present
             foreach ( $order->getDeliverables() as $deliverable ) {
@@ -158,17 +136,16 @@ class OrderController extends BaseController {
             }
 
             // remove the relationship between the order and the deliverable
-            foreach ( $originalDeliverables as $deliverable ) {
-                // remove the Deliverable from the Order
-                $order->removeDeliverable( $deliverable );
-
-                $em->remove( $deliverable );
-                $em->flush();
-            }
+            foreach ( $originalDeliverables as $deliverable ) {                
+                $this->getOrderManager()->removeDeliverable($deliverable);
+            }            
+            
+            if( $form->get('save_as_ready')->isClicked())
+                $this->getOrderManager()->readyOrder( $order );
             
             $this->getOrderManager()->saveOrder($order);
 
-            return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $idOrder) ) );
+            return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $order->getId()) ) );
         }
 
         return array(
@@ -188,14 +165,6 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
         $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-
-        // For Vendor, if order is not open we redirect to a dumb relation page
-        if ( !$order->isOpen() ) {
-            return $this->render( "TCCoreBundle:Vendor:Order/not_ready.html.twig", array(
-                        'order' => $order,
-                        'relation' => $relation)
-            );
-        }
 
         return array(
             'order' => $order,

@@ -15,12 +15,6 @@
 </div>
 
     <div class="tc-controls toolbar pull-right">
-        <a class="btn-primary btn-lg btn" 
-               href="{{path('client_order_discuss' , {'idOrder':order.id, 'idRelation': relation.id})}}">
-            <i class="icon-discussion icon-white"></i>
-            Discuss
-        </a>
-
         <div class="btn-group">      
             <button type="button" class=" btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
@@ -58,11 +52,6 @@
 </div>
 {% endif %}
 {% endblock %} 
-
-{% block more_section_href %}
- {{path('client_order_discuss', {'idOrder':order.id, 'idRelation':relation.id})}}
-{% endblock %}
-
 
 {% block main_after %}
 {{ block('thread_section') }}

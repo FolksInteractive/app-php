@@ -20,7 +20,7 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
     
     $scope.getBodyFormName = function(block, prop){
         var i = getBlockIndex(block);
-        return getFormName('offer')+"["+i+"]["+prop+"]";
+        return getFormName('body')+"["+i+"]["+prop+"]";
     };
     
     $scope.addBlock = function(){
@@ -30,13 +30,17 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
         //Resets newOffer
         $scope.newBlock = {'title':'', 'body':''};
     
-        $scope.offerForm.$setDirty();
+        $scope.bodyForm.$setDirty();
     };
     
     $scope.removeBlock = function(block){
         var i = getBlockIndex(block);
         $scope.rfp.body.splice(i,1);
-        $scope.offerForm.$setDirty();
+        $scope.bodyForm.$setDirty();
+    }
+    
+    $scope.isRFPEmpty = function(){
+        return (rfp.body.length <= 0);
     }
     
     // Store new deliverables 

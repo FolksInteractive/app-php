@@ -47,25 +47,6 @@ class OrderController extends BaseController {
             'relation' => $relation
         );
     }
-    
-    /**
-     * Finds and displays a Order discussion.
-     *
-     * @Route("/{idOrder}/discuss", name="client_order_discuss")
-     * @Method("GET")
-     * @Template("TCCoreBundle:Client:Order/discuss.html.twig")
-     */
-    public function discussAction( $idRelation, $idOrder ) {
-              
-        $relation = $this->getRelationManager()->findRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-        
-        return array(
-            'thread' => $order->getThread(),
-            'order' => $order,
-            "relation" => $relation
-        );
-    }
 
     /**
      * Finds and displays a Order.
@@ -76,15 +57,7 @@ class OrderController extends BaseController {
     public function showAction( Request $request, $idRelation, $idOrder ) {
 
         $relation = $this->getRelationManager()->findClientRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
-
-        // For Client, if order is not open we redirect to a dumb relation page
-        if ( !$order->isReady() ) {
-            return $this->render( "TCCoreBundle:Client:Order/not_ready.html.twig", array(
-                        'order' => $order,
-                        'relation' => $relation)
-            );
-        }
+        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );        
                         
         $purchaseForm = null;
         if( !$order->isApproved() ) {

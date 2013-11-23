@@ -26,7 +26,7 @@
 {% set relationMenu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:relationMenu',[],{'relation':relation, 'user':app.user}) %}
 <div class="tc-menu-section">
     <div class="nav-header">Work Activities</div>
-    <div class="settings"><i class="icon-settings"></i></div>
+    {#<div class="settings"><i class="icon-settings"></i></div>#}
     
     {{ knp_menu_render(relationMenu) }}
 

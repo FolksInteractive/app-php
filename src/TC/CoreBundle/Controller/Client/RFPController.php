@@ -22,6 +22,7 @@ class RFPController extends BaseController {
      * Finds and displays a relation.
      *
      * @Route("/", name="client_relation_rfps")
+     * @Method("GET")
      * @Template("TCCoreBundle:Client:Relation/rfps.html.twig")
      */
     public function rfpsAction( $idRelation ) {
@@ -69,7 +70,6 @@ class RFPController extends BaseController {
      * @Template("TCCoreBundle:Client:RFP/edit.html.twig")
      */
     public function updateAction( Request $request, $idRelation, $idRFP = null ) {
-        $em = $this->getDoctrine()->getManager();
 
         $relation = $this->getRelationManager()->findClientRelation( $idRelation );
         
@@ -88,7 +88,7 @@ class RFPController extends BaseController {
             
             $this->getRFPManager()->saveRFP($rfp);
 
-            return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $idRFP) ) );
+            return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId() ) ) );
         }
 
         return array(
@@ -98,26 +98,6 @@ class RFPController extends BaseController {
         );
     }
 
-    
-    /**
-     * Finds and displays a RFP discussion.
-     *
-     * @Route("/{idRFP}/discuss", name="client_rfp_discuss")
-     * @Method("GET")
-     * @Template("TCCoreBundle:Client:RFP/discuss.html.twig")
-     */
-    public function discussAction( $idRelation, $idRFP ) {
-              
-        $relation = $this->getRelationManager()->findRelation( $idRelation );
-        $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
-        
-        return array(
-            'thread' => $rfp->getThread(),
-            'rfp' => $rfp,
-            "relation" => $relation
-        );
-    }
-    
     /**
      * Finds and displays a RFP.
      *
@@ -128,14 +108,6 @@ class RFPController extends BaseController {
 
         $relation = $this->getRelationManager()->findClientRelation( $idRelation );
         $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
-
-        // For Vendor, if rfp is not open we redirect to a dumb relation page
-        if ( !$rfp->isOpen() ) {
-            return $this->render( "TCCoreBundle:Vendor:RFP/not_ready.html.twig", array(
-                        'rfp' => $rfp,
-                        'relation' => $relation)
-            );
-        }
 
         return array(
             'rfp' => $rfp,

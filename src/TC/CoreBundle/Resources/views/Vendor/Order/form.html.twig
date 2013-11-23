@@ -20,7 +20,8 @@ ng-controller="order.Controller"
 {# there is no block controls in the skeleton this block should be called in the parent template #}
 {% block controls %}
 <button name="{{form.submit.vars.full_name}}" 
-        class="btn btn-primary" 
+        class="btn btn-default" 
+        disabled="disabled"
         ng-disabled="
         headingForm.$invalid ||  
         offerForm.$invalid ||  
@@ -28,13 +29,21 @@ ng-controller="order.Controller"
         (!headingForm.$dirty && !offerForm.$dirty && !deliverablesForm.$dirty)
         || order.deliverables.length < 1
         || order.offer.length < 1 ">
-    Update
+    Save
 </button>
 
-    {% set attr = {'class':'btn-primary'} %}
-    {% set attr = attr|merge({'ng-disabled':"offerForm.$invalid || deliverablesForm.$invalid"}) %}   
-    {% set attr = attr|merge({'disabled':""}) %}   
-    {#form_widget(form.save_as_ready, {'attr':attr})#}
+<button name="{{form.save_as_ready.vars.full_name}}" 
+        class="btn btn-primary" 
+        disabled="disabled"
+        ng-disabled="
+        headingForm.$invalid ||  
+        offerForm.$invalid ||  
+        deliverablesForm.$invalid
+        || order.deliverables.length < 1
+        || order.offer.length < 1 ">
+    Save &amp; Send
+</button>
+
 {% endblock %}
 
 {% block sheet %}
@@ -59,21 +68,21 @@ ng-controller="order.Controller"
     
     {% raw %}
     <div class="tc-offer-blocks"  ng-form name="offerForm">
-            <div class="tc-block" ng-repeat="block in order.offer">
-                <div class="form-group">        
-                    <input type="text" class="tc-block-title form-control"
-                           name="{{getOfferFormName(block, 'title')}}"
-                           ng-model="block.title"
-                           ng-required="true" placeholder="Insert new title here" />
-                </div>
-                <div class="form-group tc-body-group">        
-                    <textarea class="tc-block-body form-control" row="1"
-                              name="{{getOfferFormName(block, 'body')}}"
-                              ng-model="block.body"
-                              ng-required="true" placeholder="Insert new title here"></textarea>
-                </div>
+        <div class="tc-block" ng-repeat="block in order.offer">
+            <div class="form-group">        
+                <input type="text" class="tc-block-title form-control"
+                       name="{{getOfferFormName(block, 'title')}}"
+                       ng-model="block.title"
+                       ng-required="true" placeholder="Insert new title here" />
             </div>
+            <div class="form-group tc-body-group">        
+                <textarea class="tc-block-body form-control" row="1"
+                          name="{{getOfferFormName(block, 'body')}}"
+                          ng-model="block.body"
+                          ng-required="true" placeholder="Insert new title here"></textarea>
             </div>
+        </div>
+    </div>
     {% endraw %}
         
 
@@ -120,7 +129,7 @@ ng-controller="order.Controller"
             <tbody ng-form name="deliverablesForm">
         {% raw %}
                     <tr ng-repeat="deliverable in order.deliverables">
-                        <td class="number">1</td>
+                        <td class="number"></td>
                         <td class="description">
                             <input type="text" class="form-control input-block-level"
                                    name="{{getDeliverableFormName(deliverable, 'name')}}"
@@ -150,7 +159,7 @@ ng-controller="order.Controller"
 
                 <tfoot ng-form name="newDeliverablesForm">
                     <tr>
-                        <td class="number">2</td>
+                        <td class="number"></td>
                         <td class="description">
                             <input type="text"class="form-control input-block-level"
                                    ng-model="newDeliverable.name" 
