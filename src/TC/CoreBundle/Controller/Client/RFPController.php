@@ -27,7 +27,7 @@ class RFPController extends BaseController {
      */
     public function rfpsAction( $idRelation ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
 
         return array(
             'relation' => $relation,
@@ -44,12 +44,12 @@ class RFPController extends BaseController {
      */
     public function editAction( $idRelation, $idRFP = null ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
         
         if( $idRFP != null){
-            $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
+            $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
         }else{            
-            $rfp = $this->getRFPManager()->createRFP( $relation );
+            $rfp = $this->getRFPManager()->create( $relation );
         }
         $form = $this->createRFPForm( $rfp );
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
@@ -71,12 +71,12 @@ class RFPController extends BaseController {
      */
     public function updateAction( Request $request, $idRelation, $idRFP = null ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
         
         if( $idRFP != null){
-            $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
+            $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
         }else{            
-            $rfp = $this->getRFPManager()->createRFP( $relation );
+            $rfp = $this->getRFPManager()->create( $relation );
         }
 
         $form = $this->createRFPForm( $rfp );
@@ -84,9 +84,9 @@ class RFPController extends BaseController {
 
         if ( $form->isValid() ) {
             if( $form->get('save_as_ready')->isClicked())
-                $this->getRFPManager()->readyRFP( $rfp );
+                $this->getRFPManager()->ready( $rfp );
             
-            $this->getRFPManager()->saveRFP($rfp);
+            $this->getRFPManager()->save($rfp);
 
             return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId() ) ) );
         }
@@ -106,8 +106,8 @@ class RFPController extends BaseController {
      */
     public function showAction( Request $request, $idRelation, $idRFP ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
-        $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
+        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
 
         return array(
             'rfp' => $rfp,

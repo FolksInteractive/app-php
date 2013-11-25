@@ -26,7 +26,7 @@ class ProgressController extends BaseController {
      */
     public function progressAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         $form = $this->createProgressForm( $relation );
         
@@ -35,8 +35,8 @@ class ProgressController extends BaseController {
             if ($form->isValid()) {
                 $data = $form->getData();
                 foreach($data["deliverables"] as $deliverable){
-                    $this->getOrderManager()->completeDeliverable($deliverable);
-                    $this->getOrderManager()->saveDeliverable($deliverable);
+                    $this->getDeliverableManager()->complete($deliverable);
+                    $this->getDeliverableManager()->save($deliverable);
                 }
                 
                 // Avoid form resubmitting

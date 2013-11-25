@@ -26,7 +26,7 @@ class BillController extends BaseController {
      */
     public function billAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         $form = $this->createCloseBillForm( $relation );
 
@@ -45,13 +45,13 @@ class BillController extends BaseController {
      */
     public function closeBillAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         $form = $this->createCloseBillForm( $relation );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getRelationManager()->closeBill( $relation );
+            $this->getBillManager()->close( $relation );
 
             // Redirect to list of invoices
             $this->redirect($this->generateUrl("vendor_relation_invoices",array("idRelation"=>$relation->getId())));
@@ -72,7 +72,7 @@ class BillController extends BaseController {
      */
     public function invoicesAction( $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getBillManager()->findByVendor( $idRelation );
 
         return array(
             'relation' => $relation
@@ -88,8 +88,8 @@ class BillController extends BaseController {
      */
     public function invoiceAction ( $idBill, $idRelation) {
         
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );        
-        $bill = $this->getRelationManager()->findClosedBill( $relation, $idInvoice );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );        
+        $bill = $this->getBillManager()->findClosedByRelation( $relation, $idInvoice );
         
         return array(
             'relation' => $relation,

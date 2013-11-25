@@ -26,7 +26,7 @@ class OrderController extends BaseController {
      */
     public function ordersAction( $idRelation ) {
 
-        $relation = $this->getRelationManager()->findClientRelation($idRelation);
+        $relation = $this->getRelationManager()->findByClient($idRelation);
 
         return array(
             'relation' => $relation
@@ -41,7 +41,7 @@ class OrderController extends BaseController {
      */
     public function progressAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
 
         return array(
             'relation' => $relation
@@ -56,8 +56,8 @@ class OrderController extends BaseController {
      */
     public function showAction( Request $request, $idRelation, $idOrder ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );        
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );        
                         
         $purchaseForm = null;
         if( !$order->isApproved() ) {
@@ -69,8 +69,8 @@ class OrderController extends BaseController {
                 $purchaseForm->handleRequest( $request );
 
                 if ( $purchaseForm->isValid() ) {
-                    $this->getOrderManager()->purchaseOrder( $order );
-                    $this->getOrderManager()->saveOrder( $order );
+                    $this->getOrderManager()->purchase( $order );
+                    $this->getOrderManager()->save( $order );
                     $purchaseForm = null;
                 }
             }
@@ -91,8 +91,8 @@ class OrderController extends BaseController {
      */
     public function cancelAction( Request $request, $idOrder, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
 
         $form = $this->createCancelForm( $idOrder, $idRelation );
         $form->handleRequest( $request );

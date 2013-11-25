@@ -5,8 +5,6 @@ namespace TC\CoreBundle\Model;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
-use TC\CoreBundle\Entity\Comment;
-use TC\CoreBundle\Entity\Deliverable;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Entity\Thread;
@@ -80,7 +78,7 @@ class OrderManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function getOrders( Relation $relation ) {
+    public function findAllByRelation( Relation $relation ) {
         return $relation->getOrders();
     }
 
@@ -91,7 +89,7 @@ class OrderManager {
      * @return Order
      * @throws NotFoundHttpException
      */
-    public function findOrder( $relation, $id ) {
+    public function findByRelation( $relation, $id ) {
         try {
             /**
              *  @var Order $order 
@@ -120,7 +118,7 @@ class OrderManager {
      * @param Relation $relation
      * @return Order
      */
-    public function createOrder( Relation $relation ) {
+    public function create( Relation $relation ) {
         $order = new Order();
         $order->setCreator( $this->workspace );
         $order->setRelation($relation);
@@ -142,18 +140,18 @@ class OrderManager {
      * @param Order $order
      * @throws AccessDeniedHttpException
      */
-    public function completeOrder( Order $order ) {
+    public function complete( Order $order ) {
 
         if ( $order->getRelation()->getVendor() == $this->workspace ) {
 
             $order->setCompleted( true );
-            $this->saveOrder( $order );
+            $this->save( $order );
         } else {
             throw new AccessDeniedHttpException();
         }
     }
 
-    public function readyOrder( Order $order ) {
+    public function ready( Order $order ) {
         
         if ( $order->getRelation()->getVendor() == $this->workspace ) {
             $order->setReady(true);
@@ -165,7 +163,7 @@ class OrderManager {
      * @param Order $order
      * @throws AccessDeniedHttpException
      */
-    public function purchaseOrder( Order $order ) {
+    public function purchase( Order $order ) {
         if( $order->isApproved() )
             return;
         
@@ -175,7 +173,7 @@ class OrderManager {
                 $order->getTotal() != null ) {
 
             $order->setApproved( true );
-            $this->saveOrder( $order );
+            $this->save( $order );
             
             $this->mailer->sendOrderPurchaseNotification( $order );
             
@@ -188,7 +186,7 @@ class OrderManager {
      * 
      * @param Order $order
      */
-    public function saveOrder( Order $order ) {
+    public function save( Order $order ) {
         // Make sure order is valid before saving
         $errors = $this->validator->validate( $order );
         if ( $errors->count() > 0 )
@@ -202,84 +200,8 @@ class OrderManager {
      * 
      * @param Order $order
      */
-    public function removeOrder( Order $order ) {
+    public function remove( Order $order ) {
         $this->em->remove( $order );
-        $this->em->flush();
-    }
-
-    /**
-     * 
-     * @param Order $order
-     * @return Deliverable
-     */
-    public function createDeliverable( Order $order ) {
-        $deliverable = new Deliverable();
-        $deliverable->setOrder( $order );
-        $deliverable->setCreator( $this->workspace );
-
-        /**
-         * @todo Send notification
-         */
-        return $deliverable;
-    }
-
-    /**
-     * 
-     * @param Order $order
-     * @param integer $id
-     * @return Deliverable
-     * @throws NotFoundHttpException
-     */
-    public function findDeliverable( Order $order, $id ) {
-        try {
-            /* @var $relation Order */
-            $deliverable = $this->em->getRepository( "TCCoreBundle:Deliverable" )
-                    ->createQueryBuilder( "d" )
-                    ->where( "d.order = :order" )
-                    ->andWhere( "d.id = :id" )
-                    ->setParameter( "id", $id )
-                    ->setParameter( "order", $order )
-                    ->getQuery()
-                    ->getSingleResult();
-        } catch ( NoResultException $e ) {
-            throw new NotFoundHttpException( 'Deliverable not found' );
-        }
-        return $deliverable;
-    }
-    
-    public function completeDeliverable(Deliverable $deliverable){
-        // Do nothing if already completed
-        if($deliverable->isCompleted())
-            return;
-        
-        //Only vendor can set a Deliverable to completed
-        if($this->workspace != $deliverable->getOrder()->getRelation()->getVendor())
-            throw new AccessDeniedHttpException();
-        
-        $deliverable->setCompleted(true);
-        $deliverable->getOrder()->getRelation()->getOpenBill()->addDeliverable($deliverable);
-    }
-
-    /**
-     * 
-     * @param Deliverable $deliverable
-     */
-    public function saveDeliverable( Deliverable $deliverable ) {
-        // Make sure order is valid before saving
-        $errors = $this->validator->validate( $deliverable );
-        if ( $errors->count() > 0 )
-            throw new InvalidArgumentException( $errors->get( 0 )->getMessage() );
-
-        $this->em->persist( $deliverable );
-        $this->em->flush();
-    }
-
-    /**
-     * 
-     * @param Deliverable $order
-     */
-    public function removeDeliverable( Deliverable $deliverable ) {
-        $this->em->remove( $deliverable );
         $this->em->flush();
     }
 }

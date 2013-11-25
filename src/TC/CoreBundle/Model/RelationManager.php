@@ -75,7 +75,7 @@ class RelationManager {
      * 
      * @return Collection
      */
-    public function getClientRelations() {
+    public function findAllByClient() {
         return $this->workspace->getClientRelations();
     }
 
@@ -83,7 +83,7 @@ class RelationManager {
      * 
      * @return Collection
      */
-    public function getVendorRelations() {
+    public function findAllByVendor() {
         return $this->workspace->getVendorRelations();
     }
 
@@ -93,7 +93,7 @@ class RelationManager {
      * @return Relation
      * @throws NotFoundHttpException
      */
-    public function findRelation( $id ) {
+    public function find( $id ) {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
@@ -117,7 +117,7 @@ class RelationManager {
      * @return Relation
      * @throws NotFoundHttpException
      */
-    public function findClientRelation( $id ) {
+    public function findByClient( $id ) {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
@@ -140,7 +140,7 @@ class RelationManager {
      * @return Relation
      * @throws NotFoundHttpException
      */
-    public function findVendorRelation( $id ) {
+    public function findByVendor( $id ) {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
@@ -160,8 +160,8 @@ class RelationManager {
     /**
      * @return Relation
      */
-    public function createClientRelation() {
-        $relation = $this->createRelation();
+    public function createForClient() {
+        $relation = $this->create();
         $relation->setClient( $this->workspace );
         
         return $relation;
@@ -170,8 +170,8 @@ class RelationManager {
     /**
      * @return Relation
      */
-    public function createVendorRelation() {
-        $relation = $this->createRelation();
+    public function createForVendor() {
+        $relation = $this->create();
         $relation->setVendor( $this->workspace );
         
         return $relation;
@@ -180,7 +180,7 @@ class RelationManager {
     /**
      * @return Relation
      */
-    private function createRelation() {
+    private function create() {
         $relation = new Relation();
         $relation->setCreator( $this->workspace );
         return $relation;
@@ -190,7 +190,7 @@ class RelationManager {
      * 
      * @param Relation $relation
      */
-    public function saveRelation( Relation $relation ) {
+    public function save( Relation $relation ) {
         $isNew = ($relation->getId());
         // Make sure Relation is valid before saving
         $errors = $this->validator->validate( $relation );
@@ -228,55 +228,12 @@ class RelationManager {
      * @param Relation $relation
      * @throws AccessDeniedException
      */
-    public function archiveRelation( Relation $relation ) {
+    public function archive( Relation $relation ) {
         if ( $relation->getCreator() == $this->workspace ) {
             $relation->setActive( false );
         } else {
             throw new AccessDeniedException( "You must be the creator of the relation to remove it." );
         }
-    }
-
-    /**
-     * 
-     * @param Relation $relation
-     * @throws AccessDeniedException
-     */
-    public function closeBill( Relation $relation ) {
-        if ( $relation->getVendor() == $this->workspace ) {
-            // Closing bill
-            $openBill = $relation->getOpenBill();
-
-            if ( $openBill->getDeliverables()->count() < 1 )
-                return;
-
-            $openBill->setClosed( true );
-            $relation->addClosedBill( $openBill );
-
-            // Opening a new bill
-            $openBill = new Bill();
-            $openBill->setRelation( $relation );
-            $relation->setOpenBill( $openBill );
-
-            $this->saveRelation( $relation );
-        }else {
-            throw new AccessDeniedException( "You must be the vendor of the relation to close the bill." );
-        }
-    }
-
-    /**
-     * 
-     * @param Relation $relation
-     * @param integer $id
-     * @return Bill
-     * @throws NotFoundHttpException
-     */
-    public function findClosedBill( $relation, $id ) {
-        foreach ( $relation->getClosedBills() as $key => $bill ) {
-            if ( $bill->getId() == $id )
-                return $bill;
-        }
-
-        throw new NotFoundHttpException( 'Invoice not found' );
     }
 
 }

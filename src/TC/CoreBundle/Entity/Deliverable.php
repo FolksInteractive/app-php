@@ -12,6 +12,7 @@ use TC\CoreBundle\Validator\Constraints as TCAssert;
  * @TCAssert\Deliverable()
  * @ORM\Table(name="tc_deliverable")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TC\CoreBundle\Entity\DeliverableRepository") 
  */
 class Deliverable
 {
@@ -348,5 +349,38 @@ class Deliverable
     public function getBilledAt()
     {
         return $this->billed_at;
+    }
+
+    /**
+     * Get completed
+     *
+     * @return boolean 
+     */
+    public function getCompleted()
+    {
+        return $this->completed;
+    }
+
+    /**
+     * Set billed
+     *
+     * @param boolean $billed
+     * @return Deliverable
+     */
+    public function setBilled($billed)
+    {
+        $this->billed = $billed;
+    
+        return $this;
+    }
+
+    /**
+     * Get billed
+     *
+     * @return boolean 
+     */
+    public function getBilled()
+    {
+        return $this->billed;
     }
 }

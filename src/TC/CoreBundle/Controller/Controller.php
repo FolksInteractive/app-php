@@ -27,6 +27,13 @@ class Controller extends SymfonyController {
     }
     
     /**
+     * @return OrderManager
+     */
+    protected function getDeliverableManager(){
+        return $this->container->get('tc.manager.order');
+    }
+    
+    /**
      * @return RFPManager
      */
     protected function getRFPManager(){

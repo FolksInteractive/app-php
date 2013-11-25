@@ -28,7 +28,7 @@ class RelationController extends BaseController {
     public function indexAction(Request $request)
     {
         $workspace = $this->getWorkspace();
-        $relations  = $this->getRelationManager()->getClientRelations();        
+        $relations  = $this->getRelationManager()->findAllByClient();        
 
         return array(
             'relations' => $relations
@@ -43,12 +43,12 @@ class RelationController extends BaseController {
      * @Template("TCCoreBundle:Client:Relation/new.html.twig")
      */
     public function createAction( Request $request ) {
-        $relation = $this->getRelationManager()->createClientRelation();
+        $relation = $this->getRelationManager()->createForClient();
         $form = $this->createCreateForm( $relation );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getRelationManager()->saveRelation($relation);
+            $this->getRelationManager()->save($relation);
 
             return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $relation->getId()) ) );
         }
@@ -67,7 +67,7 @@ class RelationController extends BaseController {
      * @Template("TCCoreBundle:Client:Relation/new.html.twig")
      */
     public function newAction() {
-        $relation = $this->getRelationManager()->createClientRelation();
+        $relation = $this->getRelationManager()->createForClient();
         $form = $this->createCreateForm( $relation );
 
         return array(
@@ -83,14 +83,14 @@ class RelationController extends BaseController {
      * @Method("POST")
      */
     public function archiveAction( Request $request, $idRelation ) {
-        $relation = $this->getRelationManager()->findClientRelation($idRelation);
+        $relation = $this->getRelationManager()->findByClient($idRelation);
         
         $form = $this->createArchiveForm( $idRelation );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getRelationManager()->archiveRelation($relation);
-            $this->getRelationManager()->saveRelation($relation);
+            $this->getRelationManager()->archive($relation);
+            $this->getRelationManager()->save($relation);
         }
 
         return $this->redirect( $this->generateUrl( 'dashboard' ) );

@@ -69,7 +69,7 @@ class ContactManager {
      * 
      * @return \TC\CoreBundle\Entity\ContactList
      */
-    public function getContactLists(){
+    public function findAll(){
         return $this->contactList;
     }
 
@@ -78,7 +78,7 @@ class ContactManager {
      * @param string $email
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function findContactByEmail( $email ) {
+    public function findByEmail( $email ) {
         return $this->repo->findBy( array("email" => $email) );
     }
     
@@ -88,7 +88,7 @@ class ContactManager {
      * @return Contact
      * @throws NotFoundHttpException
      */
-    public function findContact( $id ) {
+    public function find( $id ) {
         try {
             /* @var $contact Contact */
             $contact = $this->repo->createQueryBuilder( "c" )
@@ -109,7 +109,7 @@ class ContactManager {
      * @param \TC\CoreBundle\Entity\ContactList $contactList
      * @return \TC\CoreBundle\Entity\Contact
      */
-    public function createContact( ) {
+    public function create( ) {
         $contact = new Contact();
         $contact->setContactList( $this->contactList );
 
@@ -120,7 +120,7 @@ class ContactManager {
      * 
      * @param \TC\CoreBundle\Entity\Contact $contact
      */
-    public function saveContact( Contact $contact ) {
+    public function save( Contact $contact ) {
         $this->em->persist( $contact );
         $this->em->flush();
     }
@@ -129,7 +129,7 @@ class ContactManager {
      * 
      * @param \TC\CoreBundle\Entity\Contact $contact
      */
-    public function removeContact( Contact $contact ) {
+    public function remove( Contact $contact ) {
         $this->em->remove( $contact );
         $this->em->flush();
     }

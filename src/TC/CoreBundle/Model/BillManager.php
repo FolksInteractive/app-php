@@ -69,6 +69,49 @@ class BillManager {
         $this->validator = $validator;
     }
 
+    /**
+     * 
+     * @param Relation $relation
+     * @throws AccessDeniedException
+     */
+    public function closeBill( Relation $relation ) {
+        if ( $relation->getVendor() == $this->workspace ) {
+            // Closing bill
+            $openBill = $relation->getOpenBill();
+
+            if ( $openBill->getDeliverables()->count() < 1 )
+                return;
+
+            $openBill->setClosed( true );
+            $relation->addClosedBill( $openBill );
+
+            // Opening a new bill
+            $openBill = new Bill();
+            $openBill->setRelation( $relation );
+            $relation->setOpenBill( $openBill );
+
+            $this->rm->save( $relation );
+        }else {
+            throw new AccessDeniedException( "You must be the vendor of the relation to close the bill." );
+        }
+    }
+
+    /**
+     * 
+     * @param Relation $relation
+     * @param integer $id
+     * @return Bill
+     * @throws NotFoundHttpException
+     */
+    public function findClosedByRelation( Relation $relation, $id ) {
+        foreach ( $relation->getClosedBills() as $bill ) {
+            if ( $bill->getId() == $id )
+                return $bill;
+        }
+
+        throw new NotFoundHttpException( 'Invoice not found' );
+    }
+
 }
 
 ?>

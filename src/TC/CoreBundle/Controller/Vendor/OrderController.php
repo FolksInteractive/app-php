@@ -27,7 +27,7 @@ class OrderController extends BaseController {
      */
     public function ordersAction( $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         return array(
             'relation' => $relation,
@@ -42,7 +42,7 @@ class OrderController extends BaseController {
      */
     public function progressAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         $form = $this->createProgressForm( $relation );
         
@@ -50,9 +50,9 @@ class OrderController extends BaseController {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $data = $form->getData();
-                foreach($data["deliverables"] as $key=>$deliverable){
-                    $this->getOrderManager()->completeDeliverable($deliverable);
-                    $this->getOrderManager()->saveDeliverable($deliverable);
+                foreach($data["deliverables"] as $deliverable){
+                    $this->getDeliverableManager()->complete($deliverable);
+                    $this->getDeliverableManager()->save($deliverable);
                 }
             }
         }
@@ -72,12 +72,12 @@ class OrderController extends BaseController {
      */
     public function editAction( $idRelation, $idOrder = null ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
         if( $idOrder != null){
-            $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+            $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
         }else{            
-            $order = $this->getOrderManager()->createOrder( $relation );
+            $order = $this->getOrderManager()->create( $relation );
         }
         $form = $this->createOrderForm( $order );
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
@@ -99,12 +99,12 @@ class OrderController extends BaseController {
      */
     public function updateAction( Request $request, $idRelation, $idOrder = null ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
         if( $idOrder != null){
-            $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+            $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
         }else{            
-            $order = $this->getOrderManager()->createOrder( $relation );
+            $order = $this->getOrderManager()->create( $relation );
         }
         /*
          * http://symfony.com/doc/current/cookbook/form/form_collections.html#allowing-tags-to-be-removed
@@ -138,13 +138,13 @@ class OrderController extends BaseController {
 
             // remove the relationship between the order and the deliverable
             foreach ( $originalDeliverables as $deliverable ) {                
-                $this->getOrderManager()->removeDeliverable($deliverable);
+                $this->getDeliverableManager()->remove($deliverable);
             }            
             
             if( $form->get('save_as_ready')->isClicked())
-                $this->getOrderManager()->readyOrder( $order );
+                $this->getOrderManager()->ready( $order );
             
-            $this->getOrderManager()->saveOrder($order);
+            $this->getOrderManager()->save($order);
 
             return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $order->getId()) ) );
         }
@@ -164,8 +164,8 @@ class OrderController extends BaseController {
      */
     public function showAction( Request $request, $idRelation, $idOrder ) {
 
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
-        $order = $this->getOrderManager()->findOrder( $relation, $idOrder );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
 
         return array(
             'order' => $order,

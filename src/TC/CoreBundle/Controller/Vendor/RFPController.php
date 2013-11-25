@@ -25,7 +25,7 @@ class RFPController extends BaseController {
      */
     public function rfpsAction( $idRelation ) {
         
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         return array(
             'relation' => $relation,
@@ -40,12 +40,12 @@ class RFPController extends BaseController {
      */
     public function showAction( $idRelation, $idRFP ) {
         
-        $relation = $this->getRelationManager()->findVendorRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
         /**
          * @var RFP $rfp
          */
-        $rfp = $this->getRFPManager()->findRFP( $relation, $idRFP );
+        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
 
         return array(
             'rfp' => $rfp,

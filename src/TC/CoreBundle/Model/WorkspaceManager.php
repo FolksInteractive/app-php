@@ -77,7 +77,7 @@ class WorkspaceManager {
         return $workspace;
     }
     
-    public function createTemporaryWorkspace( $email ){
+    public function createTemporary( $email ){
         $user  = $this->um->createUser();
         $user->setEnabled(false);
         $user->setEmail($email);
@@ -89,7 +89,7 @@ class WorkspaceManager {
         return $workspace;
     }
     
-    public function saveWorkspace( Workspace $workspace ){
+    public function save( Workspace $workspace ){
         // Make sure Workspace is valid before saving
         $errors = $this->validator->validate( $workspace );
         if ( $errors->count() > 0 )

@@ -27,7 +27,7 @@ class RelationController extends BaseController {
      */
     public function indexAction(Request $request)
     {
-        $relations  = $this->getRelationManager()->getVendorRelations();        
+        $relations  = $this->getRelationManager()->findAllByVendor();        
 
         return array(
             'relations' => $relations
@@ -42,12 +42,12 @@ class RelationController extends BaseController {
      * @Template("TCCoreBundle:Vendor:Relation/new.html.twig")
      */
     public function createAction( Request $request ) {
-        $relation = $this->getRelationManager()->createVendorRelation();
+        $relation = $this->getRelationManager()->createForVendor();
         $form = $this->createCreateForm( $relation );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getRelationManager()->saveRelation($relation);
+            $this->getRelationManager()->save($relation);
 
             return $this->redirect( $this->generateUrl( 'vendor_relation_orders', array('idRelation' => $relation->getId()) ) );
         }
@@ -66,7 +66,7 @@ class RelationController extends BaseController {
      * @Template("TCCoreBundle:Vendor:Relation/new.html.twig")
      */
     public function newAction() {
-        $relation = $this->getRelationManager()->createVendorRelation();
+        $relation = $this->getRelationManager()->createForVendor();
         $form = $this->createCreateForm( $relation );
 
         return array(
@@ -82,7 +82,7 @@ class RelationController extends BaseController {
      * @Method("POST")
      */
     public function archiveAction( Request $request, $idRelation ) {
-        $relation = $this->getRelationManager()->findVendorRelation($idRelation);
+        $relation = $this->getRelationManager()->findByVendor($idRelation);
         
         $form = $this->createArchiveForm( $idRelation );
         $form->handleRequest( $request );

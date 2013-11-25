@@ -22,7 +22,7 @@ class ProgressController extends BaseController {
      */
     public function progressAction( Request $request, $idRelation ) {
 
-        $relation = $this->getRelationManager()->findClientRelation( $idRelation );
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
 
         return array(
             'relation' => $relation

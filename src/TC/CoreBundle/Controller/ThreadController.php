@@ -23,7 +23,7 @@ class ThreadController extends Controller {
      * @Route("/sync", name="thread_sync")
      */
     public function syncDiscussAction( Request $request, $idThread ) {
-        $thread = $this->getThreadManager()->findThread( $idThread );
+        $thread = $this->getThreadManager()->find( $idThread );
 
         $responseData = array("thread" => array());
 
@@ -44,7 +44,7 @@ class ThreadController extends Controller {
      * @Method({"POST"})
      */
     public function commentAction( Request $request, $idThread ) {
-        $thread = $this->getThreadManager()->findThread( $idThread );
+        $thread = $this->getThreadManager()->find( $idThread );
 
         $data = json_decode($request->getContent(), true);
         

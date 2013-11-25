@@ -78,7 +78,7 @@ class RFPManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function getRFPs( Relation $relation ) {
+    public function findAllByRelation( Relation $relation ) {
         return $relation->getRFPs();
     }
 
@@ -89,7 +89,7 @@ class RFPManager {
      * @return RFP
      * @throws NotFoundHttpException
      */
-    public function findRFP( $relation, $id ) {
+    public function findByRelation( $relation, $id ) {
         try {
             /**
              *  @var RFP $rfp 
@@ -118,7 +118,7 @@ class RFPManager {
      * @param Relation $relation
      * @return RFP
      */
-    public function createRFP( Relation $relation ) {
+    public function create( Relation $relation ) {
         $rfp = new RFP();
         $rfp->setCreator( $this->workspace );
         $rfp->setRelation($relation);
@@ -133,7 +133,7 @@ class RFPManager {
         return $rfp;
     }
 
-    public function readyRFP( RFP $rfp ) {
+    public function ready( RFP $rfp ) {
         
         if ( $rfp->getRelation()->getClient() == $this->workspace ) {
             $rfp->setReady(true);
@@ -144,7 +144,7 @@ class RFPManager {
      * 
      * @param RFP $rfp
      */
-    public function saveRFP( RFP $rfp ) {
+    public function save( RFP $rfp ) {
         // Make sure order is valid before saving
         $errors = $this->validator->validate( $rfp );
         if ( $errors->count() > 0 )
@@ -158,7 +158,7 @@ class RFPManager {
      * 
      * @param RFP $rfp
      */
-    public function removeRFP( RFP $rfp ) {
+    public function remove( RFP $rfp ) {
         $this->em->remove( $rfp );
         $this->em->flush();
     }

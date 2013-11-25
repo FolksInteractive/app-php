@@ -80,7 +80,7 @@ class ProjectManager {
      * 
      * @return Collection
      */
-    public function getProjects() {
+    public function findAll() {
         return  $this->workspace->getProjects();
     }
 
@@ -90,7 +90,7 @@ class ProjectManager {
      * @return Project
      * @throws NotFoundHttpException
      */
-    public function findProject( $id ) {
+    public function find( $id ) {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Project" )->createQueryBuilder( "p" )
@@ -110,7 +110,7 @@ class ProjectManager {
     /**
      * @return Project
      */
-    public function createProject() {
+    public function create() {
         $project = new Project();
         $project->setWorkspace( $this->workspace );
                 
@@ -121,7 +121,7 @@ class ProjectManager {
      * 
      * @param Project $project
      */
-    public function saveProject( Project $relation ) {
+    public function save( Project $relation ) {
         // Make sure Project is valid before saving
         $errors = $this->validator->validate( $project );
         if ( $errors->count() > 0 )
@@ -137,7 +137,7 @@ class ProjectManager {
      * @param Project $project
      * @throws AccessDeniedException
      */
-    public function archiveProject( Project $project ) {
+    public function archive( Project $project ) {
         if ( $project->getWorkspace() == $this->workspace ) {
             $project->setActive(false);
         } else {

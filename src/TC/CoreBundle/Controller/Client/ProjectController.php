@@ -27,7 +27,7 @@ class ProjectController extends Controller
      */
     public function soonAction(Request $request)
     {
-        $projects  = $this->getProjectManager()->getProjects();        
+        $projects  = $this->getProjectManager()->findAll();        
 
         return array(
         );
@@ -42,7 +42,7 @@ class ProjectController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $projects  = $this->getProjectManager()->getProjects();        
+        $projects  = $this->getProjectManager()->findAll();        
 
         return array(
             'projects' => $projects
@@ -58,13 +58,13 @@ class ProjectController extends Controller
      */
     public function createAction(Request $request)
     {
-        $project  = $this->getProjectManager()->createProject();
+        $project  = $this->getProjectManager()->create();
         
         $form = $this->createProjectForm($project);
         $form->submit($request);
 
         if ($form->isValid()) {
-            $this->getProjectManager()->saveProject($project);
+            $this->getProjectManager()->save($project);
 
             return $this->redirect($this->generateUrl('project_edit', array('idProject' => $project->getId())));
         }
@@ -84,7 +84,7 @@ class ProjectController extends Controller
      */
     public function newAction()
     {
-        $project  = $this->getProjectManager()->createProject();
+        $project  = $this->getProjectManager()->create();
         $form   = $this->createProjectForm($project);
 
         return array(
@@ -102,7 +102,7 @@ class ProjectController extends Controller
      */
     public function editAction($idProject)
     {
-        $project = $this->getProjectManager()->findProject($idProject);
+        $project = $this->getProjectManager()->find($idProject);
 
         $form = $this->createProjectForm($project);
 
@@ -121,13 +121,13 @@ class ProjectController extends Controller
      */
     public function updateAction(Request $request, $idProject)
     {
-        $project = $this->getProjectManager()->findProject($idProject);
+        $project = $this->getProjectManager()->find($idProject);
 
         $form = $this->createProjectForm($project);
         $form->submit($request);
 
         if ($form->isValid()) {
-            $this->getProjectManager()->saveProject($project);
+            $this->getProjectManager()->save($project);
 
             return $this->redirect($this->generateUrl('client_project_edit', array('idProject' => $idProject)));
         }

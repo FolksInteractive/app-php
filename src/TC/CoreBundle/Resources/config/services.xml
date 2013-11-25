@@ -69,6 +69,14 @@
             <argument type="service" id="validator" />
         </service>
         
+        <service id="tc.manager.deliverable" class="TC\CoreBundle\Model\DeliverableManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tc.manager.relation" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="tc.mailer" />
+            <argument type="service" id="validator" />
+        </service>
+        
         <service id="tc.manager.rfp" class="TC\CoreBundle\Model\RFPManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="tc.manager.relation" />

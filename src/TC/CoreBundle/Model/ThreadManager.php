@@ -69,7 +69,7 @@ class ThreadManager {
      * @return Thread
      * @throws NotFoundHttpException
      */
-    public function findThread( $id ) {
+    public function find( $id ) {
         try {
             /** @var Thread */
             $thread = $this->em->getRepository( "TCCoreBundle:Thread" )
