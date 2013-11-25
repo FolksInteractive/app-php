@@ -7,74 +7,60 @@
 
 @import "../vendor/bootstrap/lib/_mixins";
 
+// Variables
+// -------------------------
+
 // Overwriting Bootstrap
 // -------------------------
 
 .table>thead>tr>th {
-    border-bottom: 1px solid #dededf;
+    border-bottom: 1px solid $gray-lighter;
 }
+
+.table>tbody>tr>td {
+    //padding: 20px 0;
+}
+
 
 // Table Elements
 // -------------------------
 
-.tc-table {
+.tc-table { 
     
-    /**** Columns Width Size ****/
+    // Table Elements
     
-    .col-flex { width: auto; }
-    
-    .col-xsm { width: 40px; }
-    
-    .col-sm { width: 80px; }
-    
-    .col-md { width: 100px; }
-    
-    .col-lg { width: 120px; }
-    
-    .col-xlg { width: 140px; }
-    
-    /**** Alignments & Adjustments ****/
-    
-    .center { text-align: center; }
-    
-    .left { text-align: left; }
-    
-    .right { text-align: right; }
-    
-    .left-gap { padding-left: 20px; }
-    
-    .right-gap { padding-right: 20px; }
-    
-    /**** Table Specifications ****/
-    
-    thead {
+    >thead >tr {
         
         th {
             padding-left: 0;
             padding-right: 0;
-            font-size: 12px;
-            text-align: left;
-            color: #999;
+            font-size: $font-size-h6;
+            vertical-align: middle;
+            color: $gray-light;
             font-weight: bold;
             text-align: center;
         }
         
     }
     
-    tbody {
+    >tbody >tr {
         
-        td {
+        >td {
             padding: 20px 0;
-            border-bottom: 1px solid #dededf;
+            border-bottom: 1px solid $gray-lighter;
+            vertical-align: middle;
         }
         
-        .actions-checkbox {
-            width: 39px;
+        // Actions Checkboxes
+        .tc-actions-col {
+            width: 50px;
             vertical-align: top;
             padding: 23px 0 0 12px;
         }
         
-        .desc-3-elems {
+        // Descriptions
+        .tc-description-col {
+            width: 450px;
             font-weight: bold;
             font-size: 18px;
             padding-left: 0;
@@ -103,32 +89,53 @@
             }
         }
         
-        
-        .cost {
-            text-align: center;
-            width: 120px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .quantity {
-            width: 40px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .subtotal {
-            width: 130px;
-            text-align: center;
+        // Progress Bar
+        .tc-progress-col {
+            width: auto;
             
+            .progress {
+                margin-bottom: 0;
+            }
+            
+            .progress-label {
+                text-align: right;
+                font-weight: bold;
+                padding-right: 10px;
+            }
+            
+            .total-value {
+                text-align: right;
+                font-weight: bold;
+                padding-right: 9px;
+                color: $gray-light;
+                font-size: $font-size-h6;
+                padding-top: 2px;
+            }
         }
+        
+        
+        .tc-info-col {
+            text-align: center;
+            font-size: $font-size-base;
+            font-weight: bold;
+            color: $gray;
+        }
+        
+        .tc-date-col {
+            width: 150px;
+        }
+        
+        .tc-quantity-col {
+            width: 40px;
+        }
+        
+        .tc-subtotal-col {
+            width: 150px;
+        }
+        
     }
     
-    tfoot {
+    >tfoot >tr {
         
         .total-split1 {
             height: 40px;
