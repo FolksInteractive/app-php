@@ -30,7 +30,7 @@ class PopulateThreadFollowersCommand extends ContainerAwareCommand {
     protected function execute( InputInterface $input, OutputInterface $output ) {
         $output->writeln( "..." );
         $doctrine = $this->getContainer()->get( 'doctrine' );
-        $em = $doctrine->getEntityManager();
+        $em = $doctrine->getManager();
 
         $orders = $doctrine->getRepository( 'TCCoreBundle:Order' )->findAll();
         foreach ( $orders as $order ) {
