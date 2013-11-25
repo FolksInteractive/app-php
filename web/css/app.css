@@ -134,6 +134,12 @@ input[type='email'] {
   background-repeat: no-repeat;
   margin: -2px 3px 0 0; }
 
+.icon-rfps-dark {
+  width: 24px;
+  height: 25px;
+  background: url("/img/icons/icon-rfp-dark-large.png");
+  background-repeat: no-repeat; }
+
 .icon-orders {
   width: 20px;
   height: 17px;
@@ -247,7 +253,7 @@ input[type='email'] {
     width: 10px; }
 
 .table > thead > tr > th {
-  border-bottom: 1px solid #eeeeee; }
+  border-bottom: 1px solid #dededf; }
 
 .tc-table > thead > tr th {
   padding-left: 0;
@@ -257,16 +263,19 @@ input[type='email'] {
   color: #999999;
   font-weight: bold;
   text-align: center; }
+.tc-table > thead > tr .left {
+  text-align: left; }
 .tc-table > tbody > tr > td {
-  padding: 20px 0;
-  border-bottom: 1px solid #eeeeee;
+  padding: 20px;
+  border-bottom: 1px solid #dededf;
   vertical-align: middle; }
 .tc-table > tbody > tr .tc-actions-col {
   width: 50px;
   vertical-align: top;
   padding: 23px 0 0 12px; }
+.tc-table > tbody > tr .tc-number-col {
+  width: 100px; }
 .tc-table > tbody > tr .tc-description-col {
-  width: 450px;
   font-weight: bold;
   font-size: 18px;
   padding-left: 0;
@@ -303,6 +312,10 @@ input[type='email'] {
     color: #999999;
     font-size: 12px;
     padding-top: 2px; }
+.tc-table > tbody > tr .tc-status-col {
+  width: 450px;
+  padding-right: 20px;
+  text-align: center; }
 .tc-table > tbody > tr .tc-info-col {
   text-align: center;
   font-size: 14px;
@@ -310,28 +323,13 @@ input[type='email'] {
   color: #555555; }
 .tc-table > tbody > tr .tc-date-col {
   width: 150px; }
+.tc-table > tbody > tr .tc-unitprice-col {
+  width: 110px; }
 .tc-table > tbody > tr .tc-quantity-col {
   width: 40px; }
 .tc-table > tbody > tr .tc-subtotal-col {
-  width: 150px; }
-.tc-table > tfoot > tr .total-split1 {
-  height: 40px; }
-.tc-table > tfoot > tr .total-split2 {
-  height: 5px; }
-.tc-table > tfoot > tr .total-price {
-  text-align: right; }
-  .tc-table > tfoot > tr .total-price .label {
-    font-size: 13px;
-    color: #999;
-    display: inline-block;
-    vertical-align: top;
-    padding: 40px 40px 0 0; }
-  .tc-table > tfoot > tr .total-price .price {
-    font-size: 60px;
-    color: #0060b2;
-    font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
-    display: inline-block; }
+  width: 130px;
+  font-size: 24px; }
 
 a {
   color: #1b85b2;
@@ -343,6 +341,59 @@ a:hover {
 p {
   font-size: 14px;
   padding-bottom: 20px; }
+
+ul {
+  margin: 0; }
+
+.tc-status {
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15); }
+  .tc-status > ul > li {
+    display: inline; }
+    .tc-status > ul > li :first-child a {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px; }
+    .tc-status > ul > li a:before {
+      content: "";
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid #fff;
+      position: absolute;
+      left: 0;
+      top: 0; }
+    .tc-status > ul > li a {
+      display: block;
+      float: left;
+      height: 30px;
+      background: #ddd;
+      text-align: center;
+      padding: 5px 25px 0 40px;
+      position: relative;
+      margin: 0 10px 0 0;
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold; }
+    .tc-status > ul > li a:after {
+      content: "";
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid #ddd;
+      position: absolute;
+      right: -15px;
+      top: 0;
+      z-index: 1; }
+    .tc-status > ul > li :last-child a {
+      padding-right: 80px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px; }
+  .tc-status .inprocess {
+    background: #3498db; }
+  .tc-status .inprocess:after {
+    border-left-color: #3498db; }
+  .tc-status .paid {
+    background: #5cb85c; }
+  .tc-status .paid:after {
+    border-left-color: #5cb85c; }
 
 body {
   background-color: #fff;
@@ -380,6 +431,28 @@ body {
     .tc-breadcrumb .breadcrumb .active:before {
       font-size: 30px;
       padding: 0 10px; }
+
+.tc-total-price {
+  padding-top: 10px;
+  width: 370px;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right; }
+  .tc-total-price .split {
+    border-bottom: 1px dotted #dededf;
+    padding-top: 5px; }
+  .tc-total-price .total-label {
+    font-size: 13px;
+    color: #999999;
+    display: inline-block;
+    vertical-align: top;
+    padding: 40px 40px 0 0; }
+  .tc-total-price .price {
+    font-size: 60px;
+    color: #0060b2;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block; }
 
 .spacer {
   width: 100%;
@@ -489,9 +562,22 @@ body {
   background: rgba(244, 244, 244, 0.9);
   border-bottom: 1px dotted #dededf; }
   .tc-main-panel .tc-toolbar .tc-controls {
-    margin: 37px 50px; }
+    margin: 22px 50px; }
     .tc-main-panel .tc-toolbar .tc-controls span {
       font-size: 16px; }
+
+.tc-heading-section > h2 {
+  font-weight: 300;
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+  color: #0a6895;
+  padding-bottom: 10px; }
+.tc-heading-section > p {
+  max-width: 700px;
+  font-size: 14px;
+  font-style: italic;
+  color: #555555;
+  border-bottom: 1px solid #dededf; }
 
 .tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
   padding: 0 50px; }
@@ -515,6 +601,9 @@ body {
   z-index: 100; }
 .tc-main-panel .tc-sheet {
   margin-top: 130px; }
+
+.rfp-show .tc-main-panel {
+  right: 370px; }
 
 .tc-menu-panel {
   position: fixed;
@@ -598,9 +687,6 @@ body {
     .client-dashboard .wrapper .tc-money .chart #money-spent {
       text-align: center; }
 
-/*************************************************/
-/*****   Section Relation:new.html.twig   *****/
-/*************************************************/
 .tc-relations-section h4 {
   margin: 30px 0 20px 0; }
 .tc-relations-section input[type='email'] {
@@ -611,9 +697,6 @@ body {
   .tc-relations-section .checkbox input {
     margin-top: 3px; }
 
-/*************************************************/
-/*****   Section Relation:menu.html.twig   *****/
-/*************************************************/
 .tc-return-section {
   margin-top: 10px; }
 
@@ -661,9 +744,6 @@ body {
   vertical-align: middle;
   margin-top: -10px; }
 
-/*************************************************/
-/*****   Section Relation:index.html.twig   *****/
-/*************************************************/
 .client-relations .tc-relations-boxes,
 .vendor-relations .tc-relations-boxes {
   text-align: center;
@@ -687,9 +767,6 @@ body {
     .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
       margin-top: 20px; }
 
-/*************************************************/
-/*****   Section Relation:orders.html.twig   *****/
-/*************************************************/
 .relation-orders .user {
   width: 30px; }
 .relation-orders .discussion,
@@ -704,123 +781,6 @@ body {
   width: 30px; }
 .relation-orders td.request {
   font-weight: bold; }
-
-/***************************************************/
-/*****   Section Relation:progress.html.twig   *****/
-/***************************************************/
-/***************************************************/
-/*******   Section Relation:bill.html.twig   *******/
-/***************************************************/
-/***************************************************/
-/*****   Section Relation:invoices.html.twig   *****/
-/***************************************************/
-.relation-invoices .tc-invoices-section table thead th {
-  padding-left: 0;
-  padding-right: 0;
-  font-size: 12px;
-  text-align: left;
-  color: #999;
-  font-weight: bold;
-  text-align: center; }
-.relation-invoices .tc-invoices-section table thead .number {
-  padding-right: 20px; }
-.relation-invoices .tc-invoices-section table thead .description {
-  text-align: left; }
-.relation-invoices .tc-invoices-section table thead .subtotal {
-  padding-right: 20px; }
-.relation-invoices .tc-invoices-section table tbody {
-  border-bottom: 1px solid #dededf; }
-  .relation-invoices .tc-invoices-section table tbody td {
-    vertical-align: middle;
-    padding: 20px 0; }
-  .relation-invoices .tc-invoices-section table tbody .number {
-    width: 80px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    padding-right: 20px; }
-  .relation-invoices .tc-invoices-section table tbody .description {
-    width: 450px;
-    font-weight: bold;
-    font-size: 18px;
-    padding-left: 0;
-    text-align: left; }
-    .relation-invoices .tc-invoices-section table tbody .description a {
-      font-weight: bold; }
-    .relation-invoices .tc-invoices-section table tbody .description .title {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      color: #777;
-      font-weight: normal; }
-    .relation-invoices .tc-invoices-section table tbody .description .proposal {
-      font-size: 14px;
-      color: #777;
-      font-weight: normal;
-      padding-top: 5px; }
-    .relation-invoices .tc-invoices-section table tbody .description .purchased {
-      font-size: 14px;
-      color: #333;
-      font-weight: normal;
-      padding-top: 5px; }
-  .relation-invoices .tc-invoices-section table tbody .subtotal {
-    width: 130px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #555;
-    padding-right: 20px; }
-  .relation-invoices .tc-invoices-section table tbody .status {
-    width: 400px;
-    text-align: right;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15); }
-    .relation-invoices .tc-invoices-section table tbody .status ul li {
-      display: inline; }
-      .relation-invoices .tc-invoices-section table tbody .status ul li :first-child a {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px; }
-      .relation-invoices .tc-invoices-section table tbody .status ul li a:before {
-        content: "";
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid #fff;
-        position: absolute;
-        left: 0;
-        top: 0; }
-      .relation-invoices .tc-invoices-section table tbody .status ul li a {
-        display: block;
-        float: left;
-        height: 30px;
-        background: #ddd;
-        text-align: center;
-        padding: 5px 25px 0 40px;
-        position: relative;
-        margin: 0 10px 0 0;
-        font-size: 14px;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold; }
-      .relation-invoices .tc-invoices-section table tbody .status ul li a:after {
-        content: "";
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid #ddd;
-        position: absolute;
-        right: -15px;
-        top: 0;
-        z-index: 1; }
-      .relation-invoices .tc-invoices-section table tbody .status ul li :last-child a {
-        padding-right: 80px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px; }
-    .relation-invoices .tc-invoices-section table tbody .status .inprocess {
-      background: #3498db; }
-    .relation-invoices .tc-invoices-section table tbody .status .inprocess:after {
-      border-left-color: #3498db; }
-    .relation-invoices .tc-invoices-section table tbody .status .paid {
-      background: #5cb85c; }
-    .relation-invoices .tc-invoices-section table tbody .status .paid:after {
-      border-left-color: #5cb85c; }
 
 .invoice-show .tc-total-section {
   text-align: right;
@@ -1151,6 +1111,8 @@ body {
 
 .tc-side-thread-section {
   position: fixed;
+  background: #f8f8f8;
+  border-left: 1px solid #dededf;
   top: 90px;
   right: 0;
   bottom: 0;

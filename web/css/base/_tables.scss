@@ -14,7 +14,7 @@
 // -------------------------
 
 .table>thead>tr>th {
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-border-color;
 }
 
 .table>tbody>tr>td {
@@ -41,13 +41,17 @@
             text-align: center;
         }
         
+        .left {
+            text-align: left;
+        }
+        
     }
     
     >tbody >tr {
         
         >td {
-            padding: 20px 0;
-            border-bottom: 1px solid $gray-lighter;
+            padding: 20px;
+            border-bottom: 1px solid $gray-border-color;
             vertical-align: middle;
         }
         
@@ -58,9 +62,14 @@
             padding: 23px 0 0 12px;
         }
         
+        // Row Number
+        .tc-number-col {
+            width: 100px;
+            //padding-right: 20px;
+        }
+        
         // Descriptions
         .tc-description-col {
-            width: 450px;
             font-weight: bold;
             font-size: 18px;
             padding-left: 0;
@@ -113,7 +122,13 @@
             }
         }
         
+        .tc-status-col {
+            width: 450px;
+            padding-right: 20px;
+            text-align: center;
+        }
         
+        // Simple Informations
         .tc-info-col {
             text-align: center;
             font-size: $font-size-base;
@@ -121,48 +136,31 @@
             color: $gray;
         }
         
+        // Date
         .tc-date-col {
             width: 150px;
         }
         
+        // Price of Items
+        .tc-unitprice-col {
+            width: 110px;
+        }
+        
+        // Quantity of Items
         .tc-quantity-col {
             width: 40px;
         }
         
+        // Row Total Amount in $
         .tc-subtotal-col {
-            width: 150px;
+            width: 130px;
+            font-size: $font-size-h3;
         }
         
     }
     
     >tfoot >tr {
         
-        .total-split1 {
-            height: 40px;
-        }
-        .total-split2 {
-            height: 5px;
-        }
-        
-        .total-price {
-            text-align: right;
-            
-            .label {
-                font-size: 13px;
-                color: #999;
-                display: inline-block;
-                vertical-align: top;
-                padding: 40px 40px 0 0;
-            }
-            
-            .price {
-                font-size: 60px;
-                color: #0060b2;
-                font-weight: 300;
-                font-family: 'Open Sans', sans-serif;
-                display: inline-block;
-            }
-        }
     }
     
 }

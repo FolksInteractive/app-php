@@ -5,14 +5,14 @@
 {% block sheet %}
 <div class="tc-bill-section">
 
-    <table  class="tc-bill table">
+    <table  class="table tc-table">
         <thead>
             <tr>
-                <th class="actions"></th>
-                <th class="description">Description</th>
-                <th class="cost">Unit price</th>
-                <th class="quantity">Qty</th>
-                <th class="subtotal">Subtotal</th>
+                <th></th>
+                <th class="left">Description</th>
+                <th>Unit price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
             </tr>
         </thead>
         <tbody>
@@ -45,38 +45,36 @@
                 </tr>
             {% endfor %}-->
             <tr>
-                <td class="actions-col center">
+                <td class="tc-actions-col">
                     <div class="checkbox-item">
                         <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
                         <label for="checkbox-item1"></label>
                     </div>
                 </td>
-                <td class="description left">
+                <td class="tc-description-col">
                     <div class="title"><a href="#">Anti-Corruption's course</a></div>
-                    <div class="proposal">Export of 16 e-Learning Courses</div>
-                    <div class="purchased"><b>Completed</b> on September 15th 2013</div>
+                    <div class="main-description">Export of 16 e-Learning Courses</div>
+                    <div class="sub-description"><b>Completed</b> on September 15th 2013</div>
                 </td>
-                <td class="cost center">
+                <td class="tc-info-col tc-unitprice-col">
                     $ 42.50
                 </td>
-                <td class="quantity center">
+                <td class="tc-info-col tc-quantity-col">
                     1
                 </td>
-                <td class="subtotal center">
+                <td class="tc-info-col tc-subtotal-col">
                     $ 42.50
                 </td>
             </tr>
         
         </tbody>
-        
-        <tfoot>
-            <tr><td colspan="2" class="no-border"></td><td colspan="3" class="border-bottom line1"></td></tr>
-            <tr><td colspan="2" class="no-border"></td><td colspan="3" class="border-bottom line2"></td></tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="3" class="total-price"><div class="label">Total : </div><div class="price">$ 42.50</div></td>
-            </tr>
-        </tfoot>
     </table>
+    
+    <div class="tc-total-price">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="total-label">Total : </div>
+        <div class="price">$ 42.50</div>
+    </div>
 </div> 
 {% endblock %}

@@ -1,0 +1,25 @@
+//
+// Layouts/Sheet_title
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Imports 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+.tc-heading-section{
+    
+    >h2 {
+        @include mega-title();
+    }
+    
+    >p {
+        @include mega-subtitle();
+        border-bottom: 1px solid $gray-border-color;
+    }
+    
+}

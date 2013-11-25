@@ -12,7 +12,7 @@
 
     <div class="tc-controls pull-right">
         <a href="{{path('client_rfp_new', {'idRelation':relation.id})}}" 
-           class="btn-primary btn-lg">
+           class="btn btn-primary btn-lg">
             <i class="icon-new-proposals-light-small"></i>
             New Request for Proposal
         </a>
@@ -23,19 +23,30 @@
 {% block sheet %}
 
 <div class="tc-rfps-section">      
-    <table class="tc-rfps table">
+    <table class="tc-rfps table tc-table">
         <thead>
             <tr>
-                <th class="tc-rfp-heading-col"></th>
+                <th></th>
+                <th class="left">Description</th>
             </tr>
         </thead>
         <tbody>
             {% for rfp in relation.getRFPs() %}
                 <tr>
-                <td class="tc-rfp-heading-col">
-                    <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                        {{rfp.heading|default('rfp')}}
-                    </a>
+                <td class="tc-actions-col">
+                    <div class="checkbox-item">
+                        <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                        <label for="checkbox-item1"></label>
+                    </div>
+                </td>
+                <td class="tc-description-col">
+                    <div class="title">
+                        <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                            {{rfp.heading|default('rfp')}}
+                        </a>
+                    </div>
+                    <div class="main-description"><b>Created</b> on September 16th 2013</div>
+                    <div class="sub-description"><b>Proposal Due</b> on September 16th 2013</div>
                 </td>
                 </tr>    
             {% endfor %}

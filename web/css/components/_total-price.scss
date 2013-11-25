@@ -10,3 +10,33 @@
 
 // Basic Elements 
 // -------------------------
+
+
+.tc-total-price {
+    padding-top: 10px;
+    width: 370px;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+    
+    .split {
+        border-bottom: 1px dotted $gray-border-color;
+        padding-top: 5px;
+    }
+    
+    .total-label {
+        font-size: 13px;
+        color: $gray-light;
+        display: inline-block;
+        vertical-align: top;
+        padding: 40px 40px 0 0;
+    }
+    
+    .price {
+        font-size: 60px;
+        color: #0060b2;
+        font-weight: 300;
+        font-family: 'Open Sans', sans-serif;
+        display: inline-block;
+    }
+}
