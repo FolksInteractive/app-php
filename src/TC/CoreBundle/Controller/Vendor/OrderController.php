@@ -22,6 +22,7 @@ class OrderController extends BaseController {
      * Finds and displays a relation.
      *
      * @Route("/", name="vendor_relation_orders")
+     * @Method("GET")
      * @Template("TCCoreBundle:Vendor:Relation/orders.html.twig")
      */
     public function ordersAction( $idRelation ) {

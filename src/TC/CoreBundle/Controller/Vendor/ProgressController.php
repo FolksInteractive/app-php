@@ -34,10 +34,13 @@ class ProgressController extends BaseController {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $data = $form->getData();
-                foreach($data["deliverables"] as $key=>$deliverable){
+                foreach($data["deliverables"] as $deliverable){
                     $this->getOrderManager()->completeDeliverable($deliverable);
                     $this->getOrderManager()->saveDeliverable($deliverable);
                 }
+                
+                // Avoid form resubmitting
+                $this->redirect("vendor_relation_progress", array("idRelation" => $idRelation));
             }
         }
         return array(
@@ -60,8 +63,8 @@ class ProgressController extends BaseController {
     private function createProgressForm( Relation $relation ) {
         $deliverablesTodo = array();
         
-        foreach( $relation->getOrdersTodo() as $orderKey=>$order){
-            foreach( $order->getDeliverablesTodo() as $deliverableKey=>$deliverable){
+        foreach( $relation->getOrdersTodo() as $order){
+            foreach( $order->getDeliverablesTodo() as $deliverable){
                 $deliverablesTodo[] = $deliverable;
             }    
         }

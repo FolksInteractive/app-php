@@ -16,8 +16,6 @@ use TC\CoreBundle\Controller\BillController as BaseController;
 class BillController extends BaseController {
 
     /**
-     * Displays the work in progress of a relation
-     *
      * @Route("/bill", name="client_relation_bill")
      * @Method("GET")
      * @Template("TCCoreBundle:Client:Relation/bill.html.twig")
