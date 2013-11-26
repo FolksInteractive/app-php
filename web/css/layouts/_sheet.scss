@@ -8,12 +8,13 @@
 // Imports 
 // -------------------------
 
-@import "sheet_title";
+@import "sheet_document";
 
 // Basic Elements 
 // -------------------------
 
 .tc-main-panel .tc-sheet{
+    padding-bottom: 50px;
     
     & > [class*="-section"],
     & > [class$="-section"]{

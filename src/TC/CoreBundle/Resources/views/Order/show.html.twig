@@ -1,13 +1,8 @@
 {% block body_class %} order-show {% endblock %}
 
 {% block sheet %}
-    <div class="tc-title-section">
-        <h2>Work Order</h2>
-        <p>This project order was created on {{order.createdAt|date('d M ')}} by {{order.creator.user.fullName}}.</p>
-    </div>
 
     <div class="tc-offer-section">
-        <h1>Proposal</h1>
         
         <div class="tc-offer">
             {% for block in order.offer %} 

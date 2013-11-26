@@ -6,76 +6,77 @@ ng-controller="thread.Controller"
 {% block thread_section %}
 <div class="tc-side-thread-section">
     <div id="thread_scrollable_section">
-        <div class="tc-full-section"> 
+        {% raw %}
+            <div class="tc-comments-section">
+                <ul class="tc-comments media-list">
+                    <li class="tc-comment media"
+                        ng-repeat="group in groupedComments">
+                        <a class="pull-left avatar" href="#">
+                            <img class="media-object" 
+                                 ng-src="{{getAvatar(group.author)}}"/>
+                        </a>
+                        <a class="person">Francis Poirier</a>
+                        <div class="media-body">
+                            <div class="media" ng-repeat="c in group.comments">
+                                {{ c }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        {% endraw %}
+        </div>
+        <div class="tc-discuss-section"> 
             <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
                 <div class="form-group">
                     <textarea class="form-control input-block-level"
                               ng-required="true"
-                              ng-model="newComment.body"></textarea>
+                              ng-model="newComment.body" placeholder="Write a reply..."></textarea>
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn"
-                            ng-disabled="newCommentForm.$invalid">Say it</button>
+                <div class="form-group submit_comment">
+                    <button type="submit" class="btn btn-primary btn-sm"
+                            ng-disabled="newCommentForm.$invalid">Reply</button>
                 </div>
             </form>   
         </div>
-        {% raw %}
-        <div class="tc-comments-section">
-            <ul class="tc-comments media-list">
-                <li class="tc-comment media"
-                    ng-repeat="group in groupedComments">
-                    <a class="pull-left" href="#">
-                       <img class="img-circle media-object" 
-                             ng-src="{{getAvatar(group.author)}}"/>
-                    </a>
-                    <div class="media-body">
-                        <div class="media" ng-repeat="c in group.comments">
-                            {{ c }}
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        {% endraw %}
     </div>
-</div>
 
 {% endblock %}
 
 {% block thread_bottom_js %}
 
-<script type="text/javascript" src="{{asset("/vendor/enscroll/enscroll-0.4.2.min.js")}}"></script>
-<script type="text/javascript" src="{{asset("/js/thread/thread-module.js")}}"></script>
-<script type="text/javascript" src="{{asset("/js/thread/socket_service.js")}}"></script>
-<script type="text/javascript" src="{{asset("/js/thread/thread_directive.js")}}"></script>
-<script type="text/javascript" src="{{asset("/js/utils/date_service.js")}}"></script>
-<script type="text/javascript">
-(function(ng, module){
+    <script type="text/javascript" src="{{asset("/vendor/enscroll/enscroll-0.4.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/thread/thread-module.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/thread/socket_service.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/thread/thread_directive.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/utils/date_service.js")}}"></script>
+    <script type="text/javascript">
+    (function(ng, module){
 
-    module.value("thread", {{thread|json_encode()|raw}});
+        module.value("thread", {{thread|json_encode()|raw}});
 
-    {% set avatars = {} %}
-    {% for workspace in thread.followers %}    
-        {% set img = vich_uploader_asset(workspace.user, 'avatar') | imagine_filter('60_thumb') %}
-        {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}        
-    {% endfor %}
-    module.value("avatars", {{avatars|json_encode()|raw}});
+        {% set avatars = {} %}
+        {% for workspace in thread.followers %}    
+            {% set img = vich_uploader_asset(workspace.user, 'avatar') | imagine_filter('30_thumb') %}
+            {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}        
+        {% endfor %}
+        module.value("avatars", {{avatars|json_encode()|raw}});
 
-    module.value("workspace", {
-    'id' : {{app.user.workspace.id}}
-    });
+        module.value("workspace", {
+        'id' : {{app.user.workspace.id}}
+        });
 
-    module.value("thread_sync_path",
-    "{{path('thread_sync', {"idThread":thread.id})}}"
-    );
+        module.value("thread_sync_path",
+        "{{path('thread_sync', {"idThread":thread.id})}}"
+        );
 
-    module.value("thread_comment_path",
-    "{{path('thread_comment', {"idThread":thread.id})}}"
-    );
+        module.value("thread_comment_path",
+        "{{path('thread_comment', {"idThread":thread.id})}}"
+        );
 
-    $('#thread_scrollable_section').enscroll({showOnHover: true});
+        $('#thread_scrollable_section').enscroll({showOnHover: true});
         
-})(angular, module);
-</script>
+    })(angular, module);
+        </script>
 {% endblock %}

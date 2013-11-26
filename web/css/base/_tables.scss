@@ -98,6 +98,16 @@
             }
         }
         
+        // Number of discussions
+        .tc-discussion-col {
+            width: 120px;
+            
+            .badge-talk-bubble {
+                text-align: center;
+                margin: auto;
+            }
+        }
+        
         // Progress Bar
         .tc-progress-col {
             width: auto;

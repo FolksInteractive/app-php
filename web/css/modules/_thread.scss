@@ -1,22 +1,77 @@
+//
+// Modules/Thread
+// --------------------------------------------------
+
+
+// Imports
+// -------------------------
+
+// Overwriting Bootstrap Variables
+// -------------------------
+
+// TimeCrumbs' Variables
+// -------------------------
+
+$thread-width: 370px;
+$comment-height: 130px;
+
+// Thread Elements
+// -------------------------
+
 .tc-side-thread-section{
     position:fixed;
     background: $gray-ultra-light;
     border-left: 1px solid $gray-border-color;
     top:90px;
     right:0;
-    bottom:0;
-    width:370px;
-    padding: 0 0 15px 15px;  
+    bottom: $comment-height;
+    width: $thread-width - 20px;
+    //border-top: 2px solid $shadow-borders;
+    //border-bottom: 2px solid $shadow-borders;
     
     .enscroll-track{
         margin-top:2px;
+    }
+    
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .person {
+        font-weight: bold;
+        font-size: $font-size-large;
     }
 }
 
 #thread_scrollable_section{
     height:100%;
-    overflow:auto;
+    overflow: auto;
     padding-right: 10px;
     padding-top:15px;
-    width:370px;
+    width: $thread-width;
+    padding: 15px 0 15px 15px;
+}
+
+.tc-comments-section {
+    
+    .media-body {
+        padding-top: 10px;
+    }
+}
+
+.tc-discuss-section {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 15px;
+    height: $comment-height;
+    background: $gray-lighter;
+    width: $thread-width - 20px;
+    border-left: 1px solid $gray-border-color;
+    border-top: 1px solid $gray-border-color;
+    
+    .submit_comment {
+        text-align: right;
+    }
 }

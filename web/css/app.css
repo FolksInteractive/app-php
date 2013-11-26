@@ -210,7 +210,6 @@ input[type='email'] {
   width: 34px;
   height: 28px;
   background: url("/img/icons/icon-talk-bubble.jpg");
-  margin: 3px 3px 0 0;
   color: #fff; }
 
 .icon-add-user {
@@ -297,6 +296,11 @@ input[type='email'] {
     color: #333;
     font-weight: normal;
     padding-top: 5px; }
+.tc-table > tbody > tr .tc-discussion-col {
+  width: 120px; }
+  .tc-table > tbody > tr .tc-discussion-col .badge-talk-bubble {
+    text-align: center;
+    margin: auto; }
 .tc-table > tbody > tr .tc-progress-col {
   width: auto; }
   .tc-table > tbody > tr .tc-progress-col .progress {
@@ -340,7 +344,8 @@ a:hover {
 
 p {
   font-size: 14px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  color: #555555; }
 
 ul {
   margin: 0; }
@@ -579,18 +584,32 @@ body {
   color: #555555;
   border-bottom: 1px solid #dededf; }
 
-.tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
-  padding: 0 50px; }
-.tc-main-panel .tc-sheet .tc-full-section {
-  padding: 0; }
-.tc-main-panel .tc-sheet .tc-title-section {
-  text-align: center;
-  margin: 20px 0; }
-  .tc-main-panel .tc-sheet .tc-title-section p {
-    font-style: italic;
-    color: #ccc;
-    margin-top: -10px;
-    font-size: 12px; }
+.tc-body-section > .tc-rfp-body > .tc-offer-block {
+  padding-left: 20px;
+  border-left: 4px solid #0a6895; }
+  .tc-body-section > .tc-rfp-body > .tc-offer-block > h3 {
+    font-size: 18px;
+    color: #0a6895;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    padding: 5px 0; }
+  .tc-body-section > .tc-rfp-body > .tc-offer-block > p {
+    padding-bottom: 5px; }
+
+.tc-main-panel .tc-sheet {
+  padding-bottom: 50px; }
+  .tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
+    padding: 0 50px; }
+  .tc-main-panel .tc-sheet .tc-full-section {
+    padding: 0; }
+  .tc-main-panel .tc-sheet .tc-title-section {
+    text-align: center;
+    margin: 20px 0; }
+    .tc-main-panel .tc-sheet .tc-title-section p {
+      font-style: italic;
+      color: #ccc;
+      margin-top: -10px;
+      font-size: 12px; }
 
 .tc-main-panel .tc-toolbar {
   height: 90px;
@@ -773,10 +792,6 @@ body {
 .relation-orders .cost {
   width: 80px;
   text-align: center; }
-.relation-orders .tc-requests-section th,
-.relation-orders .tc-suggestions-section th,
-.relation-orders .tc-orders-section th {
-  padding: 5px 0; }
 .relation-orders td.user img {
   width: 30px; }
 .relation-orders td.request {
@@ -1115,18 +1130,40 @@ body {
   border-left: 1px solid #dededf;
   top: 90px;
   right: 0;
-  bottom: 0;
-  width: 370px;
-  padding: 0 0 15px 15px; }
+  bottom: 130px;
+  width: 350px; }
   .tc-side-thread-section .enscroll-track {
     margin-top: 2px; }
+  .tc-side-thread-section .avatar {
+    width: 32px;
+    height: 32px; }
+  .tc-side-thread-section .person {
+    font-weight: bold;
+    font-size: 18px; }
 
 #thread_scrollable_section {
   height: 100%;
   overflow: auto;
   padding-right: 10px;
   padding-top: 15px;
-  width: 370px; }
+  width: 370px;
+  padding: 15px 0 15px 15px; }
+
+.tc-comments-section .media-body {
+  padding-top: 10px; }
+
+.tc-discuss-section {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  height: 130px;
+  background: #eeeeee;
+  width: 350px;
+  border-left: 1px solid #dededf;
+  border-top: 1px solid #dededf; }
+  .tc-discuss-section .submit_comment {
+    text-align: right; }
 
 .tc_user {
   height: 100%;

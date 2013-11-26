@@ -1,5 +1,5 @@
 //
-// Layouts/Sheet_title
+// Layouts/Sheet_Document
 // --------------------------------------------------
 
 // Variables 
@@ -22,4 +22,21 @@
         border-bottom: 1px solid $gray-border-color;
     }
     
+}
+
+.tc-body-section {
+    
+    > .tc-rfp-body > .tc-offer-block {
+        padding-left: 20px;
+        border-left: 4px solid $tc-brand-blue;
+        
+        >h3 {
+            @include tc-block-title();
+            padding: 5px 0;
+        }
+        
+        >p {
+            padding-bottom: 5px;
+        }
+    }
 }
