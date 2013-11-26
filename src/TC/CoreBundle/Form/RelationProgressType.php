@@ -14,12 +14,10 @@ class RelationProgressType extends AbstractType {
      */
     public function buildForm( FormBuilderInterface $builder, array $options ) {
         $builder
-            ->add('deliverables', 'entity', array(
-                'required'      => false,
-                'class'         => 'TCCoreBundle:Deliverable',
-                'property'      => 'id',
-                'multiple'      => true,
-                'expanded'      => true
+            ->add('deliverables', 'collection', array(
+                'required'  => false,                
+                'type'      => new DeliverableProgressType(),
+                'data'      => $options["deliverables"],
             ));
     }
 
@@ -28,7 +26,8 @@ class RelationProgressType extends AbstractType {
      */
     public function setDefaultOptions( OptionsResolverInterface $resolver ) {
         $resolver->setDefaults( array(
-            'data_class' => null
+            'data_class' => null,
+            'deliverables' => array()
         ) );
     }
 

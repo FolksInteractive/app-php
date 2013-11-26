@@ -4,13 +4,22 @@ namespace TC\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as SymfonyController;
 use Symfony\Component\Validator\Validator;
 use TC\CoreBundle\Entity\Workspace;
+use TC\CoreBundle\Model\DeliverableManager;
 use TC\CoreBundle\Model\OrderManager;
-use TC\CoreBundle\Model\RFPManager;
-use TC\CoreBundle\Model\ThreadManager;
 use TC\CoreBundle\Model\ProjectManager;
 use TC\CoreBundle\Model\RelationManager;
+use TC\CoreBundle\Model\RFPManager;
+use TC\CoreBundle\Model\ThreadManager;
+use TC\CoreBundle\Model\WorkspaceManager;
 
 class Controller extends SymfonyController {
+       
+    /**
+     * @return BillManager
+     */
+    protected function getBillManager(){
+        return $this->container->get('tc.manager.bill');
+    }
    
     /**
      * @return RelationManager
@@ -27,10 +36,10 @@ class Controller extends SymfonyController {
     }
     
     /**
-     * @return OrderManager
+     * @return DeliverableManager
      */
     protected function getDeliverableManager(){
-        return $this->container->get('tc.manager.order');
+        return $this->container->get('tc.manager.deliverable');
     }
     
     /**

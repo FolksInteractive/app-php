@@ -33,34 +33,6 @@ class OrderController extends BaseController {
             'relation' => $relation,
         );
     }
-            
-    /**
-     * Displays the work in progress of a relation
-     *
-     * @Route("/progress", name="vendor_relation_progress")
-     * @Template("TCCoreBundle:Vendor:Relation/progress.html.twig")
-     */
-    public function progressAction( Request $request, $idRelation ) {
-
-        $relation = $this->getRelationManager()->findByVendor( $idRelation );
-
-        $form = $this->createProgressForm( $relation );
-        
-        if($request->getMethod() === "POST"){
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $data = $form->getData();
-                foreach($data["deliverables"] as $deliverable){
-                    $this->getDeliverableManager()->complete($deliverable);
-                    $this->getDeliverableManager()->save($deliverable);
-                }
-            }
-        }
-        return array(
-            'relation' => $relation,
-            'form' => $form->createView()
-        );
-    }
     
     /**
      * Displays a form to edit an existing Order.

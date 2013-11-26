@@ -14,7 +14,7 @@ use TC\CoreBundle\Form\RelationProgressType;
 /**
  * Order controller.
  *
- * @Route("/r/{idRelation}/progress")
+ * @Route("/r/{idRelation}/monitoring")
  */
 class ProgressController extends BaseController {            
     
@@ -28,22 +28,28 @@ class ProgressController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
-        $form = $this->createProgressForm( $relation );
+        $deliverables = $this->getDeliverableManager()->findAllInProgressByRelation($relation);
+        
+        $form = $this->createProgressForm( $relation, $deliverables );
         
         if($request->getMethod() === "POST"){
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $data = $form->getData();
-                foreach($data["deliverables"] as $deliverable){
-                    $this->getDeliverableManager()->complete($deliverable);
+                
+                foreach($data['deliverables'] as $deliverable){
+                    if( $deliverable->isCompleted() ){
+                        $this->getDeliverableManager()->complete($deliverable);
+                    }
                     $this->getDeliverableManager()->save($deliverable);
                 }
                 
                 // Avoid form resubmitting
-                $this->redirect("vendor_relation_progress", array("idRelation" => $idRelation));
+                return $this->redirect($this->generateUrl("vendor_relation_progress", array("idRelation" => $idRelation)));
             }
         }
         return array(
+            'deliverables' => $deliverables,
             'relation' => $relation,
             'form' => $form->createView()
         );
@@ -60,15 +66,7 @@ class ProgressController extends BaseController {
      *
      * @return Form The form
      */
-    private function createProgressForm( Relation $relation ) {
-        $deliverablesTodo = array();
-        
-        foreach( $relation->getOrdersTodo() as $order){
-            foreach( $order->getDeliverablesTodo() as $deliverable){
-                $deliverablesTodo[] = $deliverable;
-            }    
-        }
-        
+    private function createProgressForm( $relation, $deliverables ) {
         
         $form = $this->createForm(
                 new RelationProgressType(), 
@@ -76,6 +74,7 @@ class ProgressController extends BaseController {
                 array(
                     'action' => $this->generateUrl( 'vendor_relation_progress', array('idRelation' => $relation->getId()) ),
                     'method' => 'POST',
+                    'deliverables' => $deliverables
                 ));
 
         $form->add( 'submit', 'submit', array('label' => 'Save') );

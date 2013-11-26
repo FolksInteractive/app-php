@@ -1,0 +1,135 @@
+{% extends 'TCCoreBundle:Vendor:skeleton.html.twig' %}
+
+{% use "TCCoreBundle:Relation:progress.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block main_before %} 
+{% set attr = {'name':form.vars.name} %}
+{% set attr = attr|merge({'ng-app':'Progress'}) %}
+{% set attr = attr|merge({'ng-controller':'progress.Controller'}) %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:progressMenu',[],{"relation": relation}) %}
+
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right">
+        {% set attr = {'class':'btn-lg'} %}
+        {% set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
+        {% set attr = attr|merge({'disabled':""}) %}   
+        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
+        {{form_widget(form.submit, {'attr':attr})}}
+    </div>
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-progress-section">
+    <table class="table tc-table">
+
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Work Progression</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% raw %}            
+            <tr ng-repeat="deliverable in deliverables">
+                <td class="tc-actions-col">
+                    <div class="checkbox-item">
+                        <input type="checkbox" 
+                               id="{{getDeliverableFormName(deliverable, 'completed')}}"
+                               name="{{getDeliverableFormName(deliverable, 'completed')}}"
+                               ng-change="completeDeliverable(deliverable)"
+                               ng-model="deliverable.completed"  />
+                        <label for="{{getDeliverableFormName(deliverable, 'completed')}}"></label>
+                    </div>
+                </td>
+                <td class="tc-description-col">
+                    <div class="title"><a href="#">{{deliverable.name}}</a></div>
+                    <div class="main-description">{{deliverable.order.heading}}</div>
+                    <div class="sub-description"><b>Purchased</b> on {{deliverable.order.approved_at}}</div>
+                </td>
+                <td class="tc-progress-col">
+                    <input type="number" class="form-control text-center"
+                           min="0" max="100"
+                           name="{{getDeliverableFormName(deliverable, 'due_at')}}"
+                           ng-model="deliverable.progress"
+                           ng-required="false" />
+                </td>
+                
+                <td class="tc-progressbar-col">
+                    <div class="progress progress-striped">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: deliverable.progress+'%' } ">
+                            <div class="progress-label">{{(deliverable.cost *  deliverable.progress / 100)|currency}}</div>
+                        </div>
+                        <div class="total-value">{{deliverable.cost|currency}}</div>
+                    </div>
+                </td>
+                <td class="tc-date-col tc-info-col" ng-controller="progress.DueAtController">
+                    <input type="text" class="form-control text-center"
+                           name="{{getDeliverableFormName(deliverable, 'due_at')}}"
+                           ng-model="deliverable.due_at"
+                           ng-required="false"
+                           datepicker-popup="{{calendar.format}}" 
+                           is-open="calendar.opened" 
+                           min="calendar.minDate" 
+                           max="calendar.maxDate" 
+                           placeholder="YYYY-MM-DD"
+                           close-text="Close" />
+                </td>
+            </tr>
+            {% endraw %}
+        </tbody>
+    </table>
+</div> 
+{% endblock %}
+
+{% block bottom_js %}
+<script src="{{asset('js/directives/position/position.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/directives/datepicker/datepicker.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/progress/progress-module.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+(function(ng, module){
+    {% set deliverablesToEncode = [] %}
+    {% for deliverableForm in form.deliverables %}   
+        {% set deliverable = deliverableForm.vars.data %}
+        {% set deliverablesToEncode = deliverablesToEncode|merge([{ 
+            'id'        : deliverable.id, 
+            'name'      : deliverable.name,
+            'cost'      : deliverable.cost,
+            'completed' : deliverable.completed, 
+            'progress'  : deliverable.progress, 
+            'due_at'    : deliverable.getDueAt()|date("Y/m/d"), 
+            'order'     : {
+                            'id'            : deliverable.order.id,
+                            'heading'       : deliverable.order.heading,
+                            'approved_at'   : deliverable.order.getApprovedAt()|date("F jS Y"),
+                            'url'           : path('vendor_order_show',{'idRelation': deliverable.order.relation.id, 'idOrder': deliverable.order.id})
+                          }
+        }])  %}        
+    {% endfor %}
+        
+    module.value("deliverables", {{deliverablesToEncode|json_encode()|raw}});
+    
+    module.value("form_name", "{{form.vars.name}}");
+        
+})(angular, module);
+</script>
+{% endblock %}

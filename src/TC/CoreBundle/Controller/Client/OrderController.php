@@ -32,21 +32,6 @@ class OrderController extends BaseController {
             'relation' => $relation
         );
     }
-        
-    /**
-     * Displays the work in progress of a relation
-     *
-     * @Route("/progress", name="client_relation_progress")
-     * @Template("TCCoreBundle:Client:Relation/progress.html.twig")
-     */
-    public function progressAction( Request $request, $idRelation ) {
-
-        $relation = $this->getRelationManager()->findByClient( $idRelation );
-
-        return array(
-            'relation' => $relation
-        );
-    }
 
     /**
      * Finds and displays a Order.
