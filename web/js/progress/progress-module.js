@@ -25,6 +25,13 @@ module.controller("progress.Controller", function($scope, deliverables, form_nam
             deliverable.progress = deliverable.oldProgress || 0;
         }
     };
+    
+    
+    $scope.setProgress = function(deliverable, value){
+        deliverable.progress = value;
+        
+        $scope.progressForm.$setDirty();
+    }
 });
 
 module.controller("progress.DueAtController", function($scope, $timeout){    

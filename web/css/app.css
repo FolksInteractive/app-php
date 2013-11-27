@@ -782,8 +782,19 @@ body {
 .relation-orders td.request {
   font-weight: bold; }
 
-.relation-progress .tc-progress-section .tc-progress-col {
-  width: 100px; }
+.relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices {
+  margin-bottom: 10px;
+  text-align: center; }
+  .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice {
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: #f5f5f5;
+    color: #999999; }
+    .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
+      border: 1px solid #cccccc; }
+    .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
+      background-color: #ccc;
+      color: #fff; }
 .relation-progress .tc-progress-section .tc-date-col {
   width: 155px; }
 .relation-progress .tc-progress-section .datepicker-popup {
