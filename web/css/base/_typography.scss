@@ -32,6 +32,8 @@ a:hover {
 p {
     font-size: $font-size-base;
     padding-bottom: 20px;
+    color: $gray;
+    line-height: 25px;
 }
 
 // Mega Titles
@@ -51,4 +53,11 @@ p {
     font-size: $font-size-base;
     font-style: italic;
     color: $gray;
+}
+
+// Block Title
+
+@mixin tc-block-title () {
+    font-size: $font-size-large;
+    color: $tc-brand-blue;
 }

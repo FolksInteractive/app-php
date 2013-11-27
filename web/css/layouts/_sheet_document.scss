@@ -1,0 +1,43 @@
+//
+// Layouts/Sheet_Document
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Imports 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+.tc-heading-section{
+    
+    >h2 {
+        @include mega-title();
+    }
+    
+    >p {
+        @include mega-subtitle();
+        border-bottom: 1px solid $gray-border-color;
+    }
+    
+}
+
+.tc-body-section {
+    
+    > .tc-document-body > .tc-block {
+        padding-left: 20px;
+        border-left: 4px solid $tc-brand-blue;
+        
+        >h3 {
+            @include tc-block-title();
+            padding: 5px 0 8px 0;
+            border-bottom: 1px dotted $gray-border-color;
+        }
+        
+        >p {
+            padding-bottom: 5px;
+        }
+    }
+}

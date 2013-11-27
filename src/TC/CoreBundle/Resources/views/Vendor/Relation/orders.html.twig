@@ -5,14 +5,14 @@
 {% use "TCCoreBundle:Vendor:Relation/menu.html.twig" %}
 
 {% block toolbar %}
-    <div class="tc-breadcrumb pull-left">
+<div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
     <div class="tc-controls pull-right">
         <a href="{{path('vendor_order_new', {'idRelation':relation.id})}}" 
-           class="btn-primary btn-lg">
+           class="btn btn-primary btn-lg">
             <i class="icon-new-proposals-light-small"></i>
             New Proposal
         </a>
@@ -21,34 +21,45 @@
 
 {% block sheet %}
 
-<div class="tc-orders-section">  
-    <table  class="tc-orders table">
-        <thead>
-            <tr>
-                <th class="tc-order-heading-col"></th>
-                <th class="tc-order-thread-col"></th>
-                <th class="tc-order-cost-col"></th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="tc-orders-section">  
+        <table  class="tc-table table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="left">Description</th>
+                    <th>Comments</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for order in relation.getOrdersOpen() %}            
-            <tr>
-                <td class="tc-order-heading-col">
-                    <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                    <tr>
+                        <td class="tc-actions-col">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                                <label for="checkbox-item1"></label>
+                            </div>
+                        </td>
+                        <td class="tc-description-col">
+                            <div class="title">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                         {{order.heading|default('proposal')}}
-                    </a>
-                </td>
-                <td class="tc-order-thread-col">
-                    <span class="badge badge-talk-bubble">
+                                    </a>
+                                </div>
+                                <div class="main-description">Created on September 16th 2013</div>
+                                <div class="sub-description"><b>Approved</b> on September 16th 2013 </div>
+                            </td>
+                            <td class="tc-discussion-col">
+                                <div class="badge-talk-bubble">
                         {{order.thread.getNumComments()}}
-                    </span>
-                </td>
-                <td class="tc-order-cost-col">
+                                    </div>
+                                </td>
+                                <td class="tc-info-col tc-subtotal-col">
                     {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
-                </td>
-            </tr>     
+                                    </td>
+                                </tr>     
             {% endfor %}
-        </tbody>
-    </table>
-</div> 
+                            </tbody>
+                        </table>
+                    </div> 
 {% endblock %}

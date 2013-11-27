@@ -5,7 +5,7 @@
 {% use "TCCoreBundle:Client:Relation/menu.html.twig" %}
 
 {% block toolbar %}
-    <div class="tc-breadcrumb pull-left">
+<div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation}) %}
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
@@ -22,35 +22,35 @@
 
 {% block sheet %}
 
-<div class="tc-rfps-section">      
-    <table class="tc-rfps table tc-table">
-        <thead>
-            <tr>
-                <th></th>
-                <th class="left">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for rfp in relation.getRFPs() %}
+    <div class="tc-rfps-section">      
+        <table class="tc-rfps table tc-table">
+            <thead>
                 <tr>
-                <td class="tc-actions-col">
-                    <div class="checkbox-item">
-                        <input type="checkbox" value="None" id="checkbox-item1" name="check" />
-                        <label for="checkbox-item1"></label>
-                    </div>
-                </td>
-                <td class="tc-description-col">
-                    <div class="title">
-                        <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                    <th></th>
+                    <th class="left">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for rfp in relation.getRFPs() %}
+                    <tr>
+                        <td class="tc-actions-col">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                                <label for="checkbox-item1"></label>
+                            </div>
+                        </td>
+                        <td class="tc-description-col">
+                            <div class="title">
+                                <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                             {{rfp.heading|default('rfp')}}
-                        </a>
-                    </div>
-                    <div class="main-description"><b>Created</b> on September 16th 2013</div>
-                    <div class="sub-description"><b>Proposal Due</b> on September 16th 2013</div>
-                </td>
-                </tr>    
+                                    </a>
+                                </div>
+                                <div class="main-description"><b>Created</b> on September 16th 2013</div>
+                                <div class="sub-description"><b>Proposal Due</b> on September 16th 2013</div>
+                            </td>
+                        </tr>    
             {% endfor %}
-        </tbody>
-    </table>
-</div> 
+                    </tbody>
+                </table>
+            </div> 
 {% endblock %}
