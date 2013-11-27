@@ -2,11 +2,16 @@
 
 {% block sheet %}
 
-    <div class="tc-offer-section">
-        
-        <div class="tc-offer">
+
+    <div class="tc-heading-section">
+        <h2>Title of the proposal</h2>
+        <p>Subtitle of the proposal</p>
+    </div>
+
+    <div class="tc-body-section">
+        <div class="tc-document-body">
             {% for block in order.offer %} 
-            <div class="tc-offer-block">
+            <div class="tc-block">
                 <h3>{{block.title}}</h3>
                 <p>{{block.body}}</p>
             </div>
@@ -15,7 +20,7 @@
     </div>
 
     <div class="tc-deliverables-section">    
-        <legend>Deliverables <span class="badge">{{order.deliverables|length}}</span></legend>
+        <legend>Deliverables <span>({{order.deliverables|length}})</span></legend>
 
         <table class="tc-deliverables table table-hover">
             <thead>

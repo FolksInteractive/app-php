@@ -26,13 +26,14 @@
 
 .tc-body-section {
     
-    > .tc-rfp-body > .tc-offer-block {
+    > .tc-document-body > .tc-block {
         padding-left: 20px;
         border-left: 4px solid $tc-brand-blue;
         
         >h3 {
             @include tc-block-title();
-            padding: 5px 0;
+            padding: 5px 0 8px 0;
+            border-bottom: 1px dotted $gray-border-color;
         }
         
         >p {

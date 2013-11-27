@@ -33,6 +33,7 @@ p {
     font-size: $font-size-base;
     padding-bottom: 20px;
     color: $gray;
+    line-height: 25px;
 }
 
 // Mega Titles
@@ -59,6 +60,4 @@ p {
 @mixin tc-block-title () {
     font-size: $font-size-large;
     color: $tc-brand-blue;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
 }
