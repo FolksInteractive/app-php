@@ -47,7 +47,7 @@ class RelationController extends BaseController {
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getRelationManager()->save($relation);
+            $this->getRelationManager()->save($relation, $form->get('notify')->getData());
 
             return $this->redirect( $this->generateUrl( 'vendor_relation_orders', array('idRelation' => $relation->getId()) ) );
         }

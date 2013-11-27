@@ -46,7 +46,7 @@ class Mailer {
     public function sendClientInvitation(Relation $relation) {
         $email = $relation->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/order_invitation_email.txt.twig', array('relation' => $relation));
+        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/relation_invitation_email.txt.twig', array('relation' => $relation));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Relation #%s invitation client sent to %s", $relation->getId(), $email) );
