@@ -21,6 +21,18 @@
     //padding: 20px 0;
 }
 
+// Mixins
+
+@mixin th-elements () {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: $font-size-h6;
+    vertical-align: middle;
+    color: $gray-light;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 // Table Elements
 // -------------------------
@@ -32,13 +44,7 @@
     >thead >tr {
         
         th {
-            padding-left: 0;
-            padding-right: 0;
-            font-size: $font-size-h6;
-            vertical-align: middle;
-            color: $gray-light;
-            font-weight: bold;
-            text-align: center;
+            @include th-elements();
         }
         
         .left {
@@ -173,4 +179,62 @@
         
     }
     
+}
+
+.tc-deliverables-table {
+    border-top: 1px dotted $gray-border-color;
+    margin-top: 20px;
+    
+    >thead >tr {
+        >th {
+            @include th-elements();
+            padding-top: 20px;
+        }
+        
+        .left {
+            text-align: left;
+        }
+    }
+    
+    >tbody >tr {
+        
+        >td {
+            padding: 15px 0;
+            border-bottom: 1px solid $gray-border-color;
+        }
+        
+        .tc-info-col {
+            text-align: center;
+            font-size: $font-size-base;
+            font-weight: bold;
+            color: $gray;
+        }
+        
+        .tc-no {
+            width: 50px;
+            font-weight: normal;
+            color: $gray-light;
+            font-size: $font-size-h6;
+        }
+        
+        .tc-description {
+            text-align: left;
+        }
+        
+        .tc-cost {
+            width: 100px;
+            font-weight: normal;
+            color: $gray-light;
+        }
+        
+        .tc-quantity {
+            width: 50px;
+            font-weight: normal;
+            color: $gray-light;
+        }
+        
+        .tc-subtotal {
+            width: 100px;
+        }
+    }
 }

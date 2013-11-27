@@ -335,6 +335,46 @@ input[type='email'] {
   width: 170px;
   font-size: 24px; }
 
+.tc-deliverables-table {
+  border-top: 1px dotted #dededf;
+  margin-top: 20px; }
+  .tc-deliverables-table > thead > tr > th {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 12px;
+    vertical-align: middle;
+    color: #999999;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px; }
+  .tc-deliverables-table > thead > tr .left {
+    text-align: left; }
+  .tc-deliverables-table > tbody > tr > td {
+    padding: 15px 0;
+    border-bottom: 1px solid #dededf; }
+  .tc-deliverables-table > tbody > tr .tc-info-col {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555555; }
+  .tc-deliverables-table > tbody > tr .tc-no {
+    width: 50px;
+    font-weight: normal;
+    color: #999999;
+    font-size: 12px; }
+  .tc-deliverables-table > tbody > tr .tc-description {
+    text-align: left; }
+  .tc-deliverables-table > tbody > tr .tc-cost {
+    width: 100px;
+    font-weight: normal;
+    color: #999999; }
+  .tc-deliverables-table > tbody > tr .tc-quantity {
+    width: 50px;
+    font-weight: normal;
+    color: #999999; }
+  .tc-deliverables-table > tbody > tr .tc-subtotal {
+    width: 100px; }
+
 a {
   color: #1b85b2;
   cursor: pointer; }
@@ -481,7 +521,7 @@ body {
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
-    display: block;
+    display: none;
     font-size: 11px;
     color: #777;
     padding: 5px 30px 0 0; }
@@ -554,7 +594,7 @@ body {
 
 .tc-main-panel .tc-toolbar {
   background: rgba(244, 244, 244, 0.9);
-  border-bottom: 1px dotted #dededf; }
+  border-bottom: 1px solid #dededf; }
   .tc-main-panel .tc-toolbar .tc-controls {
     margin: 22px 50px; }
     .tc-main-panel .tc-toolbar .tc-controls span {
@@ -587,7 +627,7 @@ body {
 .tc-main-panel .tc-sheet {
   padding-bottom: 50px; }
   .tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
-    padding: 0 50px; }
+    margin: 0 50px; }
   .tc-main-panel .tc-sheet .tc-full-section {
     padding: 0; }
   .tc-main-panel .tc-sheet .tc-title-section {
@@ -897,27 +937,9 @@ body {
   text-align: center;
   vertical-align: middle;
   color: #999; }
-.order-edit .tc-total-section,
-.order-show .tc-total-section {
-  text-align: right;
-  margin-bottom: 50px; }
-  .order-edit .tc-total-section .total-label,
-  .order-show .tc-total-section .total-label {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: right;
-    font-style: italic;
-    color: #999;
-    font-size: 12px; }
-  .order-edit .tc-total-section .total-value,
-  .order-show .tc-total-section .total-value {
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: 80px;
-    font-size: 60px;
-    line-height: 60px;
-    text-align: right;
-    color: #0060b2; }
+.order-edit .tc-total-price,
+.order-show .tc-total-price {
+  margin-right: 50px; }
 
 /*************************************************/
 /*****     Section Order:show.html.twig      *****/

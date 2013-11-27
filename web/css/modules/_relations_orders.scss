@@ -85,28 +85,8 @@
         }
     }
     
-    .tc-total-section{
-        text-align:right;
-        margin-bottom: 50px;
-        
-        .total-label{
-            display:inline-block;
-            vertical-align:middle;
-            text-align:right;
-        font-style: italic;
-            color: #999;
-            font-size: 12px;
-        }
-        
-        .total-value{
-            display:inline-block;
-            vertical-align:middle;
-            padding-left:80px;
-            font-size: 60px;
-            line-height:60px;
-            text-align: right;
-            color: #0060b2;
-        }
+    .tc-total-price{
+        margin-right: 50px;
     }
 }
 
