@@ -12,7 +12,6 @@ use TC\CoreBundle\Validator\Constraints as TCAssert;
  * @TCAssert\Deliverable()
  * @ORM\Table(name="tc_deliverable")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="TC\CoreBundle\Entity\DeliverableRepository") 
  */
 class Deliverable
 {
@@ -120,6 +119,23 @@ class Deliverable
      * @ORM\Column(name="billed_at", nullable=true, type="datetime")
      */
     private $billed_at;
+    
+    /**
+     * Progress value based on 100
+     *
+     * @var integer $progress
+     * 
+     * @ORM\Column(name="progress", type="integer")
+     */
+    private $progress = 0;
+    
+    /**
+     *
+     * @var integer $due_at
+     * 
+     * @ORM\Column(name="due_at", nullable=true, type="datetime")
+     */
+    private $due_at;
     
     /**
      * Get id
@@ -382,5 +398,57 @@ class Deliverable
     public function getBilled()
     {
         return $this->billed;
+    }
+
+    /**
+     * Set progress
+     *
+     * @param integer $value
+     * @return Deliverable
+     */
+    public function setProgress($value)
+    {
+        if( $value > 100 )
+            $value = 100;
+        
+        if( $value < 0 )
+            $value = 0;
+        
+        $this->progress = $value;
+    
+        return $this;
+    }
+
+    /**
+     * Get progress
+     *
+     * @return integer 
+     */
+    public function getProgress()
+    {
+        return $this->progress;
+    }
+
+    /**
+     * Set due_at
+     *
+     * @param \DateTime $dueAt
+     * @return Deliverable
+     */
+    public function setDueAt($dueAt)
+    {
+        $this->due_at = $dueAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get due_at
+     *
+     * @return \DateTime 
+     */
+    public function getDueAt()
+    {
+        return $this->due_at;
     }
 }

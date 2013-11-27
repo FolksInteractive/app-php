@@ -51,7 +51,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777;
+  border: 3px solid #777777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -210,6 +210,7 @@ input[type='email'] {
   width: 34px;
   height: 28px;
   background: url("/img/icons/icon-talk-bubble.jpg");
+  margin: 3px 3px 0 0;
   color: #fff; }
 
 .icon-add-user {
@@ -296,20 +297,15 @@ input[type='email'] {
     color: #333;
     font-weight: normal;
     padding-top: 5px; }
-.tc-table > tbody > tr .tc-discussion-col {
-  width: 120px; }
-  .tc-table > tbody > tr .tc-discussion-col .badge-talk-bubble {
-    text-align: center;
-    margin: auto; }
-.tc-table > tbody > tr .tc-progress-col {
+.tc-table > tbody > tr .tc-progressbar-col {
   width: auto; }
-  .tc-table > tbody > tr .tc-progress-col .progress {
+  .tc-table > tbody > tr .tc-progressbar-col .progress {
     margin-bottom: 0; }
-  .tc-table > tbody > tr .tc-progress-col .progress-label {
+  .tc-table > tbody > tr .tc-progressbar-col .progress-label {
     text-align: right;
     font-weight: bold;
     padding-right: 10px; }
-  .tc-table > tbody > tr .tc-progress-col .total-value {
+  .tc-table > tbody > tr .tc-progressbar-col .total-value {
     text-align: right;
     font-weight: bold;
     padding-right: 9px;
@@ -344,8 +340,7 @@ a:hover {
 
 p {
   font-size: 14px;
-  padding-bottom: 20px;
-  color: #555555; }
+  padding-bottom: 20px; }
 
 ul {
   margin: 0; }
@@ -361,7 +356,7 @@ ul {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #fff;
+      border-left: 15px solid white;
       position: absolute;
       left: 0;
       top: 0; }
@@ -382,7 +377,7 @@ ul {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #ddd;
+      border-left: 15px solid #dddddd;
       position: absolute;
       right: -15px;
       top: 0;
@@ -414,7 +409,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -456,7 +451,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: inline-block; }
 
 .spacer {
@@ -488,7 +483,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
+    border-left: 4px solid #777777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -574,7 +569,7 @@ body {
 .tc-heading-section > h2 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   padding-bottom: 10px; }
 .tc-heading-section > p {
@@ -584,32 +579,18 @@ body {
   color: #555555;
   border-bottom: 1px solid #dededf; }
 
-.tc-body-section > .tc-rfp-body > .tc-offer-block {
-  padding-left: 20px;
-  border-left: 4px solid #0a6895; }
-  .tc-body-section > .tc-rfp-body > .tc-offer-block > h3 {
-    font-size: 18px;
-    color: #0a6895;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    padding: 5px 0; }
-  .tc-body-section > .tc-rfp-body > .tc-offer-block > p {
-    padding-bottom: 5px; }
-
-.tc-main-panel .tc-sheet {
-  padding-bottom: 50px; }
-  .tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
-    padding: 0 50px; }
-  .tc-main-panel .tc-sheet .tc-full-section {
-    padding: 0; }
-  .tc-main-panel .tc-sheet .tc-title-section {
-    text-align: center;
-    margin: 20px 0; }
-    .tc-main-panel .tc-sheet .tc-title-section p {
-      font-style: italic;
-      color: #ccc;
-      margin-top: -10px;
-      font-size: 12px; }
+.tc-main-panel .tc-sheet > [class*="-section"], .tc-main-panel .tc-sheet > [class$="-section"] {
+  padding: 0 50px; }
+.tc-main-panel .tc-sheet .tc-full-section {
+  padding: 0; }
+.tc-main-panel .tc-sheet .tc-title-section {
+  text-align: center;
+  margin: 20px 0; }
+  .tc-main-panel .tc-sheet .tc-title-section p {
+    font-style: italic;
+    color: #ccc;
+    margin-top: -10px;
+    font-size: 12px; }
 
 .tc-main-panel .tc-toolbar {
   height: 90px;
@@ -792,10 +773,22 @@ body {
 .relation-orders .cost {
   width: 80px;
   text-align: center; }
+.relation-orders .tc-requests-section th,
+.relation-orders .tc-suggestions-section th,
+.relation-orders .tc-orders-section th {
+  padding: 5px 0; }
 .relation-orders td.user img {
   width: 30px; }
 .relation-orders td.request {
   font-weight: bold; }
+
+.relation-progress .tc-progress-section .tc-progress-col {
+  width: 100px; }
+.relation-progress .tc-progress-section .tc-date-col {
+  width: 155px; }
+.relation-progress .tc-progress-section .datepicker-popup {
+  left: inherit !important;
+  right: 50px; }
 
 .invoice-show .tc-total-section {
   text-align: right;
@@ -929,7 +922,7 @@ body {
 .order-show .tc-offer-section .offer h1 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 20px 0 10px 0;
   color: #0a6895; }
 .order-show .tc-offer-section .offer-subtitle {
@@ -952,7 +945,7 @@ body {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -965,8 +958,8 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
@@ -978,7 +971,7 @@ body {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1029,7 +1022,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700; }
 .order-edit .tc-offer-section .tc-body-group {
   margin-bottom: 0; }
@@ -1130,40 +1123,18 @@ body {
   border-left: 1px solid #dededf;
   top: 90px;
   right: 0;
-  bottom: 130px;
-  width: 350px; }
+  bottom: 0;
+  width: 370px;
+  padding: 0 0 15px 15px; }
   .tc-side-thread-section .enscroll-track {
     margin-top: 2px; }
-  .tc-side-thread-section .avatar {
-    width: 32px;
-    height: 32px; }
-  .tc-side-thread-section .person {
-    font-weight: bold;
-    font-size: 18px; }
 
 #thread_scrollable_section {
   height: 100%;
   overflow: auto;
   padding-right: 10px;
   padding-top: 15px;
-  width: 370px;
-  padding: 15px 0 15px 15px; }
-
-.tc-comments-section .media-body {
-  padding-top: 10px; }
-
-.tc-discuss-section {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 15px;
-  height: 130px;
-  background: #eeeeee;
-  width: 350px;
-  border-left: 1px solid #dededf;
-  border-top: 1px solid #dededf; }
-  .tc-discuss-section .submit_comment {
-    text-align: right; }
+  width: 370px; }
 
 .tc_user {
   height: 100%;

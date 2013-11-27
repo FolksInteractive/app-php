@@ -180,6 +180,17 @@
     
     .tc-progress-section{
         
+        .tc-progress-col{
+            width:100px;
+        }
+        .tc-date-col{
+            width:155px;
+        }
+        
+        .datepicker-popup{
+            left:inherit !important;
+            right:50px;
+        }
     }
 }
 
@@ -201,6 +212,6 @@
 .relation-invoices{
     
     .tc-invoices-section{
-          
+        
     }
 }

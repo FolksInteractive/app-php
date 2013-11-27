@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Validator;
 use TC\CoreBundle\Entity\Deliverable;
 use TC\CoreBundle\Entity\Order;
+use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Mailer\Mailer;
 use TC\UserBundle\Entity\User;
@@ -114,17 +115,19 @@ class DeliverableManager {
      * @return Deliverable
      * @throws NotFoundHttpException
      */
-    public function findAllInProgressByRelation( Order $order, $id ) {
+    public function findAllInProgressByRelation( Relation $relation ) {
         try {
             /* @var $relation Order */
             $deliverable = $this->em->getRepository( "TCCoreBundle:Deliverable" )
-                    ->createQueryBuilder( "d" )
-                    ->where( "d.order = :order" )
-                    ->andWhere( "d.id = :id" )
-                    ->setParameter( "id", $id )
-                    ->setParameter( "order", $order )
+                    ->createQueryBuilder("d")
+                    ->join("TCCoreBundle:Order", "o", "WITH", "o.relation = :relation")
+                    ->where( "d MEMBER OF o.deliverables" )
+                    ->andWhere("o.approved = true")
+                    ->andWhere("o.active = true")
+                    ->andWhere("d.completed = false")
+                    ->setParameter( "relation", $relation )
                     ->getQuery()
-                    ->getSingleResult();
+                    ->getResult();
         } catch ( NoResultException $e ) {
             throw new NotFoundHttpException( 'Deliverable not found' );
         }
@@ -137,11 +140,8 @@ class DeliverableManager {
      * 
      * @throws AccessDeniedHttpException
      */
-    public function completeDeliverable(Deliverable $deliverable){
-        // Do nothing if already completed
-        if($deliverable->isCompleted())
-            return;
-        
+    public function complete(Deliverable $deliverable){
+                
         //Only vendor can set a Deliverable to completed
         if($this->workspace != $deliverable->getOrder()->getRelation()->getVendor())
             throw new AccessDeniedHttpException();

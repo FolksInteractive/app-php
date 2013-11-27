@@ -25,21 +25,21 @@ class Order
     
           
     /**
-     * @var boolean $approved
+     * @var string $approved
      *
      * @ORM\Column(name="heading", type="string")
      */
     private $heading;
           
     /**
-     * @var boolean $approved
+     * @var string $approved
      *
      * @ORM\Column(name="subheading", type="string", nullable=true)
      */
     private $subheading;
     
     /**
-     * @var integer $offer
+     * @var array $offer
      *
      * @ORM\Column(name="offer", type="array", nullable=true)
      */
