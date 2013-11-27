@@ -7,7 +7,7 @@
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
 {% block main_before %} 
-{% set attr = {'name':form.vars.name} %}
+{% set attr = {'name':"progressForm"} %}
 {% set attr = attr|merge({'ng-app':'Progress'}) %}
 {% set attr = attr|merge({'ng-controller':'progress.Controller'}) %}
 {% set attr = attr|merge({'novalidate':""}) %}   
@@ -27,11 +27,14 @@
     </div>
 
     <div class="tc-controls pull-right">
-        {% set attr = {'class':'btn-lg'} %}
-        {% set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
-        {% set attr = attr|merge({'disabled':""}) %}   
-        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
-        {{form_widget(form.submit, {'attr':attr})}}
+        <button type="submit"
+                name="{{form.submit.vars.full_name}}"
+                class="btn-lg btn btn-default"
+                disabled=""
+                ng-disabled="!progressForm.$dirty"
+                ng-class="{'btn-primary' : progressForm.$dirty}">
+            Save
+        </button>
     </div>
 {% endblock %}
 
@@ -66,15 +69,57 @@
                     <div class="main-description">{{deliverable.order.heading}}</div>
                     <div class="sub-description"><b>Purchased</b> on {{deliverable.order.approved_at}}</div>
                 </td>
-                <td class="tc-progress-col">
-                    <input type="number" class="form-control text-center"
-                           min="0" max="100"
-                           name="{{getDeliverableFormName(deliverable, 'due_at')}}"
-                           ng-model="deliverable.progress"
-                           ng-required="false" />
-                </td>
-                
                 <td class="tc-progressbar-col">
+                    
+                    <input type="text" class="hidden"
+                           name="{{getDeliverableFormName(deliverable, 'progress')}}"
+                           ng-model="deliverable.progress" />
+                    
+                    <div class="tc-progress-choices">
+                        <span class="tc-progress-choice label label-default"
+                              ng-class="{'active' : deliverable.progress >= 0 && deliverable.progress < 10  }"
+                              ng-click="setProgress(deliverable,0)">0%</span>
+                            
+                        <span class="tc-progress-choice label label-default"
+                              ng-class="{'active' : deliverable.progress >= 10 && deliverable.progress < 20  }"
+                              ng-click="setProgress(deliverable,10)">10%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 20 && deliverable.progress < 30  }"
+                              ng-click="setProgress(deliverable,20)">20%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 30 && deliverable.progress < 40  }"
+                              ng-click="setProgress(deliverable,30)">30%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 40 && deliverable.progress < 50  }"
+                              ng-click="setProgress(deliverable,40)">40%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 50 && deliverable.progress < 60  }"
+                              ng-click="setProgress(deliverable,50)">50%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 60 && deliverable.progress < 70  }"
+                              ng-click="setProgress(deliverable,60)">60%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 70 && deliverable.progress < 80  }"
+                              ng-click="setProgress(deliverable,70)">70%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 80 && deliverable.progress < 90  }"
+                              ng-click="setProgress(deliverable,80)">80%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 90 && deliverable.progress < 100  }"
+                              ng-click="setProgress(deliverable,90)">90%</span>
+                            
+                        <span class="tc-progress-choice label label-default" 
+                              ng-class="{'active' : deliverable.progress >= 100 }"
+                              ng-click="setProgress(deliverable,100)">100%</span>
+                    </div>
                     <div class="progress progress-striped">
                         <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: deliverable.progress+'%' } ">
                             <div class="progress-label">{{(deliverable.cost *  deliverable.progress / 100)|currency}}</div>
