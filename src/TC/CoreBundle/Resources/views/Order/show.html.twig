@@ -20,16 +20,15 @@
     </div>
 
     <div class="tc-deliverables-section">    
-        <legend>Deliverables <span>({{order.deliverables|length}})</span></legend>
 
-        <table class="tc-deliverables table table-hover">
+        <table class="tc-deliverables-table table">
             <thead>
                 <tr>
-                    <th class="no"></th>
-                    <th class="description">Description</th>
-                    <th class="cost">Unit price</th>
-                    <th class="quantity">Qty</th>
-                    <th class="subtotal">Subtotal</th>
+                    <th>#</th>
+                    <th class="left">Description</th>
+                    <th>Unit price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,21 +37,23 @@
                 {% set subTotal =  deliverable.cost * deliverable.quantity %}
                 {% set total =  total + subTotal %}
                 <tr>
-                    <td class="no">{{loop.index}}</td>
-                    <td class="description">{{deliverable.name}}</td>
-                    <td class="cost">{{deliverable.cost}}</td>
-                    <td class="quantity">{{deliverable.quantity}}</td>
-                    <td class="subtotal">$ {{subTotal|number_format(2, '.', ',')}}</td>
+                    <td class="tc-no tc-info-col">{{loop.index}}</td>
+                    <td class="tc-description tc-info-col">{{deliverable.name}}</td>
+                    <td class="tc-cost tc-info-col">$ {{deliverable.cost}}</td>
+                    <td class="tc-quantity tc-info-col">{{deliverable.quantity}}</td>
+                    <td class="tc-subtotal tc-info-col">$ {{subTotal|number_format(2, '.', ',')}}</td>
                 </tr>    
             {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <div class="tc-total-section">
+    <div class="tc-total-price">
     {% block total_section %} 
+        <div class="split"></div>
+        <div class="split"></div>
         <div class="total-label">Total</div>
-        <div class="total-value">$ {{total|number_format(2, '.', ',')}}</div>
+        <div class="price">$ {{total|number_format(2, '.', ',')}}</div>
     {% endblock %}
     </div>
 
