@@ -4,53 +4,51 @@
 
 .root {
     
-    .tc-menu-panel {
-        display: none;
-    }
-    
     .tc-toolbar {
         display: none;
     }
     
-    .tc-main-panel {
-        left: 0;
-    }
-    
     .tc-sheet {
-        margin-top: 50px;
+        margin-top: 20px;
     }
     
     .tc-over-section {
         text-align: center;
         
-        .description {
-            margin-top: 30px;
-            margin-bottom: 20px;
-            color: #aaa;
+        .welcome {
+            @include mega-title ();
+            font-size: 120px;
+            font-weight: 300;
+        }
+        
+        .desc {
+            margin-top: -10px;
+            margin-bottom: 10px;
             font-style: italic;
             
             p {
-                font-size: 13px;
+                color: $gray-light;
             }
         }
         
         .client {
             display: inline-block;
-            padding: 10px 40px 30px 40px;
+            padding: 0 40px 30px 40px;
             margin-right: 5px;
             vertical-align: top;
             max-width: 400px;
-            border: 1px dashed #dededf;
+            border-right: 1px dashed #dededf;
+            
+            .flat-img {
+                margin: 10px auto 20px auto;
+            }
             
             .provide {
                 height: 50px;
                 margin-top: 20px;
-            }
-            
-            .or {
-                padding: 10px 0;
-                color: #999;
-                font-size: 11px;
+                margin-bottom: 10px;
+                @include mega-title ();
+                font-size: 40px;
             }
             
             p {
@@ -60,21 +58,22 @@
         
         .vendor {
             display: inline-block;
-            padding: 10px 40px 30px 40px;
+            padding: 0 40px 30px 40px;
             margin-left: 5px;
             vertical-align: top;
             max-width: 400px;
-            border: 1px dashed #dededf;
+            border-left: 1px dashed #dededf;
+            
+            .flat-img {
+                margin: 10px auto 20px auto;
+            }
             
             .provide {
                 height: 50px;
                 margin-top: 20px;
-            }
-            
-            .or {
-                padding: 10px 0;
-                color: #999;
-                font-size: 11px;
+                margin-bottom: 10px;
+                @include mega-title ();
+                font-size: 40px;
             }
             
             p {
