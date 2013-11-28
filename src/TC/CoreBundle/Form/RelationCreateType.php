@@ -26,6 +26,7 @@ class RelationCreateType extends AbstractType {
         $builder
                 ->add( 'vendor', 'email', array("mapped" => false))
                 ->add( 'client', 'email', array("mapped" => false))
+                ->add( 'notify', 'checkbox', array("mapped" => false))
         ;
 
         // This EventListener is for trying to find an 

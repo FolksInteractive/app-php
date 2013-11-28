@@ -1,5 +1,67 @@
 {% extends 'TCCoreBundle:Vendor:skeleton.html.twig' %}
 
-{% use "TCCoreBundle:Relation:new.html.twig" with body_class as base_body_class %}
+{% block body_class %} {{parent()}} relation-new  {% endblock %}
 
-{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    <ul class="breadcrumb">
+        <li class="previous">    
+            <a href="{{path('client_relation')}}">
+                <i class="icon-relations-dark-large"></i>Service Providers
+            </a>
+        </li>
+        <li class="active"><a href="#">Add a Person</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block main_attrs %} 
+ng-app=""
+{% endblock %}
+
+{% block main_before %} 
+{% set attr = {'name': 'createForm'} %}
+{% set attr = attr|merge({'novalidate':""}) %}  
+{{form_start(form, {'attr' : attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {'render_rest':false})}}
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-relations-section">
+    <legend>Invite a New Customer by Email</legend>
+    <h4>Grow your business by adding new customers to TimeCrumbs.</h4>
+        <div id="tc_relation_create_form">
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">@</span>
+                    {% set attr = {'class': 'input-lg'} %}
+                    {% set attr = attr|merge({'placeholder': "Enter your customer's email adress" }) %}
+                    {% set attr = attr|merge({'ng-required':"true"}) %}  
+                    {% set attr = attr|merge({'ng-model':"email"}) %}  
+                    {{ form_widget(form.client, {'attr':attr}) }}
+            </div>
+            <div class="checkbox">
+                <label for="{{ form.notify.vars.id }}">
+                    {{ form_widget(form.notify, {'attr':{'checked':'checked'}}) }} I would like to notify him/her by email.
+                </label>
+            </div>
+
+            <button type="submit" name="{{form.submit.vars.name}}"
+                    ng-disabled="createForm.$invalid"
+                    disabled=""
+                    class="btn btn-primary btn-lg">
+                <span class="icon-add-user"></span> Create Relationship
+            </button>
+
+        </div>
+</div>
+{% endblock %}
+
+
+
+
+
