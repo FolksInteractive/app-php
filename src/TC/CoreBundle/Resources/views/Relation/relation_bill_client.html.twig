@@ -1,0 +1,16 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% use "TCCoreBundle:Relation:relation_bill_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:billMenu',[],{"relation": relation}) %}           
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right"></div>
+{% endblock %}

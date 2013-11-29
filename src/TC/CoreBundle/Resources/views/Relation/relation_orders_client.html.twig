@@ -1,0 +1,47 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% block body_class %} {{parent()}} relation-orders  {% endblock %}
+
+{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:ordersMenu',[],{"relation": relation}) %}
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+{% endblock %}
+
+{% block sheet %}
+
+<div class="tc-orders-section">      
+    <table class="tc-orders table">
+        <thead>
+            <tr>
+                <th class="tc-order-heading-col"></th>
+                <th class="tc-order-thread-col"></th>
+                <th class="tc-order-cost-col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in relation.getOrdersOpen() if order.ready %}
+                <tr>
+                <td class="tc-order-heading-col">
+                    <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                        {{order.heading|default('proposal')}}
+                    </a>
+                </td>
+                <td class="tc-order-thread-col">
+                    <span class="badge badge-talk-bubble">
+                        {{order.thread.getNumComments()}}
+                    </span>
+                </td>
+                <td class="tc-order-cost-col">
+                    {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
+                </td>
+                </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+</div> 
+{% endblock %}

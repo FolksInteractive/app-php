@@ -23,7 +23,7 @@ class OrderController extends BaseController {
      *
      * @Route("/", name="vendor_relation_orders")
      * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Relation/orders.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_orders_vendor.html.twig")
      */
     public function ordersAction( $idRelation ) {
 
@@ -37,20 +37,27 @@ class OrderController extends BaseController {
     /**
      * Displays a form to edit an existing Order.
      *
-     * @Route("/new", name="vendor_order_new")
+     * @Route("/new/{idRFP}", name="vendor_order_new", defaults={"idOrder"=null})
      * @Route("/{idOrder}/edit", name="vendor_order_edit")
      * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Order/edit.html.twig")
+     * @Template("TCCoreBundle:Order:order_edit_vendor.html.twig")
      */
-    public function editAction( $idRelation, $idOrder = null ) {
+    public function editAction( $idRelation, $idOrder = null, $idRFP = null ) {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
+        // Check wether it is a new or an existing order
         if( $idOrder != null){
             $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
         }else{            
             $order = $this->getOrderManager()->create( $relation );
+            
+            if( $idRFP ){
+                $rfp = $this->getRFPManager()->findByRelation($relation, $idRFP);
+                $order->setRFP($rfp);
+            }
         }
+        
         $form = $this->createOrderForm( $order );
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
 
@@ -67,7 +74,7 @@ class OrderController extends BaseController {
      * @Route("/", name="vendor_order_create")
      * @Route("/{idOrder}/edit", name="vendor_order_update", defaults={"idOrder"=null})
      * @Method({"POST", "PUT"})
-     * @Template("TCCoreBundle:Vendor:Order/edit.html.twig")
+     * @Template("TCCoreBundle:Order:order_edit_vendor.html.twig")
      */
     public function updateAction( Request $request, $idRelation, $idOrder = null ) {
 
@@ -132,7 +139,7 @@ class OrderController extends BaseController {
      * Finds and displays a Order.
      *
      * @Route("/{idOrder}", name="vendor_order_show")
-     * @Template("TCCoreBundle:Vendor:Order/show.html.twig")
+     * @Template("TCCoreBundle:Order:order_show_vendor.html.twig")
      */
     public function showAction( Request $request, $idRelation, $idOrder ) {
 
@@ -164,9 +171,17 @@ class OrderController extends BaseController {
             $action = $this->generateUrl( 'vendor_order_update', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
         }
         
+        $rfps = $this->getRFPManager()->findAllUnproposedByRelation($order->getRelation());
+        
+        // Append the already refered RFP because it won't be returned by the 
+        // manager and we need into the list
+        if( $order->getRfp() !== null )
+            $rfps[] = ($order->getRfp());
+        
         $form = $this->createForm( new OrderType(), $order, array(
             'action' => $action,
             'method' => 'PUT',
+            'rfps' => $rfps
                 ) );
 
         $form->add( 'submit', 'submit', array('label' => 'Update') );

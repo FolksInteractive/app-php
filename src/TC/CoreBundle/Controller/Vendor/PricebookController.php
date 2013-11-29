@@ -15,7 +15,7 @@ class PricebookController extends Controller
 {
     /**
      * @Route("/", name="vendor_pricebook")
-     * @Template("TCCoreBundle:Vendor:Pricebook/soon.html.twig")
+     * @Template("TCCoreBundle:Pricebook:soon.html.twig")
      */
     public function soonAction()
     {

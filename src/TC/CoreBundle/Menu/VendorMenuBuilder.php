@@ -121,7 +121,7 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'client_relation_rfps',
             'routeParameters' => array('idRelation' => $idRelation)
                 ) );
-        $menu->setLabel( ".icon-rfps-dark RFP's" );
+        $menu->setLabel( ".icon-rfps-dark RFPs" );
 
         $menu->addChild( 'RFP', array(
             'route' => 'client_rfp_show',

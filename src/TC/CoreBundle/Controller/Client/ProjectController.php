@@ -23,7 +23,7 @@ class ProjectController extends Controller
      *
      * @Route("/", name="client_project")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Project/soon.html.twig")
+     * @Template("TCCoreBundle:Project:soon.html.twig")
      */
     public function soonAction(Request $request)
     {
@@ -38,7 +38,7 @@ class ProjectController extends Controller
      *
      * Route("/", name="client_project")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Project/index.html.twig")
+     * @Template("TCCoreBundle:Project:project_index_client.html.twig")
      */
     public function indexAction(Request $request)
     {
@@ -54,7 +54,7 @@ class ProjectController extends Controller
      *
      * Route("/", name="client_project_create")
      * @Method("POST")
-     * @Template("TCCoreBundle:Client:Project/new.html.twig")
+     * @Template("TCCoreBundle:Project:project_new_client.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -80,7 +80,7 @@ class ProjectController extends Controller
      *
      * Route("/new", name="client_project_new")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Project/new.html.twig")
+     * @Template("TCCoreBundle:Project:project_new_client.html.twig")
      */
     public function newAction()
     {
@@ -98,7 +98,7 @@ class ProjectController extends Controller
      *
      * Route("/{id}/edit", name="client_project_edit")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Project/edit.html.twig")
+     * @Template("TCCoreBundle:Project:project_edit_client.html.twig")
      */
     public function editAction($idProject)
     {
@@ -117,7 +117,7 @@ class ProjectController extends Controller
      *
      * Route("/{id}", name="client_project_update")
      * @Method("PUT")
-     * @Template("TCCoreBundle:Client:Project/edit.html.twig")
+     * @Template("TCCoreBundle:Project:project_edit_client.html.twig")
      */
     public function updateAction(Request $request, $idProject)
     {

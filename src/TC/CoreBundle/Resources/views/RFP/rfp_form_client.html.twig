@@ -1,0 +1,98 @@
+{# This template is made to be included with the "use" tag in the corresponding templates #}
+
+{% block main_attrs %} 
+ng-app="RFP" 
+ng-controller="rfp.Controller"
+{% endblock %}
+
+{% block main_before %} 
+{% set attr = {'id': 'rfpForm'} %}
+{% set attr = attr|merge({'name':form.vars.name}) %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{# there is no block controls in the skeleton this block should be called in the parent template #}
+{% block controls %}
+    <button name="{{form.submit.vars.full_name}}" 
+            class="btn btn-primary" 
+            ng-disabled="headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
+        Update
+    </button>
+
+    {% set attr = {'class':'btn-primary'} %}
+    {% set attr = attr|merge({'ng-disabled':"rfpForm.$invalid"}) %}   
+    {% set attr = attr|merge({'disabled':""}) %}   
+    {#form_widget(form.save_as_ready, {'attr':attr})#}
+{% endblock %}
+
+{% block sheet %}
+
+<div class="tc-heading-section" ng-form name="headingForm">   
+    <div class="form-group">
+        <input type="text" class="heading-input form-control input-lg" 
+               placeholder="Insert a title for your RFP"
+               name="{{form.heading.vars.full_name}}"
+               ng-model="rfp.heading"
+               ng-required="true">
+    </div>
+    <div class="form-group">
+        <input  type="text" class="subheading-input form-control input-lg"
+               placeholder="Insert a sub-title for your RFP"
+               name="{{form.subheading.vars.full_name}}"
+               ng-model="rfp.subheading">            
+    </div>  
+</div>
+<div class="tc-body-section">
+    <div class="tc-body-blocks"  ng-form name="bodyForm">
+    {% raw %}
+        <div class="tc-block" ng-repeat="block in rfp.body">
+            <div class="form-group">        
+                <input type="text" class="tc-block-title form-control"
+                       name="{{getBodyFormName(block, 'title')}}"
+                       ng-model="block.title"
+                       ng-required="true" />
+            </div>
+            <div class="form-group">        
+                <textarea class="tc-block-body form-control" row="5"
+                       name="{{getBodyFormName(block, 'body')}}"
+                       ng-model="block.body"
+                       ng-required="true"></textarea>
+            </div>
+        </div>
+    {% endraw %}
+    </div>
+        
+    <div class="spacer"></div>
+
+    <div class="form-group">        
+        <button type="button" class="btn btn-default btn-lg add-new"
+            disabled=""
+            ng-disabled="newBlockForm.$invalid"
+            ng-click="addBlock()"><span class="glyphicon glyphicon-plus-sign"></span> Add a New Block</button>
+    </div>
+</div>
+{% endblock %}
+
+{# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
+{% block bottom_js %}
+<script type="text/javascript" src="{{asset("/js/rfp/rfp-module.js")}}"></script>
+<script type="text/javascript">
+(function(ng, module){
+
+    module.value("rfp", {
+        heading: "{{form.heading.vars.value|default('')}}",
+        subheading: "{{form.subheading.vars.value|default('')}}",
+        body : {{form.body.vars.value|json_encode()|raw}}
+    });
+
+    module.value("form_name", "{{form.vars.name}}");
+
+})(angular, module);
+</script>
+{% endblock %}

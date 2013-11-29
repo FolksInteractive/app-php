@@ -2,7 +2,9 @@
 
 namespace TC\CoreBundle\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use TC\CoreBundle\Validator\Constraints as TCAssert;
@@ -88,8 +90,7 @@ class Order
      * @ORM\Column(name="completed", type="boolean")
      */
     private $completed = false;
-    
-    
+        
     /**
      * @var datetime $completed_at
      *
@@ -143,16 +144,24 @@ class Order
     private $thread;
     
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection $deliverables
+     * @var ArrayCollection $deliverables
      * 
      * @ORM\OneToMany(targetEntity="Deliverable", mappedBy="order", cascade={"persist", "remove"})
      */
     protected $deliverables;
     
+    /**
+     * @var RFP $rfp
+     * 
+     * @ORM\OneToOne(targetEntity="RFP", inversedBy="order", cascade={"persist"})
+     * @ORM\JoinColumn(unique=true)
+     */
+    protected $rfp;
+    
     public function __construct()
     {
         $this->deliverables = new ArrayCollection();
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
     }
     
     /**
@@ -212,7 +221,7 @@ class Order
      */
     public function setApproved($approved)
     {
-        $this->approved_at = ($approved) ? new \DateTime() : null;
+        $this->approved_at = ($approved) ? new DateTime() : null;
         $this->approved = $approved;
     }
 
@@ -242,7 +251,7 @@ class Order
      */
     public function setCompleted($completed)
     {
-        $this->completed_at = new \DateTime();
+        $this->completed_at = new DateTime();
         $this->completed = $completed;
     }
 
@@ -263,7 +272,7 @@ class Order
      */
     public function setBilled($billed)
     {
-        $this->billed_at = new \DateTime();
+        $this->billed_at = new DateTime();
         $this->billed = $billed;
     }
 
@@ -380,7 +389,7 @@ class Order
     /**
      * Get list of deliverables
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getDeliverables()
     {
@@ -390,7 +399,7 @@ class Order
     /**
      * Get list of deliverables
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getDeliverablesTodo()
     {
@@ -402,7 +411,7 @@ class Order
     /**
      * Get list of deliverables
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getDeliverablesCompleted()
     {
@@ -434,7 +443,7 @@ class Order
     /**
      * Set approved_at
      *
-     * @param \DateTime $approvedAt
+     * @param DateTime $approvedAt
      * @return Order
      */
     public function setApprovedAt($approvedAt)
@@ -457,7 +466,7 @@ class Order
     /**
      * Set completed_at
      *
-     * @param \DateTime $completedAt
+     * @param DateTime $completedAt
      * @return Order
      */
     public function setCompletedAt($completedAt)
@@ -470,7 +479,7 @@ class Order
     /**
      * Get completed_at
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getCompletedAt()
     {
@@ -490,7 +499,7 @@ class Order
     /**
      * Set billed_at
      *
-     * @param \DateTime $billedAt
+     * @param DateTime $billedAt
      * @return Order
      */
     public function setBilledAt($billedAt)
@@ -503,7 +512,7 @@ class Order
     /**
      * Get billed_at
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getBilledAt()
     {
@@ -623,5 +632,28 @@ class Order
     public function getSubheading()
     {
         return $this->subheading;
+    }
+
+    /**
+     * Set rfp
+     *
+     * @param RFP $rfp
+     * @return Order
+     */
+    public function setRfp(RFP $rfp = null)
+    {
+        $this->rfp = $rfp;
+    
+        return $this;
+    }
+
+    /**
+     * Get rfp
+     *
+     * @return RFP 
+     */
+    public function getRfp()
+    {
+        return $this->rfp;
     }
 }

@@ -1,0 +1,23 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% block body_class %} {{parent()}} order-edit  {% endblock %}
+
+{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+
+{% use 'TCCoreBundle:RFP/form.html.twig' with bottom_js as form_bottom_js %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">        
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation}) %}
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right">
+        {{ block('controls') }}
+    </div>
+{% endblock %}
+
+{% block bottom_js %}
+{{ parent() }}
+{{ block('form_bottom_js') }}
+{% endblock %}

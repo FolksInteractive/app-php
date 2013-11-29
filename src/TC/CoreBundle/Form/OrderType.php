@@ -14,6 +14,15 @@ class OrderType extends AbstractType {
      */
     public function buildForm( FormBuilderInterface $builder, array $options ) {
         $builder
+            ->add( 'rfp', 'entity', array(
+                'class' => 'TC\CoreBundle\Entity\RFP',
+                'property' => 'heading',
+                'empty_value' => 'Select a corresponding RFP',
+                "required" => false,
+                "choices" => $options['rfps'],
+                "multiple" => false,
+                'empty_data'  => null
+            ))
             ->add( 'heading' )
             ->add( 'subheading' )
             ->add( 'offer', 'collection', array(
@@ -36,7 +45,8 @@ class OrderType extends AbstractType {
      */
     public function setDefaultOptions( OptionsResolverInterface $resolver ) {
         $resolver->setDefaults( array(
-            'data_class' => 'TC\CoreBundle\Entity\Order'
+            'data_class' => 'TC\CoreBundle\Entity\Order',
+            'rfps' => array()
         ) );
     }
 

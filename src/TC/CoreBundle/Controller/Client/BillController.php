@@ -18,7 +18,7 @@ class BillController extends BaseController {
     /**
      * @Route("/bill", name="client_relation_bill")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Relation/bill.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_bill_client.html.twig")
      */
     public function billAction( Request $request, $idRelation ) {
 
@@ -34,7 +34,7 @@ class BillController extends BaseController {
      *
      * @Route("/invoices", name="client_relation_invoices")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Relation/invoices.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_invoices_client.html.twig")
      */
     public function invoicesAction( $idRelation ) {
 
@@ -50,7 +50,7 @@ class BillController extends BaseController {
      *
      * @Route("/invoice/{idBill}", name="client_invoice_show")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Invoice/show.html.twig")
+     * @Template("TCCoreBundle:Invoice:invoice_show_client.html.twig")
      */
     public function invoiceAction ( $idBill, $idRelation) {
         

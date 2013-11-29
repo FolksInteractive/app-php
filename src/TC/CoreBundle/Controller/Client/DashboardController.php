@@ -16,7 +16,7 @@ class DashboardController extends BaseController {
      *
      * @Route("/", name="client_dashboard")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:dashboard.html.twig")
+     * @Template("TCCoreBundle::dashboard_client.html.twig")
      */
     public function showAction(  ) {
         $workspace = $this->getWorkspace();

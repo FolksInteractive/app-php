@@ -46,7 +46,7 @@ class Mailer {
     public function sendClientInvitation(Relation $relation) {
         $email = $relation->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/relation_invitation_email.txt.twig', array('relation' => $relation));
+        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/relation_invitation_client_email.txt.twig', array('relation' => $relation));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Relation #%s invitation client sent to %s", $relation->getId(), $email) );
@@ -59,7 +59,7 @@ class Mailer {
     public function sendVendorInvitation(Relation $relation) {
         $email = $relation->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Vendor:Notification/relation_invitation_email.txt.twig', array('relation' =>  $relation));
+        $rendered = $this->templating->render('TCCoreBundle:Vendor:Notification/relation_invitation_vendor_email.txt.twig', array('relation' =>  $relation));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Relation #%s invitation  vendor sent to %s", $relation->getId(), $email) );

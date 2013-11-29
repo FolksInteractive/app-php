@@ -1,0 +1,48 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% set thread = rfp.thread %}
+
+{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+
+{% use "TCCoreBundle:RFP:rfp_show_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Thread:thread_quick.html.twig" %}
+
+{% block body_class %} 
+{{parent()}} {{ block('base_body_class') }}  
+{% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation, "rfp":rfp}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+<div class="tc-controls toolbar pull-right">
+    <div class="btn-group">  
+        <a class="btn-default btn-lg btn" 
+           href="{{path('client_rfp_edit' , {'idRFP':rfp.id, 'idRelation': relation.id})}}">
+            Edit RFP
+        </a>
+        <button type="button" class=" btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>            
+        <ul class="dropdown-menu pull-right" role="menu">
+            <li><a href="#">Cancel rfp</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
+{% endblock %}
+
+{% block main_after %}
+{{ block('thread_section') }}
+{% endblock %}
+
+{% block bottom_js %}
+{{ block('thread_bottom_js') }}
+{% endblock %}

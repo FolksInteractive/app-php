@@ -21,7 +21,7 @@ class RFPController extends BaseController {
      *
      * @Route("/", name="vendor_relation_rfps")
      * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Relation/rfps.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_rfps_vendor.html.twig")
      */
     public function rfpsAction( $idRelation ) {
         
@@ -36,7 +36,7 @@ class RFPController extends BaseController {
      * Finds and displays a RFP.
      *
      * @Route("/{idRFP}", name="vendor_rfp_show")
-     * @Template("TCCoreBundle:Vendor:RFP/show.html.twig")
+     * @Template("TCCoreBundle:RFP:rfp_show_vendor.html.twig")
      */
     public function showAction( $idRelation, $idRFP ) {
         

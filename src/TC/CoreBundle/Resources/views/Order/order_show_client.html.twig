@@ -1,0 +1,67 @@
+{% extends 'TCCoreBundle:Relation/index.html.twig' %}
+
+{% set thread = order.thread %}
+
+{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+
+{% use "TCCoreBundle:Order:order_show_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Thread:thread_quick.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+    <div class="tc-controls toolbar pull-right">
+        {% if order.rfp is not null %}
+        <a class="btn-default btn-lg btn" 
+           href="{{path('client_rfp_show' , {'idRFP':order.rfp.id, 'idRelation': relation.id})}}">
+            View RFP
+        </a>   
+        {% endif %}
+        
+        <a class="btn-default btn-lg btn" 
+           href="{{path('client_order_show' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+            Refuse order
+        </a>
+            
+    </div>
+{% endblock %}
+
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
+{% endblock %}
+
+{%block purchase_section %}
+{% if purchaseForm is defined and purchaseForm is not null %}
+<div class="tc-agreement-section">
+    {{form_start(purchaseForm)}}
+        <div class="agree-check">
+            {{form_widget(purchaseForm.confirmation)}}
+            I accept the terms and conditions of the <a href="#">service agreement</a>.
+        </div>
+        <div class="agree-btn">
+            <button type="submit" class="btn btn-primary btn-large"
+                id="{{purchaseForm.submit.vars.id}}"
+                name="{{purchaseForm.submit.vars.full_name}}">
+                <i class="icon-shopping-cart icon-white"></i> 
+                Purchase Work
+            </button>
+        </div>
+    {{form_widget(purchaseForm._token)}}
+    {{form_end(purchaseForm, {'render_rest':false})}}
+</div>
+{% endif %}
+{% endblock %} 
+
+{% block main_after %}
+{{ block('thread_section') }}
+{% endblock %}
+
+{% block bottom_js %}
+{{ block('thread_bottom_js') }}
+{% endblock %}

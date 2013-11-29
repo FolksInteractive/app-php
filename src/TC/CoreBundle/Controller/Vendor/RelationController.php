@@ -23,7 +23,7 @@ class RelationController extends BaseController {
      *
      * @Route("/", name="vendor_relation")
      * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Relation/index.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_index_vendor.html.twig")
      */
     public function indexAction(Request $request)
     {
@@ -39,7 +39,7 @@ class RelationController extends BaseController {
      *
      * @Route("/", name="vendor_relation_create")
      * @Method("POST")
-     * @Template("TCCoreBundle:Vendor:Relation/new.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_new_vendor.html.twig")
      */
     public function createAction( Request $request ) {
         $relation = $this->getRelationManager()->createForVendor();
@@ -63,7 +63,7 @@ class RelationController extends BaseController {
      *
      * @Route("/new", name="vendor_relation_new")
      * @Method("GET")
-     * @Template("TCCoreBundle:Vendor:Relation/new.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_new_vendor.html.twig")
      */
     public function newAction() {
         $relation = $this->getRelationManager()->createForVendor();

@@ -22,7 +22,7 @@ class OrderController extends BaseController {
      * Finds and displays a relation.
      *
      * @Route("/", name="client_relation_orders")
-     * @Template("TCCoreBundle:Client:Relation/orders.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_orders_client.html.twig")
      */
     public function ordersAction( $idRelation ) {
 
@@ -37,7 +37,7 @@ class OrderController extends BaseController {
      * Finds and displays a Order.
      *
      * @Route("/{idOrder}", name="client_order_show")
-     * @Template("TCCoreBundle:Client:Order/show.html.twig")
+     * @Template("TCCoreBundle:Order:order_show_client.html.twig")
      */
     public function showAction( Request $request, $idRelation, $idOrder ) {
 

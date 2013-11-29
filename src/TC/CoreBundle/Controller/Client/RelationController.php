@@ -23,7 +23,7 @@ class RelationController extends BaseController {
      *
      * @Route("/", name="client_relation")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Relation/index.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_index_client.html.twig")
      */
     public function indexAction(Request $request)
     {
@@ -40,7 +40,7 @@ class RelationController extends BaseController {
      *
      * @Route("/", name="client_relation_create")
      * @Method("POST")
-     * @Template("TCCoreBundle:Client:Relation/new.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_new_client.html.twig")
      */
     public function createAction( Request $request ) {
         $relation = $this->getRelationManager()->createForClient();
@@ -64,7 +64,7 @@ class RelationController extends BaseController {
      *
      * @Route("/new", name="client_relation_new")
      * @Method("GET")
-     * @Template("TCCoreBundle:Client:Relation/new.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_new_client.html.twig")
      */
     public function newAction() {
         $relation = $this->getRelationManager()->createForClient();

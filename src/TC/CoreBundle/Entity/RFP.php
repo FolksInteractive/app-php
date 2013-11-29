@@ -79,11 +79,22 @@ class RFP
      */
     private $relation;
     
+    /**
+     * @var Order $order
+     * 
+     * @ORM\OneToOne(targetEntity="Order", mappedBy="rfp", cascade={"persist"})
+     * 
+     */
+    private $order;
+    
     public function __construct()
     {;
         $this->createdAt = new \DateTime();
     }
     
+    public function __toString() {
+        return $this->heading;
+    }
     /**
      * Get id
      *
@@ -271,5 +282,37 @@ class RFP
     {
         return $this->relation;
     }
+
+    /**
+     * Get ready
+     *
+     * @return boolean 
+     */
+    public function getReady()
+    {
+        return $this->ready;
+    }
+
+    /**
+     * Set order
+     *
+     * @param \TC\CoreBundle\Entity\RFP $order
+     * @return RFP
+     */
+    public function setOrder(\TC\CoreBundle\Entity\RFP $order = null)
+    {
+        $this->order = $order;
     
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return \TC\CoreBundle\Entity\RFP 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
 }

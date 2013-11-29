@@ -1,0 +1,40 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% block body_class -%}{{ parent() }} client-projects {% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+</div>
+
+<div class="tc-controls pull-right">
+    <a href="{{path('client_project_new')}}" class="btn-primary btn">
+        <i class="icon-projects"></i>
+        Open a new project
+    </a>
+</div>
+{% endblock %}
+
+{% block sheet %}
+<div class="tc-projects-section">
+    <legend>
+        Project List
+        <span class="badge">{{ projects|length }}</span>
+    </legend>
+    <table class="tc-projects table table-hover">
+        <thead>
+            <tr>
+                <th class="name"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}            
+            <tr>
+                <td class="name">
+                    {{project.name}}
+                </td>
+            </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

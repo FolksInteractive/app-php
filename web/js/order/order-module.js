@@ -2,7 +2,7 @@ var module = angular.module("Order", []);
 
 module.controller("order.Controller", function($scope, form_name, order){
     
-    console.log(order.deliverables);
+    $scope.form_name = form_name;
     
     function getFormName(prop){
         return form_name+"["+prop+"]";
@@ -27,10 +27,7 @@ module.controller("order.Controller", function($scope, form_name, order){
     
     $scope.addBlock = function(){
         //Add the new one to the list
-        $scope.order.offer.push($scope.newBlock);
-        
-        //Resets newOffer
-        $scope.newBlock = {'title':'', 'body':''};
+        $scope.order.offer.push({'title':'', 'body':''});
     
         $scope.offerForm.$setDirty();
     };
@@ -41,9 +38,17 @@ module.controller("order.Controller", function($scope, form_name, order){
         $scope.offerForm.$setDirty();
     }
     
-    // Store new deliverables 
-    $scope.newBlock = {'title':'', 'body':''};
+    $scope.offerIsEmpty = function(){
+        return order.offer.length<=0;
+    }
     
+    $scope.order = order;
+    
+    $scope.$watch("order.offer", function(newValue, oldValue){
+        if($scope.offerIsEmpty())
+            order.offer.push({'title':'', 'body':''})
+    });
+        
     /* **************************************** */    
     /* ******        DELIVERABLES        ****** */
     /* **************************************** */
@@ -73,6 +78,10 @@ module.controller("order.Controller", function($scope, form_name, order){
         $scope.deliverablesForm.$setDirty();
     }
     
+    $scope.deliverablesIsEmpty = function(){
+        return order.deliverables.length<=0;
+    }
+    
     // Store new deliverables 
     $scope.newDeliverable = {name:'', 'cost':null, 'quantity':1};
     /* *************************************** */
@@ -87,9 +96,7 @@ module.controller("order.Controller", function($scope, form_name, order){
         return total;
     }
     
-    $scope.form_name = form_name;
     
-    $scope.order = order;
     
     
 });

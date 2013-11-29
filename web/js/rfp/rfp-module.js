@@ -25,11 +25,8 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
     
     $scope.addBlock = function(){
         //Add the new one to the list
-        $scope.rfp.body.push($scope.newBlock);
-        
-        //Resets newOffer
-        $scope.newBlock = {'title':'', 'body':''};
-    
+        $scope.rfp.body.push({'title':'', 'body':''});
+            
         $scope.bodyForm.$setDirty();
     };
     
@@ -43,11 +40,12 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
         return (rfp.body.length <= 0);
     }
     
-    // Store new deliverables 
-    $scope.newBlock = {'title':'', 'body':''};
-    
     $scope.form_name = form_name;
     
     $scope.rfp = rfp;   
     
+    $scope.$watch("rfp.body", function(newValue, oldValue){
+        if($scope.isRFPEmpty())
+            rfp.body.push({'title':'', 'body':''})
+    });
 });
