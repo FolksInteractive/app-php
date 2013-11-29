@@ -834,7 +834,7 @@ body {
     background-color: #f5f5f5;
     color: #999999; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
-      border: 1px solid #cccccc; }
+      border: 1px solid #ccc; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
@@ -1101,53 +1101,66 @@ body {
 /*************************************************/
 /*****   Section root.html.twig   *****/
 /*************************************************/
-.root .tc-menu-panel {
-  display: none; }
 .root .tc-toolbar {
   display: none; }
-.root .tc-main-panel {
-  left: 0; }
 .root .tc-sheet {
-  margin-top: 50px; }
+  margin-top: 20px; }
 .root .tc-over-section {
   text-align: center; }
-  .root .tc-over-section .description {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: #aaa;
+  .root .tc-over-section .welcome {
+    font-weight: 300;
+    font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+    color: #0a6895;
+    padding-bottom: 10px;
+    font-size: 120px;
+    font-weight: 300; }
+  .root .tc-over-section .desc {
+    margin-top: -10px;
+    margin-bottom: 10px;
     font-style: italic; }
-    .root .tc-over-section .description p {
-      font-size: 13px; }
+    .root .tc-over-section .desc p {
+      color: #999999; }
   .root .tc-over-section .client {
     display: inline-block;
-    padding: 10px 40px 30px 40px;
+    padding: 0 40px 30px 40px;
     margin-right: 5px;
     vertical-align: top;
     max-width: 400px;
-    border: 1px dashed #dededf; }
+    border-right: 1px dashed #dededf; }
+    .root .tc-over-section .client .flat-img {
+      margin: 10px auto 20px auto; }
     .root .tc-over-section .client .provide {
       height: 50px;
-      margin-top: 20px; }
-    .root .tc-over-section .client .or {
-      padding: 10px 0;
-      color: #999;
-      font-size: 11px; }
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: 300;
+      font-size: 60px;
+      font-family: 'Open Sans', sans-serif;
+      color: #0a6895;
+      padding-bottom: 10px;
+      font-size: 40px; }
     .root .tc-over-section .client p {
       padding-top: 10px; }
   .root .tc-over-section .vendor {
     display: inline-block;
-    padding: 10px 40px 30px 40px;
+    padding: 0 40px 30px 40px;
     margin-left: 5px;
     vertical-align: top;
     max-width: 400px;
-    border: 1px dashed #dededf; }
+    border-left: 1px dashed #dededf; }
+    .root .tc-over-section .vendor .flat-img {
+      margin: 10px auto 20px auto; }
     .root .tc-over-section .vendor .provide {
       height: 50px;
-      margin-top: 20px; }
-    .root .tc-over-section .vendor .or {
-      padding: 10px 0;
-      color: #999;
-      font-size: 11px; }
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: 300;
+      font-size: 60px;
+      font-family: 'Open Sans', sans-serif;
+      color: #0a6895;
+      padding-bottom: 10px;
+      font-size: 40px; }
     .root .tc-over-section .vendor p {
       padding-top: 10px; }
   .root .tc-over-section .logo {
