@@ -16,7 +16,7 @@
 <div class="tc-controls pull-right">
     <a href="{{path('client_relation_new')}}" class="btn btn-primary btn-lg">
         <span class="icon-add-user"></span>
-        Add a Person
+        Add New
     </a>
 </div>
 {% endblock %}
@@ -24,13 +24,21 @@
 {% block sheet %}
 <div class="tc-relations-section">
 
-    <legend>Active Business Relationships <span>({{relations|length}})</span></legend>
+    <legend>Active Service Providers</legend>
     
     <div class="tc-relations-boxes">
-    {% for relation in relations %}
+    {% for relation in relations %} 
                     
-        <div class="col-sm-6 col-md-4  col-lg-3">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            
             <div class="thumbnail">
+                <div class="hover">
+                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="realhover"></a>
+                    <a class="btn btn-success btn-lg view-activities" role="button"
+                           href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
+                            View Activities
+                    </a>
+                </div>
                 <img class="img-rounded" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb')}}" />
                 <div class="caption">
                     
@@ -42,13 +50,13 @@
                         </h4>{{relation.vendor.getEmail()}}</h4>
                     {% endif %}
                     
-                    <div class="toolbar">
+                    <!--<div class="toolbar">
                         <a class="btn btn-primary" role="button"
                            href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
                             <span class="icon-check-small"></span>
                             View Activities
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

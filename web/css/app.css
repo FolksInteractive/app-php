@@ -1,12 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+a {
+  color: #1b85b2;
+  cursor: pointer; }
+
+a:hover {
+  text-decoration: none; }
+
+p {
+  font-size: 14px;
+  padding-bottom: 20px;
+  color: #555555;
+  line-height: 25px; }
+
 legend {
-  padding: 12px 16px;
+  padding: 10px 16px;
   font-weight: bold;
   font-size: 24px;
   margin: 60px 0 10px 0;
-  background: #f4f4f4;
-  border: 1px dotted #dededf;
-  border-radius: 4px; }
+  border-bottom: 1px dotted #dededf;
+  font-size: 24px;
+  color: #333333; }
   legend .badge {
     vertical-align: middle; }
   legend span {
@@ -51,7 +64,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777777;
+  border: 3px solid #777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -226,6 +239,13 @@ input[type='email'] {
   background-repeat: no-repeat;
   margin: 2px 5px 0 0; }
 
+/*.icon-check-small-dark{
+    width: 13px;
+    height: 11px;
+    background: url("/img/icons/icon-check-small-dark.png");
+    background-repeat: no-repeat;
+    margin: 2px 5px 0 0;
+}*/
 .enscroll-track {
   width: 10px;
   background: rgba(0, 0, 0, 0);
@@ -375,19 +395,6 @@ input[type='email'] {
   .tc-deliverables-table > tbody > tr .tc-subtotal {
     width: 100px; }
 
-a {
-  color: #1b85b2;
-  cursor: pointer; }
-
-a:hover {
-  text-decoration: none; }
-
-p {
-  font-size: 14px;
-  padding-bottom: 20px;
-  color: #555555;
-  line-height: 25px; }
-
 ul {
   margin: 0; }
 
@@ -402,7 +409,7 @@ ul {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid white;
+      border-left: 15px solid #fff;
       position: absolute;
       left: 0;
       top: 0; }
@@ -423,7 +430,7 @@ ul {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #dddddd;
+      border-left: 15px solid #ddd;
       position: absolute;
       right: -15px;
       top: 0;
@@ -455,7 +462,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -497,7 +504,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: inline-block; }
 
 .tc-menu-panel {
@@ -517,7 +524,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777777;
+    border-left: 4px solid #777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -603,7 +610,7 @@ body {
 .tc-heading-section > h2 {
   font-weight: 300;
   font-size: 60px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #0a6895;
   padding-bottom: 10px; }
 .tc-heading-section > p {
@@ -797,10 +804,37 @@ body {
   margin-top: 30px; }
   .client-relations .tc-relations-boxes .thumbnail,
   .vendor-relations .tc-relations-boxes .thumbnail {
-    padding: 20px 0; }
+    position: relative;
+    padding: 0; }
+    .client-relations .tc-relations-boxes .thumbnail .hover,
+    .vendor-relations .tc-relations-boxes .thumbnail .hover {
+      -webkit-transition: opacity 0.2s ease-out;
+      opacity: 0;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100.5%;
+      height: 100.5%;
+      border-radius: 4px;
+      color: #fff;
+      margin: -1px 0 -1px 0; }
+      .client-relations .tc-relations-boxes .thumbnail .hover .realhover,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .realhover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0; }
+      .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
+        margin-top: 105px;
+        position: absolute;
+        margin-left: -76px;
+        left: 50%; }
+    .client-relations .tc-relations-boxes .thumbnail .hover:hover,
+    .vendor-relations .tc-relations-boxes .thumbnail .hover:hover {
+      display: block; }
     .client-relations .tc-relations-boxes .thumbnail img,
     .vendor-relations .tc-relations-boxes .thumbnail img {
-      margin: 0px auto;
+      margin: 10px auto 0 auto;
       max-width: 140px; }
     .client-relations .tc-relations-boxes .thumbnail .caption h3,
     .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
@@ -813,6 +847,9 @@ body {
     .client-relations .tc-relations-boxes .thumbnail .toolbar,
     .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
       margin-top: 20px; }
+  .client-relations .tc-relations-boxes .thumbnail:hover .hover,
+  .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
+    opacity: 1; }
 
 .relation-orders .user {
   width: 30px; }
@@ -958,7 +995,7 @@ body {
 .order-show .tc-offer-section .offer h1 {
   font-weight: 300;
   font-size: 60px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 20px 0 10px 0;
   color: #0a6895; }
 .order-show .tc-offer-section .offer-subtitle {
@@ -981,7 +1018,7 @@ body {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #dddddd; }
+  border-top: 1px solid #ddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -994,8 +1031,8 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 white;
-    box-shadow: 8px 5px 14px 1px #333333; }
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 8px 5px 14px 1px #333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
@@ -1007,7 +1044,7 @@ body {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1058,7 +1095,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700; }
 .order-edit .tc-offer-section .tc-body-group {
   margin-bottom: 0; }
