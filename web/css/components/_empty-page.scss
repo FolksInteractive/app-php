@@ -1,0 +1,32 @@
+//
+// Components/Empty-Page
+// --------------------------------------------------
+
+// Variables 
+// -------------------------
+
+// Imports 
+// -------------------------
+
+// Basic Elements 
+// -------------------------
+
+.tc-empty-page {
+    position: relative;
+    top: 20px;
+    text-align: center;
+    padding: 40px 0 30px 0;
+    border: 1px dashed $gray-border-color;
+    border-radius: 12px;
+    margin: 100px;
+    
+    > .title > h3 {
+        @include mega-title ();
+        font-size: 40px;
+        padding-bottom: 10px;
+    }
+    
+    > .description a {
+        font-weight: bold;
+    }
+}

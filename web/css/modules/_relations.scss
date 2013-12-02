@@ -98,11 +98,11 @@
 .vendor-relations{    
     .tc-relations-boxes{
         text-align: center;
-        margin-top: 30px;
+        margin: 30px -15px;
         
         .thumbnail {
             position: relative;
-            padding: 0;
+            padding: 0 0 12px 0;
             
             .hover {
                 -webkit-transition: opacity 0.2s ease-out;
@@ -123,7 +123,7 @@
                 }
                 
                 .view-activities {
-                    margin-top: 105px;
+                    margin-top: 135px;
                     position: absolute;
                     margin-left: -76px;
                     left: 50%;
@@ -135,7 +135,7 @@
             }
             
             img {
-                margin: 10px auto 0 auto;
+                margin: 20px auto 0 auto;
                 max-width: 140px;
             }
             
@@ -143,6 +143,7 @@
                 h3 {
                     height: 52px;
                     overflow: hidden;
+                    margin: 12px 0 0 0;
                 }
             }
             
@@ -155,7 +156,10 @@
                 margin-top:20px;
             }
             
-            
+            .tc-user-progress {
+                margin: 15px 25px;
+            }
+               
         }
         
         .thumbnail:hover .hover {

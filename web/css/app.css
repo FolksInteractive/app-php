@@ -13,7 +13,7 @@ p {
   line-height: 25px; }
 
 legend {
-  padding: 10px 16px;
+  padding: 10px 16px 10px 0;
   font-weight: bold;
   font-size: 24px;
   margin: 60px 0 10px 0;
@@ -454,6 +454,9 @@ body {
   overflow-x: hidden;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+.none {
+  display: none; }
+
 .tc-breadcrumb {
   color: #333;
   font-weight: 200;
@@ -506,6 +509,25 @@ body {
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
     display: inline-block; }
+
+.tc-empty-page {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  padding: 40px 0 30px 0;
+  border: 1px dashed #dededf;
+  border-radius: 12px;
+  margin: 100px; }
+  .tc-empty-page > .title > h3 {
+    font-weight: 300;
+    font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+    color: #0a6895;
+    padding-bottom: 10px;
+    font-size: 40px;
+    padding-bottom: 10px; }
+  .tc-empty-page > .description a {
+    font-weight: bold; }
 
 .tc-menu-panel {
   color: #fff;
@@ -801,11 +823,11 @@ body {
 .client-relations .tc-relations-boxes,
 .vendor-relations .tc-relations-boxes {
   text-align: center;
-  margin-top: 30px; }
+  margin: 30px -15px; }
   .client-relations .tc-relations-boxes .thumbnail,
   .vendor-relations .tc-relations-boxes .thumbnail {
     position: relative;
-    padding: 0; }
+    padding: 0 0 12px 0; }
     .client-relations .tc-relations-boxes .thumbnail .hover,
     .vendor-relations .tc-relations-boxes .thumbnail .hover {
       -webkit-transition: opacity 0.2s ease-out;
@@ -825,7 +847,7 @@ body {
         left: 0; }
       .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
       .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
-        margin-top: 105px;
+        margin-top: 135px;
         position: absolute;
         margin-left: -76px;
         left: 50%; }
@@ -834,12 +856,13 @@ body {
       display: block; }
     .client-relations .tc-relations-boxes .thumbnail img,
     .vendor-relations .tc-relations-boxes .thumbnail img {
-      margin: 10px auto 0 auto;
+      margin: 20px auto 0 auto;
       max-width: 140px; }
     .client-relations .tc-relations-boxes .thumbnail .caption h3,
     .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
       height: 52px;
-      overflow: hidden; }
+      overflow: hidden;
+      margin: 12px 0 0 0; }
     .client-relations .tc-relations-boxes .thumbnail .pro-title,
     .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
       font-size: 14px;
@@ -847,6 +870,9 @@ body {
     .client-relations .tc-relations-boxes .thumbnail .toolbar,
     .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
       margin-top: 20px; }
+    .client-relations .tc-relations-boxes .thumbnail .tc-user-progress,
+    .vendor-relations .tc-relations-boxes .thumbnail .tc-user-progress {
+      margin: 15px 25px; }
   .client-relations .tc-relations-boxes .thumbnail:hover .hover,
   .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
     opacity: 1; }

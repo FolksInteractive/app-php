@@ -25,23 +25,23 @@
 <div class="tc-relations-section">
 
     <legend>Active Service Providers</legend>
-    
+
     <div class="tc-relations-boxes">
     {% for relation in relations %} 
-                    
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            
-            <div class="thumbnail">
-                <div class="hover">
-                    <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="realhover"></a>
-                    <a class="btn btn-success btn-lg view-activities" role="button"
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+
+                <div class="thumbnail">
+                    <div class="hover">
+                        <a href="{{path('client_relation_orders',{'idRelation': relation.id})}}" class="realhover"></a>
+                        <a class="btn btn-success btn-lg view-activities" role="button"
                            href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
                             View Activities
-                    </a>
-                </div>
-                <img class="img-rounded" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb')}}" />
-                <div class="caption">
-                    
+                        </a>
+                    </div>
+                    <img class="img-circle" src="{{vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb')}}" />
+                    <div class="caption">
+
                     {% if relation.vendor.getFirstName() and relation.vendor.getLastName() %}
                         <h3>{{relation.vendor.getFirstName()}} <br /> 
                             <small>{{relation.vendor.getLastName()}}</small>
@@ -49,23 +49,28 @@
                     {% else %}
                         </h4>{{relation.vendor.getEmail()}}</h4>
                     {% endif %}
-                    
-                    <!--<div class="toolbar">
-                        <a class="btn btn-primary" role="button"
-                           href="{{path('client_relation_orders',{'idRelation': relation.id})}}">
-                            <span class="icon-check-small"></span>
-                            View Activities
-                        </a>
-                    </div>-->
+                    </div>
+                    <div class="progress progress-striped tc-user-progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-            
+
     {% endfor %}
-    </div>
+
+        </div>
 
     {# Not for BETA
     <legend>Inactive Business Relationships <span>(0)</span></legend>
     #}
-</div>
+    </div>
+
+    <div class="none">
+        {% use "TCCoreBundle::empty.html.twig" %}
+        {{ block('empty_relations_client') }}
+        </div>
+
+
 {% endblock %}
