@@ -675,11 +675,20 @@
 {% spaceless %}
     {% set global_errors = global_errors|default(false) %}
     {% if errors|length > 0 %}
-        <ul{% if not global_errors %} class="help-block"{% endif %}>
-            {% for error in errors %}
-                <li>{{ error.message }}</li>
-            {% endfor %}
-        </ul>
+        <div class="alert alert-danger">
+            
+            {% if errors|length <= 1 %}
+                <h4>Opps something! You may want to correct this error : </h4>
+            {% else %}
+                <h4>Opps something! You may want to correct these errors : </h4>
+            {% endif %}
+            
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 {% endspaceless %}
 {% endblock form_errors %}
