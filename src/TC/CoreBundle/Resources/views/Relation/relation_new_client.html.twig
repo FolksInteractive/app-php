@@ -26,6 +26,7 @@ ng-app=""
 
 {% block sheet %}
 <div class="tc-relations-section">
+    {{ form_errors(form) }}
     <legend>Invite a New Service Providers by Email</legend>
     <h4>Grow your business by adding new services providers to TimeCrumbs.</h4>
         <div id="tc_relation_create_form">
@@ -35,6 +36,7 @@ ng-app=""
                     {% set attr = {'class': 'input-lg'} %}
                     {% set attr = attr|merge({'placeholder': "Enter your service provider's email adress" }) %}
                     {% set attr = attr|merge({'ng-required':"true"}) %}  
+                    {% set attr = attr|merge({'ng-init':"email = '"~ form.vendor.vars.value ~ "'"}) %}  
                     {% set attr = attr|merge({'ng-model':"email"}) %}  
                     {{ form_widget(form.vendor, {'attr':attr}) }}
             </div>
