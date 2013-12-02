@@ -105,7 +105,7 @@ class Mailer {
 
         $message = Swift_Message::newInstance()
                 ->setSubject($subject)
-                ->setFrom($this->from_email)
+                ->setFrom($this->from_email, "TimeCrumbs")
                 ->setTo($toEmail)
                 ->setBody($body)
                 ->setContentType("text/html");
