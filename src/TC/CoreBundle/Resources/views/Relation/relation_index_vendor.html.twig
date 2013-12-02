@@ -52,7 +52,9 @@
                             <small>{{relation.client.getLastName()}}</small>
                         </h3>
                     {% else %}
-                        </h4>{{relation.client.getEmail()}}</h4>
+                        <h3>{{relation.client.getEmail()}} <br /> 
+                            <small>Pending registration</small>
+                        </h3>
                     {% endif %}
                     </div>
                     <div class="tc-user-progress">
