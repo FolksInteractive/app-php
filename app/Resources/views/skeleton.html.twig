@@ -24,14 +24,14 @@
                 <a data-toggle="dropdown" class="profile-links client" href="#">
                     <div class="profile">
                         <img src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('30_thumb')}}">
-                        <div class="name">{{app.user.fullName}}!</div>
+                        <div class="name">{{app.user.fullName}}</div>
                         <div class="caret glyphicon-white"></div>
                     </div>
                 </a>
 
                 <ul class="dropdown-menu">
                     <!-- dropdown menu links -->
-            {% block topbar_profile_dropdown %}{% endblock %}
+                    {% block global_dropdown %}{% endblock %}
                     <li><a href="{{path('fos_user_profile_edit')}}">Edit profile</a></li>
                     <li><a class="btn btn-link" data-toggle="modal" data-target="#feedbackModal">Leave your impressions</a></li>
                     <li><a href="{{path('fos_user_security_logout')}}">Sign out</a></li>

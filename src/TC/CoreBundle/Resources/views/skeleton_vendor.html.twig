@@ -2,15 +2,9 @@
 
 {% block body_class -%}{{ parent() }} vendor {% endblock %}
 
-{% block topbar %}
-    
-    {% embed 'TCCoreBundle::topbar_profile.html.twig' %}
-        {% block topbar_profile_dropdown %}
-            {{parent()}}
-            <li><a href="{{path("client_dashboard")}}">Client mode</a></li>
-        {% endblock %}
-    {% endembed %}
-                
+{% block global_dropdown %}
+    {{parent()}}
+    <li><a href="{{path("client_dashboard")}}">Client mode</a></li>
 {% endblock %}
 
 {% block menu %}

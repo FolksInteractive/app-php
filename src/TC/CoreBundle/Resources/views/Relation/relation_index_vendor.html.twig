@@ -4,13 +4,8 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    <ul class="breadcrumb">        
-        <li class="active">    
-            <a href="{{path('vendor_relation')}}">
-                <i class="icon-relations-dark-large"></i> Clients
-            </a>
-        </li>    
-    </ul>
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:mainMenu',[],{}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
 <div class="tc-controls pull-right">

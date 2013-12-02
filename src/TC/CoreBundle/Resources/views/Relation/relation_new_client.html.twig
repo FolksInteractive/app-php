@@ -4,7 +4,7 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:mainMenu',["Service Providers", "New Relation"],{}) %}
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:mainMenu',[],{}) %}
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 {% endblock %}

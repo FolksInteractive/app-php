@@ -3,8 +3,8 @@
         {%- for  child in item|breadcrumbs %}
             <li class="{{loop.last	?'active': 'previous' }}">
                 <a href="{{child.uri}}">                    
-                    {% if child.item.getExtra('icon_classes') is defined %}
-                        <i class="{{ child.item.getExtra('icon_classes') }}"></i>
+                    {% if child.item.getExtra('breadcrumbs_icon_classes') is defined %}
+                        <i class="{{ child.item.getExtra('breadcrumbs_icon_classes') }}"></i>
                     {% endif %}
                     {{child.label}}
                 </a>            
