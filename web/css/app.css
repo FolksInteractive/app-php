@@ -827,7 +827,7 @@ body {
   .client-relations .tc-relations-boxes .thumbnail,
   .vendor-relations .tc-relations-boxes .thumbnail {
     position: relative;
-    padding: 0 0 12px 0; }
+    padding: 0 0 60px 0; }
     .client-relations .tc-relations-boxes .thumbnail .hover,
     .vendor-relations .tc-relations-boxes .thumbnail .hover {
       -webkit-transition: opacity 0.2s ease-out;
@@ -839,21 +839,37 @@ body {
       border-radius: 4px;
       color: #fff;
       margin: -1px 0 -1px 0; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .realhover,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .realhover {
+      .client-relations .tc-relations-boxes .thumbnail .hover .btn,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .btn {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0; }
+        left: 50%; }
+      .client-relations .tc-relations-boxes .thumbnail .hover .request-services,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .request-services {
+        margin: 75px 0 0 -88px; }
+      .client-relations .tc-relations-boxes .thumbnail .hover .propose-services,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .propose-services {
+        margin: 75px 0 0 -88px; }
+      .client-relations .tc-relations-boxes .thumbnail .hover .or,
+      .vendor-relations .tc-relations-boxes .thumbnail .hover .or {
+        position: absolute;
+        left: 25px;
+        right: 25px;
+        margin-top: 145px;
+        border-bottom: 1px dashed #555555; }
       .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
       .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
-        margin-top: 135px;
-        position: absolute;
-        margin-left: -76px;
-        left: 50%; }
+        margin: 170px 0 0 -76px; }
     .client-relations .tc-relations-boxes .thumbnail .hover:hover,
     .vendor-relations .tc-relations-boxes .thumbnail .hover:hover {
       display: block; }
+    .client-relations .tc-relations-boxes .thumbnail .tc-relation-badge,
+    .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-badge {
+      position: absolute;
+      right: 15px;
+      top: 15px; }
+    .client-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge,
+    .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge {
+      background-color: #5cb85c; }
     .client-relations .tc-relations-boxes .thumbnail img,
     .vendor-relations .tc-relations-boxes .thumbnail img {
       margin: 20px auto 0 auto;
@@ -872,7 +888,9 @@ body {
       margin-top: 20px; }
     .client-relations .tc-relations-boxes .thumbnail .tc-user-progress,
     .vendor-relations .tc-relations-boxes .thumbnail .tc-user-progress {
-      margin: 15px 25px; }
+      position: absolute;
+      padding: 10px 25px;
+      width: 100%; }
   .client-relations .tc-relations-boxes .thumbnail:hover .hover,
   .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
     opacity: 1; }
