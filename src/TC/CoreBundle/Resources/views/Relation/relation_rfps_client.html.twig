@@ -14,7 +14,7 @@
         <a href="{{path('client_rfp_new', {'idRelation':relation.id})}}" 
            class="btn btn-primary btn-lg">
             <i class="icon-new-proposals-light-small"></i>
-            New Request for Proposal
+            Create New
         </a>
     </div>
 
@@ -31,25 +31,48 @@
         <table class="tc-rfps table tc-table">
             <thead>
                 <tr>
-                <th class="tc-rfp-heading-col"></th>
-                <th class="tc-proposal-col"></th>
+                    <th class="hide"></th>
+                    <th class="left temporary-space">Description</th>
+                    <th>Discussion</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
             {% for rfp in relation.rfps %}
                     <tr>
-                        <td class="tc-rfp-heading-col">
-                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                {{rfp.heading|default('rfp')}}
-                            </a>
+                        <td class="tc-actions-col hide"><!-- Enlever aussi le .temporary-space en même temps que le .hide -->
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                                <label for="checkbox-item1"></label>
+                            </div>
                         </td>
-                        
-                        <td class="tc-proposal-col">          
-                            {% if rfp.order is not null and rfp.order.ready %}
-                            <a href="{{path("client_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}">
-                                View proposal
-                            </a>
-                            {% endif %}
+                        <td class="tc-description-col temporary-space">
+                            <div class="title">
+                                <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                            {{rfp.heading|default('rfp')}}
+                                    </a>
+                                </div>
+                                <div class="main-description"><b>Created</b> on September 16th 2013</div>
+                                <div class="sub-description hide"><b>Approved</b> on September 16th 2013 </div>
+                                </div>
+                        </td>
+                        <td class="tc-discussion-col">
+                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
+                            {{rfp.thread.getNumComments()}}
+                            </div></a>
+                        </td>
+                        <td class="tc-status tc-status-col">
+                            <ul>
+                                <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
+                                <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Draft</a></li>
+                                <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Sent</a></li>
+                                {% if rfp.order is not null %}
+                                <!-- Si c'est approuver utiliser la classe .active sinon, .declined -->
+                                <li><a href="{{path("client_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}" class="active">Proposed</a></li>
+                                {% else %}
+                                <li><a href="#">Proposed</a></li>
+                                {% endif %}
+                            </ul>
                         </td>
                     </tr>    
             {% endfor %}
