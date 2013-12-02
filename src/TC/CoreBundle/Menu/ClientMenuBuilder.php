@@ -35,6 +35,7 @@ class ClientMenuBuilder extends ContainerAware {
             'route' => 'client_relation'
         ) )
             ->setExtra( "icon_classes", "icon-relations" )
+            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-large" )
             ->setExtra( "sub_label", "Build & manage relationships" )
         
             // New Relation
@@ -169,7 +170,7 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "RFPs" )
-            ->setExtra( "icon_classes", "icon-rfps-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-rfps-dark" );
         
         // RFP
         if( isset($options['rfp']) && $options['rfp'] instanceof \TC\CoreBundle\Entity\RFP){
@@ -210,7 +211,7 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Proposals" )                
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
         
         // Proposal        
         if( isset($options['order']) && $options['order'] instanceof \TC\CoreBundle\Entity\Order){
@@ -242,7 +243,7 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Work Monitoring" )
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
         
         return $menu;
     }
@@ -265,7 +266,7 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Open Bill" )
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
 
         return $menu;
     }

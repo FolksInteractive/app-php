@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="tc.admin.email">info@timecrumbs.com</parameter>
+        <parameter key="tc.admin.email">app@timecrumbs.com</parameter>
     </parameters>
     
     <services>

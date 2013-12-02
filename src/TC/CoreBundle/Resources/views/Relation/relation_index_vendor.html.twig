@@ -4,13 +4,8 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    <ul class="breadcrumb">        
-        <li class="active">    
-            <a href="{{path('vendor_relation')}}">
-                <i class="icon-relations-dark-large"></i> Clients
-            </a>
-        </li>    
-    </ul>
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:mainMenu',[],{}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
 <div class="tc-controls pull-right">
@@ -43,7 +38,7 @@
                         </a>
                     </div>
                     <!-- Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. -->
-                    <div class="badge tc-relation-badge none">0</div>
+                    <div class="badge tc-relation-badge">0</div>
                     <img class="img-circle" src="{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb')}}" />
                     <div class="caption">
 
@@ -52,7 +47,9 @@
                             <small>{{relation.client.getLastName()}}</small>
                         </h3>
                     {% else %}
-                        <h4>{{relation.client.getEmail()}}</h4>
+                        <h3>{{relation.client.getEmail()}} <br /> 
+                            <small>Pending registration</small>
+                        </h3>
                     {% endif %}
                     </div>
                     <div class="tc-user-progress">

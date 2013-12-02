@@ -16,7 +16,6 @@ class VendorMenuBuilder extends ContainerAware {
      * @return MenuItem
      */
     public function mainMenu( FactoryInterface $factory, array $options ) {
-        $user = $options['user'];
 
         $menu = $factory->createItem( 'root' );
         $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
@@ -33,11 +32,12 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'vendor_relation'
         ) )
             ->setExtra( "icon_classes", "icon-relations" )
+            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-large" )
             ->setExtra( "sub_label", "Build & manage relationships" )
                 
             // New Relation
             ->addChild('New Relation', array(
-            'route' => 'client_relation_new'
+            'route' => 'vendor_relation_new'
             ));
         
         $menu
@@ -129,11 +129,11 @@ class VendorMenuBuilder extends ContainerAware {
         // RFPs
         $menu = $factory
             ->createItem( 'root', array(
-                'route' => 'client_relation_rfps',
+                'route' => 'vendor_relation_rfps',
                 'routeParameters' => array('idRelation' => $idRelation)
             ) )
             ->setLabel( "RFPs" )
-            ->setExtra( "icon_classes", "icon-rfps-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-rfps-dark" );
             
         // RFP
         if( isset($options['rfp']) && $options['rfp'] instanceof \TC\CoreBundle\Entity\RFP){
@@ -167,7 +167,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Proposals")
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
         
         // Proposal
         if( isset($options['order']) && $options['order'] instanceof \TC\CoreBundle\Entity\Order){
@@ -207,7 +207,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Work Monitoring")
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
               
         return $menu;
     }
@@ -229,7 +229,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Open Bill")
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
               
         return $menu;
     }
@@ -252,7 +252,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Invoices")
-            ->setExtra( "icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
         
         // Invoice      
         $menu->addChild( 'Invoice', array(
