@@ -10,6 +10,12 @@
 // Variables
 // -------------------------
 
+// Temporary – Till checkboxes are functionnables
+
+.temporary-space {
+    padding-left: 30px !important;
+}
+
 // Overwriting Bootstrap
 // -------------------------
 
@@ -178,7 +184,6 @@
     >tfoot >tr {
         
     }
-    
 }
 
 .tc-deliverables-table {
