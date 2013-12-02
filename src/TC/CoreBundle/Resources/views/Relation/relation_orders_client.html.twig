@@ -14,6 +14,10 @@
 
 {% block sheet %}
 
+{% if orders is empty %}
+    {{block('empty_orders_client')}}
+
+{% else %}
 <div class="tc-orders-section">      
     <table class="tc-orders table">
         <thead>
@@ -24,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for order in relation.getOrdersOpen() if order.ready %}
+            {% for order in orders %}
                 <tr>
                 <td class="tc-order-heading-col">
                     <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
@@ -44,4 +48,5 @@
         </tbody>
     </table>
 </div> 
+{% endif %}
 {% endblock %}

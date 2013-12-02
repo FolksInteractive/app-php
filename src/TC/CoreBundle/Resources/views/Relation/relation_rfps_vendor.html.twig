@@ -16,6 +16,10 @@
 
 {% block sheet %}
 
+{% if rfps is empty %}
+    {{block('empty_rfps_vendor')}}
+
+{% else %}
 <div class="tc-rfps-section">      
     <table class="tc-rfps table">
         <thead>
@@ -25,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for rfp in relation.getRFPs() if rfp.ready %}
+            {% for rfp in rfps %}
                 <tr>
                 <td class="tc-rfp-heading-col">
                     <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
@@ -44,4 +48,5 @@
         </tbody>
     </table>
 </div> 
+{% endif %}
 {% endblock %}

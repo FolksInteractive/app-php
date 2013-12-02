@@ -21,6 +21,10 @@
 
 {% block sheet %}
 
+{% if orders is empty %}
+    {{block('empty_orders_vendor')}}
+
+{% else %}
     <div class="tc-orders-section">  
         <table  class="tc-table table">
             <thead>
@@ -32,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-            {% for order in relation.getOrdersOpen() %}            
+            {% for order in orders %}            
                     <tr>
                         <td class="tc-actions-col">
                             <div class="checkbox-item">
@@ -62,4 +66,5 @@
                             </tbody>
                         </table>
                     </div> 
+{% endif %}
 {% endblock %}

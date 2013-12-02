@@ -39,6 +39,11 @@
 {% endblock %}
 
 {% block sheet %}
+
+{% if form.deliverables is empty %}
+    {{block('empty_progress_vendor')}}
+
+{% else %}
 <div class="tc-progress-section">
     <table class="table tc-table">
 
@@ -144,6 +149,7 @@
         </tbody>
     </table>
 </div> 
+{% endif %}
 {% endblock %}
 
 {% block bottom_js %}

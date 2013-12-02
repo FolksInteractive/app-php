@@ -1,0 +1,120 @@
+{% block empty_relations_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-relations.gif')}}" /></div>
+    <div class="title"><h3>No service providers yet</h3></div>
+    <div class="description"><p>Please <b>add</b> your first service provider by clicking <a href="{{path('client_relation_new')}}">+ Add New</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_relations_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-relations.gif')}}" /></div>
+    <div class="title"><h3>No customer yet</h3></div>
+    <div class="description"><p>Please <b>add</b> your first customer by clicking <a href="{{path('vendor_relation_new')}}">+ Add New</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_rfps_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-rfps.gif')}}" /></div>
+    <div class="title"><h3>No request for proposal yet</h3></div>
+    <div class="description"><p>Please <b>create</b> your first request for proposal by clicking <a href="{{path('client_rfp_new', {'idRelation': relation.id})}}">+ Create New</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_rfps_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-rfps.gif')}}" /></div>
+    <div class="title"><h3>No request for proposal yet</h3></div>
+    <div class="description"><p>Please wait till your customer creates his first request for proposal.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_orders_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-proposals.gif')}}" /></div>
+    <div class="title"><h3>No proposals yet</h3></div>
+    <div class="description"><p>First, you need to <b>create</b> a <a href="{{path('client_rfp_new', {'idRelation': relation.id})}}">request for proposal</a> so your service provide can make an offer.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_orders_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-proposals.gif')}}" /></div>
+    <div class="title"><h3>No proposals yet</h3></div>
+    <div class="description"><p>Please <b>create</b> your first proposal by clicking <a href="{{asset('vendor_relation_orders_new', {'idRelation': relation.id})}}">+ Create New</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_progress_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-progress.gif')}}" /></div>
+    <div class="title"><h3>No progress to track yet</h3></div>
+    <div class="description"><p>First, you need to <b>accept</b> a <a href="{{path('client_relation_orders', {'idRelation': relation.id})}}">proposal</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_progress_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-progress.gif')}}" /></div>
+    <div class="title"><h3>No progress to track yet</h3></div>
+    <div class="description"><p>First, you need to <b>create</b> a <a href="{{path('vendor_relation_orders', {'idRelation': relation.id})}}">proposal</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_bill_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-bill.gif')}}" /></div>
+    <div class="title"><h3>Bill is empty</h3></div>
+    <div class="description"><p>Your vendor need to <b>complete</b> deliverables in the <a href="{{path('client_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_bill_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-bill.gif')}}" /></div>
+    <div class="title"><h3>Bill is empty</h3></div>
+    <div class="description"><p>Please <b>complete</b> deliverables in the <a href="{{path('vendor_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_invoices_client %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="/img/flat-imgs/flat-invoices.gif" /></div>
+    <div class="title"><h3>No invoices yet</h3></div>
+    <div class="description"><p>First, your vendor need to <b>close</b> a <a href="{{path('client_relation_bill', {'idRelation': relation.id})}}">bill</a>.</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_invoices_vendor %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="/img/flat-imgs/flat-invoices.gif" /></div>
+    <div class="title"><h3>No invoices yet</h3></div>
+    <div class="description"><p>First, your need to <b>close</b> a <a href="{{path('vendor_relation_bill', {'idRelation': relation.id})}}">bill</a>.</p></div>
+</div>
+
+{% endblock %}
+

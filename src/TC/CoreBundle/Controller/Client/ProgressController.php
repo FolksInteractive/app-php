@@ -24,8 +24,11 @@ class ProgressController extends BaseController {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
 
+        $deliverables = $this->getDeliverableManager()->findAllInProgressByRelation($relation);
+        
         return array(
-            'relation' => $relation
+            'relation' => $relation,
+            'deliverables' => $deliverables
         );
     }
     

@@ -27,8 +27,11 @@ class RFPController extends BaseController {
         
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
+        $rfps = $this->getRFPManager()->findAllForVendor( $relation );
+        
         return array(
             'relation' => $relation,
+            'rfps' => $rfps
         );
     }
     
