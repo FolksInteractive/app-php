@@ -19,7 +19,7 @@ module.controller("progress.Controller", function($scope, deliverables, form_nam
     
     $scope.completeDeliverable = function(deliverable){
         if(deliverable.completed){
-            deliverable.oldProgress = deliverable.progress;
+            deliverable.oldProgress = (deliverable.progress < 100 ) ? deliverable.progress : 90;
             deliverable.progress = 100;
         }else{
             deliverable.progress = deliverable.oldProgress || 0;
@@ -29,6 +29,7 @@ module.controller("progress.Controller", function($scope, deliverables, form_nam
     
     $scope.setProgress = function(deliverable, value){
         deliverable.progress = value;
+        deliverable.completed = ( deliverable.progress >= 100 )
         
         $scope.progressForm.$setDirty();
     }

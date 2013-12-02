@@ -18,30 +18,34 @@ class VendorMenuBuilder extends ContainerAware {
     public function mainMenu( FactoryInterface $factory, array $options ) {
         $user = $options['user'];
 
-        $menu = $factory->createItem( 'root'/* , array('childrenAttributes' => array('id' => 'menu_id')) */ );
+        $menu = $factory->createItem( 'root' );
         $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
-        //$menu->setUri($this->container->get('request')->getRequestUri());
 
         $menu
-            ->addChild( '.icon-dashboard Dashboard', array(
+            ->addChild( 'Dashboard', array(
                 'route' => 'vendor_dashboard'
-            ) )
-            ->setExtra( "sub_label", "Bird eye view on what's going on" )
-        ;
+        ) )
+            ->setExtra( "icon_classes", "icon-dashboard" )
+            ->setExtra( "sub_label", "Bird eye view on what's going on" );
 
         $menu
-            ->addChild( '.icon-relations Clients', array(
+            ->addChild( 'Clients', array(
             'route' => 'vendor_relation'
-            ) )
+        ) )
+            ->setExtra( "icon_classes", "icon-relations" )
             ->setExtra( "sub_label", "Build & manage relationships" )
-        ;
+                
+            // New Relation
+            ->addChild('New Relation', array(
+            'route' => 'client_relation_new'
+            ));
         
         $menu
-            ->addChild( '.glyphicon-book Pricebook', array(
+            ->addChild( 'Pricebook', array(
                 'uri' => '#'
-            ) )
-            ->setExtra( "sub_label", "Your pricing catalog" )
-        ;
+        ) )
+            ->setExtra( "icon_classes", "glyphicon glyphicon-book" )
+            ->setExtra( "sub_label", "Your pricing catalog" );
         
         return $menu;
     }
@@ -58,55 +62,60 @@ class VendorMenuBuilder extends ContainerAware {
 
         $routeParameters = array('idRelation' => $idRelation);
 
-        $menu = $factory->createItem( 'root'/* , array('childrenAttributes' => array('id' => 'menu_id')) */ );
-        $menu->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
-        //$menu->setUri($this->container->get('request')->getRequestUri());
+        $menu = $factory
+                    ->createItem( 'root' )
+                    ->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
 
-         $menu->addChild( '.icon-rfp-light Request For Proposal', array(
-            'route' => 'vendor_relation_rfps',
-            'routeParameters' => $routeParameters
-        ) )
-            ->setExtra( "sub_label", "Describe & discuss your needs" )
-        ;
+        // Request For Proposal
+         $menu
+            ->addChild( 'Request For Proposal', array(
+                'route' => 'vendor_relation_rfps',
+                'routeParameters' => $routeParameters
+            ) )
+            ->setExtra( "icon_classes", "icon-rfp-light" )
+            ->setExtra( "sub_label", "Describe & discuss your needs" );
 
-        $menu->addChild( '.icon-orders Proposals', array(
-            'route' => 'vendor_relation_orders',
-            'routeParameters' => $routeParameters
-        ) )
-            ->setExtra( "sub_label", "View, discuss & accept proposals" )
-        ;
+         // Proposals
+        $menu
+            ->addChild( 'Proposals', array(
+                'route' => 'vendor_relation_orders',
+                'routeParameters' => $routeParameters
+            ) )
+            ->setExtra( "icon_classes", "icon-orders" )
+            ->setExtra( "sub_label", "View, discuss & accept proposals" );
         
-        $menu->addChild( '.icon-monitoring Work Monitoring', array(
-            'route' => 'vendor_relation_progress',
-            'routeParameters' => $routeParameters
-        ) )
-            ->setExtra( "sub_label", "All the work in progress" )
-        ;
-
-        $menu->addChild( '.icon-bill Open Bill', array(
-            'route' => 'vendor_relation_bill',
-            'routeParameters' => $routeParameters
-        ) )
-            ->setExtra( "sub_label", "Work completed, but not yet billed" )
-        ;
-
-        $menu->addChild( '.icon-invoice Invoices', array(
-            'route' => 'vendor_relation_invoices',
-            'routeParameters' => $routeParameters
-        ) )
-            ->setExtra( "sub_label", "Work completed and invoiced" )
-        ;
+        // Monitoring
+        $menu
+            ->addChild( 'Work Monitoring', array(
+                'route' => 'vendor_relation_progress',
+                'routeParameters' => $routeParameters
+            ) )
+            ->setExtra( "icon_classes", "icon-monitoring" )
+            ->setExtra( "sub_label", "All the work in progress" );
         
-        /*foreach ($menu as $key => $item) {
-            $item->setExtra('routes', array(
-                'routes' => $key
-            ));
-        }*/
+        // Open Bill
+        $menu
+            ->addChild( 'Open Bill', array(
+                'route' => 'vendor_relation_bill',
+                'routeParameters' => $routeParameters
+            ) )
+            ->setExtra( "icon_classes", "icon-bill" )
+            ->setExtra( "sub_label", "Work completed, but not yet billed" );
         
+        // Invoices 
+        $menu
+            ->addChild( 'Invoices', array(
+                'route' => 'vendor_relation_invoices',
+                'routeParameters' => $routeParameters
+            ) )
+            ->setExtra( "icon_classes", "icon-invoice" )
+            ->setExtra( "sub_label", "Work completed and invoiced" );
+                
         return $menu;
     }
 
     /**
+     * Breadcrumb menu for relation rfps section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -117,21 +126,31 @@ class VendorMenuBuilder extends ContainerAware {
         $idRFP = isset( $options['rfp'] ) ? $options['rfp']->getId() : -1;
         $routeParameters = array('idRFP' => $idRFP, 'idRelation' => $idRelation);
 
-        $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_rfps',
-            'routeParameters' => array('idRelation' => $idRelation)
-                ) );
-        $menu->setLabel( ".icon-rfps-dark RFPs" );
-
-        $menu->addChild( 'RFP', array(
-            'route' => 'client_rfp_show',
-            'routeParameters' => $routeParameters
-        ) );
+        // RFPs
+        $menu = $factory
+            ->createItem( 'root', array(
+                'route' => 'client_relation_rfps',
+                'routeParameters' => array('idRelation' => $idRelation)
+            ) )
+            ->setLabel( "RFPs" )
+            ->setExtra( "icon_classes", "icon-rfps-dark" );
+            
+        // RFP
+        if( isset($options['rfp']) && $options['rfp'] instanceof \TC\CoreBundle\Entity\RFP){
+            
+            $menu
+                ->addChild( 'RFP', array(
+                    'route' => 'vendor_rfp_show',
+                    'routeParameters' => $routeParameters
+                ) )
+                ->setLabel( $options['rfp']->getHeading() );
+        }
 
         return $menu;
     }
 
     /**
+     * Breadcrumb menu for relation propsal section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -142,22 +161,37 @@ class VendorMenuBuilder extends ContainerAware {
         $idOrder = isset( $options['order'] ) ? $options['order']->getId() : -1;
         $routeParameters = array('idOrder' => $idOrder, 'idRelation' => $idRelation);
 
+        // Proposals
         $menu = $factory->createItem( 'root', array(
             'route' => 'vendor_relation_orders',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Proposals");
+        ))
+            ->setLabel("Proposals")
+            ->setExtra( "icon_classes", "icon-orders-dark" );
         
-        $menu->addChild( 'Proposal', array(
-            'route' => 'vendor_order_show',
-            'routeParameters' => $routeParameters
-        ));
+        // Proposal
+        if( isset($options['order']) && $options['order'] instanceof \TC\CoreBundle\Entity\Order){
+            $menu
+                ->addChild( 'Proposal', array(
+                    'route' => 'vendor_order_show',
+                    'routeParameters' => $routeParameters
+                ))
+                ->setLabel( $options['order']->getHeading() );
+        }
+                
+        // New Proposal
+        $menu
+            ->addChild( 'New Proposal', array(
+                'route' => 'vendor_order_new',
+                'routeParameters' => array('idRelation' => $idRelation)
+            ) );
         
         return $menu;
     }
 
     
     /**
+     * Breadcrumb menu for relation monitoring section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -171,13 +205,15 @@ class VendorMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'vendor_relation_progress',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Work Monitoring");
+        ))
+            ->setLabel("Work Monitoring")
+            ->setExtra( "icon_classes", "icon-orders-dark" );
               
         return $menu;
     }
     
     /**
+     * Breadcrumb menu for relation billing section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -191,13 +227,15 @@ class VendorMenuBuilder extends ContainerAware {
         $menu = $factory->createItem( 'root', array(
             'route' => 'vendor_relation_bill',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Open Bill");
+        ))
+            ->setLabel("Open Bill")
+            ->setExtra( "icon_classes", "icon-orders-dark" );
               
         return $menu;
     }
     
     /**
+     * Breadcrumb menu for relation invoicing section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -208,12 +246,15 @@ class VendorMenuBuilder extends ContainerAware {
         $idBill = isset( $options['bill'] ) ? $options['bill']->getId() : -1;
         $routeParameters = array('idBill' => $idBill, 'idRelation' => $idRelation);
 
+        // Invoices
         $menu = $factory->createItem( 'root', array(
             'route' => 'vendor_relation_invoices',
             'routeParameters' => array('idRelation' => $idRelation)
-        ));
-        $menu->setLabel(".icon-orders-dark Invoices");
-              
+        ))
+            ->setLabel("Invoices")
+            ->setExtra( "icon_classes", "icon-orders-dark" );
+        
+        // Invoice      
         $menu->addChild( 'Invoice', array(
             'route' => 'vendor_invoice_show',
             'routeParameters' => $routeParameters

@@ -34,14 +34,14 @@
             {% for rfp in relation.getRFPs() %}
                     <tr>
                         <td class="tc-rfp-heading-col">
-                            <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                                 {{rfp.heading|default('rfp')}}
                             </a>
                         </td>
                         
                         <td class="tc-proposal-col">          
                             {% if rfp.order is not null and rfp.order.ready %}
-                            <a href="{{path("vendor_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}">
+                            <a href="{{path("client_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}">
                                 View proposal
                             </a>
                             {% endif %}

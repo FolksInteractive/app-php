@@ -7,10 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use TC\CoreBundle\Validator\Constraints as TCAssert;
 
 /**
  * @TCAssert\Relation()
+ * @UniqueEntity(fields={"client","vendor"}, message="A relation already exists with this person.")
  * 
  * @ORM\Table(name="tc_relation")
  * @ORM\Entity()

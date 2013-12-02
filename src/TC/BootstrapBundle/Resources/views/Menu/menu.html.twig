@@ -174,13 +174,20 @@
 {% block spanElement %}<span{{ _self.attributes(item.labelAttributes) }}>{{ block('label') }}</span>{% endblock %}
 
 {% block label %}
+    {{ block('icon') }}
     {% if options.allow_safe_labels and item.getExtra('safe_label', false) %}
-        {{ item.label|raw|parse_icons }}
+        {{ item.label|raw }}
     {% else %}
-        {{ item.label|parse_icons }}
+        {{ item.label }}
     {% endif %}
     
     {% if item.getExtra('sub_label') is defined %}
         <span class="sub_label">{{ item.getExtra('sub_label') }}</span>
+    {% endif %}
+{% endblock %}
+        
+{% block icon %}   
+    {% if item.getExtra('icon_classes') is defined %}
+        <i class="{{ item.getExtra('icon_classes') }}"></i>
     {% endif %}
 {% endblock %}

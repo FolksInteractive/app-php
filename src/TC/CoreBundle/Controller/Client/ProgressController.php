@@ -18,7 +18,7 @@ class ProgressController extends BaseController {
      * Displays the work in progress of a relation
      *
      * @Route("/", name="client_relation_progress")
-     * @Template("TCCoreBundle:Relation/progress_client.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_progress_client.html.twig")
      */
     public function progressAction( Request $request, $idRelation ) {
 

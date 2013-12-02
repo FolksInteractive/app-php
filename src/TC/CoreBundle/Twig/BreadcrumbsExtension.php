@@ -32,7 +32,14 @@ class BreadcrumbsExtension extends Twig_Extension
         $menu = $this->getCurrentMenuItem( $menu );
         
         $manipulator = new MenuManipulator();
-        return $manipulator->getBreadcrumbsArray($menu);
+        $breadcrumbMenu = $manipulator->getBreadcrumbsArray($menu);
+        
+        // If first item is 'root' we don't wan't it in the breadcrumb
+        if( $breadcrumbMenu[0]['label'] == 'root'){
+            array_shift($breadcrumbMenu);
+        }
+        
+        return $breadcrumbMenu;
     }
     
     /**

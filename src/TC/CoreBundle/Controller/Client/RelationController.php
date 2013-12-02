@@ -50,7 +50,7 @@ class RelationController extends BaseController {
         if ( $form->isValid() ) {
             $this->getRelationManager()->save($relation, $form->get('notify')->getData());
 
-            return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $relation->getId()) ) );
+            return $this->redirect( $this->generateUrl( 'client_relation_rfps', array('idRelation' => $relation->getId()) ) );
         }
 
         return array(

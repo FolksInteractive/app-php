@@ -46,7 +46,7 @@ class Mailer {
     public function sendClientInvitation(Relation $relation) {
         $email = $relation->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/relation_invitation_client_email.txt.twig', array('relation' => $relation));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:relation_invitation_client_email.txt.twig', array('relation' => $relation));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Relation #%s invitation client sent to %s", $relation->getId(), $email) );
@@ -59,7 +59,7 @@ class Mailer {
     public function sendVendorInvitation(Relation $relation) {
         $email = $relation->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Vendor:Notification/relation_invitation_vendor_email.txt.twig', array('relation' =>  $relation));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:relation_invitation_vendor_email.txt.twig', array('relation' =>  $relation));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Relation #%s invitation  vendor sent to %s", $relation->getId(), $email) );
@@ -72,7 +72,7 @@ class Mailer {
     public function sendOrderPurchaseNotification(Order $order) {
         $email = $order->getRelation()->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundleL:Vendor:Notification/order_purchase_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
+        $rendered = $this->templating->render('TCCoreBundleL:Notification:rder_purchase_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Order #%s purchase notification sent to %s", $order->getId(), $email) );        
@@ -85,7 +85,7 @@ class Mailer {
     public function sendOrderReadyNotification(Order $order) {
         $email = $order->getRelation()->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Client:Notification/order_ready_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_ready_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Order #%s ready notification sent to %s", $order->getId(), $email) );        
