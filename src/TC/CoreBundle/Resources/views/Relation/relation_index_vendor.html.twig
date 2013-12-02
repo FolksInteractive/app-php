@@ -43,7 +43,7 @@
                         </a>
                     </div>
                     <!-- Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. -->
-                    <div class="badge tc-relation-badge">0</div>
+                    <div class="badge tc-relation-badge none">0</div>
                     <img class="img-circle" src="{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb')}}" />
                     <div class="caption">
 
@@ -52,7 +52,7 @@
                             <small>{{relation.client.getLastName()}}</small>
                         </h3>
                     {% else %}
-                        </h4>{{relation.client.getEmail()}}</h4>
+                        <h4>{{relation.client.getEmail()}}</h4>
                     {% endif %}
                     </div>
                     <div class="tc-user-progress">

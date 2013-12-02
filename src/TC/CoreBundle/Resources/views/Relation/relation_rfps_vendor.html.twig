@@ -5,7 +5,7 @@
 {% use "TCCoreBundle:Relation:relation_menu_vendor.html.twig" %}
 
 {% block toolbar %}
-    <div class="tc-breadcrumb pull-left">
+<div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:rfpsMenu',[],{"relation": relation}) %}
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
@@ -16,32 +16,50 @@
 
 {% block sheet %}
 
-<div class="tc-rfps-section">      
-    <table class="tc-rfps table">
-        <thead>
-            <tr>
-                <th class="tc-rfp-heading-col"></th>
-                <th class="tc-proposal-col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for rfp in relation.getRFPs() if rfp.ready %}
+    <div class="tc-rfps-section">      
+        <table class="tc-table table">
+            <thead>
                 <tr>
-                <td class="tc-rfp-heading-col">
-                    <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                        {{rfp.heading|default('rfp')}}
-                    </a>
-                </td>
-                <td class="tc-proposal-col">          
-                    {% if rfp.order is not null %}
-                    <a href="{{path("vendor_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}">
-                        View proposal
-                    </a>
-                    {% endif %}
-                </td>
-                </tr>    
+                    <th></th>
+                    <th class="left">Description</th>
+                    <th>Comments</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for rfp in relation.getRFPs() if rfp.ready %}
+                    <tr>
+                        <td class="tc-actions-col">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                                <label for="checkbox-item1"></label>
+                            </div>
+                        </td>
+                        <td class="tc-description-col">
+                            <div class="title">
+                                <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                            {{rfp.heading|default('rfp')}}
+                                    </a>
+                                </div>
+                                <div class="main-description">Created on September 16th 2013</div>
+                                <div class="sub-description"><b>Approved</b> on September 16th 2013 </div>
+                                </div>
+                            </td>
+                            <td class="tc-discussion-col">
+                                <a href="#"><div class="badge-talk-bubble">
+                                {{rfp.thread.getNumComments()}}
+                                </div></a>
+                                </td>
+                                <td class="tc-proposal-col">          
+                                {% if rfp.order is not null %}
+                                <a href="{{path("vendor_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}">
+                                    View proposal
+                                </a>
+                                {% endif %}
+                                    </td>
+                                </tr>    
             {% endfor %}
-        </tbody>
-    </table>
-</div> 
+                            </tbody>
+                        </table>
+                    </div> 
 {% endblock %}
