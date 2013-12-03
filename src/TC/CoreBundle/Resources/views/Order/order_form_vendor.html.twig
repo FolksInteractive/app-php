@@ -44,7 +44,12 @@ ng-controller="order.Controller"
 {% endblock %}
 
 {% block sheet %}
-{{form_widget(form.rfp)}}
+<div class="tc-select-link">
+    <div class="description"><span class="glyphicon glyphicon-link"></span> Is this proposal related to an RFP?</div>
+    <div class="select-widget">
+        {{form_widget(form.rfp, {'attr': {'class':'multiselect'}})}}
+    </div>
+</div>
 <div class="tc-heading-section" ng-form name="headingForm">   
     <div class="form-group">
         <input type="text" class="heading-input form-control input-lg" 
@@ -62,8 +67,7 @@ ng-controller="order.Controller"
 </div>
 <div class="tc-offer-section">
 
-    
-    {% raw %}
+{% raw %}
     <div class="tc-offer-blocks"  ng-form name="offerForm">
         <div class="tc-block" ng-repeat="block in order.offer">
             <div class="form-group">        
@@ -80,21 +84,20 @@ ng-controller="order.Controller"
             </div>
         </div>
     </div>
-    {% endraw %}
+{% endraw %}
 
-        <!--ng-disabled="newBlockForm.$invalid"-->
-        <div class="form-group">        
-            <button type="button" class="btn btn-default btn-lg add-new"
-                    disabled=""
-                    ng-disabled=""
-                    ng-click="addBlock()"><span class="glyphicon glyphicon-plus-sign"></span> Add a New Block</button>
-        </div>
+    <!--ng-disabled="newBlockForm.$invalid"-->
+    <div class="form-group">        
+        <button type="button" class="btn btn-default btn-lg add-new"
+                disabled=""
+                ng-disabled=""
+                ng-click="addBlock()"><span class="glyphicon glyphicon-plus-sign"></span> Add a New Block</button>
+    </div>
 </div>
 
 <div class="tc-deliverables-section">
-    <legend>Deliverables</legend>
 
-    <table class="tc-deliverables table">
+    <table class="tc-deliverables-table table">
         <thead>
             <tr>
                 <th class="number"></th>
@@ -107,76 +110,82 @@ ng-controller="order.Controller"
         </thead>
         <tbody ng-form name="deliverablesForm">
         {% raw %}
-            <tr ng-repeat="deliverable in order.deliverables">
-                <td class="number"></td>
-                <td class="description">
-                    <input type="text" class="form-control input-block-level"
-                           name="{{getDeliverableFormName(deliverable, 'name')}}"
-                           ng-model="deliverable.name" placeholder="Insert deliverable item here" />
-                </td>
-                <td class="cost">
-                    <input type="text" class="form-control input-block-level"
-                           name="{{getDeliverableFormName(deliverable, 'cost')}}"
-                           ng-model="deliverable.cost"/>
-                </td>
-                <td class="quantity">
-                    <input type="text" class="form-control input-block-level"
-                           name="{{getDeliverableFormName(deliverable, 'quantity')}}"
-                           ng-model="deliverable.quantity" />
-                </td>
-                <td class="subtotal" 
-                    ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
-                <td class="actions">
-                    <a class="remove-action glyphicon glyphicon-remove"
-                       ng-click="removeDeliverable(deliverable)">
-                    </a>
-                </td>
-            </tr>
+                <tr ng-repeat="deliverable in order.deliverables">
+                    <td class="number"></td>
+                    <td class="description">
+                        <input type="text" class="form-control input-block-level"
+                               name="{{getDeliverableFormName(deliverable, 'name')}}"
+                               ng-model="deliverable.name" placeholder="Insert deliverable item here" />
+                    </td>
+                    <td class="cost">
+                        <input type="text" class="form-control input-block-level"
+                               name="{{getDeliverableFormName(deliverable, 'cost')}}"
+                               ng-model="deliverable.cost"/>
+                    </td>
+                    <td class="quantity">
+                        <input type="text" class="form-control input-block-level"
+                               name="{{getDeliverableFormName(deliverable, 'quantity')}}"
+                               ng-model="deliverable.quantity" />
+                    </td>
+                    <td class="subtotal" 
+                        ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
+                    <td class="actions">
+                        <a class="remove-action glyphicon glyphicon-remove"
+                           ng-click="removeDeliverable(deliverable)">
+                        </a>
+                    </td>
+                </tr>
         {% endraw %}
-        </tbody>
+            </tbody>
 
 
-        <tfoot ng-form name="newDeliverablesForm">
-            <tr>
-                <td class="number"></td>
-                <td class="description">
-                    <input type="text"class="form-control input-block-level"
-                           ng-model="newDeliverable.name" 
-                           ng-required="true" placeholder="Insert deliverable item here" />
-                </td>
-                <td class="cost">
-                    <input type="text" class="form-control input-block-level"
-                           ng-model="newDeliverable.cost"
-                           ng-required="true"/>
-                </td>
-                <td class="quantity">
-                    <input type="text" class="form-control input-block-level disabled" 
-                           ng-model="newDeliverable.quantity" />
-                </td>
-                <td class="subtotal">
-                    <button type="button" class="btn-primary btn"
-                            disabled=""
-                            ng-disabled="newDeliverablesForm.$invalid"
-                            ng-click="addDeliverable()">Add</button>
-                </td>
-                <td class="actions"></td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
+            <tfoot ng-form name="newDeliverablesForm">
+                <tr>
+                    <td class="number"></td>
+                    <td class="description">
+                        <input type="text"class="form-control input-block-level"
+                               ng-model="newDeliverable.name" 
+                               ng-required="true" placeholder="Insert deliverable item here" />
+                    </td>
+                    <td class="cost">
+                        <input type="text" class="form-control input-block-level"
+                               ng-model="newDeliverable.cost"
+                               ng-required="true"/>
+                    </td>
+                    <td class="quantity">
+                        <input type="text" class="form-control input-block-level disabled" 
+                               ng-model="newDeliverable.quantity" />
+                    </td>
+                    <td class="subtotal">
+                        <button type="button" class="btn-primary btn"
+                                disabled=""
+                                ng-disabled="newDeliverablesForm.$invalid"
+                                ng-click="addDeliverable()">Add</button>
+                    </td>
+                    <td class="actions"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
-<div class="tc-total-section">
-    <div class="total-label">Total</div>
-    <div class="total-value" ng-bind="getTotal() | currency"></div>
-</div>
+    <div class="tc-total-price">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="total-label">Total</div>
+        <div class="price" ng-bind="getTotal() | currency"></div>
+    </div>
 {% endblock %}
 
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
-<script type="text/javascript" src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}"></script>
-<script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
-<script type="text/javascript">
-$('#description').elastic();
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap-multiselect.css')}}" />
+    <script type="text/javascript" src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/js/vendor/bootstrap-multiselect.js")}}"></script>
+    <script type="text/javascript">
+            
+    $('#description').elastic();
 
 {% autoescape 'js' %}
 (function(ng, module){

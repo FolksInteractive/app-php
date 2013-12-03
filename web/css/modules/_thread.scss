@@ -13,7 +13,8 @@
 // -------------------------
 
 $thread-width: 370px;
-$comment-height: 130px;
+$comment-height: 140px;
+$comments-font-size: 14px;
 
 // Thread Elements
 // -------------------------
@@ -40,7 +41,15 @@ $comment-height: 130px;
     
     .person {
         font-weight: bold;
-        font-size: $font-size-large;
+        font-size: $comments-font-size;
+        line-height: 0;
+    }
+    
+    .date {
+        font-size: 11px;
+        color: $gray-light;
+        margin-top: 3px;
+        font-style: italic;
     }
 }
 
@@ -51,6 +60,28 @@ $comment-height: 130px;
     padding-top:15px;
     width: $thread-width;
     padding: 15px 0 15px 15px;
+    
+    .empty-image {
+        width: 230px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -140px;
+        margin-left: -115px;
+        text-align: center;
+        vertical-align: middle;
+        
+        > h4 {
+            @include mega-title();
+            font-size: 36px;
+            color: $gray-light;
+        }
+        
+        > p {
+            color: $gray-light;
+        }
+    }
 }
 
 .tc-comments-section {
@@ -59,10 +90,12 @@ $comment-height: 130px;
         padding-top: 10px;
         
         .media {
-            margin-top: 0;
+            margin-top: 5px;
             
             p {
                 padding-bottom: 0;
+                font-size: $comments-font-size;
+                margin-bottom: 5px;
             }
         }
     }

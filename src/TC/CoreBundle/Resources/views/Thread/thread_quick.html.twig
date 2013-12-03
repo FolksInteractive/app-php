@@ -6,41 +6,46 @@ ng-controller="thread.Controller"
 {% block thread_section %}
 <div class="tc-side-thread-section">
     <div id="thread_scrollable_section">
-        {% raw %}
-            <div class="tc-comments-section" ng-cloak>
-                <ul class="tc-comments media-list">
-                    <li class="tc-comment media"
-                        ng-repeat="group in groupedComments">
-                        <a class="pull-left avatar" href="#">
-                            <img class="media-object" 
-                                 ng-src="{{getAvatar(group.author)}}"/>
-                        </a>
-                        <a class="person">{{group.author.fullname}}</a>
-                        <div class="media-body">
-                            <div class="media" ng-repeat="c in group.comments">
-                                <p>{{ c }}</p>
-                            </div>
+    {% raw %}
+        <div class="tc-comments-section" ng-cloak>
+            <ul class="tc-comments media-list">
+                <li class="tc-comment media" ng-repeat="group in groupedComments">
+                    <a class="pull-left avatar" href="#">
+                        <img class="media-object" ng-src="{{getAvatar(group.author)}}"/>
+                    </a>
+                    <a class="person">{{group.author.fullname}}</a>
+                    <div class="date">10:08am – 2013/12/03</div>
+                    <div class="media-body pull-left">
+                        <div class="media" ng-repeat="c in group.comments">
+                            <p>{{ c }}</p>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        {% endraw %}
+                        
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="tc-discuss-section"> 
-            <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
-                <div class="form-group">
-                    <textarea class="form-control input-block-level"
-                              ng-required="true"
-                              ng-model="newComment.body" placeholder="Write a reply..."></textarea>
-                </div>
-
-                <div class="form-group submit_comment">
-                    <button type="submit" class="btn btn-primary btn-sm"
-                            ng-disabled="newCommentForm.$invalid">Reply</button>
-                </div>
-            </form>   
-        </div>
+    {% endraw %}
+    <div class="empty-image center">
+        <img src="/img/flat-imgs/flat-conversation.gif" />
+        <h4>Discuss</h4>
+        <p>Use this chatroom to discuss your concerns, ask a question or negociate with your client.</p>
     </div>
+    </div>
+    <div class="tc-discuss-section"> 
+        <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
+            <div class="form-group">
+                <textarea class="form-control input-block-level"
+                          ng-required="true"
+                          ng-model="newComment.body" placeholder="Write a reply..."></textarea>
+            </div>
+
+            <div class="form-group submit_comment">
+                <button type="submit" class="btn btn-primary btn-md"
+                        ng-disabled="newCommentForm.$invalid">Reply</button>
+            </div>
+        </form>   
+    </div>
+</div>
 
 {% endblock %}
 

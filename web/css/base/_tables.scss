@@ -187,8 +187,8 @@
 }
 
 .tc-deliverables-table {
-    border-top: 1px dotted $gray-border-color;
-    margin-top: 20px;
+    //border-top: 1px dotted $gray-border-color;
+    margin-top: 40px;
     
     >thead >tr {
         >th {
@@ -240,6 +240,13 @@
         
         .tc-subtotal {
             width: 100px;
+        }
+    }
+    
+    >tfoot >tr {
+        
+        >td {
+            border-bottom: 1px solid $gray-border-color;
         }
     }
 }
