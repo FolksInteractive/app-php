@@ -47,10 +47,7 @@ ng-controller="order.Controller"
 <div class="tc-select-link">
     <div class="description"><span class="glyphicon glyphicon-link"></span> Is this proposal related to an RFP?</div>
     <div class="select-widget">
-        <!--<div class="input-group btn-group">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>-->
-            {{form_widget(form.rfp, {'attr': {'class':'multiselect'}})}}
-        <!--</div>-->
+        {{form_widget(form.rfp, {'attr': {'class':'multiselect'}})}}
     </div>
 </div>
 <div class="tc-heading-section" ng-form name="headingForm">   
