@@ -52,7 +52,7 @@ ng-controller="order.Controller"
 </div>
 <div class="tc-heading-section" ng-form name="headingForm">   
     <div class="form-group">
-        <input type="text" class="heading-input form-control input-lg" 
+        <input id="stretch-title" type="text" class="heading-input form-control input-lg" 
                placeholder="Insert a title for your proposal"
                name="{{form.heading.vars.full_name}}"
                ng-model="order.heading"
@@ -74,13 +74,13 @@ ng-controller="order.Controller"
                 <input type="text" class="tc-block-title form-control"
                        name="{{getOfferFormName(block, 'title')}}"
                        ng-model="block.title"
-                       ng-required="true" placeholder="Insert new title here" />
+                       ng-required="true" placeholder="Insert title here" />
             </div>
             <div class="form-group tc-body-group">        
                 <textarea class="tc-block-body form-control" row="1"
                           name="{{getOfferFormName(block, 'body')}}"
                           ng-model="block.body"
-                          ng-required="true" placeholder="Insert new title here"></textarea>
+                          ng-required="true" placeholder="Insert content here"></textarea>
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@ ng-controller="order.Controller"
     <script type="text/javascript" src="{{asset("/js/vendor/bootstrap-multiselect.js")}}"></script>
     <script type="text/javascript">
             
-    $('#description').elastic();
+    
 
 {% autoescape 'js' %}
 (function(ng, module){
@@ -206,6 +206,10 @@ ng-controller="order.Controller"
 
     module.value("form_name", "{{form.vars.name}}");
 })(angular, module);
+$(document).ready(function() {
+    $('.multiselect').multiselect();
+    $('textarea').elastic();
+});
 {% endautoescape %}
     </script>
 {% endblock %}
