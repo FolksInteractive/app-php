@@ -20,12 +20,12 @@
 {% if rfp.order is not null %}
         <a class="btn btn-default btn-lg" 
            href="{{path('vendor_order_show',{'idOrder':rfp.order.id, 'idRelation':rfp.relation.id})}}">
-            View proposal
+            View Proposal
         </a>
 {% else %}
         <a class="btn btn-primary btn-lg" 
            href="{{path('vendor_order_new',{'idRFP':rfp.id, 'idRelation':rfp.relation.id})}}">
-            Create proposal
+            <span class="icon-new-proposals-light-small"></span>Create New Proposal
         </a>
 {% endif %}
 </div>

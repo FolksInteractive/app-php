@@ -168,6 +168,33 @@
 /*****     Section Order:edit.html.twig      *****/
 /*************************************************/
 .order-edit{
+    
+    .tc-select-link {
+        border: 1px dashed $gray-border-color;
+        padding: 20px;
+        margin: 0 50px 20px 50px;
+        text-align: center;
+        border-radius: 4px;
+        
+        .description {
+            display: inline-block;
+            padding-right: 20px;
+            color: $gray-light;
+            font-style: italic;
+            vertical-align: top;
+            padding-top: 9px;
+            
+            span {
+                padding-right: 20px;
+            }
+        }
+        
+        .select-widget {
+            display: inline-block;
+            text-align: left;
+        }
+    }
+    
     .tc-heading-section {
         .heading-input{
             font-weight: 300;
