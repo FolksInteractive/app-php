@@ -53,7 +53,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-proposals.gif')}}" /></div>
     <div class="title"><h3>No proposals yet</h3></div>
-    <div class="description"><p>Please <b>create</b> your first proposal by clicking <a href="{{asset('vendor_relation_orders_new', {'idRelation': relation.id})}}">+ Create New</a>.</p></div>
+    <div class="description"><p>Please <b>create</b> your first proposal by clicking <a href="{{path('vendor_order_new', {'idRelation': relation.id})}}">+ Create New</a>.</p></div>
 </div>
 
 {% endblock %}

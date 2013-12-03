@@ -173,31 +173,30 @@ ng-controller="order.Controller"
 
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
-        <script type="text/javascript" src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}"></script>
-        <script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
-        <script type="text/javascript">
-            
-        $('#description').elastic();
-            
-        (function(ng, module){
+<script type="text/javascript" src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
+<script type="text/javascript">
+$('#description').elastic();
 
-            module.value("order", {
-                heading: "{{form.heading.vars.value|default('')}}",
-                subheading: "{{form.subheading.vars.value|default('')}}",
-                offer : {{form.offer.vars.value|json_encode()|raw}},
-                deliverables : [
-                {% for deliverable in form.deliverables %}
-                {% set data = deliverable.vars.value %}
-                        {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}  
-                    {% if not loop.last %} 
-                    {{","}}
-                    {% endif %}     
-                {% endfor %}
-                ]
-            });
+{% autoescape 'js' %}
+(function(ng, module){
+    module.value("order", {
+        heading: "{{form.heading.vars.value|default('')}}",
+        subheading: "{{form.subheading.vars.value|default('')}}",
+        offer : {{form.offer.vars.value|json_encode()|raw}},
+        deliverables : [
+        {% for deliverable in form.deliverables %}
+        {% set data = deliverable.vars.value %}
+                {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}  
+            {% if not loop.last %} 
+            {{","}}
+            {% endif %}     
+        {% endfor %}
+        ]
+    });
 
-            module.value("form_name", "{{form.vars.name}}");
-
-        })(angular, module);
-            </script>
+    module.value("form_name", "{{form.vars.name}}");
+})(angular, module);
+{% endautoescape %}
+    </script>
 {% endblock %}

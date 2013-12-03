@@ -64,7 +64,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777;
+  border: 3px solid #777777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -414,7 +414,7 @@ ul {
         content: "";
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-left: 15px solid #fff;
+        border-left: 15px solid white;
         position: absolute;
         left: 0;
         top: 0; }
@@ -435,7 +435,7 @@ ul {
         content: "";
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-left: 15px solid #ddd;
+        border-left: 15px solid #dddddd;
         position: absolute;
         right: -15px;
         top: 0;
@@ -474,7 +474,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -516,7 +516,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: inline-block; }
 
 .tc-empty-page {
@@ -530,7 +530,7 @@ body {
   .tc-empty-page > .title > h3 {
     font-weight: 300;
     font-size: 60px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #0a6895;
     padding-bottom: 10px;
     font-size: 40px;
@@ -555,7 +555,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.75);
-    border-left: 4px solid #777;
+    border-left: 4px solid #777777;
     box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
     padding-left: 21px; }
   .tc-menu-panel .tc-menu li .sub_label {
@@ -571,7 +571,7 @@ body {
       color: #FFF; }
   .tc-menu-panel .tc-menu-heading {
     top: 0;
-    background: rgba(0, 0, 0, 0.2); }
+    background: #1b1b1b; }
     .tc-menu-panel .tc-menu-heading .account {
       margin-left: 20px; }
       .tc-menu-panel .tc-menu-heading .account .alerts {
@@ -603,9 +603,22 @@ body {
           color: #fff;
           font-size: 14px;
           font-weight: bold; }
-        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu a {
-          color: #000;
-          font-weight: normal; }
+          .tc-menu-panel .tc-menu-heading .account .dropdown a:focus {
+            outline: none; }
+        .tc-menu-panel .tc-menu-heading .account .dropdown .dropdown-menu {
+          position: fixed;
+          top: 68px;
+          left: 0;
+          bottom: 100px;
+          float: none;
+          width: 220px;
+          padding: 5px 0;
+          margin: 2px 0 0;
+          background-color: #1b1b1b;
+          border: 0px solid #cccccc;
+          border-radius: 0px;
+          -webkit-box-shadow: none;
+          box-shadow: none; }
     .tc-menu-panel .tc-menu-heading .tc-logo {
       padding: 25px 0 0 44px;
       position: absolute;
@@ -641,7 +654,7 @@ body {
 .tc-heading-section > h2 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   padding-bottom: 10px; }
 .tc-heading-section > p {
@@ -924,7 +937,7 @@ body {
     background-color: #f5f5f5;
     color: #999999; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
-      border: 1px solid #ccc; }
+      border: 1px solid #cccccc; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
@@ -1048,7 +1061,7 @@ body {
 .order-show .tc-offer-section .offer h1 {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 20px 0 10px 0;
   color: #0a6895; }
 .order-show .tc-offer-section .offer-subtitle {
@@ -1071,7 +1084,7 @@ body {
   bottom: 0;
   width: 350px;
   background: white;
-  border-top: 1px solid #ddd; }
+  border-top: 1px solid #dddddd; }
   .order-show .tc-recent-panel .tc-thread-section {
     padding: 10px; }
     .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
@@ -1084,8 +1097,8 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 0.5);
     color: #333;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow: 8px 5px 14px 1px #333; }
+    text-shadow: 0 1px 0 white;
+    box-shadow: 8px 5px 14px 1px #333333; }
     .order-show .tc-recent-panel .tc-more-section a {
       display: block;
       padding: 20px 0;
@@ -1097,7 +1110,7 @@ body {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1148,7 +1161,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700; }
 .order-edit .tc-offer-section .tc-body-group {
   margin-bottom: 0; }
@@ -1200,7 +1213,7 @@ body {
   .root .tc-over-section .welcome {
     font-weight: 300;
     font-size: 60px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #0a6895;
     padding-bottom: 10px;
     font-size: 120px;
@@ -1226,7 +1239,7 @@ body {
       margin-bottom: 10px;
       font-weight: 300;
       font-size: 60px;
-      font-family: 'Open Sans', sans-serif;
+      font-family: "Open Sans", sans-serif;
       color: #0a6895;
       padding-bottom: 10px;
       font-size: 40px; }
@@ -1247,7 +1260,7 @@ body {
       margin-bottom: 10px;
       font-weight: 300;
       font-size: 60px;
-      font-family: 'Open Sans', sans-serif;
+      font-family: "Open Sans", sans-serif;
       color: #0a6895;
       padding-bottom: 10px;
       font-size: 40px; }

@@ -7,7 +7,7 @@ ng-controller="rfp.Controller"
 
 {% block main_before %} 
 {% set attr = {'id': 'rfpForm'} %}
-{% set attr = attr|merge({'name':form.vars.name}) %}
+{% set attr = attr|merge({'name':'rfpForm'}) %}
 {% set attr = attr|merge({'novalidate':""}) %}   
 {{form_start(form, {'attr':attr})}}
 {% endblock %}
@@ -19,11 +19,20 @@ ng-controller="rfp.Controller"
 
 {# there is no block controls in the skeleton this block should be called in the parent template #}
 {% block controls %}
-    <button name="{{form.submit.vars.full_name}}" 
-            class="btn btn-primary" 
-            ng-disabled="headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
-        Update
-    </button>
+
+<button name="{{form.submit.vars.full_name}}" 
+        class="btn btn-default btn-lg" 
+        disabled="disabled"
+        ng-disabled="!rfpForm.$dirty || headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
+    Save
+</button>
+
+<button name="{{form.save_as_ready.vars.full_name}}" 
+        class="btn btn-primary btn-lg" 
+        disabled="disabled"
+        ng-disabled="headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
+    Save &amp; Send
+</button>
 
     {% set attr = {'class':'btn-primary'} %}
     {% set attr = attr|merge({'ng-disabled':"rfpForm.$invalid"}) %}   
@@ -43,7 +52,7 @@ ng-controller="rfp.Controller"
     </div>
     <div class="form-group">
         <input  type="text" class="subheading-input form-control input-lg"
-               placeholder="Insert a sub-title for your RFP"
+               placeholder="Insert a subtitle for your RFP"
                name="{{form.subheading.vars.full_name}}"
                ng-model="rfp.subheading">            
     </div>  
@@ -81,10 +90,11 @@ ng-controller="rfp.Controller"
 
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
+
 <script type="text/javascript" src="{{asset("/js/rfp/rfp-module.js")}}"></script>
 <script type="text/javascript">
 (function(ng, module){
-
+{% autoescape 'js' %}
     module.value("rfp", {
         heading: "{{form.heading.vars.value|default('')}}",
         subheading: "{{form.subheading.vars.value|default('')}}",
@@ -92,7 +102,8 @@ ng-controller="rfp.Controller"
     });
 
     module.value("form_name", "{{form.vars.name}}");
-
+{% endautoescape %}
 })(angular, module);
 </script>
+
 {% endblock %}
