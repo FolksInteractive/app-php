@@ -17,6 +17,11 @@
 {% endblock %}
 
 {% block sheet %}
+
+{% if relations is empty %}
+    {{block('empty_relations_vendor')}}
+
+{% else %}  
 <div class="tc-relations-section">
 
     <legend>My Active Clients</legend>
@@ -69,4 +74,5 @@
     <legend>Inactive Business Relationships <span>(0)</span></legend>
     #}
     </div>
+{% endif %} 
 {% endblock %}

@@ -28,8 +28,11 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findByClient($idRelation);
 
+        $orders = $this->getOrderManager()->findAllActiveForClient($relation);
+                
         return array(
-            'relation' => $relation
+            'relation' => $relation,
+            'orders' => $orders
         );
     }
 

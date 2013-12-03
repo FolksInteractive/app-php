@@ -16,18 +16,22 @@
 
 {% block sheet %}
 
-    <div class="tc-rfps-section">      
-        <table class="tc-table table">
-            <thead>
-                <tr>
-                    <th class="hide"></th>
-                    <th class="left temporary-space">Description</th>
-                    <th>Discussion</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for rfp in relation.getRFPs() if rfp.ready %}
+{% if rfps is empty %}
+    {{block('empty_rfps_vendor')}}
+
+{% else %}
+<div class="tc-rfps-section">      
+    <table class="tc-table table">
+        <thead>
+            <tr>
+                <th class="hide"></th>
+                <th class="left temporary-space">Description</th>
+                <th>Discussion</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rfp in rfps %}
                     <tr>
                         <td class="tc-actions-col hide"><!-- Enlever aussi le .temporary-space en même temps que le .hide -->
                             <div class="checkbox-item">
@@ -68,4 +72,5 @@
                         </tbody>
                     </table>
                 </div> 
+{% endif %}
 {% endblock %}

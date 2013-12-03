@@ -22,6 +22,11 @@
 
 {% block sheet %}
 
+{% if rfps is empty %}
+    {{block('empty_rfps_client')}}
+
+{% else %}
+
     <div class="tc-rfps-section">      
         <table class="tc-rfps table tc-table">
             <thead>
@@ -33,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-            {% for rfp in relation.getRFPs() %}
+            {% for rfp in relation.rfps %}
                     <tr>
                         <td class="tc-actions-col hide"><!-- Enlever aussi le .temporary-space en même temps que le .hide -->
                             <div class="checkbox-item">
@@ -74,4 +79,5 @@
                     </tbody>
                 </table>
             </div> 
+{% endif %}
 {% endblock %}

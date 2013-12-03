@@ -28,9 +28,12 @@ class RFPController extends BaseController {
     public function rfpsAction( $idRelation ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
-
+        
+        $rfps = $this->getRFPManager()->findAllForClient( $relation );
+        
         return array(
             'relation' => $relation,
+            'rfps' => $rfps
         );
     }
     

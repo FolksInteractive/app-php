@@ -17,13 +17,16 @@
 {% endblock %}
 
 {% block sheet %}
+{% if relations is empty %}
+    {{block('empty_relations_client')}}
+
+{% else %}   
 <div class="tc-relations-section">
 
     <legend>My Active Vendors</legend>
-
+    
     <div class="tc-relations-boxes">
     {% for relation in relations %} 
-
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="thumbnail">
                     <div class="hover">
@@ -70,11 +73,6 @@
     <legend>Inactive Business Relationships <span>(0)</span></legend>
     #}
     </div>
-
-    <div class="none">
-        {% use "TCCoreBundle::empty.html.twig" %}
-        {{ block('empty_relations_client') }}
-        </div>
-
+{% endif %}   
 
 {% endblock %}
