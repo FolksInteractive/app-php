@@ -57,7 +57,7 @@
                     </div>
                 </td>
                 <td class="tc-date-col tc-info-col">
-                    {{deliverable.due_at|date("Y/m/d")}}
+                    {{deliverable.getDueAt()|date("Y/m/d")}}
                 </td>
             </tr>
             {% endfor %}
