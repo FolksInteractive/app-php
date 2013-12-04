@@ -24,7 +24,7 @@ class VendorMenuBuilder extends ContainerAware {
             ->addChild( 'Dashboard', array(
                 'route' => 'vendor_dashboard'
         ) )
-            ->setExtra( "icon_classes", "icon-dashboard" )
+            ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
             ->setExtra( "sub_label", "Bird eye view on what's going on" );
 
         $menu

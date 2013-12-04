@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="main-description">{{deliverable.order.heading}}</div>
-                    <div class="sub-description"><b>Purchased</b> on {{deliverable.order.approved_at|date("F jS Y")}}</div>
+                    <div class="sub-description"><b>Purchased</b> on {{deliverable.order.getApprovedAt()|date("F jS Y")}}</div>
                 </td>
                 <td class="tc-progressbar-col">                    
                     <div class="progress progress-striped">

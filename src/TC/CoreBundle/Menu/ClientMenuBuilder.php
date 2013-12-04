@@ -26,7 +26,7 @@ class ClientMenuBuilder extends ContainerAware {
             ->addChild( 'Dashboard', array(
                 'route' => 'client_dashboard'
             ) )
-            ->setExtra( "icon_classes", "icon-dashboard" )
+            ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
             ->setExtra( "sub_label", "Bird eye view on what's going on" );
 
         // Service Providers

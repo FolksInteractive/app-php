@@ -35,7 +35,7 @@ class RouteVoter implements VoterInterface
         if ($item->getUri() === $uri) {
             return true;
         } else {
-            if ($item->getUri() !== '/' && (strpos( $uri, $item->getUri()) === 0)) {
+            if ($item->getUri() !== '/' && $item->getUri() !== '/app_dev.php/' && (strpos( $uri, $item->getUri()) === 0)) {
                 return true;
             }
         }

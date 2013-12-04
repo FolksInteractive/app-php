@@ -179,20 +179,19 @@ ng-controller="order.Controller"
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
 
-    <link rel="stylesheet" href="{{asset('css/bootstrap-multiselect.css')}}" />
+    <link rel="stylesheet" href="{{asset('/css/vendor/bootstrap-multiselect.css')}}" />
     <script type="text/javascript" src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/order/order-module.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/vendor/bootstrap-multiselect.js")}}"></script>
     <script type="text/javascript">
             
     
-
 {% autoescape 'js' %}
 (function(ng, module){
     module.value("order", {
         heading: "{{form.heading.vars.value|default('')}}",
         subheading: "{{form.subheading.vars.value|default('')}}",
-        offer : {{form.offer.vars.value|json_encode()|raw}},
+        offer : {{form.offer.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}},
         deliverables : [
         {% for deliverable in form.deliverables %}
         {% set data = deliverable.vars.value %}

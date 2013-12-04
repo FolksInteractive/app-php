@@ -2,15 +2,14 @@
 
 {% block body_class -%}{{ parent() }} client {% endblock %}
 
-{% block global_dropdown %}
-    {{parent()}}
-    <li><a href="{{path("vendor_dashboard")}}">Vendor mode</a></li>
-{% endblock %}
-    
 {% block menu %}
+
+{% include "TCCoreBundle::global_dropdown.html.twig" %}
+
 {% set mainMenu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:mainMenu',[],{'user':app.user}) %}
+        
 <div class="tc-menu-section">
-    <div class="nav-header">MANAGEMENT</div>
+    <div class="tc-menu-header">MANAGEMENT</div>
     {{ knp_menu_render(mainMenu,{'depth':1}) }}
 </div>
 {% endblock%}

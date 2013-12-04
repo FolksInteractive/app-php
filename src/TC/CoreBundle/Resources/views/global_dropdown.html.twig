@@ -1,0 +1,15 @@
+<div class="tc-global-section">
+
+    <div class="tc-global-dropdown dropdown">
+
+        <a class="tc-global-toggler dropdown-toggle" href="#">
+            <img src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('30_thumb')}}">
+            <div class="name">{{app.user.fullName}}</div>
+            <div class="caret glyphicon-white"></div>
+        </a>
+
+        {% set mainMenu = knp_menu_get('TCCoreBundle:GlobalMenuBuilder:globalMenu',[],{'user':app.user}) %}
+        {{ knp_menu_render(mainMenu,{}) }}
+    </div>
+
+</div>

@@ -1,0 +1,48 @@
+
+// Global Dropdown
+.tc-global-dropdown {
+    padding: 20px;
+    background-color: #1b1b1b;
+    
+    .tc-global-toggler {
+        text-align: left;
+        padding: 40px 0;
+        
+        & > img{
+            display: inline-block;
+            width:30px;
+            height:30px;
+        }
+        
+        & > .caret {
+            border-top-color: #FFF;
+            display: inline-block;
+            vertical-align: top;
+            margin: 2px 0 0 10px;
+            vertical-align: middle;
+        }
+        
+        & > .name {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 120px;
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 10px;
+            font-weight:bold;
+            color:#fff;
+        }            
+    }
+    
+    .tc-global-menu{
+        position: fixed;
+        top: 68px;
+        left: 0;
+        bottom:100px;
+        width: 220px;
+        background-color: #1b1b1b;
+        display:none;
+        z-index:1;
+    }
+}

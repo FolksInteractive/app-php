@@ -3,9 +3,21 @@
 /*************************************************/
 
 .root {
-    
     .tc-toolbar {
         display: none;
+    }
+    
+    .tc-user-section{
+        padding:20px;
+        text-align:center;
+        
+        & > img {
+            margin-bottom : 10px;
+        }
+        
+        & > .name{
+            font-size:$font-size-large;
+        }
     }
     
     .tc-sheet {

@@ -1,0 +1,63 @@
+.tc-menu {
+    
+    i {
+        width:20px !important;
+        color: #C1C5C8;
+    }
+    
+    li {    
+        a {
+            font-size: 14px;
+            color: #FFF;
+            text-shadow: none;
+            display: block;
+            padding: 15px 0 15px 25px;
+        }
+        a:hover{
+            text-decoration: none;
+            cursor: pointer;
+            background: rgba(0,0,0,.75);
+            border-left: 4px solid #777;
+            box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
+            padding-left: 21px;
+        }
+        .sub_label{
+            display: none;
+            font-size: 11px;
+            color: #777;
+            padding: 5px 30px 0 0;
+        }
+    }
+    
+    .active {
+        border-left: 4px solid #75d600;
+        background: rgba(0,0,0,.75);
+        
+        a, a:hover{
+            margin-left: -4px;
+            color: #FFF;
+        }
+    }
+}
+
+// Nav Header
+.tc-menu-header {
+    display: block;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: none;
+    text-transform: uppercase;
+    color: #b1b4b7;
+    text-shadow: 1px 1px 2px #232729;
+    margin: 10px 0 5px 0;
+    padding: 3px 20px;
+    
+    a, a:hover {
+        color: #b1b4b7;
+        
+        i {
+            margin-right: 5px;
+        }
+    }
+}
