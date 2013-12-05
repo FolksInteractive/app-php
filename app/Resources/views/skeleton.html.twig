@@ -25,6 +25,7 @@
     
         {% set mainMenu = knp_menu_get('TCCoreBundle:GlobalMenuBuilder:globalMenu',[],{'user':app.user}) %}
         {{ knp_menu_render(mainMenu,{}) }}
+    
     {% endblock %}
 
 

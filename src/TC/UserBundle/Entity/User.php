@@ -287,8 +287,11 @@ class User extends BasedUser {
      * @param UploadedFile $avatar
      * @return User
      */
-    public function setAvatar(  UploadedFile $avatar)
+    public function setAvatar(  UploadedFile $avatar = null)
     {
+        if( $avatar == null )
+            return;
+        
         $this->avatar = $avatar;
         // This make the entity dirty to Doctrine
         // View this issue https://github.com/dustin10/VichUploaderBundle/issues/123

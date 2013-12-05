@@ -1,4 +1,4 @@
-var module = angular.module("Thread", []);
+var module = angular.module("Thread", ['tc.filters.timeago']);
 
 module.controller("thread.Controller", [
     "$scope", "$http", "thread", "avatars", "utils.DateService", "thread.Socket", "thread_comment_path", "workspace",
@@ -21,7 +21,8 @@ module.controller("thread.Controller", [
                     output.push(currentGroup);
                 }
 
-                currentGroup.comments.push(comment.body);
+                currentGroup.comments.push(comment);
+                currentGroup.createdAt = new Date(comment.createdAt+" UTC");
 
                 previousComment = comment;
             }
@@ -75,6 +76,7 @@ module.controller("thread.Controller", [
         $scope.$watch('thread.comments', function(newValue, oldValue){
             $scope.groupedComments = groupComments(thread.comments);
         }, true);
+        
         // Starts the synchroniser
         //Socket.start();
     }

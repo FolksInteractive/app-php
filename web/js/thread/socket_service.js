@@ -101,7 +101,7 @@
                 true
                 );
 
-            start();
+           start();
 
             /*
              * Public API

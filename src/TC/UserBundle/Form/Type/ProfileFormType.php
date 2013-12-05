@@ -63,7 +63,10 @@ class ProfileFormType extends BasedType
         $builder
             ->add('firstName')
             ->add('lastName')                
-            ->add('avatar', 'file')
+            ->add('avatar', 'file', array(
+                'required' => false,
+                'by_reference' => false
+            ))
         ;
     }
 }

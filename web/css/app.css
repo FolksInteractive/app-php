@@ -517,6 +517,9 @@ body {
 .none {
   display: none; }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 .tc-breadcrumb {
   color: #333;
   font-weight: 200;
@@ -676,6 +679,13 @@ body {
     padding: 25px 0 0 44px;
     position: absolute;
     bottom: 40px; }
+  .tc-menu-panel .tc-user-section {
+    padding: 20px;
+    text-align: center; }
+    .tc-menu-panel .tc-user-section > img {
+      margin-bottom: 10px; }
+    .tc-menu-panel .tc-user-section > .name {
+      font-size: 18px; }
   .tc-menu-panel .tc-return-section ul {
     margin: 5px 0; }
   .tc-menu-panel .tc-return-section i {
@@ -1219,13 +1229,6 @@ body {
 /*************************************************/
 .root .tc-toolbar {
   display: none; }
-.root .tc-user-section {
-  padding: 20px;
-  text-align: center; }
-  .root .tc-user-section > img {
-    margin-bottom: 10px; }
-  .root .tc-user-section > .name {
-    font-size: 18px; }
 .root .tc-sheet {
   margin-top: 20px; }
 .root .tc-over-section {
