@@ -201,11 +201,12 @@
         }
     }
     
-    >tbody >tr {
+    >tbody >tr, >tfoot >tr {
         
         >td {
             padding: 15px 0;
             border-bottom: 1px solid $gray-border-color;
+            vertical-align: middle;
         }
         
         .tc-info-col {
@@ -226,10 +227,23 @@
             text-align: left;
         }
         
+        .tc-description-edit {
+            padding-right: 10px;
+        }
+        
         .tc-cost {
             width: 100px;
             font-weight: normal;
             color: $gray-light;
+        }
+        
+        .tc-cost-edit {
+            padding-left: 10px;
+            padding-right: 10px;
+            
+            input {
+                text-align: center;
+            }
         }
         
         .tc-quantity {
@@ -238,8 +252,25 @@
             color: $gray-light;
         }
         
+        .tc-quantity-edit {
+            width: 70px;
+            padding-left: 10px;
+            padding-right: 10px;
+            
+            input {
+                text-align: center;
+            }
+        }
+        
         .tc-subtotal {
-            width: 100px;
+            width: 90px;
+            text-align: center;
+        }
+        
+        .tc-actions {
+            width: 30px;
+            text-align: center;
+            padding-right: 15px;
         }
     }
     
@@ -247,6 +278,15 @@
         
         >td {
             border-bottom: 1px solid $gray-border-color;
+        }
+    }
+    
+    >.edit-mode >tr {
+        
+        // Padding agjustment for edit rows
+        >td {
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
     }
 }

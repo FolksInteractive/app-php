@@ -18,6 +18,21 @@
 // Custom Icons
 // -------------------------
 
+.icon-addtext-bk-lg{
+    width: 50px;
+    height: 33px;
+    background: url("/img/icons/icon-addtext-bk-lg.png");
+    background-repeat: no-repeat;
+}
+
+.tc-icon-remove{
+    color: $gray-light;
+}
+
+.tc-icon-remove:hover {
+    color: $red-dark;
+}
+
 .icon-dashboard{
     width: 13px;
     height: 18px;
