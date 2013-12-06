@@ -138,6 +138,17 @@ input[type='email'] {
 .icon-discussion.icon-white {
   background: url("/img/icons/icon-projects-white.png"); }
 
+.icon-projects-bk-lg {
+  width: 26px;
+  height: 22px;
+  background: url("/img/icons/icon-projects-bk-lg.png");
+  background-repeat: no-repeat; }
+
+.tc-icon-pricebook-bk-lg {
+  font-size: 24px;
+  padding-right: 35px;
+  color: #555555; }
+
 .icon-relations {
   width: 19px;
   height: 14px;
@@ -633,7 +644,7 @@ body {
   position: relative;
   top: 20px;
   text-align: center;
-  padding: 40px 0 30px 0;
+  padding: 40px 100px 30px 100px;
   border: 1px dashed #dededf;
   border-radius: 12px;
   margin: 100px; }
