@@ -856,15 +856,15 @@ body {
 /*************************************************/
 /*****   Section Client:dashboard.html.twig   *****/
 /*************************************************/
-.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
+.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon, .vendor-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
   font-size: 30px;
   margin-right: 14px;
   color: #666; }
-.client-dashboard .wrapper {
+.client-dashboard .wrapper, .vendor-dashboard .wrapper {
   margin: 0 35px; }
-  .client-dashboard .wrapper .tc-activities .media-list {
+  .client-dashboard .wrapper .tc-activities .media-list, .vendor-dashboard .wrapper .tc-activities .media-list {
     padding: 20px; }
-    .client-dashboard .wrapper .tc-activities .media-list :before {
+    .client-dashboard .wrapper .tc-activities .media-list :before, .vendor-dashboard .wrapper .tc-activities .media-list :before {
       position: absolute;
       top: 70px;
       bottom: 70px;
@@ -873,51 +873,51 @@ body {
       background: #dededf;
       content: '';
       z-index: -1; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-object {
+    .client-dashboard .wrapper .tc-activities .media-list .media-object, .vendor-dashboard .wrapper .tc-activities .media-list .media-object {
       width: 50px;
       height: 50px; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-body {
+    .client-dashboard .wrapper .tc-activities .media-list .media-body, .vendor-dashboard .wrapper .tc-activities .media-list .media-body {
       padding: 5px 0 0 25px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body h4 span {
+      .client-dashboard .wrapper .tc-activities .media-list .media-body h4 span, .vendor-dashboard .wrapper .tc-activities .media-list .media-body h4 span {
         font-size: 12px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body .date {
+      .client-dashboard .wrapper .tc-activities .media-list .media-body .date, .vendor-dashboard .wrapper .tc-activities .media-list .media-body .date {
         color: #777;
         font-size: 12px; }
-  .client-dashboard .wrapper .tc-activities legend {
+  .client-dashboard .wrapper .tc-activities legend, .vendor-dashboard .wrapper .tc-activities legend {
     margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships legend {
+  .client-dashboard .wrapper .tc-relationships legend, .vendor-dashboard .wrapper .tc-relationships legend {
     margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships .block {
+  .client-dashboard .wrapper .tc-relationships .block, .vendor-dashboard .wrapper .tc-relationships .block {
     text-align: center;
     margin-left: -5px; }
-    .client-dashboard .wrapper .tc-relationships .block h1 {
+    .client-dashboard .wrapper .tc-relationships .block h1, .vendor-dashboard .wrapper .tc-relationships .block h1 {
       font-size: 48px;
       font-weight: bold; }
-    .client-dashboard .wrapper .tc-relationships .block p {
+    .client-dashboard .wrapper .tc-relationships .block p, .vendor-dashboard .wrapper .tc-relationships .block p {
       color: #999; }
-  .client-dashboard .wrapper .tc-relationships .button-add {
+  .client-dashboard .wrapper .tc-relationships .button-add, .vendor-dashboard .wrapper .tc-relationships .button-add {
     text-align: center;
     margin-top: 48px; }
-  .client-dashboard .wrapper .tc-money legend {
+  .client-dashboard .wrapper .tc-money legend, .vendor-dashboard .wrapper .tc-money legend {
     margin-top: 40px; }
-  .client-dashboard .wrapper .tc-money .chart-legend {
+  .client-dashboard .wrapper .tc-money .chart-legend, .vendor-dashboard .wrapper .tc-money .chart-legend {
     padding: 65px 0 0 40px;
     vertical-align: middle; }
-    .client-dashboard .wrapper .tc-money .chart-legend .item {
+    .client-dashboard .wrapper .tc-money .chart-legend .item, .vendor-dashboard .wrapper .tc-money .chart-legend .item {
       padding-bottom: 30px; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .spent {
+      .client-dashboard .wrapper .tc-money .chart-legend .item .spent, .vendor-dashboard .wrapper .tc-money .chart-legend .item .spent {
         background: #5cb85c; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .wip {
+      .client-dashboard .wrapper .tc-money .chart-legend .item .wip, .vendor-dashboard .wrapper .tc-money .chart-legend .item .wip {
         background: #428bca; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .ob {
+      .client-dashboard .wrapper .tc-money .chart-legend .item .ob, .vendor-dashboard .wrapper .tc-money .chart-legend .item .ob {
         background: #0C04E8; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .grey {
+      .client-dashboard .wrapper .tc-money .chart-legend .item .grey, .vendor-dashboard .wrapper .tc-money .chart-legend .item .grey {
         color: #777;
         padding-left: 10px; }
-  .client-dashboard .wrapper .tc-money .chart {
+  .client-dashboard .wrapper .tc-money .chart, .vendor-dashboard .wrapper .tc-money .chart {
     text-align: center;
     padding-top: 20px; }
-    .client-dashboard .wrapper .tc-money .chart #money-spent {
+    .client-dashboard .wrapper .tc-money .chart #money-spent, .vendor-dashboard .wrapper .tc-money .chart #money-spent {
       text-align: center; }
 
 .tc-relations-section > h4 {
