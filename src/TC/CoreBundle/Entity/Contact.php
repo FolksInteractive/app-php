@@ -66,9 +66,9 @@ class Contact
     /**
      * @ORM\Column(type="datetime", name="created_at")
      * 
-     * @var DateTime $createdAt
+     * @var DateTime $created_at
      */
-    protected $createdAt;
+    protected $created_at;
         
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection $tags
@@ -141,7 +141,7 @@ class Contact
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->created_at = new \DateTime();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -396,26 +396,26 @@ class Contact
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $created_at
      * @return Contact
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return \DateTime 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

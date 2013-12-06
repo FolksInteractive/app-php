@@ -28,7 +28,7 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findByClient($idRelation);
 
-        $orders = $this->getOrderManager()->findAllActiveForClient($relation);
+        $orders = $this->getOrderManager()->findAllForClient($relation);
                 
         return array(
             'relation' => $relation,

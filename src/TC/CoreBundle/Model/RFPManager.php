@@ -186,13 +186,24 @@ class RFPManager {
         return $rfp;
     }
 
+    /**
+     * 
+     * @param \TC\CoreBundle\Entity\RFP $rfp
+     */
     public function ready( RFP $rfp ) {
         
         if ( $rfp->getRelation()->getClient() == $this->workspace ) {
             $rfp->setReady(true);
         }
     }
-
+    
+    public function cancel( RFP $rfp ) {
+        
+        if ( $rfp->getRelation()->getClient() == $this->workspace ) {
+            $rfp->setCancelled(true);
+        }
+    }
+    
     /**
      * 
      * @param RFP $rfp

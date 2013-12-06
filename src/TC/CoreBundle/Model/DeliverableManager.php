@@ -123,7 +123,6 @@ class DeliverableManager {
                     ->join("TCCoreBundle:Order", "o", "WITH", "o.relation = :relation")
                     ->where( "d MEMBER OF o.deliverables" )
                     ->andWhere("o.approved = true")
-                    ->andWhere("o.active = true")
                     ->andWhere("d.completed = false")
                     ->setParameter( "relation", $relation )
                     ->getQuery()

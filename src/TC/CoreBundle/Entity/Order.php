@@ -48,26 +48,12 @@ class Order
     private $offer = array();
     
     /**
-     * @var datetime $createdAt
+     * @var datetime $created_at
      *
      * @Assert\Type("\DateTime")
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
-            
-    /**
-     * @var boolean $active
-     *
-     * @ORM\Column(name="active", type="boolean")
-     */
-    private $active = true;
-          
-    /**
-     * @var boolean $approved
-     *
-     * @ORM\Column(name="approved", type="boolean")
-     */
-    private $approved = false;
+    private $created_at;
           
     /**
      * @var boolean $ready
@@ -75,6 +61,13 @@ class Order
      * @ORM\Column(name="ready", type="boolean")
      */
     private $ready = false;
+          
+    /**
+     * @var boolean $approved
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved = false;
     
     /**
      * @var datetime $approved_at
@@ -113,14 +106,37 @@ class Order
      * @ORM\Column(name="billed_at", nullable=true, type="datetime")
      */
     private $billed_at;
-    
+        
     /**
-     * @var $total double
-     * 
-     * We have to define the property name for serialization purpose see getTotal()
+     * @var boolean $refused
+     *
+     * @ORM\Column(name="refused", type="boolean")
      */
-    private $total;
-            
+    private $refused = false;
+        
+    /**
+     * @var datetime $refused_at
+     *
+     * @Assert\Type("\DateTime")
+     * @ORM\Column(name="refused_at", nullable=true, type="datetime")
+     */
+    private $refused_at;
+        
+    /**
+     * @var boolean $cancelled
+     *
+     * @ORM\Column(name="cancelled", type="boolean")
+     */
+    private $cancelled = false;
+        
+    /**
+     * @var datetime $cancelled_at
+     *
+     * @Assert\Type("\DateTime")
+     * @ORM\Column(name="cancelled_at", nullable=true, type="datetime")
+     */
+    private $cancelled_at;
+                
     /**
      * @var Relation $relation
      * 
@@ -161,7 +177,7 @@ class Order
     public function __construct()
     {
         $this->deliverables = new ArrayCollection();
-        $this->createdAt = new DateTime();
+        $this->created_at = new DateTime();
     }
     
     /**
@@ -175,23 +191,23 @@ class Order
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param string $createdAt
+     * @param string $created_at
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return string 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
     
     /**
@@ -236,7 +252,7 @@ class Order
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return string 
      */
@@ -251,7 +267,7 @@ class Order
      */
     public function setCompleted($completed)
     {
-        $this->completed_at = new DateTime();
+        $this->completed_at = ($completed) ? new DateTime() : null;
         $this->completed = $completed;
     }
 
@@ -272,7 +288,7 @@ class Order
      */
     public function setBilled($billed)
     {
-        $this->billed_at = new DateTime();
+        $this->billed_at = ($billed) ? new DateTime() : null;
         $this->billed = $billed;
     }
 
@@ -291,7 +307,7 @@ class Order
      * 
      * @param \TC\CoreBundle\Entity\Workspace $creator
      */
-    public function setCreator(  Workspace $creator)
+    public function setCreator(Workspace $creator)
     {
         $this->creator = $creator;
     }
@@ -328,16 +344,6 @@ class Order
     
     public function __toString(){
       return $this->heading;
-    }
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
     }
 
     /**
@@ -418,16 +424,6 @@ class Order
         return $this->deliverables->filter( function($deliverable){
             return $deliverable->isCompleted();
         });
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 
     /**
@@ -655,5 +651,100 @@ class Order
     public function getRfp()
     {
         return $this->rfp;
+    }
+
+    /**
+     * Set refused
+     *
+     * @param boolean $refused
+     * @return Order
+     */
+    public function setRefused($refused)
+    {
+        
+        $this->refused_at = ($refused) ? new DateTime() : null;
+        $this->refused = $refused;
+    
+        return $this;
+    }
+
+    /**
+     * Get refused
+     *
+     * @return boolean 
+     */
+    public function getRefused()
+    {
+        return $this->refused;
+    }
+
+    /**
+     * Set refused_at
+     *
+     * @param \DateTime $refusedAt
+     * @return Order
+     */
+    public function setRefusedAt($refusedAt)
+    {
+        $this->refused_at = $refusedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get refused_at
+     *
+     * @return \DateTime 
+     */
+    public function getRefusedAt()
+    {
+        return $this->refused_at;
+    }
+
+    /**
+     * Set cancelled
+     *
+     * @param boolean $cancelled
+     * @return Order
+     */
+    public function setCancelled($cancelled)
+    {
+        $this->cancelled_at = ($cancelled) ? new DateTime() : null;
+        $this->cancelled = $cancelled;
+    
+        return $this;
+    }
+
+    /**
+     * Get cancelled
+     *
+     * @return boolean 
+     */
+    public function getCancelled()
+    {
+        return $this->cancelled;
+    }
+
+    /**
+     * Set cancelled_at
+     *
+     * @param \DateTime $cancelledAt
+     * @return Order
+     */
+    public function setCancelledAt($cancelledAt)
+    {
+        $this->cancelled_at = $cancelledAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get cancelled_at
+     *
+     * @return \DateTime 
+     */
+    public function getCancelledAt()
+    {
+        return $this->cancelled_at;
     }
 }

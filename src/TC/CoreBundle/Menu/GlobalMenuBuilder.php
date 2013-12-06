@@ -35,8 +35,8 @@ class GlobalMenuBuilder extends ContainerAware {
         // Leave feedback
         $menu
             ->addChild( 'Leave your feedback', array('uri' => '#'))                
-            ->setChildrenAttribute( "data-toggle", "modal" )                
-            ->setChildrenAttribute( "data-target", "#feedbackModal" )        
+            ->setAttribute( "data-toggle", "modal" )                
+            ->setAttribute( "data-target", "#feedbackModal" )        
             ->setExtra( 'icon_classes', 'glyphicon glyphicon-send' );
 
         $isClientMode = (strpos($request->attributes->get('_route') , "client_") === 0 );

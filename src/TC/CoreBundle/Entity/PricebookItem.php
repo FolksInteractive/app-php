@@ -48,7 +48,7 @@ class PricebookItem
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    private $created_at;
     
     /**
      * @var Pricebook $priceBook
@@ -63,7 +63,7 @@ class PricebookItem
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->created_at = new \DateTime();
     }
 
     /**
@@ -146,26 +146,26 @@ class PricebookItem
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $created_at
      * @return PricebookItem
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return \DateTime 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

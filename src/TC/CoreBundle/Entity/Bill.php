@@ -25,11 +25,11 @@ class Bill
     private $id;
 
     /**
-     * @var DateTime $createdAt
+     * @var DateTime $created_at
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    private $created_at;
 
     /**
      * @var ArrayCollection $deliverables
@@ -58,7 +58,7 @@ class Bill
     private $closed = false;
 
     /**
-     * @var DateTime $createdAt
+     * @var DateTime $created_at
      *
      * @ORM\Column(name="closed_at", nullable=true, type="datetime")
      */    
@@ -77,7 +77,7 @@ class Bill
     
     public function __construct( )
     {
-        $this->createdAt = new DateTime();
+        $this->created_at = new DateTime();
         $this->deliverables = new ArrayCollection();        
     }
 
@@ -103,23 +103,23 @@ class Bill
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param DateTime $createdAt
+     * @param DateTime $created_at
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return DateTime 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

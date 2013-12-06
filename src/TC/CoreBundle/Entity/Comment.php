@@ -33,7 +33,7 @@ class Comment implements JsonSerializable
      * 
      * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    protected $created_at;
     
     /**
      * Thread of this comment
@@ -60,7 +60,7 @@ class Comment implements JsonSerializable
      */
     public function __construct()
     {
-        $this->createdAt = new DateTime();
+        $this->created_at = new DateTime();
     }
     
     /**
@@ -112,16 +112,16 @@ class Comment implements JsonSerializable
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
     
     /**
      * Sets the creation date
-     * @param DateTime $createdAt
+     * @param DateTime $created_at
      */
-    public function setCreatedAt(DateTime $createdAt)
+    public function setCreatedAt(DateTime $created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
     
     /**
@@ -147,7 +147,7 @@ class Comment implements JsonSerializable
         $data = array(
             "id" => $this->getId(),
             "body" =>$this->getBody(),
-            "createdAt" =>$this->getCreatedAt()->format( "Y-m-d H:i:s" ),
+            "created_at" =>$this->getCreatedAt()->format( "Y-m-d H:i:s" ),
             "author" =>$this->getAuthor()->jsonSerialize(),
         );
         

@@ -58,7 +58,7 @@ class Relation {
      * @var ArrayCollection $orders
      * 
      * @ORM\OneToMany(targetEntity="Order", mappedBy="relation", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"createdAt" = "DESC"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     private $orders;
     
@@ -66,7 +66,7 @@ class Relation {
      * @var ArrayCollection $rfps
      * 
      * @ORM\OneToMany(targetEntity="RFP", mappedBy="relation", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"createdAt" = "DESC"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     private $rfps;
     
@@ -93,18 +93,18 @@ class Relation {
     private $active = true;
 
     /**
-     * @var datetime $createdAt
+     * @var datetime $created_at
      *
      * @Assert\Type("\DateTime")
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    private $created_at;
 
     public function __construct() {
         $this->closedBills = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->rfps = new ArrayCollection();
-        $this->createdAt = new DateTime();
+        $this->created_at = new DateTime();
         $this->openBill = new Bill( );
     }
 
@@ -139,24 +139,24 @@ class Relation {
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param DateTime $createdAt
+     * @param DateTime $created_at
      * @return Relation
      */
-    public function setCreatedAt( $createdAt ) {
-        $this->createdAt = $createdAt;
+    public function setCreatedAt( $created_at ) {
+        $this->created_at = $created_at;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return DateTime 
      */
     public function getCreatedAt() {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

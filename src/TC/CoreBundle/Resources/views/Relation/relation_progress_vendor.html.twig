@@ -153,10 +153,12 @@
 {% endblock %}
 
 {% block bottom_js %}
+{{parent()}}
 <script src="{{asset('js/directives/position/position.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/directives/datepicker/datepicker.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/progress/progress-module.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
+{% autoescape 'js' %}
 (function(ng, module){
     {% set deliverablesToEncode = [] %}
     {% for deliverableForm in form.deliverables %}   
@@ -182,5 +184,6 @@
     module.value("form_name", "{{form.vars.name}}");
         
 })(angular, module);
+{% endautoescape %}
 </script>
 {% endblock %}

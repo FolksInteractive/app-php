@@ -3,6 +3,7 @@
 namespace TC\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="tc_rfp")
  * @ORM\Entity
  */
-class RFP
+class RFP implements JsonSerializable
 {
     /**
      * @var integer
@@ -56,7 +57,36 @@ class RFP
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    private $created_at;
+        
+    /**
+     * @var boolean $cancelled
+     *
+     * @ORM\Column(name="cancelled", type="boolean")
+     */
+    private $cancelled = false;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="cancelled_at", type="datetime")
+     */    
+    private $cancelled_At;
+        
+    /**
+     * @var boolean $refused
+     *
+     * @ORM\Column(name="refused", type="boolean")
+     */
+    private $refused = false;
+        
+    /**
+     * @var datetime $refused_at
+     *
+     * @Assert\Type("\DateTime")
+     * @ORM\Column(name="refused_at", nullable=true, type="datetime")
+     */
+    private $refused_at;
 
     /**
      * @var boolean
@@ -88,13 +118,14 @@ class RFP
     private $order;
     
     public function __construct()
-    {;
-        $this->createdAt = new \DateTime();
+    {
+        $this->created_at = new \DateTime();
     }
     
     public function __toString() {
         return $this->heading;
     }
+    
     /**
      * Get id
      *
@@ -126,29 +157,6 @@ class RFP
     public function getBody()
     {
         return $this->body;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return RequestProposal
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -296,10 +304,10 @@ class RFP
     /**
      * Set order
      *
-     * @param \TC\CoreBundle\Entity\RFP $order
+     * @param \TC\CoreBundle\Entity\Order $order
      * @return RFP
      */
-    public function setOrder(\TC\CoreBundle\Entity\RFP $order = null)
+    public function setOrder(\TC\CoreBundle\Entity\Order $order = null)
     {
         $this->order = $order;
     
@@ -309,10 +317,146 @@ class RFP
     /**
      * Get order
      *
-     * @return \TC\CoreBundle\Entity\RFP 
+     * @return \TC\CoreBundle\Entity\Order 
      */
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $created_at
+     * @return RFP
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set cancelled
+     *
+     * @param boolean $cancelled
+     * @return RFP
+     */
+    public function setCancelled($cancelled)
+    {        
+        $this->cancelled_at = ($cancelled) ? new DateTime() : null;
+        $this->cancelled = $cancelled;
+        
+        return $this;
+    }
+
+    /**
+     * Get cancelled
+     *
+     * @return boolean 
+     */
+    public function getCancelled()
+    {
+        return $this->cancelled;
+    }
+
+    /**
+     * Set cancelled_At
+     *
+     * @param \DateTime $cancelledAt
+     * @return RFP
+     */
+    public function setCancelledAt($cancelledAt)
+    {
+        $this->cancelled_At = $cancelledAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get cancelled_At
+     *
+     * @return \DateTime 
+     */
+    public function getCancelledAt()
+    {
+        return $this->cancelled_At;
+    }
+
+    /**
+     * Set refused
+     *
+     * @param boolean $refused
+     * @return RFP
+     */
+    public function setRefused($refused)
+    {
+        $this->refused_at = ($refused) ? new DateTime() : null;
+        $this->refused = $refused;
+    
+        return $this;
+    }
+
+    /**
+     * Get refused
+     *
+     * @return boolean 
+     */
+    public function getRefused()
+    {
+        return $this->refused;
+    }
+
+    /**
+     * Set refused_at
+     *
+     * @param \DateTime $refusedAt
+     * @return RFP
+     */
+    public function setRefusedAt($refusedAt)
+    {
+        $this->refused_at = $refusedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get refused_at
+     *
+     * @return \DateTime 
+     */
+    public function getRefusedAt()
+    {
+        return $this->refused_at;
+    }
+    
+    
+    public function jsonSerialize() {
+        $data = array(
+            "id" => $this->getId(),
+            "heading" => $this->getHeading(),
+            "subheading" => $this->getSubheading(),
+            //"order" => array( "id" => $this->getOrder()->getId() ),
+            "refused" => $this->getRefused(),
+            "refused_at" => $this->getRefusedAt(),
+            "cancelled" => $this->getCancelled(),
+            "cancelled_at" => $this->getCancelledAt(),
+            "ready" => $this->getReady(),            
+            "body" =>$this->getBody(),
+            "created_at" =>$this->getCreatedAt()->format( "Y-m-d H:i:s" ),
+        );
+        
+        return $data;
     }
 }

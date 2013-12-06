@@ -18,7 +18,7 @@ class CommentType extends AbstractType
             ->add('body', 'text', array(
                 "required" => true
             ))
-            ->add('createdAt', 'datetime', array(
+            ->add('created_at', 'datetime', array(
                 "required" => false,
                 "widget" => 'single_text',
                 "date_format" => "Y-m-d H:i:s",

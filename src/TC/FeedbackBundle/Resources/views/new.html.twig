@@ -22,18 +22,19 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="feedbackModalLabel">How do feel about Timecrumbs ?</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="alert alert-warning" style="display:none"
+                <div class="modal-body" ng-cloak>
+                    <div class="alert alert-warning"
                          ng-show="request.status=='sent' && request.success">
                         Thank you for contibuting to TimeCrumbs!
                     </div>
                         
-                    <div class="alert alert-warning" style="display:none"
+                    <div class="alert alert-warning"
                          ng-show="request.status=='sent' && !request.success">
                         Opps somehting went wrong. Please contact us directly at info@flsolutions.ca
                     </div>  
                         
                     <p>Don't hesitate to leave your feedbacks, report bugs or share your ideas. It will help us to make build offer you a better service!</p>
+                    
                     <textarea class="form-control" rows="4"
                               ng-required="true" 
                               ng-model="newFeedback.body"></textarea>

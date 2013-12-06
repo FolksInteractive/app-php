@@ -39,7 +39,7 @@ class Project
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    private $created_at;
 
     /**
      * @var string
@@ -52,7 +52,7 @@ class Project
      * @var ArrayCollection $orders
      * 
      * @ORM\OneToMany(targetEntity="ProjectObjective", mappedBy="relation", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"createdAt" = "DESC"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     private $objectives;
     
@@ -72,7 +72,7 @@ class Project
 
     public function __construct() {
         $this->objectives = new ArrayCollection();
-        $this->createdAt = new DateTime();
+        $this->created_at = new DateTime();
     }
     
     /**
@@ -109,26 +109,26 @@ class Project
     }
 
     /**
-     * Set createdAt
+     * Set created_at
      *
-     * @param DateTime2 $createdAt
+     * @param DateTime2 $created_at
      * @return Project
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($created_at)
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return DateTime2 
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**

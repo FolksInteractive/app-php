@@ -41,7 +41,7 @@ class Thread implements JsonSerializable
      * @var ArrayCollection $tasks
      * 
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="thread", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"createdAt" = "ASC"})
+     * @ORM\OrderBy({"created_at" = "ASC"})
      */
     protected $comments;
     

@@ -6,8 +6,6 @@ ng-controller="thread.Controller"
 {% block thread_section %}
 <div class="tc-side-thread-section">
     
-    
-    
     <div id="thread_scrollable_section" ng-cloak>
     {% raw %}
         <div class="empty-image center" ng-show="thread.comments <= 0">
@@ -23,7 +21,7 @@ ng-controller="thread.Controller"
                         <img class="media-object" ng-src="{{getAvatar(group.author)}}"/>
                     </a>
                     <a class="person">{{group.author.fullname}}</a>
-                    <div class="date">{{group.createdAt|timeago}}</div>
+                    <div class="date">{{group.created_at|timeago}}</div>
                     <div class="media-body pull-left">
                         <div class="media" ng-repeat="comment in group.comments">
                             <p>{{ comment.body }}</p>
@@ -35,6 +33,7 @@ ng-controller="thread.Controller"
         </div>
     {% endraw %}
     </div>
+    
     <div class="tc-discuss-section"> 
         <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
             <div class="form-group">
