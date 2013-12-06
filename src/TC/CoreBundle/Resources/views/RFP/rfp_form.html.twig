@@ -59,7 +59,7 @@ ng-cloak
     </div>  
 </div>
 <div class="tc-body-section">
-    <div class="tc-body-blocks"  ng-form name="bodyForm">
+    <div class="tc-body-blocks"  ng-form name="bchrdoyForm">
     {% raw %}
         <div class="tc-block-edit" ng-repeat="block in rfp.body">
             <div class="form-group">        
@@ -74,6 +74,9 @@ ng-cloak
                        ng-model="block.body"
                        ng-required="true" placeholder="Insert content here"></textarea>
             </div>
+            <div class="tc-delete-block">
+                <a href="#"><span class="glyphicon glyphicon-remove tc-icon-remove"></span></a>
+            </div>
         </div>
     {% endraw %}
     </div>
@@ -81,10 +84,12 @@ ng-cloak
     <div class="spacer"></div>
 
     <div class="form-group">        
-        <button type="button" class="btn btn-default btn-lg add-new"
+        <button type="button" class="btn btn-default btn-lg tc-btn-newtext"
             disabled=""
             ng-disabled="newBlockForm.$invalid"
-            ng-click="addBlock()"><span class="glyphicon glyphicon-plus-sign"></span> Add a New Block</button>
+            ng-click="addBlock()">
+            <span class="icon-addtext-bk-lg"></span><p>Add Text</p>
+        </button>
     </div>
 </div>
 {% endblock %}
