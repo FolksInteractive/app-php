@@ -19,28 +19,41 @@
 
 {% else %}
 <div class="tc-orders-section">      
-    <table class="tc-orders table">
+    <table class="tc-table table">
         <thead>
-            <tr>
-                <th class="tc-order-heading-col"></th>
-                <th class="tc-order-thread-col"></th>
-                <th class="tc-order-cost-col"></th>
-            </tr>
-        </thead>
+                <tr>
+                    <th></th>
+                    <th class="left">Description</th>
+                    <th>Comments</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
         <tbody>
             {% for order in orders %}
                 <tr>
-                <td class="tc-order-heading-col">
+                <td class="tc-actions-col">
+                    <div class="checkbox-item">
+                        <input type="checkbox" value="None" id="checkbox-item1" name="check" />
+                        <label for="checkbox-item1"></label>
+                    </div>
+                </td>
+                <td class="tc-description-col">
+                    <div class="title">
                     <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                         {{order.heading|default('proposal')}}
                     </a>
+                    </div>
+                    <div class="main-description"><b>Created</b> on September 16th 2013</div>
+                    <div class="sub-description hide"><b>Approved</b> on September 16th 2013 </div>    
                 </td>
-                <td class="tc-order-thread-col">
-                    <span class="badge badge-talk-bubble">
+                <td class="tc-discussion-col">
+                    <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                    <div class="badge-talk-bubble">
                         {{order.thread.getNumComments()}}
-                    </span>
+                    </div>
+                    </a>
                 </td>
-                <td class="tc-order-cost-col">
+                <td class="tc-info-col tc-subtotal-col">
                     {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
                 </td>
                 </tr>    

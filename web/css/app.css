@@ -117,6 +117,10 @@ input[type='email'] {
 .tc-icon-remove:hover {
   color: #990000; }
 
+.tc-icon-ban {
+  color: #999999;
+  padding-right: 20px; }
+
 .icon-dashboard {
   width: 13px;
   height: 18px;
@@ -349,7 +353,8 @@ input[type='email'] {
   width: 120px; }
   .tc-table > tbody > tr .tc-discussion-col .badge-talk-bubble {
     text-align: center;
-    margin: auto; }
+    margin: auto;
+    font-weight: bold; }
 .tc-table > tbody > tr .tc-progressbar-col {
   width: auto; }
   .tc-table > tbody > tr .tc-progressbar-col .progress {
@@ -750,9 +755,11 @@ body {
     padding: 20px;
     text-align: center; }
     .tc-menu-panel .tc-user-section > img {
-      margin-bottom: 10px; }
+      margin: 20px 0; }
     .tc-menu-panel .tc-user-section > .name {
-      font-size: 18px; }
+      font-size: 18px;
+      font-weight: bold;
+      padding-bottom: 20px; }
   .tc-menu-panel .tc-return-section ul {
     margin: 5px 0; }
   .tc-menu-panel .tc-return-section i {
