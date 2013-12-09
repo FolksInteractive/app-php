@@ -8,7 +8,7 @@
     }
     
     .tc-sheet {
-        margin-top: 20px;
+        margin-top: 10px;
     }
     
     .tc-over-section {
@@ -31,37 +31,22 @@
         }
         
         .client {
-            display: inline-block;
-            padding: 0 40px 30px 40px;
-            margin-right: 5px;
-            vertical-align: top;
-            max-width: 400px;
             border-right: 1px dashed #dededf;
-            
-            .flat-img {
-                margin: 10px auto 20px auto;
-            }
-            
-            .provide {
-                height: 50px;
-                margin-top: 20px;
-                margin-bottom: 10px;
-                @include mega-title ();
-                font-size: 40px;
-            }
-            
-            p {
-                padding-top: 10px;
-            }
+            margin-right: 5px;
         }
         
         .vendor {
-            display: inline-block;
-            padding: 0 40px 30px 40px;
+            border-left: 1px dashed #dededf;
             margin-left: 5px;
+        }
+        
+        .client, .vendor {
+            display: inline-block;
+            padding: 10px 40px 30px 40px;
             vertical-align: top;
             max-width: 400px;
-            border-left: 1px dashed #dededf;
+            margin-top: 20px;
+            
             
             .flat-img {
                 margin: 10px auto 20px auto;
@@ -76,7 +61,7 @@
             }
             
             p {
-                padding-top: 10px;
+                padding: 10px 0 20px 0;
             }
         }
         

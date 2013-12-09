@@ -101,8 +101,9 @@
             padding: 0 0 60px 0;
             
             .hover {
-                -webkit-transition: opacity 0.2s ease-out;
-                opacity: 0;
+                //-webkit-transition: opacity 0.2s ease-out;
+                //opacity: 0;
+                display: none;
                 position: absolute;
                 background: rgba(255,255,255,0.9);
                 width: 100%;
@@ -131,10 +132,6 @@
                     
                 }
                 
-            }
-            
-            .hover:hover {
-                display: block;
             }
             
             .tc-relation-badge {
@@ -179,7 +176,8 @@
         }
         
         .thumbnail:hover .hover {
-            opacity: 1;
+            //opacity: 1;
+            display: block;
         }
     }
 }
