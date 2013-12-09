@@ -1,3 +1,40 @@
+{% block empty_dashboard %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-dashboard.gif')}}" /></div>
+    <div class="title"><h3>Dashboard isn't available yet</h3></div>
+    <div class="description"><p>The dashboard section will be added in a near future. 
+            We'd love to hear your expectations. <a href="#feedbackModal" data-toggle="modal">Let us know</a> what information 
+            you think should be part of this dashboard. Thanks for your patience!</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_projects %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-projects.gif')}}" /></div>
+    <div class="title"><h3>Projects aren't availables yet</h3></div>
+    <div class="description"><p>The projects section will be added in a near future. 
+            The projects will allow you to manage multiple vendors on a single project, 
+            making sure the total of money spend on them fits in your project's budget. Thanks for your patience!</p></div>
+</div>
+
+{% endblock %}
+
+{% block empty_pricebook %} 
+
+<div class="tc-empty-page">
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-pricebook.gif')}}" /></div>
+    <div class="title"><h3>Price book isn't available yet</h3></div>
+    <div class="description"><p>The price book section will be added in a near future. 
+            The price book will allow you to keep an history of all the deliverables you've created
+            in order to reuse them on proposal creation and eventually get stats on them. (E.g.  
+            What type of work has brought you the most money during the year.)</p></div>
+</div>
+
+{% endblock %}
+
 {% block empty_relations_client %} 
 
 <div class="tc-empty-page">
@@ -43,7 +80,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-proposals.gif')}}" /></div>
     <div class="title"><h3>No proposals yet</h3></div>
-    <div class="description"><p>First, you need to <b>create</b> a <a href="{{path('client_rfp_new', {'idRelation': relation.id})}}">request for proposal</a> so your service provide can make an offer.</p></div>
+    <div class="description"><p>First, you need to <a href="{{path('client_rfp_new', {'idRelation': relation.id})}}">create a request for proposal</a> so your service provide can make an offer.</p></div>
 </div>
 
 {% endblock %}
@@ -63,7 +100,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-progress.gif')}}" /></div>
     <div class="title"><h3>No progress to track yet</h3></div>
-    <div class="description"><p>First, you need to <b>accept</b> a <a href="{{path('client_relation_orders', {'idRelation': relation.id})}}">proposal</a>.</p></div>
+    <div class="description"><p>First, you need to <a href="{{path('client_relation_orders', {'idRelation': relation.id})}}">accept a proposal</a>.</p></div>
 </div>
 
 {% endblock %}
@@ -73,7 +110,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-progress.gif')}}" /></div>
     <div class="title"><h3>No progress to track yet</h3></div>
-    <div class="description"><p>First, you need to <b>create</b> a <a href="{{path('vendor_relation_orders', {'idRelation': relation.id})}}">proposal</a>.</p></div>
+    <div class="description"><p>First, you need to <a href="{{path('vendor_relation_orders', {'idRelation': relation.id})}}">create a proposal</a>.</p></div>
 </div>
 
 {% endblock %}
@@ -103,7 +140,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="/img/flat-imgs/flat-invoices.gif" /></div>
     <div class="title"><h3>No invoices yet</h3></div>
-    <div class="description"><p>First, your vendor need to <b>close</b> a <a href="{{path('client_relation_bill', {'idRelation': relation.id})}}">bill</a>.</p></div>
+    <div class="description"><p>First, your vendor need to <a href="{{path('client_relation_bill', {'idRelation': relation.id})}}">close a bill</a>.</p></div>
 </div>
 
 {% endblock %}
@@ -113,7 +150,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="/img/flat-imgs/flat-invoices.gif" /></div>
     <div class="title"><h3>No invoices yet</h3></div>
-    <div class="description"><p>First, your need to <b>close</b> a <a href="{{path('vendor_relation_bill', {'idRelation': relation.id})}}">bill</a>.</p></div>
+    <div class="description"><p>First, your need to <a href="{{path('vendor_relation_bill', {'idRelation': relation.id})}}">close a bill</a>.</p></div>
 </div>
 
 {% endblock %}

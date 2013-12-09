@@ -2,6 +2,22 @@
 
 {% block body_class -%}{{ parent() }} vendor-dashboard{% endblock %}
 
+{% block toolbar %}
+
+<div class="tc-breadcrumb pull-left">
+    <ul class="breadcrumb">
+        <li class="active">    
+            <a href="#">
+                <span class="glyphicon glyphicon-dashboard"></span> Dashboard
+            </a>
+        </li>    
+    </ul>
+</div>
+
+{% endblock %}
+
 {% block sheet%}
+
+{{block('empty_dashboard')}}
 
 {% endblock %}

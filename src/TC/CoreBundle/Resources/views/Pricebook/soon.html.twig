@@ -4,18 +4,25 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
+    <ul class="breadcrumb">
+        <li class="active">    
+            <a href="#">
+                <span class="glyphicon glyphicon-book tc-icon-pricebook-bk-lg"></span> Price Book
+            </a>
+        </li>    
+    </ul>
 </div>
 
 <div class="tc-controls pull-right">
-    <button class="disabled btn-primary btn">
+    <!--<button class="disabled btn-primary btn btn-lg">
         <span class=".glyphicon .glyphicon-plus"></span>
         Create a new item
-    </button>
+    </button>-->
 </div>
 {% endblock %}
 
 {% block sheet %}
-<div class="tc-temporary-section">
-    <h1 class="center-block text-center">Coming Soon ...</h1>
-</div>
+
+{{block('empty_pricebook')}}
+
 {% endblock %}

@@ -41,7 +41,7 @@ class VendorMenuBuilder extends ContainerAware {
             ));
         
         $menu
-            ->addChild( 'Pricebook', array(
+            ->addChild( 'Price Book', array(
                 'uri' => '#'
         ) )
             ->setExtra( "icon_classes", "glyphicon glyphicon-book" )

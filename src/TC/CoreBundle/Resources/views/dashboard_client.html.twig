@@ -7,7 +7,7 @@
 <div class="tc-breadcrumb pull-left">
     <ul class="breadcrumb">
         <li class="active">    
-            <a href="/app_dev.php/0/r/">
+            <a href="#">
                 <span class="glyphicon glyphicon-dashboard"></span> Dashboard
             </a>
         </li>    
@@ -18,7 +18,9 @@
 
 {% block sheet%}
 
-<div class="wrapper">
+{{block('empty_dashboard')}}
+
+<!--<div class="wrapper">
 
     <div class="left-column col-lg-6 col-md-6">
 
@@ -45,8 +47,6 @@
 
         <div class="tc-money">
             <legend>Total Flow of Monies</legend>
-
-
 
             <div class="chart-legend col-lg-5 col-md-5">
                 <div class="item"><span class="badge spent">1000$</span> <span class="grey">Spent</span></div>
@@ -142,12 +142,7 @@
         </div>
     </div>
 
-
-
-
-
-
-</div>
+</div>-->
 
 
 {% endblock %}
