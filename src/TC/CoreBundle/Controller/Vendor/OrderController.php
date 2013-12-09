@@ -154,6 +154,43 @@ class OrderController extends BaseController {
             'relation' => $relation
         );
     }
+
+    /**
+     * Cancel a Order.
+     *
+     * @Route("/{idOrder}/cancel", name="vendor_order_cancel")
+     * @Template("TCCoreBundle:Order:order_cancel_vendor.html.twig")
+     */
+    public function cancelAction( Request $request, $idRelation, $idOrder ) {
+
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
+
+        // If Order is already cancelled redirect to orders list
+        if($order->getCancelled())
+            return $this->redirect( $this->generateUrl( 'vendor_relation_orders', array('idRelation' => $idRelation) ) );
+
+        $form = $this->createCancelForm( $order );
+
+        if ( $request->getMethod() === "PUT" ){
+            
+            $form->handleRequest( $request );
+            
+            if($form->isValid() ) {
+                $cancellation = $form->getData();
+                $this->getOrderManager()->cancel( $order, $cancellation );
+                $this->getOrderManager()->save( $order );
+
+                return $this->redirect( $this->generateUrl( 'vendor_relation_orders', array('idRelation' => $idRelation) ) );
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'order' => $order,
+            'relation' => $relation
+        );
+    }
     
     /* ******************************** */
     /*              FORMS               */
@@ -191,6 +228,39 @@ class OrderController extends BaseController {
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
 
         return $form;
+    }
+
+    /**
+     * Creates a form to cancel a Order.
+     *
+     * @param Order $order The order
+     *
+     * @return Form The form
+     */
+    private function createCancelForm( Order $order ) {
+        $action = $this->generateUrl( 'vendor_order_cancel', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
+        
+        $builder = $this->createFormBuilder( null , array(
+                    'action' => $action,
+                    'method' => 'PUT',
+                ) );
+                
+        if( $order->getReady() ){
+            $builder->add( 'why', 'choice', array(
+                "choices" => array(
+                    "It doesn't apply anymore.",
+                    "It is too late now.",
+                    "There was a misunderstanding in the requierement or clause."
+                ),
+                'expanded' => true,
+            ) )
+
+            ->add( 'other', 'textarea', array( "required" => false ) );
+        }
+        
+        $builder->add( 'submit', 'submit' );
+
+        return $builder->getForm();
     }
 
 }

@@ -214,6 +214,35 @@ class OrderManager {
             throw new AccessDeniedHttpException();
         }
     }
+    
+    /**
+     * 
+     * @param Order $order
+     * @param object $cancellation See Client/OrderController::createCancelForm
+     */
+    public function cancel( Order $order, $cancellation = null ) {
+        
+        if ( $order->getRelation()->getClient() == $this->workspace ) {
+            $order->setCancelled(true);
+            
+            if($order->getReady())
+                $this->mailer->sendOrderCancellation($order, $cancellation);
+        }
+    }
+    
+    /**
+     * 
+     * @param Order $order
+     * @param object $refusal See Vendor/OrderController::createRefuseForm
+     */
+    public function refuse( Order $order, $refusal = null ) {
+        
+        if ( $order->getRelation()->getVendor() == $this->workspace ) {
+            $order->setRefused(true);
+            
+            $this->mailer->sendOrderRefusal($order, $refusal);
+        }
+    }
 
     /**
      * 

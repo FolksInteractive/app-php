@@ -18,35 +18,74 @@
     {{block('empty_orders_client')}}
 
 {% else %}
-<div class="tc-orders-section">      
-    <table class="tc-orders table">
-        <thead>
-            <tr>
-                <th class="tc-order-heading-col"></th>
-                <th class="tc-order-thread-col"></th>
-                <th class="tc-order-cost-col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in orders %}
+<div class="tc-orders-section">   
+        <table  class="tc-table table">
+            <thead>
                 <tr>
-                <td class="tc-order-heading-col">
-                    <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                        {{order.heading|default('proposal')}}
-                    </a>
-                </td>
-                <td class="tc-order-thread-col">
-                    <span class="badge badge-talk-bubble">
+                    <th></th>
+                    <th>Comments</th>
+                    <th>Status</th>
+                    <th>Subtotal</th>
+                    <th style="width:50px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}            
+                <tr>
+                    <td class="tc-description-col">
+                        <div class="title">
+                            <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                {{order.heading|default('proposal')}}
+                            </a>
+                        </div>
+                        <div class="main-description"><b>Created</b> on September 16th 2013</div>
+                        <div class="sub-description hide"><b>Approved</b> on September 16th 2013 </div>
+                    </td>
+                    
+                    <td class="tc-status tc-status-col">
+                        <ul>
+                            <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
+                            <li><a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Draft</a></li>
+                            <li><a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Sent</a></li>
+                            <li><a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Purchased</a></li>
+                        </ul>
+                    </td>
+                    
+                    <td class="tc-discussion-col">
+                        <div class="badge-talk-bubble">
                         {{order.thread.getNumComments()}}
-                    </span>
-                </td>
-                <td class="tc-order-cost-col">
-                    {% if order.total is not null%} $ {{order.total|number_format(2, '.', ',')}} {% else %} N/A {% endif %}
-                </td>
-                </tr>    
+                        </div>
+                    </td>
+                    <td class="tc-info-col tc-subtotal-col">
+                        {% if order.total is not null%} 
+                            $ {{order.total|number_format(2, '.', ',')}} 
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="{{path("client_order_show", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        View
+                                    </a>
+                                </li>
+                                {% if order.refused == false and order.cancelled == false %}
+                                <li>
+                                    <a href="{{path("client_order_refuse", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        Refuse
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>     
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 </div> 
 {% endif %}
 {% endblock %}

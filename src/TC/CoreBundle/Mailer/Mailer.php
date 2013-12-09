@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\RouterInterface;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\Relation;
+use TC\CoreBundle\Entity\RFP;
 
 class Mailer {
 
@@ -30,7 +31,7 @@ class Mailer {
      * @param RouterInterface $router
      * @param Logger $logger
      * @param EngineInterface $templating
-     * @param type $from_email
+     * @param string $from_email
      */
     public function __construct(Swift_Mailer $mailer, RouterInterface $router, Logger $logger, EngineInterface $templating, $from_email) {
         $this->mailer = $mailer;
@@ -67,7 +68,7 @@ class Mailer {
 
     /**
      * 
-     * @param \TC\CoreBundle\Mailer\Order $order
+     * @param Order $order
      */
     public function sendOrderPurchaseNotification(Order $order) {
         $email = $order->getRelation()->getVendor()->getEmail();
@@ -80,7 +81,7 @@ class Mailer {
 
     /**
      * 
-     * @param \TC\CoreBundle\Mailer\Order $order
+     * @param Order $order
      */
     public function sendOrderReadyNotification(Order $order) {
         $email = $order->getRelation()->getClient()->getEmail();
@@ -89,6 +90,70 @@ class Mailer {
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Order #%s ready notification sent to %s", $order->getId(), $email) );        
+    }
+        
+    /**
+     * 
+     * @param RFP $rfp
+     * @param object $cancellation See Client/RFPController::createCancelForm
+     */
+    public function sendRFPCancellation(RFP $rfp, $cancellation = null) {
+        $relation = $rfp->getRelation();
+        
+        $email = $relation->getVendor()->getEmail();
+        
+        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_cancel_email.txt.twig', array('relation' =>  $relation,'cancellation'=>$cancellation));
+        $this->sendEmailMessage($rendered, $email);
+        
+        $this->logger->addInfo( sprintf("RFP #%s cancellation sent to %s", $rfp->getId(), $email) );
+    }
+        
+    /**
+     * 
+     * @param RFP $rfp
+     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     */
+    public function sendRFPRefusal(RFP $rfp, $refusal = null) {
+        $relation = $rfp->getRelation();
+        
+        $email = $relation->getClient()->getEmail();
+        
+        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_refuse_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $this->sendEmailMessage($rendered, $email);
+        
+        $this->logger->addInfo( sprintf("RFP #%s refusal sent to %s", $rfp->getId(), $email) );
+    }
+        
+    /**
+     * 
+     * @param Order $order
+     * @param object $cancellation See Client/RFPController::createCancelForm
+     */
+    public function sendOrderCancellation(Order $order, $cancellation = null) {
+        $relation = $order->getRelation();
+        
+        $email = $relation->getClient()->getEmail();
+        
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_cancel_email.txt.twig', array('relation' =>  $relation,'cancellation'=>$cancellation));
+        $this->sendEmailMessage($rendered, $email);
+        
+        $this->logger->addInfo( sprintf("Order #%s cancellation sent to %s", $order->getId(), $email) );
+    }
+        
+    /**
+     * 
+     * @param Order $order
+     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     */
+    public function sendOrderRefusal(Order $order, $refusal = null) {
+        $relation = $order->getRelation();
+        
+        $email = $relation->getVendor()->getEmail();
+        
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_refuse_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $this->sendEmailMessage($rendered, $email);
+        
+        $this->logger->addInfo( sprintf("Order #%s refusal sent to %s", $order->getId(), $email) );
     }
     
     /**

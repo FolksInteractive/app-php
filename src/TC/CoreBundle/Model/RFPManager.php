@@ -5,17 +5,16 @@ namespace TC\CoreBundle\Model;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
-use TC\CoreBundle\Entity\RFP;
+use InvalidArgumentException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Validator\Validator;
 use TC\CoreBundle\Entity\Relation;
+use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Thread;
 use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Mailer\Mailer;
 use TC\UserBundle\Entity\User;
-use InvalidArgumentException;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\Validator\Validator;
 
 /**
  * RFPManager
@@ -188,7 +187,7 @@ class RFPManager {
 
     /**
      * 
-     * @param \TC\CoreBundle\Entity\RFP $rfp
+     * @param RFP $rfp
      */
     public function ready( RFP $rfp ) {
         
@@ -197,10 +196,32 @@ class RFPManager {
         }
     }
     
-    public function cancel( RFP $rfp ) {
+    /**
+     * 
+     * @param RFP $rfp
+     * @param object $cancellation See Client/RFPController::createCancelForm
+     */
+    public function cancel( RFP $rfp, $cancellation = null ) {
         
         if ( $rfp->getRelation()->getClient() == $this->workspace ) {
             $rfp->setCancelled(true);
+            
+            if($rfp->getReady())
+                $this->mailer->sendRFPCancellation($rfp, $cancellation);
+        }
+    }
+    
+    /**
+     * 
+     * @param RFP $rfp
+     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     */
+    public function refuse( RFP $rfp, $refusal = null ) {
+        
+        if ( $rfp->getRelation()->getVendor() == $this->workspace ) {
+            $rfp->setRefused(true);
+            
+            $this->mailer->sendRFPRefusal($rfp, $refusal);
         }
     }
     

@@ -28,15 +28,15 @@ class RFPController extends BaseController {
     public function rfpsAction( $idRelation ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
-        
+
         $rfps = $this->getRFPManager()->findAllForClient( $relation );
-        
+
         return array(
             'relation' => $relation,
             'rfps' => $rfps
         );
     }
-    
+
     /**
      * Displays a form to edit an existing RFP.
      *
@@ -48,10 +48,10 @@ class RFPController extends BaseController {
     public function editAction( $idRelation, $idRFP = null ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
-        
-        if( $idRFP != null){
+
+        if ( $idRFP != null ) {
             $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
-        }else{            
+        } else {
             $rfp = $this->getRFPManager()->create( $relation );
         }
         $form = $this->createRFPForm( $rfp );
@@ -75,10 +75,10 @@ class RFPController extends BaseController {
     public function updateAction( Request $request, $idRelation, $idRFP = null ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
-        
-        if( $idRFP != null){
+
+        if ( $idRFP != null ) {
             $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
-        }else{            
+        } else {
             $rfp = $this->getRFPManager()->create( $relation );
         }
 
@@ -86,12 +86,12 @@ class RFPController extends BaseController {
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            if( $form->get('save_as_ready')->isClicked())
+            if ( $form->get( 'save_as_ready' )->isClicked() )
                 $this->getRFPManager()->ready( $rfp );
-            
-            $this->getRFPManager()->save($rfp);
 
-            return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId() ) ) );
+            $this->getRFPManager()->save( $rfp );
+
+            return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId()) ) );
         }
 
         return array(
@@ -117,11 +117,48 @@ class RFPController extends BaseController {
             'relation' => $relation
         );
     }
-    
-    /* ******************************** */
+
+    /**
+     * Cancel a RFP.
+     *
+     * @Route("/{idRFP}/cancel", name="client_rfp_cancel")
+     * @Template("TCCoreBundle:RFP:rfp_cancel_client.html.twig")
+     */
+    public function cancelAction( Request $request, $idRelation, $idRFP ) {
+
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
+        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
+
+        // If RFP is already cancelled redirect to rfp list
+        if($rfp->getCancelled())
+            return $this->redirect( $this->generateUrl( 'client_relation_rfps', array('idRelation' => $idRelation) ) );
+
+        $form = $this->createCancelForm( $rfp );
+
+        if ( $request->getMethod() === "PUT" ){
+            
+            $form->handleRequest( $request );
+            
+            if($form->isValid() ) {
+                $cancellation = $form->getData();
+                $this->getRFPManager()->cancel( $rfp, $cancellation );
+                $this->getRFPManager()->save( $rfp );
+
+                return $this->redirect( $this->generateUrl( 'client_relation_rfps', array('idRelation' => $idRelation) ) );
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'rfp' => $rfp,
+            'relation' => $relation
+        );
+    }
+
+    /** ******************************* */
     /*              FORMS               */
-    /* ******************************** */
-        
+    /** ******************************* */
+
     /**
      * Creates a form to edit a RFP.
      *
@@ -130,13 +167,13 @@ class RFPController extends BaseController {
      * @return Form The form
      */
     private function createRFPForm( RFP $rfp ) {
-        
-        if( !$rfp->getId() ){
+
+        if ( !$rfp->getId() ) {
             $action = $this->generateUrl( 'client_rfp_create', array('idRelation' => $rfp->getRelation()->getId()) );
-        }else{
+        } else {
             $action = $this->generateUrl( 'client_rfp_update', array('idRelation' => $rfp->getRelation()->getId(), 'idRFP' => $rfp->getId()) );
         }
-        
+
         $form = $this->createForm( new RFPType(), $rfp, array(
             'action' => $action,
             'method' => 'PUT',
@@ -146,6 +183,39 @@ class RFPController extends BaseController {
         $form->add( 'save_as_ready', 'submit', array('label' => 'Save as ready') );
 
         return $form;
+    }
+
+    /**
+     * Creates a form to cancel a RFP.
+     *
+     * @param RFP $rfp The rfp
+     *
+     * @return Form The form
+     */
+    private function createCancelForm( RFP $rfp ) {
+        $action = $this->generateUrl( 'client_rfp_cancel', array('idRelation' => $rfp->getRelation()->getId(), 'idRFP' => $rfp->getId()) );
+        
+        $builder = $this->createFormBuilder( null , array(
+                    'action' => $action,
+                    'method' => 'PUT',
+                ) );
+                
+        if( $rfp->getReady() ){
+            $builder->add( 'why', 'choice', array(
+                "choices" => array(
+                    "My need was addressed in another way",
+                    "I no longer need this",
+                    "My need has changed, a new RFP will be available eventually"
+                ),
+                'expanded' => true,
+            ) )
+
+            ->add( 'other', 'textarea', array( "required" => false ) );
+        }
+        
+        $builder->add( 'submit', 'submit' );
+
+        return $builder->getForm();
     }
 
 }

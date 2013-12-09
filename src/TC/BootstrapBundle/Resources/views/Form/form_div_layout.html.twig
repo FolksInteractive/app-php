@@ -35,7 +35,7 @@
         {% endif %}
     {% endif %}
 
-    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}>
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
 
     {% if simple_col is defined %}
         </div>

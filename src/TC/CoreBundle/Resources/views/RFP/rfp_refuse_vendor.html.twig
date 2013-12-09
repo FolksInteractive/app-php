@@ -1,0 +1,64 @@
+{% extends 'TCCoreBundle::skeleton_vendor.html.twig' %}
+
+{% use "TCCoreBundle:Relation:relation_menu_vendor.html.twig" %}
+
+{% block body_class %} 
+{{parent()}} rfp-refuse
+{% endblock %}
+
+{% block main_before %} 
+{% set attr = {} %}
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {'render_rest':false})}}
+{% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:rfpsMenu',[],{"relation": relation, "rfp":rfp}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
+
+<div class="tc-controls toolbar pull-right">
+    <div class="btn-group">  
+        <a class="btn-default btn-lg btn" 
+           href="{{path('vendor_rfp_show' , {'idRFP':rfp.id, 'idRelation': relation.id})}}">
+            Show RFP
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block sheet %}
+    <div class="tc-heading-section">
+        <h2>{{rfp.heading}}</h2>
+    </div>
+
+    <div class="tc-form-section"> 
+        {{form_row(form.why,{'label':'It is important to keep your service provider informed of this cancellation.'})}}
+
+        {{form_row(form.other,{'label':'You can also leave your service provide a message.'})}}    
+    </div>
+            
+    <div class="tc-confirm-section">
+        <p class="tc-confirm-caption">
+            Are you sure you want to refuse this Request for Proposal ?
+        </p>
+            
+        <div class="tc-confirm-btns">
+            
+            <a class="btn btn-danger"
+               href="{{path('vendor_relation_rfps', {'idRelation':relation.id,'idRFP':rfp.id})}}">
+                No
+            </a>
+            
+            <button type="submit" class="btn btn-default">
+                Yes, I am sure
+            </button>
+            
+        </div>
+    </div> 
+{% endblock %}

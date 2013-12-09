@@ -1,0 +1,30 @@
+{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+TimeCrumbs - Refusal of an RFP
+{% endautoescape %}
+{% endblock %}
+
+{% block title %}
+{% autoescape false %}
+A RFP has been refused
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+
+{% if refusal is not empty %}
+    Your service provider's message :<br />
+    {{ refusal.why }} <br />
+    {{ refusal.other }} 
+{% endif %}
+    
+{% endblock %}
+
+{% block view_button %}
+<a href="{{url('client_relation_rfps', {'idRelation':relation.id})}}" 
+   style="color: #097acb; text-decoration: none; font-size: 24px;">
+    View RFPs
+</a>
+{% endblock %}

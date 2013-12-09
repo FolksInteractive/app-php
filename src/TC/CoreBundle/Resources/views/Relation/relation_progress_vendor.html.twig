@@ -21,21 +21,20 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:progressMenu',[],{"relation": relation}) %}
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:progressMenu',[],{"relation": relation}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
 
-        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
-    </div>
-
-    <div class="tc-controls pull-right">
-        <button type="submit"
-                name="{{form.submit.vars.full_name}}"
-                class="btn-lg btn btn-default"
-                disabled=""
-                ng-disabled="!progressForm.$dirty"
-                ng-class="{'btn-primary' : progressForm.$dirty}">
-            Save
-        </button>
-    </div>
+<div class="tc-controls pull-right">
+    <button type="submit"
+            name="{{form.submit.vars.full_name}}"
+            class="btn-lg btn btn-default"
+            disabled=""
+            ng-disabled="!progressForm.$dirty"
+            ng-class="{'btn-primary' : progressForm.$dirty}">
+        Save
+    </button>
+</div>
 {% endblock %}
 
 {% block sheet %}

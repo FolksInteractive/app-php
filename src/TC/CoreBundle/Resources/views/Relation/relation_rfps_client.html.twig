@@ -6,18 +6,17 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation}) %}
-        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
-    </div>
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:rfpsMenu',[],{"relation": relation}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
 
-    <div class="tc-controls pull-right">
-        <a href="{{path('client_rfp_new', {'idRelation':relation.id})}}" 
-           class="btn btn-primary btn-lg">
-            <i class="icon-new-proposals-light-small"></i>
-            Create New
-        </a>
-    </div>
-
+<div class="tc-controls pull-right">
+    <a href="{{path('client_rfp_new', {'idRelation':relation.id})}}" 
+       class="btn btn-primary btn-lg">
+        <i class="icon-new-proposals-light-small"></i>
+        Create New
+    </a>
+</div>
 {% endblock %}
 
 {% block sheet %}
@@ -26,63 +25,65 @@
     {{block('empty_rfps_client')}}
 
 {% else %}
-
-    <div class="tc-rfps-section">      
-        <table class="tc-rfps table tc-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Discussion</th>
-                    <th>Status</th>
-                    <th style="width:50px;">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for rfp in relation.rfps %}
-                    <tr>
-                        <td class="tc-description-col">
-                            <div class="title">
-                                <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                        {{rfp.heading|default('rfp')}}
-                                    </a>
-                                </div>
-                                <div class="main-description"><b>Created</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
-                                <div class="sub-description hide"><b>Approved</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
-                            </div>
-                        </td>
-                        <td class="tc-discussion-col">
-                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
-                            {{rfp.thread.getNumComments()}}
-                            </div></a>
-                        </td>
-                        <td class="tc-status tc-status-col">
-                            <ul>
-                                <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
-                                <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Draft</a></li>
-                                <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Sent</a></li>
-                                {% if rfp.order is not null %}
-                                <!-- Si c'est approuver utiliser la classe .active sinon, .declined -->
-                                <li><a href="{{path("client_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}" class="active">Proposed</a></li>
-                                {% else %}
-                                <li><a href="#">Proposed</a></li>
-                                {% endif %}
-                            </ul>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">View</a></li>
-                                    <li><a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Edit</a></li>
-                                    <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>    
-            {% endfor %}
-                    </tbody>
-                </table>
-            </div> 
+<div class="tc-rfps-section">      
+    <table class="tc-rfps table tc-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Discussion</th>
+                <th>Status</th>
+                <th style="width:50px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rfp in relation.rfps %}
+            <tr>
+                <td class="tc-description-col">
+                    <div class="title">
+                        <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                            {{rfp.heading|default('rfp')}}
+                        </a>
+                    </div>
+                    <div class="main-description"><b>Created</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
+                    <div class="sub-description hide"><b>Approved</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
+                </td>
+                <td class="tc-discussion-col">
+                    <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
+                    {{rfp.thread.getNumComments()}}
+                    </div></a>
+                </td>
+                <td class="tc-status tc-status-col">
+                    <ul>
+                        <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
+                        <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Draft</a></li>
+                        <li><a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Sent</a></li>
+                        {% if rfp.order is not null %}
+                        <!-- Si c'est approuver utiliser la classe .active sinon, .declined -->
+                        <li><a href="{{path("client_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}" class="active">Proposed</a></li>
+                        {% else %}
+                        <li><a href="#">Proposed</a></li>
+                        {% endif %}
+                    </ul>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">View</a></li>
+                            {% if rfp.cancelled != true or (rfp.order is not null and rfp.order.purchased == true) %}
+                            <li><a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Edit</a></li>
+                            {% endif %}
+                            {% if rfp.cancelled != true %}
+                            <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </td>
+            </tr>    
+        {% endfor %}
+        </tbody>
+    </table>
+</div> 
 {% endif %}
 {% endblock %}
             

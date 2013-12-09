@@ -1,0 +1,30 @@
+{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+
+{% block subject %}
+{% autoescape false %}
+TimeCrumbs - Cancellation of an RFP
+{% endautoescape %}
+{% endblock %}
+
+{% block title %}
+{% autoescape false %}
+A RFP has been cancelled
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+
+{% if cancellation is not empty %}
+    Your client's message :<br />
+    {{ cancellation.why }} <br />
+    {{ cancellation.other }} 
+{% endif %}
+    
+{% endblock %}
+
+{% block view_button %}
+<a href="{{url('vendor_relation_rfps', {'idRelation':relation.id})}}" 
+   style="color: #097acb; text-decoration: none; font-size: 24px;">
+    View RFPs
+</a>
+{% endblock %}
