@@ -69,28 +69,44 @@ class OrderController extends BaseController {
             'relation' => $relation,
             'purchaseForm' => ($purchaseForm) ? $purchaseForm->createView(): null
         );
-    }   
+    }
 
     /**
-     * Cancel an Order.
+     * Cancel a Order.
      *
-     * @Route("/{idOrder}", name="vendor_order_cancel")
-     * @Method("POST")
+     * @Route("/{idOrder}/refuse", name="client_order_refuse")
+     * @Template("TCCoreBundle:Order:order_refuse_client.html.twig")
      */
-    public function cancelAction( Request $request, $idOrder, $idRelation ) {
+    public function refuseAction( Request $request, $idRelation, $idOrder ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
         $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
 
-        $form = $this->createCancelForm( $idOrder, $idRelation );
-        $form->handleRequest( $request );
+        // If Order is already refused redirect to orders list
+        if($order->getRefused())
+            return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $idRelation) ) );
 
-        if ( $form->isValid() ) {
+        $form = $this->createRefuseForm( $order );
+
+        if ( $request->getMethod() === "PUT" ){
             
+            $form->handleRequest( $request );
+            
+            if($form->isValid() ) {
+                $refusal = $form->getData();
+                $this->getOrderManager()->refuse( $order, $refusal );
+                $this->getOrderManager()->save( $order );
+
+                return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $idRelation) ) );
+            }
         }
 
-        return $this->redirect( $this->generateUrl( 'vendor_relation_orders', array("id" => $idRelation) ) );
-    } 
+        return array(
+            'form' => $form->createView(),
+            'order' => $order,
+            'relation' => $relation
+        );
+    }
     
     
     
@@ -117,19 +133,34 @@ class OrderController extends BaseController {
     }
 
     /**
-     * Creates a form to cancel an order by id.
+     * Creates a form to refuse a Order.
      *
-     * @param mixed $idOrder The relation id
+     * @param Order $order The order
      *
      * @return Form The form
      */
-    private function createCancelForm( $idOrder, $idRelation ) {
-        return $this->createFormBuilder()
-                        ->add( "active" )
-                        ->setAction( $this->generateUrl( 'vendor_order_cancel', array('idOrder' => $idOrder, 'idRelation' => $idRelation) ) )
-                        ->setMethod( 'POST' )
-                        ->add( 'submit', 'submit', array('label' => 'Cancel Order') )
-                        ->getForm()
-        ;
+    private function createRefuseForm( Order $order ) {
+        $action = $this->generateUrl( 'client_order_refuse', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
+        
+        $builder = $this->createFormBuilder( null , array(
+                    'action' => $action,
+                    'method' => 'PUT',
+                ) );
+                
+        $builder->add( 'why', 'choice', array(
+            "choices" => array(
+                "It doesn't apply anymore.",
+                "It is too late now.",
+                "There was a misunderstanding in the requierement or clauses.",
+                "This is to expensive for my budget."
+            ),
+            'expanded' => true,
+        ) )
+
+        ->add( 'other', 'textarea', array( "required" => false ) );
+        
+        $builder->add( 'submit', 'submit' );
+
+        return $builder->getForm();
     }
 }

@@ -222,7 +222,7 @@ class OrderManager {
      */
     public function cancel( Order $order, $cancellation = null ) {
         
-        if ( $order->getRelation()->getClient() == $this->workspace ) {
+        if ( $order->getRelation()->getVendor() == $this->workspace ) {
             $order->setCancelled(true);
             
             if($order->getReady())
@@ -237,7 +237,7 @@ class OrderManager {
      */
     public function refuse( Order $order, $refusal = null ) {
         
-        if ( $order->getRelation()->getVendor() == $this->workspace ) {
+        if ( $order->getRelation()->getClient() == $this->workspace ) {
             $order->setRefused(true);
             
             $this->mailer->sendOrderRefusal($order, $refusal);

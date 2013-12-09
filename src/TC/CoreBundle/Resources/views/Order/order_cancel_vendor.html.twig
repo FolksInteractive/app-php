@@ -18,7 +18,7 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:orderpsMenu',[],{"relation": relation, "rfp":rfp}) %}
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
@@ -37,10 +37,15 @@
         <h2>{{order.heading}}</h2>
     </div>
 
+    
     <div class="tc-form-section"> 
-        {{form_row(form.why,{'label':'It is important to keep your service provider informed of this cancellation.'})}}
+    {% if order.ready == true %}   
+        {{form_row(form.why,{'label':'It is important to keep your client informed of this cancellation.'})}}
 
-        {{form_row(form.other,{'label':'You can also leave your service provide a message.'})}}    
+        {{form_row(form.other,{'label':'You can also leave your client a message.'})}}    
+    {% else %}
+        <p class="tc-form-caption">Since this proposal was in draft mode, it is not necessary to inform your client. </p>
+     {% endif %}   
     </div>
             
     <div class="tc-confirm-section">

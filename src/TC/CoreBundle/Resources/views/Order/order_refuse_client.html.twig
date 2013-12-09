@@ -18,7 +18,7 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:ordersMenu',[],{"relation": relation, "rfp":rfp}) %}
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:ordersMenu',[],{"relation": relation, "order":order}) %}
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
@@ -34,17 +34,13 @@
 
 {% block sheet %}
     <div class="tc-heading-section">
-        <h2>{{rfp.heading}}</h2>
+        <h2>{{order.heading}}</h2>
     </div>
 
     <div class="tc-form-section"> 
-    {% if order.ready == true %}   
-            {{form_row(form.why,{'label':'It is important to keep your service provider informed of this cancellation.'})}}
-            {{form_row(form.other,{'label':'You can also leave your service provide a message.'})}}
-     {% else %}
-            <p class="tc-form-caption">Since this request was in draft mode, it is not necessary to inform your service provider. </p>
-     {% endif %}             
-    </div>
+        {{form_row(form.why,{'label':'It is important to keep your service provider informed of this refusal.'})}}
+        {{form_row(form.other,{'label':'You can also leave your service provider a message.'})}}
+     </div>
             
     <div class="tc-confirm-section">
         <p class="tc-confirm-caption">

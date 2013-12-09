@@ -74,7 +74,7 @@
                             <li><a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Edit</a></li>
                             {% endif %}
                             {% if rfp.cancelled != true %}
-                            <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
+                            <li><a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
                             {% endif %}
                         </ul>
                     </div>
