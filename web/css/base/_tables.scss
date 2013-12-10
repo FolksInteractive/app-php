@@ -47,6 +47,10 @@
     
     // Table Elements
     
+    .tc-left-gap {
+        padding-left: 20px;
+    }
+    
     >thead >tr {
         
         th {
@@ -84,7 +88,6 @@
         .tc-description-col {
             font-weight: bold;
             font-size: 18px;
-            padding-left: 0;
             text-align: left;
             
             .title {
@@ -112,7 +115,7 @@
         
         // Number of discussions
         .tc-discussion-col {
-            width: 120px;
+            width: 100px;
             
             .badge-talk-bubble {
                 text-align: center;
@@ -152,9 +155,29 @@
         }
         
         .tc-status-col {
-            width: 450px;
-            padding-right: 20px;
             text-align: center;
+            
+            ul {
+                padding: 5px 0 0 10px;
+            }
+        }
+        
+        .tc-status-2-items {
+            width: 210px;
+        }
+        
+        .tc-status-3-items {
+            width: 240px;
+        }
+        
+        .tc-multiactions-col {
+            width: 80px;
+            text-align: center;
+            
+            .dropdown-menu {
+                text-align: right;
+                min-width: 100px;
+            }
         }
         
         // Simple Informations
@@ -182,8 +205,8 @@
         
         // Row Total Amount in $
         .tc-subtotal-col {
-            width: 170px;
-            font-size: $font-size-h3;
+            width: 120px;
+            font-size: $font-size-h4;
         }
         
     }

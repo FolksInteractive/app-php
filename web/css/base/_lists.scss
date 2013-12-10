@@ -62,7 +62,7 @@ $state-declined : $brand-danger;
             height: 30px;
             background: #ddd;
             text-align: center;
-            padding: 5px 25px 0 40px;
+            padding: 5px 15px 0 30px;
             position: relative;
             margin: 0 10px 0 0;
             font-size: 14px;
@@ -87,29 +87,5 @@ $state-declined : $brand-danger;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
-    }
-    
-    .inprocess {
-        background: $state-inprocess;
-    }
-    
-    .inprocess:after {
-        border-left-color: $state-inprocess;
-    }
-    
-    .active {
-        background: $state-active;
-    }
-    
-    .active:after {
-        border-left-color: $state-active;
-    }
-    
-    .declined {
-        background: $state-declined;
-    }
-    
-    .declined:after {
-        border-left-color: $state-declined;
     }
 }

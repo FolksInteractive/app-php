@@ -29,16 +29,16 @@
     <table class="tc-table table">
         <thead>
             <tr>
-                <th></th>
+                <th class="left tc-left-gap">Description</th>
                 <th>Discussion</th>
                 <th>Status</th>
-                <th style="width:50px;">Actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for rfp in relation.rfps %}
                 <tr class="{{rfp|status}}">
-                <td class="tc-description-col">
+                <td class="tc-description-col tc-left-gap">
                     <div class="title">
                         <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                             {{rfp.heading|default('rfp')}}
@@ -51,31 +51,31 @@
                     {{rfp.thread.getNumComments()}}
                     </div></a>
                 </td>
-                <td class="tc-status-col">
+                <td class="tc-status-col tc-status-3-items">
                     <ul class="tc-status"> 
                         {# Draft State #}
                         <li class="tc-draft-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                Draft
+                                <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </li>
                         {# Sent State #}
                         <li class="tc-sent-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                Sent
+                                <span class="glyphicon glyphicon-send"></span>
                             </a>
                         </li>
                         {# Proposed State #}
                         <li class="tc-proposed-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                Proposed
+                                <span class="glyphicon glyphicon-ok"></span>
                             </a>
                         </li>
                     </ul>
                 </td>
-                <td>
+                <td class="tc-multiactions-col">
                     <div class="dropdown">
-                        <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                        <a class="btn btn-default btn-sm" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">View</a></li>
                             {% if rfp.cancelled != true or (rfp.order is not null and rfp.order.approved == true) %}

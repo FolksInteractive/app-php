@@ -69,7 +69,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777777;
+  border: 3px solid #777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -124,6 +124,12 @@ input[type='email'] {
   background: url("/img/icons/icon-dashboard.png");
   background-repeat: no-repeat;
   margin: -2px 3px 0 0; }
+
+.tc-icon-discussion-lt-sm {
+  width: 25px;
+  height: 18px;
+  background: url("/img/icons/tc-icon-discussion-lt-sm.png");
+  background-repeat: no-repeat; }
 
 .icon-projects {
   width: 17px;
@@ -315,6 +321,8 @@ input[type='email'] {
 .table > thead > tr > th {
   border-bottom: 1px solid #dededf; }
 
+.tc-table .tc-left-gap {
+  padding-left: 20px; }
 .tc-table > thead > tr th {
   padding-left: 0;
   padding-right: 0;
@@ -338,7 +346,6 @@ input[type='email'] {
 .tc-table > tbody > tr .tc-description-col {
   font-weight: bold;
   font-size: 18px;
-  padding-left: 0;
   text-align: left; }
   .tc-table > tbody > tr .tc-description-col .title {
     text-overflow: ellipsis;
@@ -358,7 +365,7 @@ input[type='email'] {
     font-weight: normal;
     padding-top: 5px; }
 .tc-table > tbody > tr .tc-discussion-col {
-  width: 120px; }
+  width: 100px; }
   .tc-table > tbody > tr .tc-discussion-col .badge-talk-bubble {
     text-align: center;
     margin: auto;
@@ -383,9 +390,19 @@ input[type='email'] {
     font-size: 12px;
     padding-top: 2px; }
 .tc-table > tbody > tr .tc-status-col {
-  width: 450px;
-  padding-right: 20px;
   text-align: center; }
+  .tc-table > tbody > tr .tc-status-col ul {
+    padding: 5px 0 0 10px; }
+.tc-table > tbody > tr .tc-status-2-items {
+  width: 210px; }
+.tc-table > tbody > tr .tc-status-3-items {
+  width: 240px; }
+.tc-table > tbody > tr .tc-multiactions-col {
+  width: 80px;
+  text-align: center; }
+  .tc-table > tbody > tr .tc-multiactions-col .dropdown-menu {
+    text-align: right;
+    min-width: 100px; }
 .tc-table > tbody > tr .tc-info-col {
   text-align: center;
   font-size: 14px;
@@ -398,8 +415,8 @@ input[type='email'] {
 .tc-table > tbody > tr .tc-quantity-col {
   width: 40px; }
 .tc-table > tbody > tr .tc-subtotal-col {
-  width: 170px;
-  font-size: 24px; }
+  width: 120px;
+  font-size: 18px; }
 
 .tc-deliverables-table {
   margin-top: 40px; }
@@ -477,7 +494,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid white;
+      border-left: 15px solid #fff;
       position: absolute;
       left: 0;
       top: 0; }
@@ -487,7 +504,7 @@ input[type='email'] {
       height: 30px;
       background: #ddd;
       text-align: center;
-      padding: 5px 25px 0 40px;
+      padding: 5px 15px 0 30px;
       position: relative;
       margin: 0 10px 0 0;
       font-size: 14px;
@@ -498,7 +515,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #dddddd;
+      border-left: 15px solid #ddd;
       position: absolute;
       right: -15px;
       top: 0;
@@ -507,18 +524,6 @@ input[type='email'] {
       padding-right: 80px;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px; }
-  .tc-status .inprocess {
-    background: #428bca; }
-  .tc-status .inprocess:after {
-    border-left-color: #428bca; }
-  .tc-status .active {
-    background: #5cb85c; }
-  .tc-status .active:after {
-    border-left-color: #5cb85c; }
-  .tc-status .declined {
-    background: #d9534f; }
-  .tc-status .declined:after {
-    border-left-color: #d9534f; }
 
 .tc-menu i {
   width: 20px !important;
@@ -533,7 +538,7 @@ input[type='email'] {
   text-decoration: none;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.75);
-  border-left: 4px solid #777777;
+  border-left: 4px solid #777;
   box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
   padding-left: 21px; }
 .tc-menu li .sub_label {
@@ -585,7 +590,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -634,7 +639,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: inline-block; }
 
 .tc-empty-page {
@@ -648,7 +653,7 @@ body {
   .tc-empty-page > .title > h3 {
     font-weight: 300;
     font-size: 60px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #0a6895;
     padding-bottom: 10px;
     font-size: 40px;
@@ -680,7 +685,7 @@ body {
     right: -30px;
     top: 10px;
     border: 1px dashed #dededf;
-    border-left: 1px solid white;
+    border-left: 1px solid #fff;
     border-radius: 0 4px 4px 0;
     text-align: center;
     padding: 10px 2px 0 0; }
@@ -700,7 +705,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700; }
 
 .tc-body-group {
@@ -786,7 +791,7 @@ body {
 .tc-heading-section > h2 {
   font-weight: 300;
   font-size: 60px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #0a6895;
   padding-bottom: 10px; }
 .tc-heading-section > p {
@@ -1003,7 +1008,7 @@ body {
         left: 25px;
         right: 25px;
         margin-top: 145px;
-        border-bottom: 1px dotted #cccccc; }
+        border-bottom: 1px dotted #ccc; }
       .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
       .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
         margin: 170px 0 0 -90px; }
@@ -1061,7 +1066,7 @@ body {
     background-color: #f5f5f5;
     color: #999999; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
-      border: 1px solid #cccccc; }
+      border: 1px solid #ccc; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
@@ -1112,256 +1117,217 @@ body {
 /******************************************************************/
 /*****    Section Relation:orders.html.twig    ********/
 /******************************************************************/
-.relation-orders .tc-orders-section .tc-draft .tc-draft-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-draft .tc-draft-state a:after {
-  border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-draft.tc-cancelled .tc-draft-state a {
-  background: #d9534f; }
-.relation-orders .tc-orders-section .tc-draft.tc-cancelled .tc-draft-state a:after {
-  border-left-color: #d9534f; }
-.relation-orders .tc-orders-section .tc-ready .tc-draft-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-ready .tc-draft-state a:after {
-  border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-ready .tc-sent-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-ready .tc-sent-state a:after {
-  border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-ready.tc-cancelled .tc-sent-state a {
-  background: #d9534f; }
-.relation-orders .tc-orders-section .tc-ready.tc-cancelled .tc-sent-state a:after {
-  border-left-color: #d9534f; }
-.relation-orders .tc-orders-section .tc-proposed .tc-proposed-state a,
-.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-proposed .tc-proposed-state a:after,
-.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a:after {
-  border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-sent-state a,
-.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-sent-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-sent-state a:after,
-.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-sent-state a:after {
-  border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-proposed-state a,
-.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-proposed-state a {
-  background: #d9534f; }
-.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-proposed-state a:after,
-.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-proposed-state a:after {
-  border-left-color: #d9534f; }
-.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a {
-  background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a:after {
-  border-left-color: #5cb85c; }
-
-/******************************************************************/
-/*****    Section Order:show.html.twig & edit.html.twig    ********/
-/******************************************************************/
-.order-edit .tc-toolbar .tc-edit-btn .dropdown-toggle,
-.order-show .tc-toolbar .tc-edit-btn .dropdown-toggle {
-  padding: 6px 8px 10px 8px; }
-.order-edit .tc-deliverables-section .no,
-.order-edit .tc-deliverables-section .cost,
-.order-edit .tc-deliverables-section .quantity,
-.order-edit .tc-deliverables-section .subtotal,
-.order-edit .tc-deliverables-section .actions,
-.order-show .tc-deliverables-section .no,
-.order-show .tc-deliverables-section .cost,
-.order-show .tc-deliverables-section .quantity,
-.order-show .tc-deliverables-section .subtotal,
-.order-show .tc-deliverables-section .actions {
-  width: 80px;
-  text-align: center;
-  vertical-align: middle; }
-.order-edit .tc-deliverables-section .no,
-.order-edit .tc-deliverables-section .actions,
-.order-show .tc-deliverables-section .no,
-.order-show .tc-deliverables-section .actions {
-  width: 40px; }
-.order-edit .tc-deliverables-section .remove-action,
-.order-show .tc-deliverables-section .remove-action {
-  top: 0;
-  color: #d9534f; }
-.order-edit .tc-deliverables-section input,
-.order-show .tc-deliverables-section input {
-  margin: 10px 0; }
-.order-edit .tc-deliverables-section .number,
-.order-show .tc-deliverables-section .number {
-  width: 20px;
-  text-align: center;
-  vertical-align: middle;
-  color: #999; }
-.order-edit .tc-total-price,
-.order-show .tc-total-price {
-  margin-right: 50px; }
-
-/*************************************************/
-/*****     Section Order:show.html.twig      *****/
-/*************************************************/
-.order-show .tc-offer-section .offer h1 {
-  font-weight: 300;
-  font-size: 60px;
-  font-family: "Open Sans", sans-serif;
-  padding: 20px 0 10px 0;
-  color: #0a6895; }
-.order-show .tc-offer-section .offer-subtitle {
-  color: #777;
-  font-style: italic;
-  margin-top: -5px;
-  margin-bottom: 40px; }
-.order-show .tc-agreement-section {
-  text-align: center;
-  margin-bottom: 20px; }
-  .order-show .tc-agreement-section .agree-check {
-    font-size: 13px;
-    padding-bottom: 20px; }
-.order-show .tc-sheet {
-  margin-right: 370px; }
-.order-show .tc-recent-panel {
-  position: fixed;
-  top: 112px;
-  right: 0;
-  bottom: 0;
-  width: 350px;
-  background: white;
-  border-top: 1px solid #dddddd; }
-  .order-show .tc-recent-panel .tc-thread-section {
-    padding: 10px; }
-    .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
-      width: 30px;
-      height: 30px; }
-  .order-show .tc-recent-panel .tc-more-section {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    color: #333;
-    text-shadow: 0 1px 0 white;
-    box-shadow: 8px 5px 14px 1px #333333; }
-    .order-show .tc-recent-panel .tc-more-section a {
-      display: block;
-      padding: 20px 0;
-      text-align: center; }
-
-/*************************************************/
-/*****     Section Order:edit.html.twig      *****/
-/*************************************************/
-.order-edit .tc-select-link {
-  border: 1px dashed #dededf;
-  padding: 20px;
-  margin: 0 50px 20px 50px;
-  text-align: center;
-  border-radius: 4px; }
-  .order-edit .tc-select-link .description {
-    display: inline-block;
-    padding-right: 20px;
-    color: #999999;
+.relation-orders {
+  /******************************************************************/
+  /*****    Section Order:show.html.twig & edit.html.twig    ********/
+  /******************************************************************/
+  /*************************************************/
+  /*****     Section Order:show.html.twig      *****/
+  /*************************************************/
+  /*************************************************/
+  /*****     Section Order:edit.html.twig      *****/
+  /*************************************************/
+  /*************************************************/
+  /*****    Section Order:discuss.html.twig    *****/
+  /*************************************************/ }
+  .relation-orders .tc-orders-section .tc-draft .tc-draft-state a {
+    background: #428bca; }
+  .relation-orders .tc-orders-section .tc-draft .tc-draft-state a:after {
+    border-left-color: #428bca; }
+  .relation-orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a {
+    background: #d9534f; }
+  .relation-orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a:after {
+    border-left-color: #d9534f; }
+  .relation-orders .tc-orders-section .tc-sent .tc-sent-state a {
+    background: #428bca; }
+  .relation-orders .tc-orders-section .tc-sent .tc-sent-state a:after {
+    border-left-color: #428bca; }
+  .relation-orders .tc-orders-section .tc-sent-viewed .tc-sent-state a {
+    background: #5cb85c; }
+  .relation-orders .tc-orders-section .tc-sent-viewed .tc-sent-state a:after {
+    border-left-color: #5cb85c; }
+  .relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a {
+    background: #d9534f; }
+  .relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a:after {
+    border-left-color: #d9534f; }
+  .relation-orders .tc-orders-section .tc-closed .tc-closed-state a {
+    background: #5cb85c; }
+  .relation-orders .tc-orders-section .tc-closed .tc-closed-state a:after {
+    border-left-color: #5cb85c; }
+  .relation-orders .order-edit .tc-toolbar .tc-edit-btn .dropdown-toggle,
+  .relation-orders .order-show .tc-toolbar .tc-edit-btn .dropdown-toggle {
+    padding: 6px 8px 10px 8px; }
+  .relation-orders .order-edit .tc-deliverables-section .no,
+  .relation-orders .order-edit .tc-deliverables-section .cost,
+  .relation-orders .order-edit .tc-deliverables-section .quantity,
+  .relation-orders .order-edit .tc-deliverables-section .subtotal,
+  .relation-orders .order-edit .tc-deliverables-section .actions,
+  .relation-orders .order-show .tc-deliverables-section .no,
+  .relation-orders .order-show .tc-deliverables-section .cost,
+  .relation-orders .order-show .tc-deliverables-section .quantity,
+  .relation-orders .order-show .tc-deliverables-section .subtotal,
+  .relation-orders .order-show .tc-deliverables-section .actions {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle; }
+  .relation-orders .order-edit .tc-deliverables-section .no,
+  .relation-orders .order-edit .tc-deliverables-section .actions,
+  .relation-orders .order-show .tc-deliverables-section .no,
+  .relation-orders .order-show .tc-deliverables-section .actions {
+    width: 40px; }
+  .relation-orders .order-edit .tc-deliverables-section .remove-action,
+  .relation-orders .order-show .tc-deliverables-section .remove-action {
+    top: 0;
+    color: #d9534f; }
+  .relation-orders .order-edit .tc-deliverables-section input,
+  .relation-orders .order-show .tc-deliverables-section input {
+    margin: 10px 0; }
+  .relation-orders .order-edit .tc-deliverables-section .number,
+  .relation-orders .order-show .tc-deliverables-section .number {
+    width: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: #999; }
+  .relation-orders .order-edit .tc-total-price,
+  .relation-orders .order-show .tc-total-price {
+    margin-right: 50px; }
+  .relation-orders .order-show .tc-offer-section .offer h1 {
+    font-weight: 300;
+    font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px 0 10px 0;
+    color: #0a6895; }
+  .relation-orders .order-show .tc-offer-section .offer-subtitle {
+    color: #777;
     font-style: italic;
-    vertical-align: top;
-    padding-top: 9px; }
-    .order-edit .tc-select-link .description span {
-      padding-right: 20px; }
-  .order-edit .tc-select-link .select-widget {
-    display: inline-block;
-    text-align: left; }
-.order-edit .tc-heading-section .heading-input {
-  font-weight: 300;
-  font-size: 60px;
-  font-family: "Open Sans", sans-serif;
-  color: #0a6895;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: none;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px dashed #dededf;
-  padding: 0 0 5px 5px;
-  height: auto; }
-.order-edit .tc-heading-section .subheading-input {
-  max-width: 700px;
-  font-size: 20px;
-  font-style: italic;
-  color: #777;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: none;
-  border: none;
-  border-bottom: 1px dashed #dededf;
-  padding: 0 0 10px 5px;
-  height: auto;
-  font-size: 14px;
-  margin-top: -6px; }
-.order-edit .new-block-section {
-  border: 1px dashed #dededf;
-  padding: 20px 20px 20px 16px;
-  margin: 20px 0;
-  position: relative; }
-.order-edit .new-block-section:before {
-  display: block;
-  content: ".";
-  color: transparent;
-  font-size: 0;
-  border-left: 4px solid #0a6895;
-  position: absolute;
-  left: -1px;
-  padding: 1px 0;
-  top: -1px;
-  bottom: -1px; }
-.order-edit .tc-btn-newtext {
-  margin-top: 10px; }
-  .order-edit .tc-btn-newtext span {
-    margin-right: 3px; }
-
-/*************************************************/
-/*****    Section Order:discuss.html.twig    *****/
-/*************************************************/
-.order-discuss .tc-comment .media-object {
-  width: 60px;
-  height: 60px; }
+    margin-top: -5px;
+    margin-bottom: 40px; }
+  .relation-orders .order-show .tc-agreement-section {
+    text-align: center;
+    margin-bottom: 20px; }
+    .relation-orders .order-show .tc-agreement-section .agree-check {
+      font-size: 13px;
+      padding-bottom: 20px; }
+  .relation-orders .order-show .tc-sheet {
+    margin-right: 370px; }
+  .relation-orders .order-show .tc-recent-panel {
+    position: fixed;
+    top: 112px;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    background: white;
+    border-top: 1px solid #ddd; }
+    .relation-orders .order-show .tc-recent-panel .tc-thread-section {
+      padding: 10px; }
+      .relation-orders .order-show .tc-recent-panel .tc-thread-section .tc-comment .media-object {
+        width: 30px;
+        height: 30px; }
+    .relation-orders .order-show .tc-recent-panel .tc-more-section {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      color: #333;
+      text-shadow: 0 1px 0 #fff;
+      box-shadow: 8px 5px 14px 1px #333; }
+      .relation-orders .order-show .tc-recent-panel .tc-more-section a {
+        display: block;
+        padding: 20px 0;
+        text-align: center; }
+  .relation-orders .order-edit .tc-select-link {
+    border: 1px dashed #dededf;
+    padding: 20px;
+    margin: 0 50px 20px 50px;
+    text-align: center;
+    border-radius: 4px; }
+    .relation-orders .order-edit .tc-select-link .description {
+      display: inline-block;
+      padding-right: 20px;
+      color: #999999;
+      font-style: italic;
+      vertical-align: top;
+      padding-top: 9px; }
+      .relation-orders .order-edit .tc-select-link .description span {
+        padding-right: 20px; }
+    .relation-orders .order-edit .tc-select-link .select-widget {
+      display: inline-block;
+      text-align: left; }
+  .relation-orders .order-edit .tc-heading-section .heading-input {
+    font-weight: 300;
+    font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+    color: #0a6895;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px dashed #dededf;
+    padding: 0 0 5px 5px;
+    height: auto; }
+  .relation-orders .order-edit .tc-heading-section .subheading-input {
+    max-width: 700px;
+    font-size: 20px;
+    font-style: italic;
+    color: #777;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    border: none;
+    border-bottom: 1px dashed #dededf;
+    padding: 0 0 10px 5px;
+    height: auto;
+    font-size: 14px;
+    margin-top: -6px; }
+  .relation-orders .order-edit .new-block-section {
+    border: 1px dashed #dededf;
+    padding: 20px 20px 20px 16px;
+    margin: 20px 0;
+    position: relative; }
+  .relation-orders .order-edit .new-block-section:before {
+    display: block;
+    content: ".";
+    color: transparent;
+    font-size: 0;
+    border-left: 4px solid #0a6895;
+    position: absolute;
+    left: -1px;
+    padding: 1px 0;
+    top: -1px;
+    bottom: -1px; }
+  .relation-orders .order-edit .tc-btn-newtext {
+    margin-top: 10px; }
+    .relation-orders .order-edit .tc-btn-newtext span {
+      margin-right: 3px; }
+  .relation-orders .order-discuss .tc-comment .media-object {
+    width: 60px;
+    height: 60px; }
 
 .relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a {
-  background: #5cb85c; }
+  background: #428bca; }
 .relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a:after {
-  border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-draft.tc-cancelled .tc-draft-state a {
+  border-left-color: #428bca; }
+.relation-rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-draft.tc-cancelled .tc-draft-state a:after {
+.relation-rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a:after {
   border-left-color: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-ready .tc-draft-state a {
+.relation-rfps .tc-rfps-section .tc-sent .tc-sent-state a {
+  background: #428bca; }
+.relation-rfps .tc-rfps-section .tc-sent .tc-sent-state a:after {
+  border-left-color: #428bca; }
+.relation-rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a {
   background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-ready .tc-draft-state a:after {
+.relation-rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a:after {
   border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-ready .tc-sent-state a {
-  background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-ready .tc-sent-state a:after {
-  border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-ready.tc-cancelled .tc-sent-state a {
+.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-ready.tc-cancelled .tc-sent-state a:after {
+.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a:after {
   border-left-color: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-proposed .tc-proposed-state a,
-.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a {
+.relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a {
   background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-proposed .tc-proposed-state a:after,
-.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a:after {
-  border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-sent-state a,
-.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-sent-state a {
-  background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-sent-state a:after,
-.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-sent-state a:after {
-  border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-proposed-state a,
-.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-proposed-state a {
-  background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-proposed-state a:after,
-.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-proposed-state a:after {
-  border-left-color: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a {
-  background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a:after {
+.relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a:after {
   border-left-color: #5cb85c; }
 
 /*************************************************/
@@ -1376,7 +1342,7 @@ body {
   .root .tc-over-section .welcome {
     font-weight: 300;
     font-size: 60px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #0a6895;
     padding-bottom: 10px;
     font-size: 120px;
@@ -1407,7 +1373,7 @@ body {
       margin-bottom: 10px;
       font-weight: 300;
       font-size: 60px;
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
       color: #0a6895;
       padding-bottom: 10px;
       font-size: 40px; }
@@ -1459,7 +1425,7 @@ body {
     #thread_scrollable_section .empty-image > h4 {
       font-weight: 300;
       font-size: 60px;
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
       color: #0a6895;
       padding-bottom: 10px;
       font-size: 36px;
