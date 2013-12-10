@@ -37,13 +37,11 @@ class StatusHelperExtension extends Twig_Extension {
     
     public function getStatus( $resource ){
         if( $resource instanceOf RFP ){
-            $list = array_reverse($this->getRFPStatusList($resource));            
-            return implode(" " , $this->appendPrefix($list));
+            return "tc-".$this->getRFPStatusList($resource);
         }
         
         if( $resource instanceOf Order ){
-            $list = $this->getOrderStatusList($resource);
-            return implode(" " , $this->appendPrefix($list));
+            return "tc-".$this->getOrderStatusList($resource);
         }
     }
     /**
@@ -51,60 +49,43 @@ class StatusHelperExtension extends Twig_Extension {
      * @return array
      */
     public function getRFPStatusList(RFP $rfp) {
-        $list = array();
-        
-        $list[] = $rfp->getReady() ?  "ready" : "draft";
-        
-        if($rfp->getRefused())
-            $list[] = "refused";        
-       
-        if($rfp->getCancelled() || $rfp->getRefused())
-            $list[] = "cancelled";
+        $state ="";
         
         if($rfp->getOrder()){
-            
-            if($rfp->getOrder()->getReady())
-                $list[] = "proposed";
-            
-            if($rfp->getOrder()->getApproved()) 
-                $list[] = "purchased";
-            
-            if($rfp->getOrder()->getRefused()) 
-                $list[] = "cancelled";
-        }
+            $state = "proposed";
+        }else{
+            $state = $rfp->getReady() ?  "sent" : "draft";
+        }     
         
-        return $list;
+        if($rfp->getRefused())
+            $state .= "-refused";        
+       
+        if($rfp->getCancelled())
+            $state .= "-cancelled";
+                
+        return $state;
     }
     /**
      * @param Order $order
      * @return array
      */
     public function getOrderStatusList(Order $order) {
-        $list = array();
-        $list[] = $order->getReady() ?  "ready" : "draft";
+        $state ="";
         
-        if($order->getRefused())
-            $list[] = "refused";
-        
-        if($order->getCancelled())
-            $list[] = "cancelled";
-        
-        if($order->getApproved())
-            $list[] = "purchased";
-        
-        return $list;
-    }
-    
-    /**
-     * Appends tc- prefix to list of string
-     * @param array $list
-     */
-    private function appendPrefix( array $list, $prefix = "tc-" ){
-        foreach ($list as $key => $value){
-            $list[$key] = $prefix.$value;
+        if($order->getApproved()){
+            $state = "purchased";
+        }else{
+            $state = $order->getReady() ?  "sent" : "draft";
         }
         
-        return $list;
+        if($order->getRefused())
+            $state .= "-refused";        
+       
+        if($order->getCancelled())
+            $state .= "-cancelled";
+        
+        
+        return $state;
     }
 
     /**
