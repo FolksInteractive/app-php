@@ -129,6 +129,12 @@
                 margin-bottom: 0;
             }
             
+            .tc-progress-sign {
+                color: $gray-light;
+                font-size: $font-size-h6;
+                padding-left: 2px;
+            }
+            
             .progress-label {
                 text-align: right;
                 font-weight: bold;

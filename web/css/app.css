@@ -8,7 +8,6 @@ a:hover {
 
 p {
   font-size: 14px;
-  padding-bottom: 20px;
   color: #555555;
   line-height: 25px; }
 
@@ -368,6 +367,10 @@ input[type='email'] {
   width: auto; }
   .tc-table > tbody > tr .tc-progressbar-col .progress {
     margin-bottom: 0; }
+  .tc-table > tbody > tr .tc-progressbar-col .tc-progress-sign {
+    color: #999999;
+    font-size: 12px;
+    padding-left: 2px; }
   .tc-table > tbody > tr .tc-progressbar-col .progress-label {
     text-align: right;
     font-weight: bold;
@@ -978,8 +981,7 @@ body {
     padding: 0 0 60px 0; }
     .client-relations .tc-relations-boxes .thumbnail .hover,
     .vendor-relations .tc-relations-boxes .thumbnail .hover {
-      -webkit-transition: opacity 0.2s ease-out;
-      opacity: 0;
+      display: none;
       position: absolute;
       background: rgba(255, 255, 255, 0.9);
       width: 100%;
@@ -1005,9 +1007,6 @@ body {
       .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
       .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
         margin: 170px 0 0 -90px; }
-    .client-relations .tc-relations-boxes .thumbnail .hover:hover,
-    .vendor-relations .tc-relations-boxes .thumbnail .hover:hover {
-      display: block; }
     .client-relations .tc-relations-boxes .thumbnail .tc-relation-badge,
     .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-badge {
       position: absolute;
@@ -1040,7 +1039,7 @@ body {
       right: 0; }
   .client-relations .tc-relations-boxes .thumbnail:hover .hover,
   .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
-    opacity: 1; }
+    display: block; }
 
 .relation-orders .user {
   width: 30px; }
@@ -1371,7 +1370,7 @@ body {
 .root .tc-toolbar {
   display: none; }
 .root .tc-sheet {
-  margin-top: 20px; }
+  margin-top: 10px; }
 .root .tc-over-section {
   text-align: center; }
   .root .tc-over-section .welcome {
@@ -1389,36 +1388,20 @@ body {
     .root .tc-over-section .desc p {
       color: #999999; }
   .root .tc-over-section .client {
-    display: inline-block;
-    padding: 0 40px 30px 40px;
-    margin-right: 5px;
-    vertical-align: top;
-    max-width: 400px;
-    border-right: 1px dashed #dededf; }
-    .root .tc-over-section .client .flat-img {
-      margin: 10px auto 20px auto; }
-    .root .tc-over-section .client .provide {
-      height: 50px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-weight: 300;
-      font-size: 60px;
-      font-family: "Open Sans", sans-serif;
-      color: #0a6895;
-      padding-bottom: 10px;
-      font-size: 40px; }
-    .root .tc-over-section .client p {
-      padding-top: 10px; }
+    border-right: 1px dashed #dededf;
+    margin-right: 5px; }
   .root .tc-over-section .vendor {
+    border-left: 1px dashed #dededf;
+    margin-left: 5px; }
+  .root .tc-over-section .client, .root .tc-over-section .vendor {
     display: inline-block;
-    padding: 0 40px 30px 40px;
-    margin-left: 5px;
+    padding: 10px 40px 30px 40px;
     vertical-align: top;
     max-width: 400px;
-    border-left: 1px dashed #dededf; }
-    .root .tc-over-section .vendor .flat-img {
+    margin-top: 20px; }
+    .root .tc-over-section .client .flat-img, .root .tc-over-section .vendor .flat-img {
       margin: 10px auto 20px auto; }
-    .root .tc-over-section .vendor .provide {
+    .root .tc-over-section .client .provide, .root .tc-over-section .vendor .provide {
       height: 50px;
       margin-top: 20px;
       margin-bottom: 10px;
@@ -1428,8 +1411,8 @@ body {
       color: #0a6895;
       padding-bottom: 10px;
       font-size: 40px; }
-    .root .tc-over-section .vendor p {
-      padding-top: 10px; }
+    .root .tc-over-section .client p, .root .tc-over-section .vendor p {
+      padding: 10px 0 20px 0; }
   .root .tc-over-section .logo {
     margin-top: 40px; }
 
