@@ -44,13 +44,11 @@ p {
     font-size: 60px;
     font-family: 'Open Sans', sans-serif;
     color: $tc-brand-blue;
-    padding-bottom: 10px;
 }
 
 // Mega Subtitle
 
 @mixin mega-subtitle () {
-    max-width: 700px;
     font-size: $font-size-base;
     font-style: italic;
     color: $gray;

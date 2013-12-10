@@ -42,14 +42,14 @@
     {{form_start(purchaseForm)}}
         <div class="agree-check">
             {{form_widget(purchaseForm.confirmation)}}
-            I accept the terms and conditions of the <a href="#">service agreement</a>.
+            I accept the terms and conditions of this proposal.
         </div>
         <div class="agree-btn">
-            <button type="submit" class="btn btn-primary btn-large"
+            <button type="submit" class="btn btn-success btn-lg"
                 id="{{purchaseForm.submit.vars.id}}"
                 name="{{purchaseForm.submit.vars.full_name}}">
-                <i class="icon-shopping-cart icon-white"></i> 
-                Purchase Work
+                <span class="glyphicon glyphicon-ok tc-right5"></span> 
+                Approve this Proposal
             </button>
         </div>
     {{form_widget(purchaseForm._token)}}

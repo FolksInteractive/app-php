@@ -52,5 +52,11 @@
                 @include tc-state-active();
             }
         }
+        
+        .tc-closed-cancelled{
+            .tc-closed-state a{
+                @include tc-state-declined();
+            }
+        }
     }
 }
