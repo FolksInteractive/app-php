@@ -22,16 +22,16 @@
     <table class="tc-table table">
         <thead>
             <tr>
-                <th></th>
+                <th class="left tc-left-gap">Description</th>
                 <th>Discussion</th>
                 <th>Status</th>
-                <th style="width:50px;">Actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for rfp in rfps %} 
                 <tr class="{{rfp|status}}">
-                <td class="tc-description-col">
+                <td class="tc-description-col tc-left-gap">
                     <div class="title">
                         <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                             {{rfp.heading|default('rfp')}}
@@ -44,26 +44,26 @@
                     {{rfp.thread.getNumComments()}}
                     </div></a>
                 </td>
-                <td class="tc-status tc-status-col">
+                <td class="tc-status tc-status-col tc-status-2-items">
                     <ul class="tc-status"> 
                         {# Sent State #}
                         <li class="tc-sent-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                Sent
+                                <div class="tc-icon-discussion-lt-sm"></div>
                             </a>
                         </li>
                         {# Proposed State #}
-                        <li class="tc-proposed-state tc-state">
+                        <li class="tc-closed-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
-                                Proposed
+                                <div class="glyphicon glyphicon-ok"></div>
                             </a>
                         </li>
                     </ul>
                 </td>
 
-                <td>
+                <td class="tc-multiactions-col">
                     <div class="dropdown">
-                        <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                        <a class="btn btn-default btn-sm tc-btn-dropdown" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li>
                                 <a href="{{path("vendor_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">

@@ -3,289 +3,276 @@
 /******************************************************************/
 .relation-orders{
     .tc-orders-section{
+        
+        // Saved as a draft
         .tc-draft{
             .tc-draft-state a{
-                @include tc-state-active();
-            }
-            &.tc-cancelled{
-                .tc-draft-state a{
-                    @include tc-state-declined();
-                }
+                @include tc-state-inprocess();
             }
         }
         
-        .tc-ready{
+        .tc-draft-cancelled{
             .tc-draft-state a{
-                @include tc-state-active();
+                @include tc-state-declined();
             }
-            
+        }
+        
+        // Save & Sent
+        .tc-sent{
+            .tc-sent-state a{
+                @include tc-state-inprocess();
+            }
+        }
+        
+        .tc-sent-viewed{
             .tc-sent-state a{
                 @include tc-state-active();
-            } 
-            
-            &.tc-cancelled{        
-                .tc-sent-state a{
-                    @include tc-state-declined();
-                }
             }
         }
         
+        .tc-sent-cancelled{
+            .tc-sent-state a{
+                @include tc-state-declined();
+            }
+        }
         
-        .tc-proposed,
-        .tc-purchased{
-            
-            .tc-proposed-state a{
+        // Closing
+        .tc-closed{
+            .tc-closed-state a{
                 @include tc-state-active();
             }
-            
-            &.tc-cancelled{      
-                
-                .tc-sent-state a{
-                    @include tc-state-active();
-                }   
-                
-                .tc-proposed-state a{
-                    @include tc-state-declined();
-                }
-            }
-        }
-        
-        .tc-purchased{
-            .tc-proposed-state a{
-                @include tc-state-active();
-            }
-        }
-    }
-}
-
-/******************************************************************/
-/*****    Section Order:show.html.twig & edit.html.twig    ********/
-/******************************************************************/
-.order-edit,
-.order-show{
-    .tc-toolbar{
-        .tc-edit-btn{            
-            // Hack for caret height alignment the default bootstrap wasn't working...
-            .dropdown-toggle{
-                padding:6px 8px 10px 8px;        
-            }
-        }
-    }    
-    .tc-deliverables-section{
-        .no, 
-        .cost,        
-        .quantity,
-        .subtotal,
-        .actions{
-            width:80px;        
-            text-align:center;             
-            vertical-align: middle;
-        }
-        
-        .no,
-        .actions{
-            width:40px;   
-        }
-        .remove-action{
-            top:0; // Overwrite top:1px of .glyphicon
-            color: $brand-danger;
-        }
-        
-        input{
-            margin: 10px 0;
-        }
-        
-        .number {
-            width: 20px;
-            text-align: center;
-            vertical-align: middle;
-            color: #999;
         }
     }
     
-    .tc-total-price{
-        margin-right: 50px;
-    }
-}
-
-/*************************************************/
-/*****     Section Order:show.html.twig      *****/
-/*************************************************/
-.order-show{
-    .tc-offer-section {
-        
-        .offer {
+    /******************************************************************/
+    /*****    Section Order:show.html.twig & edit.html.twig    ********/
+    /******************************************************************/
+    .order-edit,
+    .order-show{
+        .tc-toolbar{
+            .tc-edit-btn{            
+                // Hack for caret height alignment the default bootstrap wasn't working...
+                .dropdown-toggle{
+                    padding:6px 8px 10px 8px;        
+                }
+            }
+        }    
+        .tc-deliverables-section{
+            .no, 
+            .cost,        
+            .quantity,
+            .subtotal,
+            .actions{
+                width:80px;        
+                text-align:center;             
+                vertical-align: middle;
+            }
             
-            h1 {
+            .no,
+            .actions{
+                width:40px;   
+            }
+            .remove-action{
+                top:0; // Overwrite top:1px of .glyphicon
+                color: $brand-danger;
+            }
+            
+            input{
+                margin: 10px 0;
+            }
+            
+            .number {
+                width: 20px;
+                text-align: center;
+                vertical-align: middle;
+                color: #999;
+            }
+        }
+        
+        .tc-total-price{
+            margin-right: 50px;
+        }
+    }
+    
+    /*************************************************/
+    /*****     Section Order:show.html.twig      *****/
+    /*************************************************/
+    .order-show{
+        .tc-offer-section {
+            
+            .offer {
+                
+                h1 {
+                    font-weight: 300;
+                    font-size: 60px;
+                    font-family: 'Open Sans', sans-serif;
+                    padding: 20px 0 10px 0;
+                    color: #0a6895;
+                }
+            }
+            
+            .offer-subtitle {
+                color: #777;
+                font-style: italic;
+                margin-top: -5px;
+                margin-bottom: 40px;
+            }
+        }
+        .tc-agreement-section{
+            text-align: center;
+            margin-bottom:20px;
+            
+            .agree-check{
+                font-size: 13px;
+                padding-bottom: 20px;
+            }
+        }
+        
+        .tc-sheet{
+            margin-right: 370px;
+        }
+        
+        .tc-recent-panel{
+            position:fixed;
+            top:112px;
+            right:0;
+            bottom:0;
+            width:350px;
+            background:white;
+            border-top:1px solid #ddd;
+            
+            .tc-thread-section{
+                padding:10px;
+                
+                .tc-comment .media-object{
+                    width:30px;
+                    height:30px;
+                }
+            }
+            
+            .tc-more-section{
+                position:absolute;
+                bottom:0;
+                right:0;
+                width:100%;
+                background: rgba(255,255,255,.5);
+                color: #333;
+                text-shadow: 0 1px 0 #fff;
+                box-shadow: 8px 5px 14px 1px #333;
+                a{
+                    display: block;
+                    padding: 20px 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    
+    /*************************************************/
+    /*****     Section Order:edit.html.twig      *****/
+    /*************************************************/
+    .order-edit{
+        
+        .tc-select-link {
+            border: 1px dashed $gray-border-color;
+            padding: 20px;
+            margin: 0 50px 20px 50px;
+            text-align: center;
+            border-radius: 4px;
+            
+            .description {
+                display: inline-block;
+                padding-right: 20px;
+                color: $gray-light;
+                font-style: italic;
+                vertical-align: top;
+                padding-top: 9px;
+                
+                span {
+                    padding-right: 20px;
+                }
+            }
+            
+            .select-widget {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+        
+        .tc-heading-section {
+            .heading-input{
                 font-weight: 300;
                 font-size: 60px;
                 font-family: 'Open Sans', sans-serif;
-                padding: 20px 0 10px 0;
                 color: #0a6895;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: none;
+                border: none;
+                border-radius: 0;
+                border-bottom: 1px dashed #dededf;
+                padding: 0 0 5px 5px;
+                height: auto;
             }
-        }
-        
-        .offer-subtitle {
-            color: #777;
-            font-style: italic;
-            margin-top: -5px;
-            margin-bottom: 40px;
-        }
-    }
-    .tc-agreement-section{
-        text-align: center;
-        margin-bottom:20px;
-        
-        .agree-check{
-            font-size: 13px;
-            padding-bottom: 20px;
-        }
-    }
-    
-    .tc-sheet{
-        margin-right: 370px;
-    }
-    
-    .tc-recent-panel{
-        position:fixed;
-        top:112px;
-        right:0;
-        bottom:0;
-        width:350px;
-        background:white;
-        border-top:1px solid #ddd;
-        
-        .tc-thread-section{
-            padding:10px;
             
-            .tc-comment .media-object{
-                width:30px;
-                height:30px;
+            .subheading-input {
+                max-width: 700px;
+                font-size: 20px;
+                font-style: italic;
+                color: #777;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: none;
+                border: none;
+                border-bottom: 1px dashed #dededf;
+                padding: 0 0 10px 5px;
+                height: auto;
+                font-size: 14px;
+                margin-top: -6px;
             }
+        }       
+        
+        .tc-offer-section{
+            
         }
         
-        .tc-more-section{
-            position:absolute;
-            bottom:0;
-            right:0;
-            width:100%;
-            background: rgba(255,255,255,.5);
-            color: #333;
-            text-shadow: 0 1px 0 #fff;
-            box-shadow: 8px 5px 14px 1px #333;
-            a{
-                display: block;
-                padding: 20px 0;
-                text-align: center;
-            }
-        }
-    }
-}
-
-/*************************************************/
-/*****     Section Order:edit.html.twig      *****/
-/*************************************************/
-.order-edit{
-    
-    .tc-select-link {
-        border: 1px dashed $gray-border-color;
-        padding: 20px;
-        margin: 0 50px 20px 50px;
-        text-align: center;
-        border-radius: 4px;
         
-        .description {
-            display: inline-block;
-            padding-right: 20px;
-            color: $gray-light;
-            font-style: italic;
-            vertical-align: top;
-            padding-top: 9px;
+        
+        .new-block-section {
+            border: 1px dashed #dededf;
+            padding: 20px 20px 20px 16px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .new-block-section:before {
+            display: block;
+            content: ".";
+            color: transparent;
+            font-size: 0;
+            border-left: 4px solid #0a6895;
+            position: absolute;
+            left: -1px;
+            padding: 1px 0;
+            top: -1px;
+            bottom: -1px;
+        }
+        
+        .tc-btn-newtext {
+            margin-top: 10px;
             
             span {
-                padding-right: 20px;
+                margin-right: 3px;
             }
         }
-        
-        .select-widget {
-            display: inline-block;
-            text-align: left;
+    }
+    /*************************************************/
+    /*****    Section Order:discuss.html.twig    *****/
+    /*************************************************/
+    .order-discuss{
+        .tc-comment .media-object{
+            width:60px;
+            height:60px;
         }
-    }
-    
-    .tc-heading-section {
-        .heading-input{
-            font-weight: 300;
-            font-size: 60px;
-            font-family: 'Open Sans', sans-serif;
-            color: #0a6895;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            -webkit-transition: none;
-            border: none;
-            border-radius: 0;
-            border-bottom: 1px dashed #dededf;
-            padding: 0 0 5px 5px;
-            height: auto;
-        }
-        
-        .subheading-input {
-            max-width: 700px;
-            font-size: 20px;
-            font-style: italic;
-            color: #777;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            -webkit-transition: none;
-            border: none;
-            border-bottom: 1px dashed #dededf;
-            padding: 0 0 10px 5px;
-            height: auto;
-            font-size: 14px;
-            margin-top: -6px;
-        }
-    }       
-    
-    .tc-offer-section{
-        
-    }
-    
-    
-    
-    .new-block-section {
-        border: 1px dashed #dededf;
-        padding: 20px 20px 20px 16px;
-        margin: 20px 0;
-        position: relative;
-    }
-    
-    .new-block-section:before {
-        display: block;
-        content: ".";
-        color: transparent;
-        font-size: 0;
-        border-left: 4px solid #0a6895;
-        position: absolute;
-        left: -1px;
-        padding: 1px 0;
-        top: -1px;
-        bottom: -1px;
-    }
-    
-    .tc-btn-newtext {
-        margin-top: 10px;
-        
-        span {
-            margin-right: 3px;
-        }
-    }
-}
-/*************************************************/
-/*****    Section Order:discuss.html.twig    *****/
-/*************************************************/
-.order-discuss{
-    .tc-comment .media-object{
-        width:60px;
-        height:60px;
     }
 }

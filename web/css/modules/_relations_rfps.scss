@@ -14,54 +14,41 @@
 
 .relation-rfps{
     .tc-rfps-section{
+        // Saved as a draft
         .tc-draft{
             .tc-draft-state a{
-                @include tc-state-active();
-            }
-            &.tc-cancelled{
-                .tc-draft-state a{
-                    @include tc-state-declined();
-                }
+                @include tc-state-inprocess();
             }
         }
         
-        .tc-ready{
+        .tc-draft-cancelled{
             .tc-draft-state a{
-                @include tc-state-active();
+                @include tc-state-declined();
             }
-            
+        }
+        
+        // Save & Sent
+        .tc-sent{
+            .tc-sent-state a{
+                @include tc-state-inprocess();
+            }
+        }
+        
+        .tc-sent-viewed{
             .tc-sent-state a{
                 @include tc-state-active();
-            } 
-            
-            &.tc-cancelled{        
-                .tc-sent-state a{
-                    @include tc-state-declined();
-                }
             }
         }
         
-        .tc-proposed,
-        .tc-purchased{
-            
-            .tc-proposed-state a{
-                @include tc-state-active();
-            }
-            
-            &.tc-cancelled{      
-                
-                .tc-sent-state a{
-                    @include tc-state-active();
-                }   
-                
-                .tc-proposed-state a{
-                    @include tc-state-declined();
-                }
+        .tc-sent-cancelled{
+            .tc-sent-state a{
+                @include tc-state-declined();
             }
         }
         
-        .tc-purchased{
-            .tc-proposed-state a{
+        // Closing
+        .tc-closed{
+            .tc-closed-state a{
                 @include tc-state-active();
             }
         }

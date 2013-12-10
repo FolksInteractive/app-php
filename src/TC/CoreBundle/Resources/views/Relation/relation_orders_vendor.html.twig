@@ -29,17 +29,17 @@
         <table class="tc-table table">
             <thead>
                 <tr>
-                    <th></th>
+                    <th class="left tc-left-gap">Description</th>
                     <th>Discussion</th>
                     <th>Status</th>
                     <th>Subtotal</th>
-                    <th style="width:50px;">Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for order in orders %}            
                 <tr class="{{order|status}}">
-                    <td class="tc-description-col">
+                    <td class="tc-description-col tc-left-gap">
                         <div class="title">
                             <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                                 {{order.heading|default('proposal')}}
@@ -50,34 +50,34 @@
                     </td>
                     
                     <td class="tc-discussion-col">
-                        <div class="badge-talk-bubble">
+                        <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
                         {{order.thread.getNumComments()}}
-                        </div>
+                        </div></a>
                     </td>
                     
-                    <td class="tc-status tc-status-col">
+                    <td class="tc-status tc-status-col tc-status-3-items">
                         <ul class="tc-status"> 
                             {# Draft State #}
                             <li class="tc-draft-state tc-state">
                                 <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                                    Draft
+                                    <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </li>
                             {# Sent State #}
                             <li class="tc-sent-state tc-state">
                                 <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
-                                    Sent
+                                    <span class="glyphicon glyphicon-send"></span>
                                 </a>
                             </li>
                             {# Proposed State #}
-                            <li class="tc-proposed-state tc-state">
+                            <li class="tc-closed-state tc-state">
                                 <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                                     {% if order.approved %}
-                                        Approved
+                                        <span class="glyphicon glyphicon-ok"></span>
                                     {% elseif order.refused %}
-                                        Declined
+                                        <span class="glyphicon glyphicon-remove"></span>
                                     {% else %}
-                                        Proposed
+                                        <span class="glyphicon glyphicon-remove"></span>
                                     {% endif %}
                                 </a>
                             </li>
@@ -91,9 +91,9 @@
                             N/A
                     {% endif %}
                     </td>
-                    <td>
+                    <td class="tc-multiactions-col">
                         <div class="dropdown">
-                            <a class="btn btn-default" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                            <a class="btn btn-default btn-sm" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li>
                                     <a href="{{path("vendor_order_show", {'idRelation':relation.id, 'idOrder':order.id})}}">
