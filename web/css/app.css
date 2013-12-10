@@ -461,52 +461,49 @@ input[type='email'] {
     padding-top: 5px;
     padding-bottom: 5px; }
 
-ul {
-  margin: 0; }
-
 .tc-status {
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15); }
-  .tc-status > ul {
-    margin-left: -15px; }
-    .tc-status > ul > li {
-      display: inline; }
-      .tc-status > ul > li :first-child a {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px; }
-      .tc-status > ul > li a:before {
-        content: "";
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid white;
-        position: absolute;
-        left: 0;
-        top: 0; }
-      .tc-status > ul > li a {
-        display: block;
-        float: left;
-        height: 30px;
-        background: #ddd;
-        text-align: center;
-        padding: 5px 25px 0 40px;
-        position: relative;
-        margin: 0 10px 0 0;
-        font-size: 14px;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold; }
-      .tc-status > ul > li a:after {
-        content: "";
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid #dddddd;
-        position: absolute;
-        right: -15px;
-        top: 0;
-        z-index: 1; }
-      .tc-status > ul > li :last-child a {
-        padding-right: 80px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px; }
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+  margin: 0; }
+  .tc-status .tc-state {
+    display: inline-block;
+    margin-left: -12px; }
+    .tc-status .tc-state :first-child a {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px; }
+    .tc-status .tc-state a:before {
+      content: "";
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid white;
+      position: absolute;
+      left: 0;
+      top: 0; }
+    .tc-status .tc-state a {
+      display: block;
+      float: left;
+      height: 30px;
+      background: #ddd;
+      text-align: center;
+      padding: 5px 25px 0 40px;
+      position: relative;
+      margin: 0 10px 0 0;
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold; }
+    .tc-status .tc-state a:after {
+      content: "";
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid #dddddd;
+      position: absolute;
+      right: -15px;
+      top: 0;
+      z-index: 1; }
+    .tc-status .tc-state :last-child a {
+      padding-right: 80px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px; }
   .tc-status .inprocess {
     background: #428bca; }
   .tc-status .inprocess:after {
@@ -1116,31 +1113,48 @@ body {
 /******************************************************************/
 /*****    Section Relation:orders.html.twig    ********/
 /******************************************************************/
-.tc-orders {
-  border: none;
-  margin-top: -10px; }
-  .tc-orders th {
-    font-weight: normal;
-    font-style: italic;
-    font-size: 13px;
-    padding-top: 0;
-    padding-bottom: 0; }
-  .tc-orders tbody tr td {
-    padding: 30px 0;
-    border-bottom: 1px solid #dededf;
-    border-top: none;
-    vertical-align: middle; }
-    .tc-orders tbody tr td a {
-      font-size: 16px; }
-  .tc-orders tbody .discussion {
-    text-align: center;
-    width: 50px; }
-  .tc-orders tbody .cost {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    width: 180px;
-    padding-right: 30px; }
+.relation-orders .tc-orders-section .tc-draft .tc-draft-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-draft .tc-draft-state a:after {
+  border-left-color: #5cb85c; }
+.relation-orders .tc-orders-section .tc-draft.tc-cancelled .tc-draft-state a {
+  background: #d9534f; }
+.relation-orders .tc-orders-section .tc-draft.tc-cancelled .tc-draft-state a:after {
+  border-left-color: #d9534f; }
+.relation-orders .tc-orders-section .tc-ready .tc-draft-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-ready .tc-draft-state a:after {
+  border-left-color: #5cb85c; }
+.relation-orders .tc-orders-section .tc-ready .tc-sent-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-ready .tc-sent-state a:after {
+  border-left-color: #5cb85c; }
+.relation-orders .tc-orders-section .tc-ready.tc-cancelled .tc-sent-state a {
+  background: #d9534f; }
+.relation-orders .tc-orders-section .tc-ready.tc-cancelled .tc-sent-state a:after {
+  border-left-color: #d9534f; }
+.relation-orders .tc-orders-section .tc-proposed .tc-proposed-state a,
+.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-proposed .tc-proposed-state a:after,
+.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a:after {
+  border-left-color: #5cb85c; }
+.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-sent-state a,
+.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-sent-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-sent-state a:after,
+.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-sent-state a:after {
+  border-left-color: #5cb85c; }
+.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-proposed-state a,
+.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-proposed-state a {
+  background: #d9534f; }
+.relation-orders .tc-orders-section .tc-proposed.tc-cancelled .tc-proposed-state a:after,
+.relation-orders .tc-orders-section .tc-purchased.tc-cancelled .tc-proposed-state a:after {
+  border-left-color: #d9534f; }
+.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a {
+  background: #5cb85c; }
+.relation-orders .tc-orders-section .tc-purchased .tc-proposed-state a:after {
+  border-left-color: #5cb85c; }
 
 /******************************************************************/
 /*****    Section Order:show.html.twig & edit.html.twig    ********/
@@ -1307,6 +1321,49 @@ body {
 .order-discuss .tc-comment .media-object {
   width: 60px;
   height: 60px; }
+
+.relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a:after {
+  border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-draft.tc-cancelled .tc-draft-state a {
+  background: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-draft.tc-cancelled .tc-draft-state a:after {
+  border-left-color: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-ready .tc-draft-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-ready .tc-draft-state a:after {
+  border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-ready .tc-sent-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-ready .tc-sent-state a:after {
+  border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-ready.tc-cancelled .tc-sent-state a {
+  background: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-ready.tc-cancelled .tc-sent-state a:after {
+  border-left-color: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-proposed .tc-proposed-state a,
+.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-proposed .tc-proposed-state a:after,
+.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a:after {
+  border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-sent-state a,
+.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-sent-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-sent-state a:after,
+.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-sent-state a:after {
+  border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-proposed-state a,
+.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-proposed-state a {
+  background: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-proposed.tc-cancelled .tc-proposed-state a:after,
+.relation-rfps .tc-rfps-section .tc-purchased.tc-cancelled .tc-proposed-state a:after {
+  border-left-color: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a {
+  background: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-purchased .tc-proposed-state a:after {
+  border-left-color: #5cb85c; }
 
 /*************************************************/
 /*****   Section root.html.twig   *****/

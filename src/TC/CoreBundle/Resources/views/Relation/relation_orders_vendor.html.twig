@@ -26,11 +26,11 @@
 
 {% else %}
     <div class="tc-orders-section">  
-        <table  class="tc-table table">
+        <table class="tc-table table">
             <thead>
                 <tr>
                     <th></th>
-                    <th>Comments</th>
+                    <th>Discussion</th>
                     <th>Status</th>
                     <th>Subtotal</th>
                     <th style="width:50px;">Actions</th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             {% for order in orders %}            
-                <tr>
+                <tr class="{{order|status}}">
                     <td class="tc-description-col">
                         <div class="title">
                             <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
@@ -49,20 +49,41 @@
                         <div class="sub-description hide"><b>Approved</b> on September 16th 2013 </div>
                     </td>
                     
-                    <td class="tc-status tc-status-col">
-                        <ul>
-                            <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
-                            <li><a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Draft</a></li>
-                            <li><a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Sent</a></li>
-                            <li><a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">Purchased</a></li>
-                        </ul>
-                    </td>
-                    
                     <td class="tc-discussion-col">
                         <div class="badge-talk-bubble">
                         {{order.thread.getNumComments()}}
                         </div>
                     </td>
+                    
+                    <td class="tc-status tc-status-col">
+                        <ul class="tc-status"> 
+                            {# Draft State #}
+                            <li class="tc-draft-state tc-state">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                    Draft
+                                </a>
+                            </li>
+                            {# Sent State #}
+                            <li class="tc-sent-state tc-state">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                    Sent
+                                </a>
+                            </li>
+                            {# Proposed State #}
+                            <li class="tc-proposed-state tc-state">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                    {% if order.approved %}
+                                        Approved
+                                    {% elseif order.refused %}
+                                        Declined
+                                    {% else %}
+                                        Proposed
+                                    {% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                    
                     <td class="tc-info-col tc-subtotal-col">
                     {% if order.total is not null%} 
                             $ {{order.total|number_format(2, '.', ',')}} 

@@ -8,3 +8,62 @@
 
 // Basic Elements
 // -------------------------
+
+//    Section Relation:rfps.html.twig 
+// ---------------------------------
+
+.relation-rfps{
+    .tc-rfps-section{
+        .tc-draft{
+            .tc-draft-state a{
+                @include tc-state-active();
+            }
+            &.tc-cancelled{
+                .tc-draft-state a{
+                    @include tc-state-declined();
+                }
+            }
+        }
+        
+        .tc-ready{
+            .tc-draft-state a{
+                @include tc-state-active();
+            }
+            
+            .tc-sent-state a{
+                @include tc-state-active();
+            } 
+            
+            &.tc-cancelled{        
+                .tc-sent-state a{
+                    @include tc-state-declined();
+                }
+            }
+        }
+        
+        .tc-proposed,
+        .tc-purchased{
+            
+            .tc-proposed-state a{
+                @include tc-state-active();
+            }
+            
+            &.tc-cancelled{      
+                
+                .tc-sent-state a{
+                    @include tc-state-active();
+                }   
+                
+                .tc-proposed-state a{
+                    @include tc-state-declined();
+                }
+            }
+        }
+        
+        .tc-purchased{
+            .tc-proposed-state a{
+                @include tc-state-active();
+            }
+        }
+    }
+}

@@ -29,33 +29,35 @@
             </tr>
         </thead>
         <tbody>
-            {% for rfp in rfps %}
-            <tr>
+            {% for rfp in rfps %} 
+                <tr class="{{rfp|status}}">
                 <td class="tc-description-col">
                     <div class="title">
                         <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                             {{rfp.heading|default('rfp')}}
                         </a>
                     </div>
-                        <div class="main-description"><b>Created</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
-                        <div class="sub-description hide"><b>Approved</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
-                </td>
+                    <div class="main-description"><b>Created</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
+                 </td>
                 <td class="tc-discussion-col">
                     <a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
                     {{rfp.thread.getNumComments()}}
                     </div></a>
                 </td>
                 <td class="tc-status tc-status-col">
-                    <ul>
-                        <!-- Si c'est en draft ou sent, ajouter la classe .inprocess -->
-                        <li><a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Draft</a></li>
-                        <li><a href="{{path("vendor_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">Sent</a></li>
-                        {% if rfp.order is not null %}
-                        <!-- Si c'est approuver utiliser la classe .active sinon, .declined -->
-                        <li><a href="{{path("vendor_order_show",{'idOrder':rfp.order.id,'idRelation':relation.id})}}" class="active">Proposed</a></li>
-                        {% else %}
-                        <li><a href="#">Proposed</a></li>
-                        {% endif %}
+                    <ul class="tc-status"> 
+                        {# Sent State #}
+                        <li class="tc-sent-state tc-state">
+                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                                Sent
+                            </a>
+                        </li>
+                        {# Proposed State #}
+                        <li class="tc-proposed-state tc-state">
+                            <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                                Proposed
+                            </a>
+                        </li>
                     </ul>
                 </td>
 
