@@ -16,14 +16,14 @@ ng-controller="thread.Controller"
             
         <div class="tc-comments-section" ng-hide="thread.comments <= 0">
             <ul class="tc-comments media-list">
-                <li class="tc-comment media" ng-repeat="group in groupedComments track by id">
+                <li class="tc-comment media" ng-repeat="group in groupedComments">
                     <a class="pull-left avatar" href="#">
                         <img class="media-object" ng-src="{{getAvatar(group.author)}}"/>
                     </a>
                     <a class="person">{{group.author.fullname}}</a>
                     <div class="date">{{group.created_at|timeago}}</div>
                     <div class="media-body pull-left">
-                        <div class="media" ng-repeat="comment in group.comments">
+                        <div class="media" ng-repeat="comment in group.comments track by comment.id">
                             <p>{{ comment.body }}</p>
                         </div>
                         

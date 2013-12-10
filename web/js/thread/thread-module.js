@@ -22,7 +22,7 @@ module.controller("thread.Controller", [
                 }
 
                 currentGroup.comments.push(comment);
-                currentGroup.createdAt = new Date(comment.createdAt+" UTC");
+                currentGroup.created_at = new Date(comment.created_at+" UTC");
 
                 previousComment = comment;
             }

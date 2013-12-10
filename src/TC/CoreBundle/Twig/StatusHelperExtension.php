@@ -44,7 +44,12 @@ class StatusHelperExtension extends Twig_Extension {
             return "tc-".$this->getOrderStatus($resource);
         }
     }
-    /**
+    /**    
+     * State that should never happen :
+     *  - tc-draft-refused
+     *  - tc-closed-refused
+     * If it happens it means that their is a breakdown in the business logic
+     *
      * @param RFP $rfp
      * @return array
      */
@@ -67,7 +72,12 @@ class StatusHelperExtension extends Twig_Extension {
                 
         return $state;
     }
-    /**
+    /**     
+     * State that should never happen :
+     *  - tc-draft-refused
+     *  - tc-closed-refused (because a proposal cannot be purchased and refused at the same time)
+     * If it happens it means that their is a breakdown in the business logic
+     *
      * @param Order $order
      * @return array
      */
@@ -81,7 +91,8 @@ class StatusHelperExtension extends Twig_Extension {
         }else{
             $state = "draft";        
         }    
-                    
+              
+        
         if($order->getRefused()){
             $state .= "-refused";
         }elseif($order->getCancelled()){
