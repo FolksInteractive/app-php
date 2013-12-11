@@ -72,7 +72,7 @@ class BillController extends BaseController {
      */
     public function invoicesAction( $idRelation ) {
 
-        $relation = $this->getBillManager()->findByVendor( $idRelation );
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
         return array(
             'relation' => $relation
