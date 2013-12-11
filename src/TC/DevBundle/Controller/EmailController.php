@@ -32,13 +32,13 @@ class EmailController extends Controller
             
             case 3 :
             case "client_invitation" :
-                $view = "TCCoreBundle:Client:Notification/relation_invitation_email.txt.twig";
+                $view = "TCCoreBundle:Notification:relation_invitation_client_email.txt.twig";
                 $params["relation"] = $this->getUser()->getWorkspace()->getClientRelations()->get(0);
                 break;
             
             case 4 :
             case "vendor_invitation" :
-                $view = "TCCoreBundle:Vendor:Notification/relation_invitation_email.txt.twig";
+                $view = "TCCoreBundle:Notification:relation_invitation_vendor_email.txt.twig";
                 $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
                 break;
             
