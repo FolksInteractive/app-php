@@ -42,7 +42,7 @@ class VendorMenuBuilder extends ContainerAware {
         
         $menu
             ->addChild( 'Price Book', array(
-                'uri' => '#'
+            'route' => 'vendor_pricebook'
         ) )
             ->setExtra( "icon_classes", "glyphicon glyphicon-book" )
             ->setExtra( "sub_label", "Your pricing catalog" );
