@@ -23,7 +23,7 @@ ng-controller="thread.Controller"
                     <a class="person">{{group.author.fullname}}</a>
                     <div class="date">{{group.created_at|timeago}}</div>
                     <div class="media-body pull-left">
-                        <div class="media" ng-repeat="comment in group.comments track by comment.id">
+                        <div class="media" ng-repeat="comment in group.comments">
                             <p>{{ comment.body }}</p>
                         </div>
                         

@@ -35,7 +35,7 @@ module.controller("thread.Controller", [
 
         $scope.submitComment = function(){
             var comment = $scope.newComment;
-            comment.createdAt = DateService.now();
+            comment.created_at = DateService.now();
             comment.author = workspace;
             thread.comments.push(comment);
 
@@ -45,7 +45,7 @@ module.controller("thread.Controller", [
             // Prepare data objet to send to server
             var data = { };
             data.body = comment.body;
-            data.createdAt = DateService.now();
+            data.created_at = DateService.now();
             // Submitting form to server
             $http({
                 method : 'POST',
