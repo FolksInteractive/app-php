@@ -47,7 +47,7 @@
                 </td>
                 <td class="tc-progressbar-col">                    
                     <div class="progress progress-striped">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: {{deliverable.progress}}% " ng-style="{ width: '{{deliverable.progress}}%' } ">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: {{deliverable.progress~'%'}}">
                             <div class="progress-label">$ {{(deliverable.cost *  deliverable.progress / 100)|number_format()}}</div>
                         </div>
                         <div class="total-value">$ {{deliverable.cost|number_format(2, '.', ',')}}</div>
