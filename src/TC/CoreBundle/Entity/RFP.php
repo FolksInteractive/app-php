@@ -70,7 +70,7 @@ class RFP implements JsonSerializable
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="cancelled_at", type="datetime")
+     * @ORM\Column(name="cancelled_at", type="datetime", nullable=true)
      */    
     private $cancelled_At;
         
@@ -85,7 +85,7 @@ class RFP implements JsonSerializable
      * @var datetime $refused_at
      *
      * @Assert\Type("\DateTime")
-     * @ORM\Column(name="refused_at", nullable=true, type="datetime")
+     * @ORM\Column(name="refused_at", nullable=true, type="datetime", nullable=true)
      */
     private $refused_at;
 
