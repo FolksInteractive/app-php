@@ -2,21 +2,25 @@ tc_feedback:
     resource: "@TCFeedbackBundle/Controller/"
     type:     annotation
     prefix:   /
+    schemes:  [https]
 
 tc_root:
     resource: "@TCCoreBundle/Controller"
     type:     annotation
     prefix: /
+    schemes:  [https]
     
 tc_client:
     resource: "@TCCoreBundle/Controller/Client"
     type:     annotation
     prefix: /0
+    schemes:  [https]
     
 tc_vendor:
     resource: "@TCCoreBundle/Controller/Vendor"
     type:     annotation
     prefix: /1
+    schemes:  [https]
     
 #tc_core:
 #    resource: "@TCCoreBundle/Controller"
