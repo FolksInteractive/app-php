@@ -31,10 +31,72 @@
     {% set attr = attr|merge({'disabled':""}) %}   
     {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) #}   
 
-     {% if relation.openBill.deliverables.count() <= 0 %}
+     {% if bill is empty %}
         {% set attr = attr|merge({'disabled':"",'class':'btn-lg'}) %}   
     {% endif %}
 
     {{form_widget(form.submit, {'attr':attr})}}   
     </div>
+{% endblock %}
+
+{% block sheet %}
+{% if bill.deliverables is empty %}
+    {{block('empty_bill_vendor')}}
+
+{% else %}
+<div class="tc-bill-section">
+
+    <table  class="tc-table table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="left">Description</th>
+                <th>Unit price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deliverable in bill.deliverables() %}                
+                <tr>
+                    <td class="tc-actions-col">
+                        {#
+                        <div class="checkbox-item">
+                            <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
+                            <label for="checkbox-item1"></label>
+                        </div>
+                        #}
+                    </td>
+                    <td class="tc-description-col">
+                        <div class="title"><a href="{{path("vendor_order_show",{'idOrder':deliverable.order.id,'idRelation':relation.id})}}">{{deliverable.name}}</a></div>
+                        <div class="main-description"><b>Completed</b> on {{deliverable.getCompletedAt()|date('F dS Y')}}</div>
+                    
+                    </td>
+                    <td class="tc-info-col tc-unitprice-col">
+                        $ {{deliverable.cost|number_format(2, '.', ',')}}
+                    </td>
+                    <td class="tc-info-col tc-quantity-col">
+                        {{deliverable.quantity}}
+                    </td>
+                    <td class="tc-info-col tc-subtotal-col">
+                        $ {{deliverable.total|number_format(2, '.', ',')}}
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    
+    <div class="tc-total-price">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="total-label">Total : </div>
+        <div class="price">
+            $ {{bill.getTotal()|number_format(2, '.', ',')}}
+        </div>
+    </div>
+</div> 
+{% endif %}
+
 {% endblock %}

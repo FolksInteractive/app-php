@@ -3,16 +3,16 @@
 namespace TC\CoreBundle\Model;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\NoResultException;
-use TC\CoreBundle\Entity\Relation;
-use TC\CoreBundle\Entity\Workspace;
-use TC\CoreBundle\Mailer\Mailer;
-use TC\UserBundle\Entity\User;
 use InvalidArgumentException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Validator;
+use TC\CoreBundle\Entity\Bill;
+use TC\CoreBundle\Entity\Relation;
+use TC\CoreBundle\Entity\Workspace;
+use TC\CoreBundle\Mailer\Mailer;
+use TC\UserBundle\Entity\User;
 
 /**
  * RelationManager
@@ -68,7 +68,25 @@ class BillManager {
         $this->rm = $rm;
         $this->validator = $validator;
     }
-
+    
+    /**
+     * 
+     * @param Relation $relation
+     * @return Bill
+     */
+    public function getOpenBill( Relation $relation ){
+        return $relation->getOpenBill();
+    }
+    
+    
+    /**
+     * 
+     * @param Relation $relation
+     * @return Bill
+     */
+    public function getClosedBills( Relation $relation ){
+        return $relation->getClosedBills();
+    }
     /**
      * 
      * @param Relation $relation
@@ -86,9 +104,9 @@ class BillManager {
             $relation->addClosedBill( $openBill );
 
             // Opening a new bill
-            $openBill = new Bill();
-            $openBill->setRelation( $relation );
-            $relation->setOpenBill( $openBill );
+            $newOpenBill = new Bill();
+            $newOpenBill->setRelation( $relation );
+            $relation->setOpenBill( $newOpenBill );
 
             $this->rm->save( $relation );
         }else {

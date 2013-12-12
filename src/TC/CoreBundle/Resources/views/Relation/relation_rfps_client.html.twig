@@ -47,9 +47,11 @@
                     <div class="main-description"><b>Created</b> on {{rfp.getCreatedAt()|date('F dS Y')}}</div>
                 </td>
                 <td class="tc-discussion-col">
-                    <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}"><div class="badge-talk-bubble">
-                    {{rfp.thread.getNumComments()}}
-                    </div></a>
+                    <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
+                        <div class="badge-talk-bubble">
+                            {{rfp.thread.getNumComments()}}
+                        </div>
+                    </a>
                 </td>
                 <td class="tc-status-col tc-status-3-items">
                     <ul class="tc-status"> 

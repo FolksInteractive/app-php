@@ -28,9 +28,12 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
+        $bill = $this->getBillManager()->getOpenBill($relation);
+        
         $form = $this->createCloseBillForm( $relation );
 
         return array(
+            'bill' => $bill,
             'relation' => $relation,
             'form' => $form->createView()
         );
@@ -73,8 +76,11 @@ class BillController extends BaseController {
     public function invoicesAction( $idRelation ) {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        
+        $bills = $this->getBillManager()->getClosedBills( $relation );
 
         return array(
+            'bills' => $bills,
             'relation' => $relation
         );
     }
@@ -89,7 +95,7 @@ class BillController extends BaseController {
     public function invoiceAction ( $idBill, $idRelation) {
         
         $relation = $this->getRelationManager()->findByVendor( $idRelation );        
-        $bill = $this->getBillManager()->findClosedByRelation( $relation, $idInvoice );
+        $bill = $this->getBillManager()->findClosedByRelation( $relation, $idBill );
         
         return array(
             'relation' => $relation,

@@ -6,18 +6,6 @@
 
 {% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
-{# block main_before %} 
-{% set attr = {'name':form.vars.name} %}
-{% set attr = attr|merge({'ng-app':''}) %}
-{% set attr = attr|merge({'novalidate':""}) %}   
-{{form_start(form, {'attr':attr})}}
-{% endblock #}
-
-{# block main_after %}
-{{form_widget(form._token)}}
-{{form_end(form, {"render_rest":false})}}
-{% endblock #}
-
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">
         {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:invoicesMenu',[],{"relation": relation}) %}
@@ -26,18 +14,15 @@
     </div>
 
     <div class="tc-controls pull-right">
-    {#
-        {% set attr = {'class':''} %}
-        {% set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
-        {% set attr = attr|merge({'disabled':""}) %}   
-        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) %}   
-        {{form_widget(form.submit, {'attr':attr})}}
-    #}
     </div>
 {% endblock %}
 
 {% block sheet %}
 
+{% if bills is empty %}
+    {{block('empty_invoices_client')}}
+
+{% else %}
 <div class="tc-invoices-section">  
         
     <table  class="tc-table table">
@@ -45,67 +30,49 @@
             <tr>
                 <th>#</th>
                 <th class="left">Description</th>
-                <th>Status</th>
+                {#<th>Status</th>#}
                 <th>Total</th>
             </tr>
         </thead>
         <tbody>
-        {% for bill in relation.getClosedBills() %}
-            <tr class="invoice">
-                <td class="description">
-                    <a href="{{path('client_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}">
-                        {{'Invoice #'~bill.id}}
-                    </a>
-                </td>
-                <td class="closed-at">
-                    {{ bill.getClosedAt()|date('d M ') }}
-                </td>
-                <td class="total">
-                    $ {{bill.total|number_format(2, '.', ',')}}
-                </td>
-            </tr>     
-        {% endfor %}
-            
-            <tr>
-                <td class="tc-number-col tc-info-col">0001</td>
+        {% for bill in bills %}
+            <tr class="{{bill|status}}">
+                <td class="tc-number-col tc-info-col"></td>
                 <td class="tc-description-col">
-                    <div class="title"><a href="#">Courses Upload + Small modifications</a></div>
-                    <div class="main-description"><b>Closed</b> on September 30th 2013</div>
-                    <div class="sub-description hide"></div>
+                    <div class="title">
+                        <a href="{{path('client_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}">
+                            Invoice of {{ bill.getClosedAt()|date('F dS Y') }}
+                        </a>
+                    </div>
                 </td>
 
+                {# 
                 <td class="tc-status tc-status-col tc-status-3-items">
                     <ul class="tc-status"> 
-                        {# Draft State #}
+
                         <li class="tc-draft-state tc-state">
-                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="{{path('client_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}"><span class="glyphicon glyphicon-pencil"></span></a>
                         </li>
-                        {# Sent State #}
+                        
                         <li class="tc-sent-state tc-state">
-                            <a href="#"><span class="glyphicon glyphicon-send"></span></a>
+                            <a href="{{path('client_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}"><span class="glyphicon glyphicon-send"></span></a>
                         </li>
-                        {# Proposed State #}
+                        
                         <li class="tc-closed-state tc-state">
-                            <a href="#"><div class="glyphicon glyphicon-usd"></div></a>
+                            <a href="{{path('client_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}"><div class="glyphicon glyphicon-usd"></div></a>
                         </li>
                     </ul>
                 </td>
+                #}
+                
                 <td class="tc-info-col tc-subtotal-col">
-                    $ 800
+                    $ {{bill.total|number_format(2, '.', ',')}}
                 </td>
             </tr>
+        {% endfor %}
                         
         </tbody>
     </table>
 </div> 
+{% endif %}
 {% endblock %}
-{#block bottom_js %}
-<script type="text/javascript" src="{{asset("/js/ng_order_edit.js")}}"></script>
-<script type="text/javascript">
-(function(ng, module){
-    
-    module.value("form_name", "{{form.vars.name}}");
-
-})(angular, module);
-</script>
-{% endblock #}

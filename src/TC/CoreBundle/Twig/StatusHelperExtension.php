@@ -3,6 +3,7 @@
 namespace TC\CoreBundle\Twig;
 
 use Symfony\Component\Security\Core\SecurityContext;
+use TC\CoreBundle\Entity\Bill;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Workspace;
@@ -26,6 +27,7 @@ class StatusHelperExtension extends Twig_Extension {
         return array(
             new Twig_SimpleFunction( 'rfp_status', array($this, 'getRFPStatus') ),
             new Twig_SimpleFunction( 'order_status', array($this, 'getOrderStatus') ),
+            new Twig_SimpleFunction( 'order_status', array($this, 'getBillStatus') ),
         );
     }
 
@@ -44,6 +46,22 @@ class StatusHelperExtension extends Twig_Extension {
             return "tc-".$this->getOrderStatus($resource);
         }
     }
+    
+    /**    
+     * 
+     * @param Bill $bill
+     * @return array
+     */
+    public function getBillStatus(Bill $bill) {
+        $state ="";
+        
+        if($bill->getClosed()){
+            $state = "closed";            
+        }
+                
+        return $state;
+    }
+    
     /**    
      * State that should never happen :
      *  - tc-draft-refused
