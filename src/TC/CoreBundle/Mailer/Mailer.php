@@ -73,7 +73,7 @@ class Mailer {
     public function sendOrderPurchaseNotification(Order $order) {
         $email = $order->getRelation()->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundleL:Notification:order_purchase_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_purchase_email.txt.twig', array('relation' =>  $order->getRelation(), 'order' =>  $order));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Order #%s purchase notification sent to %s", $order->getId(), $email) );        

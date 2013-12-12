@@ -49,7 +49,7 @@
                 Approve Proposal
             </button>
         </div>
-        <div class="refuse-btn"><a href="{{path('client_order_show' , {'idOrder':order.id, 'idRelation': relation.id})}}">or reject it.</a></div>
+        <div class="refuse-btn"><a href="{{path('client_order_refuse' , {'idOrder':order.id, 'idRelation': relation.id})}}">or reject it.</a></div>
     {{form_widget(purchaseForm._token)}}
     {{form_end(purchaseForm, {'render_rest':false})}}
     

@@ -10,7 +10,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Validator;
-use TC\CoreBundle\Entity\Bill;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Entity\Workspace;
 use TC\CoreBundle\Mailer\Mailer;
@@ -32,17 +31,7 @@ class RelationManager {
      * @var WorkspaceManager $wm 
      */
     protected $wm;
-
-    /**
-     * @var User $user
-     */
-    protected $user;
-
-    /**
-     * @var Workspace $workspace
-     */
-    protected $workspace;
-
+    
     /**
      * @var Mailer $mailer
      */
@@ -52,6 +41,12 @@ class RelationManager {
      * @var Validator $validator
      */
     protected $validator;
+    
+    /**
+     *
+     * @var SecurityContext 
+     */
+    protected $securityContext;
 
     /**
      * Constructor
@@ -59,12 +54,8 @@ class RelationManager {
      * @param EntityManager $em
      */
     public function __construct( EntityManager $em, WorkspaceManager $wm, SecurityContext $securityContext, Mailer $mailer, Validator $validator ) {
-        $this->user = $securityContext->getToken()->getUser();
-        if ( !$this->user instanceof User ) {
-            throw new InvalidArgumentException();
-        }
-
-        $this->workspace = $this->user->getWorkspace();
+        $this->securityContext = $securityContext;
+        
         $this->mailer = $mailer;
         $this->em = $em;
         $this->wm = $wm;
@@ -76,7 +67,7 @@ class RelationManager {
      * @return Collection
      */
     public function findAllByClient() {
-        return $this->workspace->getClientRelations();
+        return $this->getWorkspace()->getClientRelations();
     }
 
     /**
@@ -84,7 +75,7 @@ class RelationManager {
      * @return Collection
      */
     public function findAllByVendor() {
-        return $this->workspace->getVendorRelations();
+        return $this->getWorkspace()->getVendorRelations();
     }
 
     /**
@@ -102,7 +93,7 @@ class RelationManager {
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
-                    ->setParameter( "workspace", $this->workspace )
+                    ->setParameter( "workspace", $this->getWorkspace() )
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
@@ -125,7 +116,7 @@ class RelationManager {
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
-                    ->setParameter( "workspace", $this->workspace )
+                    ->setParameter( "workspace", $this->getWorkspace() )
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
@@ -148,7 +139,7 @@ class RelationManager {
                     ->andWhere( "r.id = :id" )
                     ->andWhere( "r.active = true" )
                     ->setParameter( "id", $id )
-                    ->setParameter( "workspace", $this->workspace )
+                    ->setParameter( "workspace", $this->getWorkspace() )
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
@@ -162,7 +153,7 @@ class RelationManager {
      */
     public function createForClient() {
         $relation = $this->create();
-        $relation->setClient( $this->workspace );
+        $relation->setClient( $this->getWorkspace() );
         
         return $relation;
     }
@@ -172,7 +163,7 @@ class RelationManager {
      */
     public function createForVendor() {
         $relation = $this->create();
-        $relation->setVendor( $this->workspace );
+        $relation->setVendor( $this->getWorkspace() );
         
         return $relation;
     }
@@ -182,7 +173,7 @@ class RelationManager {
      */
     private function create() {
         $relation = new Relation();
-        $relation->setCreator( $this->workspace );
+        $relation->setCreator( $this->getWorkspace() );
         return $relation;
     }
 
@@ -212,12 +203,12 @@ class RelationManager {
     private function sendInvitation( Relation $relation ) {
 
         // if user is vendor send client invitation
-        if ( $relation->getVendor() && $relation->getVendor() == $this->workspace ) {
+        if ( $relation->getVendor() && $relation->getVendor() == $this->getWorkspace() ) {
             $this->mailer->sendClientInvitation( $relation );
             return;
         }
         
-        if ( $relation->getClient() && $relation->getClient() == $this->workspace ) {            
+        if ( $relation->getClient() && $relation->getClient() == $this->getWorkspace() ) {            
             $this->mailer->sendVendorInvitation( $relation );
             return;
         }
@@ -229,11 +220,28 @@ class RelationManager {
      * @throws AccessDeniedException
      */
     public function archive( Relation $relation ) {
-        if ( $relation->getCreator() == $this->workspace ) {
+        if ( $relation->getCreator() == $this->getWorkspace() ) {
             $relation->setActive( false );
         } else {
             throw new AccessDeniedException( "You must be the creator of the relation to remove it." );
         }
+    }
+    
+    /**
+     * 
+     * @return User
+     */
+    private function getUser(){
+        return $this->securityContext->getToken()->getUser();
+    }
+    
+    /**
+     * 
+     * @return Workspace
+     * @throws InvalidArgumentException
+     */
+    private function getWorkspace(){
+        return $this->securityContext->getToken()->getUser()->getWorkspace();
     }
 
 }

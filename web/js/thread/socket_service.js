@@ -77,7 +77,7 @@
              */
             function getLastTimestamp(commentList){
                 if ( commentList.length > 0 && commentList[commentList.length - 1].id )
-                    return commentList[commentList.length - 1].createdAt;
+                    return commentList[commentList.length - 1].created_at;
 
                 return  -1;
             }
