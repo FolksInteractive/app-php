@@ -32,7 +32,7 @@
     {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) #}   
 
      {% if relation.openBill.deliverables.count() <= 0 %}
-        {% set attr = attr|merge({'disabled':""}) %}   
+        {% set attr = attr|merge({'disabled':"",'class':'btn-lg'}) %}   
     {% endif %}
 
     {{form_widget(form.submit, {'attr':attr})}}   

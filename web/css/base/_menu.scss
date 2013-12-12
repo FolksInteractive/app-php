@@ -21,11 +21,16 @@
             box-shadow: 0px 3px 3px -3px #222 inset, 0px -3px 3px -3px #222 inset;
             padding-left: 21px;
         }
+        
         .sub_label{
             display: none;
             font-size: 11px;
             color: #777;
             padding: 5px 30px 0 0;
+        }
+        
+        .icon-progress-lt-sm {
+            margin: -2px 3px 0 0;
         }
     }
     
@@ -37,6 +42,16 @@
             margin-left: -4px;
             color: #FFF;
         }
+    }
+    
+    .active:after {
+        content: "";
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #fff;
+        position: absolute;
+        right: 0;
+        top: 15px; 
     }
 }
 

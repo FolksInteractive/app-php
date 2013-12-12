@@ -23,11 +23,6 @@
             View RFP
         </a>   
         {% endif %}
-        
-        <a class="btn-default btn-lg btn" 
-           href="{{path('client_order_show' , {'idOrder':order.id, 'idRelation': relation.id})}}">
-            <span class="glyphicon glyphicon-ban-circle tc-icon-ban"></span> Refuse Proposal
-        </a>
             
     </div>
 {% endblock %}
@@ -41,19 +36,25 @@
 <div class="tc-agreement-section">
     {{form_start(purchaseForm)}}
         <div class="agree-check">
+            <label for="{{purchaseForm.confirmation.vars.id}}">
             {{form_widget(purchaseForm.confirmation)}}
             I accept the terms and conditions of this proposal.
+            </label>
         </div>
         <div class="agree-btn">
             <button type="submit" class="btn btn-success btn-lg"
                 id="{{purchaseForm.submit.vars.id}}"
-                name="{{purchaseForm.submit.vars.full_name}}">
+                name="{{purchaseForm.submit.vars.full_name}}" disabled>
                 <span class="glyphicon glyphicon-ok tc-right5"></span> 
-                Approve this Proposal
+                Approve Proposal
             </button>
         </div>
+        <div class="refuse-btn"><a href="{{path('client_order_show' , {'idOrder':order.id, 'idRelation': relation.id})}}">or reject it.</a></div>
     {{form_widget(purchaseForm._token)}}
     {{form_end(purchaseForm, {'render_rest':false})}}
+    
+        
+    
 </div>
 {% endif %}
 {% endblock %} 

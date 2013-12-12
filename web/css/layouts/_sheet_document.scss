@@ -20,6 +20,7 @@
     >p {
         @include mega-subtitle();
         border-bottom: 1px solid $gray-border-color;
+        padding-bottom: 10px;
     }
     
 }

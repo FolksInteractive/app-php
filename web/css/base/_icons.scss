@@ -149,20 +149,26 @@
     background-repeat: no-repeat;
 }
 
+.icon-progress-wt-sm{
+    width: 20px;
+    height: 20px;
+    background: url("/img/icons/icon-progress-wt-sm.png");
+    background-repeat: no-repeat;
+}
+
+.icon-progress-dk-lg{
+    width: 25px;
+    height: 25px;
+    background: url("/img/icons/icon-progress-dk-lg.png");
+    background-repeat: no-repeat;
+}
+
 .icon-orders-dark{
     width: 29px;
     height: 25px;
     background: url("/img/icons/icon-proposals-dark-large.png");
     background-repeat:no-repeat;
     margin: 18px 5px 0 0;
-}
-
-.icon-monitoring{
-    width: 19px;
-    height: 16px;
-    background: url("/img/icons/icon-monitoring-light-small.png");
-    background-repeat:no-repeat;
-    margin: 0 3px 0 0;
 }
 .icon-bill{
     width: 16px;

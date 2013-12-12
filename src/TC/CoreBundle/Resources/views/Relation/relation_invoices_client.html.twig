@@ -37,23 +37,16 @@
 {% endblock %}
 
 {% block sheet %}
-<div class="tc-title-section">    
-    <h2>Invoices</h2>
-    <p>List of all the closed bills.</p>
-</div>
 
 <div class="tc-invoices-section">  
-    <legend>
-        Bill invoiced
-        <span class="badge">{{ relation.getClosedBills()|length }}</span>
-    </legend>
         
-    <table  class="tc-invoices table table-hover">
+    <table  class="tc-table table">
         <thead>
             <tr>
-                <th class="description">Description</th>
-                <th class="closed-at">Date closed</th>
-                <th class="total">Total</th>
+                <th>#</th>
+                <th class="left">Description</th>
+                <th>Status</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
@@ -72,6 +65,36 @@
                 </td>
             </tr>     
         {% endfor %}
+            
+            <tr>
+                <td class="tc-number-col tc-info-col">0001</td>
+                <td class="tc-description-col">
+                    <div class="title"><a href="#">Courses Upload + Small modifications</a></div>
+                    <div class="main-description"><b>Closed</b> on September 30th 2013</div>
+                    <div class="sub-description hide"></div>
+                </td>
+
+                <td class="tc-status tc-status-col tc-status-3-items">
+                    <ul class="tc-status"> 
+                        {# Draft State #}
+                        <li class="tc-draft-state tc-state">
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </li>
+                        {# Sent State #}
+                        <li class="tc-sent-state tc-state">
+                            <a href="#"><span class="glyphicon glyphicon-send"></span></a>
+                        </li>
+                        {# Proposed State #}
+                        <li class="tc-closed-state tc-state">
+                            <a href="#"><div class="glyphicon glyphicon-usd"></div></a>
+                        </li>
+                    </ul>
+                </td>
+                <td class="tc-info-col tc-subtotal-col">
+                    $ 800
+                </td>
+            </tr>
+                        
         </tbody>
     </table>
 </div> 

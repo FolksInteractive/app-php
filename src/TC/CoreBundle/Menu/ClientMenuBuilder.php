@@ -128,7 +128,7 @@ class ClientMenuBuilder extends ContainerAware {
                 'route' => 'client_relation_progress',
                 'routeParameters' => $routeParameters
             ) )
-            ->setExtra( "icon_classes", "icon-monitoring" )
+            ->setExtra( "icon_classes", "icon-progress-lt-sm" )
             ->setExtra( "sub_label", "All the work in progress" );
         
         // Open Bill
@@ -243,7 +243,7 @@ class ClientMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Work Monitoring" )
-            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-progress-dk-lg" );
         
         return $menu;
     }

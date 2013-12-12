@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-        {# for bill in relation.getClosedBills() %}
+        {% for bill in relation.getClosedBills() %}
             <tr class="invoice">
                 <td class="description">
                     <a href="{{path('vendor_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}">
@@ -63,69 +63,40 @@
                     $ {{bill.total|number_format(2, '.', ',')}}
                 </td>
             </tr>     
-        {% endfor #}
+        {% endfor %}
+            
+            <tr>
+                <td class="tc-number-col tc-info-col">0001</td>
+                <td class="tc-description-col">
+                    <div class="title"><a href="#">Courses Upload + Small modifications</a></div>
+                    <div class="main-description"><b>Closed</b> on September 30th 2013</div>
+                    <div class="sub-description hide"></div>
+                </td>
 
-                        <tr>
-                            <td class="tc-number-col tc-info-col">0001</td>
-                            <td class="tc-description-col">
-                                <div class="title"><a href="#">Courses Upload + Small modifications</a></div>
-                                <div class="main-description">Including <b>16</b> deliverables</div>
-                                <div class="sub-description"><b>Closed</b> on September 30th 2013</div>
-                            </td>
-                            
-                            <td class="tc-status tc-status-col">
-                                <ul>
-                                    <li><a href="#1">Pending</a></li>
-                                    <li><a href="#2">Sent</a></li>
-                                    <li><a href="#3" class="paid">Paid</a></li>
-                                </ul>
-                            </td>
-                            <td class="tc-info-col tc-subtotal-col">
-                                $ 800
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc-number-col tc-info-col">0002</td>
-                            <td class="tc-description-col">
-                                <div class="title"><a href="#">Invoice #00002</a></div>
-                                <div class="main-description">Including <b>16</b> deliverables</div>
-                                <div class="sub-description"><b>Closed</b> on September 30th 2013</div>
-                            </td>
-                            
-                            <td class="tc-status tc-status-col">
-                                <ul>
-                                    <li><a href="#1">Pending</a></li>
-                                    <li><a href="#2" class="inprocess">Sent</a></li>
-                                    <li><a href="#3">Paid</a></li>
-                                </ul>
-                            </td>
-                            <td class="tc-info-col tc-subtotal-col">
-                                $ 175
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tc-number-col tc-info-col">0003</td>
-                            <td class="tc-description-col">
-                                <div class="title"><a href="#">One last small modification</a></div>
-                                <div class="main-description">Including <b>16</b> deliverables</div>
-                                <div class="sub-description"><b>Closed</b> on September 30th 2013</div>
-                            </td>
-                            
-                            <td class="tc-status tc-status-col">
-                                <ul>
-                                    <li><a href="#1" class="inprocess">Pending</a></li>
-                                    <li><a href="#2">Sent</a></li>
-                                    <li><a href="#3">Paid</a></li>
-                                </ul>
-                            </td>
-                            <td class="tc-info-col tc-subtotal-col">
-                                $ 42.50
-                            </td>
-                        </tr>
+                <td class="tc-status tc-status-col tc-status-3-items">
+                    <ul class="tc-status"> 
+                        {# Draft State #}
+                        <li class="tc-draft-state tc-state">
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </li>
+                        {# Sent State #}
+                        <li class="tc-sent-state tc-state">
+                            <a href="#"><span class="glyphicon glyphicon-send"></span></a>
+                        </li>
+                        {# Proposed State #}
+                        <li class="tc-closed-state tc-state">
+                            <a href="#"><div class="glyphicon glyphicon-usd"></div></a>
+                        </li>
+                    </ul>
+                </td>
+                <td class="tc-info-col tc-subtotal-col">
+                    $ 800
+                </td>
+            </tr>
 
-                    </tbody>
-                </table>
-            </div> 
+                </tbody>
+            </table>
+        </div> 
 {% endblock %}
 {#block bottom_js %}
 <script type="text/javascript" src="{{asset("/js/ng_order_edit.js")}}"></script>

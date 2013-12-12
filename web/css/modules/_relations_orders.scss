@@ -80,21 +80,50 @@
     
     .tc-agreement-section {
         text-align: center;
-        padding-top: 30px;
-        border-top: 1px dotted $gray-border-color;
-        
+        padding: 30px 0;
+        background: url("/img/bg/footer-gradient.png") no-repeat;
         
         .agree-check {
-            padding-bottom: 20px;
+            padding: 15px 0 25px 0;
+            color: $gray;           
             
-            button {
-                padding-right: 5px;
+            input {
+                margin-right: 5px;
+            }
+            
+            label {
+                font-weight: normal
+            }
+            
+            label:hover {
+                cursor: pointer;
             }
         }
         
         .agree-btn {
+            display: inline-block;
+            
+            .btn-lg, .btn-group-lg>.btn {
+                padding: 20px 24px;
+            }
             
         }
+        
+        .refuse-btn {
+            display: inline-block;
+            margin: 24px 0 0 20px;
+            position: absolute;
+            
+            a {
+                color: $gray-light;
+            }
+            
+            a:hover {
+                color: $red-dark;
+            }
+        }
+        
+        
     }
     
 }

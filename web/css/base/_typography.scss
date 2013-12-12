@@ -6,7 +6,17 @@
 // Imports
 // -------------------------
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('../fonts/OpenSans-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans Bold';
+    src: url('../fonts/OpenSans-Bold.ttf');
+    font-weight: 700;
+}
 
 // Overwriting Bootstrap Variables
 // -------------------------
@@ -40,10 +50,10 @@ p {
 // Mega Titles
 
 @mixin mega-title () {
-    font-weight: 300;
     font-size: 60px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     color: $tc-brand-blue;
+    
 }
 
 // Mega Subtitle

@@ -1,4 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url("../fonts/OpenSans-Light.ttf");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url("../fonts/OpenSans-Bold.ttf");
+  font-weight: 700; }
+
 a {
   color: #1b85b2;
   cursor: pointer; }
@@ -82,6 +91,9 @@ input[type='email'] {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: alpha(opacity=30);
   opacity: 0.3; }
+
+.checkbox-item label:hover {
+  border: 3px solid #ccc; }
 
 .checkbox-item input[type=checkbox]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -214,19 +226,24 @@ input[type='email'] {
   background: url("/img/icons/icon-progress-lt-sm.png");
   background-repeat: no-repeat; }
 
+.icon-progress-wt-sm {
+  width: 20px;
+  height: 20px;
+  background: url("/img/icons/icon-progress-wt-sm.png");
+  background-repeat: no-repeat; }
+
+.icon-progress-dk-lg {
+  width: 25px;
+  height: 25px;
+  background: url("/img/icons/icon-progress-dk-lg.png");
+  background-repeat: no-repeat; }
+
 .icon-orders-dark {
   width: 29px;
   height: 25px;
   background: url("/img/icons/icon-proposals-dark-large.png");
   background-repeat: no-repeat;
   margin: 18px 5px 0 0; }
-
-.icon-monitoring {
-  width: 19px;
-  height: 16px;
-  background: url("/img/icons/icon-monitoring-light-small.png");
-  background-repeat: no-repeat;
-  margin: 0 3px 0 0; }
 
 .icon-bill {
   width: 16px;
@@ -337,13 +354,13 @@ input[type='email'] {
 .tc-table > thead > tr .left {
   text-align: left; }
 .tc-table > tbody > tr > td {
-  padding: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid #dededf;
   vertical-align: middle; }
 .tc-table > tbody > tr .tc-actions-col {
-  width: 50px;
+  width: 60px;
   vertical-align: top;
-  padding: 23px 0 0 12px; }
+  padding: 23px 0 0 18px; }
 .tc-table > tbody > tr .tc-number-col {
   width: 100px; }
 .tc-table > tbody > tr .tc-description-col {
@@ -358,8 +375,8 @@ input[type='email'] {
     font-weight: normal;
     font-weight: bold; }
   .tc-table > tbody > tr .tc-description-col .main-description {
-    font-size: 14px;
-    color: #777;
+    font-size: 12px;
+    color: #999999;
     font-weight: normal;
     padding-top: 5px; }
   .tc-table > tbody > tr .tc-description-col .sub-description {
@@ -374,7 +391,9 @@ input[type='email'] {
     margin: auto;
     font-weight: bold; }
 .tc-table > tbody > tr .tc-progressbar-col {
-  width: auto; }
+  width: auto;
+  min-width: 250px;
+  padding: 0 20px; }
   .tc-table > tbody > tr .tc-progressbar-col .progress {
     margin-bottom: 0; }
   .tc-table > tbody > tr .tc-progressbar-col .tc-progress-sign {
@@ -412,7 +431,8 @@ input[type='email'] {
   font-weight: bold;
   color: #555555; }
 .tc-table > tbody > tr .tc-date-col {
-  width: 150px; }
+  width: 150px;
+  padding: 0 20px; }
 .tc-table > tbody > tr .tc-unitprice-col {
   width: 110px; }
 .tc-table > tbody > tr .tc-quantity-col {
@@ -481,8 +501,8 @@ input[type='email'] {
   .tc-deliverables-table > tfoot > tr > td {
     border-bottom: 1px solid #dededf; }
   .tc-deliverables-table > .edit-mode > tr > td {
-    padding-top: 5px;
-    padding-bottom: 5px; }
+    padding-top: 10px;
+    padding-bottom: 10px; }
 
 .tc-status {
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
@@ -549,12 +569,22 @@ input[type='email'] {
   font-size: 11px;
   color: #777;
   padding: 5px 30px 0 0; }
+.tc-menu li .icon-progress-lt-sm {
+  margin: -2px 3px 0 0; }
 .tc-menu .active {
   border-left: 4px solid #75d600;
   background: rgba(0, 0, 0, 0.75); }
   .tc-menu .active a, .tc-menu .active a:hover {
     margin-left: -4px;
     color: #FFF; }
+.tc-menu .active:after {
+  content: "";
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fff;
+  position: absolute;
+  right: 0;
+  top: 15px; }
 
 .tc-menu-header {
   display: block;
@@ -654,9 +684,8 @@ body {
   border-radius: 12px;
   margin: 100px; }
   .tc-empty-page > .title > h3 {
-    font-weight: 300;
     font-size: 60px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     color: #0a6895;
     font-size: 40px;
     padding-bottom: 10px; }
@@ -791,15 +820,15 @@ body {
       font-size: 16px; }
 
 .tc-heading-section > h2 {
-  font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans Light', sans-serif;
   color: #0a6895; }
 .tc-heading-section > p {
   font-size: 14px;
   font-style: italic;
   color: #555555;
-  border-bottom: 1px solid #dededf; }
+  border-bottom: 1px solid #dededf;
+  padding-bottom: 10px; }
 
 .tc-body-section > .tc-document-body > .tc-block {
   padding-left: 20px;
@@ -1163,12 +1192,29 @@ body {
   margin-right: 350px; }
 .order-show .tc-agreement-section {
   text-align: center;
-  padding-top: 30px;
-  border-top: 1px dotted #dededf; }
+  padding: 30px 0;
+  background: url("/img/bg/footer-gradient.png") no-repeat; }
   .order-show .tc-agreement-section .agree-check {
-    padding-bottom: 20px; }
-    .order-show .tc-agreement-section .agree-check button {
-      padding-right: 5px; }
+    padding: 15px 0 25px 0;
+    color: #555555; }
+    .order-show .tc-agreement-section .agree-check input {
+      margin-right: 5px; }
+    .order-show .tc-agreement-section .agree-check label {
+      font-weight: normal; }
+    .order-show .tc-agreement-section .agree-check label:hover {
+      cursor: pointer; }
+  .order-show .tc-agreement-section .agree-btn {
+    display: inline-block; }
+    .order-show .tc-agreement-section .agree-btn .btn-lg, .order-show .tc-agreement-section .agree-btn .btn-group-lg > .btn {
+      padding: 20px 24px; }
+  .order-show .tc-agreement-section .refuse-btn {
+    display: inline-block;
+    margin: 24px 0 0 20px;
+    position: absolute; }
+    .order-show .tc-agreement-section .refuse-btn a {
+      color: #999999; }
+    .order-show .tc-agreement-section .refuse-btn a:hover {
+      color: #990000; }
 
 /*************************************************/
 /*****     Section Order:edit.html.twig      *****/
@@ -1284,9 +1330,8 @@ body {
 .root .tc-over-section {
   text-align: center; }
   .root .tc-over-section .welcome {
-    font-weight: 300;
     font-size: 60px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     color: #0a6895;
     font-size: 120px;
     font-weight: 300; }
@@ -1314,9 +1359,8 @@ body {
       height: 50px;
       margin-top: 20px;
       margin-bottom: 10px;
-      font-weight: 300;
       font-size: 60px;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Open Sans Light', sans-serif;
       color: #0a6895;
       font-size: 40px; }
     .root .tc-over-section .client p, .root .tc-over-section .vendor p {
@@ -1365,9 +1409,8 @@ body {
     text-align: center;
     vertical-align: middle; }
     #thread_scrollable_section .empty-image > h4 {
-      font-weight: 300;
       font-size: 60px;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Open Sans Light', sans-serif;
       color: #0a6895;
       font-size: 36px;
       color: #999999; }

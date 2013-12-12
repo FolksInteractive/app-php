@@ -27,8 +27,7 @@
 
         <thead>
             <tr>
-                <th></th>
-                <th class="left">Description</th>
+                <th class="left tc-left-gap">Description</th>
                 <th>Work Progression</th>
                 <th>Due Date</th>
             </tr>
@@ -37,9 +36,7 @@
         <tbody>
             {% for deliverable in deliverables %}
             <tr>
-                <td class="tc-actions-col">
-                </td>
-                <td class="tc-description-col">
+                <td class="tc-description-col tc-left-gap">
                     <div class="title">
                         <a href="{{path('vendor_order_show',{'idRelation': relation.id, 'idOrder': deliverable.order.id})}}">
                             {{deliverable.name}}
