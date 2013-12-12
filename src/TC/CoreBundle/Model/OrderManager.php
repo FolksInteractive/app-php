@@ -201,9 +201,7 @@ class OrderManager {
             return;
         
         // If User is the client and the order has an offer and a value
-        if ( $order->getRelation()->getClient() == $this->workspace &&
-                $order->getOffer() != null &&
-                $order->getTotal() != null ) {
+        if ( $order->getRelation()->getClient() == $this->workspace ) {
 
             $order->setApproved( true );
             $this->save( $order );

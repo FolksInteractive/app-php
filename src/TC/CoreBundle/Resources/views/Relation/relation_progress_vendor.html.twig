@@ -47,6 +47,7 @@
     {{block('empty_progress_vendor')}}
 
 {% else %}
+{{ form_errors(form) }}
 <div class="tc-progress-section" ng-cloak>
     <table class="table tc-table">
 
@@ -173,7 +174,7 @@
             'cost'      : deliverable.cost,
             'completed' : deliverable.completed, 
             'progress'  : deliverable.progress, 
-            'due_at'    : deliverable.getDueAt()|date("Y/m/d"), 
+            'due_at'    : deliverable.getDueAt()is not null ? deliverable.getDueAt()|date("Y-m-d") : null, 
             'order'     : {
                             'id'            : deliverable.order.id,
                             'heading'       : deliverable.order.heading,
