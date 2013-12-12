@@ -110,6 +110,24 @@ class ThreadManager {
         $this->em->persist( $comment );
         $this->em->flush();
     }
+    
+    
+    /**
+     * 
+     * @return User
+     */
+    private function getUser(){
+        return $this->securityContext->getToken()->getUser();
+    }
+    
+    /**
+     * 
+     * @return Workspace
+     * @throws InvalidArgumentException
+     */
+    private function getWorkspace(){
+        return $this->securityContext->getToken()->getUser()->getWorkspace();
+    }
 }
 
 ?>

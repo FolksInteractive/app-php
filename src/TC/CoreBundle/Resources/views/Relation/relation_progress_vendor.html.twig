@@ -27,7 +27,7 @@
 
 <div class="tc-controls pull-right">
     
-    {% if form.deliverables is empty %}
+    {% if form.deliverables is not empty %}
         <button type="submit"
                 name="{{form.submit.vars.full_name}}"
                 class="btn-lg btn btn-default"
