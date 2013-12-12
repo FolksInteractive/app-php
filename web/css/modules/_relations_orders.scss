@@ -30,7 +30,8 @@
             }
         }
         
-        .tc-sent-cancelled{
+        .tc-sent-cancelled,
+        .tc-sent-declined{
             .tc-sent-state a{
                 @include tc-state-declined();
             }

@@ -1162,9 +1162,11 @@ body {
   background: #5cb85c; }
 .relation-orders .tc-orders-section .tc-sent-viewed .tc-sent-state a:after {
   border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a {
+.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a,
+.relation-orders .tc-orders-section .tc-sent-declined .tc-sent-state a {
   background: #d9534f; }
-.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a:after {
+.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a:after,
+.relation-orders .tc-orders-section .tc-sent-declined .tc-sent-state a:after {
   border-left-color: #d9534f; }
 .relation-orders .tc-orders-section .tc-closed .tc-closed-state a {
   background: #5cb85c; }
@@ -1307,9 +1309,11 @@ body {
   background: #5cb85c; }
 .relation-rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a:after {
   border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a {
+.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a,
+.relation-rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a:after {
+.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a:after,
+.relation-rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a:after {
   border-left-color: #d9534f; }
 .relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a {
   background: #5cb85c; }
@@ -1396,7 +1400,7 @@ body {
   overflow: auto;
   padding-right: 10px;
   padding-top: 15px;
-  width: 370px;
+  width: 360px;
   padding: 15px 0 15px 15px; }
   #thread_scrollable_section .empty-image {
     width: 230px;
