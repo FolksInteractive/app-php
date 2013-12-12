@@ -92,7 +92,7 @@ class BillManager {
      * @param Relation $relation
      * @throws AccessDeniedException
      */
-    public function closeBill( Relation $relation ) {
+    public function close( Relation $relation ) {
         if ( $relation->getVendor() == $this->workspace ) {
             // Closing bill
             $openBill = $relation->getOpenBill();
