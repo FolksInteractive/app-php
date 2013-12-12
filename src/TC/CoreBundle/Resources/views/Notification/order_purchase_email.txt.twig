@@ -2,26 +2,31 @@
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - Order purchasing
+TimeCrumbs - Proposal Accepted!
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-{{relation.client.getFullName()}} has bought an order
+<img src="{{ app.request.uriForPath('/../img/email/order-purchase.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
+
+{% block sub_title %}{% autoescape false %}
+Proposal Accepted!
+<img src="{{ app.request.uriForPath('/../img/email/subtitle-underline.gif')}}" border="0" style="margin-top:10px;" />
+{% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
-
-
+<p style="font-weight: bold;">{{relation.client.getFullName()}} has just accepted your proposal.</p><p>You can add a due date to each deliverables, get to work and track your progress as you go to keep your client informed.</p>
 {% endautoescape %}
 {% endblock %}
 
-{% block view_button %}
-<a href="{{url('vendor_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    View Order
-</a>
+{% block button1 %}
+Get to Work
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('vendor_relation_progress', {'idRelation':relation.id})}}
+{% endautoescape %}{% endblock %}
