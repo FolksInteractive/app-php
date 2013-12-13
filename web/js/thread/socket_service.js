@@ -41,7 +41,7 @@
                     var newTimestamp = response.lastTimestamp;
 
                     // Check if the server returned a different timestamp
-                    if ( newTimestamp > lastTimestamp ) {
+                    if ( !lastTimestamp || newTimestamp > lastTimestamp ) {
                         
                         fetch();
                         lastTimestamp = newTimestamp;
