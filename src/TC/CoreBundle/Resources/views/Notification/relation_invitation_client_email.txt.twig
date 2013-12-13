@@ -8,7 +8,7 @@ New Talent Opportunity! {{relation.vendor.getFullName()}} has just invited you t
 
 {% block title %}
 {% autoescape false %}
-<img src="{{ app.request.uriForPath('/../img/email/invitation.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/img/email/invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
@@ -33,5 +33,5 @@ Get Started &rarr;
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('vendor_relation')}}
+{{url('client_relation')}}
 {% endautoescape %}{% endblock %}
