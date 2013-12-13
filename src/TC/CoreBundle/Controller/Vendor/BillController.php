@@ -40,7 +40,7 @@ class BillController extends BaseController {
     }
 
     /**
-     * @param integer $idRelation The Id of the relation of the open bill
+     * @param integer $idRelation The Id of the relation
      * 
      * @Route("/bill", name="vendor_relation_bill_close")
      * @Method("POST")
