@@ -8,7 +8,7 @@ New Work Opportunity! {{relation.client.getFullName()}} has just invited you to 
 
 {% block title %}
 {% autoescape false %}
-<img src="{{ app.request.uriForPath('/../img/email/invitation.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/img/email/invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
@@ -21,7 +21,7 @@ New Work Opportunity
 
 <div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid #dededf;">
     <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
-    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p>would be interested to work with you using TimeCrumbs.</p>
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p>would be interested to work with you using TimeCrumbs.</p>
 </div>
 
 <p>TimeCrumbs enables a rich collaborative experience between business and their service providers during projects. By centralizing work related communication in a single platform, both parties will stay in sync, be transparent to each others and will be able to better adapt to changes that could occur during projects. The goal is to totally eliminate possible frustrations due to miscommunication.</p>
@@ -33,5 +33,5 @@ Get Started &rarr;
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('client_relation')}}
+{{url('vendor_relation')}}
 {% endautoescape %}{% endblock %}
