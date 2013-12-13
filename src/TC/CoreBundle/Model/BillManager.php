@@ -79,36 +79,6 @@ class BillManager {
     public function findAllByRelation( Relation $relation ){
         return $relation->getBills();
     }
-    /**
-     * 
-     * @param Relation $relation
-     * @throws AccessDeniedException
-     */
-    public function close( Bill $openBill ) {
-        $relation = $openBill->getRelation();
-        
-        if ( $relation->getVendor() == $this->workspace ) {
-            
-            if ( $openBill->getClosed() )
-                return;
-            
-            if ( $openBill->getDeliverables()->count() < 1 )
-                return;
-
-            $openBill->setClosed( true );
-            
-            $relation->addClosedBill( $openBill );
-
-            // Opening a new bill
-            $newOpenBill = new Bill();
-            $newOpenBill->setRelation( $relation );
-            $relation->setOpenBill( $newOpenBill );
-
-            $this->rm->save( $relation );
-        }else {
-            throw new AccessDeniedException( "You must be the vendor of the relation to close the bill." );
-        }
-    }
 
     /**
      * 

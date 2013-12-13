@@ -168,7 +168,6 @@ class DeliverableManager {
             throw new AccessDeniedHttpException();
         
         $deliverable->setCompleted(true);
-        $deliverable->getOrder()->getRelation()->getOpenBill()->addDeliverable($deliverable);
     }
 
     /**
