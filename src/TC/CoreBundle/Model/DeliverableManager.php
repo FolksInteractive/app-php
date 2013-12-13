@@ -93,7 +93,6 @@ class DeliverableManager {
      */
     public function findByOrder( Order $order, $id ) {
         try {
-            /* @var $relation Order */
             $deliverable = $this->em->getRepository( "TCCoreBundle:Deliverable" )
                     ->createQueryBuilder( "d" )
                     ->where( "d.order = :order" )
@@ -110,15 +109,13 @@ class DeliverableManager {
     
     /**
      * 
-     * @param Order $order
-     * @param integer $id
-     * @return Deliverable
+     * @param Relation $relation
+     * @return ArrayCollection
      * @throws NotFoundHttpException
      */
     public function findAllInProgressByRelation( Relation $relation ) {
         try {
-            /* @var $relation Order */
-            $deliverable = $this->em->getRepository( "TCCoreBundle:Deliverable" )
+            $deliverables = $this->em->getRepository( "TCCoreBundle:Deliverable" )
                     ->createQueryBuilder("d")
                     ->join("TCCoreBundle:Order", "o", "WITH", "o.relation = :relation")
                     ->where( "d MEMBER OF o.deliverables" )
@@ -130,7 +127,32 @@ class DeliverableManager {
         } catch ( NoResultException $e ) {
             throw new NotFoundHttpException( 'Deliverable not found' );
         }
-        return $deliverable;
+        return $deliverables;
+    }
+    
+    
+    /**
+     * 
+     * @param Relation $relation
+     * @return ArrayCollection
+     * @throws NotFoundHttpException
+     */
+    public function findAllToBill( Relation $relation ) {
+        try {
+            $deliverables = $this->em->getRepository( "TCCoreBundle:Deliverable" )
+                    ->createQueryBuilder("d")
+                    ->join("TCCoreBundle:Order", "o", "WITH", "o.relation = :relation")
+                    ->where( "d MEMBER OF o.deliverables" )
+                    ->andWhere("o.approved = true")
+                    ->andWhere("d.completed = true")
+                    ->andWhere("d.billed = false")
+                    ->setParameter( "relation", $relation )
+                    ->getQuery()
+                    ->getResult();
+        } catch ( NoResultException $e ) {
+            throw new NotFoundHttpException( 'Deliverable not found' );
+        }
+        return $deliverables;
     }
     
     /**

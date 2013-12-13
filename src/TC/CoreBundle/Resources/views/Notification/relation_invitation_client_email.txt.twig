@@ -8,13 +8,13 @@ New Talent Opportunity! {{relation.vendor.getFullName()}} has just invited you t
 
 {% block title %}
 {% autoescape false %}
-<img src="{{ app.request.uriForPath('/../img/email/client-invitation.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/img/email/client-invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
 {% block sub_title %}{% autoescape false %}
 New Talent Opportunity
-<img src="{{ app.request.uriForPath('/../img/email/subtitle-underline.gif')}}" border="0" style="margin-top:10px;" />
+<img src="{{ app.request.uriForPath(asset('img/email/subtitle-underline.gif'))}}" border="0" style="margin-top:10px;" />
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}

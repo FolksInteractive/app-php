@@ -18,7 +18,7 @@
     
 
 {% block sheet %}
-{% if bill.deliverables is empty %}
+{% if deliverables is empty %}
     {{block('empty_bill_client')}}
 
 {% else %}
@@ -35,7 +35,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for deliverable in bill.deliverables() %}                
+            {% set total = 0 %}
+            {% for deliverable in deliverables %}
+            {% set total = total + deliverable.total %}                
                 <tr>
                     <td class="tc-actions-col">
                         {#
@@ -71,7 +73,7 @@
         <div class="split"></div>
         <div class="total-label">Total : </div>
         <div class="price">
-            $ {{bill.getTotal()|number_format(2, '.', ',')}}
+            $ {{total|number_format(2, '.', ',')}}
         </div>
     </div>
 </div> 
