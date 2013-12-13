@@ -71,19 +71,14 @@ class Relation {
     private $rfps;
     
     /**
+     * The last bill is the open one.
+     * 
      * @var ArrayCollection $bills
      * 
      * @ORM\OneToMany(targetEntity="Bill", mappedBy="relation", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"closedAt" = "DESC"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
-    private $closedBills;
-
-    /**
-     * @Assert\NotNull()
-     * @ORM\OneToOne(targetEntity="Bill", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="openbill_id", referencedColumnName="id",onDelete="CASCADE")
-     */
-    private $openBill;
+    private $bills;
 
     /**
      * @var boolean $active
@@ -101,11 +96,10 @@ class Relation {
     private $created_at;
 
     public function __construct() {
-        $this->closedBills = new ArrayCollection();
+        $this->bills = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->rfps = new ArrayCollection();
         $this->created_at = new DateTime();
-        $this->openBill = new Bill( );
     }
 
     /**
@@ -212,34 +206,6 @@ class Relation {
     }
 
     /**
-     * Get open orders
-     *
-     * @return Collection 
-     */
-    public function getOrdersOpen() {
-        $orders = array();
-
-        foreach ( $this->orders->toArray() as $key => $order ) {
-            if ( $order->isOpen() && !$order->isApproved() ) {
-                $orders[] = $order;
-            }
-        }
-
-        return $orders;
-    }
-    
-    /**
-     * Get open orders
-     *
-     * @return Collection 
-     */
-    public function getOrdersTodo() {
-        return $this->orders->filter( function($order){
-            return ( $order->isApproved() && !$order->isCompleted() );
-        });
-    }
-
-    /**
      * Get requests
      *
      * @return Collection 
@@ -267,61 +233,37 @@ class Relation {
     }
 
     /**
-     * Add closedBills
+     * Add bill
      *
-     * @param Bill $closedBills
+     * @param Bill $bill
      * @return Relation
      */
-    public function addClosedBill(Bill $closedBills)
+    public function addBill(Bill $bill)
     {
-        $this->closedBills[] = $closedBills;
+        $this->bills[] = $bill;
     
         return $this;
     }
 
     /**
-     * Remove closedBills
+     * Remove bill
      *
      * @param Bill $closedBills
      */
-    public function removeClosedBill(Bill $closedBills)
+    public function removeBill(Bill $bill)
     {
-        $this->closedBills->removeElement($closedBills);
+        $this->bills->removeElement($bill);
     }
 
     /**
-     * Get closedBills
+     * Get bills
      *
      * @return Collection 
      */
-    public function getClosedBills()
+    public function getBills()
     {
-        return $this->closedBills;
+        return $this->bills;
     }
-
-    /**
-     * Set openBill
-     *
-     * @param Bill $openBill
-     * @return Relation
-     */
-    public function setOpenBill(Bill $openBill = null)
-    {
-        $this->openBill = $openBill;
-    
-        return $this;
-    }
-
-    /**
-     * Get openBill
-     *
-     * @return Bill 
-     */
-    public function getOpenBill()
-    {
-        return $this->openBill;
-    }
-
 
     /**
      * Set client

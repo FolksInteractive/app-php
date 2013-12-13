@@ -28,14 +28,14 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
-        $bill = $this->getBillManager()->getOpenBill($relation);
+        $deliverables = $this->getDeliverableManager()->findAllToBill($relation);
         
-        $form = $this->createCloseBillForm( $relation );
+        $form = $this->createCloseBillForm( $relation, $deliverables );
 
         return array(
-            'bill' => $bill,
-            'relation' => $relation,
-            'form' => $form->createView()
+            'deliverables'  => $deliverables,
+            'relation'      => $relation,
+            'form'          => $form->createView()
         );
     }
 
@@ -50,17 +50,24 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
 
-        $form = $this->createCloseBillForm( $relation );
+        $deliverables = $this->getDeliverableManager()->findAllToBill($relation);
+        
+        $form = $this->createCloseBillForm( $relation, $deliverables );
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            $this->getBillManager()->close( $relation );
-
+            $bill = $this->getBillManager()->create( $relation );
+            foreach( $form->get('deliverables')->getData() as $key=>$deliverable ){
+                $this->getBillManager()->addDeliverable( $bill, $deliverable );
+            }
+            $this->getBillManager()->save($bill);
+            
             // Redirect to list of invoices
-            $this->redirect($this->generateUrl("vendor_relation_invoices",array("idRelation"=>$relation->getId())));
+            return $this->redirect($this->generateUrl("vendor_relation_invoices",array("idRelation"=>$relation->getId())));
         }
 
         return array(
+            'deliverables' => $deliverables,
             'relation' => $relation,
             'form' => $form->createView()
         );
@@ -77,7 +84,7 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
-        $bills = $this->getBillManager()->getClosedBills( $relation );
+        $bills = $this->getBillManager()->findAllByRelation( $relation );
 
         return array(
             'bills' => $bills,
@@ -95,7 +102,7 @@ class BillController extends BaseController {
     public function invoiceAction ( $idBill, $idRelation) {
         
         $relation = $this->getRelationManager()->findByVendor( $idRelation );        
-        $bill = $this->getBillManager()->findClosedByRelation( $relation, $idBill );
+        $bill = $this->getBillManager()->findByRelation( $relation, $idBill );
         
         return array(
             'relation' => $relation,
@@ -112,12 +119,20 @@ class BillController extends BaseController {
      *
      * @return Form The form
      */
-    private function createCloseBillForm( Relation $relation ) {
+    private function createCloseBillForm( Relation $relation, $deliverables ) {
 
         $form = $this->createFormBuilder( null, array(
                     'action' => $this->generateUrl( 'vendor_relation_bill_close', array('idRelation' => $relation->getId()) ),
-                    'method' => 'POST',
+                    'method' => 'POST'
                 ) )
+                ->add('deliverables', 'entity', array(
+                    'required'  => true,                
+                    'class'     => 'TCCoreBundle:Deliverable',
+                    'property'  => 'name',
+                    'multiple'  => true,
+                    'expanded'  => true,
+                    'choices'   => $deliverables
+                ))
                 ->add( 'submit', 'submit', array('label' => 'Close bill') )
                 ->getForm();
 

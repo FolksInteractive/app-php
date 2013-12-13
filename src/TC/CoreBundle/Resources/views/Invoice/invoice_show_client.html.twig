@@ -15,7 +15,7 @@
 {% block sheet %}
 <div class="tc-title-section">    
     <h2>{{'Invoice #'~bill.id}}</h2>
-    <p>Invoice generated from a bill closed on {{ bill.getClosedAt()|date('M d Y') }} </p>
+    <p>Invoice generated from a bill closed on {{ bill.getCreatedAt()|date('M d Y') }} </p>
 </div>
 <div class="line-separator"></div>
 
@@ -50,7 +50,7 @@
 <div class="tc-deliverables-section">  
     <legend>
         Work done
-        <span class="badge">{{ relation.openBill.deliverables|length }}</span>
+        <span class="badge">{{ bill.deliverables|length }}</span>
     </legend>
         
     <table class="tc-table table">

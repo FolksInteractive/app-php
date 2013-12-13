@@ -49,21 +49,6 @@ class Bill
      * @ORM\ManyToOne(targetEntity="Relation", inversedBy="bills")
      */
     private $relation;
- 
-    /**
-     * @var boolean $closed
-     *
-     * @ORM\Column(name="closed", type="boolean")
-     */    
-    private $closed = false;
-
-    /**
-     * @var DateTime $created_at
-     *
-     * @ORM\Column(name="closed_at", nullable=true, type="datetime")
-     */    
-    private $closedAt;
-    
 
     /**
      * Get id
@@ -176,50 +161,5 @@ class Bill
     public function getRelation()
     {
         return $this->relation;
-    }
-
-    /**
-     * Set closed
-     *
-     * @param boolean $closed
-     * @return Bill
-     */
-    public function setClosed($closed)
-    {
-        $this->closedAt = new DateTime();
-        $this->closed = $closed;
-    
-        return $this;
-    }
-
-    /**
-     * Get closed
-     *
-     * @return boolean 
-     */
-    public function getClosed()
-    {
-        return $this->closed;
-    }
-    
-
-    /**
-     * Set closedAt
-     *
-     * @param DateTime $closedAt
-     */
-    public function setClosedAt($closedAt)
-    {
-        $this->closedAt = $closedAt;
-    }
-
-    /**
-     * Get closedAt
-     *
-     * @return DateTime 
-     */
-    public function getClosedAt()
-    {
-        return $this->closedAt;
     }
 }

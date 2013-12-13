@@ -54,11 +54,7 @@ class StatusHelperExtension extends Twig_Extension {
      */
     public function getBillStatus(Bill $bill) {
         $state ="";
-        
-        if($bill->getClosed()){
-            $state = "closed";            
-        }
-                
+                        
         return $state;
     }
     

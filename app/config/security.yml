@@ -40,7 +40,8 @@ security:
         - path: ^/resetting
           role: IS_AUTHENTICATED_ANONYMOUSLY
           requires_channel: https
-        - path: ^/, role:ROLE_USER
+        - path: ^/
+          role: ROLE_USER
           requires_channel: https
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #

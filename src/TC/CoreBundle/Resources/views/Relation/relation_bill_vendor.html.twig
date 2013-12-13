@@ -25,27 +25,23 @@
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
 
-    <div class="tc-controls pull-right">
-    {% set attr = {'class':''} %}
-    {# set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
-    {% set attr = attr|merge({'disabled':""}) %}   
-    {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) #}   
-
-     {% if bill is empty %}
-        {% set attr = attr|merge({'disabled':"",'class':'btn-lg'}) %}   
+    <div class="tc-controls pull-right"> 
+     {% if form.deliverables is not empty %}
+        {% set attr = {'class':'btn btn-lg btn-primary'} %}
+        {# set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
+        {% set attr = attr|merge({'disabled':""}) %}   
+        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) #}  
+        {{form_widget(form.submit, {'attr':attr})}}  
     {% endif %}
-
-    {{form_widget(form.submit, {'attr':attr})}}   
     </div>
 {% endblock %}
 
 {% block sheet %}
-{% if bill.deliverables is empty %}
+{% if form.deliverables is empty %}
     {{block('empty_bill_vendor')}}
 
 {% else %}
 <div class="tc-bill-section">
-
     <table  class="tc-table table">
         <thead>
             <tr>
@@ -57,15 +53,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for deliverable in bill.deliverables() %}                
+            {% set total = 0 %}
+            {% for deliverable in deliverables %}
+            {% set total = total + deliverable.total %}          
                 <tr>
                     <td class="tc-actions-col">
-                        {#
                         <div class="checkbox-item">
-                            <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
-                            <label for="checkbox-item1"></label>
+                            <input type="checkbox" 
+                                   id="deliverable_{{deliverable.id}}"
+                                   name="{{form.deliverables.vars.full_name}}[]"
+                                   value="{{deliverable.id}}"/>
+                            <label for="deliverable_{{deliverable.id}}"></label>
                         </div>
-                        #}
                     </td>
                     <td class="tc-description-col">
                         <div class="title"><a href="{{path("vendor_order_show",{'idOrder':deliverable.order.id,'idRelation':relation.id})}}">{{deliverable.name}}</a></div>
@@ -93,7 +92,7 @@
         <div class="split"></div>
         <div class="total-label">Total : </div>
         <div class="price">
-            $ {{bill.getTotal()|number_format(2, '.', ',')}}
+            $ {{total|number_format(2, '.', ',')}}
         </div>
     </div>
 </div> 

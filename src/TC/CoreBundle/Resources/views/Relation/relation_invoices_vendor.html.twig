@@ -42,7 +42,7 @@
                 <td class="tc-description-col">
                     <div class="title">
                         <a href="{{path('vendor_invoice_show',{'idBill':bill.id,'idRelation': relation.id})}}">
-                            Invoice of {{ bill.getClosedAt()|date('F dS Y') }}
+                            Invoice of {{ bill.getCreatedAt()|date('F dS Y') }}
                         </a>
                     </div>
                 </td>
