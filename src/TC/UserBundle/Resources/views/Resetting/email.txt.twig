@@ -1,15 +1,31 @@
 {% extends "::skeleton_email.html.twig" %}
-
+    
 {% block subject %}
 {% autoescape false %}
 {{ 'resetting.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
 {% endautoescape %}
 {% endblock %}
 
-{% block body_html %}
-{{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% block title %}
+{% autoescape false %}
+<img src="{{ app.request.uriForPath('/../img/email/resetting.gif')}}" border="0" />
+{% endautoescape %}
 {% endblock %}
 
-{% block view_button %}
-<a href="{{confirmationUrl}}"><img src="{{ app.request.uriForPath('/../images/email/btn_viewRequest.png')}}" width="186" height="54" border="0" /></a>
+{% block sub_title %}{% autoescape false %}
+Proposal Accepted!
+{% endautoescape %}{% endblock %}
+
+{% block body_html %}
+{% autoescape false %}
+<p>Hello {{ user.username }}, you've lost your password? Not a problem! <br />Click the following button to reset it.</p>
+{% endautoescape %} 
 {% endblock %}
+
+{% block button1 %}
+Reset Password
+{% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{confirmationUrl}}
+{% endautoescape %}{% endblock %}

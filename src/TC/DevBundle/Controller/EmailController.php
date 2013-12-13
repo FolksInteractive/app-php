@@ -49,7 +49,7 @@ class EmailController extends Controller
             
             // Client create and sent a new RFP to his vendor
             case 5 :
-            case "rfp_sent" :
+            case "rfp_ready" :
                 $view = "TCCoreBundle:Notification:rfp_ready_email.txt.twig";
                 $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
                 break;
@@ -98,7 +98,7 @@ class EmailController extends Controller
             
             // Vendor sends an invoice to his client
             case 12 :
-            case "invoice_sent" :
+            case "invoice_ready" :
                 $view = "TCCoreBundle:Notification:invoice_ready_email.txt.twig";
                 $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
                 break;

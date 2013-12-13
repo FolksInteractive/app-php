@@ -1,34 +1,43 @@
-{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+{% extends "::skeleton_email.html.twig" %}
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - You've been invited to join a new relation with {{relation.vendor.getFullName()}}
+New Talent Opportunity! {{relation.vendor.getFullName()}} has just invited you to be in contact on TimeCrumbs.com.
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-Invitation to join a new relation in TimeCrumbs
+<img src="{{ app.request.uriForPath('/../img/email/client-invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
+
+{% block sub_title %}{% autoescape false %}
+New Talent Opportunity
+<img src="{{ app.request.uriForPath('/../img/email/subtitle-underline.gif')}}" border="0" style="margin-top:10px;" />
+{% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
 
-<span style="font-weight:bold">{{relation.vendor.getFullName()}} has invited you to join a Relation.</span>
+<div style="font-weight:bold">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" /><br /> 
+    {{relation.vendor.getFullName()}} would be interested to work with you using TimeCrumbs.
+</div>
 
-<h3 style="font-size:18px; color: #112834; font-weight:bold">What's a Relation?</h3>
+<h3 style="font-size:18px; color: #112834; font-weight:bold">What's TimeCrumbs?</h3>
 
-<p>In TimeCrumbs, a relation represents a virtual space where you can create tasks requests for your vendor. When created, discussions is possible between you and your vendor to clarify exactly what needs to be done. As soon as the workload is crystal clear, your vendor can then estimate the amount of time it will take him/her to complete task. You can then approve any tasks that were estimated by your vendor so he can start the work. Everytime an approval is created, the amount of hours required by the work will be deducted from your time relation.
+<p>TimeCrumbs enables a rich collaborative experience between business and their service providers during projects. By centralizing work related communication in a single platform, both parties will stay in sync, be transparent to each others and will be able to better adapt to changes that could occur during projects. The goal is to totally eliminate possible frustrations due to miscommunication.</p>
 
-<a href="http://www.timecrumbs.com/support">For more infos, please visit the support section.</a>
+<p><a href="http://www.timecrumbs.com/support" style="color: #097acb; text-decoration: none;">For more infos, please visit the support section.</a></p>
 
 {% endautoescape %}
 {% endblock %}
 
-{% block view_button %}
-<a href="{{url('client_relation_orders', {'idRelation':relation.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    Get Started Now &rarr;
-</a>
+{% block button1 %}
+Get Started
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('vendor_relation_progress', {'idRelation':relation.id})}}
+{% endautoescape %}{% endblock %}
