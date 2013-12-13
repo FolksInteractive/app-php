@@ -2,7 +2,7 @@
 <table bgcolor="#f4f4f4" width="700" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td width="30">&nbsp;</td>
-        <td><div style="width: 75px; height: 75px; background-color: #FFF;"><img style="padding: 22px 0 0 21px;" src="{{ app.request.uriForPath('/../img/email/clock.png')}}" border="0" /></div>
+        <td><div style="width: 75px; height: 75px; background-color: #FFFFFF;"><img style="padding: 22px 0 0 21px;" src="{{ app.request.uriForPath('/../img/email/clock.png')}}" border="0" /></div>
             <div style="text-align: center; margin-bottom: 40px;">{%block title%}{%endblock%}</div>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -26,27 +26,8 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <a href="{% block button1_url %}#{%endblock%}">
-                                                        <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
-                                                                <td></td>
-                                                                <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TR.gif')}}" border="0" /></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td style="padding: 15px 25px;">
-                                                                    <span style="font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">
-                                                                        {% block button1 %}{% endblock %}</span>
-                                                                    </td>
-                                                                    <td></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BL.gif')}}" border="0" /></td>
-                                                                    <td></td>
-                                                                    <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-BR.gif')}}" border="0" /></td>
-                                                                </tr>
-                                                            </table>
+                                                    <a href="{% block button1_url %}#{%endblock%}" style="padding: 15px 25px; background-color: #097acb; border-radius: 4px; font-family: Helvetica, Arial; color: #FFFFFF; font-weight: bold; text-decoration: none; font-size: 24px;" >
+                                                        {% block button1 %}{% endblock %}
                                                         </a>
                                                     </td>
                                                 </tr>
