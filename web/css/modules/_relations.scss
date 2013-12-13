@@ -101,8 +101,6 @@
             padding: 0 0 60px 0;
             
             .hover {
-                //-webkit-transition: opacity 0.2s ease-out;
-                //opacity: 0;
                 display: none;
                 position: absolute;
                 background: rgba(255,255,255,0.9);
@@ -138,6 +136,7 @@
                 position: absolute;
                 right: 15px;
                 top: 15px;
+                display: none;
             }
             
             .tc-relation-active-badge {
@@ -176,8 +175,42 @@
         }
         
         .thumbnail:hover .hover {
-            //opacity: 1;
             display: block;
+        }
+        
+        .add-new {
+            border: 1px dashed #ddd;
+            
+            .lightout {
+                position: absolute;
+                background: rgba(255,255,255,0.7);
+                width: 100%;
+                height: 100%;
+                border-radius: 4px;
+                z-index: 100;
+            }
+            
+            .plus-sign {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                color: $gray;
+                font-size: 28px;
+                left: 50px;
+                top: 40px;
+            }          
+            
+            .hover {
+               z-index: 110;
+                background: rgba(255,255,255,0.2);
+                
+                .btn-new {
+                    position: absolute;
+                    left: 50%;
+                    padding: 20px 30px;
+                    margin: 172px 0px 0 -65px;
+                }
+            }
         }
     }
 }

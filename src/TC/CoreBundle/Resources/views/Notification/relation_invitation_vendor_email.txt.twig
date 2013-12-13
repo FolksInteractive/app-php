@@ -1,34 +1,37 @@
-{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+{% extends "::skeleton_email.html.twig" %}
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - You've been invited to join a new relation with {{relation.client.getFullName()}}
+New Work Opportunity! {{relation.client.getFullName()}} has just invited you to be in contact on TimeCrumbs.com.
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-Invitation to join a new relation in Timecrumbs
+<img src="{{ app.request.uriForPath('/../img/email/invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
+
+{% block sub_title %}{% autoescape false %}
+New Work Opportunity
+{% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
 
-<span style="font-weight:bold">{{relation.client.getFullName()}} has invited you to join a Relation.</span>
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p>would be interested to work with you using TimeCrumbs.</p>
+</div>
 
-<h3 style="font-size:18px; color: #112834; font-weight:bold">What's a Relation?</h3>
-
-<p>In TimeCrumbs, a relation represents a virtual space where you can create tasks requests for your vendor. When created, discussions is possible between you and your vendor to clarify exactly what needs to be done. As soon as the workload is crystal clear, your vendor can then estimate the amount of time it will take him/her to complete task. You can then approve any tasks that were estimated by your vendor so he can start the work. Everytime an approval is created, the amount of hours required by the work will be deducted from your time relation.
-
-<a href="http://www.timecrumbs.com/support">For more infos, please visit the support section.</a>
-
+<p>TimeCrumbs enables a rich collaborative experience between business and their service providers during projects. By centralizing work related communication in a single platform, both parties will stay in sync, be transparent to each others and will be able to better adapt to changes that could occur during projects. The goal is to totally eliminate possible frustrations due to miscommunication.</p>
 {% endautoescape %}
 {% endblock %}
 
-{% block view_button %}
-<a href="{{url('vendor_relation_orders', {'idRelation':relation.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    Get Started Now &rarr;
-</a>
+{% block button1 %}
+Get Started &rarr;
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('client_relation')}}
+{% endautoescape %}{% endblock %}

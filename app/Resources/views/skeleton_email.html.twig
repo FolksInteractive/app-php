@@ -26,7 +26,7 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <a href="#">
+                                                    <a href="{% block button1_url %}#{%endblock%}">
                                                         <table style="background-color: #097acb;" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td width="4" height="4"><img src="{{ app.request.uriForPath('/../img/email/corner-TL.gif')}}" border="0" /></td>
@@ -36,8 +36,8 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td style="padding: 15px 25px;">
-                                                                    <a href="{% block button1_url %}#{%endblock%}"style="font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">
-                                                                        {% block button1 %}{% endblock %}</a>
+                                                                    <span style="font-family: Helvetica, Arial; color: #FFF; font-weight: bold; text-decoration: none; font-size: 24px;">
+                                                                        {% block button1 %}{% endblock %}</span>
                                                                     </td>
                                                                     <td></td>
                                                                 </tr>

@@ -51,7 +51,9 @@ class EmailController extends Controller
             case 5 :
             case "rfp_ready" :
                 $view = "TCCoreBundle:Notification:rfp_ready_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getClientRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["rfp"] = $relation->getRFPs()->get(0);
                 break;
             
             // Client decide to finally cancel the RFP

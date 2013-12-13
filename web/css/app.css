@@ -1045,7 +1045,8 @@ body {
     .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-badge {
       position: absolute;
       right: 15px;
-      top: 15px; }
+      top: 15px;
+      display: none; }
     .client-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge,
     .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge {
       background-color: #5cb85c; }
@@ -1074,6 +1075,36 @@ body {
   .client-relations .tc-relations-boxes .thumbnail:hover .hover,
   .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
     display: block; }
+  .client-relations .tc-relations-boxes .add-new,
+  .vendor-relations .tc-relations-boxes .add-new {
+    border: 1px dashed #ddd; }
+    .client-relations .tc-relations-boxes .add-new .lightout,
+    .vendor-relations .tc-relations-boxes .add-new .lightout {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      z-index: 100; }
+    .client-relations .tc-relations-boxes .add-new .plus-sign,
+    .vendor-relations .tc-relations-boxes .add-new .plus-sign {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      color: #555555;
+      font-size: 28px;
+      left: 50px;
+      top: 40px; }
+    .client-relations .tc-relations-boxes .add-new .hover,
+    .vendor-relations .tc-relations-boxes .add-new .hover {
+      z-index: 110;
+      background: rgba(255, 255, 255, 0.2); }
+      .client-relations .tc-relations-boxes .add-new .hover .btn-new,
+      .vendor-relations .tc-relations-boxes .add-new .hover .btn-new {
+        position: absolute;
+        left: 50%;
+        padding: 20px 30px;
+        margin: 172px 0px 0 -65px; }
 
 .relation-orders .user {
   width: 30px; }

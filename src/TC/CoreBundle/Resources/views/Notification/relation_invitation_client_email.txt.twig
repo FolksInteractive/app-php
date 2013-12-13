@@ -8,36 +8,30 @@ New Talent Opportunity! {{relation.vendor.getFullName()}} has just invited you t
 
 {% block title %}
 {% autoescape false %}
-<img src="{{ app.request.uriForPath('/../img/email/client-invitation.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/../img/email/invitation.gif')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
 {% block sub_title %}{% autoescape false %}
 New Talent Opportunity
-<img src="{{ app.request.uriForPath('/../img/email/subtitle-underline.gif')}}" border="0" style="margin-top:10px;" />
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
 
-<div style="font-weight:bold">
-    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" /><br /> 
-    {{relation.vendor.getFullName()}} would be interested to work with you using TimeCrumbs.
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p>would be interested to work with you using TimeCrumbs.</p>
 </div>
 
-<h3 style="font-size:18px; color: #112834; font-weight:bold">What's TimeCrumbs?</h3>
-
 <p>TimeCrumbs enables a rich collaborative experience between business and their service providers during projects. By centralizing work related communication in a single platform, both parties will stay in sync, be transparent to each others and will be able to better adapt to changes that could occur during projects. The goal is to totally eliminate possible frustrations due to miscommunication.</p>
-
-<p><a href="http://www.timecrumbs.com/support" style="color: #097acb; text-decoration: none;">For more infos, please visit the support section.</a></p>
-
 {% endautoescape %}
 {% endblock %}
 
 {% block button1 %}
-Get Started
+Get Started &rarr;
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('vendor_relation_progress', {'idRelation':relation.id})}}
+{{url('vendor_relation')}}
 {% endautoescape %}{% endblock %}
