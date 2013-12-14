@@ -61,19 +61,19 @@ class RFPController extends BaseController {
     /**
      * Cancel a RFP.
      *
-     * @Route("/{idRFP}/refuse", name="vendor_rfp_refuse")
-     * @Template("TCCoreBundle:RFP:rfp_refuse_vendor.html.twig")
+     * @Route("/{idRFP}/decline", name="vendor_rfp_decline")
+     * @Template("TCCoreBundle:RFP:rfp_decline_vendor.html.twig")
      */
-    public function refuseAction( Request $request, $idRelation, $idRFP ) {
+    public function declineAction( Request $request, $idRelation, $idRFP ) {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
         $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
 
         // If RFP is already cancelled redirect to rfp list
-        if($rfp->getRefused())
+        if($rfp->getDeclined())
             return $this->redirect( $this->generateUrl( 'vendor_relation_rfps', array('idRelation' => $idRelation) ) );
 
-        $form = $this->createRefuseForm( $rfp );
+        $form = $this->createDeclineForm( $rfp );
 
         if ( $request->getMethod() === "PUT" ){
             
@@ -81,7 +81,7 @@ class RFPController extends BaseController {
             
             if($form->isValid() ) {
                 $refusal = $form->getData();
-                $this->getRFPManager()->refuse( $rfp, $refusal );
+                $this->getRFPManager()->decline( $rfp, $refusal );
                 $this->getRFPManager()->save( $rfp );
 
                 return $this->redirect( $this->generateUrl( 'vendor_relation_rfps', array('idRelation' => $idRelation) ) );
@@ -102,14 +102,14 @@ class RFPController extends BaseController {
     /** ******************************* */
     
     /**
-     * Creates a form to refuse a RFP.
+     * Creates a form to decline a RFP.
      *
      * @param RFP $rfp The rfp
      *
      * @return Form The form
      */
-    private function createRefuseForm( RFP $rfp ) {
-        $action = $this->generateUrl( 'vendor_rfp_refuse', array('idRelation' => $rfp->getRelation()->getId(), 'idRFP' => $rfp->getId()) );
+    private function createDeclineForm( RFP $rfp ) {
+        $action = $this->generateUrl( 'vendor_rfp_decline', array('idRelation' => $rfp->getRelation()->getId(), 'idRFP' => $rfp->getId()) );
         
         $builder = $this->createFormBuilder( null , array(
                     'action' => $action,

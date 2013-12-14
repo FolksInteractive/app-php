@@ -70,10 +70,10 @@
                                     View
                                 </a>
                             </li>
-                            {% if rfp.refused != true %}
+                            {% if not rfp.cancelled and not rfp.declined %}
                             <li>
-                                <a href="{{path("vendor_rfp_refuse", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
-                                    Refuse
+                                <a href="{{path("vendor_rfp_decline", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    Decline
                                 </a>
                             </li>
                             {% endif %}

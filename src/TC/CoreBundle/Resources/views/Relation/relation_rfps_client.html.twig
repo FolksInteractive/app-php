@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         {# Proposed State #}
-                        <li class="tc-proposed-state tc-state">
+                        <li class="tc-closed-state tc-state">
                             <a href="{{path("client_rfp_show",{'idRFP':rfp.id,'idRelation':relation.id})}}">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </a>
@@ -80,10 +80,10 @@
                         <a class="btn btn-default btn-sm" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">View</a></li>
-                            {% if rfp.cancelled != true or (rfp.order is not null and rfp.order.approved == true) %}
+                            {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
                             <li><a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Edit</a></li>
                             {% endif %}
-                            {% if rfp.cancelled != true %}
+                            {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
                             <li><a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
                             {% endif %}
                         </ul>

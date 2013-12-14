@@ -27,11 +27,9 @@
 
     <div class="tc-controls pull-right"> 
      {% if form.deliverables is not empty %}
-        {% set attr = {'class':'btn btn-lg btn-primary'} %}
-        {# set attr = attr|merge({'ng-disabled':"!"~ form.vars.name ~ ".$dirty"}) %}   
-        {% set attr = attr|merge({'disabled':""}) %}   
-        {% set attr = attr|merge({'ng-class': form.vars.name ~ ".$dirty && 'btn-primary'"}) #}  
-        {{form_widget(form.submit, {'attr':attr})}}  
+        <button type="submit" class="btn btn-lg btn-primary">
+            <span class="icon-new-proposals-light-small"></span> Generate Draft Invoice
+        </button>
     {% endif %}
     </div>
 {% endblock %}

@@ -60,8 +60,8 @@ class StatusHelperExtension extends Twig_Extension {
     
     /**    
      * State that should never happen :
-     *  - tc-draft-refused
-     *  - tc-closed-refused
+     *  - tc-draft-declined
+     *  - tc-closed-declined
      * If it happens it means that their is a breakdown in the business logic
      *
      * @param RFP $rfp
@@ -70,7 +70,7 @@ class StatusHelperExtension extends Twig_Extension {
     public function getRFPStatus(RFP $rfp) {
         $state ="";
         
-        if($rfp->getOrder()){
+        if($rfp->getOrder() && $rfp->getOrder()->getReady()){
             $state = "closed";            
         }elseif($rfp->getReady()){
             $state = "sent";            
@@ -78,8 +78,8 @@ class StatusHelperExtension extends Twig_Extension {
             $state = "draft";        
         }     
                     
-        if($rfp->getRefused()){
-            $state .= "-refused";
+        if($rfp->getDeclined()){
+            $state .= "-declined";
         }elseif($rfp->getCancelled()){
             $state .= "-cancelled";
         }
@@ -88,8 +88,8 @@ class StatusHelperExtension extends Twig_Extension {
     }
     /**     
      * State that should never happen :
-     *  - tc-draft-refused
-     *  - tc-closed-refused (because a proposal cannot be purchased and refused at the same time)
+     *  - tc-draft-declined
+     *  - tc-closed-declined (because a proposal cannot be purchased and declined at the same time)
      * If it happens it means that their is a breakdown in the business logic
      *
      * @param Order $order
@@ -107,8 +107,8 @@ class StatusHelperExtension extends Twig_Extension {
         }    
               
         
-        if($order->getRefused()){
-            $state .= "-refused";
+        if($order->getDeclined()){
+            $state .= "-declined";
         }elseif($order->getCancelled()){
             $state .= "-cancelled";
         }

@@ -63,7 +63,7 @@ class RFP implements JsonSerializable
     /**
      * @var boolean $cancelled
      *
-     * @ORM\Column(name="cancelled", type="boolean")
+     * @ORM\Column(name="cancelled", type="boolean", options={"default" = 0})
      */
     private $cancelled = false;
 
@@ -75,19 +75,19 @@ class RFP implements JsonSerializable
     private $cancelled_At;
         
     /**
-     * @var boolean $refused
+     * @var boolean $declined
      *
-     * @ORM\Column(name="refused", type="boolean")
+     * @ORM\Column(name="declined", type="boolean", options={"default" = 0})
      */
-    private $refused = false;
+    private $declined = false;
         
     /**
-     * @var datetime $refused_at
+     * @var datetime $declined_at
      *
      * @Assert\Type("\DateTime")
-     * @ORM\Column(name="refused_at", nullable=true, type="datetime", nullable=true)
+     * @ORM\Column(name="declined_at", nullable=true, type="datetime", nullable=true)
      */
-    private $refused_at;
+    private $declined_at;
 
     /**
      * @var boolean
@@ -396,50 +396,50 @@ class RFP implements JsonSerializable
     }
 
     /**
-     * Set refused
+     * Set declined
      *
-     * @param boolean $refused
+     * @param boolean $declined
      * @return RFP
      */
-    public function setRefused($refused)
+    public function setDeclined($declined)
     {
-        $this->refused_at = ($refused) ? new DateTime() : null;
-        $this->refused = $refused;
+        $this->declined_at = ($declined) ? new DateTime() : null;
+        $this->declined = $declined;
     
         return $this;
     }
 
     /**
-     * Get refused
+     * Get declined
      *
      * @return boolean 
      */
-    public function getRefused()
+    public function getDeclined()
     {
-        return $this->refused;
+        return $this->declined;
     }
 
     /**
-     * Set refused_at
+     * Set declined_at
      *
-     * @param \DateTime $refusedAt
+     * @param \DateTime $declinedAt
      * @return RFP
      */
-    public function setRefusedAt($refusedAt)
+    public function setDeclinedAt($declinedAt)
     {
-        $this->refused_at = $refusedAt;
+        $this->declined_at = $declinedAt;
     
         return $this;
     }
 
     /**
-     * Get refused_at
+     * Get declined_at
      *
      * @return \DateTime 
      */
-    public function getRefusedAt()
+    public function getDeclinedAt()
     {
-        return $this->refused_at;
+        return $this->declined_at;
     }
     
     
@@ -449,8 +449,8 @@ class RFP implements JsonSerializable
             "heading" => $this->getHeading(),
             "subheading" => $this->getSubheading(),
             //"order" => array( "id" => $this->getOrder()->getId() ),
-            "refused" => $this->getRefused(),
-            "refused_at" => $this->getRefusedAt(),
+            "declined" => $this->getDeclined(),
+            "declined_at" => $this->getDeclinedAt(),
             "cancelled" => $this->getCancelled(),
             "cancelled_at" => $this->getCancelledAt(),
             "ready" => $this->getReady(),            

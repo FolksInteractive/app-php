@@ -62,7 +62,7 @@
                                 <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                                     {% if order.approved %}
                                         <div class="glyphicon glyphicon-ok"></div>
-                                    {% elseif order.refused %}
+                                    {% elseif order.declined %}
                                         <span class="glyphicon glyphicon-remove"></span>
                                     {% else %}
                                         <div class="glyphicon glyphicon-ok"></div>
@@ -88,10 +88,10 @@
                                         View
                                     </a>
                                 </li>
-                                {% if order.refused == false and order.cancelled == false %}
+                                {% if order.declined == false and order.cancelled == false %}
                                 <li>
-                                    <a href="{{path("client_order_refuse", {'idRelation':relation.id, 'idOrder':order.id})}}">
-                                        Refuse
+                                    <a href="{{path("client_order_decline", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        Decline
                                     </a>
                                 </li>
                                 {% endif %}
