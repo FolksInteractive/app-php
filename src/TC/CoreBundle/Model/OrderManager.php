@@ -231,12 +231,12 @@ class OrderManager {
     /**
      * 
      * @param Order $order
-     * @param object $refusal See Vendor/OrderController::createRefuseForm
+     * @param object $refusal See Vendor/OrderController::createDeclineForm
      */
-    public function refuse( Order $order, $refusal = null ) {
+    public function decline( Order $order, $refusal = null ) {
         
         if ( $order->getRelation()->getClient() == $this->workspace ) {
-            $order->setRefused(true);
+            $order->setDeclined(true);
             
             $this->mailer->sendOrderRefusal($order, $refusal);
         }

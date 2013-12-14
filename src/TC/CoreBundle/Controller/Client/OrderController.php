@@ -74,19 +74,19 @@ class OrderController extends BaseController {
     /**
      * Cancel a Order.
      *
-     * @Route("/{idOrder}/refuse", name="client_order_refuse")
-     * @Template("TCCoreBundle:Order:order_refuse_client.html.twig")
+     * @Route("/{idOrder}/decline", name="client_order_decline")
+     * @Template("TCCoreBundle:Order:order_decline_client.html.twig")
      */
-    public function refuseAction( Request $request, $idRelation, $idOrder ) {
+    public function declineAction( Request $request, $idRelation, $idOrder ) {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
         $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
 
-        // If Order is already refused redirect to orders list
-        if($order->getRefused())
+        // If Order is already declined redirect to orders list
+        if($order->getDeclined())
             return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $idRelation) ) );
 
-        $form = $this->createRefuseForm( $order );
+        $form = $this->createDeclineForm( $order );
 
         if ( $request->getMethod() === "PUT" ){
             
@@ -94,7 +94,7 @@ class OrderController extends BaseController {
             
             if($form->isValid() ) {
                 $refusal = $form->getData();
-                $this->getOrderManager()->refuse( $order, $refusal );
+                $this->getOrderManager()->decline( $order, $refusal );
                 $this->getOrderManager()->save( $order );
 
                 return $this->redirect( $this->generateUrl( 'client_relation_orders', array('idRelation' => $idRelation) ) );
@@ -133,14 +133,14 @@ class OrderController extends BaseController {
     }
 
     /**
-     * Creates a form to refuse a Order.
+     * Creates a form to decline a Order.
      *
      * @param Order $order The order
      *
      * @return Form The form
      */
-    private function createRefuseForm( Order $order ) {
-        $action = $this->generateUrl( 'client_order_refuse', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
+    private function createDeclineForm( Order $order ) {
+        $action = $this->generateUrl( 'client_order_decline', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
         
         $builder = $this->createFormBuilder( null , array(
                     'action' => $action,

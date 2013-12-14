@@ -78,7 +78,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777;
+  border: 3px solid #777777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -93,7 +93,7 @@ input[type='email'] {
   opacity: 0.3; }
 
 .checkbox-item label:hover {
-  border: 3px solid #ccc; }
+  border: 3px solid #cccccc; }
 
 .checkbox-item input[type=checkbox]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -525,7 +525,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #fff;
+      border-left: 15px solid white;
       position: absolute;
       left: 0;
       top: 0; }
@@ -546,7 +546,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #ddd;
+      border-left: 15px solid #dddddd;
       position: absolute;
       right: -15px;
       top: 0;
@@ -569,7 +569,7 @@ input[type='email'] {
   text-decoration: none;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.75);
-  border-left: 4px solid #777;
+  border-left: 4px solid #777777;
   box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
   padding-left: 21px; }
 .tc-menu li .sub_label {
@@ -589,7 +589,7 @@ input[type='email'] {
   content: "";
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #fff;
+  border-right: 10px solid white;
   position: absolute;
   right: 0;
   top: 15px; }
@@ -631,7 +631,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -680,7 +680,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: inline-block; }
 
 .tc-empty-page {
@@ -693,7 +693,7 @@ body {
   margin: 100px; }
   .tc-empty-page > .title > h3 {
     font-size: 60px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: "Open Sans Light", sans-serif;
     color: #0a6895;
     font-size: 40px;
     padding-bottom: 10px; }
@@ -724,7 +724,7 @@ body {
     right: -30px;
     top: 10px;
     border: 1px dashed #dededf;
-    border-left: 1px solid #fff;
+    border-left: 1px solid white;
     border-radius: 0 4px 4px 0;
     text-align: center;
     padding: 10px 2px 0 0; }
@@ -744,7 +744,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700; }
 
 .tc-body-group {
@@ -829,7 +829,7 @@ body {
 
 .tc-heading-section > h2 {
   font-size: 60px;
-  font-family: 'Open Sans Light', sans-serif;
+  font-family: "Open Sans Light", sans-serif;
   color: #0a6895; }
 .tc-heading-section > p {
   font-size: 14px;
@@ -1045,7 +1045,7 @@ body {
         left: 25px;
         right: 25px;
         margin-top: 145px;
-        border-bottom: 1px dotted #ccc; }
+        border-bottom: 1px dotted #cccccc; }
       .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
       .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
         margin: 170px 0 0 -90px; }
@@ -1085,7 +1085,7 @@ body {
     display: block; }
   .client-relations .tc-relations-boxes .add-new,
   .vendor-relations .tc-relations-boxes .add-new {
-    border: 1px dashed #ddd; }
+    border: 1px dashed #dddddd; }
     .client-relations .tc-relations-boxes .add-new .lightout,
     .vendor-relations .tc-relations-boxes .add-new .lightout {
       position: absolute;
@@ -1134,7 +1134,7 @@ body {
     background-color: #f5f5f5;
     color: #999999; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
-      border: 1px solid #ccc; }
+      border: 1px solid #cccccc; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
@@ -1281,7 +1281,7 @@ body {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1358,8 +1358,10 @@ body {
   background: #5cb85c; }
 .relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a:after {
   border-left-color: #5cb85c; }
+.relation-rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a,
 .relation-rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a {
   background: #d9534f; }
+.relation-rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a:after,
 .relation-rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a:after {
   border-left-color: #d9534f; }
 
@@ -1374,7 +1376,7 @@ body {
   text-align: center; }
   .root .tc-over-section .welcome {
     font-size: 60px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: "Open Sans Light", sans-serif;
     color: #0a6895;
     font-size: 120px;
     font-weight: 300; }
@@ -1403,7 +1405,7 @@ body {
       margin-top: 20px;
       margin-bottom: 10px;
       font-size: 60px;
-      font-family: 'Open Sans Light', sans-serif;
+      font-family: "Open Sans Light", sans-serif;
       color: #0a6895;
       font-size: 40px; }
     .root .tc-over-section .client p, .root .tc-over-section .vendor p {
@@ -1453,7 +1455,7 @@ body {
     vertical-align: middle; }
     #thread_scrollable_section .empty-image > h4 {
       font-size: 60px;
-      font-family: 'Open Sans Light', sans-serif;
+      font-family: "Open Sans Light", sans-serif;
       color: #0a6895;
       font-size: 36px;
       color: #999999; }

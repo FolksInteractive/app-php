@@ -46,7 +46,7 @@ class GlobalMenuBuilder extends ContainerAware {
         if( $isClientMode ){
             $menu
             ->addChild( 'Switch to Vendor mode', array(
-                'route' => 'vendor_dashboard'
+                'route' => 'vendor_relation'
             ) )
             ->setExtra( 'icon_classes', 'glyphicon glyphicon-retweet' );
         }
@@ -55,7 +55,7 @@ class GlobalMenuBuilder extends ContainerAware {
         if( $isVendorMode ){
             $menu
             ->addChild( 'Switch to Client mode', array(
-                'route' => 'client_dashboard'
+                'route' => 'client_relation'
             ) )
             ->setExtra( 'icon_classes', 'glyphicon glyphicon-retweet' );
         }        
@@ -65,13 +65,13 @@ class GlobalMenuBuilder extends ContainerAware {
             
             $menu
                 ->addChild( 'Go to Client mode', array(
-                    'route' => 'client_dashboard'
+                    'route' => 'client_relation'
                 ) )
                 ->setExtra( 'icon_classes', 'glyphicon glyphicon-arrow-left' );
             
             $menu
                 ->addChild( 'Go to Vendor mode', array(
-                    'route' => 'vendor_dashboard'
+                    'route' => 'vendor_relation'
                 ) )
                 ->setExtra( 'icon_classes', 'glyphicon glyphicon-arrow-left' );
         }

@@ -205,6 +205,7 @@ class RFPManager {
         
         if ( $rfp->getRelation()->getClient() == $this->workspace ) {
             $rfp->setCancelled(true);
+            $rfp->setOrder(null);
             
             if($rfp->getReady())
                 $this->mailer->sendRFPCancellation($rfp, $cancellation);
@@ -214,13 +215,13 @@ class RFPManager {
     /**
      * 
      * @param RFP $rfp
-     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     * @param object $refusal See Vendor/RFPController::createDeclineForm
      */
-    public function refuse( RFP $rfp, $refusal = null ) {
+    public function decline( RFP $rfp, $refusal = null ) {
         
         if ( $rfp->getRelation()->getVendor() == $this->workspace ) {
-            $rfp->setRefused(true);
-            
+            $rfp->setDeclined(true);
+            $rfp->setOrder(null);
             $this->mailer->sendRFPRefusal($rfp, $refusal);
         }
     }

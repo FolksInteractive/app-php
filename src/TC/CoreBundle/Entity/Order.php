@@ -58,14 +58,14 @@ class Order
     /**
      * @var boolean $ready
      *
-     * @ORM\Column(name="ready", type="boolean")
+     * @ORM\Column(name="ready", type="boolean", options={"default" = 0})
      */
     private $ready = false;
           
     /**
      * @var boolean $approved
      *
-     * @ORM\Column(name="approved", type="boolean")
+     * @ORM\Column(name="approved", type="boolean", options={"default" = 0})
      */
     private $approved = false;
     
@@ -80,7 +80,7 @@ class Order
     /**
      * @var boolean $completed
      *
-     * @ORM\Column(name="completed", type="boolean")
+     * @ORM\Column(name="completed", type="boolean", options={"default" = 0})
      */
     private $completed = false;
         
@@ -95,7 +95,7 @@ class Order
     /**
      * @var boolean $billed
      *
-     * @ORM\Column(name="billed", type="boolean")
+     * @ORM\Column(name="billed", type="boolean", options={"default" = 0})
      */
     private $billed = false;
         
@@ -108,24 +108,24 @@ class Order
     private $billed_at;
         
     /**
-     * @var boolean $refused
+     * @var boolean $declined
      *
-     * @ORM\Column(name="refused", type="boolean")
+     * @ORM\Column(name="declined", type="boolean", options={"default" = 0})
      */
-    private $refused = false;
+    private $declined = false;
         
     /**
-     * @var datetime $refused_at
+     * @var datetime $declined_at
      *
      * @Assert\Type("\DateTime")
-     * @ORM\Column(name="refused_at", nullable=true, type="datetime")
+     * @ORM\Column(name="declined_at", nullable=true, type="datetime")
      */
-    private $refused_at;
+    private $declined_at;
         
     /**
      * @var boolean $cancelled
      *
-     * @ORM\Column(name="cancelled", type="boolean")
+     * @ORM\Column(name="cancelled", type="boolean", options={"default" = 0})
      */
     private $cancelled = false;
         
@@ -654,51 +654,51 @@ class Order
     }
 
     /**
-     * Set refused
+     * Set declined
      *
-     * @param boolean $refused
+     * @param boolean $declined
      * @return Order
      */
-    public function setRefused($refused)
+    public function setDeclined($declined)
     {
         
-        $this->refused_at = ($refused) ? new DateTime() : null;
-        $this->refused = $refused;
+        $this->declined_at = ($declined) ? new DateTime() : null;
+        $this->declined = $declined;
     
         return $this;
     }
 
     /**
-     * Get refused
+     * Get declined
      *
      * @return boolean 
      */
-    public function getRefused()
+    public function getDeclined()
     {
-        return $this->refused;
+        return $this->declined;
     }
 
     /**
-     * Set refused_at
+     * Set declined_at
      *
-     * @param \DateTime $refusedAt
+     * @param \DateTime $declinedAt
      * @return Order
      */
-    public function setRefusedAt($refusedAt)
+    public function setDeclinedAt($declinedAt)
     {
-        $this->refused_at = $refusedAt;
+        $this->declined_at = $declinedAt;
     
         return $this;
     }
 
     /**
-     * Get refused_at
+     * Get declined_at
      *
      * @return \DateTime 
      */
-    public function getRefusedAt()
+    public function getDeclinedAt()
     {
-        return $this->refused_at;
+        return $this->declined_at;
     }
 
     /**

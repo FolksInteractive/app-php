@@ -75,7 +75,7 @@
                                 <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                                     {% if order.approved %}
                                         <span class="glyphicon glyphicon-ok"></span>
-                                    {% elseif order.refused %}
+                                    {% elseif order.declined %}
                                         <span class="glyphicon glyphicon-remove"></span>
                                     {% else %}
                                         <span class="glyphicon glyphicon-remove"></span>
@@ -108,7 +108,7 @@
                                     </a>
                                 </li>
                                 {% endif %}
-                                {% if order.refused == false and order.cancelled == false %}
+                                {% if order.declined == false and order.cancelled == false %}
                                 <li>
                                     <a href="{{path("vendor_order_cancel", {'idRelation':relation.id, 'idOrder':order.id})}}">
                                         Cancel

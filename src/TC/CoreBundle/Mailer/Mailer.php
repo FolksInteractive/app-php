@@ -111,14 +111,14 @@ class Mailer {
     /**
      * 
      * @param RFP $rfp
-     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     * @param object $refusal See Vendor/RFPController::createDeclineForm
      */
     public function sendRFPRefusal(RFP $rfp, $refusal = null) {
         $relation = $rfp->getRelation();
         
         $email = $relation->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_refuse_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_decline_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("RFP #%s refusal sent to %s", $rfp->getId(), $email) );
@@ -143,14 +143,14 @@ class Mailer {
     /**
      * 
      * @param Order $order
-     * @param object $refusal See Vendor/RFPController::createRefuseForm
+     * @param object $refusal See Vendor/RFPController::createDeclineForm
      */
     public function sendOrderRefusal(Order $order, $refusal = null) {
         $relation = $order->getRelation();
         
         $email = $relation->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Notification:order_refuse_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_decline_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("Order #%s refusal sent to %s", $order->getId(), $email) );
