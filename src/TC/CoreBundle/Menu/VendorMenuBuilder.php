@@ -252,7 +252,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Invoices")
-            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-invoices-dk-lg" );
         
         // Invoice      
         $menu->addChild( 'Invoice', array(
