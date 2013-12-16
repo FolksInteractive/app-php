@@ -12,3 +12,13 @@
         font-weight: bold;
     }
 }
+
+.tc-btn-reset{
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: normal;
+    cursor: pointer;
+    border-radius: 0;
+    border-color: transparent;
+}

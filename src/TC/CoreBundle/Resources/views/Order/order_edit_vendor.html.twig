@@ -4,7 +4,7 @@
 
 {% use "TCCoreBundle:Relation:relation_menu_vendor.html.twig" %}
 
-{% use 'TCCoreBundle:Order:order_form_vendor.html.twig' with bottom_js as form_bottom_js %}
+{% use 'TCCoreBundle:Order:order_form_vendor.html.twig' with bottom_js as form_bottom_js, head_css as form_head_css %}
 
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">        
@@ -17,6 +17,12 @@
     </div>
 {% endblock %}
 
+{% block head_css %}
+{{ parent()}}
+{{ block('form_head_css') }}
+{% endblock %}
+
 {% block bottom_js %}
+{{ parent()}}
 {{ block('form_bottom_js') }}
 {% endblock %}

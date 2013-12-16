@@ -28,6 +28,15 @@ p {
     color: #999999;
     font-weight: bold; }
 
+.tc-btn-reset {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+  border-color: transparent; }
+
 legend {
   padding: 10px 16px 10px 0;
   font-weight: bold;
@@ -122,12 +131,6 @@ input[type='email'] {
   height: 33px;
   background: url("/img/icons/icon-addtext-bk-lg.png");
   background-repeat: no-repeat; }
-
-.tc-icon-remove {
-  color: #999999; }
-
-.tc-icon-remove:hover {
-  color: #990000; }
 
 .tc-icon-ban {
   color: #999999;
@@ -692,37 +695,54 @@ body {
   .tc-empty-page > .description a {
     font-weight: bold; }
 
-.tc-block-edit {
+.tc-placeholder-block {
+  border-radius: 4px;
   border: 1px dashed #dededf;
-  padding: 20px 20px 20px 16px;
-  margin: 20px 0;
+  height: 147px;
+  background-color: #f8f8f8; }
+
+.tc-block-edit {
+  background: #ffffff;
+  border: 1px dashed #dededf;
+  padding: 20px 20px 20px 50px;
+  margin: 20px 0 20px -30px;
   position: relative; }
   .tc-block-edit:before {
     display: block;
     content: ".";
     color: transparent;
     font-size: 0;
-    border-left: 4px solid #0a6895;
+    border-right: 4px solid #0a6895;
+    background: white;
     position: absolute;
     left: -1px;
-    padding: 1px 0;
     top: -1px;
-    bottom: -1px; }
+    bottom: -1px;
+    width: 34px;
+    padding: 1px 0; }
+  .tc-block-edit .tc-drag-block,
   .tc-block-edit .tc-delete-block {
     position: absolute;
     display: table-cell;
-    width: 30px;
-    height: 40px;
-    right: -30px;
     top: 10px;
     border: 1px dashed #dededf;
+    text-align: center;
+    background: white; }
+  .tc-block-edit .tc-drag-block {
+    left: -1px;
+    border-right: 1px solid transparent;
+    cursor: ns-resize;
+    border-radius: 4px 0 0 4px;
+    width: 30px;
+    padding: 5px 0; }
+  .tc-block-edit .tc-delete-block {
+    right: -30px;
     border-left: 1px solid white;
     border-radius: 0 4px 4px 0;
-    text-align: center;
-    padding: 10px 2px 0 0; }
-    .tc-block-edit .tc-delete-block > a {
+    padding: 2px 0; }
+    .tc-block-edit .tc-delete-block > button {
       color: #999999; }
-    .tc-block-edit .tc-delete-block > a:hover {
+    .tc-block-edit .tc-delete-block > button:hover {
       color: #990000; }
 
 .tc-block-title {
@@ -866,8 +886,9 @@ body {
 .tc-main-panel .tc-sheet {
   margin-top: 130px; }
 
+.order-show .tc-main-panel,
 .rfp-show .tc-main-panel {
-  right: 370px; }
+  margin-right: 350px; }
 
 .tc-menu-panel {
   position: fixed;
@@ -879,10 +900,8 @@ body {
   vertical-align: top; }
 
 .tc-main-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 220px; }
+  position: relative;
+  margin-left: 220px; }
 
 /*************************************************/
 /*****   Section Client:dashboard.html.twig   *****/
@@ -1221,8 +1240,6 @@ body {
 /*************************************************/
 /*****     Section Order:show.html.twig      *****/
 /*************************************************/
-.order-show .tc-sheet {
-  margin-right: 350px; }
 .order-show .tc-agreement-section {
   text-align: center;
   padding: 30px 0;

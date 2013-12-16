@@ -28,10 +28,8 @@ $menubar-normal-width: 220px;
 }
 
 .tc-main-panel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: $menubar-normal-width;
+    position: relative;
+    margin-left: $menubar-normal-width;
 }
 
 .tc-sidebar {
