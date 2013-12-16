@@ -262,6 +262,12 @@ input[type='email'] {
   background-repeat: no-repeat;
   margin: -3px 3px 0 0; }
 
+.icon-invoices-dk-lg {
+  width: 12px;
+  height: 22px;
+  background: url("/img/icons/icon-invoices-dk-lg.png");
+  background-repeat: no-repeat; }
+
 .icon-settings {
   width: 20px;
   height: 18px;
@@ -364,6 +370,8 @@ input[type='email'] {
   width: 60px;
   vertical-align: top;
   padding: 23px 0 0 18px; }
+.tc-table > tbody > tr .tc-empty-actions-col {
+  width: 20px; }
 .tc-table > tbody > tr .tc-number-col {
   width: 100px; }
 .tc-table > tbody > tr .tc-description-col {
