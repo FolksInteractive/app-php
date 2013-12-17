@@ -23,7 +23,7 @@
         </service>
 
         <service id="tc.extensions.status_helper" class="TC\CoreBundle\Twig\StatusHelperExtension">
-            <argument type="service" id="security.context" />
+            <argument type="service" id="service_container" />
             <tag name="twig.extension" />
         </service>
 

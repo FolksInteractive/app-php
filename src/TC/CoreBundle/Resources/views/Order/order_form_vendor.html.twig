@@ -137,11 +137,13 @@ ng-cloak
                     <td class="tc-cost tc-cost-edit">
                         <input type="text" class="form-control input-block-level center"
                                name="{{getDeliverableFormName(deliverable, 'cost')}}"
+                               tc-doubles-only
                                ng-model="deliverable.cost"/>
                     </td>
                     <td class="tc-quantity tc-quantity-edit">
                         <input type="text" class="form-control input-block-level center"
                                name="{{getDeliverableFormName(deliverable, 'quantity')}}"
+                               tc-number-only
                                ng-model="deliverable.quantity" />
                     </td>
                     <td class="tc-subtotal tc-info-col" 
@@ -204,6 +206,7 @@ ng-cloak
     <script src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}" type="text/javascript"></script>
     <script src="{{asset("/vendor/jquery-ui/ui/jquery-ui.js")}}" type="text/javascript"></script>
     <script src="{{asset("/vendor/angular-ui/ui-sortable/src/sortable.js")}}" type="text/javascript"></script>
+    <script src="{{asset("/js/directives/numbers.js")}}" type="text/javascript"></script>
     <script src="{{asset("/js/order/order-module.js")}}" type="text/javascript"></script>
     
     <script type="text/javascript">

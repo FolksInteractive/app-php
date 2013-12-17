@@ -2,11 +2,14 @@
 
 namespace TC\CoreBundle\Twig;
 
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use TC\CoreBundle\Entity\Bill;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Workspace;
+use TC\CoreBundle\Model\OrderManager;
+use TC\CoreBundle\Model\RFPManager;
 use TC\UserBundle\Entity\User;
 use Twig_Extension;
 use Twig_SimpleFilter;
@@ -15,19 +18,26 @@ use Twig_SimpleFunction;
 class StatusHelperExtension extends Twig_Extension {
 
     /**
-     * @var SecurityContext 
+     * @var ContainerInterface
      */
-    private $securityContext;
-
-    public function __construct( SecurityContext $securityContext ) {
-        $this->securityContext = $securityContext;
+    private $container;
+    
+    public function __construct( ContainerInterface $container = null ){
+        $this->container = $container;
     }
-
+    
     public function getFunctions() {
         return array(
-            new Twig_SimpleFunction( 'rfp_status', array($this, 'getRFPStatus') ),
-            new Twig_SimpleFunction( 'order_status', array($this, 'getOrderStatus') ),
-            new Twig_SimpleFunction( 'order_status', array($this, 'getBillStatus') ),
+            new Twig_SimpleFunction( 'rfp_status',      array($this, 'getRFPStatus') ),
+            new Twig_SimpleFunction( 'order_status',    array($this, 'getOrderStatus') ),
+            new Twig_SimpleFunction( 'bill_status',     array($this, 'getBillStatus') ),
+            
+            new Twig_SimpleFunction( 'is_cancellable',  array($this, 'isCancellable') ),
+            new Twig_SimpleFunction( 'is_declinable',   array($this, 'isDeclinable') ),
+            new Twig_SimpleFunction( 'is_editable',     array($this, 'isEditable') ),
+            new Twig_SimpleFunction( 'is_sendable',     array($this, 'isSendable') ),
+            new Twig_SimpleFunction( 'is_purchasable',  array($this, 'isPurchasable') ),
+            new Twig_SimpleFunction( 'is_reopenable',   array($this, 'isReopenable') ),
         );
     }
 
@@ -35,6 +45,62 @@ class StatusHelperExtension extends Twig_Extension {
         return array(
             new Twig_SimpleFilter( 'status', array($this, 'getStatus') ),
         );
+    }
+    
+    public function isCancellable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isCancellable($resource);
+        }
+        
+        if( $resource instanceOf RFP ){
+            return $this->getRFPManager()->isCancellable($resource);
+        }
+    }
+
+    public function isDeclinable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isDeclinable($resource);
+        }
+        
+        if( $resource instanceOf RFP ){
+            return $this->getRFPManager()->isDeclinable($resource);
+        }
+    }
+
+    public function isEditable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isEditable($resource);
+        }
+        
+        if( $resource instanceOf RFP ){
+            return $this->getRFPManager()->isEditable($resource);
+        }
+    }
+    
+    public function isSendable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isSendable($resource);
+        }
+        
+        if( $resource instanceOf RFP ){
+            return $this->getRFPManager()->isSendable($resource);
+        }
+    }
+    
+    public function isPurchasable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isPurchasable($resource);
+        }
+    }
+
+    public function isReopenable( $resource ){
+        if( $resource instanceOf Order ){
+            return $this->getOrderManager()->isReopenable($resource);
+        }
+        
+        if( $resource instanceOf RFP ){
+            return $this->getRFPManager()->isReopenable($resource);
+        }
     }
     
     public function getStatus( $resource ){
@@ -86,6 +152,7 @@ class StatusHelperExtension extends Twig_Extension {
                 
         return $state;
     }
+    
     /**     
      * State that should never happen :
      *  - tc-draft-declined
@@ -120,7 +187,7 @@ class StatusHelperExtension extends Twig_Extension {
      * @return User
      */
     private function getUser() {
-        return $this->securityContext->getToken()->getUser();
+        return $this->container->get('security.context')->getToken()->getUser();
     }
 
     /**
@@ -129,11 +196,27 @@ class StatusHelperExtension extends Twig_Extension {
     private function getWorkspace() {
         return $this->getUser()->getWorkspace();
     }
-
+    
+    /**
+     * @return OrderManager
+     */
+    private function getOrderManager(){
+        return $this->container->get('tc.manager.order');
+    }
+    
+    /**
+     * @return RFPManager
+     */
+    private function getRFPManager(){
+        return $this->container->get('tc.manager.rfp');
+    }
+    
+    /**
+     * @return string
+     */
     public function getName() {
         return 'tc_status_helper_extension';
     }
-
 }
 
 ?>

@@ -60,6 +60,8 @@ class OrderController extends BaseController {
                     $this->getOrderManager()->purchase( $order );
                     $this->getOrderManager()->save( $order );
                     $purchaseForm = null;
+                    
+                    return $this->redirect( $this->generateUrl( 'client_relation_bill', array('idRelation' => $idRelation) ) );
                 }
             }
         }
@@ -72,7 +74,7 @@ class OrderController extends BaseController {
     }
 
     /**
-     * Cancel a Order.
+     * Reopen a Order.
      *
      * @Route("/{idOrder}/decline", name="client_order_decline")
      * @Template("TCCoreBundle:Order:order_decline_client.html.twig")

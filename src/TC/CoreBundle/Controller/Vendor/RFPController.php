@@ -94,7 +94,22 @@ class RFPController extends BaseController {
             'relation' => $relation
         );
     }
-
+    
+    /**
+     * Reopen a Order.
+     *
+     * @Route("/{idRFP}/reopen", name="vendor_rfp_reopen")
+     */
+    public function reopenAction( $idRelation, $idRFP ) {
+        
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
+        
+        $this->getRFPManager()->reopen( $rfp );
+        $this->getRFPManager()->save( $rfp );
+        
+        return $this->redirect( $this->generateUrl( 'vendor_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $idRFP) ) );
+    }
 
 
     /** ******************************* */

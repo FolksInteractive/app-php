@@ -70,13 +70,23 @@
                                     View
                                 </a>
                             </li>
-                            {% if not rfp.cancelled and not rfp.declined %}
+                            
+                            {% if is_declinable(rfp) %}
                             <li>
                                 <a href="{{path("vendor_rfp_decline", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
                                     Decline
                                 </a>
                             </li>
                             {% endif %}
+                                
+                            {% if is_reopenable(rfp) %}
+                            <li>
+                                <a href="{{path("vendor_rfp_reopen", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    Reopen
+                                </a>
+                            </li>
+                            {% endif %}
+                                
                         </ul>
                     </div>
                 </td>

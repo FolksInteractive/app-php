@@ -27,7 +27,7 @@
     {% endif %} 
         
     <div class="btn-group">              
-        {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
+        {% if is_editable(rfp) %}
         <a class="btn-default btn-lg btn" 
            href="{{path('client_rfp_edit' , {'idRelation':relation.id, 'idRFP':rfp.id})}}">
             Edit RFP
@@ -39,8 +39,20 @@
             <span class="sr-only">Toggle Dropdown</span>
         </button>            
         <ul class="dropdown-menu pull-right" role="menu">
-            {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
-                <li><a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
+            {% if is_cancellable(rfp) %}
+                <li>
+                    <a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                        Cancel
+                    </a>
+                </li>
+            {% endif %}
+                                
+            {% if is_reopenable(rfp) %}
+            <li>
+                <a href="{{path("client_rfp_reopen", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                    Reopen
+                </a>
+            </li>
             {% endif %}
         </ul>
     </div>

@@ -95,7 +95,7 @@ class BillController extends BaseController {
     /**
      * Display a closed bill
      *
-     * @Route("/invoice/{idBill}", name="vendor_invoice_show")
+     * @Route("/invoices/{idBill}", name="vendor_invoice_show")
      * @Method("GET")
      * @Template("TCCoreBundle:Invoice:invoice_show_vendor.html.twig")
      */
