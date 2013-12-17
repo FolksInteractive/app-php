@@ -17,17 +17,17 @@
 </div>
 
 <div class="tc-controls toolbar pull-right">
-{% if rfp.order is not null %}
+    {% if rfp.order is not null %}
         <a class="btn btn-default btn-lg" 
-           href="{{path('vendor_order_show',{'idOrder':rfp.order.id, 'idRelation':rfp.relation.id})}}">
+            href="{{path('vendor_order_show',{'idOrder':rfp.order.id, 'idRelation':rfp.relation.id})}}">
             View Proposal
         </a>
-{% elseif not rfp.cancelled and not rfp.declined  %}
+    {% elseif not rfp.cancelled and not rfp.declined  %}
         <a class="btn btn-primary btn-lg" 
            href="{{path('vendor_order_new',{'idRFP':rfp.id, 'idRelation':rfp.relation.id})}}">
             <span class="icon-new-proposals-light-small"></span>Create Proposal
         </a>
-{% endif %}
+    {% endif %}
 </div>
 {% endblock %}
 

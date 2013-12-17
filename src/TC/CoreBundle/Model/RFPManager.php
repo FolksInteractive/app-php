@@ -107,7 +107,6 @@ class RFPManager {
                 ->createQueryBuilder( "r" )
                 ->leftJoin( "TCCoreBundle:Order", "o", "WITH", "o.rfp = r" )
                 ->where( "r.relation = :relation" )
-                ->andWhere( "o is NULL" )
                 ->andWhere( "r.ready = true")
                 ->setParameter( "relation", $relation )
                 ->getQuery()
@@ -126,7 +125,6 @@ class RFPManager {
                 ->createQueryBuilder( "r" )
                 ->leftJoin( "TCCoreBundle:Order", "o", "WITH", "o.rfp = r" )
                 ->where( "r.relation = :relation" )
-                ->andWhere( "o is NULL" )
                 ->setParameter( "relation", $relation )
                 ->getQuery()
                 ->getResult();
@@ -191,7 +189,7 @@ class RFPManager {
      */
     public function ready( RFP $rfp ) {
         
-        if ( $rfp->getRelation()->getClient() == $this->workspace ) {
+        if ( $this->isSendable( $rfp ) ) {
             $rfp->setReady(true);
         }
     }
@@ -203,7 +201,7 @@ class RFPManager {
      */
     public function cancel( RFP $rfp, $cancellation = null ) {
         
-        if ( $rfp->getRelation()->getClient() == $this->workspace ) {
+        if ( $this->isCancellable( $rfp ) ) {
             $rfp->setCancelled(true);
             $rfp->setOrder(null);
             
@@ -219,10 +217,23 @@ class RFPManager {
      */
     public function decline( RFP $rfp, $refusal = null ) {
         
-        if ( $rfp->getRelation()->getVendor() == $this->workspace ) {
+        if ( $this->isDeclinable( $rfp ) ) {
             $rfp->setDeclined(true);
             $rfp->setOrder(null);
             $this->mailer->sendRFPRefusal($rfp, $refusal);
+        }
+    }    
+    
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function reopen( RFP $rfp ) {
+        
+        if ( $this->isReopenable( $rfp ) ) {
+            $rfp->setDeclined(false);
+            $rfp->setCancelled(false);
+            $rfp->setOrder(null);
         }
     }
     
@@ -247,6 +258,118 @@ class RFPManager {
     public function remove( RFP $rfp ) {
         $this->em->remove( $rfp );
         $this->em->flush();
+    }
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function isCancellable( RFP $rfp ){
+        // Only the client can cancel a RFP
+        if( $this->workspace != $rfp->getRelation()->getClient() )
+            return false;
+            
+        // You can't cancel a RFP already cancelled
+        if( $rfp->getCancelled() )
+            return false;
+        
+        // You can'T cancel a RFP already declined by the vendor
+        if( $rfp->getDeclined() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function isDeclinable( RFP $rfp ){
+        // Only the vendor can cancel a RFP
+        if( $this->workspace != $rfp->getRelation()->getVendor() )
+            return false;
+            
+        // You can't decline a RFP already cancelled by the client
+        if( $rfp->getCancelled() )
+            return false;
+        
+        // You can't decline a RFP already declined
+        if( $rfp->getDeclined() )
+            return false;
+                
+        // You can't decline a RFP in draft mode
+        if( !$rfp->getReady() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function isEditable( RFP $rfp ){
+        // Only the client can edit a RFP
+        if( $this->workspace != $rfp->getRelation()->getClient() )
+            return false;
+            
+        // You can't edit a RFP cancelled
+        if( $rfp->getCancelled() )
+            return false;
+        
+        // You can't edit a RFP declined
+        if( $rfp->getDeclined() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function isSendable( RFP $rfp ){
+        // Only the client can send a RFP
+        if( $this->workspace != $rfp->getRelation()->getClient() )
+            return false;
+            
+        // You can't send a RFP cancelled
+        if( $rfp->getCancelled() )
+            return false;
+        
+        // You can't send a RFP declined
+        if( $rfp->getDeclined() )
+            return false;
+        
+        // You can't send a RFP already sent
+        if( $rfp->getReady() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function isReopenable( RFP $rfp ){ 
+        
+        // For a client, a RFP must be either cancelled or declined to be reopened
+        if( $this->workspace == $rfp->getRelation()->getClient() ){
+            if( $rfp->getCancelled() )
+                return true;
+
+            if( $rfp->getDeclined() )
+                return true;
+        }
+        
+        // For a vendor, a RFP must be either only declined to be reopened
+        if( $this->workspace == $rfp->getRelation()->getVendor() ){            
+            if( $rfp->getDeclined() )
+                return true;
+        }
+        
+        return false;
     }
 }
 

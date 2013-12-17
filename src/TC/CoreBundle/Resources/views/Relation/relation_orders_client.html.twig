@@ -88,10 +88,19 @@
                                         View
                                     </a>
                                 </li>
-                                {% if order.declined == false and order.cancelled == false %}
+                                
+                                {% if is_declinable(order) %}
                                 <li>
                                     <a href="{{path("client_order_decline", {'idRelation':relation.id, 'idOrder':order.id})}}">
                                         Decline
+                                    </a>
+                                </li>
+                                {% endif %}
+                                
+                                {% if is_reopenable(order) %}
+                                <li>
+                                    <a href="{{path("client_order_reopen", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        Reopen
                                     </a>
                                 </li>
                                 {% endif %}

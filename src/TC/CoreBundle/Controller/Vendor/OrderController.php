@@ -192,6 +192,22 @@ class OrderController extends BaseController {
         );
     }
     
+    /**
+     * Reopen a Order.
+     *
+     * @Route("/{idOrder}/reopen", name="vendor_order_reopen")
+     */
+    public function reopenAction( $idRelation, $idOrder ) {
+
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
+        
+        $this->getOrderManager()->reopen( $order );
+        $this->getOrderManager()->save( $order );
+        
+        return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $idOrder) ) );
+    }
+    
     /* ******************************** */
     /*              FORMS               */
     /* ******************************** */

@@ -1,4 +1,4 @@
-var module = angular.module("Order", ['ui.sortable']);
+var module = angular.module("Order", ['ui.sortable', 'tc.directives.numbers']);
 
 module.controller("order.Controller", function($scope, form_name, order){    
     

@@ -101,17 +101,27 @@
                                         View
                                     </a>
                                 </li>
-                                {% if order.approved != true %}
+                            
+                                {% if is_editable(order) %}
                                 <li>
                                     <a href="{{path("vendor_order_edit", {'idRelation':relation.id, 'idOrder':order.id})}}">
                                         Edit
                                     </a>
                                 </li>
                                 {% endif %}
-                                {% if order.declined == false and order.cancelled == false %}
+
+                                {% if is_cancellable(order) %}
                                 <li>
                                     <a href="{{path("vendor_order_cancel", {'idRelation':relation.id, 'idOrder':order.id})}}">
                                         Cancel
+                                    </a>
+                                </li>
+                                {% endif %}
+
+                                {% if is_reopenable(order) %}
+                                <li>
+                                    <a href="{{path("vendor_order_reopen", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        Reopen
                                     </a>
                                 </li>
                                 {% endif %}

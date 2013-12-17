@@ -240,6 +240,19 @@ class OrderManager {
             
             $this->mailer->sendOrderRefusal($order, $refusal);
         }
+    }    
+    
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function reopen( Order $order ) {
+        
+        if ( $this->isReopenable( $order ) ) {
+            $order->setReady(false);
+            $order->setDeclined(false);
+            $order->setCancelled(false);
+        }
     }
 
     /**
@@ -263,6 +276,160 @@ class OrderManager {
     public function remove( Order $order ) {
         $this->em->remove( $order );
         $this->em->flush();
+    }
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isCancellable( Order $order ){
+        // Only the vendor can cancel a Order
+        if( $this->workspace != $order->getRelation()->getVendor() )
+            return false;
+            
+        // You can't cancel a Order already cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't cancel a Order already declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't cancel a Order already purchased
+        if( $order->getApproved() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isDeclinable( Order $order ){
+        // Only the client can cancel a Order
+        if( $this->workspace != $order->getRelation()->getClient() )
+            return false;
+            
+        // You can't decline a Order already cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't decline a Order already declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't decline a Order in draft mode
+        if( !$order->getReady() )
+            return false;
+        
+        // You can't decline a Order already purchased
+        if( $order->getApproved() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isEditable( Order $order ){
+        // Only the vendor can edit a Order
+        if( $this->workspace != $order->getRelation()->getVendor() )
+            return false;
+            
+        // You can't edit a Order cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't edit a Order declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't edit a Order already sent
+        if( $order->getApproved() )
+            return false;
+        
+        return true;
+    }
+    
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isSendable( Order $order ){
+        // Only the vendor can send a Order
+        if( $this->workspace != $order->getRelation()->getVendor() )
+            return false;
+            
+        // You can't send a Order cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't send a Order declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't send a Order already sent
+        if( $order->getReady() )
+            return false;
+        
+        return true;
+    }
+    
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isPurchasable( Order $order ){
+        // Only the client can purchase an Order
+        if( $this->workspace != $order->getRelation()->getClient() )
+            return false;
+            
+        // You can't purchase a Order cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't purchase a Order declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't purchase a Order in draft mode
+        if( !$order->getReady() )
+            return false;
+        
+        // You can't purchase a Order already purchased
+        if( $order->getApproved() )
+            return false;
+        
+        return true;
+    }
+
+    /**
+     * 
+     * @param Order $order
+     */
+    public function isReopenable( Order $order ){            
+        
+        // For a client, a Order must be either cancelled or declined to be reopened
+        if( $this->workspace == $order->getRelation()->getClient() ){
+            if( $order->getDeclined() )
+                return true;
+        }
+        
+        // For a vendor, a Order must be either only declined to be reopened
+        if( $this->workspace == $order->getRelation()->getVendor() ){            
+            if( $order->getDeclined() )
+                return true;
+            
+            if( $order->getCancelled() )
+                return true;
+        }
+        
+        return false;
     }
 }
 

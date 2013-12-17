@@ -79,12 +79,35 @@
                     <div class="dropdown">
                         <a class="btn btn-default btn-sm" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">View</a></li>
-                            {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
-                            <li><a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Edit</a></li>
+                            
+                            <li>
+                                <a href="{{path("client_rfp_show", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    View
+                                </a>
+                            </li>
+                            
+                            {% if is_editable(rfp) %}
+                            <li>
+                                <a href="{{path("client_rfp_edit", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    Edit
+                                </a>
+                            </li>
                             {% endif %}
-                            {% if rfp.cancelled != true or rfp.declined != true or (rfp.order is not null and rfp.order.approved == true) %}
-                            <li><a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">Cancel</a></li>
+                                
+                            {% if is_cancellable(rfp) %}
+                            <li>
+                                <a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    Cancel
+                                </a>
+                            </li>
+                            {% endif %}
+                                
+                            {% if is_reopenable(rfp) %}
+                            <li>
+                                <a href="{{path("client_rfp_reopen", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
+                                    Reopen
+                                </a>
+                            </li>
                             {% endif %}
                         </ul>
                     </div>
