@@ -52,9 +52,6 @@
         <div class="decline-btn"><a href="{{path('client_order_decline' , {'idOrder':order.id, 'idRelation': relation.id})}}">or reject it.</a></div>
     {{form_widget(purchaseForm._token)}}
     {{form_end(purchaseForm, {'render_rest':false})}}
-    
-        
-    
 </div>
 {% endif %}
 {% endblock %} 
@@ -66,4 +63,5 @@
 {% block bottom_js %}
 {{ parent() }}
 {{ block('thread_bottom_js') }}
+
 {% endblock %}

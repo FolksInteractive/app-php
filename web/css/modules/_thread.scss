@@ -108,11 +108,21 @@ $comments-font-size: 14px;
     padding: 15px;
     height: $comment-height;
     background: $gray-lighter;
-    width: $thread-width - 20px;
+    width: $thread-width - 10px;
     border-left: 1px solid $gray-border-color;
     border-top: 1px solid $gray-border-color;
     
     .submit_comment {
         text-align: right;
+    }
+    
+    :after {
+        content: "";
+        border-top: 10px solid transparent;
+        border-bottom: 0;
+        border-right: 10px solid $gray-border-color;
+        position: absolute;
+        left: -1px;
+        top: -10px;
     }
 }
