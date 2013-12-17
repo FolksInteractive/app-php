@@ -1,28 +1,40 @@
-{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+{% extends "::skeleton_email.html.twig" %}
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - Cancellation of a Proposal
+{{relation.vendor.getFullName()}} has cancelled a proposal...
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-A Proposal has been cancelled
+<img src="{{ app.request.uriForPath('/img/email/title-order-cancel.jpg')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
+{% block sub_title %}{% autoescape false %}
+Proposal Cancelled
+{% endautoescape %}{% endblock %}
+
 {% block body_html %}
+
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p style="color: #990000;">has just <b>cancelled a proposal</b>.</p>
+</div>
+
 {% if cancellation is not empty %}
-    Your service provider's message :<br />
-    {{ cancellation.why }} <br />
-    {{ cancellation.other }} 
+    Your vendor's message :<br /><br />
+    <p>{{ cancellation.why }} <br /><br />
+    {{ cancellation.other }}</p> 
 {% endif %}
+        
 {% endblock %}
 
-{% block view_button %}
-<a href="{{url('client_relation_orders', {'idRelation':relation.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    View RFPs
-</a>
+{% block button1 %}
+View Proposal
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('client_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}
+{% endautoescape %}{% endblock %}

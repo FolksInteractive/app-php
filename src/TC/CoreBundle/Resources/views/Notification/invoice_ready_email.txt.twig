@@ -1,27 +1,35 @@
-{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+{% extends "::skeleton_email.html.twig" %}
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - Order purchasing
+{{relation.vendor.getFullName()}} has just sent you an invoice.
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-{{relation.client.getFullName()}} has bought an order
+<img src="{{ app.request.uriForPath('/img/email/title-invoice-ready.jpg')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
+
+{% block sub_title %}{% autoescape false %}
+Invoice Ready
+{% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
-
-
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p style="color: #097acb;">has just <b>sent you an invoice</b>.</p>
+</div>
+<p>You can view this invoice by clicking the following button.</p>
 {% endautoescape %}
 {% endblock %}
 
-{% block view_button %}
-<a href="{{url('vendor_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    View Order
-</a>
+{% block button1 %}
+View Invoice
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{#url('client_invoices_show', {'idRelation':relation.id, 'idInvoice':invoice.id})#}
+{% endautoescape %}{% endblock %}

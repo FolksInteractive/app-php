@@ -2,29 +2,40 @@
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - A RFP has been declined
+{{relation.vendor.getFullName()}} has declined your request for proposal...
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-A RFP has been declined
+<img src="{{ app.request.uriForPath('/img/email/title-rfp-decline.jpg')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
+{% block sub_title %}{% autoescape false %}
+RFP Declined
+{% endautoescape %}{% endblock %}
+
+
 {% block body_html %}
 
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p style="color: #990000;">has just <b>declined your request for proposal</b>.</p>
+</div>
+
 {% if refusal is not empty %}
-    Your service provider's message :<br />
-    {{ refusal.why }} <br />
+    Your vendor's message :<br /><br />
+    {{ refusal.why }} <br /><br />
     {{ refusal.other }} 
 {% endif %}
     
 {% endblock %}
-
-{% block view_button %}
-<a href="{{url('client_relation_rfps', {'idRelation':relation.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    View RFPs
-</a>
+    
+{% block button1 %}
+View RFP
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('client_rfp_show', {'idRelation':relation.id, 'idRFP':rfp.id})}}
+{% endautoescape %}{% endblock %}
