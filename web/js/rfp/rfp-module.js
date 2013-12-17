@@ -1,4 +1,4 @@
-var module = angular.module("RFP", []);
+var module = angular.module("RFP", ['ui.sortable']);
 
 module.controller("rfp.Controller", function($scope, form_name, rfp){
         
@@ -27,13 +27,13 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
         //Add the new one to the list
         $scope.rfp.body.push({'title':'', 'body':''});
             
-        $scope.bodyForm.$setDirty();
+        $scope.rfpForm.$setDirty();
     };
     
     $scope.removeBlock = function(block){
         var i = getBlockIndex(block);
         $scope.rfp.body.splice(i,1);
-        $scope.bodyForm.$setDirty();
+        $scope.rfpForm.$setDirty();
     }
     
     $scope.isRFPEmpty = function(){
@@ -48,4 +48,11 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
         if($scope.isRFPEmpty())
             rfp.body.push({'title':'', 'body':''})
     });
+    
+    $scope.sortableOptions = {
+        update: function() { 
+            $scope.rfpForm.$setDirty();
+        },
+        placeholder: "tc-placeholder-block"
+    };
 });

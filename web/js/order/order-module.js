@@ -1,6 +1,6 @@
-var module = angular.module("Order", []);
+var module = angular.module("Order", ['ui.sortable']);
 
-module.controller("order.Controller", function($scope, form_name, order){
+module.controller("order.Controller", function($scope, form_name, order){    
     
     $scope.form_name = form_name;
     
@@ -48,6 +48,13 @@ module.controller("order.Controller", function($scope, form_name, order){
         if($scope.offerIsEmpty())
             order.offer.push({'title':'', 'body':''})
     });
+    
+    $scope.sortableOptions = {
+        update: function() { 
+            $scope.offerForm.$setDirty();
+        },
+        placeholder: "tc-placeholder-block"
+    };
         
     /* **************************************** */    
     /* ******        DELIVERABLES        ****** */

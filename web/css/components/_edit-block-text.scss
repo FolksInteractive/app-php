@@ -12,10 +12,20 @@
 // -------------------------
 
 // Simple Block – Title + Text
+
+    
+.tc-placeholder-block{
+    border-radius: 4px;
+    border: 1px dashed $gray-border-color;
+    height:147px;
+    background-color: $gray-ultra-light;
+}
+    
 .tc-block-edit{
+    background:#ffffff;
     border: 1px dashed #dededf;
-    padding: 20px 20px 20px 16px;
-    margin: 20px 0;
+    padding: 20px 20px 20px 50px;
+    margin: 20px 0 20px -30px;
     position: relative;
     
     &:before {
@@ -23,35 +33,49 @@
         content: ".";
         color: transparent;
         font-size: 0;
-        border-left: 4px solid #0a6895;
+        border-right: 4px solid #0a6895;
+        background:white;
         position: absolute;
         left: -1px;
-        padding: 1px 0;
         top: -1px;
         bottom: -1px;
+        width:34px;
+        padding: 1px 0;
     }
     
+    .tc-drag-block,
     .tc-delete-block {
         position: absolute;
         display: table-cell;
-        width: 30px;
-        height: 40px;
-        right: -30px;
         top: 10px;
         border: 1px dashed $gray-border-color;
+        text-align: center;
+        background: white;
+    }
+    
+    .tc-drag-block{
+        left:-1px;
+        border-right: 1px solid transparent;  
+        cursor:ns-resize;
+        border-radius: 4px 0 0 4px;
+        width:30px;
+        padding: 5px 0;
+    }
+    
+    .tc-delete-block{
+        right:-30px;
         border-left: 1px solid #fff;
         border-radius: 0 4px 4px 0;
-        text-align: center;
-        padding: 10px 2px 0 0;
-        
-        >a {
+        padding: 2px 0;
+                
+        >button {
             color: $gray-light; 
         }
         
-        >a:hover {
+        >button:hover {
             color: $red-dark;
         }
-    }
+    } 
 }
 
 .tc-block-title{
