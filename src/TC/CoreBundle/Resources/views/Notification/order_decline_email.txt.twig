@@ -1,30 +1,40 @@
-{% extends "TCCoreBundle::skeleton_email.html.twig" %}
+{% extends "::skeleton_email.html.twig" %}
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - A Order has been declined
+{{relation.client.getFullName()}} has declined your proposal...
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-
+<img src="{{ app.request.uriForPath('/img/email/title-order-decline.jpg')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
+{% block sub_title %}{% autoescape false %}
+Proposal Declined
+{% endautoescape %}{% endblock %}
+
 {% block body_html %}
 
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p style="color: #990000;">has just <b>declined your proposal</b>.</p>
+</div>
+
 {% if refusal is not empty %}
-    Your client's message :<br />
-    {{ refusal.why }} <br />
+    Your client's message :<br /><br />
+    {{ refusal.why }} <br /><br />
     {{ refusal.other }} 
 {% endif %}
     
 {% endblock %}
-
-{% block view_button %}
-<a href="{{url('vendor_relation_orders', {'idRelation':relation.id})}}" 
-   style="color: #097acb; text-decoration: none; font-size: 24px;">
-    View Orders
-</a>
+    
+{% block button1 %}
+View Proposal
 {% endblock %}
+
+{% block button1_url %}{% autoescape false %}
+{{url('vendor_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}
+{% endautoescape %}{% endblock %}

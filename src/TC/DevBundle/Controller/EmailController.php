@@ -60,49 +60,63 @@ class EmailController extends Controller
             case 6 :
             case "rfp_cancel" :
                 $view = "TCCoreBundle:Notification:rfp_cancel_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getClientRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["rfp"] = $relation->getRFPs()->get(0);
                 break;
             
             // Vendor decide to decline an RFP
             case 7 :
             case "rfp_decline" :
                 $view = "TCCoreBundle:Notification:rfp_decline_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getClientRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["rfp"] = $relation->getRFPs()->get(0);
                 break;
             
             // Vendor create and send a new proposal to his client
             case 8 :
             case "order_ready" :
                 $view = "TCCoreBundle:Notification:order_ready_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["order"] = $relation->getOrders()->get(0);
                 break;
             
             // Vendor decide to cancel the proposal
             case 9 :
             case "order_cancel" :
                 $view = "TCCoreBundle:Notification:order_cancel_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["order"] = $relation->getOrders()->get(0);
                 break;
             
             // Client decide to decline the proposal
             case 10 :
             case "order_decline" :
                 $view = "TCCoreBundle:Notification:order_decline_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["order"] = $relation->getOrders()->get(0);
                 break;
             
             // Client decide to purchase the proposal
             case 11 :
             case "order_purchase" :
                 $view = "TCCoreBundle:Notification:order_purchase_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $params["relation"] = $relation;
+                $params["order"] = $relation->getOrders()->get(0);
                 break;
             
             // Vendor sends an invoice to his client
             case 12 :
             case "invoice_ready" :
                 $view = "TCCoreBundle:Notification:invoice_ready_email.txt.twig";
-                $params["relation"] = $this->getUser()->getWorkspace()->getVendorRelations()->get(0);
+                $relation = $this->getUser()->getWorkspace()->getClientRelations()->get(0);
+                $params["relation"] = $relation;
+                //$params["invoice"] = $relation->getInvoice()->get(0);
                 break;
             
         }

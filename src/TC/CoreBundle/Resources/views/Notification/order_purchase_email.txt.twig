@@ -2,24 +2,28 @@
 
 {% block subject %}
 {% autoescape false %}
-TimeCrumbs - Proposal Accepted!
+{{relation.client.getFullName()}} has just accepted your proposal!
 {% endautoescape %}
 {% endblock %}
 
 {% block title %}
 {% autoescape false %}
-<img src="{{ app.request.uriForPath('/img/email/order-purchase.gif')}}" border="0" />
+<img src="{{ app.request.uriForPath('/img/email/title-order-purchase.jpg')}}" border="0" />
 {% endautoescape %}
 {% endblock %}
 
 {% block sub_title %}{% autoescape false %}
 Proposal Accepted!
-<img src="{{ app.request.uriForPath('/img/email/subtitle-underline.gif')}}" border="0" style="margin-top:10px;" />
+<img src="{{ app.request.uriForPath('/img/email/subtitle-underline.jpg')}}" border="0" style="margin-top:10px;" />
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
-<p style="font-weight: bold;">{{relation.client.getFullName()}} has just accepted your proposal.</p><p>You can now add a due date to each deliverables, get to work and track your progress as you go to keep your client informed.</p>
+<div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
+    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p style="color: #2cb34f;">has just <b>accepted your proposal</b>.</p>
+</div>
+<p>You can now add a due date to each deliverables, get to work and track your progress as you go to keep your client informed.</p>
 {% endautoescape %}
 {% endblock %}
 
