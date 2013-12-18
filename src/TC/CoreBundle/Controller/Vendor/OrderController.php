@@ -137,6 +137,23 @@ class OrderController extends BaseController {
             'relation' => $relation,
         );
     }
+        
+    /**
+     * Sends an order to client
+     *
+     * @Route("/{idOrder}/send", name="vendor_order_send")
+     * @Method("GET")
+     */
+    public function sendAction( $idRelation, $idOrder = null ) {
+
+        $relation = $this->getRelationManager()->findByVendor( $idRelation );
+        $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
+        
+        $this->getOrderManager()->ready($order);
+        $this->getOrderManager()->save($order);
+        
+        return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $order->getId()) ) );
+    }
 
     /**
      * Finds and displays a Order.

@@ -16,7 +16,15 @@
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
 </div>
 
-    <div class="tc-controls toolbar pull-right">                        
+    <div class="tc-controls toolbar pull-right">
+        
+        {% if is_sendable(order) %}
+            <a class="btn-primary btn-lg btn"
+               href="{{path('vendor_order_send' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                Send
+            </a>   
+        {% endif %}
+            
         <div class="btn-group">
             <a class="btn-default btn-lg btn" 
                href="{{path('vendor_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">

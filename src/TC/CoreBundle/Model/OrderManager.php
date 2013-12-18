@@ -260,10 +260,9 @@ class OrderManager {
      * @param Order $order
      */
     public function save( Order $order ) {
-        // Make sure order is valid before saving
-        $errors = $this->validator->validate( $order );
-        if ( $errors->count() > 0 )
-            throw new InvalidArgumentException( $errors->get( 0 )->getMessage() );
+        
+        if( $this->isValid($order) )
+            throw new InvalidArgumentException( "The proposal is invalid and can't be save." );
 
         $this->em->persist( $order );
         $this->em->flush();
@@ -276,6 +275,18 @@ class OrderManager {
     public function remove( Order $order ) {
         $this->em->remove( $order );
         $this->em->flush();
+    }
+    
+    /**
+     * 
+     * @param Order $order
+     * @return boolean
+     */
+    public function isValid( Order $order, &$errors = null ) {
+        // Make sure order is valid before saving
+        $errors = $this->validator->validate( $order );
+        
+        return ($errors->count() <= 0);
     }
 
     /**
@@ -374,6 +385,9 @@ class OrderManager {
         
         // You can't send a Order already sent
         if( $order->getReady() )
+            return false;
+        
+        if( !$this->isValid($order) )
             return false;
         
         return true;
