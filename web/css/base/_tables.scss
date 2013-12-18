@@ -42,16 +42,19 @@
 .tc-table { 
     
     // Table Elements
-    
-    .tc-left-gap {
-        padding-left: 20px;
-    }
-    
     .tc-novalue{
         color: #999;
         font-style: italic;
         font-weight: normal;
         font-size: 12px;
+    }
+
+    .tc-left-gap {
+        padding-left: 20px;
+    }
+    
+    .tc-right-gap {
+        
     }
     
     >thead >tr {

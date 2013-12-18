@@ -13,11 +13,6 @@
 {% endblock %}
 
 {% block sheet %}
-<div class="tc-title-section">    
-    <h2>{{'Invoice #'~bill.id}}</h2>
-    <p>Invoice generated from a bill closed on {{ bill.getCreatedAt()|date('M d Y') }} </p>
-</div>
-<div class="line-separator"></div>
 
 <div class="tc-info-section">
     <div class="row">
@@ -39,7 +34,8 @@
 
         <div class="tc-invoice-terms col-md-4">
             <legend>Informations</legend>
-            <p><b>Date:</b> July 31st 2013<br>
+            <p><b>Invoice #:</b> {{bill.id}}<br>
+                <b>Date:</b> July 31st 2013<br>
                 <b>Terms:</b> Net 30<br>
                 <b>Due Date:</b> August 31st 2013
             </p>
@@ -48,15 +44,12 @@
 </div>
 
 <div class="tc-deliverables-section">  
-    <legend>
-        Work done
-        <span class="badge">{{ bill.deliverables|length }}</span>
-    </legend>
         
-    <table  class="tc-table table">
+    <table  class="tc-deliverables-table table">
         <thead>
             <tr>
-                <th class="left">Description</th>
+                <th>#</th>
+                <th class="left tc-left-gap">Description</th>
                 <th>Unit price</th>
                 <th>Qty</th>
                 <th>Subtotal</th>
@@ -64,17 +57,18 @@
         </thead>
         <tbody>
         {% for deliverable in bill.deliverables() %}
-            <tr >
-                <td class="tc-description-col">
-                    <i class="icon-check"></i> {{deliverable.name}}
+            <tr>
+                <td class="tc-no tc-info-col">{{loop.index}}</td>
+                <td class="tc-description tc-info-col left">
+                    {{deliverable.name}}
                 </td>
-                <td class="tc-info-col tc-unitprice-col">
+                <td class="tc-cost tc-info-col">
                     $ {{deliverable.cost|number_format(2, '.', ',')}}
                 </td>
-                <td class="tc-info-col tc-quantity-col">
+                <td class="tc-quantity tc-info-col">
                     {{deliverable.quantity}}
                 </td>
-                <td class="tc-info-col tc-subtotal-col">
+                <td class="tc-subtotal tc-info-col">
                     $ {{(deliverable.quantity*deliverable.cost)|number_format(2, '.', ',')}}
                 </td>
                 
@@ -82,9 +76,12 @@
         {% endfor %}
         </tbody>
     </table>
-</div> 
-<div class="tc-total-section">
+<div class="tc-total-price">
+    <div class="split"></div>
+    <div class="split"></div>
     <div class="total-label">Total</div>
-    <div class="total-value">$ {{bill.total|number_format(2, '.', ',')}}</div>
+    <div class="price">$ {{bill.total|number_format(2, '.', ',')}}</div>
 </div>
+</div> 
+
 {% endblock %}

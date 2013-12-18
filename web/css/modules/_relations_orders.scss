@@ -57,6 +57,19 @@
 /******************************************************************/
 .order-edit,
 .order-show{
+    .tc-status-section {
+        display: inline-block;
+        padding-right: 25px;
+        margin-right: 25px;
+        border-right: 1px dashed #dededf;
+        color: $gray-light;
+        
+        .glyphicon {
+            vertical-align: top;
+            padding: 4px 0 8px 0;
+        }
+        
+    }
     .tc-toolbar{
         .tc-edit-btn{            
             // Hack for caret height alignment the default bootstrap wasn't working...
@@ -74,6 +87,17 @@
 /*****     Section Order:show.html.twig      *****/
 /*************************************************/
 .order-show{
+    
+    .tc-agreed-section {
+        color: #5cb85c;
+        position: absolute;
+        right: 0;
+        margin-top: -40px;
+        
+        span {
+            margin-right: 5px;
+        }
+    }
     
     .tc-agreement-section {
         text-align: center;
@@ -106,7 +130,7 @@
             
         }
         
-        .refuse-btn {
+        .decline-btn {
             display: inline-block;
             margin: 24px 0 0 20px;
             position: absolute;

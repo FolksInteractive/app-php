@@ -1,6 +1,25 @@
 {% block body_class %} rfp-show {% endblock %}
 
 {% block sheet %}
+
+    <div class="ribbon ribbon-green">
+        <div class="banner">
+            <div class="text">ACCEPTED</div>
+        </div>
+    </div>
+
+    <div class="ribbon ribbon-blue">
+        <div class="banner">
+            <div class="text">DRAFT</div>
+        </div>
+    </div>
+
+    <div class="ribbon ribbon-blue">
+        <div class="banner">
+            <div class="text">SENT</div>
+        </div>
+    </div>
+
     <div class="tc-heading-section">
         <h2>{{rfp.heading}}</h2>
         <p>{{rfp.subheading}}</p>
