@@ -4,7 +4,7 @@ namespace TC\CoreBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use TC\CoreBundle\Entity\Bill;
+use TC\CoreBundle\Entity\Invoice;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Workspace;
@@ -30,7 +30,7 @@ class StatusHelperExtension extends Twig_Extension {
         return array(
             new Twig_SimpleFunction( 'rfp_status',      array($this, 'getRFPStatus') ),
             new Twig_SimpleFunction( 'order_status',    array($this, 'getOrderStatus') ),
-            new Twig_SimpleFunction( 'bill_status',     array($this, 'getBillStatus') ),
+            new Twig_SimpleFunction( 'invoice_status',     array($this, 'getInvoiceStatus') ),
             
             new Twig_SimpleFunction( 'is_cancellable',  array($this, 'isCancellable') ),
             new Twig_SimpleFunction( 'is_declinable',   array($this, 'isDeclinable') ),
@@ -47,7 +47,7 @@ class StatusHelperExtension extends Twig_Extension {
         );
     }
     
-    public function isCancellable( $resource ){
+    public function isCancellable( $resource ){        
         if( $resource instanceOf Order ){
             return $this->getOrderManager()->isCancellable($resource);
         }
@@ -74,6 +74,10 @@ class StatusHelperExtension extends Twig_Extension {
         
         if( $resource instanceOf RFP ){
             return $this->getRFPManager()->isEditable($resource);
+        }
+        
+        if( $resource instanceOf Invoice ){
+            return $this->getInvoiceManager()->isEditable($resource);
         }
     }
     
@@ -115,10 +119,10 @@ class StatusHelperExtension extends Twig_Extension {
     
     /**    
      * 
-     * @param Bill $bill
+     * @param Invoice $invoice
      * @return array
      */
-    public function getBillStatus(Bill $bill) {
+    public function getInvoiceStatus(Invoice $invoice) {
         $state ="";
                         
         return $state;

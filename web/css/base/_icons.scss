@@ -22,10 +22,10 @@
     margin-right: 5px;
 }
 
-.icon-addtext-bk-lg{
+.icon-addtext-dark-lg{
     width: 50px;
     height: 33px;
-    background: url("/img/icons/icon-addtext-bk-lg.png");
+    background: url("/img/icons/icon-addtext-dark-lg.png");
     background-repeat: no-repeat;
 }
 
@@ -42,10 +42,10 @@
     margin: -2px 3px 0 0;
 }
 
-.tc-icon-discussion-lt-sm{
+.tc-icon-discussion-light-sm{
     width: 25px;
     height: 18px;
-    background: url("/img/icons/tc-icon-discussion-lt-sm.png");
+    background: url("/img/icons/tc-icon-discussion-light-sm.png");
     background-repeat: no-repeat;
 }
 
@@ -60,14 +60,14 @@
     background: url("/img/icons/icon-projects-white.png");
 }
 
-.icon-projects-bk-lg{
+.icon-projects-dark-lg{
     width: 26px;
     height: 22px;
-    background: url("/img/icons/icon-projects-bk-lg.png");
+    background: url("/img/icons/icon-projects-dark-lg.png");
     background-repeat: no-repeat;
 }
 
-.tc-icon-pricebook-bk-lg{
+.tc-icon-pricebook-dark-lg{
     font-size: 24px;
     padding-right: 35px;
     color: $gray;
@@ -76,7 +76,7 @@
 .icon-relations{
     width: 19px;
     height: 14px;
-    background: url("/img/icons/icon-relations-light-small.png");
+    background: url("/img/icons/icon-relations-light-sm.png");
     background-repeat: no-repeat;
     margin: 0px 3px 0 0;
 }
@@ -84,14 +84,14 @@
 .icon-relations-dark-large{
     width: 29px;
     height: 22px;
-    background: url("/img/icons/icon-relations-dark-large.png");
+    background: url("/img/icons/icon-relations-dark-lg.png");
     background-repeat: no-repeat;
 }
 
 .icon-edit-profile-dark-large{
     width: 23px;
     height: 22px;
-    background: url("/img/icons/icon-edit-profile-dark-large.png");
+    background: url("/img/icons/icon-edit-profile-dark-lg.png");
     background-repeat: no-repeat;
 }
 
@@ -106,7 +106,7 @@
 .icon-rfp-light{
     width: 16px;
     height: 17px;
-    background: url("/img/icons/icon-rfp-light-small.png");
+    background: url("/img/icons/icon-rfp-light-sm.png");
     background-repeat:no-repeat;
     margin: -2px 3px 0 0;
 }
@@ -114,54 +114,55 @@
 .icon-rfps-dark{
     width: 28px;
     height: 28px;
-    background: url("/img/icons/icon-rfp-dark-large.png");
+    background: url("/img/icons/icon-rfp-dark-lg.png");
     background-repeat: no-repeat;
 }
 
 .icon-orders{
     width: 20px;
     height: 17px;
-    background: url("/img/icons/icon-proposals-light-small.png");
+    background: url("/img/icons/icon-proposals-light-sm.png");
     background-repeat: no-repeat;
     margin: -2px 3px 0 0;
 }
 
-.icon-new-proposals-light-small{
+.icon-new-proposals-light-sm{
     width: 23px;
     height: 17px;
-    background: url("/img/icons/icon-new-proposals-light-small.png");
+    background: url("/img/icons/icon-new-proposals-light-sm.png");
     background-repeat: no-repeat;
     margin: 2px 5px 0 0;
 }
 
-.icon-progress-lt-sm{
+.icon-progress-light-sm{
     width: 20px;
     height: 20px;
-    background: url("/img/icons/icon-progress-lt-sm.png");
+    background: url("/img/icons/icon-progress-light-sm.png");
     background-repeat: no-repeat;
 }
 
-.icon-progress-wt-sm{
+.icon-progress-white-sm{
     width: 20px;
     height: 20px;
-    background: url("/img/icons/icon-progress-wt-sm.png");
+    background: url("/img/icons/icon-progress-white-sm.png");
     background-repeat: no-repeat;
 }
 
-.icon-progress-dk-lg{
+.icon-progress-dark-lg{
     width: 25px;
     height: 25px;
-    background: url("/img/icons/icon-progress-dk-lg.png");
+    background: url("/img/icons/icon-progress-dark-lg.png");
     background-repeat: no-repeat;
 }
 
 .icon-orders-dark{
     width: 29px;
     height: 25px;
-    background: url("/img/icons/icon-proposals-dark-large.png");
+    background: url("/img/icons/icon-proposals-dark-lg.png");
     background-repeat:no-repeat;
     margin: 18px 5px 0 0;
 }
+
 .icon-bill{
     width: 16px;
     height: 18px;
@@ -169,6 +170,15 @@
     background-repeat:no-repeat;
     margin: -3px 3px 0 0;
 }
+
+.icon-bill-dark-lg{
+    width: 25px;
+    height: 28px;
+    background: url("/img/icons/icon-bill-dark-lg.png");
+    background-repeat:no-repeat;
+    margin: 18px 5px 0 0;
+}
+
 .icon-invoice{
     width: 18px;
     height: 18px;
@@ -176,12 +186,14 @@
     background-repeat:no-repeat;
     margin: -3px 3px 0 0;
 }
-.icon-invoices-dk-lg{
+
+.icon-invoices-dark-lg{
     width: 12px;
     height: 22px;
-    background: url("/img/icons/icon-invoices-dk-lg.png");
+    background: url("/img/icons/icon-invoices-dark-lg.png");
     background-repeat: no-repeat;
 }
+
 .icon-settings{
     width: 20px;
     height: 18px;
@@ -189,6 +201,7 @@
     background-repeat:no-repeat;
     margin: 3px 3px 0 0;
 }
+
 .icon-discussion{
     width: 13px;
     height: 10px;
@@ -196,9 +209,11 @@
     background-repeat:no-repeat;
     margin: 3px 3px 0 0;
 }
+
 .icon-discussion.icon-white{
     background: url("/img/icons/icon-discussion-white.png");
 }
+
 .icon-add-discussion-white-lg{
     width: 25px;
     height: 20px;
@@ -222,18 +237,18 @@
     margin: 2px 5px 0 0;
 }
 
-.icon-check-small{
+.icon-check-sm{
     width: 13px;
     height: 11px;
-    background: url("/img/icons/icon-check-small.png");
+    background: url("/img/icons/icon-check-sm.png");
     background-repeat: no-repeat;
     margin: 2px 5px 0 0;
 }
 
-/*.icon-check-small-dark{
+/*.icon-check-sm-dark{
     width: 13px;
     height: 11px;
-    background: url("/img/icons/icon-check-small-dark.png");
+    background: url("/img/icons/icon-check-sm-dark.png");
     background-repeat: no-repeat;
     margin: 2px 5px 0 0;
 }*/

@@ -8,12 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TC\CoreBundle\Entity\Bill
+ * TC\CoreBundle\Entity\Invoice
  *
- * @ORM\Table(name="tc_bill")
+ * @ORM\Table(name="tc_invoice")
  * @ORM\Entity()
  */
-class Bill
+class Invoice
 {
     /**
      * @var integer $id
@@ -32,11 +32,32 @@ class Bill
     private $created_at;
 
     /**
+     * @var DateTime $issued_at
+     *
+     * @ORM\Column(name="issued_at", type="datetime")
+     */
+    private $issued_at;
+
+    /**
+     * @var DateTime $due_at
+     *
+     * @ORM\Column(name="due_at", type="datetime")
+     */
+    private $due_at;
+    
+    /**
+     * @var integer $no
+     *
+     * @ORM\Column(name="no", type="integer")
+     */
+    private $no;
+
+    /**
      * @var ArrayCollection $deliverables
      * 
-     * @ORM\ManyToMany(targetEntity="Deliverable", cascade={"all"}, inversedBy="bill")
-     * @ORM\JoinTable(name="tc_bills_deliverables",
-     *      joinColumns={@ORM\JoinColumn(name="bill_id", referencedColumnName="id")},
+     * @ORM\ManyToMany(targetEntity="Deliverable", cascade={"all"}, inversedBy="invoice")
+     * @ORM\JoinTable(name="tc_invoices_deliverables",
+     *      joinColumns={@ORM\JoinColumn(name="invoice_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="deliverable_id",unique=true, referencedColumnName="id")}
      *      ) 
      * @ORM\OrderBy({"completedAt" = "DESC"})
@@ -46,7 +67,7 @@ class Bill
     /**
      * @var Relation $relation 
      * 
-     * @ORM\ManyToOne(targetEntity="Relation", inversedBy="bills")
+     * @ORM\ManyToOne(targetEntity="Relation", inversedBy="invoices")
      */
     private $relation;
 
@@ -111,7 +132,7 @@ class Bill
      * Add deliverables
      *
      * @param \TC\CoreBundle\Entity\Deliverable $deliverables
-     * @return Bill
+     * @return Invoice
      */
     public function addDeliverable(\TC\CoreBundle\Entity\Deliverable $deliverables)
     {
@@ -144,7 +165,7 @@ class Bill
      * Set relation
      *
      * @param \TC\CoreBundle\Entity\Relation $relation
-     * @return Bill
+     * @return Invoice
      */
     public function setRelation(\TC\CoreBundle\Entity\Relation $relation = null)
     {
@@ -161,5 +182,74 @@ class Bill
     public function getRelation()
     {
         return $this->relation;
+    }
+
+    /**
+     * Set issued_at
+     *
+     * @param \DateTime $issuedAt
+     * @return Invoice
+     */
+    public function setIssuedAt($issuedAt)
+    {
+        $this->issued_at = $issuedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get issued_at
+     *
+     * @return \DateTime 
+     */
+    public function getIssuedAt()
+    {
+        return $this->issued_at;
+    }
+
+    /**
+     * Set due_at
+     *
+     * @param \DateTime $dueAt
+     * @return Invoice
+     */
+    public function setDueAt($dueAt)
+    {
+        $this->due_at = $dueAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get due_at
+     *
+     * @return \DateTime 
+     */
+    public function getDueAt()
+    {
+        return $this->due_at;
+    }
+
+    /**
+     * Set no
+     *
+     * @param integer $no
+     * @return Invoice
+     */
+    public function setNo($no)
+    {
+        $this->no = $no;
+    
+        return $this;
+    }
+
+    /**
+     * Get no
+     *
+     * @return integer 
+     */
+    public function getNo()
+    {
+        return $this->no;
     }
 }

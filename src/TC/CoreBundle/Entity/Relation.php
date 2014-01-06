@@ -71,14 +71,14 @@ class Relation {
     private $rfps;
     
     /**
-     * The last bill is the open one.
+     * The last invoice is the open one.
      * 
-     * @var ArrayCollection $bills
+     * @var ArrayCollection $invoices
      * 
-     * @ORM\OneToMany(targetEntity="Bill", mappedBy="relation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="relation", cascade={"persist", "remove"})
      * @ORM\OrderBy({"created_at" = "DESC"})
      */
-    private $bills;
+    private $invoices;
 
     /**
      * @var boolean $active
@@ -96,7 +96,7 @@ class Relation {
     private $created_at;
 
     public function __construct() {
-        $this->bills = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->rfps = new ArrayCollection();
         $this->created_at = new DateTime();
@@ -233,36 +233,36 @@ class Relation {
     }
 
     /**
-     * Add bill
+     * Add invoice
      *
-     * @param Bill $bill
+     * @param Invoice $invoice
      * @return Relation
      */
-    public function addBill(Bill $bill)
+    public function addInvoice(Invoice $invoice)
     {
-        $this->bills[] = $bill;
+        $this->invoices[] = $invoice;
     
         return $this;
     }
 
     /**
-     * Remove bill
+     * Remove invoice
      *
-     * @param Bill $closedBills
+     * @param Invoice $closedInvoices
      */
-    public function removeBill(Bill $bill)
+    public function removeInvoice(Invoice $invoice)
     {
-        $this->bills->removeElement($bill);
+        $this->invoices->removeElement($invoice);
     }
 
     /**
-     * Get bills
+     * Get invoices
      *
      * @return Collection 
      */
-    public function getBills()
+    public function getInvoices()
     {
-        return $this->bills;
+        return $this->invoices;
     }
 
     /**

@@ -25,8 +25,7 @@ module.controller("progress.Controller", function($scope, deliverables, form_nam
             deliverable.progress = deliverable.oldProgress || 0;
         }
     };
-    
-    
+        
     $scope.setProgress = function(deliverable, value){
         deliverable.progress = value;
         deliverable.completed = ( deliverable.progress >= 100 )

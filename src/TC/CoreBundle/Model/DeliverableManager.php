@@ -137,7 +137,7 @@ class DeliverableManager {
      * @return ArrayCollection
      * @throws NotFoundHttpException
      */
-    public function findAllToBill( Relation $relation ) {
+    public function findAllToInvoice( Relation $relation ) {
         try {
             $deliverables = $this->em->getRepository( "TCCoreBundle:Deliverable" )
                     ->createQueryBuilder("d")
@@ -145,7 +145,7 @@ class DeliverableManager {
                     ->where( "d MEMBER OF o.deliverables" )
                     ->andWhere("o.approved = true")
                     ->andWhere("d.completed = true")
-                    ->andWhere("d.billed = false")
+                    ->andWhere("d.invoiced = false")
                     ->setParameter( "relation", $relation )
                     ->getQuery()
                     ->getResult();

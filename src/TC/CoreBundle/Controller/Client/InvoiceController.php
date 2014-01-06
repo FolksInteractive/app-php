@@ -6,17 +6,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use TC\CoreBundle\Controller\BillController as BaseController;
+use TC\CoreBundle\Controller\InvoiceController as BaseController;
 
 /**
  * Relation controller.
  *
  * @Route("/r/{idRelation}")
  */
-class BillController extends BaseController {
+class InvoiceController extends BaseController {
 
     /**
-     * @Route("/bill", name="client_relation_bill")
+     * @Route("/bill", name="client_relation_invoice")
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_bill_client.html.twig")
      */
@@ -24,7 +24,7 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
 
-        $deliverables = $this->getDeliverableManager()->findAllToBill($relation);
+        $deliverables = $this->getDeliverableManager()->findAllToInvoice($relation);
         
         return array(
             'deliverables' => $deliverables,
@@ -33,7 +33,7 @@ class BillController extends BaseController {
     }
 
     /**
-     * Displays the allt he closed bills of a relation
+     * Displays the allt he closed invoices of a relation
      *
      * @Route("/invoices", name="client_relation_invoices")
      * @Method("GET")
@@ -43,29 +43,29 @@ class BillController extends BaseController {
 
         $relation = $this->getRelationManager()->findByClient( $idRelation );
         
-        $bills = $this->getBillManager()->findAllByRelation( $relation );
+        $invoices = $this->getInvoiceManager()->findAllByRelation( $relation );
 
         return array(
-            'bills' => $bills,
+            'invoices' => $invoices,
             'relation' => $relation
         );
     }
     
     /**
-     * Display a closed bill
+     * Display a closed invoice
      *
-     * @Route("/invoices/{idBill}", name="client_invoice_show")
+     * @Route("/invoices/{idInvoice}", name="client_invoice_show")
      * @Method("GET")
      * @Template("TCCoreBundle:Invoice:invoice_show_client.html.twig")
      */
-    public function invoiceAction ( $idBill, $idRelation) {
+    public function invoiceAction ( $idInvoice, $idRelation) {
         
         $relation = $this->getRelationManager()->findByClient( $idRelation );        
-        $bill = $this->getBillManager()->findByRelation( $relation, $idBill );
+        $invoice = $this->getInvoiceManager()->findByRelation( $relation, $idInvoice );
         
         return array(
             'relation' => $relation,
-            'bill' => $bill
+            'invoice' => $invoice
         );
     }
 }
