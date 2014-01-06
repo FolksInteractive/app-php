@@ -184,7 +184,7 @@
         }])  %}        
     {% endfor %}
         
-    module.value("deliverables", {{deliverablesToEncode|json_encode()|raw}});
+    module.value("deliverables", {{deliverablesToEncode|json_encode(constant('JSON_HEX_TAG'))|raw}});
     
     module.value("form_name", "{{form.vars.name}}");
         

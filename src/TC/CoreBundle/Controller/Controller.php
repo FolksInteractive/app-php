@@ -15,10 +15,10 @@ use TC\CoreBundle\Model\WorkspaceManager;
 class Controller extends SymfonyController {
        
     /**
-     * @return BillManager
+     * @return InvoiceManager
      */
-    protected function getBillManager(){
-        return $this->container->get('tc.manager.bill');
+    protected function getInvoiceManager(){
+        return $this->container->get('tc.manager.invoice');
     }
    
     /**

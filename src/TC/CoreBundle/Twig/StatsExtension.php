@@ -53,7 +53,7 @@ class StatsExtension extends Twig_Extension {
             
         $stats["waiting"] = $this->getDeliverablesTotal($order->getDeliverablesTodo());
         $stats["progress"] = $this->getDeliverablesTotal($order->getDeliverablesTodo());
-        $stats["billed"] = $this->getDeliverablesTotal($order->getDeliverablesCompleted());
+        $stats["invoiced"] = $this->getDeliverablesTotal($order->getDeliverablesCompleted());
         $stats["all"] = $this->getDeliverablesTotal($order->getDeliverables());
         
         return $stats;
@@ -67,7 +67,7 @@ class StatsExtension extends Twig_Extension {
         unset($stats["waiting"]);
         
         $stats["progress"] = $this->getDeliverablesTotal($order->getDeliverablesTodo());
-        $stats["billed"] = $this->getDeliverablesTotal($order->getDeliverablesCompleted());
+        $stats["invoiced"] = $this->getDeliverablesTotal($order->getDeliverablesCompleted());
         $stats["all"] = $this->getDeliverablesTotal($order->getDeliverables());
         
         return $stats;

@@ -343,23 +343,11 @@ class OrderManager {
 
     /**
      * 
-     * @param Order $order
+     * @param Invoice $invoice
      */
-    public function isEditable( Order $order ){
-        // Only the vendor can edit a Order
-        if( $this->workspace != $order->getRelation()->getVendor() )
-            return false;
-            
-        // You can't edit a Order cancelled
-        if( $order->getCancelled() )
-            return false;
-        
-        // You can't edit a Order declined
-        if( $order->getDeclined() )
-            return false;
-        
-        // You can't edit a Order already sent
-        if( $order->getApproved() )
+    public function isEditable( Invoice $invoice ){
+        // Only the vendor can edit a Invoice
+        if( $this->workspace != $invoice->getRelation()->getVendor() )
             return false;
         
         return true;

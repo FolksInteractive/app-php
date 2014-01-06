@@ -6,10 +6,21 @@
 
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">
-        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:invoicesMenu',[],{"bill":bill, "relation": relation}) %}
-           
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:invoicesMenu',[],{"invoice":invoice, "relation": relation}) %}           
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
+
+    {% if is_editable(invoice) %}
+    <div class="tc-controls pull-right">
+        <button name="{{form.submit.vars.full_name}}" 
+                class="btn btn-default btn-lg" 
+                disabled="disabled"
+                ng-disabled="false">
+            Save
+        </button>
+    </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block sheet %}
@@ -34,10 +45,9 @@
 
         <div class="tc-invoice-terms col-md-4">
             <legend>Informations</legend>
-            <p><b>Invoice #:</b> {{bill.id}}<br>
-                <b>Date:</b> July 31st 2013<br>
-                <b>Terms:</b> Net 30<br>
-                <b>Due Date:</b> August 31st 2013
+            <p><b>Invoice #:</b> {{invoice.no}}<br>
+                <b>Date:</b> {{invoice.getCreatedAt()|date('F dS Y')}}<br>
+                <b>Due Date:</b> {{invoice.getDueAt()|date('F dS Y')}}
             </p>
         </div>
     </div>
@@ -56,7 +66,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for deliverable in bill.deliverables() %}
+        {% for deliverable in invoice.deliverables() %}
             <tr >
                 <td class="tc-no tc-info-col">{{loop.index}}</td>
                 <td class="tc-description tc-info-col left">
@@ -81,7 +91,7 @@
     <div class="split"></div>
     <div class="split"></div>
     <div class="total-label">Total</div>
-    <div class="price">$ {{bill.total|number_format(2, '.', ',')}}</div>
+    <div class="price">$ {{invoice.total|number_format(2, '.', ',')}}</div>
 </div>
     
 </div> 

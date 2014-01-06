@@ -1,1 +1,0 @@
-var tcApp = angular.module( 'tcApp', [] );

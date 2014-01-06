@@ -115,21 +115,21 @@
 
 {% endblock %}
 
-{% block empty_bill_client %} 
+{% block empty_invoice_client %} 
 
 <div class="tc-empty-page">
-    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-bill.gif')}}" /></div>
-    <div class="title"><h3>Bill is empty</h3></div>
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoice.gif')}}" /></div>
+    <div class="title"><h3>Invoice is empty</h3></div>
     <div class="description"><p>Your vendor need to <b>complete</b> deliverables in the <a href="{{path('client_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
 </div>
 
 {% endblock %}
 
-{% block empty_bill_vendor %} 
+{% block empty_invoice_vendor %} 
 
 <div class="tc-empty-page">
-    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-bill.gif')}}" /></div>
-    <div class="title"><h3>Bill is empty</h3></div>
+    <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoice.gif')}}" /></div>
+    <div class="title"><h3>Invoice is empty</h3></div>
     <div class="description"><p>Please <b>complete</b> deliverables in the <a href="{{path('vendor_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
 </div>
 
@@ -140,7 +140,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoices.gif')}}" /></div>
     <div class="title"><h3>No invoices yet</h3></div>
-    <div class="description"><p>First, your vendor need to <a href="{{path('client_relation_bill', {'idRelation': relation.id})}}">close a bill</a>.</p></div>
+    <div class="description"><p>First, your vendor need to <a href="{{path('client_relation_invoice', {'idRelation': relation.id})}}">close a invoice</a>.</p></div>
 </div>
 
 {% endblock %}
@@ -150,7 +150,7 @@
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoices.gif')}}" /></div>
     <div class="title"><h3>No invoices yet</h3></div>
-    <div class="description"><p>First, your need to <a href="{{path('vendor_relation_bill', {'idRelation': relation.id})}}">close a bill</a>.</p></div>
+    <div class="description"><p>First, your need to <a href="{{path('vendor_relation_invoice', {'idRelation': relation.id})}}">close a invoice</a>.</p></div>
 </div>
 
 {% endblock %}

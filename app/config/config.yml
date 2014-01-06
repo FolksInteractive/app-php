@@ -90,6 +90,8 @@ fos_user:
         mailer: tc_user.mailer.default
 
 knp_gaufrette:
+    stream_wrapper: ~
+    
     adapters:
         user_adapter:
             local:

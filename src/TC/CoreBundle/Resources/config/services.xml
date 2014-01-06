@@ -52,7 +52,7 @@
             <argument type="service" id="validator" />
         </service>
         
-        <service id="tc.manager.bill" class="TC\CoreBundle\Model\BillManager">
+        <service id="tc.manager.invoice" class="TC\CoreBundle\Model\InvoiceManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="tc.manager.relation" />
             <argument type="service" id="security.context" />

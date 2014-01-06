@@ -87,18 +87,18 @@ class Order
     private $completed_at;
         
     /**
-     * @var boolean $billed
+     * @var boolean $invoiced
      *
-     * @ORM\Column(name="billed", type="boolean", options={"default" = 0})
+     * @ORM\Column(name="invoiced", type="boolean", options={"default" = 0})
      */
-    private $billed = false;
+    private $invoiced = false;
         
     /**
-     * @var datetime $billed_at
+     * @var datetime $invoiced_at
      *
-     * @ORM\Column(name="billed_at", nullable=true, type="datetime")
+     * @ORM\Column(name="invoiced_at", nullable=true, type="datetime")
      */
-    private $billed_at;
+    private $invoiced_at;
         
     /**
      * @var boolean $declined
@@ -272,24 +272,24 @@ class Order
     }
     
     /**
-     * Set billed
+     * Set invoiced
      *
-     * @param boolean $billed
+     * @param boolean $invoiced
      */
-    public function setBilled($billed)
+    public function setInvoiced($invoiced)
     {
-        $this->billed_at = ($billed) ? new DateTime() : null;
-        $this->billed = $billed;
+        $this->invoiced_at = ($invoiced) ? new DateTime() : null;
+        $this->invoiced = $invoiced;
     }
 
     /**
-     * Get billed
+     * Get invoiced
      *
      * @return boolean 
      */
-    public function isBilled()
+    public function isInvoiced()
     {
-        return $this->billed;
+        return $this->invoiced;
     }
     
     /**
@@ -473,36 +473,36 @@ class Order
     }
 
     /**
-     * Get billed
+     * Get invoiced
      *
      * @return boolean 
      */
-    public function getBilled()
+    public function getInvoiced()
     {
-        return $this->billed;
+        return $this->invoiced;
     }
 
     /**
-     * Set billed_at
+     * Set invoiced_at
      *
-     * @param DateTime $billedAt
+     * @param DateTime $invoicedAt
      * @return Order
      */
-    public function setBilledAt($billedAt)
+    public function setInvoicedAt($invoicedAt)
     {
-        $this->billed_at = $billedAt;
+        $this->invoiced_at = $invoicedAt;
     
         return $this;
     }
 
     /**
-     * Get billed_at
+     * Get invoiced_at
      *
      * @return DateTime 
      */
-    public function getBilledAt()
+    public function getInvoicedAt()
     {
-        return $this->billed_at;
+        return $this->invoiced_at;
     }
 
     /**

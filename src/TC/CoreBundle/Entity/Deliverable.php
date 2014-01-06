@@ -105,20 +105,20 @@ class Deliverable
     private $completedAt;
     
     /**
-     * @var boolean $billed
+     * @var boolean $invoiced
      *
-     * @ORM\Column(name="billed", type="boolean")
+     * @ORM\Column(name="invoiced", type="boolean")
      */
-    private $billed = false;
+    private $invoiced = false;
     
     
     /**
-     * @var datetime $billed_at
+     * @var datetime $invoiced_at
      *
      * @Assert\Type("\DateTime")
-     * @ORM\Column(name="billed_at", nullable=true, type="datetime")
+     * @ORM\Column(name="invoiced_at", nullable=true, type="datetime")
      */
-    private $billed_at;
+    private $invoiced_at;
     
     /**
      * Progress value based on 100
@@ -339,32 +339,32 @@ class Deliverable
      *
      * @return boolean 
      */
-    public function isBilled()
+    public function isInvoiced()
     {
-        return $this->billed;
+        return $this->invoiced;
     }
 
     /**
-     * Set billed_at
+     * Set invoiced_at
      *
-     * @param \DateTime $billedAt
+     * @param \DateTime $invoicedAt
      * @return Deliverable
      */
-    public function setBilledAt($billedAt)
+    public function setInvoicedAt($invoicedAt)
     {
-        $this->billed_at = $billedAt;
+        $this->invoiced_at = $invoicedAt;
     
         return $this;
     }
 
     /**
-     * Get billed_at
+     * Get invoiced_at
      *
      * @return \DateTime 
      */
-    public function getBilledAt()
+    public function getInvoicedAt()
     {
-        return $this->billed_at;
+        return $this->invoiced_at;
     }
 
     /**
@@ -378,26 +378,26 @@ class Deliverable
     }
 
     /**
-     * Set billed
+     * Set invoiced
      *
-     * @param boolean $billed
+     * @param boolean $invoiced
      * @return Deliverable
      */
-    public function setBilled($billed)
+    public function setInvoiced($invoiced)
     {
-        $this->billed = $billed;
+        $this->invoiced = $invoiced;
     
         return $this;
     }
 
     /**
-     * Get billed
+     * Get invoiced
      *
      * @return boolean 
      */
-    public function getBilled()
+    public function getInvoiced()
     {
-        return $this->billed;
+        return $this->invoiced;
     }
 
     /**

@@ -32,7 +32,7 @@ class VendorMenuBuilder extends ContainerAware {
             'route' => 'vendor_relation'
         ) )
             ->setExtra( "icon_classes", "icon-relations" )
-            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-large" )
+            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
             ->setExtra( "sub_label", "Build & manage relationships" )
                 
             // New Relation
@@ -90,17 +90,17 @@ class VendorMenuBuilder extends ContainerAware {
                 'route' => 'vendor_relation_progress',
                 'routeParameters' => $routeParameters
             ) )
-            ->setExtra( "icon_classes", "icon-progress-lt-sm" )
+            ->setExtra( "icon_classes", "icon-progress-light-sm" )
             ->setExtra( "sub_label", "All the work in progress" );
         
         // Open Bill
         $menu
             ->addChild( 'Open Bill', array(
-                'route' => 'vendor_relation_bill',
+                'route' => 'vendor_relation_invoice',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-bill" )
-            ->setExtra( "sub_label", "Work completed, but not yet billed" );
+            ->setExtra( "sub_label", "Work completed, but not yet invoiced" );
         
         // Invoices 
         $menu
@@ -207,13 +207,13 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Work Monitoring")
-            ->setExtra( "breadcrumbs_icon_classes", "icon-progress-dk-lg" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-progress-dark-lg" );
               
         return $menu;
     }
     
     /**
-     * Breadcrumb menu for relation billing section
+     * Breadcrumb menu for relation invoiceing section
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -225,11 +225,11 @@ class VendorMenuBuilder extends ContainerAware {
         //$routeParameters = array('id' => $idOrder, 'idRelation' => $idRelation);
 
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_bill',
+            'route' => 'vendor_relation_invoice',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Open Bill")
-            ->setExtra( "breadcrumbs_icon_classes", "icon-orders-dark" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-bill-dark-lg" );
               
         return $menu;
     }
@@ -243,8 +243,8 @@ class VendorMenuBuilder extends ContainerAware {
      */
     public function invoicesMenu( FactoryInterface $factory, array $options ) {
         $idRelation = $options['relation']->getId();
-        $idBill = isset( $options['bill'] ) ? $options['bill']->getId() : -1;
-        $routeParameters = array('idBill' => $idBill, 'idRelation' => $idRelation);
+        $idInvoice = isset( $options['invoice'] ) ? $options['invoice']->getId() : -1;
+        $routeParameters = array('idInvoice' => $idInvoice, 'idRelation' => $idRelation);
 
         // Invoices
         $menu = $factory->createItem( 'root', array(
@@ -252,7 +252,7 @@ class VendorMenuBuilder extends ContainerAware {
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Invoices")
-            ->setExtra( "breadcrumbs_icon_classes", "icon-invoices-dk-lg" );
+            ->setExtra( "breadcrumbs_icon_classes", "icon-invoices-dark-lg" );
         
         // Invoice      
         $menu->addChild( 'Invoice', array(

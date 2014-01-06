@@ -53,6 +53,9 @@ module.controller("order.Controller", function($scope, form_name, order){
         update: function() { 
             $scope.offerForm.$setDirty();
         },
+        helper: function(e, elem){
+            return $(elem).clone().appendTo("body");
+        }, 
         placeholder: "tc-placeholder-block"
     };
         
