@@ -17,7 +17,7 @@
     {#<div class="nav-header">Your Service Provider</div> #}
     <div class="contact">
         <div class="avatar">
-            <img src="{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('80_thumb')}}">
+            <img src="{{avatar(relation.client.user) | imagine_filter('80_thumb')}}">
         </div>
         <div class="infos">
             <div class="name">{{relation.client.getFullName() | default(relation.client)}}</div>

@@ -3,7 +3,7 @@
     <div class="tc-global-dropdown dropdown">
 
         <a class="tc-global-toggler dropdown-toggle" href="#">
-            <img src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('30_thumb')}}">
+            <img src="{{avatar() | imagine_filter('30_thumb')}}">
             <div class="name">{{app.user.fullName}}</div>
             <div class="caret glyphicon-white"></div>
         </a>

@@ -93,11 +93,11 @@ class User extends BasedUser {
     protected $avatar;
 
     /**
-     * @ORM\Column(type="string", length=255, name="avatar_name")
+     * @ORM\Column(type="string", length=255, name="avatar_name", nullable=true)
      *
      * @var string $avatarName
      */
-    protected $avatarName = "user.png";
+    protected $avatarName;
     
     /**
      * Constructor

@@ -44,7 +44,7 @@
                         </div>
                         <!-- Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. -->
                         <div class="badge tc-relation-badge">0</div>
-                        <img class="img-circle" src="{{vich_uploader_asset(relation.client.user, 'avatar') | imagine_filter('140_thumb')}}" />
+                        <img class="img-circle" src="{{avatar(relation.client.user) | imagine_filter('140_thumb')}}" />
                         <div class="caption">
 
                     {% if relation.client.getFirstName() and relation.client.getLastName() %}

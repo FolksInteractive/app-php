@@ -19,7 +19,7 @@ Proposal Cancelled
 {% block body_html %}
 
 <div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
-    <img src="{{app.request.uriForPath(vich_uploader_asset(relation.vendor.user, 'avatar') | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
+    <img src="{{app.request.uriForPath(avatar(relation.vendor.user) | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
     <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p style="color: #990000;">has just <b>cancelled a proposal</b>.</p>
 </div>
 
