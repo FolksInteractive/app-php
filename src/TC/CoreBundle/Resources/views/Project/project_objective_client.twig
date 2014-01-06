@@ -13,7 +13,7 @@
         <tbody>
             {% for order in objective.orders() %}            
             <tr>
-                <td class="user"><img class="img-circle" src="/img/thumbnails/user.png" /></td>
+                <td class="user"><img class="img-circle" src="/img/avatar.png" /></td>
                 <td class="request">
                     <a href="{{path("client_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
                         {{order.request}}
