@@ -352,6 +352,11 @@ input[type='email'] {
 
 .tc-table .tc-left-gap {
   padding-left: 20px; }
+.tc-table .tc-novalue {
+  color: #999;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 12px; }
 .tc-table > thead > tr th {
   padding-left: 0;
   padding-right: 0;

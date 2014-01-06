@@ -1,6 +1,6 @@
 angular.module('tc.filters.timeago', [])
 
-    .filter("timeago", function(){
+    .filter("tcTimeago", function(){
     //time: the time
     //local: compared to what time? default: now
     //raw: wheter you want in a format of "5 minutes ago", or "5 minutes"

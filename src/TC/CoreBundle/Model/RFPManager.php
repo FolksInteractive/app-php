@@ -228,8 +228,7 @@ class RFPManager {
      * 
      * @param RFP $rfp
      */
-    public function reopen( RFP $rfp ) {
-        
+    public function reopen( RFP $rfp ) {        
         if ( $this->isReopenable( $rfp ) ) {
             $rfp->setDeclined(false);
             $rfp->setCancelled(false);
@@ -242,15 +241,14 @@ class RFPManager {
      * @param RFP $rfp
      */
     public function save( RFP $rfp ) {
-        // Make sure order is valid before saving
-        $errors = $this->validator->validate( $rfp );
-        if ( $errors->count() > 0 )
-            throw new InvalidArgumentException( $errors->get( 0 )->getMessage() );
+        
+        if( !$this->isValid($rfp) )
+            return false;
 
         $this->em->persist( $rfp );
         $this->em->flush();
     }
-
+    
     /**
      * 
      * @param RFP $rfp
@@ -258,6 +256,18 @@ class RFPManager {
     public function remove( RFP $rfp ) {
         $this->em->remove( $rfp );
         $this->em->flush();
+    }
+    
+    /**
+     * 
+     * @param $rfp
+     * @return boolean
+     */
+    public function isValid( RFP $rfp, &$errors = null ) {
+        // Make sure order is valid before saving
+        $errors = $this->validator->validate( $rfp );
+        
+        return ($errors->count() <= 0);
     }
 
     /**
@@ -343,6 +353,9 @@ class RFPManager {
         
         // You can't send a RFP already sent
         if( $rfp->getReady() )
+            return false;
+        
+        if( !$this->isValid($order) )
             return false;
         
         return true;

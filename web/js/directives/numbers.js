@@ -12,7 +12,7 @@ angular.module('tc.directives.numbers', [])
                 // ng-ng-required or pattern or other
                 modelCtrl.$parsers.unshift(function(value){
 
-                    if ( ng.isUndefined(value) )
+                    if ( angular.isUndefined(value) )
                         return '';
 
                     // Remove any caracter not a number
@@ -42,7 +42,7 @@ angular.module('tc.directives.numbers', [])
                 // ng-ng-required or pattern or other
                 modelCtrl.$parsers.unshift(function(value){
 
-                    if ( ng.isUndefined(value) )
+                    if ( angular.isUndefined(value) )
                         return '';
 
                     // Remove any caracter not a number or a dot

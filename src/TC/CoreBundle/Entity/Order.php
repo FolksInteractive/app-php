@@ -6,11 +6,8 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use TC\CoreBundle\Validator\Constraints as TCAssert;
 
 /**
- * @TCAssert\Order()
  * @ORM\Table(name="tc_order")
  * @ORM\Entity()
  */
@@ -50,7 +47,6 @@ class Order
     /**
      * @var datetime $created_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $created_at;
@@ -72,7 +68,6 @@ class Order
     /**
      * @var datetime $approved_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="approved_at", nullable=true, type="datetime")
      */
     private $approved_at;
@@ -87,7 +82,6 @@ class Order
     /**
      * @var datetime $completed_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="completed_at", nullable=true, type="datetime")
      */
     private $completed_at;
@@ -102,7 +96,6 @@ class Order
     /**
      * @var datetime $billed_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="billed_at", nullable=true, type="datetime")
      */
     private $billed_at;
@@ -117,7 +110,6 @@ class Order
     /**
      * @var datetime $declined_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="declined_at", nullable=true, type="datetime")
      */
     private $declined_at;
@@ -132,7 +124,6 @@ class Order
     /**
      * @var datetime $cancelled_at
      *
-     * @Assert\Type("\DateTime")
      * @ORM\Column(name="cancelled_at", nullable=true, type="datetime")
      */
     private $cancelled_at;
@@ -154,7 +145,6 @@ class Order
     /**
      * @var Thread thread
      * 
-     * @Assert\NotNull()
      * @ORM\OneToOne(targetEntity="Thread", cascade={"persist", "remove"})
      */
     private $thread;

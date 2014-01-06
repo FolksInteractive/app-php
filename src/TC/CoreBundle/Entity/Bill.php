@@ -82,7 +82,7 @@ class Bill
         for($i = 0; $i < count($list); ++$i) {
             /* @var $deliverable Deliverable */
             $deliverable = $list[$i];
-            $total += ($deliverable->getCost()) ? $deliverable->getCost() : 0 ;
+            $total += $deliverable->getTotal();
         }
         return $total;
     }
