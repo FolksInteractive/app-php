@@ -115,21 +115,21 @@
 
 {% endblock %}
 
-{% block empty_invoice_client %} 
+{% block empty_bill_client %} 
 
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoice.gif')}}" /></div>
-    <div class="title"><h3>Invoice is empty</h3></div>
+    <div class="title"><h3>Open Bill is empty</h3></div>
     <div class="description"><p>Your vendor need to <b>complete</b> deliverables in the <a href="{{path('client_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
 </div>
 
 {% endblock %}
 
-{% block empty_invoice_vendor %} 
+{% block empty_bill_vendor %} 
 
 <div class="tc-empty-page">
     <div class="flat-img"><img src="{{asset('/img/flat-imgs/flat-invoice.gif')}}" /></div>
-    <div class="title"><h3>Invoice is empty</h3></div>
+    <div class="title"><h3>Open Bill is empty</h3></div>
     <div class="description"><p>Please <b>complete</b> deliverables in the <a href="{{path('vendor_relation_progress', {'idRelation': relation.id})}}">work monitoring section</a>.</p></div>
 </div>
 
