@@ -4,7 +4,7 @@ namespace TC\UserBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BasedUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,7 +18,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Vich\Uploadable
  * 
  */
-class User extends BasedUser {
+class User extends BaseUser {
 
     /**
      * @ORM\Id
