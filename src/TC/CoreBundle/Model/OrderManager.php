@@ -197,9 +197,9 @@ class OrderManager {
     public function purchase( Order $order ){
 
         if( !$this->isPurchasable( $order ) )
-            return
+            return false;
 
-                $order->setApproved( true );
+        $order->setApproved( true );
         $this->save( $order );
 
         $this->mailer->sendOrderPurchaseNotification( $order );
