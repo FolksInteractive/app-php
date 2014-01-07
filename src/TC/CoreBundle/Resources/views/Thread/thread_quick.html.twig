@@ -68,7 +68,7 @@ ng-controller="thread.Controller"
 
         {% set avatars = {} %}
         {% for workspace in thread.followers %}    
-            {% set img = vich_uploader_asset(workspace.user, 'avatar') | imagine_filter('30_thumb') %}
+            {% set img = avatar(workspace.user) | imagine_filter('30_thumb') %}
             {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}        
         {% endfor %}
         module.value("avatars", {{avatars|json_encode()|raw}});

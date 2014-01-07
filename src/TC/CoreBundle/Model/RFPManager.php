@@ -355,7 +355,7 @@ class RFPManager {
         if( $rfp->getReady() )
             return false;
         
-        if( !$this->isValid($order) )
+        if( !$this->isValid($rfp) )
             return false;
         
         return true;

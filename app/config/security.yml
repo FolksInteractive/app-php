@@ -25,7 +25,12 @@ security:
             anonymous:    true
             logout:
                 path:   /logout
-                target: /login     
+                target: /login
+            remember_me:
+                key:      EmmettBrown
+                lifetime: 3600
+                path:     /
+                domain:   ~
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

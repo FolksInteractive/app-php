@@ -18,7 +18,7 @@
     
         {{ form_row(form.avatar, {'label': 'Modify Your Avatar'}) }}
 
-        <img class="img-circle" src="{{vich_uploader_asset(app.user, 'avatar') | imagine_filter('140_thumb')}}">
+        <img class="img-circle" src="{{avatar(app.user, 'avatar') | imagine_filter('140_thumb')}}">
         
     </div>
     
