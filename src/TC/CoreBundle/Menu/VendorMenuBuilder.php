@@ -96,7 +96,7 @@ class VendorMenuBuilder extends ContainerAware {
         // Open Bill
         $menu
             ->addChild( 'Open Bill', array(
-                'route' => 'vendor_relation_invoice',
+                'route' => 'vendor_relation_bill',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-bill" )
@@ -225,7 +225,7 @@ class VendorMenuBuilder extends ContainerAware {
         //$routeParameters = array('id' => $idOrder, 'idRelation' => $idRelation);
 
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_invoice',
+            'route' => 'vendor_relation_bill',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Open Bill")

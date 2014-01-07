@@ -134,7 +134,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Open Bill
         $menu
             ->addChild( 'Open Bill', array(
-                'route' => 'client_relation_invoice',
+                'route' => 'client_relation_bill',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-bill" )
@@ -262,7 +262,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // Open Bill
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_invoice',
+            'route' => 'client_relation_bill',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Open Bill" )

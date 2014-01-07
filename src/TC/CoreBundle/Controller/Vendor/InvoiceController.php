@@ -21,7 +21,7 @@ class InvoiceController extends BaseController {
     /**
      * Displays the work in progress of a relation
      *
-     * @Route("/bill", name="vendor_relation_invoice")
+     * @Route("/bill", name="vendor_relation_bill")
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_bill_vendor.html.twig")
      */
