@@ -86,10 +86,11 @@ class RFPController extends BaseController {
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            if ( $form->get( 'save_as_ready' )->isClicked() )
-                $this->getRFPManager()->ready( $rfp );
 
             $this->getRFPManager()->save( $rfp );
+            
+            if( $form->get('save_as_ready')->isClicked())
+                return $this->forward( 'TCCoreBundle:Client/RFP:send', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId()) );
 
             return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId()) ) );
         }
@@ -99,6 +100,23 @@ class RFPController extends BaseController {
             'form' => $form->createView(),
             'relation' => $relation,
         );
+    }
+            
+    /**
+     * Sends a RFP to vendor
+     *
+     * @Route("/{idRFP}/send", name="client_rfp_send")
+     * @Method("GET")
+     */
+    public function sendAction( $idRelation, $idRFP ) {
+
+        $relation = $this->getRelationManager()->findByClient( $idRelation );
+        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
+        
+        $this->getRFPManager()->ready($rfp);
+        $this->getRFPManager()->save($rfp);
+        
+        return $this->redirect( $this->generateUrl( 'client_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $rfp->getId()) ) );
     }
 
     /**

@@ -91,6 +91,22 @@ class Mailer {
         
         $this->logger->addInfo( sprintf("Order #%s ready notification sent to %s", $order->getId(), $email) );        
     }
+    
+
+    /**
+     * 
+     * @param RFP $rfp
+     */
+    public function sendRFPReadyNotification(RFP $rfp) {
+        $relation = $rfp->getRelation();
+        
+        $email = $relation->getVendor()->getEmail();
+        
+        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_ready_email.txt.twig', array('relation' =>  $relation, 'rfp' =>  $rfp));
+        $this->sendEmailMessage($rendered, $email);
+        
+        $this->logger->addInfo( sprintf("RFP #%s ready notification sent to %s", $rfp->getId(), $email) );        
+    }
         
     /**
      * 
@@ -113,7 +129,7 @@ class Mailer {
      * @param RFP $rfp
      * @param object $refusal See Vendor/RFPController::createDeclineForm
      */
-    public function sendRFPRefusal(RFP $rfp, $refusal = null) {
+    public function sendRFPDeclinal(RFP $rfp, $refusal = null) {
         $relation = $rfp->getRelation();
         
         $email = $relation->getClient()->getEmail();
@@ -121,7 +137,7 @@ class Mailer {
         $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_decline_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
         $this->sendEmailMessage($rendered, $email);
         
-        $this->logger->addInfo( sprintf("RFP #%s refusal sent to %s", $rfp->getId(), $email) );
+        $this->logger->addInfo( sprintf("RFP #%s declinal sent to %s", $rfp->getId(), $email) );
     }
         
     /**

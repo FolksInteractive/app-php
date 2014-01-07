@@ -161,10 +161,6 @@ class OrderManager {
         $thread->addFollower( $order->getRelation()->getClient());
         $order->setThread( $thread );
         
-
-        /**
-         * @todo Send notification
-         */
         return $order;
     }
 
@@ -186,10 +182,11 @@ class OrderManager {
 
     public function ready( Order $order ) {
         
-        if ( $order->getRelation()->getVendor() == $this->workspace ) {
-            $order->setReady(true);
-            $this->mailer->sendOrderReadyNotification( $order );
-        }
+        if ( $this->isSendable( $order ) )
+            return;
+        
+        $order->setReady(true);
+        $this->mailer->sendOrderReadyNotification( $order );
     }
     /**
      * 
@@ -197,20 +194,15 @@ class OrderManager {
      * @throws AccessDeniedHttpException
      */
     public function purchase( Order $order ) {
-        if( $order->isApproved() )
-            return;
         
-        // If User is the client and the order has an offer and a value
-        if ( $order->getRelation()->getClient() == $this->workspace ) {
+        if( !$this->isPurchasable( $order ) )
+            return
+        
+        $order->setApproved( true );
+        $this->save( $order );
 
-            $order->setApproved( true );
-            $this->save( $order );
-            
-            $this->mailer->sendOrderPurchaseNotification( $order );
-            
-        } else {
-            throw new AccessDeniedHttpException();
-        }
+        $this->mailer->sendOrderPurchaseNotification( $order );
+         
     }
     
     /**
@@ -220,12 +212,14 @@ class OrderManager {
      */
     public function cancel( Order $order, $cancellation = null ) {
         
-        if ( $order->getRelation()->getVendor() == $this->workspace ) {
-            $order->setCancelled(true);
+        if( !$this->isCancellable( $order ) )
+            return;
+        
+        $order->setCancelled(true);
             
-            if($order->getReady())
-                $this->mailer->sendOrderCancellation($order, $cancellation);
-        }
+        if($order->getReady())
+            $this->mailer->sendOrderCancellation($order, $cancellation);
+        
     }
     
     /**
@@ -234,17 +228,17 @@ class OrderManager {
      * @param object $refusal See Vendor/OrderController::createDeclineForm
      */
     public function decline( Order $order, $refusal = null ) {
+        if( !$this->isDeclinable( $order ) )
+            return;
         
-        if ( $order->getRelation()->getClient() == $this->workspace ) {
-            $order->setDeclined(true);
-            
-            $this->mailer->sendOrderRefusal($order, $refusal);
-        }
+        $order->setDeclined(true);
+
+        $this->mailer->sendOrderRefusal($order, $refusal);        
     }    
     
     /**
      * 
-     * @param RFP $rfp
+     * @param Order $order
      */
     public function reopen( Order $order ) {
         
@@ -261,8 +255,8 @@ class OrderManager {
      */
     public function save( Order $order ) {
         
-        if( $this->isValid($order) )
-            throw new InvalidArgumentException( "The proposal is invalid and can't be save." );
+        if( !$this->isValid($order) )
+            return false;
 
         $this->em->persist( $order );
         $this->em->flush();
@@ -340,19 +334,30 @@ class OrderManager {
         
         return true;
     }
-
+    
     /**
      * 
-     * @param Invoice $invoice
+     * @param Order $order
      */
-    public function isEditable( Invoice $invoice ){
-        // Only the vendor can edit a Invoice
-        if( $this->workspace != $invoice->getRelation()->getVendor() )
+    public function isEditable( Order $order ){
+        // Only the vendor can edit a Order
+        if( $this->workspace != $order->getRelation()->getVendor() )
+            return false;
+            
+        // You can't edit a Order cancelled
+        if( $order->getCancelled() )
+            return false;
+        
+        // You can't edit a Order declined
+        if( $order->getDeclined() )
+            return false;
+        
+        // You can't edit a Order already sent
+        if( $order->getApproved() )
             return false;
         
         return true;
-    }
-    
+    }    
 
     /**
      * 
@@ -369,10 +374,6 @@ class OrderManager {
         
         // You can't send a Order declined
         if( $order->getDeclined() )
-            return false;
-        
-        // You can't send a Order already sent
-        if( $order->getReady() )
             return false;
         
         if( !$this->isValid($order) )

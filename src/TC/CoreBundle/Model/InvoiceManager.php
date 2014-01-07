@@ -142,10 +142,9 @@ class InvoiceManager {
      * @param Invoice $invoice
      */
     public function save( Invoice $invoice ) {
-        // Make sure order is valid before saving
-        $errors = $this->validator->validate( $invoice );
-        if ( $errors->count() > 0 )
-            throw new InvalidArgumentException( $errors->get( 0 )->getMessage() );
+        
+        if( !$this->isValid($invoice) )
+            return false;
 
         $this->em->persist( $invoice );
         $this->em->flush();
@@ -158,6 +157,30 @@ class InvoiceManager {
     public function remove( Invoice $invoice ) {
         $this->em->remove( $invoice );
         $this->em->flush();
+    }
+    
+    /**
+     * 
+     * @param $invoice
+     * @return boolean
+     */
+    public function isValid( Invoice $invoice, &$errors = null ) {
+        // Make sure order is valid before saving
+        $errors = $this->validator->validate( $invoice );
+        
+        return ($errors->count() <= 0);
+    }
+
+    /**
+     * 
+     * @param Invoice $invoice
+     */
+    public function isEditable( Invoice $invoice ){
+        // Only the vendor can edit a Invoice
+        if( $this->workspace != $invoice->getRelation()->getVendor() )
+            return false;
+        
+        return true;
     }
 }
 

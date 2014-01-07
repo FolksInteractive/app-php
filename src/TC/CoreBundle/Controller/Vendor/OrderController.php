@@ -83,11 +83,14 @@ class OrderController extends BaseController {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
         
-        if( $idOrder != null){
-            $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
-        }else{            
+        $isNew = ($idOrder == null);
+        
+        if( $isNew ){
             $order = $this->getOrderManager()->create( $relation );
+        }else{          
+            $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );  
         }
+        
         /*
          * http://symfony.com/doc/current/cookbook/form/form_collections.html#allowing-tags-to-be-removed
          */
@@ -101,7 +104,7 @@ class OrderController extends BaseController {
         $form->handleRequest( $request );
 
         if ( $form->isValid() ) {
-            
+                        
             // filter $originalDeliverables to contain deliverables no longer present
             foreach ( $order->getDeliverables() as $deliverable ) {
                 foreach ( $originalDeliverables as $key => $toDel ) {
@@ -123,11 +126,11 @@ class OrderController extends BaseController {
                 $this->getDeliverableManager()->remove($deliverable);
             }            
             
-            if( $form->get('save_as_ready')->isClicked())
-                $this->getOrderManager()->ready( $order );
-            
             $this->getOrderManager()->save($order);
-
+            
+            if( $form->get('save_as_ready')->isClicked())
+                return $this->forward( 'TCCoreBundle:Vendor/Order:send', array('idRelation' => $idRelation, 'idOrder' => $order->getId()) );
+            
             return $this->redirect( $this->generateUrl( 'vendor_order_show', array('idRelation' => $idRelation, 'idOrder' => $order->getId()) ) );
         }
 
@@ -137,14 +140,14 @@ class OrderController extends BaseController {
             'relation' => $relation,
         );
     }
-        
+            
     /**
      * Sends an order to client
      *
      * @Route("/{idOrder}/send", name="vendor_order_send")
      * @Method("GET")
      */
-    public function sendAction( $idRelation, $idOrder = null ) {
+    public function sendAction( $idRelation, $idOrder ) {
 
         $relation = $this->getRelationManager()->findByVendor( $idRelation );
         $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );
