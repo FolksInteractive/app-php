@@ -61,7 +61,7 @@ class OrderController extends BaseController {
                     $this->getOrderManager()->save( $order );
                     $purchaseForm = null;
                     
-                    return $this->redirect( $this->generateUrl( 'client_relation_invoice', array('idRelation' => $idRelation) ) );
+                    return $this->redirect( $this->generateUrl( 'client_relation_progress', array('idRelation' => $idRelation) ) );
                 }
             }
         }

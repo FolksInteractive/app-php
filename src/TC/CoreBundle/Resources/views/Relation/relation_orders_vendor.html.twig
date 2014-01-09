@@ -108,7 +108,15 @@
                                         Edit
                                     </a>
                                 </li>
-                                {% endif %}
+                                {% endif %}            
+
+                                {% if is_sendable(order) %}
+                                <li>
+                                    <a href="{{path('vendor_order_send' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                                        Send
+                                    </a>
+                                </li>
+                                {% endif %} 
 
                                 {% if is_cancellable(order) %}
                                 <li>
