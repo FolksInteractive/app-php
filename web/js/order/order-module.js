@@ -101,7 +101,7 @@ module.controller("order.Controller", function($scope, form_name, order){
         var total = 0;
         for( var i in $scope.order.deliverables ){
             deliverable = $scope.order.deliverables[i];
-            total = deliverable.quantity * deliverable.cost;
+            total += deliverable.quantity * deliverable.cost;
         }
         return total;
     }

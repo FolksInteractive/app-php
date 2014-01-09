@@ -1,39 +1,39 @@
 {% block thread_main_attrs %} 
 ng-app="Thread" 
-ng-controller="thread.Controller" 
 {% endblock %}
 
 {% block thread_section %}
-<div class="tc-side-thread-section">
-    
+<div class="tc-side-thread-section"
+     ng-controller="thread.Controller" >
+
     <div id="thread_scrollable_section" ng-cloak>
     {% raw %}
-        <div class="empty-image center" ng-show="thread.comments <= 0">
-            <img src="/img/flat-imgs/flat-conversation.gif" />
-            <h4>Discuss</h4>
-            <p>Use this chatroom to discuss this document, ask a question, etc.</p>
-        </div>
-            
-        <div class="tc-comments-section" ng-hide="thread.comments <= 0">
-            <ul class="tc-comments media-list">
-                <li class="tc-comment media" ng-repeat="group in groupedComments">
-                    <a class="pull-left avatar">
-                        <img class="media-object" ng-src="{{getAvatar(group.author)}}"/>
-                    </a>
-                    <a class="person">{{group.author.fullname}}</a>
-                    <div class="date">{{group.created_at|timeago}}</div>
-                    <div class="media-body pull-left">
-                        <div class="media" ng-repeat="comment in group.comments">
-                            <p>{{ comment.body }}</p>
+            <div class="empty-image center" ng-show="thread.comments <= 0">
+                <img src="/img/flat-imgs/flat-conversation.gif" />
+                <h4>Discuss</h4>
+                <p>Use this chatroom to discuss this document, ask a question, etc.</p>
+            </div>
+
+            <div class="tc-comments-section" ng-hide="thread.comments <= 0">
+                <ul class="tc-comments media-list">
+                    <li class="tc-comment media" ng-repeat="group in groupedComments">
+                        <a class="pull-left avatar">
+                            <img class="media-object" ng-src="{{getAvatar(group.author)}}"/>
+                        </a>
+                        <a class="person">{{group.author.fullname}}</a>
+                        <div class="date">{{group.created_at|timeago}}</div>
+                        <div class="media-body pull-left">
+                            <div class="media" ng-repeat="comment in group.comments">
+                                <p>{{ comment.body }}</p>
+                            </div>
+
                         </div>
-                        
-                    </div>
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+            </div>
     {% endraw %}
     </div>
-    
+
     <div class="tc-discuss-section"> 
         <form name="newCommentForm" ng-submit="submitComment()" novalidate=""> 
             <div class="form-group">
@@ -62,31 +62,31 @@ ng-controller="thread.Controller"
     <script type="text/javascript" src="{{asset("/js/thread/thread_directive.js")}}"></script>
     <script type="text/javascript" src="{{asset("/js/filters/timeago.js")}}"></script>
     <script type="text/javascript">
-    (function(ng, module){
+        (function(ng, module){
 
-        module.value("thread", {{thread|json_encode()|raw}});
+            module.value("thread", {{thread|json_encode()|raw}});
 
         {% set avatars = {} %}
-        {% for workspace in thread.followers %}    
+        {% for workspace in thread.followers %}
             {% set img = avatar(workspace.user) | imagine_filter('30_thumb') %}
-            {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}        
+            {% set avatars = avatars|merge({ ('wp_' ~ workspace.id) : img })  %}
         {% endfor %}
-        module.value("avatars", {{avatars|json_encode()|raw}});
+            module.value("avatars", {{avatars|json_encode()|raw}});
 
-        module.value("workspace", {
-        'id' : {{app.user.workspace.id}}
-        });
+            module.value("workspace", {
+                'id' : {{app.user.workspace.id}}
+            });
 
-        module.value("thread_sync_path",
-        "{{path('thread_sync', {"idThread":thread.id})}}"
-        );
+            module.value("thread_sync_path",
+                "{{path('thread_sync', {"idThread":thread.id})}}"
+                );
 
-        module.value("thread_comment_path",
-        "{{path('thread_comment', {"idThread":thread.id})}}"
-        );
+            module.value("thread_comment_path",
+                "{{path('thread_comment', {"idThread":thread.id})}}"
+                );
 
-        $('#thread_scrollable_section').enscroll({showOnHover: true});
-        
-    })(angular, module);
-        </script>
+            $('#thread_scrollable_section').enscroll({ showOnHover : true });
+
+        })(angular, module);
+    </script>
 {% endblock %}

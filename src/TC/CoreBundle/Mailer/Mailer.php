@@ -127,14 +127,14 @@ class Mailer {
     /**
      * 
      * @param RFP $rfp
-     * @param object $refusal See Vendor/RFPController::createDeclineForm
+     * @param object $declinal See Vendor/RFPController::createDeclineForm
      */
-    public function sendRFPDeclinal(RFP $rfp, $refusal = null) {
+    public function sendRFPDeclinal(RFP $rfp, $declinal = null) {
         $relation = $rfp->getRelation();
         
         $email = $relation->getClient()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_decline_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:rfp_decline_email.txt.twig', array('relation' =>  $relation, 'rfp' =>  $rfp, 'declinal'=>$declinal));
         $this->sendEmailMessage($rendered, $email);
         
         $this->logger->addInfo( sprintf("RFP #%s declinal sent to %s", $rfp->getId(), $email) );
@@ -159,17 +159,17 @@ class Mailer {
     /**
      * 
      * @param Order $order
-     * @param object $refusal See Vendor/RFPController::createDeclineForm
+     * @param object $declinal See Vendor/RFPController::createDeclineForm
      */
-    public function sendOrderRefusal(Order $order, $refusal = null) {
+    public function sendOrderDeclinal(Order $order, $declinal = null) {
         $relation = $order->getRelation();
         
         $email = $relation->getVendor()->getEmail();
         
-        $rendered = $this->templating->render('TCCoreBundle:Notification:order_decline_email.txt.twig', array('relation' =>  $relation,'refusal'=>$refusal));
+        $rendered = $this->templating->render('TCCoreBundle:Notification:order_decline_email.txt.twig', array('relation' =>  $relation, 'order'=> $order, 'declinal'=>$declinal));
         $this->sendEmailMessage($rendered, $email);
         
-        $this->logger->addInfo( sprintf("Order #%s refusal sent to %s", $order->getId(), $email) );
+        $this->logger->addInfo( sprintf("Order #%s declinal sent to %s", $order->getId(), $email) );
     }
     
     /**

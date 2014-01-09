@@ -120,7 +120,7 @@ class InvoiceManager {
         $no = 0;
         
         if( $invoice->getRelation()->getInvoices()->count() > 0 )
-            $no = $invoice->getRelation()->getInvoices()->last()->getNo();
+            $no = $invoice->getRelation()->getInvoices()->first()->getNo();
         
         $no++;
         

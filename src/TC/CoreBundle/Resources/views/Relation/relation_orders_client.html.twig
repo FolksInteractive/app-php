@@ -96,14 +96,6 @@
                                     </a>
                                 </li>
                                 {% endif %}
-                                
-                                {% if is_reopenable(order) %}
-                                <li>
-                                    <a href="{{path("client_order_reopen", {'idRelation':relation.id, 'idOrder':order.id})}}">
-                                        Reopen
-                                    </a>
-                                </li>
-                                {% endif %}
                             </ul>
                         </div>
                     </td>

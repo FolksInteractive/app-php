@@ -217,16 +217,16 @@ class RFPManager {
     /**
      * 
      * @param RFP $rfp
-     * @param object $refusal See Vendor/RFPController::createDeclineForm
+     * @param object $declinal See Vendor/RFPController::createDeclineForm
      */
-    public function decline( RFP $rfp, $refusal = null ){
+    public function decline( RFP $rfp, $declinal = null ){
 
         if( !$this->isDeclinable( $rfp ) )
             return false;
 
         $rfp->setDeclined( true );
         $rfp->setOrder( null );
-        $this->mailer->sendRFPDeclinal( $rfp, $refusal );
+        $this->mailer->sendRFPDeclinal( $rfp, $declinal );
     }
 
     /**
@@ -237,9 +237,9 @@ class RFPManager {
         if( !$this->isReopenable( $rfp ) )
             return false;
 
+        $rfp->setReady(false);
         $rfp->setDeclined( false );
         $rfp->setCancelled( false );
-        $rfp->setOrder( null );
     }
 
     /**
@@ -369,18 +369,9 @@ class RFPManager {
      */
     public function isReopenable( RFP $rfp ){
 
-        // For a client, a RFP must be either cancelled or declined to be reopened
+        // Only a client can reopen a RFP
         if( $this->workspace == $rfp->getRelation()->getClient() ){
-            if( $rfp->getCancelled() )
-                return true;
-
-            if( $rfp->getDeclined() )
-                return true;
-        }
-
-        // For a vendor, a RFP must be either only declined to be reopened
-        if( $this->workspace == $rfp->getRelation()->getVendor() ){
-            if( $rfp->getDeclined() )
+            if( $rfp->getCancelled() || $rfp->getDeclined() )
                 return true;
         }
 

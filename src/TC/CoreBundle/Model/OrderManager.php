@@ -224,15 +224,15 @@ class OrderManager {
     /**
      * 
      * @param Order $order
-     * @param object $refusal See Vendor/OrderController::createDeclineForm
+     * @param object $declinal See Vendor/OrderController::createDeclineForm
      */
-    public function decline( Order $order, $refusal = null ){
+    public function decline( Order $order, $declinal = null ){
         if( !$this->isDeclinable( $order ) )
             return false;
 
         $order->setDeclined( true );
 
-        $this->mailer->sendOrderRefusal( $order, $refusal );
+        $this->mailer->sendOrderDeclinal( $order, $declinal );
     }
 
     /**
@@ -416,18 +416,10 @@ class OrderManager {
      */
     public function isReopenable( Order $order ){
 
-        // For a client, a Order must be either cancelled or declined to be reopened
-        if( $this->workspace == $order->getRelation()->getClient() ){
-            if( $order->getDeclined() )
-                return true;
-        }
-
-        // For a vendor, a Order must be either only declined to be reopened
+        // Only a vendor can reopen an Order
         if( $this->workspace == $order->getRelation()->getVendor() ){
-            if( $order->getDeclined() )
-                return true;
-
-            if( $order->getCancelled() )
+            
+            if( $order->getDeclined() || $order->getCancelled() )
                 return true;
         }
 
