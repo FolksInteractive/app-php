@@ -37,12 +37,19 @@ class ProgressController extends BaseController {
             if ($form->isValid()) {
                 $data = $form->getData();
                 
+                $hasCompletion = false;
+                
                 foreach($data['deliverables'] as $deliverable){
                     if( $deliverable->isCompleted() ){
                         $this->getDeliverableManager()->complete($deliverable);
+                        $hasCompletion = true;
                     }
                     $this->getDeliverableManager()->save($deliverable);
                 }
+                
+                // If at least one deliverable is complete, redirect to the Open Bill
+                if( $hasCompletion )
+                    return $this->redirect($this->generateUrl("vendor_relation_bill", array("idRelation" => $idRelation)));
                 
                 // Avoid form resubmitting
                 return $this->redirect($this->generateUrl("vendor_relation_progress", array("idRelation" => $idRelation)));

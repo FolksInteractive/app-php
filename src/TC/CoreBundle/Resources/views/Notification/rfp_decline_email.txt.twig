@@ -24,10 +24,10 @@ RFP Declined
     <span style=" font-size: 24px; font-weight:bold;">{{relation.vendor.getFullName()}}</span> <p style="color: #990000;">has just <b>declined your request for proposal</b>.</p>
 </div>
 
-{% if refusal is not empty %}
+{% if declinal is not empty %}
     Your vendor's message :<br /><br />
-    {{ refusal.why }} <br /><br />
-    {{ refusal.other }} 
+    {{ declinal.why }} <br /><br />
+    {{ declinal.other }} 
 {% endif %}
     
 {% endblock %}
@@ -37,5 +37,5 @@ View RFP
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('client_rfp_show', {'idRelation':relation.id, 'idRFP':rfp.id})}}
+{{url('vendor_rfp_show', {'idRelation':relation.id, 'idRFP':rfp.id})}}
 {% endautoescape %}{% endblock %}

@@ -21,7 +21,7 @@ class InvoiceController extends BaseController {
     /**
      * Displays the work in progress of a relation
      *
-     * @Route("/bill", name="vendor_relation_invoice")
+     * @Route("/bill", name="vendor_relation_bill")
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_bill_vendor.html.twig")
      */
@@ -43,9 +43,9 @@ class InvoiceController extends BaseController {
     /**
      * @param integer $idRelation The Id of the relation
      * 
-     * @Route("/invoice", name="vendor_relation_invoice_close")
+     * @Route("/bill", name="vendor_relation_bill_close")
      * @Method("POST")
-     * @Template("TCCoreBundle:Relation:relation_invoice_vendor.html.twig")
+     * @Template("TCCoreBundle:Relation:relation_bill_vendor.html.twig")
      */
     public function closeInvoiceAction( Request $request, $idRelation ) {
 
@@ -175,7 +175,7 @@ class InvoiceController extends BaseController {
     private function createCloseInvoiceForm( Relation $relation, $deliverables ) {
 
         $form = $this->createFormBuilder( null, array(
-                    'action' => $this->generateUrl( 'vendor_relation_invoice_close', array('idRelation' => $relation->getId()) ),
+                    'action' => $this->generateUrl( 'vendor_relation_bill_close', array('idRelation' => $relation->getId()) ),
                     'method' => 'POST'
                 ) )
                 ->add('deliverables', 'entity', array(

@@ -23,10 +23,10 @@ Proposal Declined
     <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p style="color: #990000;">has just <b>declined your proposal</b>.</p>
 </div>
 
-{% if refusal is not empty %}
+{% if declinal is not empty %}
     Your client's message :<br /><br />
-    {{ refusal.why }} <br /><br />
-    {{ refusal.other }} 
+    {{ declinal.why }} <br /><br />
+    {{ declinal.other }} 
 {% endif %}
     
 {% endblock %}

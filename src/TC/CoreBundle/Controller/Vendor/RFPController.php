@@ -5,11 +5,12 @@ namespace TC\CoreBundle\Controller\Vendor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
 use TC\CoreBundle\Controller\RFPController as BaseController;
-use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Relation;
+use TC\CoreBundle\Entity\RFP;
+use TC\CoreBundle\Form\RFPDeclinalType;
 
 /**
  * RFP controller.
@@ -95,23 +96,6 @@ class RFPController extends BaseController {
         );
     }
     
-    /**
-     * Reopen a Order.
-     *
-     * @Route("/{idRFP}/reopen", name="vendor_rfp_reopen")
-     */
-    public function reopenAction( $idRelation, $idRFP ) {
-        
-        $relation = $this->getRelationManager()->findByVendor( $idRelation );
-        $rfp = $this->getRFPManager()->findByRelation( $relation, $idRFP );
-        
-        $this->getRFPManager()->reopen( $rfp );
-        $this->getRFPManager()->save( $rfp );
-        
-        return $this->redirect( $this->generateUrl( 'vendor_rfp_show', array('idRelation' => $idRelation, 'idRFP' => $idRFP) ) );
-    }
-
-
     /** ******************************* */
     /*              FORMS               */
     /** ******************************* */
@@ -126,27 +110,13 @@ class RFPController extends BaseController {
     private function createDeclineForm( RFP $rfp ) {
         $action = $this->generateUrl( 'vendor_rfp_decline', array('idRelation' => $rfp->getRelation()->getId(), 'idRFP' => $rfp->getId()) );
         
-        $builder = $this->createFormBuilder( null , array(
-                    'action' => $action,
-                    'method' => 'PUT',
-                ) );
-                
-        if( $rfp->getReady() ){
-            $builder->add( 'why', 'choice', array(
-                "choices" => array(
-                    "This is not part of my expertise.",
-                    "I do not have enough resources to meet this demand.",
-                    "I do not have the time to work on it.",
-                    "What is requested is in progress or is already done."
-                ),
-                'expanded' => true,
-            ) )
-
-            ->add( 'other', 'textarea', array( "required" => false ) );
-        }
+        $form = $this->createForm( new RFPDeclinalType(), null, array(
+            'action' => $action,
+            'method' => 'PUT',
+        ) );
         
-        $builder->add( 'submit', 'submit' );
+        $form->add( 'submit', 'submit' );
 
-        return $builder->getForm();
+        return $form;
     }
 }

@@ -16,7 +16,7 @@ use TC\CoreBundle\Controller\InvoiceController as BaseController;
 class InvoiceController extends BaseController {
 
     /**
-     * @Route("/bill", name="client_relation_invoice")
+     * @Route("/bill", name="client_relation_bill")
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_bill_client.html.twig")
      */

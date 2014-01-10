@@ -9,6 +9,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use TC\CoreBundle\Controller\OrderController as BaseController;
 use TC\CoreBundle\Entity\Order;
+use TC\CoreBundle\Form\OrderDeclinalType;
 use TC\CoreBundle\Form\PurchaseType;
 
 /**
@@ -48,7 +49,7 @@ class OrderController extends BaseController {
         $order = $this->getOrderManager()->findByRelation( $relation, $idOrder );        
                         
         $purchaseForm = null;
-        if( !$order->isApproved() ) {
+        if( $this->getOrderManager()->isPurchasable($order) ) {
             // Create order purchase form
             $purchaseForm = $this->createPurchaseForm( $order );
 
@@ -61,7 +62,7 @@ class OrderController extends BaseController {
                     $this->getOrderManager()->save( $order );
                     $purchaseForm = null;
                     
-                    return $this->redirect( $this->generateUrl( 'client_relation_invoice', array('idRelation' => $idRelation) ) );
+                    return $this->redirect( $this->generateUrl( 'client_relation_progress', array('idRelation' => $idRelation) ) );
                 }
             }
         }
@@ -143,26 +144,14 @@ class OrderController extends BaseController {
      */
     private function createDeclineForm( Order $order ) {
         $action = $this->generateUrl( 'client_order_decline', array('idRelation' => $order->getRelation()->getId(), 'idOrder' => $order->getId()) );
+              
+        $form = $this->createForm( new OrderDeclinalType(), null, array(
+            'action' => $action,
+            'method' => 'PUT',
+        ) );
         
-        $builder = $this->createFormBuilder( null , array(
-                    'action' => $action,
-                    'method' => 'PUT',
-                ) );
-                
-        $builder->add( 'why', 'choice', array(
-            "choices" => array(
-                "It doesn't apply anymore.",
-                "It is too late now.",
-                "There was a misunderstanding in the requierement or clauses.",
-                "This is to expensive for my budget."
-            ),
-            'expanded' => true,
-        ) )
-
-        ->add( 'other', 'textarea', array( "required" => false ) );
+        $form->add( 'submit', 'submit' );
         
-        $builder->add( 'submit', 'submit' );
-
-        return $builder->getForm();
+        return $form;
     }
 }

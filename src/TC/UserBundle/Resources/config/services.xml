@@ -45,6 +45,11 @@
             <argument type="service" id="router" />
         </service>
         
+        <service id="tc_user.listener.register_confirm" class="TC\UserBundle\EventListener\RegistrationConfirmListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="router" />
+        </service>
+        
         <service id="tc_user.mailer.default" class="TC\UserBundle\Mailer\Mailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />

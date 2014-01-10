@@ -2096,15 +2096,14 @@ body {
   font-weight: bold;
   color: #990000; }
 
-.tc_user_login {
-  background: #f6f6f6; }
+.tc_user_register .wrapper {
+  width: 350px;
+  margin-right: -175px; }
 
-.tc_user_register {
-  background: #f6f6f6; }
-  .tc_user_register .wrapper {
-    width: 350px;
-    margin-right: -175px; }
-
+.tc_user_login,
+.tc_user_register,
+.tc_user_check,
+.tc_user_confirmed,
 .tc_user_request {
   background: #f6f6f6; }
 

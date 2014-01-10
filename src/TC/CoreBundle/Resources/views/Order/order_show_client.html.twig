@@ -29,7 +29,7 @@
                 
                 {% if order.rfp is not null %}
                 <li>
-                    <a href="{{path('vendor_rfp_show' , {'idRFP':order.rfp.id, 'idRelation': relation.id})}}">
+                    <a href="{{path('client_rfp_show' , {'idRFP':order.rfp.id, 'idRelation': relation.id})}}">
                         View RFP
                     </a>   
                 </li>
@@ -56,24 +56,31 @@
     </div>
 {% endblock %}
 
-{% block main_attrs %}
-{{ block('thread_main_attrs') }}
+{% block main_attrs %} 
+ng-app="Order" 
+ng-cloak
 {% endblock %}
 
 {%block purchase_section %}
-{% if purchaseForm is defined and purchaseForm is not null %}
-<div class="tc-agreement-section">
+{% if purchaseForm is defined and purchaseForm is not null and is_purchasable(order) %}
+<div class="tc-agreement-section" ng-controller="order.PurchaseController">
     {{form_start(purchaseForm)}}
         <div class="agree-check">
             <label for="{{purchaseForm.confirmation.vars.id}}">
-            {{form_widget(purchaseForm.confirmation)}}
+            <input type="checkbox" 
+                   id="{{purchaseForm.confirmation.vars.id}}"
+                   name="{{purchaseForm.confirmation.vars.full_name}}" 
+                   value="{{purchaseForm.confirmation.vars.value}}"
+                   ng-model="confirm" />
             I accept the terms and conditions of this proposal.
             </label>
         </div>
         <div class="agree-btn">
             <button type="submit" class="btn btn-success btn-lg"
                 id="{{purchaseForm.submit.vars.id}}"
-                name="{{purchaseForm.submit.vars.full_name}}" disabled>
+                name="{{purchaseForm.submit.vars.full_name}}" 
+                ng-disabled="!confirm"
+                disabled>
                 <span class="glyphicon glyphicon-ok tc-right5"></span> 
                 Approve Proposal
             </button>
@@ -91,6 +98,8 @@
 
 {% block bottom_js %}
 {{ parent() }}
+
+<script type="text/javascript" src="{{asset("/js/order/show-module.js")}}"></script>
 {{ block('thread_bottom_js') }}
 
 {% endblock %}

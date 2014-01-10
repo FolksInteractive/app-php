@@ -77,16 +77,7 @@
                                     Decline
                                 </a>
                             </li>
-                            {% endif %}
-                                
-                            {% if is_reopenable(rfp) %}
-                            <li>
-                                <a href="{{path("vendor_rfp_reopen", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
-                                    Reopen
-                                </a>
-                            </li>
-                            {% endif %}
-                                
+                            {% endif %}         
                         </ul>
                     </div>
                 </td>

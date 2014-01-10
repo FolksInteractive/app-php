@@ -1,8 +1,8 @@
 var module = angular.module("Thread", ['tc.filters.timeago']);
 
 module.controller("thread.Controller", [
-    "$scope", "$http", "thread", "avatars", "utils.DateService", "thread.Socket", "thread_comment_path", "workspace",
-    function($scope, $http, thread, avatars, DateService, Socket, thread_comment_path, workspace){
+    "$scope", "$http", "thread", "avatars", "thread.Socket", "thread_comment_path", "workspace",
+    function($scope, $http, thread, avatars, Socket, thread_comment_path, workspace){
 
         function groupComments(comments){
             
@@ -22,7 +22,7 @@ module.controller("thread.Controller", [
                 }
 
                 currentGroup.comments.push(comment);
-                currentGroup.created_at = new Date(comment.created_at+" UTC");
+                currentGroup.created_at = comment.created_at;
 
                 previousComment = comment;
             }
@@ -35,7 +35,7 @@ module.controller("thread.Controller", [
 
         $scope.submitComment = function(){
             var comment = $scope.newComment;
-            comment.created_at = DateService.now();
+            comment.created_at = moment.utc().format("YYYY-MM-DD HH:mm:ss");
             comment.author = workspace;
             thread.comments.push(comment);
 
@@ -45,7 +45,7 @@ module.controller("thread.Controller", [
             // Prepare data objet to send to server
             var data = { };
             data.body = comment.body;
-            data.created_at = DateService.now();
+            data.created_at = comment.created_at;
             // Submitting form to server
             $http({
                 method : 'POST',

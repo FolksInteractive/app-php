@@ -76,7 +76,7 @@ class Relation {
      * @var ArrayCollection $invoices
      * 
      * @ORM\OneToMany(targetEntity="Invoice", mappedBy="relation", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"created_at" = "DESC"})
+     * @ORM\OrderBy({"no" = "DESC"})
      */
     private $invoices;
 
