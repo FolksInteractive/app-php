@@ -4,6 +4,22 @@
 .relation-orders{
     .tc-orders-section{
         
+        // Filters
+        .tc-filters {
+            padding-bottom: 20px;
+            
+            .tc-filters-label {
+                color: $gray-light;
+                font-size: $font-size-h6;
+                padding: 0 20px;
+                font-style: italic;
+            }
+            
+            .tc-filters-label, tc-filters-label {
+                display: inline-block;
+            }
+        }
+        
         // Saved as a draft
         .tc-draft{
             .tc-draft-state a{

@@ -47,13 +47,24 @@ p {
     line-height: $tc-line-height;
 }
 
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
 // Mega Titles
 
 @mixin mega-title () {
     font-size: 50px;
     font-family: 'Open Sans Light', sans-serif;
-    color: $tc-brand-blue;
-    
+    color: $tc-brand-blue; 
 }
 
 // Mega Subtitle

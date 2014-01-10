@@ -1,3 +1,6 @@
+.success {
+  color: #5cb85c; }
+
 @font-face {
   font-family: 'Open Sans Light';
   src: url("../fonts/OpenSans-Light.ttf");
@@ -19,6 +22,15 @@ p {
   font-size: 14px;
   color: #555555;
   line-height: 25px; }
+
+.left {
+  text-align: left; }
+
+.center {
+  text-align: center; }
+
+.right {
+  text-align: right; }
 
 .tc-btn-newtext {
   padding-top: 13px; }
@@ -87,7 +99,7 @@ input[type='email'] {
   background: transparent;
   top: 2px;
   left: 2px;
-  border: 3px solid #777777;
+  border: 3px solid #777;
   border-top: none;
   border-right: none;
   -webkit-transform: rotate(-45deg);
@@ -102,7 +114,7 @@ input[type='email'] {
   opacity: 0.3; }
 
 .checkbox-item label:hover {
-  border: 3px solid #cccccc; }
+  border: 3px solid #ccc; }
 
 .checkbox-item input[type=checkbox]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -177,7 +189,7 @@ input[type='email'] {
   background-repeat: no-repeat;
   margin: 0px 3px 0 0; }
 
-.icon-relations-dark-large {
+.icon-relations-dark-lg {
   width: 29px;
   height: 22px;
   background: url("/img/icons/icon-relations-dark-lg.png");
@@ -540,7 +552,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid white;
+      border-left: 15px solid #fff;
       position: absolute;
       left: 0;
       top: 0; }
@@ -561,7 +573,7 @@ input[type='email'] {
       content: "";
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #dddddd;
+      border-left: 15px solid #ddd;
       position: absolute;
       right: -15px;
       top: 0;
@@ -584,7 +596,7 @@ input[type='email'] {
   text-decoration: none;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.75);
-  border-left: 4px solid #777777;
+  border-left: 4px solid #777;
   box-shadow: 0px 3px 3px -3px #222222 inset, 0px -3px 3px -3px #222222 inset;
   padding-left: 21px; }
 .tc-menu li .sub_label {
@@ -604,7 +616,7 @@ input[type='email'] {
   content: "";
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid white;
+  border-right: 10px solid #fff;
   position: absolute;
   right: 0;
   top: 15px; }
@@ -646,7 +658,7 @@ body {
     background: none;
     padding: 15px 50px;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #333; }
     .tc-breadcrumb .breadcrumb img {
       margin-top: -3px; }
@@ -695,7 +707,7 @@ body {
     font-size: 60px;
     color: #0060b2;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: inline-block; }
 
 .tc-empty-page {
@@ -708,7 +720,7 @@ body {
   margin: 100px; }
   .tc-empty-page > .title > h3 {
     font-size: 50px;
-    font-family: "Open Sans Light", sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     color: #0a6895;
     font-size: 40px;
     padding-bottom: 10px; }
@@ -759,7 +771,7 @@ body {
     padding: 5px 0; }
   .tc-block-edit .tc-delete-block {
     right: -30px;
-    border-left: 1px solid white;
+    border-left: 1px solid #fff;
     border-radius: 0 4px 4px 0;
     padding: 2px 0; }
     .tc-block-edit .tc-delete-block > button {
@@ -778,7 +790,7 @@ body {
   border-radius: 0;
   border-bottom: 1px solid #dededf;
   padding: 0 0 8px 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700; }
 
 .tc-body-group {
@@ -1152,7 +1164,7 @@ body {
 
 .tc-toolbar .tc-breadcrumb > :before {
   content: "";
-  border-bottom: 1px solid #888888;
+  border-bottom: 1px solid #888;
   position: absolute;
   left: 0;
   top: 0;
@@ -1170,7 +1182,7 @@ body {
 
 .tc-heading-section > h2 {
   font-size: 50px;
-  font-family: "Open Sans Light", sans-serif;
+  font-family: 'Open Sans Light', sans-serif;
   color: #0a6895; }
 .tc-heading-section > p {
   font-size: 14px;
@@ -1354,106 +1366,225 @@ body {
   vertical-align: middle;
   margin-top: -10px; }
 
-.client-relations .tc-relations-boxes,
-.vendor-relations .tc-relations-boxes {
-  text-align: center;
-  margin: 30px -15px; }
-  .client-relations .tc-relations-boxes .thumbnail,
-  .vendor-relations .tc-relations-boxes .thumbnail {
+.client-relations .tc-relations-people-col,
+.vendor-relations .tc-relations-people-col {
+  position: fixed;
+  top: 90px;
+  left: 220px;
+  bottom: 0;
+  width: 350px;
+  border-right: 1px solid #dededf;
+  background: #f8f8f8; }
+  .client-relations .tc-relations-people-col .tc-relations-boxes .people,
+  .vendor-relations .tc-relations-people-col .tc-relations-boxes .people {
     position: relative;
-    padding: 0 0 60px 0; }
-    .client-relations .tc-relations-boxes .thumbnail .hover,
-    .vendor-relations .tc-relations-boxes .thumbnail .hover {
-      display: none;
-      position: absolute;
-      background: rgba(255, 255, 255, 0.9);
-      width: 100%;
-      height: 100%;
-      border-radius: 4px; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .btn,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .btn {
-        position: absolute;
-        left: 50%; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .request-services,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .request-services {
-        margin: 75px 0 0 -105px; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .propose-services,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .propose-services {
-        margin: 75px 0 0 -105px; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .or,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .or {
-        position: absolute;
-        left: 25px;
-        right: 25px;
-        margin-top: 145px;
-        border-bottom: 1px dotted #cccccc; }
-      .client-relations .tc-relations-boxes .thumbnail .hover .view-activities,
-      .vendor-relations .tc-relations-boxes .thumbnail .hover .view-activities {
-        margin: 170px 0 0 -90px; }
-    .client-relations .tc-relations-boxes .thumbnail .tc-relation-badge,
-    .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-badge {
+    border-bottom: 1px solid #dededf; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge {
       position: absolute;
       right: 15px;
       top: 15px;
       display: none; }
-    .client-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge,
-    .vendor-relations .tc-relations-boxes .thumbnail .tc-relation-active-badge {
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge {
       background-color: #5cb85c; }
-    .client-relations .tc-relations-boxes .thumbnail img,
-    .vendor-relations .tc-relations-boxes .thumbnail img {
-      margin: 20px auto 0 auto;
-      max-width: 140px; }
-    .client-relations .tc-relations-boxes .thumbnail .caption h3,
-    .vendor-relations .tc-relations-boxes .thumbnail .caption h3 {
-      height: 52px;
-      overflow: hidden;
-      margin: 12px 0 0 0; }
-    .client-relations .tc-relations-boxes .thumbnail .pro-title,
-    .vendor-relations .tc-relations-boxes .thumbnail .pro-title {
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .avatar,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .avatar {
+      display: inline-block;
+      margin: 15px; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 20px; }
+      .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption .name,
+      .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption .name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 0; }
+      .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption .headline,
+      .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption .headline {
+        color: #999999;
+        font-style: italic;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 220px; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .pro-title,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .pro-title {
       font-size: 14px;
       color: #777; }
-    .client-relations .tc-relations-boxes .thumbnail .toolbar,
-    .vendor-relations .tc-relations-boxes .thumbnail .toolbar {
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people .toolbar,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .toolbar {
       margin-top: 20px; }
-    .client-relations .tc-relations-boxes .thumbnail .tc-user-progress,
-    .vendor-relations .tc-relations-boxes .thumbnail .tc-user-progress {
+  .client-relations .tc-relations-people-col .tc-relations-boxes .people-active,
+  .vendor-relations .tc-relations-people-col .tc-relations-boxes .people-active {
+    background: #fff; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .people-active :after,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people-active :after {
       position: absolute;
-      padding: 10px 25px;
-      left: 0;
-      right: 0; }
-  .client-relations .tc-relations-boxes .thumbnail:hover .hover,
-  .vendor-relations .tc-relations-boxes .thumbnail:hover .hover {
-    display: block; }
-  .client-relations .tc-relations-boxes .add-new,
-  .vendor-relations .tc-relations-boxes .add-new {
-    border: 1px dashed #dddddd; }
-    .client-relations .tc-relations-boxes .add-new .lightout,
-    .vendor-relations .tc-relations-boxes .add-new .lightout {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.7);
-      width: 100%;
-      height: 100%;
-      border-radius: 4px;
-      z-index: 100; }
-    .client-relations .tc-relations-boxes .add-new .plus-sign,
-    .vendor-relations .tc-relations-boxes .add-new .plus-sign {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      color: #555555;
-      font-size: 28px;
-      left: 50px;
-      top: 40px; }
-    .client-relations .tc-relations-boxes .add-new .hover,
-    .vendor-relations .tc-relations-boxes .add-new .hover {
-      z-index: 110;
-      background: rgba(255, 255, 255, 0.2); }
-      .client-relations .tc-relations-boxes .add-new .hover .btn-new,
-      .vendor-relations .tc-relations-boxes .add-new .hover .btn-new {
+      background: #fff;
+      width: 1px;
+      content: '';
+      right: -1px;
+      top: 0;
+      bottom: 0; }
+  .client-relations .tc-relations-people-col .tc-relations-boxes .add-more,
+  .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more {
+    width: 230px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -115px;
+    text-align: center;
+    vertical-align: middle; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > img,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > img {
+      margin-left: -15px;
+      padding-bottom: 20px; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > h4,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > h4 {
+      font-size: 50px;
+      font-family: 'Open Sans Light', sans-serif;
+      color: #0a6895;
+      font-size: 36px;
+      color: #999999; }
+    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > p,
+    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > p {
+      color: #999999; }
+      .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > p > a,
+      .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > p > a {
+        font-weight: bold; }
+.client-relations .tc-relations-data-col,
+.vendor-relations .tc-relations-data-col {
+  position: relative;
+  margin: -20px -20px 30px 330px; }
+  .client-relations .tc-relations-data-col h4,
+  .vendor-relations .tc-relations-data-col h4 {
+    margin-top: 20px; }
+  .client-relations .tc-relations-data-col .subtitles,
+  .vendor-relations .tc-relations-data-col .subtitles {
+    color: #999999;
+    margin: 20px 0; }
+  .client-relations .tc-relations-data-col .inline,
+  .vendor-relations .tc-relations-data-col .inline {
+    display: inline-block; }
+  .client-relations .tc-relations-data-col .thumbnail,
+  .vendor-relations .tc-relations-data-col .thumbnail {
+    margin: 5px 0; }
+    .client-relations .tc-relations-data-col .thumbnail .left-col,
+    .vendor-relations .tc-relations-data-col .thumbnail .left-col {
+      border-right: 1px dotted #dededf;
+      text-align: center; }
+    .client-relations .tc-relations-data-col .thumbnail .right-col,
+    .vendor-relations .tc-relations-data-col .thumbnail .right-col {
+      text-align: center; }
+    .client-relations .tc-relations-data-col .thumbnail .data-number,
+    .vendor-relations .tc-relations-data-col .thumbnail .data-number {
+      text-align: center;
+      display: inline-block; }
+      .client-relations .tc-relations-data-col .thumbnail .data-number h1,
+      .vendor-relations .tc-relations-data-col .thumbnail .data-number h1 {
+        font-size: 50px;
+        font-family: 'Open Sans Light', sans-serif;
+        color: #0a6895;
+        color: #555555;
+        font-weight: bold;
+        margin-top: 15px; }
+      .client-relations .tc-relations-data-col .thumbnail .data-number p,
+      .vendor-relations .tc-relations-data-col .thumbnail .data-number p {
+        font-size: 13px;
+        color: #999999;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: -5px;
+        text-align: right; }
+    .client-relations .tc-relations-data-col .thumbnail .spacing-20,
+    .vendor-relations .tc-relations-data-col .thumbnail .spacing-20 {
+      margin: 0 20px; }
+    .client-relations .tc-relations-data-col .thumbnail .data-btn,
+    .vendor-relations .tc-relations-data-col .thumbnail .data-btn {
+      vertical-align: top;
+      text-align: center;
+      display: inline-block;
+      margin: 35px 20px; }
+  .client-relations .tc-relations-data-col .tc-chart,
+  .vendor-relations .tc-relations-data-col .tc-chart {
+    color: #999999; }
+    .client-relations .tc-relations-data-col .tc-chart .color-legend, .client-relations .tc-relations-data-col .tc-chart .color-gray, .client-relations .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-legend,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+      display: inline-block;
+      vertical-align: top;
+      margin: 20px 0; }
+    .client-relations .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-gray {
+      margin: 5px 10px 0 40px; }
+    .client-relations .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+      margin: 5px 10px 0 40px; }
+    .client-relations .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-gray {
+      width: 20px;
+      height: 10px;
+      background: rgba(220, 220, 220, 0.5);
+      border: 2px solid gainsboro; }
+    .client-relations .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+      width: 20px;
+      height: 10px;
+      background: rgba(66, 139, 202, 0.5);
+      border: 2px solid #428bca; }
+  .client-relations .tc-relations-data-col .work-in-progress .progress-lg,
+  .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg {
+    text-align: right; }
+    .client-relations .tc-relations-data-col .work-in-progress .progress-lg .progress-label,
+    .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg .progress-label {
+      text-align: right;
+      font-weight: bold;
+      padding-right: 10px; }
+    .client-relations .tc-relations-data-col .work-in-progress .progress-lg .total-value,
+    .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg .total-value {
+      text-align: right;
+      font-weight: bold;
+      padding-right: 9px;
+      color: #999999;
+      font-size: 12px;
+      padding-top: 2px; }
+  .client-relations .tc-relations-data-col .work-in-progress .tc-chart,
+  .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart {
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden; }
+    .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in,
+    .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in {
+      position: relative;
+      width: 700px;
+      left: 50%;
+      margin-left: -350px;
+      height: 250px; }
+      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line,
+      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line {
         position: absolute;
-        left: 50%;
-        padding: 20px 30px;
-        margin: 172px 0px 0 -65px; }
+        left: 364px;
+        margin-top: 8px;
+        width: 2px;
+        height: 169px;
+        background: #e2019b; }
+      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days,
+      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days {
+        color: #e2019b;
+        position: absolute;
+        left: 336px;
+        width: 60px;
+        margin-top: 179px;
+        font-size: 13px; }
+  .client-relations .tc-relations-data-col .work-in-progress .max-date,
+  .vendor-relations .tc-relations-data-col .work-in-progress .max-date {
+    margin: 20px 0 0 0; }
 
 .relation-orders .user {
   width: 30px; }
@@ -1475,7 +1606,7 @@ body {
     background-color: #f5f5f5;
     color: #999999; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
-      border: 1px solid #cccccc; }
+      border: 1px solid #ccc; }
     .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
@@ -1526,6 +1657,15 @@ body {
 /******************************************************************/
 /*****    Section Relation:orders.html.twig    ********/
 /******************************************************************/
+.relation-orders .tc-orders-section .tc-filters {
+  padding-bottom: 20px; }
+  .relation-orders .tc-orders-section .tc-filters .tc-filters-label {
+    color: #999999;
+    font-size: 12px;
+    padding: 0 20px;
+    font-style: italic; }
+  .relation-orders .tc-orders-section .tc-filters .tc-filters-label, .relation-orders .tc-orders-section .tc-filters tc-filters-label {
+    display: inline-block; }
 .relation-orders .tc-orders-section .tc-draft .tc-draft-state a {
   background: #428bca; }
 .relation-orders .tc-orders-section .tc-draft .tc-draft-state a:after {
@@ -1638,7 +1778,7 @@ body {
 .order-edit .tc-heading-section .heading-input {
   font-weight: 300;
   font-size: 60px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #0a6895;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1733,7 +1873,7 @@ body {
   text-align: center; }
   .root .tc-over-section .welcome {
     font-size: 50px;
-    font-family: "Open Sans Light", sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     color: #0a6895;
     font-size: 120px;
     font-weight: 300; }
@@ -1762,7 +1902,7 @@ body {
       margin-top: 20px;
       margin-bottom: 10px;
       font-size: 50px;
-      font-family: "Open Sans Light", sans-serif;
+      font-family: 'Open Sans Light', sans-serif;
       color: #0a6895;
       font-size: 40px; }
     .root .tc-over-section .client p, .root .tc-over-section .vendor p {
@@ -1812,7 +1952,7 @@ body {
     vertical-align: middle; }
     #thread_scrollable_section .empty-image > h4 {
       font-size: 50px;
-      font-family: "Open Sans Light", sans-serif;
+      font-family: 'Open Sans Light', sans-serif;
       color: #0a6895;
       font-size: 36px;
       color: #999999; }
