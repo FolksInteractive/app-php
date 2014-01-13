@@ -2,24 +2,8 @@
 
 {% block sheet %}
 
-    <div class="ribbon ribbon-green">
-        <div class="banner">
-            <div class="text">ACCEPTED</div>
-        </div>
-    </div>
-
-    <!--<div class="ribbon ribbon-blue">
-        <div class="banner">
-            <div class="text">DRAFT</div>
-        </div>
-    </div>
-
-    <div class="ribbon ribbon-blue">
-        <div class="banner">
-            <div class="text">SENT</div>
-        </div>
-    </div>-->
-
+    {% include "TCCoreBundle:Order:order_ribbon.html.twig" with { 'order' : order } %}
+    
     <div class="tc-heading-section">
         <h2>{{order.heading}}</h2>
         <p>{{order.subheading}}</p>
@@ -30,7 +14,7 @@
             {% for block in order.offer %} 
             <div class="tc-block">
                 <h3>{{block.title}}</h3>
-                <p>{{block.body}}</p>
+                <p>{{block.body|raw}}</p>
             </div>
             {% endfor %}
         </div>

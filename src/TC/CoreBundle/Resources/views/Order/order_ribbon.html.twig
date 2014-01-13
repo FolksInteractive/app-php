@@ -1,0 +1,37 @@
+{% set status = order_status(order) %}
+
+{% if status == 'closed' %}
+<div class="ribbon ribbon-green">
+    <div class="banner">
+        <div class="text">ACCEPTED</div>
+    </div>
+</div>
+{% elseif status == 'sent' %}
+<div class="ribbon ribbon-blue">
+    <div class="banner">
+        <div class="text">SENT</div>
+    </div>
+</div>
+
+{% elseif status == 'draft' %}
+<div class="ribbon ribbon-blue">
+    <div class="banner">
+        <div class="text">DRAFT</div>
+    </div>
+</div>
+
+{% elseif status == 'sent-declined' %}
+<div class="ribbon ribbon-red">
+    <div class="banner">
+        <div class="text">DECLINED</div>
+    </div>
+</div>
+
+{% elseif status == 'sent-cancelled' or status == 'draft-cancelled' %}
+<div class="ribbon ribbon-red">
+    <div class="banner">
+        <div class="text">CANCELLED</div>
+    </div>
+</div>
+
+{% endif %}

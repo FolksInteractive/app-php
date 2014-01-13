@@ -49,194 +49,191 @@ ng-cloak
     <div class="description"><span class="glyphicon glyphicon-link"></span> Is this proposal related to an RFP?</div>
     <div class="select-widget">
         {{form_widget(form.rfp, {'attr': {'class':'multiselect'}})}}
-    </div>
-</div>
-<div class="tc-heading-section" ng-form name="headingForm">   
-    <div class="form-group">
-        <input id="stretch-title" type="text" class="heading-input form-control input-lg" 
-               placeholder="Insert a title for your proposal"
-               name="{{form.heading.vars.full_name}}"
-               ng-model="order.heading"
-               ng-required="true">
-    </div>
-    <div class="form-group">
-        <input  type="text" class="subheading-input form-control input-lg"
-                placeholder="Insert a sub-title for your proposal"
-                name="{{form.subheading.vars.full_name}}"
-                ng-model="order.subheading">            
-    </div>  
-</div>
-<div class="tc-body-section">
-
-{% raw %}
-    <div class="tc-body-blocks" ng-form name="offerForm" 
-         ng-model="order.offer" 
-         ui-sortable="sortableOptions">
-        <div class="tc-block-edit" ng-repeat="block in order.offer">
-            
-            <div class="tc-drag-block">
-                <span class="glyphicon glyphicon-resize-vertical"></span>
-            </div>
-            
-            <div class="form-group">        
-                <input type="text" class="tc-block-title form-control"
-                       name="{{getOfferFormName(block, 'title')}}"
-                       ng-model="block.title"
-                       ng-required="true" placeholder="Insert title here" />
-            </div>
-            <div class="form-group tc-body-group">        
-                <textarea class="tc-block-body form-control" row="1"
-                          name="{{getOfferFormName(block, 'body')}}"
-                          ng-model="block.body"
-                          ng-required="true" placeholder="Insert content here"></textarea>
-            </div>
-            
-            <div class="tc-delete-block">
-                <button class="tc-btn-reset" type="button" ng-click="removeBlock(block)">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </div>   
-            
         </div>
     </div>
+    <div class="tc-heading-section" ng-form name="headingForm">   
+        <div class="form-group">
+            <input id="stretch-title" type="text" class="heading-input form-control input-lg" 
+                   placeholder="Insert a title for your proposal"
+                   name="{{form.heading.vars.full_name}}"
+                   ng-model="order.heading"
+                   ng-required="true">
+        </div>
+        <div class="form-group">
+            <input  type="text" class="subheading-input form-control input-lg"
+                    placeholder="Insert a sub-title for your proposal"
+                    name="{{form.subheading.vars.full_name}}"
+                    ng-model="order.subheading">            
+        </div>  
+    </div>
+    <div class="tc-body-section">
+
+{% raw %}
+        <div class="tc-body-blocks" ng-form name="offerForm" 
+             ng-model="order.offer" 
+             ui-sortable="sortableOptions">
+            <div class="tc-block-edit" ng-repeat="block in order.offer">
+
+                <div class="tc-drag-block">
+                    <span class="glyphicon glyphicon-resize-vertical"></span>
+                </div>
+
+                <div class="form-group">        
+                    <input type="text" class="tc-block-title form-control"
+                           name="{{getOfferFormName(block, 'title')}}"
+                           ng-model="block.title"
+                           ng-required="true" placeholder="Insert title here" />
+                </div>
+                <div class="form-group tc-body-group">        
+                    <div ng-model="block.body"
+                         name="{{getOfferFormName(block, 'body')}}"
+                         ng-required="true" 
+                         text-angular
+                         ta-toolbar="[['bold','italics', 'ul', 'ol'], ['insertLink','unlink'], ['justifyLeft', 'justifyCenter', 'justifyRight']]"></div>
+                </div>
+
+                <div class="tc-delete-block">
+                    <button class="tc-btn-reset" type="button" ng-click="removeBlock(block)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>   
+
+            </div>
+        </div>
 {% endraw %}
 
-    <!--ng-disabled="newBlockForm.$invalid"-->
-    <div class="form-group">        
-        <button type="button" class="btn btn-default btn-lg tc-btn-newtext"
-                disabled=""
-                ng-disabled=""
-                ng-click="addBlock()">
-            <span class="icon-addtext-dark-lg"></span><p>Add Text</p>
-        </button>
+        <!--ng-disabled="newBlockForm.$invalid"-->
+        <div class="form-group">        
+            <button type="button" class="btn btn-default btn-lg tc-btn-newtext"
+                    disabled=""
+                    ng-disabled=""
+                    ng-click="addBlock()">
+                <span class="icon-addtext-dark-lg"></span><p>Add Text</p>
+            </button>
+        </div>
     </div>
-</div>
 
-<div class="tc-deliverables-section">
+    <div class="tc-deliverables-section">
 
-    <table class="tc-deliverables-table table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th class="left">Description</th>
-                <th>$ / Unit</th>
-                <th>Qty</th>
-                <th>Subtotal</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody ng-form name="deliverablesForm" class="edit-mode">
-        {% raw %}
-                <tr ng-repeat="deliverable in order.deliverables">
-                    <td class="tc-no tc-info-col"></td>
-                    <td class="tc-description tc-description-edit">
-                        <input type="text" class="form-control input-block-level"
-                               name="{{getDeliverableFormName(deliverable, 'name')}}"
-                               ng-model="deliverable.name" placeholder="Insert deliverable item here" />
-                    </td>
-                    <td class="tc-cost tc-cost-edit">
-                        <input type="text" class="form-control input-block-level center"
-                               name="{{getDeliverableFormName(deliverable, 'cost')}}"
-                               tc-doubles-only
-                               ng-model="deliverable.cost"/>
-                    </td>
-                    <td class="tc-quantity tc-quantity-edit">
-                        <input type="text" class="form-control input-block-level center"
-                               name="{{getDeliverableFormName(deliverable, 'quantity')}}"
-                               tc-numbers-only
-                               ng-model="deliverable.quantity" />
-                    </td>
-                    <td class="tc-subtotal tc-info-col" 
-                        ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
-                    <td class="tc-actions">
-                        <a class="glyphicon glyphicon-remove tc-icon-remove"
-                           ng-click="removeDeliverable(deliverable)">
-                        </a>
-                    </td>
-                </tr>
-        {% endraw %}
-            </tbody>
-
-
-            <tfoot ng-form name="newDeliverablesForm" class="edit-mode">
+        <table class="tc-deliverables-table table">
+            <thead>
                 <tr>
-                    <td class="tc-no tc-info-col"></td>
-                    <td class="tc-description tc-description-edit">
-                        <input type="text"class="form-control input-block-level"
-                               ng-model="newDeliverable.name" 
-                               ng-required="true" placeholder="Insert deliverable item here" />
-                    </td>
-                    <td class="tc-cost tc-cost-edit">
-                        <input type="text" class="form-control input-block-level center"
-                               ng-model="newDeliverable.cost"
-                               tc-doubles-only
-                               ng-required="true"/>
-                    </td>
-                    <td class="tc-quantity tc-quantity-edit">
-                        <input type="text" class="form-control input-block-level center disabled" 
-                               tc-numbers-only
-                               ng-model="newDeliverable.quantity" />
-                    </td>
-                    <td class="tc-subtotal">
-                        <button type="button" class="btn-primary btn"
-                                disabled=""
-                                ng-disabled="newDeliverablesForm.$invalid"
-                                ng-click="addDeliverable()">Add</button>
-                    </td>
-                    <td class="actions"></td>
+                    <th>#</th>
+                    <th class="left">Description</th>
+                    <th>$ / Unit</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th></th>
                 </tr>
-            </tfoot>
-        </table>
-    </div>
+            </thead>
+            <tbody ng-form name="deliverablesForm" class="edit-mode">
+        {% raw %}
+                    <tr ng-repeat="deliverable in order.deliverables">
+                        <td class="tc-no tc-info-col"></td>
+                        <td class="tc-description tc-description-edit">
+                            <input type="text" class="form-control input-block-level"
+                                   name="{{getDeliverableFormName(deliverable, 'name')}}"
+                                   ng-model="deliverable.name" placeholder="Insert deliverable item here" />
+                        </td>
+                        <td class="tc-cost tc-cost-edit">
+                            <input type="text" class="form-control input-block-level center"
+                                   name="{{getDeliverableFormName(deliverable, 'cost')}}"
+                                   tc-doubles-only
+                                   ng-model="deliverable.cost"/>
+                        </td>
+                        <td class="tc-quantity tc-quantity-edit">
+                            <input type="text" class="form-control input-block-level center"
+                                   name="{{getDeliverableFormName(deliverable, 'quantity')}}"
+                                   tc-numbers-only
+                                   ng-model="deliverable.quantity" />
+                        </td>
+                        <td class="tc-subtotal tc-info-col" 
+                            ng-bind="deliverable.quantity * deliverable.cost | currency"></td>
+                        <td class="tc-actions">
+                            <a class="glyphicon glyphicon-remove tc-icon-remove"
+                               ng-click="removeDeliverable(deliverable)">
+                            </a>
+                        </td>
+                    </tr>
+        {% endraw %}
+                </tbody>
 
-    <div class="tc-total-price">
-        <div class="split"></div>
-        <div class="split"></div>
-        <div class="total-label">Total</div>
-        <div class="price" ng-bind="getTotal() | currency"></div>
-    </div>
+
+                <tfoot ng-form name="newDeliverablesForm" class="edit-mode">
+                    <tr>
+                        <td class="tc-no tc-info-col"></td>
+                        <td class="tc-description tc-description-edit">
+                            <input type="text"class="form-control input-block-level"
+                                   ng-model="newDeliverable.name" 
+                                   ng-required="true" placeholder="Insert deliverable item here" />
+                        </td>
+                        <td class="tc-cost tc-cost-edit">
+                            <input type="text" class="form-control input-block-level center"
+                                   ng-model="newDeliverable.cost"
+                                   tc-doubles-only
+                                   ng-required="true"/>
+                        </td>
+                        <td class="tc-quantity tc-quantity-edit">
+                            <input type="text" class="form-control input-block-level center disabled" 
+                                   tc-numbers-only
+                                   ng-model="newDeliverable.quantity" />
+                        </td>
+                        <td class="tc-subtotal">
+                            <button type="button" class="btn-primary btn"
+                                    disabled=""
+                                    ng-disabled="newDeliverablesForm.$invalid"
+                                    ng-click="addDeliverable()">Add</button>
+                        </td>
+                        <td class="actions"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="tc-total-price">
+            <div class="split"></div>
+            <div class="split"></div>
+            <div class="total-label">Total</div>
+            <div class="price" ng-bind="getTotal() | currency"></div>
+        </div>
 {% endblock %}
 
 {% block head_css %}
-    <link rel="stylesheet" href="{{asset('/css/vendor/bootstrap-multiselect.css')}}" />    
+        <link rel="stylesheet" href="{{asset('/css/vendor/bootstrap-multiselect.css')}}" />    
 {% endblock %}
-    
+
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
 
-    <script src="{{asset("/vendor/bootstrap/js/multiselect.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/vendor/jquery-ui/ui/jquery-ui.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/vendor/angular-ui/ui-sortable/src/sortable.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/js/directives/numbers.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/js/order/order-module.js")}}" type="text/javascript"></script>
-    
-    <script type="text/javascript">
-    {% autoescape 'js' %}
-    $(document).ready(function() {
-        $('.multiselect').multiselect();
-        $('textarea').elastic();
-    });
+        <script src="{{asset("/vendor/angular/angular-sanitize.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/vendor/textAngular/textAngular.min.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/vendor/bootstrap/js/multiselect.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/vendor/jquery-ui/ui/jquery-ui.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/vendor/angular-ui/ui-sortable/src/sortable.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/js/directives/numbers.js")}}" type="text/javascript"></script>
+        <script src="{{asset("/js/order/order-module.js")}}" type="text/javascript"></script>
 
-    (function(ng, module){
-        module.value("order", {
-            heading: "{{form.heading.vars.value|default('')}}",
-            subheading: "{{form.subheading.vars.value|default('')}}",
-            offer : {{form.offer.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}},
-            deliverables : [
-            {% for deliverable in form.deliverables %}
-            {% set data = deliverable.vars.value %}
-                    {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}  
-                {% if not loop.last %} 
-                {{","}}
-                {% endif %}     
-            {% endfor %}
-            ]
-        });
+        <script type="text/javascript">
+        {% autoescape 'js' %}
+            (function(ng, module){
+                    module.value("order", {
+                    heading: "{{form.heading.vars.value|default('')}}",
+                        subheading: "{{form.subheading.vars.value|default('')}}",
+                        offer : {{form.offer.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}},
+                        deliverables : [
+                {% for deliverable in form.deliverables %}
+                {% set data = deliverable.vars.value %}
+                        {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}
+                    {% if not loop.last %}
+                    {{","}}
+                    {% endif %}
+                {% endfor %}
+                    ]
+                });
 
-        module.value("form_name", "{{form.vars.name}}");
-    })(angular, module);
+                module.value("form_name", "{{form.vars.name}}");
+            })(angular, module);
 
-    {% endautoescape %}
-    </script>
+        {% endautoescape %}
+            </script>
 {% endblock %}

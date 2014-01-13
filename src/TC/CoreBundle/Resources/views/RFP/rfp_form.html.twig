@@ -1,15 +1,15 @@
 {# This template is made to be included with the "use" tag in the corresponding templates #}
 
-{% block main_attrs %} 
-ng-app="RFP" 
+{% block main_attrs %}
+ng-app="RFP"
 ng-controller="rfp.Controller"
 ng-cloak
 {% endblock %}
 
-{% block main_before %} 
+{% block main_before %}
 {% set attr = {'id': 'rfpForm'} %}
 {% set attr = attr|merge({'name':'rfpForm'}) %}
-{% set attr = attr|merge({'novalidate':""}) %}   
+{% set attr = attr|merge({'novalidate':""}) %}
 {{form_start(form, {'attr':attr})}}
 {% endblock %}
 
@@ -21,31 +21,31 @@ ng-cloak
 {# there is no block controls in the skeleton this block should be called in the parent template #}
 {% block controls %}
 
-<button name="{{form.submit.vars.full_name}}" 
-        class="btn btn-default btn-lg" 
+<button name="{{form.submit.vars.full_name}}"
+        class="btn btn-default btn-lg"
         disabled="disabled"
         ng-disabled="!rfpForm.$dirty || headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
     Save
 </button>
 
-<button name="{{form.save_as_ready.vars.full_name}}" 
-        class="btn btn-primary btn-lg" 
+<button name="{{form.save_as_ready.vars.full_name}}"
+        class="btn btn-primary btn-lg"
         disabled="disabled"
         ng-disabled="headingForm.$invalid || bodyForm.$invalid || isRFPEmpty()">
     Save &amp; Send
 </button>
 
     {% set attr = {'class':'btn-primary'} %}
-    {% set attr = attr|merge({'ng-disabled':"rfpForm.$invalid"}) %}   
-    {% set attr = attr|merge({'disabled':""}) %}   
+    {% set attr = attr|merge({'ng-disabled':"rfpForm.$invalid"}) %}
+    {% set attr = attr|merge({'disabled':""}) %}
     {#form_widget(form.save_as_ready, {'attr':attr})#}
 {% endblock %}
 
 {% block sheet %}
 
-<div class="tc-heading-section" ng-form name="headingForm">   
+<div class="tc-heading-section" ng-form name="headingForm">
     <div class="form-group">
-        <input type="text" class="heading-input form-control input-lg" 
+        <input type="text" class="heading-input form-control input-lg"
                placeholder="Insert a title for your RFP"
                name="{{form.heading.vars.full_name}}"
                ng-model="rfp.heading"
@@ -53,36 +53,36 @@ ng-cloak
     </div>
     <div class="form-group">
         <input  type="text" class="subheading-input form-control input-lg"
-               placeholder="Insert a subtitle for your RFP"
-               name="{{form.subheading.vars.full_name}}"
-               ng-model="rfp.subheading">            
-    </div>  
+                placeholder="Insert a subtitle for your RFP"
+                name="{{form.subheading.vars.full_name}}"
+                ng-model="rfp.subheading">
+    </div>
 </div>
 <div class="tc-body-section">
-    <div class="tc-body-blocks"  ng-form name="bchrdoyForm" 
-         ng-model="rfp.body" 
-         ui-sortable="sortableOptions"
-    >
+    <div class="tc-body-blocks" 
+         ng-form name="bchrdoyForm"
+         ng-model="rfp.body"
+         ui-sortable="sortableOptions">
     {% raw %}
         <div class="tc-block-edit" ng-repeat="block in rfp.body">
-            
-            <div class="tc-drag-block">          
+
+            <div class="tc-drag-block">
                 <span class="glyphicon glyphicon-resize-vertical"></span>
             </div>
-            
-            <div class="form-group">        
+
+            <div class="form-group">
                 <input type="text" class="tc-block-title form-control"
                        name="{{getBodyFormName(block, 'title')}}"
                        ng-model="block.title"
                        ng-required="true" placeholder="Insert title here" />
             </div>
-            <div class="form-group tc-body-group">        
-                <textarea class="tc-block-body form-control" row="5"
-                       name="{{getBodyFormName(block, 'body')}}"
-                       ng-model="block.body"
-                       ng-required="true" placeholder="Insert content here"></textarea>
+            <div class="form-group tc-body-group">
+                <div ng-model="block.body"
+                     name="{{getBodyFormName(block, 'body')}}"
+                     ng-required="true" 
+                     text-angular
+                     ta-toolbar="[['bold','italics', 'ul', 'ol'], ['insertLink','unlink'], ['justifyLeft', 'justifyCenter', 'justifyRight']]"></div>
             </div>
-            
             <div class="tc-delete-block">
                 <button class="tc-btn-reset" type="button" ng-click="removeBlock(block)">
                     <span class="glyphicon glyphicon-remove"></span>
@@ -91,14 +91,14 @@ ng-cloak
         </div>
     {% endraw %}
     </div>
-        
+
     <div class="spacer"></div>
 
-    <div class="form-group">        
+    <div class="form-group">
         <button type="button" class="btn btn-default btn-lg tc-btn-newtext"
-            disabled=""
-            ng-disabled="newBlockForm.$invalid"
-            ng-click="addBlock()">
+                disabled=""
+                ng-disabled="newBlockForm.$invalid"
+                ng-click="addBlock()">
             <span class="icon-addtext-dark-lg"></span><p>Add Text</p>
         </button>
     </div>
@@ -108,29 +108,27 @@ ng-cloak
 {# In the use statement in the parent template, use the with tag to make sure that the bottom_js block is not overwritten #}
 {% block bottom_js %}
 
-    <script src="{{asset("/vendor/jquery/jquery.elastic.source.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/vendor/jquery-ui/ui/jquery-ui.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/vendor/angular-ui/ui-sortable/src/sortable.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/js/rfp/rfp-module.js")}}" type="text/javascript"></script>
-    
-    <script type="text/javascript">
-    {% autoescape 'js' %}    
-    $(document).ready(function() {
-        $('textarea').elastic();
-    }); 
+<script src="{{asset("/vendor/angular/angular-sanitize.js")}}" type="text/javascript"></script>
+<script src="{{asset("/vendor/textAngular/textAngular.min.js")}}" type="text/javascript"></script>
+<script src="{{asset("/vendor/jquery-ui/ui/jquery-ui.js")}}" type="text/javascript"></script>
+<script src="{{asset("/vendor/angular-ui/ui-sortable/src/sortable.js")}}" type="text/javascript"></script>
+<script src="{{asset("/js/rfp/rfp-module.js")}}" type="text/javascript"></script>
+
+<script type="text/javascript">
+{% autoescape 'js' %}
 
     (function(ng, module){
 
         module.value("rfp", {
-            heading: "{{form.heading.vars.value|default('')}}",
-            subheading: "{{form.subheading.vars.value|default('')}}",
+            heading : "{{form.heading.vars.value|default('')}}",
+            subheading : "{{form.subheading.vars.value|default('')}}",
             body : {{form.body.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}}
         });
 
         module.value("form_name", "{{form.vars.name}}");
 
     })(angular, module);
-    {% endautoescape %}
+{% endautoescape %}
     </script>
 
 {% endblock %}

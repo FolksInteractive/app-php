@@ -48,11 +48,16 @@
     .tc-drag-block,
     .tc-delete-block {
         position: absolute;
-        display: table-cell;
+        display:none;
         top: 10px;
         border: 1px dashed $gray-border-color;
         text-align: center;
         background: white;
+    }
+    
+    &:hover .tc-drag-block,
+    &:hover .tc-delete-block {        
+        display: table-cell;
     }
     
     .tc-drag-block{
@@ -106,6 +111,5 @@
         padding: 0;
         height: auto;
         font-size: $font-size-base;
-        line-height: $tc-line-height;
     }
 }

@@ -1,4 +1,4 @@
-var module = angular.module("Order", ['ui.sortable', 'tc.directives.numbers']);
+var module = angular.module("Order", ['ui.sortable', 'tc.directives.numbers','textAngular']);
 
 module.controller("order.Controller", function($scope, form_name, order){    
     
@@ -56,7 +56,8 @@ module.controller("order.Controller", function($scope, form_name, order){
         helper: function(e, elem){
             return $(elem).clone().appendTo("body");
         }, 
-        placeholder: "tc-placeholder-block"
+        placeholder: "tc-placeholder-block",        
+        handle: ".tc-drag-block"
     };
         
     /* **************************************** */    

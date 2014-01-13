@@ -15,10 +15,6 @@ class InvoiceEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('created_at', 'date', array(
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
-            ))
             ->add('issued_at', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',

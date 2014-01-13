@@ -10,6 +10,14 @@
            
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
+ <div class="tc-controls toolbar pull-right">        
+        {% if is_editable(invoice) %}
+            <a class="btn-primary btn-lg btn"
+               href="{{path('vendor_invoice_edit' , {'idInvoice':invoice.id, 'idRelation': relation.id})}}">
+                Edit Invoice
+            </a>   
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block sheet %}

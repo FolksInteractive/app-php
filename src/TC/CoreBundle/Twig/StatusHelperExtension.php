@@ -8,6 +8,7 @@ use TC\CoreBundle\Entity\Invoice;
 use TC\CoreBundle\Entity\Order;
 use TC\CoreBundle\Entity\RFP;
 use TC\CoreBundle\Entity\Workspace;
+use TC\CoreBundle\Model\InvoiceManager;
 use TC\CoreBundle\Model\OrderManager;
 use TC\CoreBundle\Model\RFPManager;
 use TC\UserBundle\Entity\User;
@@ -213,6 +214,13 @@ class StatusHelperExtension extends Twig_Extension {
      */
     private function getRFPManager(){
         return $this->container->get('tc.manager.rfp');
+    }
+    
+    /**
+     * @return InvoiceManager
+     */
+    private function getInvoiceManager(){
+        return $this->container->get('tc.manager.invoice');
     }
     
     /**

@@ -1,4 +1,4 @@
-var module = angular.module("RFP", ['ui.sortable']);
+var module = angular.module("RFP", ['ui.sortable','textAngular']);
 
 module.controller("rfp.Controller", function($scope, form_name, rfp){
         
@@ -53,6 +53,10 @@ module.controller("rfp.Controller", function($scope, form_name, rfp){
         update: function() { 
             $scope.rfpForm.$setDirty();
         },
-        placeholder: "tc-placeholder-block"
+        helper: function(e, elem){
+            return $(elem).clone().appendTo("body");
+        }, 
+        placeholder: "tc-placeholder-block",
+        handle: ".tc-drag-block"
     };
 });

@@ -745,11 +745,13 @@ body {
   .tc-block-edit .tc-drag-block,
   .tc-block-edit .tc-delete-block {
     position: absolute;
-    display: table-cell;
+    display: none;
     top: 10px;
     border: 1px dashed #dededf;
     text-align: center;
     background: white; }
+  .tc-block-edit:hover .tc-drag-block, .tc-block-edit:hover .tc-delete-block {
+    display: table-cell; }
   .tc-block-edit .tc-drag-block {
     left: -1px;
     border-right: 1px solid transparent;
@@ -790,8 +792,7 @@ body {
     border: none;
     padding: 0;
     height: auto;
-    font-size: 14px;
-    line-height: 25px; }
+    font-size: 14px; }
 
 .tc-global-dropdown {
   padding: 20px;
@@ -1117,6 +1118,16 @@ body {
 .ribbon-black .text::after,
 .no-css-transforms .ribbon-black .text {
   background-color: #444444; }
+
+.ta-editor {
+  min-height: 100px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%; }
+
+.ta-toolbar {
+  margin-bottom: 10px; }
 
 .tc-menu-panel {
   color: #fff;
@@ -1591,7 +1602,7 @@ body {
 .order-show .tc-agreement-section {
   text-align: center;
   padding: 30px 0;
-  background: url("/img/bg/footer-gradient.png") no-repeat; }
+  background: url("/img/bg/footer-gradient.png") no-repeat top center; }
   .order-show .tc-agreement-section .agree-check {
     padding: 15px 0 25px 0;
     color: #555555; }
