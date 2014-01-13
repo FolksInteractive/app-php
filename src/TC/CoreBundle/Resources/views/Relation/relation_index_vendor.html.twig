@@ -30,9 +30,9 @@
         {% for relation in relations %}
             
             {% if loop.first %}
-            <div class="people">
+            <div class="people people-not-selected">
             {% else %}
-            <div class="people people-active">
+            <div class="people people-selected">
             {% endif %}
                 <!-- Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. -->
                 <div class="badge tc-relation-badge">0</div>
@@ -133,7 +133,7 @@
                     
                     <div class="center">
                         <div class="data-number max-date">
-                            <p>Latest delivery date: <b class="success">2014-04-01</b></p>
+                            <p>Last delivery date: <b class="success">2014-04-01</b></p>
                         </div>
                     </div>
                     
@@ -161,11 +161,14 @@
 
             <div class="tc-chart center">
                 <div class="tc-chart-in">
+                    <div class="tc-chart-dollar-sign">$</div>
                     <div class="tc-chart-this-week-line"></div>
                     <div class="tc-chart-this-week-days">5-11</div>
                     <canvas id="canvas1" height="200" width="700"></canvas>
                     <div class="color-legend"><div class="color-gray"></div> Work Projections</div>
                     <div class="color-legend"><div class="color-blue"></div> Work Completed</div>
+                    <div class="tc-chart-dollar-sign">$</div>
+                    <div class="tc-chart-weeks">Weeks</div>
                 </div>
             </div>
             </div>
@@ -187,13 +190,13 @@
             <div class="col-md-12 center">
  
                 <div class="data-number inline spacing-20">
-                    <h1>1</h1>
-                    <p>Pending Payment</p>
+                    <h1>0$</h1>
+                    <p><b>0</b> Draft Invoice</p>
                 </div>
                 
                 <div class="data-number inline spacing-20">
                     <h1>$800</h1>
-                    <p>Pending Payment</p>
+                    <p><b>1</b> Pending Payment</p>
                 </div>
 
                 <div class="data-number inline spacing-20">
@@ -211,9 +214,13 @@
                 </div>
                 
                 <div class="tc-chart center">
-                    <canvas id="canvas2" height="200" width="700"></canvas>
-                    <div class="color-legend"><div class="color-gray"></div> Last Year</div>
-                    <div class="color-legend"><div class="color-blue"></div> This Year</div>
+                    <div class="tc-chart-in">
+                        <canvas id="canvas2" height="200" width="700"></canvas>
+                        <div class="color-legend"><div class="color-gray"></div> Last Year</div>
+                        <div class="color-legend"><div class="color-blue"></div> This Year</div>
+                        <div class="tc-chart-dollar-sign">$</div>
+                        <div class="tc-chart-weeks">Months</div>
+                    </div>
                 </div>
                 
             </div>
