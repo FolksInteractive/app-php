@@ -6,26 +6,45 @@
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
-        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
-        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
-    </div>
+    {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+</div>
 
-    <div class="tc-controls pull-right">
-        <a href="{{path('vendor_order_new', {'idRelation':relation.id})}}" 
-           class="btn btn-primary btn-lg">
-            <i class="icon-new-proposals-light-sm"></i>
-            New Proposal
-        </a>
-    </div>
+<div class="tc-controls pull-right">
+    <a href="{{path('vendor_order_new', {'idRelation':relation.id})}}" 
+       class="btn btn-primary btn-lg">
+        <i class="icon-new-proposals-light-sm"></i>
+        New Proposal
+    </a>
+</div>
 {% endblock %}
 
 {% block sheet %}
 
 {% if orders is empty %}
     {{block('empty_orders_vendor')}}
-
 {% else %}
-    <div class="tc-orders-section">  
+
+    <div class="tc-orders-section"> 
+        
+        <div class="tc-filters">
+        
+            <div class="btn-group tc-filters-buttons" data-toggle="buttons">
+              <label class="btn btn-default active"><input type="radio" name="options" id="option3">All</label>
+              <label class="btn btn-default"><input type="radio" name="options" id="option1">Draft</label>
+              <label class="btn btn-default"><input type="radio" name="options" id="option2">Sent</label>
+              <label class="btn btn-default"><input type="radio" name="options" id="option3">Approved</label>
+            </div>
+            
+            <div class="tc-filters-label">&</div>
+            
+            <div class="btn-group tc-filters-buttons" data-toggle="buttons">
+              <label class="btn btn-default active"><input type="radio" name="options" id="option3">Active</label>
+              <label class="btn btn-default"><input type="radio" name="options" id="option1">Cancelled</label>
+            </div>
+            
+        </div>
+        
         <table class="tc-table table">
             <thead>
                 <tr>
@@ -140,6 +159,13 @@
             {% endfor %}
             </tbody>
         </table>
+        
+        <div class="tc-total-price">
+            <div class="split"></div>
+            <div class="split"></div>
+            <div class="total-label">Total</div>
+            <div class="price">$ 170.00</div>
+        </div>
     </div> 
 {% endif %}
 {% endblock %}
