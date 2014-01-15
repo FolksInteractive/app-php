@@ -25,8 +25,8 @@ class DatePeriod extends BaseDatePeriod {
     public $e;
 
     public function __construct( $start, $interval, $end ){
-        $this->s = $start;
-        $this->e = $end;
+        $this->s = clone $start;
+        $this->e = clone $end;
         
         parent::__construct( $start, $interval, $end );
     }

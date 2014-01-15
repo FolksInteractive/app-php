@@ -22,10 +22,10 @@ class Week extends DatePeriod {
     
     public function getShortLabel(){      
 
-        $label = $this->start->format( "d" ) . " - " . $this->end->format( "d" );
+        $label = $this->s->format( "d" ) . " - " . $this->e->format( "d" );
 
-        if( $this->start > $this->end )
-            $label . " " . $this->end->format( "m" ); 
+        if( $this->s > $this->e )
+            $label . " " . $this->e->format( "m" ); 
         
         return $label;
     }
