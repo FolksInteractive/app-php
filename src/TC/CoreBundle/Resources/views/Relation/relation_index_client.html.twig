@@ -6,98 +6,285 @@
 <div class="tc-breadcrumb pull-left">
     {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:mainMenu',[],{}) %}
     {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
-    </div>
+</div>
 
-    <div class="tc-controls pull-right">
-        <a href="{{path('client_relation_new')}}" class="btn btn-primary btn-lg">
-            <span class="icon-add-user"></span>
-            Add
-        </a>
-    </div>
+<div class="tc-controls pull-right">
+    <a href="{{path('client_relation_new')}}" class="btn btn-primary btn-lg">
+        <span class="icon-add-user"></span>
+        Add New
+    </a>
+</div>
 {% endblock %}
 
 {% block sheet %}
+
 {% if relations is empty %}
     {{block('empty_relations_client')}}
 
-{% else %}   
+{% else %}  
     <div class="tc-relations-section">
 
-        <legend>My Active Vendors</legend>
+        <div class="tc-relations-people-col">
 
-        <div class="tc-relations-boxes">
-    {% for relation in relations %} 
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail">
-                        <div class="hover">
-                            <a class="btn btn-success btn-lg request-services" role="button"
-                               href="{{path('client_relation_rfps',{'idRelation': relation.id})}}">
-                                <span class="icon-new-proposals-light-sm"></span> Request Services
-                            </a>
-                            <div class="or"></div>
-                            <a class="btn btn-success btn-lg view-activities" role="button"
-                               href="{{path('client_relation_progress',{'idRelation': relation.id})}}">
-                                <span class="icon-progress-white-sm"></span> View Activities
-                            </a>
-                        </div>
-                        <!-- Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. -->
-                        <div class="badge tc-relation-badge">0</div>
-                        <img class="img-circle" src="{{avatar(relation.vendor.user) | imagine_filter('140_thumb')}}" />
-                        <div class="caption">
+            <div class="tc-relations-boxes">
+            {% for _relation in relations %}
 
-                    {% if relation.vendor.getFirstName() and relation.vendor.getLastName() %}
-                            <h3>{{relation.vendor.getFirstName()}} <br /> 
-                                <small>{{relation.vendor.getLastName()}}</small>
-                            </h3>
+                {% set class_name = _relation.id != relation.id ? "people-not-selected" : "people-selected" %}
+                <a class="people {{class_name}}" href="{{path('client_relation_overview',{'idRelation':_relation.id})}}">
+                    {# Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. 
+                    <div class="badge tc-relation-badge">0</div>#}
+                    <img class="img-rounded avatar" src="{{avatar(_relation.client.user) | imagine_filter('60_thumb')}}" />
+                    <div class="caption">
+                    {% if _relation.client.getFirstName() and _relation.client.getLastName() %}
+                        <p class="name">{{_relation.client.getFullName()}}</p>
+                        {#<p class="headline">Co-Founder of TimeCrumbs.com & Flawless Learning Solutions Inc.</p>#}
+
                     {% else %}
-                            <h4>{{relation.vendor.getEmail()}} <br /> 
-                                <small>Pending registration</small>
-                            </h4>
+                        <p>{{_relation.client.getEmail()}} <br /> 
+                            <small>Pending registration</small>
+                        </p>
                     {% endif %}
-                        </div>
-                        <div class="tc-user-progress">
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                    <span class="sr-only">40% Complete (success)</span>
-                                </div>
-                            </div>
-                        </div>     
                     </div>
+                </a>
+            {% endfor %}
+                    
+            {% if relations|length <= 2 %}
+                <div class="add-more center">
+                    <img src="{{ asset('/img/flat-imgs/flat-add-relation.gif') }}" />
+                    <h4>Add Service Provider</h4>
+                    <p>Grow your business by <br /><a href="{{path('client_relation_new')}}">adding more service provider</a>.</p>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="tc-relations-data-col">
+
+            <legend>Service Provider Overview</legend>
+
+            <div class="row">
+
+                <div class="col-md-5">
+                    <h4 class="center subtitles">Potential Business</h4>
                 </div>
 
-    {% endfor %}
+                <div class="col-md-7">
+                    <h4 class="center subtitles">Proposed Services</h4>
+                </div>
 
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail add-new">
-                        <div class="lightout"></div>
-                        <div class="plus-sign"><span class="glyphicon glyphicon-plus"></span></div>
-                        <div class="hover">
-                            <a href="{{path('client_relation_new')}}" class="btn btn-primary btn-lg btn-new">
-                                <span class="icon-add-user"></span> Add
+            </div>
+
+            <div class="row thumbnail">
+
+                <div class="col-md-6 left-col">
+
+                    <div class="data-number spacing-20">
+                        <h1>{{rfp_pending_count}}</h1>
+                        <p>Pending RFP</p>
+                    </div>
+
+                    <div class="data-btn">
+                        <a href="{{path('client_relation_rfps', {'idRelation':relation.id})}}" class="btn btn-default btn-lg">
+                            View RFP
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 right-col">
+
+                    <div class="row">
+
+                        <div class="data-number spacing-20">
+                            <h1>$ {{rfp_pending_count|number_format(2)}}</h1>
+                            <p><b>{{rfp_pending_count}}</b> Pending Proposal</p>
+                        </div>
+                        <div class="data-btn">
+                            <a href="{{path('client_relation_orders', {'idRelation':relation.id})}}" class="btn btn-default btn-lg">
+                                View Proposals
                             </a>
                         </div>
-                        <div class="badge tc-relation-badge">0</div>
-                        <img class="img-circle" src="{{ asset('/img/avatar.png') | imagine_filter('140_thumb') }}" />
-                        <div class="caption">
-                            <h3>First Name<br /> 
-                                <small>Last Name</small>
-                            </h3>
-                        </div>
-                        <div class="tc-user-progress">
-                            <div class="progress progress-striped">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0">
-                                </div>
-                            </div>
-                        </div>     
                     </div>
                 </div>
 
             </div>
 
-    {# Not for BETA
-    <legend>Inactive Business Relationships <span>(0)</span></legend>
-    #}
-        </div>
-{% endif %}   
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="center subtitles">Work in progress</h4>
+                </div>
+            </div>
+            
+            <div class="work-in-progress">
 
+                <div class="row thumbnail">
+                    <div class="col-md-2 center">
+                        <div class="data-number">
+                            <h1 class="success">15</h1>
+                            <p>Items To Do</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 center">
+
+                        <div class="center">
+                            <div class="data-number max-date">
+                                <p>Last delivery date: <b class="success">2014-04-01</b></p>
+                            </div>
+                        </div>
+
+                        <div class="progress progress-striped progress-lg">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <div class="progress-label">$ 1550.00</div>
+                            </div>
+                            <div class="total-value">$ 3500.00</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <div class="data-btn">
+                            <a href="{{path('client_relation_progress', {'idRelation':relation.id})}}" class="btn btn-default btn-lg">
+                                More details
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="center">
+                        <h5 class="subtitles">Productivity Flow (Dec 8th 2013 to Feb 8th 2014)</h5>
+                    </div>
+
+                    <div id="tcFlowChart" class="tc-chart center">
+                        <div class="tc-chart-in center-block">
+                            <div class="tc-chart-dollar-sign">$</div>
+                            <div class="tc-chart-this-week-line hidden"></div>
+                            <div class="tc-chart-this-week-days hidden">
+                                {# Copy the current week (the middle one) here #}
+                                {% set current_week_label = productivity_flow['labels'][((productivity_flow['labels']|length-1)/2)]%}
+                                {{ current_week_label }}
+                            </div>
+                            <canvas id="canvas1" height="200" width="700"></canvas>
+                            <div class="color-legend"><div class="color-gray"></div> Work Projections</div>
+                            <div class="color-legend"><div class="color-blue"></div> Work Completed</div>
+                            <div class="tc-chart-dollar-sign">$</div>
+                            <div class="tc-chart-weeks">Weeks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <h4 class="center subtitles">Finances</h4>
+                </div>
+
+            </div>
+
+            <div class="row thumbnail">
+
+                <div class="col-md-12 center">
+
+                    <div class="data-number inline spacing-20">
+                        <h1>0$</h1>
+                        <p><b>0</b> Draft Invoice</p>
+                    </div>
+
+                    <div class="data-number inline spacing-20">
+                        <h1>$800</h1>
+                        <p><b>1</b> Pending Payment</p>
+                    </div>
+
+                    <div class="data-number inline spacing-20">
+                        <h1>$1200</h1>
+                        <p>Paid</p>
+                    </div>
+                    <div class="data-btn inline spacing-20">
+                        <a href="{{path('client_relation_new')}}" class="btn btn-default btn-lg">
+                            View Invoices
+                        </a>
+                    </div>
+
+                    <div class="center">
+                        <h5 class="subtitles">Purchases Overview 2014</h5>
+                    </div>
+
+                    <div class="tc-chart center">
+                        <div class="tc-chart-in">
+                            <canvas id="canvas2" height="200" width="700"></canvas>
+                            <div class="color-legend"><div class="color-gray"></div> Last Year</div>
+                            <div class="color-legend"><div class="color-blue"></div> This Year</div>
+                            <div class="tc-chart-dollar-sign">$</div>
+                            <div class="tc-chart-weeks">Months</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endif %} 
+{% endblock %}
+
+{% block bottom_js %}
+    {{ parent() }}
+<script src="{{asset("/vendor/chart-js/Chart.js")}}" type="text/javascript"></script>
+<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+
+<script type="text/javascript">
+{% autoescape 'js' %}
+    var lineChartData = {
+        labels : {{productivity_flow['labels']|json_encode()|raw}},
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#f4f4f4",
+                data : {{productivity_flow['expected_data']|json_encode()|raw}}
+            },
+            {
+                fillColor : "rgba(66,139,202,0.5)",
+                strokeColor : "rgba(66,139,202,1)",
+                pointColor : "rgba(66,139,202,1)",
+                pointStrokeColor : "#428bca",
+                data : {{productivity_flow['completed_data']|json_encode()|raw}}
+            }
+
+        ]
+
+    }
+
+    var prodChart = new Chart(document.getElementById("canvas1").getContext("2d")).Line(lineChartData, { pointDot : false, animation : false });
+    
+    $("#tcFlowChart .tc-chart-this-week-line").removeClass("hidden").css( "left", prodChart.yAxisPosX+prodChart.valueHop*(lineChartData.labels.length-1)/2)
+    $("#tcFlowChart .tc-chart-this-week-days").removeClass("hidden").css( "left", prodChart.yAxisPosX+prodChart.valueHop*(lineChartData.labels.length-1)/2)
+{% endautoescape %}
+    </script>
+
+<script>
+
+        var barChartData = {
+            labels : ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    data : [65, 59, 90, 81, 56, 55, 40]
+                },
+                {
+                    fillColor : "rgba(66,139,202,0.5)",
+                    strokeColor : "rgba(66,139,202,1)",
+                    data : [28, 48, 40, 19, 96, 27, 100]
+                }
+            ]
+
+        }
+
+        new Chart(document.getElementById("canvas2").getContext("2d")).Bar(barChartData, { animation : false });
+
+</script>
 {% endblock %}

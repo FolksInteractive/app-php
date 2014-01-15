@@ -812,6 +812,22 @@ window.Chart = function(context){
 		calculateXAxisSize();
 		animationLoop(config,drawScale,drawLines,ctx);		
 		
+        return {
+            maxSize             :maxSize,
+            scaleHop            :scaleHop,
+            calculatedScale     :calculatedScale,
+            labelHeight         :labelHeight,
+            scaleHeight         :scaleHeight,
+            valueBounds         :valueBounds,
+            labelTemplateString :labelTemplateString,
+            valueHop            :valueHop,
+            widestXLabel        :widestXLabel,
+            xAxisLength         :xAxisLength,
+            yAxisPosX           :yAxisPosX,
+            xAxisPosY           :xAxisPosY,
+            rotateLabels        :rotateLabels
+        }
+        
 		function drawLines(animPc){
 			for (var i=0; i<data.datasets.length; i++){
 				ctx.strokeStyle = data.datasets[i].strokeColor;

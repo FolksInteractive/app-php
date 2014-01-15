@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use TC\CoreBundle\Controller\RelationController as BaseController;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Form\RelationCreateType;
+use TC\CoreBundle\Reporter\ProductivityReporter;
+use TC\CoreBundle\Reporter\SalesReporter;
 
 /**
  * Relation controller.
@@ -22,14 +24,35 @@ class RelationController extends BaseController {
      * Listing of Relations.
      *
      * @Route("/", name="vendor_relation")
+     * @Route("/{idRelation}", name="vendor_relation_overview")
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_index_vendor.html.twig")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request, $idRelation = null)
+    {        
+        /**
+         * @var SalesReporter
+         */
+        $salesReporter = $this->container->get('tc.reporter.sales');
+        /**
+         * @var ProductivityReporter
+         */
+        $prodReporter = $this->container->get('tc.reporter.productivity');
+        
         $relations  = $this->getRelationManager()->findAllByVendor();        
 
+        if( $idRelation ){
+            $relation = $this->getRelationManager()->findByVendor($idRelation);
+        }else{
+            $relation = $relations->first();   
+        }
+        
         return array(
+            'productivity_flow'     => $prodReporter->getFlow( $relation ),
+            'order_pending_total'   => $salesReporter->getPendingOrdersAmount( $relation ),
+            'order_pending_count'   => $salesReporter->countPendingOrders( $relation ),
+            'rfp_pending_count'     => $salesReporter->countPendingRFPs( $relation ),
+            "relation" => $relation,
             'relations' => $relations
         );
     }

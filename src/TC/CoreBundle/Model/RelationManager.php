@@ -182,7 +182,7 @@ class RelationManager {
      * @param Relation $relation
      */
     public function save( Relation $relation, $sendInvitation = true ) {
-        $isNew = ($relation->getId());
+        $isNew = ($relation->getId() == null);
         // Make sure Relation is valid before saving
         $errors = $this->validator->validate( $relation );
         if ( $errors->count() > 0 )
@@ -192,7 +192,7 @@ class RelationManager {
         $this->em->flush();
         
         // If Relation is new send a invitation email to the other partie
-        if ( !$isNew && $sendInvitation )
+        if ( $isNew && $sendInvitation )
             $this->sendInvitation( $relation );
     }
 

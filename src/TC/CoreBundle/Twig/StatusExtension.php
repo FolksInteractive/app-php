@@ -16,7 +16,7 @@ use Twig_Extension;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
 
-class StatusHelperExtension extends Twig_Extension {
+class StatusExtension extends Twig_Extension {
 
     /**
      * @var ContainerInterface

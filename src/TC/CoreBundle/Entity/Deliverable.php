@@ -97,12 +97,12 @@ class Deliverable
     
     
     /**
-     * @var datetime $completedAt
+     * @var datetime $completed_at
      *
      * @Assert\Type("\DateTime")
      * @ORM\Column(name="completed_at", nullable=true, type="datetime")
      */
-    private $completedAt;
+    private $completed_at;
     
     /**
      * @var boolean $invoiced
@@ -312,26 +312,26 @@ class Deliverable
     }
 
     /**
-     * Set completedAt
+     * Set completed_at
      *
-     * @param \DateTime $completedAt
+     * @param \DateTime completed_at
      * @return Deliverable
      */
-    public function setCompletedAt($completedAt)
+    public function setCompletedAt($completed_at)
     {
-        $this->completedAt = $completedAt;
+        $this->completed_at = $completed_at;
     
         return $this;
     }
 
     /**
-     * Get completedAt
+     * Get completed_at
      *
      * @return \DateTime 
      */
     public function getCompletedAt()
     {
-        return $this->completedAt;
+        return $this->completed_at;
     }
     
     /**
