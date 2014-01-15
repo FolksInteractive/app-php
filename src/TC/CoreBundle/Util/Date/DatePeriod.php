@@ -6,26 +6,33 @@ use DatePeriod as BaseDatePeriod;
 use DateTime;
 
 class DatePeriod extends BaseDatePeriod {
+    
+    /* 
+     * Classes inherited from DatePeriod class cannot use their declared properties
+     * https://bugs.php.net/bug.php?id=65672
+     * 
+     * That's why I added _ befor variable $start and $end
+    */ 
+    
+    /**
+     * @var DateTime
+     */
+    public $_start;
 
     /**
      * @var DateTime
      */
-    public $start;
-
-    /**
-     * @var DateTime
-     */
-    public $end;
+    public $_end;
 
     public function __construct( $start, $interval, $end ){
-        $this->start = $start;
-        $this->end = $end;
+        $this->_start = $start;
+        $this->_end = $end;
         
         parent::__construct( $start, $interval, $end );
     }
 
     public function fitsIn( DateTime $date ){
-        return ( $this->start <= $date && $this->end >=$date );
+        return ( $this->_start <= $date && $this->_end >=$date );
     }
 
 }
