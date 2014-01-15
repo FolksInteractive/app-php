@@ -24,7 +24,7 @@ class RelationController extends BaseController {
      * Listing of Relations.
      *
      * @Route("/", name="vendor_relation")
-     * @Route("/{idRelation}", name="vendor_relation_overview")
+     * @Route("/{idRelation}", name="vendor_relation_overview", requirements={"idRelation" = "\d+"})
      * @Method("GET")
      * @Template("TCCoreBundle:Relation:relation_index_vendor.html.twig")
      */

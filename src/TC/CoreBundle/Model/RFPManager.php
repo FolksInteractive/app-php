@@ -103,15 +103,25 @@ class RFPManager {
      * @return Collection 
      */
     public function findAllUnproposedByRelation( Relation $relation ){
-        $rfps = $this->em->getRepository( "TCCoreBundle:RFP" )
-            ->createQueryBuilder( "r" )
-            ->leftJoin( "TCCoreBundle:Order", "o", "WITH", "o.rfp = r" )
+        $ordersQB = $this->em->createQueryBuilder();
+        
+        $ordersQB
+            ->select( 'DISTINCT IDENTITY(o.rfp)' )
+            ->from( "TCCoreBundle:Order", "o" )
+            ->join("TCCoreBundle:RFP", '_r', 'WITH', '_r = o.rfp')
+            ->where( "o.rfp IS NOT NULL" )
+            ->andWhere( "r.relation = :relation" );
+
+        $rfpsQB = $this->em->getRepository( "TCCoreBundle:RFP" )->createQueryBuilder( "r" );
+
+        $rfps = $rfpsQB
             ->where( "r.relation = :relation" )
             ->andWhere( "r.ready = true" )
+            ->andWhere( $rfpsQB->expr()->notIn( "r.id", $ordersQB->getDQL() ) )
             ->setParameter( "relation", $relation )
             ->getQuery()
             ->getResult();
-
+        
         return $rfps;
     }
 
