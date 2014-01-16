@@ -29,7 +29,7 @@
             <div class="tc-relations-boxes">
             {% for _relation in relations %}
 
-                {% set class_name = _relation.id != _relation.id ? "people-not-selected" : "people-selected" %}
+                {% set class_name = _relation.id != relation.id ? "people-not-selected" : "people-selected" %}
                 <a class="people {{class_name}}" href="{{path('client_relation_overview',{'idRelation':_relation.id})}}">
                     {# Ajouter la class « tc-relation-active-badge » lorsqu'il y au moins 1 élément de notification. 
                     <div class="badge tc-relation-badge">0</div>#}
@@ -40,7 +40,7 @@
                         {#<p class="headline">Co-Founder of TimeCrumbs.com & Flawless Learning Solutions Inc.</p>#}
 
                     {% else %}
-                        <p>{{_relation.vendor.getEmail()}} <br /> 
+                        <p><strong>{{_relation.vendor.getEmail()}}</strong> <br /> 
                             <small>Pending registration</small>
                         </p>
                     {% endif %}
