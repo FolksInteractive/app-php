@@ -7,7 +7,7 @@ use DateTime;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 use TC\CoreBundle\Entity\Relation;
-use TC\CoreBundle\Util\Date\DatePeriod;
+use TC\CoreBundle\Util\Date\Period;
 use TC\CoreBundle\Util\Date\Week;
 
 class ProductivityReporter extends AbstractReporter {
@@ -27,7 +27,7 @@ class ProductivityReporter extends AbstractReporter {
             "completed_data" => array( ),
             "expected_data"  => array( ),
         );
-
+        
         // Init Report
         $now = new DateTime();
         
@@ -39,7 +39,7 @@ class ProductivityReporter extends AbstractReporter {
 
         $interval = new DateInterval( "P7D" );
 
-        $period = new DatePeriod( $start, $interval, $end );
+        $period = new Period( $start, $end );
 
         // Fetch Deliverables completed in that time period
         $deliverables = $this->em->getRepository( "TCCoreBundle:Deliverable" )->createQueryBuilder( "d" )
@@ -51,9 +51,9 @@ class ProductivityReporter extends AbstractReporter {
             ->setParameter( "end", $end )
             ->getQuery()
             ->getResult();
-
+        
         // Build Report
-        foreach( $period as $key => $date ){
+        foreach( $period->getDatePeriod( $interval ) as $key => $date ){
             $week = Week::createFromDate( $date );
             $label = $week->getShortLabel();
 
