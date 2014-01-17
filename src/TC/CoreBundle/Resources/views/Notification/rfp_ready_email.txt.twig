@@ -31,5 +31,5 @@ View RFP
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('client_rfp_show', {'idRelation':relation.id, 'idRFP':rfp.id})}}
+{{url('vendor_rfp_show', {'idRelation':relation.id, 'idRFP':rfp.id})}}
 {% endautoescape %}{% endblock %}

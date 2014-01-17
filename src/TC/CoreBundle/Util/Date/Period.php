@@ -50,7 +50,7 @@ class Period {
      * @return boolean
      */
     public function fitsIn( DateTime $date ){
-        return ( $this->s <= $date && $this->e >=$date );
+        return ( $this->start <= $date && $this->end >=$date );
     }
 
 }
