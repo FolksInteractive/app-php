@@ -42,10 +42,9 @@
 
         <div class="tc-invoice-terms col-md-4">
             <legend>Informations</legend>
-            <p><b>Invoice #:</b> {{invoice.id}}<br>
-                <b>Date:</b> July 31st 2013<br>
-                <b>Terms:</b> Net 30<br>
-                <b>Due Date:</b> August 31st 2013
+            <p><b>Invoice #:</b> {{invoice.no}}<br>
+                <b>Date:</b> {{invoice.getCreatedAt()|date('F dS Y')}}<br>
+                <b>Due Date:</b> {{invoice.getDueAt()|date('F dS Y')}}
             </p>
         </div>
     </div>
