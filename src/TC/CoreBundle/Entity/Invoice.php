@@ -60,7 +60,7 @@ class Invoice
      *      joinColumns={@ORM\JoinColumn(name="invoice_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="deliverable_id",unique=true, referencedColumnName="id")}
      *      ) 
-     * @ORM\OrderBy({"completedAt" = "DESC"})
+     * @ORM\OrderBy({"completed_at" = "DESC"})
      */
     private $deliverables;
     
