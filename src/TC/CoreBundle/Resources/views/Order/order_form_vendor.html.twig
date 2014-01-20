@@ -216,22 +216,27 @@ ng-cloak
         <script type="text/javascript">
         {% autoescape 'js' %}
             (function(ng, module){
-                    module.value("order", {
-                    heading: "{{form.heading.vars.value|default('')}}",
-                        subheading: "{{form.subheading.vars.value|default('')}}",
-                        offer : {{form.offer.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}},
-                        deliverables : [
-                {% for deliverable in form.deliverables %}
-                {% set data = deliverable.vars.value %}
-                        {{"{'id':%s, 'name':'%s', 'cost':%s, 'quantity':%s}"|format(data.id, data.name, data.cost, data.quantity)|raw}}
-                    {% if not loop.last %}
-                    {{","}}
-                    {% endif %}
+                
+                {% set deliverablesToEncode = [] %}
+                {% for deliverableForm in form.deliverables %}   
+                    {% set deliverable = deliverableForm.vars.data %}
+                    {% set deliverablesToEncode = deliverablesToEncode|merge([{ 
+                        'id'        : deliverable.id, 
+                        'name'      : deliverable.name,
+                        'cost'      : deliverable.cost,
+                        'quantity'  : deliverable.quantity
+                    }])  %}        
                 {% endfor %}
-                    ]
+                    
+                module.value("order", {
+                    heading: "{{form.heading.vars.value|default('')}}",
+                    subheading: "{{form.subheading.vars.value|default('')}}",
+                    offer : {{form.offer.vars.value|json_encode(constant('JSON_HEX_TAG'))|raw}},
+                    deliverables : {{deliverablesToEncode|json_encode(constant('JSON_HEX_TAG'))|raw}}
                 });
 
                 module.value("form_name", "{{form.vars.name}}");
+                
             })(angular, module);
 
         {% endautoescape %}
