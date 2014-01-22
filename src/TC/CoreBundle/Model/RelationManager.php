@@ -66,7 +66,7 @@ class RelationManager {
      * 
      * @return Collection
      */
-    public function findAllByClient() {
+    public function findAllVendors() {
         return $this->getWorkspace()->getClientRelations();
     }
 
@@ -74,7 +74,7 @@ class RelationManager {
      * 
      * @return Collection
      */
-    public function findAllByVendor() {
+    public function findAllClients() {
         return $this->getWorkspace()->getVendorRelations();
     }
 
@@ -108,30 +108,7 @@ class RelationManager {
      * @return Relation
      * @throws NotFoundHttpException
      */
-    public function findByClient( $id ) {
-        try {
-            /* @var $relation Relation */
-            $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
-                    ->where( "r.client = :workspace" )
-                    ->andWhere( "r.id = :id" )
-                    ->andWhere( "r.active = true" )
-                    ->setParameter( "id", $id )
-                    ->setParameter( "workspace", $this->getWorkspace() )
-                    ->getQuery()
-                    ->getSingleResult();
-        } catch ( NoResultException $e ) {
-            throw new NotFoundHttpException( 'Relation not found' );
-        }
-        return $relation;
-    }
-
-    /**
-     * 
-     * @param integer $id
-     * @return Relation
-     * @throws NotFoundHttpException
-     */
-    public function findByVendor( $id ) {
+    public function findClient( $id ) {
         try {
             /* @var $relation Relation */
             $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
@@ -143,7 +120,30 @@ class RelationManager {
                     ->getQuery()
                     ->getSingleResult();
         } catch ( NoResultException $e ) {
-            throw new NotFoundHttpException( 'Relation not found' );
+            throw new NotFoundHttpException( 'Client not found' );
+        }
+        return $relation;
+    }
+
+    /**
+     * 
+     * @param integer $id
+     * @return Relation
+     * @throws NotFoundHttpException
+     */
+    public function findVendor( $id ) {
+        try {
+            /* @var $relation Relation */
+            $relation = $this->em->getRepository( "TCCoreBundle:Relation" )->createQueryBuilder( "r" )
+                    ->where( "r.client = :workspace" )
+                    ->andWhere( "r.id = :id" )
+                    ->andWhere( "r.active = true" )
+                    ->setParameter( "id", $id )
+                    ->setParameter( "workspace", $this->getWorkspace() )
+                    ->getQuery()
+                    ->getSingleResult();
+        } catch ( NoResultException $e ) {
+            throw new NotFoundHttpException( 'Vendor not found' );
         }
         return $relation;
     }
@@ -151,7 +151,7 @@ class RelationManager {
     /**
      * @return Relation
      */
-    public function createForClient() {
+    public function createVendor() {
         $relation = $this->create();
         $relation->setClient( $this->getWorkspace() );
         
@@ -161,7 +161,7 @@ class RelationManager {
     /**
      * @return Relation
      */
-    public function createForVendor() {
+    public function createClient() {
         $relation = $this->create();
         $relation->setVendor( $this->getWorkspace() );
         

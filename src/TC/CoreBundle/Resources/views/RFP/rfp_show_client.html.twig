@@ -2,15 +2,13 @@
 
 {% set thread = rfp.thread %}
 
-{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+{% use "TCCoreBundle:Relation:menu_client.html.twig" %}
 
 {% use "TCCoreBundle:RFP:rfp_show_base.html.twig" with body_class as base_body_class %}
 
 {% use "TCCoreBundle:Thread:thread_quick.html.twig" %}
 
-{% block body_class %} 
-{{parent()}} {{ block('base_body_class') }}  
-{% endblock %}
+{% block body_class %} {{parent()}} {{ block('base_body_class') }}  {% endblock %}
 
 {% block toolbar %}
 <div class="tc-breadcrumb pull-left">
@@ -19,43 +17,17 @@
 </div>
 
 <div class="tc-controls toolbar pull-right">
-    {% if rfp.order is not null and rfp.order.ready %}
+    {% if rfp.order is not null %}
         <a class="btn btn-default btn-lg" 
-           href="{{path('client_order_show',{'idOrder':rfp.order.id, 'idRelation':rfp.relation.id})}}">
+            href="{{path('client_order_show',{'idOrder':rfp.order.id, 'idRelation':rfp.relation.id})}}">
             View Proposal
-        </a>       
-    {% endif %} 
-        
-    <div class="btn-group">              
-        {% if is_editable(rfp) %}
-        <a class="btn-default btn-lg btn" 
-           href="{{path('client_rfp_edit' , {'idRelation':relation.id, 'idRFP':rfp.id})}}">
-            Edit RFP
         </a>
-        {% endif %}
-        
-        <button type="button" class=" btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-        </button>            
-        <ul class="dropdown-menu pull-right" role="menu">
-            {% if is_cancellable(rfp) %}
-                <li>
-                    <a href="{{path("client_rfp_cancel", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
-                        Cancel
-                    </a>
-                </li>
-            {% endif %}
-                                
-            {% if is_reopenable(rfp) %}
-            <li>
-                <a href="{{path("client_rfp_reopen", {'idRelation':relation.id, 'idRFP':rfp.id})}}">
-                    Reopen
-                </a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
+    {% elseif not rfp.cancelled and not rfp.declined  %}
+        <a class="btn btn-primary btn-lg" 
+           href="{{path('client_order_new',{'idRFP':rfp.id, 'idRelation':rfp.relation.id})}}">
+            <span class="icon-new-proposals-light-small"></span>Create Proposal
+        </a>
+    {% endif %}
 </div>
 {% endblock %}
 

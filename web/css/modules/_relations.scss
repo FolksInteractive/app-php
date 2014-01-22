@@ -88,11 +88,11 @@
     }
 }
 
-// Section Relation:index.html.twig
+// Section Relation:overview.html.twig
 // -------------------------
 
-.client-relations,
-.vendor-relations{ 
+.client-overview,
+.vendor-overview{ 
     .tc-relations-people-col {
         position: fixed;
         top: 90px;
@@ -379,19 +379,11 @@
 // Section Relation:RFPS:show.html.twig
 // -------------------------
 
-.client-relations,
-.vendor-relations{
-    
-    .tc-relation-rfps-section{
-        
-    }
-    
-}
 
 // Section Relation:orders.html.twig
 // -------------------------
 
-.relation-orders{
+.orders{
     .user{
         width:30px;
     }
@@ -423,7 +415,7 @@
 //Section Relation:progress.html.twig
 // -------------------------
 
-.relation-progress{
+.monitoring{
     
     .tc-progress-section{
         
@@ -466,20 +458,12 @@
 // Section Relation:invoice.html.twig
 // -------------------------
 
-.relation-invoice{
-    
-    .tc-invoice-section{
-        
-    }
+.invoice{
 }
 
 
 // Section Relation:invoices.html.twig
 // -------------------------
 
-.relation-invoices{
-    
-    .tc-invoices-section{
-        
-    }
+.invoices{
 }

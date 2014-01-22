@@ -13,13 +13,13 @@ tc_root:
 tc_client:
     resource: "@TCCoreBundle/Controller/Client"
     type:     annotation
-    prefix: /0
+    prefix: /
     schemes:  [https]
     
 tc_vendor:
     resource: "@TCCoreBundle/Controller/Vendor"
     type:     annotation
-    prefix: /1
+    prefix: /
     schemes:  [https]
     
 #tc_core:

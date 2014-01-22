@@ -7,53 +7,7 @@ use Knp\Menu\MenuItem;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class ClientMenuBuilder extends ContainerAware {
-
-    /**
-     * Build the main menu
-     * 
-     * @param FactoryInterface $factory
-     * @param array $options
-     * @return MenuItem
-     */
-    public function mainMenu( FactoryInterface $factory, array $options ) {
-
-        $menu = $factory->createItem( 'root'/* , array('childrenAttributes' => array('id' => 'menu_id')) */ );
-        $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
-        //$menu->setUri($this->container->get('request')->getRequestUri());
-        
-        // Dashboard
-        $menu
-            ->addChild( 'Dashboard', array(
-                'route' => 'client_dashboard'
-            ) )
-            ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
-            ->setExtra( "sub_label", "Bird eye view on what's going on" );
-
-        // Service Providers
-        $menu
-            ->addChild( 'Service Providers', array(
-            'route' => 'client_relation'
-        ) )
-            ->setExtra( "icon_classes", "icon-relations" )
-            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
-            ->setExtra( "sub_label", "Build & manage relationships" )
-        
-            // New Relation
-            ->addChild('New Relation', array(
-            'route' => 'client_relation_new'
-            ));
-        
-        // Projects
-        $menu
-            ->addChild( 'Projects', array(
-                'route' => 'client_project'
-            ) )
-            ->setExtra( "icon_classes", "icon-projects" )
-            ->setExtra( "sub_label", "Manage multiple service providers in the same project" );
-
-        return $menu;
-    }
-
+    
     /**
      * 
      * @param FactoryInterface $factory
@@ -74,7 +28,7 @@ class ClientMenuBuilder extends ContainerAware {
         //$menu->setUri($this->container->get('request')->getRequestUri());
 
         /* $menu->addChild( '.icon-settings Settings', array(
-          'route' => 'client_relation_new',
+          'route' => 'client_new',
           'routeParameters' => $routeParameters
           ) );
          */
@@ -107,7 +61,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Request For Proposal
         $menu
             ->addChild( 'Request For Proposal', array(
-            'route' => 'client_relation_rfps',
+            'route' => 'client_rfps',
             'routeParameters' => $routeParameters
         ) )
             ->setExtra( "icon_classes", "icon-rfp-light" )
@@ -116,7 +70,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Proposals
         $menu
             ->addChild( 'Proposals', array(
-                'route' => 'client_relation_orders',
+                'route' => 'client_orders',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-orders" )
@@ -125,7 +79,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Monitoring
         $menu
             ->addChild( 'Work Monitoring', array(
-                'route' => 'client_relation_progress',
+                'route' => 'client_progress',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-progress-light-sm" )
@@ -134,7 +88,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Open Bill
         $menu
             ->addChild( 'Open Bill', array(
-                'route' => 'client_relation_bill',
+                'route' => 'client_bill',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-bill" )
@@ -143,7 +97,7 @@ class ClientMenuBuilder extends ContainerAware {
         // Invoices
         $menu
             ->addChild( 'Invoices', array(
-                'route' => 'client_relation_invoices',
+                'route' => 'client_invoices',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-invoice" )
@@ -166,7 +120,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // RFPs
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_rfps',
+            'route' => 'client_rfps',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "RFPs" )
@@ -181,14 +135,6 @@ class ClientMenuBuilder extends ContainerAware {
             ) )
             ->setLabel( $options['rfp']->getHeading() );
         }
-        
-        // New RFP
-        $menu->addChild( 'New RFP', array(
-            'route' => 'client_rfp_new',
-            'routeParameters' => array('idRelation' => $idRelation)
-        ) );
-        
-        
 
         return $menu;
     }
@@ -207,7 +153,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // Proposals
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_orders',
+            'route' => 'client_orders',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Proposals" )                
@@ -221,6 +167,13 @@ class ClientMenuBuilder extends ContainerAware {
             ) )
             ->setLabel( $options['order']->getHeading() );
         }
+                
+        // New Proposal
+        $menu
+            ->addChild( 'New Proposal', array(
+                'route' => 'client_order_new',
+                'routeParameters' => array('idRelation' => $idRelation)
+            ) );
         
         return $menu;
     }
@@ -239,7 +192,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // Work Monitoring
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_progress',
+            'route' => 'client_progress',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Work Monitoring" )
@@ -262,7 +215,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // Open Bill
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_bill',
+            'route' => 'client_bill',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Open Bill" )
@@ -285,7 +238,7 @@ class ClientMenuBuilder extends ContainerAware {
         
         // Invoices
         $menu = $factory->createItem( 'root', array(
-            'route' => 'client_relation_invoices',
+            'route' => 'client_invoices',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
             ->setLabel( "Invoices" )

@@ -1,0 +1,80 @@
+{% extends 'TCCoreBundle::skeleton_vendor.html.twig' %}
+
+{% use "TCCoreBundle:Relation:invoices_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Relation:menu_vendor.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }} vendor-invoices {% endblock %}
+
+{% block toolbar %}
+<div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:invoicesMenu',[],{"relation": relation}) %}
+
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right"></div>
+{% endblock %}
+
+{% block sheet %}
+
+{% if invoices is empty %}
+    {{block('empty_invoices_vendor')}}
+
+{% else %}
+
+        <div class="tc-invoices-section">  
+
+            <table  class="tc-table tc-invoices table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="left">Description</th>
+                        {#<th>Status</th>#}
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for invoice in invoices %}
+            
+            <tr class="{{invoice|status}}">
+                <td class="tc-number-col tc-info-col">
+                    {{invoice.no}}
+                </td>
+                <td class="tc-description-col">
+                    <div class="title">
+                        <a href="{{path('vendor_invoice_show',{'idInvoice':invoice.id,'idRelation': relation.id})}}">
+                            Invoice of {{ invoice.getCreatedAt()|date('F dS Y') }}
+                        </a>
+                    </div>
+                </td>
+
+                {# 
+                <td class="tc-status tc-status-col tc-status-3-items">
+                    <ul class="tc-status"> 
+
+                        <li class="tc-draft-state tc-state">
+                            <a href="{{path('vendor_invoice_show',{'idInvoice':invoice.id,'idRelation': relation.id})}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </li>
+
+                        <li class="tc-sent-state tc-state">
+                            <a href="{{path('vendor_invoice_show',{'idInvoice':invoice.id,'idRelation': relation.id})}}"><span class="glyphicon glyphicon-send"></span></a>
+                        </li>
+                        
+                        <li class="tc-closed-state tc-state">
+                            <a href="{{path('vendor_invoice_show',{'idInvoice':invoice.id,'idRelation': relation.id})}}"><div class="glyphicon glyphicon-usd"></div></a>
+                        </li>
+                    </ul> 
+                </td>
+                #}
+                
+                <td class="tc-info-col tc-subtotal-col">
+                    $ {{invoice.total|number_format(2, '.', ',')}}
+                </td>
+            </tr>
+        {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+{% endif %}
+{% endblock %}

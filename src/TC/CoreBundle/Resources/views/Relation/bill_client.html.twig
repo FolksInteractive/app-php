@@ -1,0 +1,143 @@
+{% extends 'TCCoreBundle::skeleton_client.html.twig' %}
+
+{% use "TCCoreBundle:Relation:bill_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Relation:menu_client.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }} client-bill  {% endblock %}
+
+{% block main_attrs %} 
+ng-app = 'Bill'
+ng-controller = 'bill.Controller'
+{% endblock %}
+
+
+{% block main_before %} 
+{% set attr = {'name':form.vars.name} %}
+{% set attr = attr|merge({'novalidate':""}) %}   
+{{form_start(form, {'attr':attr})}}
+{% endblock %}
+
+{% block main_after %}
+{{form_widget(form._token)}}
+{{form_end(form, {"render_rest":false})}}
+{% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+    {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:billMenu',[],{"relation": relation}) %}
+    {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right"> 
+     {% if form.deliverables is not empty %}
+        <button type="submit" 
+                class="btn btn-lg btn-primary"
+                ng-disabled="nbSelected() <= 0" disabled>
+            <span class="icon-new-proposals-light-sm"></span> Generate Draft Invoice
+        </button>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block sheet %}
+{% if form.deliverables is empty %}
+    {{block('empty_bill_client')}}
+
+{% else %}
+<div class="tc-invoice-section" ng-cloak>
+    
+    {{form_errors(form)}}
+    
+    <table  class="tc-table table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="left">Description</th>
+                <th>Unit price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% raw %}     
+                <tr ng-repeat="deliverable in deliverables">
+                    <td class="tc-actions-col">
+                        <div class="checkbox-item">
+                            <input type="checkbox" 
+                                   id="deliverable_{{deliverable.id}}"
+                                   name="{{deliverable_form_name}}"
+                                   value="{{deliverable.id}}" 
+                                   ng-checked="true" checked
+                                   ng-value="deliverable.id"
+                                   ng-model="deliverable.selected"
+                                   />
+                            <label for="deliverable_{{deliverable.id}}"></label>
+                        </div>
+                    </td>
+                    <td class="tc-description-col">
+                        
+                        <div class="title">
+                            <a href="{{deliverable.order_path}}">{{deliverable.name}}</a>
+                        </div>
+                            
+                        <div class="main-description">
+                            <b>Completed</b> on {{deliverable.completed_at}}
+                        </div>
+                    
+                    </td>
+                    <td class="tc-info-col tc-unitprice-col">
+                        {{deliverable.cost|currency}}
+                    </td>
+                    <td class="tc-info-col tc-quantity-col">
+                        {{deliverable.quantity}}
+                    </td>
+                    <td class="tc-info-col tc-subtotal-col">
+                        {{deliverable.total|currency}}
+                    </td>
+                    
+                </tr>
+            {% endraw %}
+        
+        </tbody>
+    </table>
+    
+    <div class="tc-total-price">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="total-label">Total : </div>
+        <div class="price" ng-bind="getTotal()|currency"></div>
+    </div>
+</div> 
+{% endif %}
+
+{% endblock %}
+
+{% block bottom_js %}
+{{parent()}}
+<script src="{{asset('js/bill/bill-module.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+{% autoescape 'js' %}
+(function(ng, module){
+    {% set deliverablesToEncode = [] %}
+    {% for deliverable in deliverables %}   
+        {% set deliverablesToEncode = deliverablesToEncode|merge([{ 
+            'id'            : deliverable.id, 
+            'name'          : deliverable.name,
+            'cost'          : deliverable.cost,
+            'quantity'      : deliverable.quantity,
+            'total'         : deliverable.getTotal,
+            'selected'      : true,
+            'completed'     : deliverable.completed, 
+            'completed_at'  : deliverable.getCompletedAt()|date("F jS Y"), 
+            'order_path'    : path("client_order_show",{'idOrder':deliverable.order.id,'idRelation':relation.id})
+        }])  %}        
+    {% endfor %}
+        
+    module.value("deliverables", {{deliverablesToEncode|json_encode(constant('JSON_HEX_TAG'))|raw}});
+    module.value("form_name", "{{form.vars.name}}");
+        
+})(angular, module);
+{% endautoescape %}
+</script>
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% set thread = order.thread %}
 
-{% use "TCCoreBundle:Relation:relation_menu_client.html.twig" %}
+{% use "TCCoreBundle:Relation:menu_client.html.twig" %}
 
 {% use "TCCoreBundle:Order:order_show_base.html.twig" with body_class as base_body_class %}
 
@@ -18,13 +18,26 @@
 
     <div class="tc-controls toolbar pull-right">
         
-        <div class="btn-group">
+        {% if is_sendable(order) and not order.ready %}
+            <a class="btn-primary btn-lg btn"
+               href="{{path('client_order_send' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                Send
+            </a>   
+        {% endif %}
             
+        <div class="btn-group">
+            {% if is_editable(order) %}
+            <a class="btn-default btn-lg btn" 
+               href="{{path('client_order_edit' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                Edit Proposal
+            </a>
+            {% endif %}
+                
             <button type="button" class="btn-lg btn-default btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
-            
+                
             <ul class="dropdown-menu pull-right" role="menu">
                 
                 {% if order.rfp is not null %}
@@ -33,15 +46,23 @@
                         View RFP
                     </a>   
                 </li>
-                {% endif %}    
-                                
-                {% if is_declinable(order) %}
+                {% endif %}              
+
+                {% if is_sendable(order) %}
                 <li>
-                    <a href="{{path("client_order_decline", {'idRelation':relation.id, 'idOrder':order.id})}}">
-                        Decline
+                    <a href="{{path('client_order_send' , {'idOrder':order.id, 'idRelation': relation.id})}}">
+                        Send
                     </a>
                 </li>
-                {% endif %}
+                {% endif %}              
+
+                {% if is_cancellable(order) %}
+                <li>
+                    <a href="{{path("client_order_cancel", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                        Cancel
+                    </a>
+                </li>
+                {% endif %}   
 
                 {% if is_reopenable(order) %}
                 <li>
@@ -52,45 +73,12 @@
                 {% endif %}
             </ul>
         </div>
-            
     </div>
 {% endblock %}
 
-{% block main_attrs %} 
-ng-app="Order" 
-ng-cloak
+{% block main_attrs %}
+{{ block('thread_main_attrs') }}
 {% endblock %}
-
-{%block purchase_section %}
-{% if purchaseForm is defined and purchaseForm is not null and is_purchasable(order) %}
-<div class="tc-agreement-section" ng-controller="order.PurchaseController">
-    {{form_start(purchaseForm)}}
-        <div class="agree-check">
-            <label for="{{purchaseForm.confirmation.vars.id}}">
-            <input type="checkbox" 
-                   id="{{purchaseForm.confirmation.vars.id}}"
-                   name="{{purchaseForm.confirmation.vars.full_name}}" 
-                   value="{{purchaseForm.confirmation.vars.value}}"
-                   ng-model="confirm" />
-            I accept the terms and conditions of this proposal.
-            </label>
-        </div>
-        <div class="agree-btn">
-            <button type="submit" class="btn btn-success btn-lg"
-                id="{{purchaseForm.submit.vars.id}}"
-                name="{{purchaseForm.submit.vars.full_name}}" 
-                ng-disabled="!confirm"
-                disabled>
-                <span class="glyphicon glyphicon-ok tc-right5"></span> 
-                Approve Proposal
-            </button>
-        </div>
-        <div class="decline-btn"><a href="{{path('client_order_decline' , {'idOrder':order.id, 'idRelation': relation.id})}}">or reject it.</a></div>
-    {{form_widget(purchaseForm._token)}}
-    {{form_end(purchaseForm, {'render_rest':false})}}
-</div>
-{% endif %}
-{% endblock %} 
 
 {% block main_after %}
 {{ block('thread_section') }}
@@ -98,8 +86,5 @@ ng-cloak
 
 {% block bottom_js %}
 {{ parent() }}
-
-<script type="text/javascript" src="{{asset("/js/order/show-module.js")}}"></script>
 {{ block('thread_bottom_js') }}
-
 {% endblock %}

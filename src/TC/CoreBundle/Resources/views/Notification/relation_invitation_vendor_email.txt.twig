@@ -33,5 +33,5 @@ Get Started
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('vendor_relation')}}
+{{url('client_overview', {'idRelation': relation.id})}}
 {% endautoescape %}{% endblock %}

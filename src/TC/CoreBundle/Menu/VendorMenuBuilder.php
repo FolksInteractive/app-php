@@ -9,48 +9,6 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class VendorMenuBuilder extends ContainerAware {
 
     /**
-     * Build the main menu
-     * 
-     * @param FactoryInterface $factory
-     * @param array $options
-     * @return MenuItem
-     */
-    public function mainMenu( FactoryInterface $factory, array $options ) {
-
-        $menu = $factory->createItem( 'root' );
-        $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
-
-        $menu
-            ->addChild( 'Dashboard', array(
-                'route' => 'vendor_dashboard'
-        ) )
-            ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
-            ->setExtra( "sub_label", "Bird eye view on what's going on" );
-
-        $menu
-            ->addChild( 'Clients', array(
-            'route' => 'vendor_relation'
-        ) )
-            ->setExtra( "icon_classes", "icon-relations" )
-            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
-            ->setExtra( "sub_label", "Build & manage relationships" )
-                
-            // New Relation
-            ->addChild('New Relation', array(
-            'route' => 'vendor_relation_new'
-            ));
-        
-        $menu
-            ->addChild( 'Price Book', array(
-            'route' => 'vendor_pricebook'
-        ) )
-            ->setExtra( "icon_classes", "glyphicon glyphicon-book" )
-            ->setExtra( "sub_label", "Your pricing catalog" );
-        
-        return $menu;
-    }
-
-    /**
      * 
      * @param FactoryInterface $factory
      * @param array $options
@@ -69,7 +27,7 @@ class VendorMenuBuilder extends ContainerAware {
         // Request For Proposal
          $menu
             ->addChild( 'Request For Proposal', array(
-                'route' => 'vendor_relation_rfps',
+                'route' => 'vendor_rfps',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-rfp-light" )
@@ -78,7 +36,7 @@ class VendorMenuBuilder extends ContainerAware {
          // Proposals
         $menu
             ->addChild( 'Proposals', array(
-                'route' => 'vendor_relation_orders',
+                'route' => 'vendor_orders',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-orders" )
@@ -87,7 +45,7 @@ class VendorMenuBuilder extends ContainerAware {
         // Monitoring
         $menu
             ->addChild( 'Work Monitoring', array(
-                'route' => 'vendor_relation_progress',
+                'route' => 'vendor_progress',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-progress-light-sm" )
@@ -96,7 +54,7 @@ class VendorMenuBuilder extends ContainerAware {
         // Open Bill
         $menu
             ->addChild( 'Open Bill', array(
-                'route' => 'vendor_relation_bill',
+                'route' => 'vendor_bill',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-bill" )
@@ -105,7 +63,7 @@ class VendorMenuBuilder extends ContainerAware {
         // Invoices 
         $menu
             ->addChild( 'Invoices', array(
-                'route' => 'vendor_relation_invoices',
+                'route' => 'vendor_invoices',
                 'routeParameters' => $routeParameters
             ) )
             ->setExtra( "icon_classes", "icon-invoice" )
@@ -129,7 +87,7 @@ class VendorMenuBuilder extends ContainerAware {
         // RFPs
         $menu = $factory
             ->createItem( 'root', array(
-                'route' => 'vendor_relation_rfps',
+                'route' => 'vendor_rfps',
                 'routeParameters' => array('idRelation' => $idRelation)
             ) )
             ->setLabel( "RFPs" )
@@ -145,6 +103,12 @@ class VendorMenuBuilder extends ContainerAware {
                 ) )
                 ->setLabel( $options['rfp']->getHeading() );
         }
+        
+        // New RFP
+        $menu->addChild( 'New RFP', array(
+            'route' => 'vendor_rfp_new',
+            'routeParameters' => array('idRelation' => $idRelation)
+        ) );
 
         return $menu;
     }
@@ -163,7 +127,7 @@ class VendorMenuBuilder extends ContainerAware {
 
         // Proposals
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_orders',
+            'route' => 'vendor_orders',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Proposals")
@@ -178,13 +142,6 @@ class VendorMenuBuilder extends ContainerAware {
                 ))
                 ->setLabel( $options['order']->getHeading() );
         }
-                
-        // New Proposal
-        $menu
-            ->addChild( 'New Proposal', array(
-                'route' => 'vendor_order_new',
-                'routeParameters' => array('idRelation' => $idRelation)
-            ) );
         
         return $menu;
     }
@@ -203,7 +160,7 @@ class VendorMenuBuilder extends ContainerAware {
         //$routeParameters = array('id' => $idOrder, 'idRelation' => $idRelation);
 
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_progress',
+            'route' => 'vendor_progress',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Work Monitoring")
@@ -225,7 +182,7 @@ class VendorMenuBuilder extends ContainerAware {
         //$routeParameters = array('id' => $idOrder, 'idRelation' => $idRelation);
 
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_bill',
+            'route' => 'vendor_bill',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Open Bill")
@@ -248,7 +205,7 @@ class VendorMenuBuilder extends ContainerAware {
 
         // Invoices
         $menu = $factory->createItem( 'root', array(
-            'route' => 'vendor_relation_invoices',
+            'route' => 'vendor_invoices',
             'routeParameters' => array('idRelation' => $idRelation)
         ))
             ->setLabel("Invoices")

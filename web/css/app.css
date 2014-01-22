@@ -1258,71 +1258,12 @@ body {
   margin-left: 220px; }
 
 /*************************************************/
-/*****   Section Client:dashboard.html.twig   *****/
+/*****   Section dashboard.html.twig   *****/
 /*************************************************/
-.client-dashboard .tc-toolbar .tc-breadcrumb .glyphicon, .vendor-dashboard .tc-toolbar .tc-breadcrumb .glyphicon {
+.dashboard .tc-breadcrumb .glyphicon {
   font-size: 30px;
   margin-right: 14px;
   color: #666; }
-.client-dashboard .wrapper, .vendor-dashboard .wrapper {
-  margin: 0 35px; }
-  .client-dashboard .wrapper .tc-activities .media-list, .vendor-dashboard .wrapper .tc-activities .media-list {
-    padding: 20px; }
-    .client-dashboard .wrapper .tc-activities .media-list :before, .vendor-dashboard .wrapper .tc-activities .media-list :before {
-      position: absolute;
-      top: 70px;
-      bottom: 70px;
-      left: 60px;
-      width: 1px;
-      background: #dededf;
-      content: '';
-      z-index: -1; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-object, .vendor-dashboard .wrapper .tc-activities .media-list .media-object {
-      width: 50px;
-      height: 50px; }
-    .client-dashboard .wrapper .tc-activities .media-list .media-body, .vendor-dashboard .wrapper .tc-activities .media-list .media-body {
-      padding: 5px 0 0 25px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body h4 span, .vendor-dashboard .wrapper .tc-activities .media-list .media-body h4 span {
-        font-size: 12px; }
-      .client-dashboard .wrapper .tc-activities .media-list .media-body .date, .vendor-dashboard .wrapper .tc-activities .media-list .media-body .date {
-        color: #777;
-        font-size: 12px; }
-  .client-dashboard .wrapper .tc-activities legend, .vendor-dashboard .wrapper .tc-activities legend {
-    margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships legend, .vendor-dashboard .wrapper .tc-relationships legend {
-    margin-top: 0; }
-  .client-dashboard .wrapper .tc-relationships .block, .vendor-dashboard .wrapper .tc-relationships .block {
-    text-align: center;
-    margin-left: -5px; }
-    .client-dashboard .wrapper .tc-relationships .block h1, .vendor-dashboard .wrapper .tc-relationships .block h1 {
-      font-size: 48px;
-      font-weight: bold; }
-    .client-dashboard .wrapper .tc-relationships .block p, .vendor-dashboard .wrapper .tc-relationships .block p {
-      color: #999; }
-  .client-dashboard .wrapper .tc-relationships .button-add, .vendor-dashboard .wrapper .tc-relationships .button-add {
-    text-align: center;
-    margin-top: 48px; }
-  .client-dashboard .wrapper .tc-money legend, .vendor-dashboard .wrapper .tc-money legend {
-    margin-top: 40px; }
-  .client-dashboard .wrapper .tc-money .chart-legend, .vendor-dashboard .wrapper .tc-money .chart-legend {
-    padding: 65px 0 0 40px;
-    vertical-align: middle; }
-    .client-dashboard .wrapper .tc-money .chart-legend .item, .vendor-dashboard .wrapper .tc-money .chart-legend .item {
-      padding-bottom: 30px; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .spent, .vendor-dashboard .wrapper .tc-money .chart-legend .item .spent {
-        background: #5cb85c; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .wip, .vendor-dashboard .wrapper .tc-money .chart-legend .item .wip {
-        background: #428bca; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .ob, .vendor-dashboard .wrapper .tc-money .chart-legend .item .ob {
-        background: #0C04E8; }
-      .client-dashboard .wrapper .tc-money .chart-legend .item .grey, .vendor-dashboard .wrapper .tc-money .chart-legend .item .grey {
-        color: #777;
-        padding-left: 10px; }
-  .client-dashboard .wrapper .tc-money .chart, .vendor-dashboard .wrapper .tc-money .chart {
-    text-align: center;
-    padding-top: 20px; }
-    .client-dashboard .wrapper .tc-money .chart #money-spent, .vendor-dashboard .wrapper .tc-money .chart #money-spent {
-      text-align: center; }
 
 .tc-relations-section > h4 {
   margin: 30px 0 20px 0; }
@@ -1378,8 +1319,8 @@ body {
   vertical-align: middle;
   margin-top: -10px; }
 
-.client-relations .tc-relations-people-col,
-.vendor-relations .tc-relations-people-col {
+.client-overview .tc-relations-people-col,
+.vendor-overview .tc-relations-people-col {
   position: fixed;
   top: 90px;
   left: 220px;
@@ -1387,59 +1328,59 @@ body {
   width: 350px;
   border-right: 1px solid #dededf;
   background: #f8f8f8; }
-  .client-relations .tc-relations-people-col .tc-relations-boxes .people,
-  .vendor-relations .tc-relations-people-col .tc-relations-boxes .people {
+  .client-overview .tc-relations-people-col .tc-relations-boxes .people,
+  .vendor-overview .tc-relations-people-col .tc-relations-boxes .people {
     position: relative;
     display: block;
     border-bottom: 1px solid #dededf; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .tc-relation-badge {
       position: absolute;
       right: 15px;
       top: 15px;
       display: none; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .tc-relation-active-badge {
       background-color: #5cb85c; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .avatar,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .avatar {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .avatar,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .avatar {
       display: inline-block;
       margin: 15px; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .caption,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .caption {
       display: inline-block;
       vertical-align: top;
       margin-top: 20px; }
-      .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption .name,
-      .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption .name {
+      .client-overview .tc-relations-people-col .tc-relations-boxes .people .caption .name,
+      .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .caption .name {
         font-weight: bold;
         font-size: 18px;
         margin-bottom: 0; }
-      .client-relations .tc-relations-people-col .tc-relations-boxes .people .caption .headline,
-      .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .caption .headline {
+      .client-overview .tc-relations-people-col .tc-relations-boxes .people .caption .headline,
+      .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .caption .headline {
         color: #999999;
         font-style: italic;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         width: 220px; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .pro-title,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .pro-title {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .pro-title,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .pro-title {
       font-size: 14px;
       color: #777; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people .toolbar,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people .toolbar {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people .toolbar,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people .toolbar {
       margin-top: 20px; }
-  .client-relations .tc-relations-people-col .tc-relations-boxes .people-not-selected:hover,
-  .vendor-relations .tc-relations-people-col .tc-relations-boxes .people-not-selected:hover {
+  .client-overview .tc-relations-people-col .tc-relations-boxes .people-not-selected:hover,
+  .vendor-overview .tc-relations-people-col .tc-relations-boxes .people-not-selected:hover {
     background: white;
     cursor: pointer; }
-  .client-relations .tc-relations-people-col .tc-relations-boxes .people-selected,
-  .vendor-relations .tc-relations-people-col .tc-relations-boxes .people-selected {
+  .client-overview .tc-relations-people-col .tc-relations-boxes .people-selected,
+  .vendor-overview .tc-relations-people-col .tc-relations-boxes .people-selected {
     background: #fff;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.07); }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .people-selected :after,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .people-selected :after {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .people-selected :after,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .people-selected :after {
       position: absolute;
       background: #fff;
       width: 1px;
@@ -1447,8 +1388,8 @@ body {
       right: -1px;
       top: 0;
       bottom: 0; }
-  .client-relations .tc-relations-people-col .tc-relations-boxes .add-more,
-  .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more {
+  .client-overview .tc-relations-people-col .tc-relations-boxes .add-more,
+  .vendor-overview .tc-relations-people-col .tc-relations-boxes .add-more {
     width: 230px;
     height: 300px;
     position: absolute;
@@ -1457,148 +1398,148 @@ body {
     margin-bottom: 100px;
     margin-left: -115px;
     text-align: center; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > img,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > img {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .add-more > img,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .add-more > img {
       margin-left: -15px;
       padding-bottom: 20px; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > h4,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > h4 {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .add-more > h4,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .add-more > h4 {
       font-size: 50px;
       font-family: "Open Sans Light", sans-serif;
       color: #0a6895;
       font-size: 36px;
       color: #999999; }
-    .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > p,
-    .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > p {
+    .client-overview .tc-relations-people-col .tc-relations-boxes .add-more > p,
+    .vendor-overview .tc-relations-people-col .tc-relations-boxes .add-more > p {
       color: #999999; }
-      .client-relations .tc-relations-people-col .tc-relations-boxes .add-more > p > a,
-      .vendor-relations .tc-relations-people-col .tc-relations-boxes .add-more > p > a {
+      .client-overview .tc-relations-people-col .tc-relations-boxes .add-more > p > a,
+      .vendor-overview .tc-relations-people-col .tc-relations-boxes .add-more > p > a {
         font-weight: bold; }
-.client-relations .tc-relations-data-col,
-.vendor-relations .tc-relations-data-col {
+.client-overview .tc-relations-data-col,
+.vendor-overview .tc-relations-data-col {
   position: relative;
   margin: -20px -20px 30px 330px; }
-  .client-relations .tc-relations-data-col h4,
-  .vendor-relations .tc-relations-data-col h4 {
+  .client-overview .tc-relations-data-col h4,
+  .vendor-overview .tc-relations-data-col h4 {
     margin-top: 20px; }
-  .client-relations .tc-relations-data-col .subtitles,
-  .vendor-relations .tc-relations-data-col .subtitles {
+  .client-overview .tc-relations-data-col .subtitles,
+  .vendor-overview .tc-relations-data-col .subtitles {
     color: #999999;
     margin: 20px 0; }
-  .client-relations .tc-relations-data-col .inline,
-  .vendor-relations .tc-relations-data-col .inline {
+  .client-overview .tc-relations-data-col .inline,
+  .vendor-overview .tc-relations-data-col .inline {
     display: inline-block; }
-  .client-relations .tc-relations-data-col .thumbnail,
-  .vendor-relations .tc-relations-data-col .thumbnail {
+  .client-overview .tc-relations-data-col .thumbnail,
+  .vendor-overview .tc-relations-data-col .thumbnail {
     margin: 5px 0; }
-    .client-relations .tc-relations-data-col .thumbnail .left-col,
-    .vendor-relations .tc-relations-data-col .thumbnail .left-col {
+    .client-overview .tc-relations-data-col .thumbnail .left-col,
+    .vendor-overview .tc-relations-data-col .thumbnail .left-col {
       border-right: 1px dotted #dededf;
       text-align: center; }
-    .client-relations .tc-relations-data-col .thumbnail .right-col,
-    .vendor-relations .tc-relations-data-col .thumbnail .right-col {
+    .client-overview .tc-relations-data-col .thumbnail .right-col,
+    .vendor-overview .tc-relations-data-col .thumbnail .right-col {
       text-align: center; }
-    .client-relations .tc-relations-data-col .thumbnail .data-number,
-    .vendor-relations .tc-relations-data-col .thumbnail .data-number {
+    .client-overview .tc-relations-data-col .thumbnail .data-number,
+    .vendor-overview .tc-relations-data-col .thumbnail .data-number {
       text-align: center;
       display: inline-block; }
-      .client-relations .tc-relations-data-col .thumbnail .data-number h1,
-      .vendor-relations .tc-relations-data-col .thumbnail .data-number h1 {
+      .client-overview .tc-relations-data-col .thumbnail .data-number h1,
+      .vendor-overview .tc-relations-data-col .thumbnail .data-number h1 {
         color: #555555;
         margin-top: 24px;
         font-size: 36px; }
-      .client-relations .tc-relations-data-col .thumbnail .data-number p,
-      .vendor-relations .tc-relations-data-col .thumbnail .data-number p {
+      .client-overview .tc-relations-data-col .thumbnail .data-number p,
+      .vendor-overview .tc-relations-data-col .thumbnail .data-number p {
         font-size: 13px;
         color: #999999;
         display: inline-block;
         vertical-align: top;
         margin-top: -5px;
         text-align: right; }
-    .client-relations .tc-relations-data-col .thumbnail .spacing-20,
-    .vendor-relations .tc-relations-data-col .thumbnail .spacing-20 {
+    .client-overview .tc-relations-data-col .thumbnail .spacing-20,
+    .vendor-overview .tc-relations-data-col .thumbnail .spacing-20 {
       margin: 0 20px; }
-    .client-relations .tc-relations-data-col .thumbnail .data-btn,
-    .vendor-relations .tc-relations-data-col .thumbnail .data-btn {
+    .client-overview .tc-relations-data-col .thumbnail .data-btn,
+    .vendor-overview .tc-relations-data-col .thumbnail .data-btn {
       vertical-align: top;
       text-align: center;
       display: inline-block;
       margin: 35px 20px; }
-  .client-relations .tc-relations-data-col .tc-chart,
-  .vendor-relations .tc-relations-data-col .tc-chart {
+  .client-overview .tc-relations-data-col .tc-chart,
+  .vendor-overview .tc-relations-data-col .tc-chart {
     color: #999999; }
-    .client-relations .tc-relations-data-col .tc-chart .color-legend, .client-relations .tc-relations-data-col .tc-chart .color-gray, .client-relations .tc-relations-data-col .tc-chart .color-blue,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-legend,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-gray,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+    .client-overview .tc-relations-data-col .tc-chart .color-legend, .client-overview .tc-relations-data-col .tc-chart .color-gray, .client-overview .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-legend,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-blue {
       display: inline-block;
       vertical-align: top;
       margin: 20px 0; }
-    .client-relations .tc-relations-data-col .tc-chart .color-gray,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-gray {
+    .client-overview .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-gray {
       margin: 5px 10px 0 40px; }
-    .client-relations .tc-relations-data-col .tc-chart .color-blue,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+    .client-overview .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-blue {
       margin: 5px 10px 0 40px; }
-    .client-relations .tc-relations-data-col .tc-chart .color-gray,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-gray {
+    .client-overview .tc-relations-data-col .tc-chart .color-gray,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-gray {
       width: 20px;
       height: 10px;
       background: rgba(220, 220, 220, 0.5);
       border: 2px solid gainsboro; }
-    .client-relations .tc-relations-data-col .tc-chart .color-blue,
-    .vendor-relations .tc-relations-data-col .tc-chart .color-blue {
+    .client-overview .tc-relations-data-col .tc-chart .color-blue,
+    .vendor-overview .tc-relations-data-col .tc-chart .color-blue {
       width: 20px;
       height: 10px;
       background: rgba(66, 139, 202, 0.5);
       border: 2px solid #428bca; }
-  .client-relations .tc-relations-data-col .work-in-progress .progress-lg,
-  .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg {
+  .client-overview .tc-relations-data-col .work-in-progress .progress-lg,
+  .vendor-overview .tc-relations-data-col .work-in-progress .progress-lg {
     text-align: right; }
-    .client-relations .tc-relations-data-col .work-in-progress .progress-lg .progress-label,
-    .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg .progress-label {
+    .client-overview .tc-relations-data-col .work-in-progress .progress-lg .progress-label,
+    .vendor-overview .tc-relations-data-col .work-in-progress .progress-lg .progress-label {
       text-align: right;
       font-weight: bold;
       padding-right: 10px; }
-    .client-relations .tc-relations-data-col .work-in-progress .progress-lg .total-value,
-    .vendor-relations .tc-relations-data-col .work-in-progress .progress-lg .total-value {
+    .client-overview .tc-relations-data-col .work-in-progress .progress-lg .total-value,
+    .vendor-overview .tc-relations-data-col .work-in-progress .progress-lg .total-value {
       text-align: right;
       font-weight: bold;
       padding-right: 9px;
       color: #999999;
       font-size: 12px;
       padding-top: 2px; }
-  .client-relations .tc-relations-data-col .work-in-progress .tc-chart,
-  .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart {
+  .client-overview .tc-relations-data-col .work-in-progress .tc-chart,
+  .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart {
     position: relative;
     overflow: hidden; }
-    .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in,
-    .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in {
+    .client-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in,
+    .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in {
       position: relative;
       width: 700px; }
-      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-dollar-sign,
-      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-dollar-sign {
+      .client-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-dollar-sign,
+      .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-dollar-sign {
         position: absolute;
         top: 1px;
         left: -10px;
         color: #ccc;
         font-size: 12px; }
-      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-weeks,
-      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-weeks {
+      .client-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-weeks,
+      .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-weeks {
         position: absolute;
         top: 200px;
         right: 0px;
         color: #ccc;
         font-size: 12px; }
-      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line,
-      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line {
+      .client-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line,
+      .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-line {
         position: absolute;
         margin-top: 8px;
         width: 2px;
         height: 169px;
         background: #e2019b; }
-      .client-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days,
-      .vendor-relations .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days {
+      .client-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days,
+      .vendor-overview .tc-relations-data-col .work-in-progress .tc-chart .tc-chart-in .tc-chart-this-week-days {
         color: #e2019b;
         position: absolute;
         width: 60px;
@@ -1606,37 +1547,37 @@ body {
         margin-left: -30px;
         font-size: 13px;
         background: white; }
-  .client-relations .tc-relations-data-col .work-in-progress .max-date,
-  .vendor-relations .tc-relations-data-col .work-in-progress .max-date {
+  .client-overview .tc-relations-data-col .work-in-progress .max-date,
+  .vendor-overview .tc-relations-data-col .work-in-progress .max-date {
     margin: 20px 0 0 0; }
 
-.relation-orders .user {
+.orders .user {
   width: 30px; }
-.relation-orders .discussion,
-.relation-orders .cost {
+.orders .discussion,
+.orders .cost {
   width: 80px;
   text-align: center; }
-.relation-orders td.user img {
+.orders td.user img {
   width: 30px; }
-.relation-orders td.request {
+.orders td.request {
   font-weight: bold; }
 
-.relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices {
+.monitoring .tc-progress-section .tc-progressbar-col .tc-progress-choices {
   margin-bottom: 10px;
   text-align: center; }
-  .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice {
+  .monitoring .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice {
     cursor: pointer;
     border: 1px solid transparent;
     background-color: #f5f5f5;
     color: #999999; }
-    .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
+    .monitoring .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice:hover {
       border: 1px solid #cccccc; }
-    .relation-progress .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
+    .monitoring .tc-progress-section .tc-progressbar-col .tc-progress-choices .tc-progress-choice.active {
       background-color: #ccc;
       color: #fff; }
-.relation-progress .tc-progress-section .tc-date-col {
+.monitoring .tc-progress-section .tc-date-col {
   width: 155px; }
-.relation-progress .tc-progress-section .datepicker-popup {
+.monitoring .tc-progress-section .datepicker-popup {
   left: inherit !important;
   right: 50px; }
 
@@ -1681,44 +1622,44 @@ body {
 /******************************************************************/
 /*****    Section Relation:orders.html.twig    ********/
 /******************************************************************/
-.relation-orders .tc-orders-section .tc-filters {
+.orders .tc-orders-section .tc-filters {
   padding-bottom: 20px; }
-  .relation-orders .tc-orders-section .tc-filters .tc-filters-label {
+  .orders .tc-orders-section .tc-filters .tc-filters-label {
     color: #999999;
     font-size: 12px;
     padding: 0 20px;
     font-style: italic; }
-  .relation-orders .tc-orders-section .tc-filters .tc-filters-label, .relation-orders .tc-orders-section .tc-filters tc-filters-label {
+  .orders .tc-orders-section .tc-filters .tc-filters-label, .orders .tc-orders-section .tc-filters tc-filters-label {
     display: inline-block; }
-.relation-orders .tc-orders-section .tc-draft .tc-draft-state a {
+.orders .tc-orders-section .tc-draft .tc-draft-state a {
   background: #428bca; }
-.relation-orders .tc-orders-section .tc-draft .tc-draft-state a:after {
+.orders .tc-orders-section .tc-draft .tc-draft-state a:after {
   border-left-color: #428bca; }
-.relation-orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a {
+.orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a {
   background: #d9534f; }
-.relation-orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a:after {
+.orders .tc-orders-section .tc-draft-cancelled .tc-draft-state a:after {
   border-left-color: #d9534f; }
-.relation-orders .tc-orders-section .tc-sent .tc-sent-state a {
+.orders .tc-orders-section .tc-sent .tc-sent-state a {
   background: #428bca; }
-.relation-orders .tc-orders-section .tc-sent .tc-sent-state a:after {
+.orders .tc-orders-section .tc-sent .tc-sent-state a:after {
   border-left-color: #428bca; }
-.relation-orders .tc-orders-section .tc-sent-viewed .tc-sent-state a {
+.orders .tc-orders-section .tc-sent-viewed .tc-sent-state a {
   background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-sent-viewed .tc-sent-state a:after {
+.orders .tc-orders-section .tc-sent-viewed .tc-sent-state a:after {
   border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a,
-.relation-orders .tc-orders-section .tc-sent-declined .tc-sent-state a {
+.orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a,
+.orders .tc-orders-section .tc-sent-declined .tc-sent-state a {
   background: #d9534f; }
-.relation-orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a:after,
-.relation-orders .tc-orders-section .tc-sent-declined .tc-sent-state a:after {
+.orders .tc-orders-section .tc-sent-cancelled .tc-sent-state a:after,
+.orders .tc-orders-section .tc-sent-declined .tc-sent-state a:after {
   border-left-color: #d9534f; }
-.relation-orders .tc-orders-section .tc-closed .tc-closed-state a {
+.orders .tc-orders-section .tc-closed .tc-closed-state a {
   background: #5cb85c; }
-.relation-orders .tc-orders-section .tc-closed .tc-closed-state a:after {
+.orders .tc-orders-section .tc-closed .tc-closed-state a:after {
   border-left-color: #5cb85c; }
-.relation-orders .tc-orders-section .tc-closed-cancelled .tc-closed-state a {
+.orders .tc-orders-section .tc-closed-cancelled .tc-closed-state a {
   background: #d9534f; }
-.relation-orders .tc-orders-section .tc-closed-cancelled .tc-closed-state a:after {
+.orders .tc-orders-section .tc-closed-cancelled .tc-closed-state a:after {
   border-left-color: #d9534f; }
 
 /******************************************************************/
@@ -1853,37 +1794,37 @@ body {
   width: 60px;
   height: 60px; }
 
-.relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a {
+.rfps .tc-rfps-section .tc-draft .tc-draft-state a {
   background: #428bca; }
-.relation-rfps .tc-rfps-section .tc-draft .tc-draft-state a:after {
+.rfps .tc-rfps-section .tc-draft .tc-draft-state a:after {
   border-left-color: #428bca; }
-.relation-rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a {
+.rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a:after {
+.rfps .tc-rfps-section .tc-draft-cancelled .tc-draft-state a:after {
   border-left-color: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-sent .tc-sent-state a {
+.rfps .tc-rfps-section .tc-sent .tc-sent-state a {
   background: #428bca; }
-.relation-rfps .tc-rfps-section .tc-sent .tc-sent-state a:after {
+.rfps .tc-rfps-section .tc-sent .tc-sent-state a:after {
   border-left-color: #428bca; }
-.relation-rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a {
+.rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a {
   background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a:after {
+.rfps .tc-rfps-section .tc-sent-viewed .tc-sent-state a:after {
   border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a,
-.relation-rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a {
+.rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a,
+.rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a:after,
-.relation-rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a:after {
+.rfps .tc-rfps-section .tc-sent-cancelled .tc-sent-state a:after,
+.rfps .tc-rfps-section .tc-sent-declined .tc-sent-state a:after {
   border-left-color: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a {
+.rfps .tc-rfps-section .tc-closed .tc-closed-state a {
   background: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-closed .tc-closed-state a:after {
+.rfps .tc-rfps-section .tc-closed .tc-closed-state a:after {
   border-left-color: #5cb85c; }
-.relation-rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a,
-.relation-rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a {
+.rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a,
+.rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a {
   background: #d9534f; }
-.relation-rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a:after,
-.relation-rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a:after {
+.rfps .tc-rfps-section .tc-closed-declined .tc-closed-state a:after,
+.rfps .tc-rfps-section .tc-closed-cancelled .tc-closed-state a:after {
   border-left-color: #d9534f; }
 
 /*************************************************/

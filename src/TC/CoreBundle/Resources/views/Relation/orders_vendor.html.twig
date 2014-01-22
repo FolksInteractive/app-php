@@ -1,0 +1,108 @@
+{% extends 'TCCoreBundle::skeleton_vendor.html.twig' %}
+
+{% block body_class %} {{parent()}} orders vendor-orders {% endblock %}
+
+{% use "TCCoreBundle:Relation:menu_vendor.html.twig" %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:ordersMenu',[],{"relation": relation}) %}
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+{% endblock %}
+
+{% block sheet %}
+
+{% if orders is empty %}
+    {{block('empty_orders_vendor')}}
+
+{% else %}
+<div class="tc-orders-section">   
+        <table class="tc-table table">
+            <thead>
+                <tr>
+                    <th class="left tc-left-gap">Description</th>
+                    <th>Discussion</th>
+                    <th>Status</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}            
+                <tr class="{{order|status}}">
+                    <td class="tc-description-col tc-left-gap">
+                        <div class="title">
+                            <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                {{order.heading|default('proposal')}}
+                            </a>
+                        </div>
+                        <div class="main-description"><b>Created</b> on {{order.getCreatedAt()|date('F dS Y')}}</div>
+                    </td>
+                    
+                    <td class="tc-discussion-col">
+                        <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                            <div class="badge-talk-bubble">
+                                {{order.thread.getNumComments()}}
+                            </div>
+                        </a>
+                    </td>
+                    
+                    <td class="tc-status tc-status-col tc-status-2-items">
+                        <ul class="tc-status"> 
+                           {# Sent State #}
+                            <li class="tc-sent-state tc-state">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                    <div class="tc-icon-discussion-light-sm"></div>
+                                </a>
+                            </li>
+                            {# Proposed State #}
+                            <li class="tc-closed-state tc-state">
+                                <a href="{{path("vendor_order_show",{'idOrder':order.id,'idRelation':relation.id})}}">
+                                    {% if order.approved %}
+                                        <div class="glyphicon glyphicon-ok"></div>
+                                    {% elseif order.declined %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% else %}
+                                        <div class="glyphicon glyphicon-ok"></div>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                    
+                    <td class="tc-info-col tc-subtotal-col">
+                        {% if order.total is not null%} 
+                            $ {{order.total|number_format(2, '.', ',')}} 
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td class="tc-multiactions-col">
+                        <div class="dropdown">
+                            <a class="btn btn-default btn-sm" data-toggle="dropdown" data-target="#"><span class="caret"></span></a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="{{path("vendor_order_show", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        View
+                                    </a>
+                                </li>
+                                
+                                {% if is_declinable(order) %}
+                                <li>
+                                    <a href="{{path("vendor_order_decline", {'idRelation':relation.id, 'idOrder':order.id})}}">
+                                        Decline
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>     
+            {% endfor %}
+            </tbody>
+        </table>
+</div> 
+{% endif %}
+{% endblock %}

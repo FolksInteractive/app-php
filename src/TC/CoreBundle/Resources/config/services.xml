@@ -119,6 +119,9 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="tc.manager.workspace" /> 
         </service>
+        <service id="tc.listener.remember" class="TC\CoreBundle\EventListener\RememberListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
         
         
         <!-- Validators -->

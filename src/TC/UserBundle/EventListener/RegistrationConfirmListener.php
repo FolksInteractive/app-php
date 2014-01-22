@@ -26,7 +26,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
 
     public function onConfirm( GetResponseUserEvent $event)
     {
-        $url = $this->router->generate('root');
+        $url = $this->router->generate('dashboard');
         $event->setResponse(new RedirectResponse($url));
     }
 }

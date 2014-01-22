@@ -1,127 +1,17 @@
 /*************************************************/
-/*****   Section Client:dashboard.html.twig   *****/
+/*****   Section dashboard.html.twig   *****/
 /*************************************************/
 
-.client-dashboard, .vendor-dashboard {
-    
-    .tc-toolbar {
+.dashboard {
         
-        .tc-breadcrumb {
-            
-            .glyphicon {
-                font-size: 30px;
-                margin-right: 14px;
-                color: #666;
-            }
-            
+    .tc-breadcrumb {
+
+        .glyphicon {
+            font-size: 30px;
+            margin-right: 14px;
+            color: #666;
         }
-        
-    }
-    
-    .wrapper {
-        margin: 0 35px;
-        
-        .tc-activities {
-            
-            .media-list {
-                padding: 20px;
-                
-                :before {
-                    position: absolute;
-                    top: 70px;
-                    bottom: 70px;
-                    left: 60px;
-                    width: 1px;
-                    background: #dededf;
-                    content: '';
-                    z-index: -1;
-                }
-                
-                .media-object {
-                    width: 50px;
-                    height: 50px;
-                }
-                
-                .media-body {
-                    padding: 5px 0 0 25px;
-                    
-                    h4 {
-                        
-                        span {
-                            font-size: 12px;
-                        }
-                    }
-                    
-                    .date {
-                        color: #777;
-                        font-size: 12px;
-                    }
-                }
-            }
-            
-            legend {
-                margin-top: 0;
-            }
-            
-        }
-        
-        .tc-relationships {
-            
-            legend {
-                margin-top: 0;
-            }
-            
-            .block {
-                text-align: center;
-                margin-left: -5px;
-                
-                h1 {
-                    font-size: 48px;
-                    font-weight: bold;
-                }
-                
-                p {
-                    color: #999;
-                }
-            }
-            
-            .button-add {
-                text-align: center;
-                margin-top: 48px;
-            }
-            
-        }
-        
-        .tc-money {
-            
-            legend {
-                margin-top: 40px;
-            }
-            
-            .chart-legend {
-                padding: 65px 0 0 40px;
-                vertical-align: middle;
-                
-                .item {
-                    padding-bottom: 30px;
-                    
-                    .spent { background: #5cb85c; }
-                    .wip { background: #428bca; }
-                    .ob { background: #0C04E8; }
-                    .grey { color: #777; padding-left: 10px; }
-                }
-                
-            }
-            
-            .chart {
-                text-align: center;
-                padding-top: 20px;
-                
-                #money-spent {
-                    text-align: center;
-                }
-            }
-        }
+
     }
     
 }

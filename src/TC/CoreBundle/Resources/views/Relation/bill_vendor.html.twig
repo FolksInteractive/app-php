@@ -1,0 +1,82 @@
+{% extends 'TCCoreBundle::skeleton_vendor.html.twig' %}
+
+{% use "TCCoreBundle:Relation:bill_base.html.twig" with body_class as base_body_class %}
+
+{% use "TCCoreBundle:Relation:menu_vendor.html.twig" %}
+
+{% block body_class %} {{parent()}} {{ block('base_body_class') }} vendor-bill {% endblock %}
+
+{% block toolbar %}
+    <div class="tc-breadcrumb pull-left">
+        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:billMenu',[],{"relation": relation}) %}           
+        {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
+    </div>
+
+    <div class="tc-controls pull-right"></div>
+{% endblock %}
+    
+    
+
+{% block sheet %}
+{% if deliverables is empty %}
+    {{block('empty_bill_vendor')}}
+
+{% else %}
+<div class="tc-invoice-section">
+
+    <table  class="tc-table table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="left">Description</th>
+                <th>Unit price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set total = 0 %}
+            {% for deliverable in deliverables %}
+            {% set total = total + deliverable.total %}                
+                <tr>
+                    <td class="tc-empty-actions-col">
+                        {#
+                        <div class="checkbox-item">
+                            <input type="checkbox" value="None" checked id="checkbox-item1" name="check" />
+                            <label for="checkbox-item1"></label>
+                        </div>
+                        #}
+                    </td>
+                    <td class="tc-description-col">
+                        <div class="title"><a href="{{path("vendor_order_show",{'idOrder':deliverable.order.id,'idRelation':relation.id})}}">{{deliverable.name}}</a></div>
+                        <div class="main-description"><b>Completed</b> on {{deliverable.getCompletedAt()|date('F dS Y')}}</div>
+                    
+                    </td>
+                    <td class="tc-info-col tc-unitprice-col">
+                        $ {{deliverable.cost|number_format(2, '.', ',')}}
+                    </td>
+                    <td class="tc-info-col tc-quantity-col">
+                        {{deliverable.quantity}}
+                    </td>
+                    <td class="tc-info-col tc-subtotal-col">
+                        $ {{deliverable.total|number_format(2, '.', ',')}}
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    
+    <div class="tc-total-price">
+        <div class="split"></div>
+        <div class="split"></div>
+        <div class="total-label">Total : </div>
+        <div class="price">
+            $ {{total|number_format(2, '.', ',')}}
+        </div>
+    </div>
+</div> 
+{% endif %}
+
+{% endblock %}

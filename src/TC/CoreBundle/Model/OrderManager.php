@@ -87,7 +87,7 @@ class OrderManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function findAllForVendor( Relation $relation ){
+    public function findAllByClient( Relation $relation ){
         $orders = $this->em->getRepository( "TCCoreBundle:Order" )
             ->createQueryBuilder( "o" )
             ->where( "o.relation = :relation" )
@@ -103,7 +103,7 @@ class OrderManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function findAllForClient( Relation $relation ){
+    public function findAllByVendor( Relation $relation ){
         $orders = $this->em->getRepository( "TCCoreBundle:Order" )
             ->createQueryBuilder( "o" )
             ->where( "o.relation = :relation" )

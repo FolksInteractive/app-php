@@ -39,43 +39,6 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setAttribute( "data-target", "#feedbackModal" )        
             ->setExtra( 'icon_classes', 'glyphicon glyphicon-send' );
 
-        $isClientMode = (strpos($request->attributes->get('_route') , "client_") === 0 );
-        $isVendorMode = (strpos($request->attributes->get('_route') , "vendor_") === 0 );
-        
-        // Switch to vendor mode
-        if( $isClientMode ){
-            $menu
-            ->addChild( 'Switch to Vendor mode', array(
-                'route' => 'vendor_relation'
-            ) )
-            ->setExtra( 'icon_classes', 'glyphicon glyphicon-retweet' );
-        }
-   
-        // Switch to client mode
-        if( $isVendorMode ){
-            $menu
-            ->addChild( 'Switch to Client mode', array(
-                'route' => 'client_relation'
-            ) )
-            ->setExtra( 'icon_classes', 'glyphicon glyphicon-retweet' );
-        }        
-        
-        
-        if( !$isClientMode && !$isVendorMode ){
-            
-            $menu
-                ->addChild( 'Go to Client mode', array(
-                    'route' => 'client_relation'
-                ) )
-                ->setExtra( 'icon_classes', 'glyphicon glyphicon-arrow-left' );
-            
-            $menu
-                ->addChild( 'Go to Vendor mode', array(
-                    'route' => 'vendor_relation'
-                ) )
-                ->setExtra( 'icon_classes', 'glyphicon glyphicon-arrow-left' );
-        }
-        
         // Sign out
         $menu
             ->addChild( 'Sign out', array(
@@ -85,6 +48,71 @@ class GlobalMenuBuilder extends ContainerAware {
             
         return $menu;
     }
+    /**
+     * Build the main menu
+     * 
+     * @param FactoryInterface $factory
+     * @param array $options
+     * @return MenuItem
+     */
+    public function mainMenu( FactoryInterface $factory, array $options ) {
+
+        $menu = $factory->createItem( 'root' );
+        $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
+
+        $menu
+            ->addChild( 'Dashboard', array(
+                'route' => 'dashboard'
+            ) )
+            ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
+            ->setExtra( "sub_label", "Bird eye view on what's going on" );
+
+        // Service Providers
+        $menu
+            ->addChild( 'Service Providers', array(
+                'route' => 'vendor_index'
+            ) )
+            ->setExtra( "icon_classes", "icon-relations" )
+            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
+            ->setExtra( "sub_label", "Build & manage relationships" );
+        /*
+            // New Relation
+            ->addChild('New Service Provider', array(
+                'route' => 'vendor_new'
+            ));
+        */
+
+        // Projects
+        $menu
+            ->addChild( 'Projects', array(
+                'route' => 'project'
+            ) )
+            ->setExtra( "icon_classes", "icon-projects" )
+            ->setExtra( "sub_label", "Manage multiple service providers in the same project" );
+
+        $menu
+            ->addChild( 'Clients', array(
+                'route' => 'client_index'
+            ) )
+            ->setExtra( "icon_classes", "icon-relations" )
+            ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
+            ->setExtra( "sub_label", "Build & manage relationships" );
+        /*
+            // New Relation
+            ->addChild('New Client', array(
+                'route' => 'client_new'
+            ));
+         */  
+        $menu
+            ->addChild( 'Price Book', array(
+                'route' => 'pricebook'
+            ) )
+            ->setExtra( "icon_classes", "glyphicon glyphicon-book" )
+            ->setExtra( "sub_label", "Your pricing catalog" );
+        
+        return $menu;
+    }
+    
 }
 
 ?>

@@ -23,7 +23,7 @@
     {% endfor %}
 
         <p>{{ 'registration.confirmed'|trans({'%username%': user.shortName}, 'FOSUserBundle') }}</p>
-        <a href="{{path('root')}}">Get started &rarr;</a>
+        <a href="{{path('dashboard')}}">Get started &rarr;</a>
     </div>
 </div>
 {% endblock %}

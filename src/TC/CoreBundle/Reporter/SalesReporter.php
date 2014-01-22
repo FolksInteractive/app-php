@@ -24,7 +24,11 @@ class SalesReporter extends AbstractReporter {
      * @param Relation $relation
      * @return integer
      */
-    public function countPendingRFPs( Relation $relation ){
+    public function countPendingRFPs( Relation $relation = null ){   
+        
+        if( !$relation )
+            return 0;
+        
         return $this->getPendingRFPs( $relation )->count();
     }
 
@@ -33,7 +37,7 @@ class SalesReporter extends AbstractReporter {
      * @param Relation $relation
      * @return ArrayCollection
      */
-    public function getPendingRFPs( Relation $relation ){
+    public function getPendingRFPs( Relation $relation = null ){
         try{
             $ordersQB = $this->em->createQueryBuilder();
             $ordersQB
@@ -53,7 +57,7 @@ class SalesReporter extends AbstractReporter {
                 ->getQuery()
                 ->getResult();
         } catch( Exception $e ){
-            throw $e;
+            $rfps = [ ];
         }
 
         return new ArrayCollection( $rfps );
@@ -65,7 +69,11 @@ class SalesReporter extends AbstractReporter {
      * @param Relation $relation
      * @return integer
      */
-    public function countPendingOrders( Relation $relation ){
+    public function countPendingOrders( Relation $relation = null ){       
+        
+        if( !$relation )
+            return 0;
+        
         return $this->getPendingOrders( $relation )->count();
     }
 
@@ -74,7 +82,11 @@ class SalesReporter extends AbstractReporter {
      * @param Relation $relation
      * @return integer
      */
-    public function getPendingOrdersAmount( Relation $relation ){
+    public function getPendingOrdersAmount( Relation $relation = null ){
+        
+        if( !$relation )
+            return 0;
+        
         $total = 0;
         
         $orders = $this->getPendingOrders( $relation );

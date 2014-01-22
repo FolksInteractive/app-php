@@ -1,15 +1,15 @@
 {% extends '::skeleton.html.twig' %}
 
-{% block body_class -%}{{ parent() }} vendor {% endblock %}
+{% block body_class -%}{{ parent() }} client {% endblock %}
 
 {% block menu %}
 
 {% include "TCCoreBundle::global_dropdown.html.twig" %}
 
-{% set mainMenu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:mainMenu',[],{'user':app.user}) %}
-
+{% set mainMenu = knp_menu_get('TCCoreBundle:GlobalMenuBuilder:mainMenu',[],{'user':app.user}) %}
+        
 <div class="tc-menu-section">
     <div class="tc-menu-header">MANAGEMENT</div>
-    {{ knp_menu_render(mainMenu,{'depth' : 1}) }}
+    {{ knp_menu_render(mainMenu,{'depth':1}) }}
 </div>
 {% endblock%}

@@ -85,7 +85,7 @@ class RFPManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function findAllForVendor( Relation $relation ){
+    public function findAllByClient( Relation $relation ){
         $rfps = $this->em->getRepository( "TCCoreBundle:RFP" )
             ->createQueryBuilder( "r" )
             ->leftJoin( "TCCoreBundle:Order", "o", "WITH", "o.rfp = r" )
@@ -130,7 +130,7 @@ class RFPManager {
      * @param Relation $relation
      * @return Collection 
      */
-    public function findAllForClient( Relation $relation ){
+    public function findAllByVendor( Relation $relation ){
         $rfps = $this->em->getRepository( "TCCoreBundle:RFP" )
             ->createQueryBuilder( "r" )
             ->leftJoin( "TCCoreBundle:Order", "o", "WITH", "o.rfp = r" )

@@ -1,0 +1,37 @@
+{% block menu %}
+
+{% include "TCCoreBundle::global_dropdown.html.twig" %}
+
+<div class="tc-return-section">
+    <ul class="tc-menu nav">
+        <li>
+            <a href="{{path('vendor_index')}}">
+                <i class="glyphicon glyphicon-arrow-left glyphicon-white"></i>
+                <span class="dashboard">Go Back</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="tc-contact-section">
+    {# <div class="nav-header">Your Client</div> #}
+    <div class="contact">
+        <div class="avatar">
+            <img src="{{avatar(relation.vendor.user) | imagine_filter('80_thumb')}}">
+        </div>
+        <div class="infos">
+            <div class="name">{{relation.vendor.getFullName() | default(relation.vendor)}}</div>
+            <div class="role">Service provider</div>
+        </div>
+    </div>
+</div>
+
+{% set relationMenu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:relationMenu',[],{'relation':relation, 'user':app.user}) %}
+<div class="tc-menu-section">
+    <div class="tc-menu-header">Work Activities</div>
+    {#<div class="settings"><i class="icon-settings"></i></div>#}
+    
+    {{ knp_menu_render(relationMenu) }}
+
+</div>
+{% endblock%}

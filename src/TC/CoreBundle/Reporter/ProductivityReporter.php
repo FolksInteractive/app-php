@@ -21,12 +21,15 @@ class ProductivityReporter extends AbstractReporter {
         parent::__construct( $em, $securityContext );
     }
 
-    public function getFlow( Relation $relation ){
+    public function getFlow( Relation $relation = null ){
         $report = array(
             "labels"         => array( ),
             "completed_data" => array( ),
             "expected_data"  => array( ),
         );
+        
+        if( !$relation )
+            return $report;
         
         // Init Report
         $now = new DateTime();

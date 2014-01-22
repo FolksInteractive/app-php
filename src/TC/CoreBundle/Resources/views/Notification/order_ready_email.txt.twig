@@ -39,5 +39,5 @@ View Proposal
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{{url('client_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}
+{{url('vendor_order_show', {'idRelation':relation.id, 'idOrder':order.id})}}
 {% endautoescape %}{% endblock %}

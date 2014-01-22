@@ -31,5 +31,5 @@ View Invoice
 {% endblock %}
 
 {% block button1_url %}{% autoescape false %}
-{#url('client_invoices_show', {'idRelation':relation.id, 'idInvoice':invoice.id})#}
+{{url('vendor_invoices_show', {'idRelation':relation.id, 'idInvoice':invoice.id})}}
 {% endautoescape %}{% endblock %}

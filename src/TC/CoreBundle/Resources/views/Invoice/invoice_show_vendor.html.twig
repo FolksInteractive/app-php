@@ -1,23 +1,26 @@
 {% extends 'TCCoreBundle::skeleton_vendor.html.twig' %}
 
-{% use "TCCoreBundle:Relation:relation_menu_vendor.html.twig" %}
+{% use "TCCoreBundle:Relation:menu_vendor.html.twig" %}
 
 {% block body_class %} {{parent()}} invoice-show  {% endblock %}
 
 {% block toolbar %}
     <div class="tc-breadcrumb pull-left">
-        {% set menu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:invoicesMenu',[],{"invoice":invoice, "relation": relation}) %}
-           
+        {% set menu = knp_menu_get('TCCoreBundle:ClientMenuBuilder:invoicesMenu',[],{"invoice":invoice, "relation": relation}) %}           
         {{ knp_menu_render(menu, {'template': 'TCCoreBundle::breadcrumbs.html.twig'}) }}
     </div>
- <div class="tc-controls toolbar pull-right">        
-        {% if is_editable(invoice) %}
-            <a class="btn-primary btn-lg btn"
-               href="{{path('vendor_invoice_edit' , {'idInvoice':invoice.id, 'idRelation': relation.id})}}">
-                Edit Invoice
-            </a>   
-        {% endif %}
+
+    {% if is_editable(invoice) %}
+    <div class="tc-controls pull-right">
+        <button name="{{form.submit.vars.full_name}}" 
+                class="btn btn-default btn-lg" 
+                disabled="disabled"
+                ng-disabled="false">
+            Save
+        </button>
     </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block sheet %}
@@ -52,7 +55,7 @@
 
 <div class="tc-deliverables-section">  
         
-    <table  class="tc-deliverables-table table">
+    <table class="tc-deliverables-table table">
         <thead>
             <tr>
                 <th>#</th>
@@ -64,7 +67,7 @@
         </thead>
         <tbody>
         {% for deliverable in invoice.deliverables() %}
-            <tr>
+            <tr >
                 <td class="tc-no tc-info-col">{{loop.index}}</td>
                 <td class="tc-description tc-info-col left">
                     {{deliverable.name}}
@@ -83,12 +86,16 @@
         {% endfor %}
         </tbody>
     </table>
+    
 <div class="tc-total-price">
     <div class="split"></div>
     <div class="split"></div>
     <div class="total-label">Total</div>
     <div class="price">$ {{invoice.total|number_format(2, '.', ',')}}</div>
 </div>
+    
 </div> 
+
+
 
 {% endblock %}
