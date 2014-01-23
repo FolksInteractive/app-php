@@ -42,7 +42,7 @@ class VendorController extends BaseController {
         $relations  = $this->getRelationManager()->findAllVendors();        
 
         if( $idRelation ){
-            $relation = $this->getRelationManager()->findByVendor($idRelation);
+            $relation = $this->getRelationManager()->findVendor($idRelation);
         }else{
             $relation = $relations->first() ? $relations->current() : null;   
         }
@@ -62,7 +62,7 @@ class VendorController extends BaseController {
      *
      * @Route("/", name="vendor_create")
      * @Method("POST")
-     * @Template("TCCoreBundle:Relation:new_vendort.html.twig")
+     * @Template("TCCoreBundle:Relation:new_vendor.html.twig")
      */
     public function createAction( Request $request ) {
         $relation = $this->getRelationManager()->createVendor();
