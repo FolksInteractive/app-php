@@ -21,15 +21,18 @@ class RelationValidator extends ConstraintValidator {
      * @param Constraint $constraint
      */
     public function validate( $relation, Constraint $constraint ) {
-
+                
+        
         // The creator of the relation must either be the client or the vendor
         if ( $relation->getCreator() && $relation->getCreator() != $relation->getVendor() && $relation->getCreator() != $relation->getClient() )
             $this->context->addViolation( "The creator of the new relation must be part of it." );
                 
-        // The vendor and the client cannot be the same person
-        if ( $relation->getVendor()->getUser() == $relation->getClient()->getUser() )
-            $this->context->addViolation( "The vendor and the client cannot be the same person." );
-
+        if ( $relation->getVendor() && $relation->getClient() ){
+            // The vendor and the client cannot be the same person
+            if ( $relation->getVendor()->getUser() == $relation->getClient()->getUser() )
+                $this->context->addViolation( "The vendor and the client cannot be the same person." );
+        }
+        
   }
 
 }

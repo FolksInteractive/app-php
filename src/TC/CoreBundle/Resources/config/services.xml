@@ -11,10 +11,6 @@
     <services>
         
         <!-- MENU -->        
-        <service id="tc.menu.route_voter" class="TC\CoreBundle\Menu\RouteVoter">
-            <argument type="service" id="service_container" />
-            <tag name="knp_menu.voter" />
-        </service>
         
         <!-- Extensions -->        
         <service id="tc.extensions.breadcrumbs" class="TC\CoreBundle\Twig\BreadcrumbsExtension">
@@ -147,7 +143,13 @@
         <!-- FORM -->
         <service id="tc.form.text_block_type" class="TC\CoreBundle\Form\TextBlockType">
             <tag name="form.type" alias="text_block" />
-        </service>    
+        </service>   
+        
+        <service id="tc.form.workspace_type" class="TC\CoreBundle\Form\WorkspaceType">
+            <argument type="service" id="tc.manager.workspace"/>
+            <tag name="form.type" alias="workspace" />
+        </service> 
+        
     </services>
     
 </container>

@@ -42,6 +42,8 @@ class Relation {
      *
      * @var Workspace $client
      * 
+     * @Assert\Type(type="TC\CoreBundle\Entity\Workspace")
+     * @Assert\NotNull(message="A client must be specified.")
      * @ORM\ManyToOne(targetEntity="Workspace", inversedBy="clientRelations", cascade={"persist", "remove"})
      */
     private $client;
@@ -50,6 +52,8 @@ class Relation {
      *
      * @var Workspace $vendor
      * 
+     * @Assert\Type(type="TC\CoreBundle\Entity\Workspace")
+     * @Assert\NotNull(message="A vendor must be specified.")
      * @ORM\ManyToOne(targetEntity="Workspace", inversedBy="vendorRelations", cascade={"persist", "remove"})
      */
     private $vendor;

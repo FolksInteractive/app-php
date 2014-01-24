@@ -674,25 +674,33 @@
 {% block form_errors %}
 {% spaceless %}
     {% set global_errors = global_errors|default(false) %}
+    {% set style = style|default(bootstrap_get_style()) %}
+
+    {% if attr.style is defined and attr.style is not empty %}
+        {% set style = attr.style %}
+    {% endif %}
+
     {% if errors|length > 0 %}
-        <div class="alert alert-danger">
-            
-            {% if errors|length <= 1 %}
-                <h4>Opps something is wrong! You may want to correct this error : </h4>
-            {% else %}
-                <h4>Opps something is wrong! You may want to correct these errors : </h4>
-            {% endif %}
-            
-            <ul>
-                {% for error in errors %}
-                    <li>{{ error.message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% if global_errors %}
+            <div class="alert alert-danger">                
+                {% if errors|length <= 1 %}
+                    <h4>Opps something is wrong! You may want to correct this error : </h4>
+                {% else %}
+                    <h4>Opps something is wrong! You may want to correct these errors : </h4>
+                {% endif %}
+        {% endif %}
+        <ul{% if not global_errors %} class="help-block"{% endif %}>
+            {% for error in errors %}
+                <li>{{ error.message|trans(error.messageParameters, translation_domain) }}</li>
+            {% endfor %}
+        </ul>
+        {% if global_errors == true %}
+            </div>
+        {% endif %}
     {% endif %}
 {% endspaceless %}
 {% endblock form_errors %}
-
+    
 {% block form_rest %}
 {% spaceless %}
     {% for child in form %}

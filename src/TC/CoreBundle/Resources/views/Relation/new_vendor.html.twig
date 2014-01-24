@@ -26,7 +26,7 @@ ng-app=""
 
 {% block sheet %}
 <div class="tc-relations-section">
-    {{ form_errors(form) }}
+    {{ form_errors(form, { 'global_errors': true }) }}
     <legend>Invite a New Service Providers by Email</legend>
     <h4>Grow your business by adding new services providers to TimeCrumbs.</h4>
         <div id="tc_relation_create_form">

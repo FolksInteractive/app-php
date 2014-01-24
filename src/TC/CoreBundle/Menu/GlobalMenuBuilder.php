@@ -67,6 +67,10 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "icon_classes", "glyphicon glyphicon-dashboard" )
             ->setExtra( "sub_label", "Bird eye view on what's going on" );
 
+        $menu
+            ->addChild("Work")
+            ->setAttribute('class', 'tc-menu-header');
+        
         // Service Providers
         $menu
             ->addChild( 'Service Providers', array(
@@ -74,7 +78,13 @@ class GlobalMenuBuilder extends ContainerAware {
             ) )
             ->setExtra( "icon_classes", "icon-relations" )
             ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
-            ->setExtra( "sub_label", "Build & manage relationships" );
+            ->setExtra( "sub_label", "Build & manage relationships" )
+            
+            ->setExtra( "routes", array(
+                array( "route" => 'vendor_overview' ),
+                array( "route" => 'vendor_new' ),
+                array( "route" => 'vendor_create' )
+            ));
         /*
             // New Relation
             ->addChild('New Service Provider', array(
@@ -91,12 +101,22 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "sub_label", "Manage multiple service providers in the same project" );
 
         $menu
+            ->addChild("Hire")
+            ->setAttribute('class', 'tc-menu-header');
+        
+        $menu
             ->addChild( 'Clients', array(
                 'route' => 'client_index'
             ) )
             ->setExtra( "icon_classes", "icon-relations" )
             ->setExtra( "breadcrumbs_icon_classes", "icon-relations-dark-lg" )
-            ->setExtra( "sub_label", "Build & manage relationships" );
+            ->setExtra( "sub_label", "Build & manage relationships" )
+            
+            ->setExtra( "routes", array(
+                array( "route" => 'client_overview' ),
+                array( "route" => 'client_new' ),
+                array( "route" => 'client_create' )
+            ));
         /*
             // New Relation
             ->addChild('New Client', array(
