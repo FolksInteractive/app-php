@@ -13,12 +13,12 @@
 {% endblock %}
 
 {% block sub_title %}{% autoescape false %}
-Proposal Accepted!
+Reset Password
 {% endautoescape %}{% endblock %}
 
 {% block body_html %}
 {% autoescape false %}
-<p>Hello {{ user.username }}, you've lost your password? Not a problem! <br />Click the following button to reset it.</p>
+<p>Hello <b>{{ user.username }}</b>, you've lost your password? Not a problem! <br />Click the following button to reset it.</p>
 {% endautoescape %} 
 {% endblock %}
 
