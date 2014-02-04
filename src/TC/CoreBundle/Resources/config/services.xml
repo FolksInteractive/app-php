@@ -125,10 +125,6 @@
             <tag name="kernel.event_subscriber" />
         </service>
         
-        <service id="tc.listener.authentication_failed" class="TC\CoreBundle\EventListener\AuthenticationFailedListener">
-            <tag name="kernel.event_subscriber" />
-        </service>
-        
         
         <!-- Validators -->
         <service id="tc.validator.relation" class="TC\CoreBundle\Validator\Constraints\RelationValidator">
