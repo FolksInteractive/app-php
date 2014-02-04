@@ -68,7 +68,7 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "sub_label", "Bird eye view on what's going on" );
 
         $menu
-            ->addChild("Work")
+            ->addChild("Outsourcing")
             ->setAttribute('class', 'tc-menu-header');
         
         // Service Providers
@@ -102,7 +102,7 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "sub_label", "Manage multiple service providers in the same project" );
 
         $menu
-            ->addChild("Hire")
+            ->addChild("Sales & Work")
             ->setAttribute('class', 'tc-menu-header');
         
         $menu
