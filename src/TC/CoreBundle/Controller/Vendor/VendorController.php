@@ -30,14 +30,14 @@ class VendorController extends BaseController {
      */
     public function indexAction(Request $request, $idRelation = null)
     {
-        /**
-         * @var SalesReporter
-         */
+        /* @var $saleReporter SalesReporter */
         $salesReporter = $this->container->get('tc.reporter.sales');
-        /**
-         * @var ProductivityReporter
-         */
+        
+        /* @var $prodReporter ProductivityReporter */
         $prodReporter = $this->container->get('tc.reporter.productivity');
+        
+        /* @var $accountingReporter AccountingReporter */
+        $accountingReporter = $this->container->get('tc.reporter.accounting');
         
         $relations  = $this->getRelationManager()->findAllVendors();        
 
@@ -48,7 +48,8 @@ class VendorController extends BaseController {
         }
         
         return array(
-            'productivity_flow'     => $prodReporter->getFlow( $relation ),
+            'delivery_flow'         => $prodReporter->getDeliveryFlow( $relation ),
+            'productivity_flow'     => $prodReporter->getProductivityFlow( $relation ),
             'order_pending_total'   => $salesReporter->getPendingOrdersAmount( $relation ),
             'order_pending_count'   => $salesReporter->countPendingOrders( $relation ),
             'rfp_pending_count'     => $salesReporter->countPendingRFPs( $relation ),

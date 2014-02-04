@@ -105,10 +105,10 @@ class SalesReporter extends AbstractReporter {
      * @return ArrayCollection
      */
     public function getPendingOrders( Relation $relation ){
-        $this->em->getRepository( "TCCoreBundle:RFP" )->createQueryBuilder( "r" );
+        
         try{
             $orders = $this->em->getRepository( "TCCoreBundle:Order" )->createQueryBuilder( "o" )
-                ->where( "r.relation = :relation" )
+                ->where( "o.relation = :relation" )
                 ->andWhere( "o.ready = true" )
                 ->andWhere( "o.purchased = false" )
                 ->setParameter( "relation", $relation )

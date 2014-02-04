@@ -120,7 +120,7 @@
                 <div class="row thumbnail">
                     <div class="col-md-2 center">
                         <div class="data-number">
-                            <h1 class="success">15</h1>
+                            <h1 class="success">{{delivery_flow['todo']}}</h1>
                             <p>Items To Do</p>
                         </div>
                     </div>
@@ -129,15 +129,15 @@
 
                         <div class="center">
                             <div class="data-number max-date">
-                                <p>Last delivery date: <b class="success">2014-04-01</b></p>
+                                <p>Last delivery date: <b class="success">{{delivery_flow['last_date']|date('F jS Y')}}</b></p>
                             </div>
                         </div>
 
                         <div class="progress progress-striped progress-lg">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                <div class="progress-label">$ 1550.00</div>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: {{delivery_flow['ratio_done']|number_format(2) ~ '%'}}">
+                                <div class="progress-label">$ {{delivery_flow['total_done']|number_format(2)}}</div>
                             </div>
-                            <div class="total-value">$ 3500.00</div>
+                            <div class="total-value">$ {{delivery_flow['total']|number_format(2)}}</div>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
                     </div>
 
                     <div class="center">
-                        <h5 class="subtitles">Productivity Flow (Dec 8th 2013 to Feb 8th 2014)</h5>
+                        <h5 class="subtitles">Productivity Flow ({{productivity_flow['start']|date('M jS')}} to {{productivity_flow['end']|date('M jS')}})</h5>
                     </div>
 
                     <div id="tcFlowChart" class="tc-chart center">

@@ -131,3 +131,26 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [30, 30], mode: outbound }
+
+monolog:
+    handlers:
+        mail:
+            type: fingers_crossed
+            action_level: critical
+            handler: grouped
+        grouped:
+            type: group
+            members: [streamed, buffered]
+        streamed:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        buffered:
+            type: buffer
+            handler: swift
+        swift:
+            type: swift_mailer
+            from_email: fpoirier@timecrumbs.com
+            to_email: fpoirier@timecrumbs.com
+            subject: TimeCrumbs - An Error Occurred!
+            level: debug

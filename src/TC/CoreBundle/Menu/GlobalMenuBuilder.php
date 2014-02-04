@@ -81,6 +81,7 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "sub_label", "Build & manage relationships" )
             
             ->setExtra( "routes", array(
+                array( "route" => 'vendor_index' ),
                 array( "route" => 'vendor_overview' ),
                 array( "route" => 'vendor_new' ),
                 array( "route" => 'vendor_create' )
@@ -113,6 +114,7 @@ class GlobalMenuBuilder extends ContainerAware {
             ->setExtra( "sub_label", "Build & manage relationships" )
             
             ->setExtra( "routes", array(
+                array( "route" => 'client_index' ),
                 array( "route" => 'client_overview' ),
                 array( "route" => 'client_new' ),
                 array( "route" => 'client_create' )

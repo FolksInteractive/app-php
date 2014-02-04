@@ -5,6 +5,7 @@ namespace TC\CoreBundle\Reporter;
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManager;
+use Exception;
 use Symfony\Component\Security\Core\SecurityContext;
 use TC\CoreBundle\Entity\Relation;
 use TC\CoreBundle\Util\Date\Period;
@@ -21,19 +22,76 @@ class ProductivityReporter extends AbstractReporter {
         parent::__construct( $em, $securityContext );
     }
 
-    public function getFlow( Relation $relation = null ){
+    /**
+     * 
+     * @param Relation $relation
+     * @return null
+     */
+    public function getDeliveryFlow( Relation $relation = null ){
+
+        $report = array(
+            "todo"       => 0,
+            "last_date"  => null,
+            "ratio_done" => 0,
+            "total_done" => 0,
+            "total"      => 0
+        );
+
+        if( !$relation )
+            return $report;
+
+        // Fetch deliverables in progress (not completed and approved)
+        $deliverables = $this->em->getRepository( "TCCoreBundle:Deliverable" )->createQueryBuilder( "d" )
+            ->join( "TCCoreBundle:Order", "o", "WITH", "o.id = d.order" )
+            ->where( "o.relation = :relation" )
+            ->andWhere( "o.approved = true" )
+            ->andWhere( "d.completed = false OR d.progress < 100" )
+            ->orderBy( "d.due_at", "DESC" )
+            ->setParameter( "relation", $relation )
+            ->getQuery()
+            ->getResult();
+
+        if( count($deliverables) <= 0 )
+            return $report;
+                
+        // Build Report
+        $report[ "todo" ] = count($deliverables);
+        $report[ "last_date" ] = $deliverables[0]->getDueAt();
+
+        /* @var $deliverable Deliverable */
+        foreach( $deliverables as $key => $deliverable ){
+            $report[ "total" ] += $deliverable->getTotal();
+            $report[ "total_done" ] += $deliverable->getTotal() * $deliverable->getProgress()/100;
+        }
+        
+        // Avoid division by 0
+        if( $report["total"] > 0 ){
+            $ratio = (float) $report[ "total_done" ] / $report[ "total" ] * 100;
+        
+            $report["ratio_done"] = number_format($ratio, 2);
+        }
+        
+        return $report;
+    }
+
+    /**
+     * 
+     * @param Relation $relation
+     * @return array
+     */
+    public function getProductivityFlow( Relation $relation = null ){
         $report = array(
             "labels"         => array( ),
             "completed_data" => array( ),
             "expected_data"  => array( ),
         );
-        
+
         if( !$relation )
             return $report;
-        
+
         // Init Report
         $now = new DateTime();
-        
+
         $start = new DateTime( "4 weeks ago" );
         $start = $start->modify( "last sunday" );
 
@@ -54,21 +112,24 @@ class ProductivityReporter extends AbstractReporter {
             ->setParameter( "end", $end )
             ->getQuery()
             ->getResult();
-        
+
         // Build Report
         foreach( $period->getDatePeriod( $interval ) as $key => $date ){
             $week = Week::createFromDate( $date );
             $label = $week->getShortLabel();
 
             $report[ "labels" ][ ] = $label;
-            
+
             if( $date <= $now )
                 $report[ "completed_data" ][ ] = 0;
-            
+
             $report[ "expected_data" ][ ] = 0;
         }
 
         // Fill Report        
+        $report[ "start" ] = $start;
+        $report[ "end" ] = $end;
+
         foreach( $deliverables as $key => $deliverable ){
 
             if( $deliverable->getCompleted() && $deliverable->getCompletedAt() ){

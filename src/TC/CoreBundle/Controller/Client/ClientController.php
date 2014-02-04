@@ -48,7 +48,8 @@ class ClientController extends BaseController {
         }
         
         return array(
-            'productivity_flow'     => $prodReporter->getFlow( $relation ),
+            'delivery_flow'         => $prodReporter->getDeliveryFlow( $relation ),
+            'productivity_flow'     => $prodReporter->getProductivityFlow( $relation ),
             'order_pending_total'   => $salesReporter->getPendingOrdersAmount( $relation ),
             'order_pending_count'   => $salesReporter->countPendingOrders( $relation ),
             'rfp_pending_count'     => $salesReporter->countPendingRFPs( $relation ),

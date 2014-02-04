@@ -14,8 +14,10 @@ ng-app=""
 {% endblock %}
 
 {% block main_before %} 
-{% set attr = {'name': 'createForm'} %}
+{% set attr = {'id': 'createForm'} %}
+{% set attr = attr|merge({'name': 'createForm'}) %}
 {% set attr = attr|merge({'novalidate':""}) %}  
+{% set attr = attr|merge({'ng-submit':"createForm.$valid && createForm.submit()"}) %}  
 {{form_start(form, {'attr' : attr})}}
 {% endblock %}
 
@@ -35,9 +37,10 @@ ng-app=""
                     <span class="input-group-addon">@</span>
                     {% set attr = {'class': 'input-lg'} %}
                     {% set attr = attr|merge({'placeholder': "Enter your service provider's email adress" }) %}
-                    {% set attr = attr|merge({'ng-required':"true"}) %}  
-                    {% set attr = attr|merge({'ng-init':"email = '"~ form.vendor.vars.value ~ "'"}) %}  
-                    {% set attr = attr|merge({'ng-model':"email"}) %}  
+                    {% set attr = attr|merge({'ng-required':"true"}) %}   
+                    {% set attr = attr|merge({'ng-pattern':"/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$/"}) %}  
+                    {% set attr = attr|merge({'ng-init':"contact.email = '"~ form.vendor.vars.value ~ "'"}) %}  
+                    {% set attr = attr|merge({'ng-model':"contact.email"}) %}  
                     {{ form_widget(form.vendor, {'attr':attr}) }}
             </div>
             <div class="checkbox">

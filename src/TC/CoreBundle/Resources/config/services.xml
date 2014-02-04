@@ -34,6 +34,11 @@
             <argument type="service" id="security.context" />
         </service>
         
+        <service id="tc.reporter.accounting" class="TC\CoreBundle\Reporter\AccountingReporter">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="security.context" />
+        </service>
+        
         <!-- MANAGERS -->
         <service id="tc.manager.workspace" class="TC\CoreBundle\Model\WorkspaceManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
@@ -115,7 +120,12 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="tc.manager.workspace" /> 
         </service>
+        
         <service id="tc.listener.remember" class="TC\CoreBundle\EventListener\RememberListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
+        
+        <service id="tc.listener.authentication_failed" class="TC\CoreBundle\EventListener\AuthenticationFailedListener">
             <tag name="kernel.event_subscriber" />
         </service>
         
@@ -147,6 +157,7 @@
         
         <service id="tc.form.workspace_type" class="TC\CoreBundle\Form\WorkspaceType">
             <argument type="service" id="tc.manager.workspace"/>
+            <argument type="service" id="validator"/>
             <tag name="form.type" alias="workspace" />
         </service> 
         
