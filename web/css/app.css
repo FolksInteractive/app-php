@@ -591,7 +591,7 @@ input[type='email'] {
   color: #FFF;
   text-shadow: none;
   display: block;
-  padding: 15px 0 15px 25px; }
+  padding: 10px 0 10px 25px; }
 .tc-menu li a:hover {
   text-decoration: none;
   cursor: pointer;
@@ -619,7 +619,7 @@ input[type='email'] {
   border-right: 10px solid white;
   position: absolute;
   right: 0;
-  top: 15px; }
+  top: 10px; }
 
 .tc-menu-header {
   display: block;
@@ -628,10 +628,10 @@ input[type='email'] {
   font-weight: normal;
   text-shadow: none;
   text-transform: uppercase;
-  color: #b1b4b7;
+  color: #999;
   text-shadow: 1px 1px 2px #232729;
-  margin: 10px 0 5px 0;
-  padding: 3px 20px; }
+  margin: 10px 0 0 0;
+  padding: 5px 20px 0 20px; }
   .tc-menu-header a, .tc-menu-header a:hover {
     color: #b1b4b7; }
     .tc-menu-header a i, .tc-menu-header a:hover i {
