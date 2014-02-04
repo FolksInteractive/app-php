@@ -61,6 +61,10 @@ class GlobalMenuBuilder extends ContainerAware {
         $menu->setChildrenAttribute( "class", "tc-main-menu tc-menu" );
 
         $menu
+            ->addChild("Overview")
+            ->setAttribute('class', 'tc-menu-header');
+        
+        $menu
             ->addChild( 'Dashboard', array(
                 'route' => 'dashboard'
             ) )
