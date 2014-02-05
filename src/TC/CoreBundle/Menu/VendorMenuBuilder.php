@@ -24,9 +24,13 @@ class VendorMenuBuilder extends ContainerAware {
                     ->createItem( 'root' )
                     ->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
 
+        $menu
+            ->addChild("Opportunities")
+            ->setAttribute('class', 'tc-menu-header');
+        
         // Request For Proposal
          $menu
-            ->addChild( 'Request For Proposal', array(
+            ->addChild( 'Requests', array(
                 'route' => 'vendor_rfps',
                 'routeParameters' => $routeParameters
             ) )
@@ -41,6 +45,11 @@ class VendorMenuBuilder extends ContainerAware {
             ) )
             ->setExtra( "icon_classes", "icon-orders" )
             ->setExtra( "sub_label", "View, discuss & accept proposals" );
+ 
+        $menu
+            ->addChild("Production")
+            ->setAttribute('class', 'tc-menu-header');
+        
         
         // Monitoring
         $menu
@@ -50,6 +59,10 @@ class VendorMenuBuilder extends ContainerAware {
             ) )
             ->setExtra( "icon_classes", "icon-progress-light-sm" )
             ->setExtra( "sub_label", "All the work in progress" );
+ 
+        $menu
+            ->addChild("Finances")
+            ->setAttribute('class', 'tc-menu-header');        
         
         // Open Bill
         $menu
@@ -90,14 +103,14 @@ class VendorMenuBuilder extends ContainerAware {
                 'route' => 'vendor_rfps',
                 'routeParameters' => array('idRelation' => $idRelation)
             ) )
-            ->setLabel( "RFPs" )
+            ->setLabel( "Requests" )
             ->setExtra( "breadcrumbs_icon_classes", "icon-rfps-dark" );
             
         // RFP
         if( isset($options['rfp']) && $options['rfp'] instanceof \TC\CoreBundle\Entity\RFP){
             
             $menu
-                ->addChild( 'RFP', array(
+                ->addChild( 'Request', array(
                     'route' => 'vendor_rfp_show',
                     'routeParameters' => $routeParameters
                 ) )
@@ -105,7 +118,7 @@ class VendorMenuBuilder extends ContainerAware {
         }
         
         // New RFP
-        $menu->addChild( 'New RFP', array(
+        $menu->addChild( 'New Request', array(
             'route' => 'vendor_rfp_new',
             'routeParameters' => array('idRelation' => $idRelation)
         ) );

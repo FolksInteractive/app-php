@@ -57,10 +57,14 @@ class ClientMenuBuilder extends ContainerAware {
         $menu = $factory
                     ->createItem( 'root' )
                     ->setChildrenAttribute( "class", "tc-relation-menu tc-menu" );
+ 
+        $menu
+            ->addChild("Opportunities")
+            ->setAttribute('class', 'tc-menu-header');
         
         // Request For Proposal
         $menu
-            ->addChild( 'Request For Proposal', array(
+            ->addChild( 'Requests', array(
             'route' => 'client_rfps',
             'routeParameters' => $routeParameters
         ) )
@@ -75,6 +79,10 @@ class ClientMenuBuilder extends ContainerAware {
             ) )
             ->setExtra( "icon_classes", "icon-orders" )
             ->setExtra( "sub_label", "View, discuss & accept proposals" );
+ 
+        $menu
+            ->addChild("Production")
+            ->setAttribute('class', 'tc-menu-header');        
         
         // Monitoring
         $menu
@@ -84,6 +92,11 @@ class ClientMenuBuilder extends ContainerAware {
             ) )
             ->setExtra( "icon_classes", "icon-progress-light-sm" )
             ->setExtra( "sub_label", "All the work in progress" );
+ 
+        $menu
+            ->addChild("Finances")
+            ->setAttribute('class', 'tc-menu-header');
+        
         
         // Open Bill
         $menu
@@ -123,13 +136,13 @@ class ClientMenuBuilder extends ContainerAware {
             'route' => 'client_rfps',
             'routeParameters' => array('idRelation' => $idRelation)
         ) )
-            ->setLabel( "RFPs" )
+            ->setLabel( "Requests" )
             ->setExtra( "breadcrumbs_icon_classes", "icon-rfps-dark" );
         
         // RFP
         if( isset($options['rfp']) && $options['rfp'] instanceof \TC\CoreBundle\Entity\RFP){
             
-            $menu->addChild( 'RFP', array(
+            $menu->addChild( 'Request', array(
                 'route' => 'client_rfp_show',
                 'routeParameters' => $routeParameters
             ) )

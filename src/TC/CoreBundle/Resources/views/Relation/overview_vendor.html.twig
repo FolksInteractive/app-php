@@ -51,8 +51,8 @@
             {% if relations|length <= 2 %}
                 <div class="add-more center">
                     <img src="{{ asset('/img/flat-imgs/flat-add-relation.gif') }}" />
-                    <h4>Add Service Provider</h4>
-                    <p>Grow your business by <br /><a href="{{path('vendor_new')}}">adding more service provider</a>.</p>
+                    <h4>Add Vendor</h4>
+                    <p>Grow your business by <br /><a href="{{path('vendor_new')}}">adding more vendor</a>.</p>
                 </div>
             {% endif %}
             </div>
@@ -60,7 +60,7 @@
 
         <div class="tc-relations-data-col">
 
-            <legend>Service Provider Overview</legend>
+            <legend>Vendor Overview</legend>
 
             <div class="row">
 
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="col-md-7">
-                    <h4 class="center subtitles">Proposed Services</h4>
+                    <h4 class="center subtitles">Proposions</h4>
                 </div>
 
             </div>
@@ -80,12 +80,12 @@
 
                     <div class="data-number spacing-20">
                         <h1>{{rfp_pending_count}}</h1>
-                        <p>Pending RFP</p>
+                        <p>Pending Requests</p>
                     </div>
 
                     <div class="data-btn">
                         <a href="{{path('vendor_rfps', {'idRelation':relation.id})}}" class="btn btn-default btn-lg">
-                            View RFP
+                            View Requests
                         </a>
                     </div>
 

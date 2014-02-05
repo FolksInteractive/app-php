@@ -2,7 +2,7 @@
 
 {% block subject %}
 {% autoescape false %}
-{{relation.client.getFullName()}} has cancelled a request for proposal...
+{{relation.client.getFullName()}} has cancelled a request...
 {% endautoescape %}
 {% endblock %}
 
@@ -20,7 +20,7 @@ RFP Cancelled
 
 <div style="color: #112834; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px dashed #dededf;">
     <img src="{{app.request.uriForPath(avatar(relation.client.user) | imagine_filter('140_thumb'))}}" style="margin-bottom: 20px; border-radius: 50%;" /><br /> 
-    <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p style="color: #990000;">has just <b>cancelled a request for proposal</b>.</p>
+    <span style=" font-size: 24px; font-weight:bold;">{{relation.client.getFullName()}}</span> <p style="color: #990000;">has just <b>cancelled a request</b>.</p>
 </div>
 
 {% if cancellation is not empty %}

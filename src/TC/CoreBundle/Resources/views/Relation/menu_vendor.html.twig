@@ -21,14 +21,13 @@
         </div>
         <div class="infos">
             <div class="name">{{relation.vendor.getFullName() | default(relation.vendor)}}</div>
-            <div class="role">Service provider</div>
+            <div class="role">Vendor</div>
         </div>
     </div>
 </div>
 
 {% set relationMenu = knp_menu_get('TCCoreBundle:VendorMenuBuilder:relationMenu',[],{'relation':relation, 'user':app.user}) %}
 <div class="tc-menu-section">
-    <div class="tc-menu-header">Work Activities</div>
     {#<div class="settings"><i class="icon-settings"></i></div>#}
     
     {{ knp_menu_render(relationMenu) }}

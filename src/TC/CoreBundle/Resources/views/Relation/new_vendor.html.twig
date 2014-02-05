@@ -29,14 +29,14 @@ ng-app=""
 {% block sheet %}
 <div class="tc-relations-section">
     {{ form_errors(form, { 'global_errors': true }) }}
-    <legend>Invite a New Service Providers by Email</legend>
-    <h4>Grow your business by adding new services providers to TimeCrumbs.</h4>
+    <legend>Invite a New Vendors by Email</legend>
+    <h4>Grow your business by adding your vendors to TimeCrumbs.</h4>
         <div id="tc_relation_create_form">
             <div class="form-group">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon">@</span>
                     {% set attr = {'class': 'input-lg'} %}
-                    {% set attr = attr|merge({'placeholder': "Enter your service provider's email adress" }) %}
+                    {% set attr = attr|merge({'placeholder': "Enter your vendor's email adress" }) %}
                     {% set attr = attr|merge({'ng-required':"true"}) %}   
                     {% set attr = attr|merge({'ng-pattern':"/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$/"}) %}  
                     {% set attr = attr|merge({'ng-init':"contact.email = '"~ form.vendor.vars.value ~ "'"}) %}  
