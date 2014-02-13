@@ -24,11 +24,12 @@
         "doctrine/data-fixtures": "dev-master",
         "knplabs/knp-menu-bundle": "2.0.*@dev",
         "knplabs/knp-menu": "2.0.*@dev",
-        "vich/uploader-bundle": "dev-master",
         "knplabs/knp-gaufrette-bundle": "*",
+        "vich/uploader-bundle": "dev-master",
         "liip/imagine-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "1.2.*",
-        "jms/serializer-bundle": "0.12.*"
+        "jms/serializer-bundle": "0.12.*",
+        "beberlei/lite-cqrs" :"1.0"
     },
     "scripts": {
         "post-install-cmd": [
