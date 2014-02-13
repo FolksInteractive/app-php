@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="FOS\UserBundle\Model\User" exclusion-policy="all">  
+        <property name="emailCanonical" type="string" expose="true" access-type="public_method"></property>  
+    </class>
+</serializer>  

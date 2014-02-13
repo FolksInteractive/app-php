@@ -154,3 +154,29 @@ monolog:
             to_email: fpoirier@timecrumbs.com
             subject: TimeCrumbs - An Error Occurred!
             level: debug
+            
+fos_rest:
+    routing_loader:
+        default_format: json
+    view:
+        formats:
+            rss: false
+            xml: false
+            json: true
+        templating_formats:
+            html: false
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        
+jms_serializer:
+    metadata:
+      auto_detection: true
+      directories:
+          FOSUserBundle:
+              namespace_prefix: FOS\UserBundle
+              path: "@TCCoreBundle/Resources/config/serializer/fos"
+
+          FLSUserBundle:
+              namespace_prefix: TC\UserBundle
+              path: "@TCCoreBundle/Resources/config/serializer/tc_user"

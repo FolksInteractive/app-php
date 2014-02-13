@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\Deliverable" exclusion-policy="none">  
+        <property name="id" type="integer" expose="true" groups="list, details" read-only="true"></property>
+        <property name="name" type="string" expose="true" groups="list, details" read-only="true"></property>   
+        <property name="quantity" type="integer" expose="true" groups="list, details" read-only="true"></property>   
+        <property name="cost" type="double" expose="true" groups="list, details" read-only="true"></property>   
+        <property name="progress" type="integer" expose="true" groups="list, details" read-only="true"></property>   
+        <property name="due_at" type="boolean" expose="true" groups="list, details" read-only="false"></property>
+    </class>
+</serializer>  

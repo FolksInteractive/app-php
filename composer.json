@@ -26,7 +26,9 @@
         "knplabs/knp-menu": "2.0.*@dev",
         "vich/uploader-bundle": "dev-master",
         "knplabs/knp-gaufrette-bundle": "*",
-        "liip/imagine-bundle": "dev-master"
+        "liip/imagine-bundle": "dev-master",
+        "friendsofsymfony/rest-bundle": "1.2.*",
+        "jms/serializer-bundle": "0.12.*"
     },
     "scripts": {
         "post-install-cmd": [

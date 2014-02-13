@@ -3,7 +3,7 @@ tc_feedback:
     type:     annotation
     prefix:   /
     schemes:  [https]
-
+    
 tc_root:
     resource: "@TCCoreBundle/Controller"
     type:     annotation
@@ -21,7 +21,12 @@ tc_vendor:
     type:     annotation
     prefix: /
     schemes:  [https]
-    
+
+tc_api:
+    resource: TC\CoreBundle\Controller\ApiController
+    type:     rest
+    prefix: /api
+    schemes:  [https]    
 #tc_core:
 #    resource: "@TCCoreBundle/Controller"
 #    type:     annotation

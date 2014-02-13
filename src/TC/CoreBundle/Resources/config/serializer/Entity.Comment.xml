@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\Comment" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="order, thread" read-only="true"></property>
+        <property name="body" type="string" expose="true" groups="order, thread" read-only="true"></property>   
+        <property name="createdAt" expose="true" groups="order, thread" read-only="true"></property>   
+        <property name="author" type="TC\CoreBundle\Entity\Workspace" expose="true" groups="order, thread" read-only="true"></property>   
+    </class>
+</serializer>  

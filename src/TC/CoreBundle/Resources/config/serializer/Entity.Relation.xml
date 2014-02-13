@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\Relation" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="list, details" read-only="true"></property>
+        <property name="creator" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="vendor" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="client" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="orders" type="array" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="rfps" type="array" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="invoices" type="array" expose="true" groups="list, details" max-depth="1" read-only="true"></property>
+        <property name="created_at" type="DateTime" expose="true" groups="list, details" read-only="true"></property>
+            
+    </class>
+</serializer>  

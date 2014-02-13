@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\RFP" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="list, details" read-only="true"></property>
+        <property name="heading" type="string" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="subheading" type="string" expose="true" groups="details" read-only="false"></property>   
+        <property name="body" type="array" expose="true" groups="details" read-only="false"></property>   
+        <property name="created_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="ready" type="boolean" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="creator" type="TC\CoreBundle\Entity\Workspace" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="declined" type="boolean" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="declined_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="cancelled" type="boolean" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="cancelled_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="relation" type="TC\CoreBundle\Entity\Relation" expose="true" groups="details" max-depth="1" read-only="false"></property>   
+        <property name="order" type="TC\CoreBundle\Entity\Order" expose="true" groups="list, details" read-only="false"></property>   
+    </class>
+</serializer>  

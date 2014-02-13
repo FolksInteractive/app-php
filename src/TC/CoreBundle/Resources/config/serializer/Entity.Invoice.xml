@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\Invoice" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="list, details" read-only="true"></property>
+        <property name="no" type="integer" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="created_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="total" expose="true" accessor-getter="getTotal" groups="list, details" read-only="true"></property>
+        <property name="issued_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="due_at" type="DateTime" expose="true" groups="list, details" read-only="false"></property>   
+        <property name="relation" type="TC\CoreBundle\Entity\Relation" expose="true" groups="list, details" max-depth="1" read-only="false"></property>   
+        <property name="deliverables" type="TC\CoreBundle\Entity\Deliverable" expose="true" groups="list, details" read-only="true"></property>   
+    </class>
+</serializer>  

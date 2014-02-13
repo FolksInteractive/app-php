@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>  
+    <class name="TC\CoreBundle\Entity\Workspace" exclusion-policy="all">  
+        <property name="id" type="integer" expose="true" groups="list, details" read-only="true"></property>
+        <property name="firstName" access-type="public_method" type="string" groups="list, details" expose="true" read-only="true"></property>
+        <property name="lastName" access-type="public_method" type="string" groups="list, details" expose="true" read-only="true"></property>
+        <property name="email" access-type="public_method" type="string" groups="list, details" expose="true" read-only="true"></property>
+        <property name="vendorRelations" type="array" groups="details" max-depth="1" expose="true" read-only="true"></property>
+        <property name="clientRelations" type="array" groups="details" max-depth="1" expose="true" read-only="true"></property> 
+        
+    </class>
+</serializer>  
