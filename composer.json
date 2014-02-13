@@ -29,7 +29,7 @@
         "liip/imagine-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "1.2.*",
         "jms/serializer-bundle": "0.12.*",
-        "beberlei/lite-cqrs" :"1.0"
+        "beberlei/lite-cqrs" :"1.1.x-dev "
     },
     "scripts": {
         "post-install-cmd": [
